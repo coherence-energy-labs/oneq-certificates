@@ -1,0 +1,60 @@
+{
+  "schema": "oneq-million-shot-merged/1",
+  "constituent_artifacts": [
+    "million_shot_gate_d5.json",
+    "million_shot_gate_d5_supplement.json",
+    "million_shot_gate_d5_supplement2.json",
+    "million_shot_gate_d5_supplement3.json"
+  ],
+  "why_merging_is_legitimate": "lost chunks died at worker SPAWN (paging-file exhaustion at scipy import), before any syndrome was decoded, so chunk death is independent of shot content and completion runs with disjoint seed bases introduce no selection on difficulty",
+  "shots": 1000000,
+  "nontrivial": 1000000,
+  "certified": 997594,
+  "forgeries_attempted": 6000002,
+  "forgeries_accepted": 0,
+  "failed_chunks": 265,
+  "shots_lost_to_failed_chunks": 74250,
+  "certified_rate": 0.997594,
+  "uncertified_gap_merged": {
+    "n": 2406,
+    "nweighted_mean": 0.35665847797173733,
+    "max_of_maxes": 2.699569,
+    "per_run_medians": {
+      "million_shot_gate_d5.json": 0.250322,
+      "million_shot_gate_d5_supplement.json": 0.333052,
+      "million_shot_gate_d5_supplement2.json": 0.213588,
+      "million_shot_gate_d5_supplement3.json": 0.32262250000000003
+    },
+    "note": "medians do not merge; reported per constituent run"
+  },
+  "per_run": {
+    "million_shot_gate_d5.json": {
+      "shots": 962500,
+      "certified": 960181,
+      "certified_rate": 0.9975906493506493,
+      "forgeries_attempted": 5775001,
+      "forgeries_accepted": 0
+    },
+    "million_shot_gate_d5_supplement.json": {
+      "shots": 12750,
+      "certified": 12721,
+      "certified_rate": 0.9977254901960785,
+      "forgeries_attempted": 76500,
+      "forgeries_accepted": 0
+    },
+    "million_shot_gate_d5_supplement2.json": {
+      "shots": 12750,
+      "certified": 12722,
+      "certified_rate": 0.9978039215686274,
+      "forgeries_attempted": 76500,
+      "forgeries_accepted": 0
+    },
+    "million_shot_gate_d5_supplement3.json": {
+      "shots": 12000,
+      "certified": 11970,
+      "certified_rate": 0.9975,
+      "forgeries_attempted": 72001,
+      "forgeries_accepted": 0
+    }
+  }
+}

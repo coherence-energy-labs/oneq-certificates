@@ -1,0 +1,93 @@
+{
+  "schema": "oneq-l2prime-rtl/1",
+  "claim": "the L2' detector in synthesizable Verilog agrees bit-exactly with the Python implementation on every vector, across a language boundary",
+  "simulator": "Icarus Verilog 13.0",
+  "vectors_per_mask": 1500,
+  "masks": [
+    {
+      "fmask": "0x00000000",
+      "mask_popcount": 0,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 363,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    },
+    {
+      "fmask": "0x00000001",
+      "mask_popcount": 1,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 392,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    },
+    {
+      "fmask": "0x000000FF",
+      "mask_popcount": 8,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 401,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    },
+    {
+      "fmask": "0x0003FFFF",
+      "mask_popcount": 18,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 386,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    },
+    {
+      "fmask": "0xFFFFFFFF",
+      "mask_popcount": 32,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 372,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    },
+    {
+      "fmask": "0xA5A5A5A5",
+      "mask_popcount": 16,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 353,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    },
+    {
+      "fmask": "0xDEADBEEF",
+      "mask_popcount": 24,
+      "compiled": true,
+      "vectors": 1500,
+      "fired": 367,
+      "errors": 0,
+      "vacuous": false,
+      "mismatch_lines": []
+    }
+  ],
+  "total_errors": 0,
+  "cost_analytic": {
+    "logic": "AND-reduce over N_DET plus an XOR tree over popcount(F_MASK), then two XORs",
+    "xor_tree_width_by_d": {
+      "d=3": 8,
+      "d=5": 18,
+      "d=7": 32,
+      "d=9": 50
+    },
+    "formula": "popcount(F_MASK) = (d+1)^2/2",
+    "depth": "ceil(log2(popcount)) + 2",
+    "state": "none beyond the output register",
+    "NOT_CLAIMED": "C2 quotes ~5,400 LUTs and 0.26% of IBM's 2,106,738-LUT decoder. That is a SYNTHESIS claim; yosys is not installed here, so no LUT count is reported. The function is verified; the area is not."
+  },
+  "passed": true
+}

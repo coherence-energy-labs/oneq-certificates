@@ -1,0 +1,446 @@
+{
+  "schema": "oneq-google-corpus-gate/1",
+  "source": {
+    "doi": "10.5281/zenodo.13273331",
+    "archive": "google_105Q_surface_code_d3_d5_d7.zip",
+    "paper": "Quantum error correction below the surface code threshold",
+    "error_model": "correlated_matching_decoder_with_si1000_prior",
+    "note": "decoding weights are the experimenters' own; the correction certified is PyMatching's, because the corpus publishes predicted OBSERVABLES, not the edge sets any decoder chose"
+  },
+  "totals": {
+    "shots": 117850,
+    "nontrivial": 117235,
+    "certified": 112590,
+    "certified_rate": 0.9603787264895296,
+    "forgeries_attempted": 737773,
+    "forgeries_accepted": 0,
+    "battery_attacks_that_were_not_actually_false": 0
+  },
+  "per_attack": {
+    "E_dropped_edge": 115625,
+    "F_duplicated_edge": 117235,
+    "I_mismatched_pair": 117235,
+    "A_suboptimal": 36823,
+    "D_spurious_cycle": 117235,
+    "G_dual_inflated_to_meet_a_worse_primal": 117235,
+    "H_negative_dual_hides_inflation": 116385
+  },
+  "per_attack_accepted": {},
+  "failed_chunks": [
+    {
+      "config": "d3_at_q4_5_X_r13",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "reason": "ImportError: DLL load failed while importing _fblas: The paging file is too small for this operation to complete."
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "reason": "ImportError: DLL load failed while importing pypocketfft: The paging file is too small for this operation to complete."
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "reason": "ImportError: DLL load failed while importing _flapack: The paging file is too small for this operation to complete."
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "reason": "ImportError: DLL load failed while importing _flapack: The paging file is too small for this operation to complete."
+    },
+    {
+      "config": "d3_at_q4_5_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d3_at_q4_5_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 1.13 MiB for an array with shape (148269,) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 1.51 MiB for an array with shape (1098, 1441) and data type bool"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 1.52 MiB for an array with shape (138, 1441) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 9.76 MiB for an array with shape (378, 3386) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 16.4 MiB for an array with shape (471, 4554) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 1.28 MiB for an array with shape (116, 1441) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "reason": "MemoryError: Unable to allocate 1.14 MiB for an array with shape (104, 1441) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 1.39 MiB for an array with shape (128, 1424) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 2.27 MiB for an array with shape (185, 1609) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 1.55 MiB for an array with shape (144, 1414) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 8.17 MiB for an array with shape (492, 2176) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 1.75 MiB for an array with shape (145, 1583) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 638. KiB for an array with shape (2998, 218) and data type bool"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "reason": "MemoryError: Unable to allocate 3.57 MiB for an array with shape (262, 1784) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 15.5 MiB for an array with shape (472, 4300) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: "
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 1.34 MiB for an array with shape (122, 1441) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "OSError: [Errno 22] Invalid argument: 'C:\\\\Users\\\\Josh\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\Lib\\\\site-packages\\\\scipy\\\\special\\\\sf_error.py'"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 2.41 MiB for an array with shape (7078, 357) and data type bool"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 66.8 MiB for an array with shape (1505, 5817) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 1.26 MiB for an array with shape (919, 1441) and data type bool"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 1.08 MiB for an array with shape (98, 1441) and data type float64"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: Unable to allocate 3.71 MiB for an array with shape (7078, 549) and data type bool"
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "reason": "MemoryError: std::bad_alloc"
+    }
+  ],
+  "shots_lost_to_failed_chunks": 2150,
+  "accepted_examples": [],
+  "per_config": [
+    {
+      "config": "d3_at_q4_5_X_r13",
+      "distance": 3,
+      "basis": "X",
+      "rounds": 13,
+      "shots": 9950,
+      "nontrivial": 9792,
+      "certified": 9791,
+      "certified_rate": 0.9998978758169934,
+      "mean_detectors_lit": 6.808210784313726,
+      "rung_histogram": {
+        "0": 9167,
+        "1": 542,
+        "2": 82
+      },
+      "forgeries_attempted": 66390,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 21.834931352130155
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "distance": 3,
+      "basis": "X",
+      "rounds": 30,
+      "shots": 9750,
+      "nontrivial": 9744,
+      "certified": 9742,
+      "certified_rate": 0.9997947454844006,
+      "mean_detectors_lit": 14.958949096880131,
+      "rung_histogram": {
+        "0": 7785,
+        "1": 1837,
+        "2": 120
+      },
+      "forgeries_attempted": 68108,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 28.94355295567458
+    },
+    {
+      "config": "d3_at_q4_5_Z_r13",
+      "distance": 3,
+      "basis": "Z",
+      "rounds": 13,
+      "shots": 10000,
+      "nontrivial": 9560,
+      "certified": 9558,
+      "certified_rate": 0.9997907949790795,
+      "mean_detectors_lit": 6.410146443514645,
+      "rung_histogram": {
+        "0": 9029,
+        "1": 472,
+        "2": 57
+      },
+      "forgeries_attempted": 64644,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 9.442217887030074
+    },
+    {
+      "config": "d3_at_q4_5_Z_r30",
+      "distance": 3,
+      "basis": "Z",
+      "rounds": 30,
+      "shots": 9900,
+      "nontrivial": 9891,
+      "certified": 9888,
+      "certified_rate": 0.9996966939642099,
+      "mean_detectors_lit": 14.46062076635325,
+      "rung_histogram": {
+        "0": 8086,
+        "1": 1703,
+        "2": 99
+      },
+      "forgeries_attempted": 69120,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 23.630428682641526
+    },
+    {
+      "config": "d5_at_q8_7_X_r13",
+      "distance": 5,
+      "basis": "X",
+      "rounds": 13,
+      "shots": 10000,
+      "nontrivial": 10000,
+      "certified": 9871,
+      "certified_rate": 0.9871,
+      "mean_detectors_lit": 23.3698,
+      "rung_histogram": {
+        "0": 7265,
+        "1": 2319,
+        "2": 287
+      },
+      "forgeries_attempted": 60012,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 25.270973460012463
+    },
+    {
+      "config": "d5_at_q8_7_X_r30",
+      "distance": 5,
+      "basis": "X",
+      "rounds": 30,
+      "shots": 10000,
+      "nontrivial": 10000,
+      "certified": 9586,
+      "certified_rate": 0.9586,
+      "mean_detectors_lit": 56.3148,
+      "rung_histogram": {
+        "0": 4224,
+        "1": 4706,
+        "2": 656
+      },
+      "forgeries_attempted": 60000,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 120.19093535000064
+    },
+    {
+      "config": "d5_at_q8_7_Z_r13",
+      "distance": 5,
+      "basis": "Z",
+      "rounds": 13,
+      "shots": 10000,
+      "nontrivial": 9998,
+      "certified": 9890,
+      "certified_rate": 0.9891978395679136,
+      "mean_detectors_lit": 21.874574914982997,
+      "rung_histogram": {
+        "0": 7618,
+        "1": 2012,
+        "2": 260
+      },
+      "forgeries_attempted": 59999,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 20.841196159229337
+    },
+    {
+      "config": "d5_at_q8_7_Z_r30",
+      "distance": 5,
+      "basis": "Z",
+      "rounds": 30,
+      "shots": 10000,
+      "nontrivial": 10000,
+      "certified": 9585,
+      "certified_rate": 0.9585,
+      "mean_detectors_lit": 56.5764,
+      "rung_histogram": {
+        "0": 4322,
+        "1": 4652,
+        "2": 611
+      },
+      "forgeries_attempted": 60000,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 114.16872706000214
+    },
+    {
+      "config": "d7_at_q6_7_X_r13",
+      "distance": 7,
+      "basis": "X",
+      "rounds": 13,
+      "shots": 10000,
+      "nontrivial": 10000,
+      "certified": 9540,
+      "certified_rate": 0.954,
+      "mean_detectors_lit": 46.967,
+      "rung_histogram": {
+        "0": 5962,
+        "1": 3094,
+        "2": 484
+      },
+      "forgeries_attempted": 60000,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 73.68668965999458
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "distance": 7,
+      "basis": "X",
+      "rounds": 30,
+      "shots": 9450,
+      "nontrivial": 9450,
+      "certified": 8014,
+      "certified_rate": 0.848042328042328,
+      "mean_detectors_lit": 118.25470899470899,
+      "rung_histogram": {
+        "0": 2200,
+        "1": 4914,
+        "2": 900
+      },
+      "forgeries_attempted": 56700,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 672.1564581904763
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "distance": 7,
+      "basis": "Z",
+      "rounds": 13,
+      "shots": 9500,
+      "nontrivial": 9500,
+      "certified": 9085,
+      "certified_rate": 0.9563157894736842,
+      "mean_detectors_lit": 46.64926315789474,
+      "rung_histogram": {
+        "0": 5641,
+        "1": 2974,
+        "2": 470
+      },
+      "forgeries_attempted": 57000,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 103.32873531579312
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "distance": 7,
+      "basis": "Z",
+      "rounds": 30,
+      "shots": 9300,
+      "nontrivial": 9300,
+      "certified": 8040,
+      "certified_rate": 0.864516129032258,
+      "mean_detectors_lit": 115.06032258064516,
+      "rung_histogram": {
+        "0": 2336,
+        "1": 4769,
+        "2": 935
+      },
+      "forgeries_attempted": 55800,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 697.2423856881763
+    }
+  ],
+  "wall_seconds": 5237.9325369,
+  "workers": 4,
+  "uncertified_gap": {
+    "n": 4645,
+    "mean": 0.6904254368137783,
+    "median": 0.494856,
+    "p90": 1.6282246000000002,
+    "max": 6.845919
+  },
+  "gate": "forgeries_accepted MUST be 0 on hardware syndromes as on simulated ones",
+  "scope": "the certification RATE is an empirical property of this device, this error model and this decoder; SOUNDNESS is a property of the checker and does not depend on any of them"
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "oneq-qldpc-bb-refsched-gate/1",
+  "circuit": "[[144,12,12]] gross code, PUBLISHED depth-8 reference syndrome cycle (Bravyi et al. Table 5 / Eq. 9; term assignment in written order), memory-Z, r=3, uniform circuit-level p=0.002",
+  "binding": {
+    "stim_version": "1.16.0",
+    "circuit_sha256": "d843a2d019280f62f5e81db695f9bd16f8e429b99ce42ea11bbc91a22e1c593e",
+    "dem_sha256": "2e83d7b6d9828c2bf0d5b50a81b8930250bcebd67fc22481f14fd5a257342adf",
+    "decompose_errors": false,
+    "flatten_loops": "dem.flattened() in dem_to_matrices",
+    "approximate_disjoint_errors": "not passed (default refuse)",
+    "mechanism_order_sha256": "4ca131aa090dbc1b0922920bc1df5bd06a395ee0f6ba127c9db4ea1c0fa7c30d",
+    "weights_sha256": "23ef56ea2f448b7d4fa610948975b9d700f9de4a58eaabf3e2e6be0e91727fd5",
+    "weight_rule": "c_i = floor(1000*log((1-p_i)/p_i) + 1/2)"
+  },
+  "detectors": 288,
+  "mechanisms": 2304,
+  "detector_degree_median": 35,
+  "detector_degree_max": 35,
+  "shots": 150,
+  "seed": 20260804,
+  "nontrivial": 150,
+  "trivial_tier0": 0,
+  "tier1": 125,
+  "tier2": 21,
+  "exact_certified": 146,
+  "ref_checked": 146,
+  "ref_agreed": 146,
+  "tier3A": 4,
+  "tier3B": 0,
+  "residue_unsolved": 0,
+  "float_exact_disagreements": 0,
+  "observable_agreement": [
+    150,
+    150
+  ],
+  "lp_ms_per_shot": 21.564199333273184,
+  "noiseless_validation": "32 shots, all detectors zero"
+}

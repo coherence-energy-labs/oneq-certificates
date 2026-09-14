@@ -1,0 +1,31 @@
+{
+  "schema": "oneq-false-positive-hunt/2",
+  "distance": 3,
+  "rounds": 3,
+  "shots": 400,
+  "nontrivial": 247,
+  "genuine_accepted": 247,
+  "forgeries_attempted": 1387,
+  "forgeries_accepted": 0,
+  "per_attack": {
+    "F_duplicated_edge": 247,
+    "I_mismatched_pair": 247,
+    "D_spurious_cycle": 247,
+    "G_dual_inflated_to_meet_a_worse_primal": 247,
+    "E_dropped_edge": 106,
+    "A_suboptimal": 148,
+    "H_negative_dual_hides_inflation": 145
+  },
+  "per_attack_accepted": {},
+  "refusal_reasons": {
+    "F_duplicated_edge": "NOT A VALID CORRECTION: odd-degree set != syndrome (fired but even degree: [5]; odd degree but quiet: [])",
+    "I_mismatched_pair": "NOT A VALID CORRECTION: odd-degree set != syndrome (fired but even degree: [5]; odd degree but quiet: [0])",
+    "D_spurious_cycle": "NOT PROVEN OPTIMAL: gap 9.269968739 (primal 12.842950096, dual 3.572981358). The matching may well BE optimal -- this certificate does not show it. A dual without odd-set (blossom) terms cannot always close the gap.",
+    "G_dual_inflated_to_meet_a_worse_primal": "DUAL INFEASIBLE on edge (1, 5): 12.842950096 > weight 4.364308345",
+    "E_dropped_edge": "NOT A VALID CORRECTION: odd-degree set != syndrome (fired but even degree: [11]; odd degree but quiet: [])",
+    "A_suboptimal": "NOT PROVEN OPTIMAL: gap 4.479055465 (primal 12.352352470, dual 7.873297005). The matching may well BE optimal -- this certificate does not show it. A dual without odd-set (blossom) terms cannot always close the gap.",
+    "H_negative_dual_hides_inflation": "negative blossom dual z=-3.9366485023272473"
+  },
+  "battery_attacks_that_were_not_actually_false": 0,
+  "gate": "ZERO forgeries accepted AND genuine certificates still accepted AND the battery independently confirmed to be attacking. A checker that refuses everything passes the first clause and fails the point; a battery that attacks nothing passes it vacuously."
+}

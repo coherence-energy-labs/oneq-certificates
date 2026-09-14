@@ -1,0 +1,86 @@
+{
+  "schema": "oneq-dem-admission/1",
+  "label": "surface_code:rotated_memory_z (undecomposed, p=0.001)",
+  "dem_root": [
+    "2bcfae8368e537f1f3d4a1771e41edcab8ade8093dc410ed7bdd71c3eba00e75",
+    "46be424282c6a294e91132b598967bcb563adc9285baead0c599ebbdc566871c",
+    "7860defd54c9342e933d4621f09fb9c6ec164e81c108dfb601247c66ba50daa9",
+    "11715d186451ab7ddbdb6075782744ee13329d0e036b995da5e9a9c8ad28b29c",
+    "f3b4e7ada9a2775aabfe8fc46e25f7838065001711e9448ab767cb3bf8d85fcc",
+    "861fd37aa3202e30d97728758e9a05e785142c28c50ab02273bf9c485cd7fa23",
+    "c132d297c34b31920810243ca2498dd5b3631d75c2190302cb30025f5f449d9b",
+    "453cf0d862bd76fe316bb6c31475239a7e61bf582571152ff0e5f08c7559f43a"
+  ],
+  "circuit_sha256": [
+    "434e204bfbaaf708a0e174a7ab0963c21139601c3ec89f83475f05fc51e67e96",
+    "340de2731f9148b8da891541644047f316658f0df4ba6067cf99b4f9b90fa380",
+    "3fbd12597e83b09a18df9939abcc8804ad2be30761a9d75dbd8ee94878ac56f5",
+    "969a4fa9676a64e363887da30b6d6ae7801ce3401f81aa14b2edf72917f80f36",
+    "0ab779bcf44e06edb1748b7073a661fd3ce4d25c86d3ba8cb38cb3f7eb1d6f2a",
+    "acde0058ad96270378fccf2e0f4a312ee8fef0b565b996bf3418dc8a6024155c",
+    "c931aec497b785859748cedd7ff0cf52b6df8474ce4de3b82fbf19287a5f4a37",
+    "402a2bb27065b97ddccaa8d4e9a7056c801829402f737163d72c9b74b81d0cb3"
+  ],
+  "dem_identity_note": "this record grades the 8 model(s) whose dem_cert fault root(s) are recorded above; a receipt decoded against anything else is refused by `soundness_budget.dem_binding`",
+  "admitted_level": 3,
+  "admitted_name": "exhaustive_signature_certificate",
+  "why": "A3: exhaustive_signature_certificate; A4 (heldout_statistical_fit) is the missing rung",
+  "decomposition": "undecomposed",
+  "decomposition_error_log10_micro": null,
+  "as_of": null,
+  "evidence_verified": true,
+  "evidence_verification_note": "each rung's artifact was opened and, where pinned, hashed",
+  "expired_device_rungs": [],
+  "rungs": [
+    {
+      "level": 0,
+      "name": "parsed",
+      "artifact": "evidence/dem_certificates.json#circuit_sha256",
+      "detail": "stim parses the circuit and the certificate binds its exact text",
+      "kind": "file",
+      "sha256": null,
+      "verified": "exists (UNPINNED: no sha256 recorded for it)",
+      "expires_on": null,
+      "expiry_applies": false
+    },
+    {
+      "level": 1,
+      "name": "unique_normal_form",
+      "artifact": "tests/test_dem_cert.py::test_two_syntactically_different_circuits_share_one_normal_form",
+      "detail": "dem_mechanisms is a canonical form: splitting one multi-target channel into per-target ones -- meaning-preserving by definition -- yields an identical mechanism map, and a different probability yields a different one, so it separates as well as it merges",
+      "kind": "test",
+      "sha256": null,
+      "verified": "defined in test_dem_cert.py",
+      "expires_on": null,
+      "expiry_applies": false
+    },
+    {
+      "level": 2,
+      "name": "independent_derivation",
+      "artifact": "evidence/dem_certificates.json#dem_agreement",
+      "detail": "the adjoint-frame pushforward and stim's own DEM compiler agree on the mechanism SET exactly (0 only-ours, 0 only-theirs). The two derivations share no step: `enumerate_faults` never calls detector_error_model, asserted by test_the_pushforward_never_calls_the_producers_translator",
+      "kind": "file",
+      "sha256": null,
+      "verified": "exists (UNPINNED: no sha256 recorded for it)",
+      "expires_on": null,
+      "expiry_applies": false
+    },
+    {
+      "level": 3,
+      "name": "exhaustive_signature_certificate",
+      "artifact": "evidence/dem_certificates.json#fault_root",
+      "detail": "every elementary fault's signature recomputed and committed under one streamed RFC-6962 root, cross-checked against injected ground truth exhaustively: 0/1,307 and 0/7,049 mismatches",
+      "kind": "file",
+      "sha256": null,
+      "verified": "exists (UNPINNED: no sha256 recorded for it)",
+      "expires_on": null,
+      "expiry_applies": false
+    }
+  ],
+  "caveats": [],
+  "does_not_claim": "that the noise model describes the DEVICE. This ladder grades how well the DEM is KNOWN, which is a different question from whether it is right about the hardware",
+  "not_claimed": {
+    "A4": "no held-out statistical fit exists in this repository",
+    "A5": "no continuous residual monitor exists in this repository"
+  }
+}

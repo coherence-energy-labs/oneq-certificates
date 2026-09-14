@@ -1,0 +1,16 @@
+{
+  "schema": "oneq-exact-oracle-audit/2",
+  "distance": 3,
+  "rounds": 9,
+  "shots": 400,
+  "nontrivial": 370,
+  "decoder_optimal": 370,
+  "decoder_beaten": 0,
+  "impossible": 0,
+  "unreachable": 0,
+  "examples": [],
+  "verdict": "DECODER OPTIMAL ON EVERY SHOT: every refusal, wherever it lands, is producer slack a fortiori, and 100% remains the honest target.",
+  "oracle": "exact min-weight perfect matching (networkx blossom) on the metric closure over T with per-detector boundary copies -- equal to the minimum T-join weight for non-negative weights",
+  "coverage": "every nontrivial shot, no tractability filter -- the first audit reached 4 of 22 refusals, and a verdict resting on 18% coverage is a hypothesis",
+  "why_no_certify": "oracle == decoder on ALL shots implies every refusal is producer slack a fortiori; stronger than auditing refusals, and free of the LP"
+}

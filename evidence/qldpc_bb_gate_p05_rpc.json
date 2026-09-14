@@ -1,0 +1,35 @@
+{
+  "schema": "oneq-qldpc-bb-gate/2",
+  "rpc_rounds": 6,
+  "code": "[[144,12,12]] bivariate bicycle (gross), self-verified CSS with row weight 6",
+  "noise": "code-capacity independent X at p=0.05, uniform weights",
+  "shots": 300,
+  "nontrivial": 300,
+  "bp_osd_syndrome_valid": 300,
+  "bp_osd_proven_minimum_weight": 95,
+  "repaired_by_integral_lp": 190,
+  "bp_osd_faults_attributed": 190,
+  "bp_osd_logical_faults_detected_and_repaired": 179,
+  "repairs_that_were_themselves_logical_vs_truth": 3,
+  "logical_membership_test": "GF(2) rowspace(H_X) elimination -- NOT H_X@fault!=0, which stabilizers can also satisfy",
+  "certified_total": 285,
+  "certified_rate": 0.95,
+  "fractional_residue": {
+    "n": 15,
+    "mean": 10.290666195908562,
+    "median": 10.358490566037732,
+    "max": 14.101265822784807
+  },
+  "degraded_tier_milp": {
+    "decoded_exactly": 15,
+    "bp_osd_confirmed_suboptimal": 14,
+    "bp_osd_fault_logical_on_this_tier": 14,
+    "milp_answer_logical_vs_truth": 2,
+    "trust_model": "HiGHS MIP optimality, NO stranger-checkable witness -- the labeled difference from the certified tier"
+  },
+  "cert_ms_per_shot": 10.633935999988656,
+  "what_certified_means": "a feasible dual of the Feldman relaxation meets the shipped answer's weight: LP-dual <= LP-opt <= integer-opt forces optimality, checkable by a stranger from (H, w, s) alone; repaired answers pass the SAME checker",
+  "what_residue_means": "fractional LP primal (pseudocodeword): the only unattributed bucket; RPC cuts are the designed next rung for it",
+  "logical_fault_note": "attribution to 'logical' uses e_true, a simulation privilege; DETECTION is syndrome-only and works on hardware",
+  "why_it_is_new": "BP-OSD ships no certificate of any kind; this is a per-shot optimality proof, or a certified repair, on the code family IBM's Starling roadmap decodes with it"
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "oneq-qldpc-circuit-gate/1",
+  "circuit": "stim surface_code:rotated_memory_x d=3 r=3 circuit-level p=0.005",
+  "detectors": 24,
+  "mechanisms": 221,
+  "detector_degree_median": 22,
+  "detector_degree_max": 47,
+  "facet_cap": "lazy/full-family",
+  "soundness_of_cap": "capped facets are a SUBSET of the true facet family; the LP feasible region only grows, so the dual bound remains a valid lower bound -- the cap costs tightness only, and tightness is what this artifact measures",
+  "shots": 200,
+  "nontrivial": 112,
+  "bp_osd_syndrome_valid": 112,
+  "proven": 110,
+  "repaired": 2,
+  "certified_total": 112,
+  "certified_rate": 1.0,
+  "residue": 0,
+  "milp_exact_on_residue": 0,
+  "observable_agreement": [
+    111,
+    112
+  ],
+  "cert_ms_per_shot": 111.14943660706038,
+  "honest_scope": "min-weight conformance under log-likelihood weights, NOT maximum-likelihood over degenerate cosets; circuit-level DEMs are where degeneracy is richest, and the observable-agreement row carries that caveat explicitly"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "oneq-symmetry-decoding/1",
+  "code": "[[144,12,12]] gross, Z-sector, code capacity",
+  "p": 0.05,
+  "shots": 200,
+  "observable_weight": 12,
+  "premise": "a conserved quantity of the algorithm is a LOGICAL observable, so knowing it is one extra parity bit per shot -- appended as a high-degree check row, separated lazily",
+  "levels": {
+    "q=0.0": {
+      "logical_any": 6,
+      "logical_guarded": 0,
+      "certified": 190,
+      "refusals_of_unguarded_answer": 8,
+      "seconds": 4.8
+    },
+    "q=0.01": {
+      "logical_any": 6,
+      "logical_guarded": 2,
+      "certified": 188,
+      "refusals_of_unguarded_answer": 10,
+      "seconds": 4.9
+    },
+    "q=0.1": {
+      "logical_any": 8,
+      "logical_guarded": 22,
+      "certified": 170,
+      "refusals_of_unguarded_answer": 28,
+      "seconds": 12.6
+    },
+    "q=0.5": {
+      "logical_any": 22,
+      "logical_guarded": 108,
+      "certified": 97,
+      "refusals_of_unguarded_answer": 108,
+      "seconds": 43.7
+    }
+  },
+  "baseline": {
+    "logical_any": 6,
+    "logical_guarded": 8,
+    "certified": 189,
+    "seconds": 3.6
+  },
+  "verdict": {
+    "guarded_errors_baseline": 8,
+    "guarded_errors_perfect_symmetry": 0,
+    "guarded_errors_pure_noise_control": 108,
+    "information_not_artifact": true,
+    "reading": "a perfectly measured conserved quantity should drive errors on THAT observable to zero; a pure-noise bit (q=0.5) must give no benefit at all -- that control is what separates information from a lucky extra constraint"
+  }
+}

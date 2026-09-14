@@ -1,0 +1,319 @@
+{
+  "schema": "oneq-google-corpus-gate-gen4/1",
+  "how_produced": "twelve independent invocations, one per configuration, via tools/corpus_driver.ps1 -- after three monolithic multi-hour runs died (one KeyError, two silent external kills with empty stderr) and each death discarded every completed configuration. Config-per-process makes death cost one configuration, and the driver skips existing artifacts so a rerun resumes instead of repeating.",
+  "producer_generation": 4,
+  "ladder": "balls -> growth+refine -> +CS cut-once family -> +blossom duals via cutting planes",
+  "totals": {
+    "shots": 120000,
+    "nontrivial": 119384,
+    "certified": 117619,
+    "certified_rate": 0.985215774308115,
+    "forgeries_attempted": 751060,
+    "forgeries_accepted": 0,
+    "battery_attacks_that_were_not_actually_false": 0,
+    "shots_lost_to_failed_chunks": 0
+  },
+  "per_config": [
+    {
+      "config": "d3_at_q4_5_X_r13",
+      "certified_rate": 1.0,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d3_at_q4_5_X_r13",
+        "distance": 3,
+        "basis": "X",
+        "rounds": 13,
+        "shots": 10000,
+        "nontrivial": 9841,
+        "certified": 9841,
+        "certified_rate": 1.0,
+        "mean_detectors_lit": 6.807641499847576,
+        "rung_histogram": {
+          "0": 9215,
+          "1": 543,
+          "2": 82,
+          "3": 1
+        },
+        "forgeries_attempted": 66727,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 10.60500626968803
+      }
+    },
+    {
+      "config": "d3_at_q4_5_X_r30",
+      "certified_rate": 1.0,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d3_at_q4_5_X_r30",
+        "distance": 3,
+        "basis": "X",
+        "rounds": 30,
+        "shots": 10000,
+        "nontrivial": 9994,
+        "certified": 9994,
+        "certified_rate": 1.0,
+        "mean_detectors_lit": 14.949569741845107,
+        "rung_histogram": {
+          "0": 7997,
+          "1": 1874,
+          "2": 121,
+          "3": 2
+        },
+        "forgeries_attempted": 69858,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 22.479616840104097
+      }
+    },
+    {
+      "config": "d3_at_q4_5_Z_r13",
+      "certified_rate": 1.0,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d3_at_q4_5_Z_r13",
+        "distance": 3,
+        "basis": "Z",
+        "rounds": 13,
+        "shots": 10000,
+        "nontrivial": 9560,
+        "certified": 9560,
+        "certified_rate": 1.0,
+        "mean_detectors_lit": 6.410146443514645,
+        "rung_histogram": {
+          "0": 9029,
+          "1": 472,
+          "2": 57,
+          "3": 2
+        },
+        "forgeries_attempted": 64644,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 10.907922458159007
+      }
+    },
+    {
+      "config": "d3_at_q4_5_Z_r30",
+      "certified_rate": 0.9998999099189271,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d3_at_q4_5_Z_r30",
+        "distance": 3,
+        "basis": "Z",
+        "rounds": 30,
+        "shots": 10000,
+        "nontrivial": 9991,
+        "certified": 9990,
+        "certified_rate": 0.9998999099189271,
+        "mean_detectors_lit": 14.472725452907618,
+        "rung_histogram": {
+          "0": 8167,
+          "1": 1722,
+          "2": 99,
+          "3": 2
+        },
+        "forgeries_attempted": 69820,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 21.321383995596037
+      }
+    },
+    {
+      "config": "d5_at_q8_7_X_r13",
+      "certified_rate": 0.9967,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d5_at_q8_7_X_r13",
+        "distance": 5,
+        "basis": "X",
+        "rounds": 13,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9967,
+        "certified_rate": 0.9967,
+        "mean_detectors_lit": 23.3698,
+        "rung_histogram": {
+          "0": 7265,
+          "1": 2319,
+          "2": 287,
+          "3": 96
+        },
+        "forgeries_attempted": 60012,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 34.213208670000085
+      }
+    },
+    {
+      "config": "d5_at_q8_7_X_r30",
+      "certified_rate": 0.9875,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d5_at_q8_7_X_r30",
+        "distance": 5,
+        "basis": "X",
+        "rounds": 30,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9875,
+        "certified_rate": 0.9875,
+        "mean_detectors_lit": 56.3148,
+        "rung_histogram": {
+          "0": 4224,
+          "1": 4706,
+          "2": 656,
+          "3": 289
+        },
+        "forgeries_attempted": 60000,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 167.79718025999995
+      }
+    },
+    {
+      "config": "d5_at_q8_7_Z_r13",
+      "certified_rate": 0.9971994398879775,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d5_at_q8_7_Z_r13",
+        "distance": 5,
+        "basis": "Z",
+        "rounds": 13,
+        "shots": 10000,
+        "nontrivial": 9998,
+        "certified": 9970,
+        "certified_rate": 0.9971994398879775,
+        "mean_detectors_lit": 21.874574914982997,
+        "rung_histogram": {
+          "0": 7618,
+          "1": 2012,
+          "2": 260,
+          "3": 80
+        },
+        "forgeries_attempted": 59999,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 24.2727262252449
+      }
+    },
+    {
+      "config": "d5_at_q8_7_Z_r30",
+      "certified_rate": 0.9896,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d5_at_q8_7_Z_r30",
+        "distance": 5,
+        "basis": "Z",
+        "rounds": 30,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9896,
+        "certified_rate": 0.9896,
+        "mean_detectors_lit": 56.5764,
+        "rung_histogram": {
+          "0": 4322,
+          "1": 4652,
+          "2": 611,
+          "3": 311
+        },
+        "forgeries_attempted": 60000,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 149.56328357999988
+      }
+    },
+    {
+      "config": "d7_at_q6_7_X_r13",
+      "certified_rate": 0.983,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d7_at_q6_7_X_r13",
+        "distance": 7,
+        "basis": "X",
+        "rounds": 13,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9830,
+        "certified_rate": 0.983,
+        "mean_detectors_lit": 46.967,
+        "rung_histogram": {
+          "0": 5962,
+          "1": 3094,
+          "2": 484,
+          "3": 290
+        },
+        "forgeries_attempted": 60000,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 97.38839083000008
+      }
+    },
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "certified_rate": 0.9376,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d7_at_q6_7_X_r30",
+        "distance": 7,
+        "basis": "X",
+        "rounds": 30,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9376,
+        "certified_rate": 0.9376,
+        "mean_detectors_lit": 118.1125,
+        "rung_histogram": {
+          "0": 2330,
+          "1": 5193,
+          "2": 948,
+          "3": 905
+        },
+        "forgeries_attempted": 60000,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 843.5432465399999
+      }
+    },
+    {
+      "config": "d7_at_q6_7_Z_r13",
+      "certified_rate": 0.9849,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d7_at_q6_7_Z_r13",
+        "distance": 7,
+        "basis": "Z",
+        "rounds": 13,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9849,
+        "certified_rate": 0.9849,
+        "mean_detectors_lit": 46.631,
+        "rung_histogram": {
+          "0": 5931,
+          "1": 3123,
+          "2": 493,
+          "3": 302
+        },
+        "forgeries_attempted": 60000,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 93.0618135300002
+      }
+    },
+    {
+      "config": "d7_at_q6_7_Z_r30",
+      "certified_rate": 0.9471,
+      "shots": 10000,
+      "per_config_detail": {
+        "config": "d7_at_q6_7_Z_r30",
+        "distance": 7,
+        "basis": "Z",
+        "rounds": 30,
+        "shots": 10000,
+        "nontrivial": 10000,
+        "certified": 9471,
+        "certified_rate": 0.9471,
+        "mean_detectors_lit": 115.0442,
+        "rung_histogram": {
+          "0": 2517,
+          "1": 5133,
+          "2": 1000,
+          "3": 821
+        },
+        "forgeries_attempted": 60000,
+        "forgeries_accepted": 0,
+        "ms_per_nontrivial_shot": 821.2006616999988
+      }
+    }
+  ],
+  "per_config_artifacts": "evidence/corpus_gen4/<config>.json"
+}

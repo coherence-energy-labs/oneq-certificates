@@ -1,0 +1,60 @@
+{
+  "schema": "oneq-qldpc-claims-backing/1",
+  "speed": {
+    "shots": 12,
+    "seed": 3,
+    "p": 0.02,
+    "enum_ms_per_shot": 8.58,
+    "lazy_ms_per_shot": 2.2,
+    "max_abs_bound_diff": 0.0,
+    "note": "single workstation; ratio is machine-relative"
+  },
+  "discovery_shot": {
+    "shot_index": 11,
+    "seed": 20260801,
+    "p": 0.02,
+    "bp_osd_weight": 22,
+    "lp_bound": 6.0,
+    "true_error_weight": 6,
+    "fault_weight": 24,
+    "fault_in_ker_HZ": true,
+    "fault_is_logical_by_rowspace_HX": true,
+    "repair_certified": true,
+    "repair_in_true_coset": true
+  },
+  "membership_validation": {
+    "constructed_members_recognized": 200,
+    "random_vectors_rejected": 200,
+    "of_each": 200
+  },
+  "rpc_depth": {
+    "rounds_6": {
+      "nontrivial": 120,
+      "fractional_residue": 6
+    },
+    "rounds_25": {
+      "nontrivial": 120,
+      "fractional_residue": 6
+    },
+    "seed": 20260801,
+    "p": 0.05,
+    "claim": "same residue at 25 rounds as at 6: the residue is rank-limited, not effort-limited"
+  },
+  "separation_bruteforce": {
+    "instances": 8000,
+    "seed": 20260802,
+    "degrees": "3..14",
+    "suboptimal_separations": 0,
+    "worst_gap_vs_bruteforce": 1.7763568394002505e-15,
+    "tie_case_all_half_valid": true,
+    "claim": "the shipped O(deg) rule equals brute force over all wrong-parity subsets on every instance"
+  },
+  "separation_reference_agreement": {
+    "instances": 20000,
+    "seed": 99,
+    "degrees": "1..16",
+    "no_flip_branch_cases": 9981,
+    "mismatches_vs_pinned_reference": 0,
+    "claim": "the shipped rule and the pinned reference implementation agree on every instance, both branches, including exact-rational ties at 1/2 (tie case in separation_bruteforce)"
+  }
+}

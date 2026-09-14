@@ -1,0 +1,89 @@
+{
+  "schema": "oneq-streaming-deadline-sweep/1",
+  "config": "d5_at_q8_7_X_r30",
+  "shots": 300,
+  "workers": 4,
+  "unconstrained_p50_s": 0.5037618500027747,
+  "unconstrained_p99_s": 1.113188692997719,
+  "ladder_anchored_to": "measured p50 of an unconstrained run on this machine -- no fabricated target",
+  "rungs": [
+    {
+      "lag_budget_s": 4.030095,
+      "budget_over_p50": 8.0,
+      "tiers": {
+        "certified": 299,
+        "degraded": 1,
+        "deferred": 0
+      },
+      "emitted": 300,
+      "ordered": true,
+      "late_resolved": 0,
+      "deferred_ids_all_resolved": true,
+      "accounts_disjoint": true,
+      "stats_agree": true
+    },
+    {
+      "lag_budget_s": 1.007524,
+      "budget_over_p50": 2.0,
+      "tiers": {
+        "certified": 299,
+        "degraded": 1,
+        "deferred": 0
+      },
+      "emitted": 300,
+      "ordered": true,
+      "late_resolved": 0,
+      "deferred_ids_all_resolved": true,
+      "accounts_disjoint": true,
+      "stats_agree": true
+    },
+    {
+      "lag_budget_s": 0.503762,
+      "budget_over_p50": 1.0,
+      "tiers": {
+        "certified": 295,
+        "degraded": 0,
+        "deferred": 5
+      },
+      "emitted": 300,
+      "ordered": true,
+      "late_resolved": 5,
+      "deferred_ids_all_resolved": true,
+      "accounts_disjoint": true,
+      "stats_agree": true
+    },
+    {
+      "lag_budget_s": 0.12594,
+      "budget_over_p50": 0.25,
+      "tiers": {
+        "certified": 261,
+        "degraded": 0,
+        "deferred": 39
+      },
+      "emitted": 300,
+      "ordered": true,
+      "late_resolved": 39,
+      "deferred_ids_all_resolved": true,
+      "accounts_disjoint": true,
+      "stats_agree": true
+    },
+    {
+      "lag_budget_s": 0.010075,
+      "budget_over_p50": 0.02,
+      "tiers": {
+        "certified": 0,
+        "degraded": 0,
+        "deferred": 300
+      },
+      "emitted": 300,
+      "ordered": true,
+      "late_resolved": 300,
+      "deferred_ids_all_resolved": true,
+      "accounts_disjoint": true,
+      "stats_agree": true
+    }
+  ],
+  "deferred_tier_exercised": true,
+  "budget_met_somewhere": true,
+  "claim": "the DEFERRED tier fires under deadline pressure, every deferral resolves on the `late` channel, nothing is lost or reordered, and tightening the budget only ever increases deferrals"
+}

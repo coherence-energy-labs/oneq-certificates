@@ -1,0 +1,44 @@
+{
+  "schema": "oneq-qldpc-family-circuit/1",
+  "schedule": "published Table-5 seven-CNOT-round cycle, generalized to any QC(A,B); each circuit noiselessly validated before noisy sampling",
+  "codes": {
+    "[[72,12,6]]": {
+      "n": 72,
+      "k": 12,
+      "detectors": 144,
+      "mechanisms": 1152,
+      "degree_median": 35,
+      "degree_max": 35,
+      "shots": 120,
+      "nontrivial": 116,
+      "tier1": 106,
+      "tier2": 8,
+      "tierBD": 2,
+      "open": 0,
+      "exact_certified": 116,
+      "obs_match": 116,
+      "obs_checked": 116,
+      "weights_sha256": "527aa647d94084f9704592d5e3ca0d8331db2d7436a2ad7ed93a4e64acdd637c",
+      "seconds": 1.5
+    },
+    "[[144,12,12]]": {
+      "n": 144,
+      "k": 12,
+      "detectors": 288,
+      "mechanisms": 2304,
+      "degree_median": 35,
+      "degree_max": 35,
+      "shots": 120,
+      "nontrivial": 120,
+      "tier1": 93,
+      "tier2": 20,
+      "tierBD": 7,
+      "open": 0,
+      "exact_certified": 120,
+      "obs_match": 120,
+      "obs_checked": 120,
+      "weights_sha256": "23ef56ea2f448b7d4fa610948975b9d700f9de4a58eaabf3e2e6be0e91727fd5",
+      "seconds": 3.6
+    }
+  }
+}

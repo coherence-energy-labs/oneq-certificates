@@ -1,0 +1,26 @@
+{
+  "schema": "oneq-decode-vs-certify/1",
+  "rows": [
+    {
+      "distance": 5,
+      "rounds": 25,
+      "edges": 2742,
+      "nodes": 600,
+      "decode_batch_us": 16.089430000283755,
+      "decode_per_shot_us": 29.617649997817352
+    },
+    {
+      "distance": 7,
+      "rounds": 7,
+      "edges": 1558,
+      "nodes": 336,
+      "decode_batch_us": 9.67966499956674,
+      "decode_per_shot_us": 19.200000002456363
+    }
+  ],
+  "certify_ms_per_shot": 106.3442125900996,
+  "certify_over_decode_batch": 6609.569921881888,
+  "certify_over_decode_per_shot": 3590.5688870635095,
+  "correction": "An earlier draft asserted ~10^5x, carried over from the program document's '~10^6 shots/core-second' for PyMatching. That figure does not describe THIS graph: on a d=5 25-round space-time graph (2742 edges, 600 nodes) decoding costs 18-36 us/shot, not 1 us. Quoting someone else's throughput for a different instance and dividing is not a measurement.",
+  "which_ratio_to_quote": "decode_batch is the production path and gives the larger, fairer ratio; decode_per_shot matches how the certifier is invoked. Both are reported because picking whichever flatters the argument is the whole failure mode."
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "oneq-h4-hetero-verify/1",
+  "claim": "the 2.31x heterogeneous space-time reduction for FeMoco-THC, re-derived from published inputs by an implementation independent of the one that produced it, with exact agreement rather than a tolerance",
+  "inputs": {
+    "n_logical": 2142,
+    "n_ancilla": 1960,
+    "d_uniform": 31,
+    "d_sys": 29,
+    "d_anc": 19,
+    "cycles": 164300000000.0,
+    "patch_formula": "n(d) = 2(d+1)^2"
+  },
+  "derived": {
+    "n_uniform": 2048,
+    "n_sys": 1800,
+    "n_anc": 800,
+    "logical_system_registers": 182,
+    "physical_uniform": 4386816,
+    "physical_hetero": 1895600,
+    "space_time_uniform": 7.207538688e+17,
+    "space_time_hetero": 3.1144708e+17,
+    "ratio": 2.3142097488921713,
+    "yoked_trap_ratio": 3.748133971291866
+  },
+  "the_ratio_is_the_physical_ratio": "C is common to both configurations, so space-time reduces to physical qubits. There is no timing argument hidden in the 2.31x.",
+  "guard": "storage='yoked' RAISES for a register touched every walk step. Yoked surface codes are cold storage for IDLE logical qubits; using their footprint for FeMoco-THC's 1,960 PREPARE/QROM ancillas inflates the result to 3.747x -- 1.6x of apparent improvement, from a category error that looks like an optimisation.",
+  "agrees_with_recorded": true
+}

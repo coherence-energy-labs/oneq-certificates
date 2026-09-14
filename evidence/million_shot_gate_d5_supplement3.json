@@ -1,0 +1,46 @@
+{
+  "schema": "oneq-million-shot-gate/1",
+  "distance": 5,
+  "rounds": 25,
+  "p": 0.005,
+  "shots": 12000,
+  "nontrivial": 12000,
+  "certified": 11970,
+  "certified_rate": 0.9975,
+  "rung_histogram": {
+    "0": 8733,
+    "1": 2849,
+    "2": 295,
+    "3": 93
+  },
+  "forgeries_attempted": 72001,
+  "forgeries_accepted": 0,
+  "failed_chunks": 0,
+  "shots_lost_to_failed_chunks": 0,
+  "failed_chunk_reasons": [],
+  "battery_attacks_that_were_not_actually_false": 0,
+  "per_attack": {
+    "E_dropped_edge": 12000,
+    "F_duplicated_edge": 12000,
+    "I_mismatched_pair": 12000,
+    "D_spurious_cycle": 12000,
+    "G_dual_inflated_to_meet_a_worse_primal": 12000,
+    "H_negative_dual_hides_inflation": 12000,
+    "A_suboptimal": 1
+  },
+  "per_attack_accepted": {},
+  "accepted_examples": [],
+  "wall_seconds": 245.35232859999996,
+  "core_seconds": 645.1794632000001,
+  "workers": 3,
+  "ms_per_nontrivial_shot": 53.764955266666675,
+  "uncertified_gap": {
+    "n": 30,
+    "mean": 0.4213843333333333,
+    "median": 0.32262250000000003,
+    "p90": 0.7940188000000005,
+    "max": 1.632313
+  },
+  "gate": "forgeries_accepted MUST be 0. A single acceptance means the checker can bless a wrong correction, which ends the claim.",
+  "scope": "simulated circuit noise; this measures the CHECKER's soundness at volume, not that the certification RATE carries over to hardware noise"
+}

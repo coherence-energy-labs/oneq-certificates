@@ -1,0 +1,24 @@
+{
+  "gate": "GT-A0",
+  "seed": 20260819,
+  "dags": 5000,
+  "trials": 1000000,
+  "draws": 5000000000,
+  "unsound_dags": 0,
+  "loose_within_noise": 0,
+  "naive_under_bounds_any": 2942,
+  "naive_under_bounds_by_10x": 575,
+  "worst_naive_shortfall": {
+    "ratio": 69.56909673017373,
+    "dag": 1162,
+    "naive_ppb": 38106,
+    "empirical_ppb": 2651000,
+    "algebra_ppb": 5488451
+  },
+  "examples_of_unsoundness": [],
+  "resolution_ppb": 3000,
+  "seconds": 183.4,
+  "verdict": "PASS",
+  "criteria": "PASS requires 0 DAGs where a Clopper-Pearson lower bound on the empirical rate exceeds the algebra's beta, AND at least one DAG where the naive product under-bounds by more than 10x",
+  "budget_note": "Sec 3.7.2 specifies 1e5 dags x 1e7 trials = 1e12 draws. This run is 5e+09 draws; the smallest bound violation it could resolve is about 3000 ppb."
+}

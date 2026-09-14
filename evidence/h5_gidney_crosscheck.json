@@ -1,0 +1,28 @@
+{
+  "schema": "oneq-h5-gidney-crosscheck/1",
+  "gate": "H-5: cross-check vs a published layout",
+  "criterion": "within 25% of the data-patch subtotal, or an itemised explained difference",
+  "anchors": {
+    "n(25)": 1352,
+    "n_yoked": 430,
+    "asserted_at_import": true
+  },
+  "derived": {
+    "yoked_storage": 550400,
+    "hot_patches": 177112,
+    "data_patch_subtotal": 727512,
+    "factory": 97344,
+    "routing": 73008,
+    "grand_total": 897864
+  },
+  "published": {
+    "data_patch_subtotal": 727512,
+    "grand_total": 897864
+  },
+  "delta_fraction": 0.0,
+  "within_band": true,
+  "exact": true,
+  "scope": "Pass H models the DATA-PATCH SUBTOTAL only. The 97,344 factory and 73,008 routing qubits are outside the model; they are itemised here rather than absorbed into the tolerance, so the full 897,864 is reproduced line by line.",
+  "coupling_to_h4": "n(d) = 2(d+1)^2 is the same formula H-4's 2.31x rests on, so H-5 is a second independent anchor on the patch-size model every overhead number inherits -- if it were wrong, both gates would move",
+  "passed": true
+}

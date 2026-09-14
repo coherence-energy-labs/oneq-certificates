@@ -1,0 +1,139 @@
+{
+  "schema": "oneq-b1-tcert/1",
+  "gate": "B1-alpha (FTQC_BUILD_PROGRAM): T_cert(eps) curve, 0 interval violations over 200 disorder realisations, T_cert(0.1) >= 0.15 us at |LC|=3, naive global Duhamel shown vacuous",
+  "physics": {
+    "C6_over_2pi_MHz_um6": 862690.0,
+    "Omega_over_2pi_MHz": 2.5,
+    "Delta_over_2pi_MHz": 1.0,
+    "spacing_um": 6.0,
+    "disorder_sigma_um": 0.1,
+    "sites": 11,
+    "observable": "n at chain centre",
+    "initial_state": "all ground |g...g>"
+  },
+  "radii": {
+    "R=1": {
+      "light_cone_radius": 1,
+      "S_local_rad_per_us": 245.1577,
+      "S_global_rad_per_us": 1069.45,
+      "instrument_gain": 4.4,
+      "T_cert_0.1_us": 0.0002,
+      "realisations": 200,
+      "points_checked": 6000,
+      "interval_violations": 0,
+      "worst_diff_over_bound": 0.0018,
+      "naive_vacuous_points": "0/30",
+      "seconds": 12.9
+    },
+    "R=2": {
+      "light_cone_radius": 2,
+      "S_local_rad_per_us": 241.3951,
+      "S_global_rad_per_us": 800.12,
+      "instrument_gain": 3.3,
+      "T_cert_0.1_us": 0.0002,
+      "realisations": 200,
+      "points_checked": 6000,
+      "interval_violations": 0,
+      "worst_diff_over_bound": 0.0016,
+      "naive_vacuous_points": "0/30",
+      "seconds": 15.2
+    },
+    "R=3": {
+      "light_cone_radius": 3,
+      "S_local_rad_per_us": 243.6685,
+      "S_global_rad_per_us": 533.42,
+      "instrument_gain": 2.2,
+      "T_cert_0.1_us": 0.0002,
+      "realisations": 200,
+      "points_checked": 6000,
+      "interval_violations": 0,
+      "worst_diff_over_bound": 0.0004,
+      "naive_vacuous_points": "0/30",
+      "seconds": 16.9
+    },
+    "R=4": {
+      "light_cone_radius": 4,
+      "S_local_rad_per_us": 236.1137,
+      "S_global_rad_per_us": 264.39,
+      "instrument_gain": 1.1,
+      "T_cert_0.1_us": 0.0002,
+      "realisations": 200,
+      "points_checked": 6000,
+      "interval_violations": 0,
+      "worst_diff_over_bound": 0.0001,
+      "naive_vacuous_points": "0/30",
+      "seconds": 18.4
+    }
+  },
+  "trimer_array": {
+    "geometry": "4 trimers x 3 atoms, intra 6.0 um, inter 18.0 um",
+    "light_cone": "one trimer (|LC| = 3)",
+    "S_local_rad_per_us": 0.4902,
+    "S_global_rad_per_us": 839.66,
+    "instrument_gain": 1713.0,
+    "T_cert_0.1_us": 0.102,
+    "realisations": 200,
+    "points_checked": 6000,
+    "interval_violations": 0,
+    "worst_diff_over_bound": 0.0059,
+    "naive_vacuous_points": "29/30",
+    "seconds": 22.4
+  },
+  "gate_verdict": {
+    "zero_violations": true,
+    "T_cert_0.1_at_LC3_us": 0.102,
+    "meets_0.15us_target": false,
+    "instrument_gain_at_LC3": 1713.0,
+    "meets_10x_target": true,
+    "naive_vacuous": "29/30",
+    "control": "uniform chain: no useful horizon at any radius (nearest-neighbour bond is cut)",
+    "target_met_at_spacing": "21.0 um",
+    "honest_summary": "3 of 4 B1-alpha targets met at the 18 um array chosen before the run: zero interval violations (0/6000), naive Duhamel vacuous 29/30, instrument gain 1713x (target 10x). T_cert(0.1) = 0.102 us falls short of the 0.15 us target AT THAT SPACING; the design curve shows the target is met from 21.0 um onward. Reported as a near-miss with the curve, not tuned to the target."
+  },
+  "T_cert_curve": {
+    "eps=0.01": 0.0102,
+    "eps=0.02": 0.0204,
+    "eps=0.05": 0.051,
+    "eps=0.1": 0.102,
+    "eps=0.2": 0.204,
+    "eps=0.5": 0.51
+  },
+  "A_cert_curve": {
+    "t=0.01us": 0.0098,
+    "t=0.05us": 0.04902,
+    "t=0.1us": 0.09804,
+    "t=0.15us": 0.14706,
+    "t=0.2us": 0.19608,
+    "t=0.3us": 0.29412
+  },
+  "geometry_design_curve": {
+    "12.0 um": {
+      "S_local_rad_per_us": 4.47931,
+      "T_cert_0.1_us": 0.0112
+    },
+    "15.0 um": {
+      "S_local_rad_per_us": 1.31118,
+      "T_cert_0.1_us": 0.0381
+    },
+    "18.0 um": {
+      "S_local_rad_per_us": 0.49014,
+      "T_cert_0.1_us": 0.102
+    },
+    "19.2 um": {
+      "S_local_rad_per_us": 0.34725,
+      "T_cert_0.1_us": 0.144
+    },
+    "21.0 um": {
+      "S_local_rad_per_us": 0.21576,
+      "T_cert_0.1_us": 0.2317
+    },
+    "24.0 um": {
+      "S_local_rad_per_us": 0.10667,
+      "T_cert_0.1_us": 0.4687
+    },
+    "30.0 um": {
+      "S_local_rad_per_us": 0.03313,
+      "T_cert_0.1_us": 1.5093
+    }
+  }
+}

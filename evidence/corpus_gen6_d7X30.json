@@ -1,0 +1,66 @@
+{
+  "schema": "oneq-google-corpus-gate/1",
+  "source": {
+    "doi": "10.5281/zenodo.13273331",
+    "archive": "google_105Q_surface_code_d3_d5_d7.zip",
+    "paper": "Quantum error correction below the surface code threshold",
+    "error_model": "correlated_matching_decoder_with_si1000_prior",
+    "note": "decoding weights are the experimenters' own; the correction certified is PyMatching's, because the corpus publishes predicted OBSERVABLES, not the edge sets any decoder chose"
+  },
+  "totals": {
+    "shots": 50000,
+    "nontrivial": 50000,
+    "certified": 49999,
+    "certified_rate": 0.99998,
+    "forgeries_attempted": 300000,
+    "forgeries_accepted": 0,
+    "battery_attacks_that_were_not_actually_false": 0
+  },
+  "per_attack": {
+    "E_dropped_edge": 50000,
+    "F_duplicated_edge": 50000,
+    "I_mismatched_pair": 50000,
+    "D_spurious_cycle": 50000,
+    "G_dual_inflated_to_meet_a_worse_primal": 50000,
+    "H_negative_dual_hides_inflation": 50000
+  },
+  "per_attack_accepted": {},
+  "failed_chunks": [],
+  "shots_lost_to_failed_chunks": 0,
+  "accepted_examples": [],
+  "per_config": [
+    {
+      "config": "d7_at_q6_7_X_r30",
+      "distance": 7,
+      "basis": "X",
+      "rounds": 30,
+      "shots": 50000,
+      "nontrivial": 50000,
+      "certified": 49999,
+      "certified_rate": 0.99998,
+      "mean_detectors_lit": 114.92348,
+      "rung_histogram": {
+        "0": 12613,
+        "1": 25565,
+        "2": 5292,
+        "3": 5611,
+        "5": 918
+      },
+      "forgeries_attempted": 300000,
+      "forgeries_accepted": 0,
+      "ms_per_nontrivial_shot": 3870.152944366001
+    }
+  ],
+  "wall_seconds": 47063.079967,
+  "workers": "chunk-per-process driver (see driver_note)",
+  "driver_note": "chunk-granular resumable driver (tools/corpus_chunk_driver.py); escalation=True; chunks retried until coverage complete; chunk death is environmental (spawn/allocation under commit pressure), independent of syndrome content",
+  "uncertified_gap": {
+    "n": 1,
+    "mean": 0.803199,
+    "median": 0.803199,
+    "p90": 0.803199,
+    "max": 0.803199
+  },
+  "gate": "forgeries_accepted MUST be 0 on hardware syndromes as on simulated ones",
+  "scope": "the certification RATE is an empirical property of this device, this error model and this decoder; SOUNDNESS is a property of the checker and does not depend on any of them"
+}

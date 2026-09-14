@@ -1,0 +1,127 @@
+{
+  "schema": "oneq-qldpc-bposd-sensitivity/1",
+  "protocol": "[[144,12,12]] Z-sector, code capacity p=0.03, 200 fixed nontrivial syndromes reused across configurations; uniform weights",
+  "configs": {
+    "baseline ms/parallel/30/osd_cs5": {
+      "config": {
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "max_iter": 30,
+        "osd_method": "osd_cs",
+        "osd_order": 5
+      },
+      "tier1": 164,
+      "tier2": 36,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 34,
+      "seconds": 2.1
+    },
+    "fewer iters (10)": {
+      "config": {
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "max_iter": 10,
+        "osd_method": "osd_cs",
+        "osd_order": 5
+      },
+      "tier1": 167,
+      "tier2": 33,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 27,
+      "seconds": 1.8
+    },
+    "more iters (100)": {
+      "config": {
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "max_iter": 100,
+        "osd_method": "osd_cs",
+        "osd_order": 5
+      },
+      "tier1": 200,
+      "tier2": 0,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 0,
+      "seconds": 1.6
+    },
+    "serial schedule": {
+      "config": {
+        "bp_method": "ms",
+        "schedule": "serial",
+        "max_iter": 30,
+        "osd_method": "osd_cs",
+        "osd_order": 5
+      },
+      "tier1": 191,
+      "tier2": 9,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 9,
+      "seconds": 1.7
+    },
+    "product-sum BP": {
+      "config": {
+        "bp_method": "ps",
+        "schedule": "parallel",
+        "max_iter": 30,
+        "osd_method": "osd_cs",
+        "osd_order": 5
+      },
+      "tier1": 200,
+      "tier2": 0,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 0,
+      "seconds": 1.7
+    },
+    "OSD-0 (no combination sweep)": {
+      "config": {
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "max_iter": 30,
+        "osd_method": "osd0",
+        "osd_order": 0
+      },
+      "tier1": 160,
+      "tier2": 40,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 40,
+      "seconds": 1.6
+    },
+    "OSD-CS order 10": {
+      "config": {
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "max_iter": 30,
+        "osd_method": "osd_cs",
+        "osd_order": 10
+      },
+      "tier1": 166,
+      "tier2": 34,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "bp_osd_logical_errors": 31,
+      "seconds": 1.7
+    }
+  },
+  "summary": {
+    "tier1_min": 160,
+    "tier1_max": 200,
+    "tier1_spread": 40,
+    "exact_min": 200,
+    "exact_max": 200,
+    "exact_spread": 0,
+    "finding": "tier-1 (BP-OSD's own answer certified) moves with configuration; the exact-certified total is the instrument's rate and should be near-invariant"
+  }
+}

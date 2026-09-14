@@ -1,0 +1,509 @@
+% Shared bibliography for both manuscripts.
+%
+% EVERY FIELD OF EVERY ENTRY WAS FETCHED FROM ITS SOURCE, never typed from
+% memory: journal articles from Crossref by DOI, datasets from DataCite,
+% preprints from the arXiv abstract page's citation metadata. The snapshot
+% of what each source returned lives in refs_verified.json, and
+% tests/test_paper_bibliography.py fails if an entry here disagrees with it.
+% Refresh with:  python paper/tools/verify_refs.py --fetch
+%
+% Two errors this discipline has already caught (2026-09-13): an author
+% attribution invented for arXiv:2605.16523, and "Mehlhorn and McConnell,
+% CACM 2011", a venue with no such article. Both reached a manuscript
+% because a name or venue was written without being fetched.
+%
+% Format rules the verifier relies on: one field per line; authors joined
+% by " and "; a collaboration written in double braces.
+
+% ---------------------------------------------------------------- classics
+
+@article{edmonds1965paths,
+  author = {Jack Edmonds},
+  title = {Paths, Trees, and Flowers},
+  journal = {Canadian Journal of Mathematics},
+  volume = {17},
+  pages = {449--467},
+  year = {1965},
+  doi = {10.4153/CJM-1965-045-4},
+}
+
+@article{edmonds1965polyhedron,
+  author = {Jack Edmonds},
+  title = {Maximum matching and a polyhedron with 0,1-vertices},
+  journal = {Journal of Research of the National Bureau of Standards Section B},
+  volume = {69B},
+  pages = {125--130},
+  year = {1965},
+  doi = {10.6028/jres.069B.013},
+}
+
+@article{edmondsjohnson1973,
+  author = {Jack Edmonds and Ellis L. Johnson},
+  title = {Matching, {Euler} tours and the {Chinese} postman},
+  journal = {Mathematical Programming},
+  volume = {5},
+  pages = {88--124},
+  year = {1973},
+  doi = {10.1007/BF01580113},
+}
+
+@article{padbergrao1982,
+  author = {Manfred W. Padberg and M. R. Rao},
+  title = {Odd Minimum Cut-Sets and b-Matchings},
+  journal = {Mathematics of Operations Research},
+  volume = {7},
+  number = {1},
+  pages = {67--80},
+  year = {1982},
+  doi = {10.1287/moor.7.1.67},
+}
+
+@article{mcconnell2011certifying,
+  author = {R. M. McConnell and K. Mehlhorn and S. N{\"a}her and P. Schweitzer},
+  title = {Certifying algorithms},
+  journal = {Computer Science Review},
+  volume = {5},
+  number = {2},
+  pages = {119--161},
+  year = {2011},
+  doi = {10.1016/j.cosrev.2010.09.009},
+}
+
+@article{blumkannan1995,
+  author = {Manuel Blum and Sampath Kannan},
+  title = {Designing programs that check their work},
+  journal = {Journal of the ACM},
+  volume = {42},
+  number = {1},
+  pages = {269--291},
+  year = {1995},
+  doi = {10.1145/200836.200880},
+}
+
+@article{berlekamp1978,
+  author = {E. Berlekamp and R. McEliece and H. van Tilborg},
+  title = {On the inherent intractability of certain coding problems ({Corresp.})},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {24},
+  number = {3},
+  pages = {384--386},
+  year = {1978},
+  doi = {10.1109/TIT.1978.1055873},
+}
+
+% ------------------------------------------------------------- LP decoding
+
+@article{feldman2005lp,
+  author = {J. Feldman and M. J. Wainwright and D. R. Karger},
+  title = {Using Linear Programming to Decode Binary Linear Codes},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {51},
+  number = {3},
+  pages = {954--972},
+  year = {2005},
+  doi = {10.1109/TIT.2004.842696},
+}
+
+@article{taghavi2008adaptive,
+  author = {Mohammad H. Taghavi and Paul H. Siegel},
+  title = {Adaptive Methods for Linear Programming Decoding},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {54},
+  number = {12},
+  pages = {5396--5410},
+  year = {2008},
+  doi = {10.1109/TIT.2008.2006384},
+}
+
+@article{zhangsiegel2012adaptive,
+  author = {Xiaojie Zhang and Paul H. Siegel},
+  title = {Adaptive Cut Generation Algorithm for Improved Linear Programming Decoding of Binary Linear Codes},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {58},
+  number = {10},
+  pages = {6581--6594},
+  year = {2012},
+  doi = {10.1109/TIT.2012.2204955},
+}
+
+@inproceedings{li2018lp,
+  author = {July X. Li and Pascal O. Vontobel},
+  title = {{LP} Decoding of Quantum Stabilizer Codes},
+  booktitle = {2018 IEEE International Symposium on Information Theory (ISIT)},
+  pages = {1306--1310},
+  year = {2018},
+  doi = {10.1109/ISIT.2018.8437905},
+}
+
+@misc{halabi2011local,
+  author = {Nissim Halabi and Guy Even},
+  title = {Local Optimality Certificates for {LP} Decoding of {Tanner} Codes},
+  year = {2011},
+  eprint = {1104.4646},
+  archivePrefix = {arXiv},
+}
+
+@misc{javed2023low,
+  author = {Sana Javed and Francisco Garcia-Herrero and Bane Vasic and Mark F. Flanagan},
+  title = {Low-Complexity Linear Programming Based Decoding of Quantum {LDPC} codes},
+  year = {2023},
+  eprint = {2311.18488},
+  archivePrefix = {arXiv},
+}
+
+@misc{gu2025power,
+  author = {Shouzhen Gu and Mehdi Soleimanifar},
+  title = {Power and Limitations of Linear Programming Decoder for Quantum {LDPC} Codes},
+  year = {2025},
+  eprint = {2508.04769},
+  archivePrefix = {arXiv},
+}
+
+% ----------------------------------------------------- exact optimization
+
+@inproceedings{cheung2017verifying,
+  author = {Kevin K. H. Cheung and Ambros Gleixner and Daniel E. Steffy},
+  title = {Verifying Integer Programming Results},
+  booktitle = {Integer Programming and Combinatorial Optimization},
+  series = {Lecture Notes in Computer Science},
+  volume = {10328},
+  pages = {148--160},
+  year = {2017},
+  doi = {10.1007/978-3-319-59250-3_13},
+}
+
+@article{eifler2023computational,
+  author = {Leon Eifler and Ambros Gleixner},
+  title = {A computational status update for exact rational mixed integer programming},
+  journal = {Mathematical Programming},
+  volume = {197},
+  number = {2},
+  pages = {793--812},
+  year = {2023},
+  doi = {10.1007/s10107-021-01749-5},
+}
+
+@article{steffy2013valid,
+  author = {Daniel E. Steffy and Kati Wolter},
+  title = {Valid Linear Programming Bounds for Exact Mixed-Integer Programming},
+  journal = {INFORMS Journal on Computing},
+  volume = {25},
+  number = {2},
+  pages = {271--284},
+  year = {2013},
+  doi = {10.1287/ijoc.1120.0501},
+}
+
+% --------------------------------------------------------- QEC: decoding
+
+@article{dennis2002topological,
+  author = {Eric Dennis and Alexei Kitaev and Andrew Landahl and John Preskill},
+  title = {Topological quantum memory},
+  journal = {Journal of Mathematical Physics},
+  volume = {43},
+  number = {9},
+  pages = {4452--4505},
+  year = {2002},
+  doi = {10.1063/1.1499754},
+  eprint = {quant-ph/0110143},
+  archivePrefix = {arXiv},
+}
+
+@article{higgott2025sparse,
+  author = {Oscar Higgott and Craig Gidney},
+  title = {{Sparse Blossom}: correcting a million errors per core second with minimum-weight matching},
+  journal = {Quantum},
+  volume = {9},
+  pages = {1600},
+  year = {2025},
+  doi = {10.22331/q-2025-01-20-1600},
+  eprint = {2303.15933},
+  archivePrefix = {arXiv},
+}
+
+@article{gidney2021stim,
+  author = {Craig Gidney},
+  title = {{Stim}: a fast stabilizer circuit simulator},
+  journal = {Quantum},
+  volume = {5},
+  pages = {497},
+  year = {2021},
+  doi = {10.22331/q-2021-07-06-497},
+  eprint = {2103.02202},
+  archivePrefix = {arXiv},
+}
+
+@article{roffe2020decoding,
+  author = {Joschka Roffe and David R. White and Simon Burton and Earl Campbell},
+  title = {Decoding across the quantum low-density parity-check code landscape},
+  journal = {Physical Review Research},
+  volume = {2},
+  number = {4},
+  pages = {043423},
+  year = {2020},
+  doi = {10.1103/PhysRevResearch.2.043423},
+  eprint = {2005.07016},
+  archivePrefix = {arXiv},
+}
+
+@article{panteleev2021degenerate,
+  author = {Pavel Panteleev and Gleb Kalachev},
+  title = {Degenerate Quantum {LDPC} Codes With Good Finite Length Performance},
+  journal = {Quantum},
+  volume = {5},
+  pages = {585},
+  year = {2021},
+  doi = {10.22331/q-2021-11-22-585},
+  eprint = {1904.02703},
+  archivePrefix = {arXiv},
+}
+
+@article{higgott2023improved,
+  author = {Oscar Higgott and Thomas C. Bohdanowicz and Aleksander Kubica and Steven T. Flammia and Earl T. Campbell},
+  title = {Improved Decoding of Circuit Noise and Fragile Boundaries of Tailored Surface Codes},
+  journal = {Physical Review X},
+  volume = {13},
+  number = {3},
+  pages = {031007},
+  year = {2023},
+  doi = {10.1103/PhysRevX.13.031007},
+  eprint = {2203.04948},
+  archivePrefix = {arXiv},
+}
+
+@article{hsieh2011np,
+  author = {Min-Hsiu Hsieh and Le Gall, Fran{\c{c}}ois},
+  title = {{NP}-hardness of decoding quantum error-correction codes},
+  journal = {Physical Review A},
+  volume = {83},
+  number = {5},
+  pages = {052331},
+  year = {2011},
+  doi = {10.1103/PhysRevA.83.052331},
+}
+
+@misc{landahl2011fault,
+  author = {Andrew J. Landahl and Jonas T. Anderson and Patrick R. Rice},
+  title = {Fault-tolerant quantum computing with color codes},
+  year = {2011},
+  eprint = {1108.5738},
+  archivePrefix = {arXiv},
+}
+
+@misc{shutty2024efficient,
+  author = {Noah Shutty and Michael Newman and Benjamin Villalonga},
+  title = {Efficient near-optimal decoding of the surface code through ensembling},
+  year = {2024},
+  eprint = {2401.12434},
+  archivePrefix = {arXiv},
+}
+
+@misc{wu2025minimum,
+  author = {Yue Wu and Binghong Li and Kathleen Chang and Shruti Puri and Lin Zhong},
+  title = {Minimum-Weight Parity Factor Decoder for Quantum Error Correction},
+  year = {2025},
+  eprint = {2508.04969},
+  archivePrefix = {arXiv},
+}
+
+@article{bravyi2024high,
+  author = {Sergey Bravyi and Andrew W. Cross and Jay M. Gambetta and Dmitri Maslov and Patrick Rall and Theodore J. Yoder},
+  title = {High-threshold and low-overhead fault-tolerant quantum memory},
+  journal = {Nature},
+  volume = {627},
+  number = {8005},
+  pages = {778--782},
+  year = {2024},
+  doi = {10.1038/s41586-024-07107-7},
+}
+
+% ------------------------------------------- concurrent work (2026 refresh)
+
+@misc{krishnamoorthy2026certified,
+  author = {Ragavi Krishnamoorthy and Florian Gerhardt and Johannes Knaute and Thomas Klir and Stefan Raimund Maschek and Erik Schulze and Tomislav Maras and Alexander Dotterweich and Loong Kuan Lee and Christian Bauckhage and Nico Piatkowski},
+  title = {Certified decoding of quantum {LDPC} codes},
+  year = {2026},
+  eprint = {2608.25545},
+  archivePrefix = {arXiv},
+}
+
+@misc{shen2026capability,
+  author = {Jiachen Shen and Hui Zhong},
+  title = {Capability-Gated Conformance Testing of Quantum Error-Correction Decoder Libraries},
+  year = {2026},
+  eprint = {2609.07035},
+  archivePrefix = {arXiv},
+}
+
+@misc{leverrier2026approximating,
+  author = {Anthony Leverrier and R{\"u}diger Urbanke},
+  title = {Approximating optimal decoding of quantum {LDPC} codes with narrow frontiers},
+  year = {2026},
+  eprint = {2606.20513},
+  archivePrefix = {arXiv},
+}
+
+@misc{ehatamm2026end,
+  author = {Mattias Ehatamm and Yi Lee and Xiaodi Wu and Runzhou Tao},
+  title = {End-to-End Formalization of Quantum Error Correction},
+  year = {2026},
+  eprint = {2605.16523},
+  archivePrefix = {arXiv},
+}
+
+% ------------------------------------------------- hardware and data
+
+@article{google2025below,
+  author = {{Google Quantum AI and Collaborators}},
+  title = {Quantum error correction below the surface code threshold},
+  journal = {Nature},
+  volume = {638},
+  number = {8052},
+  pages = {920--926},
+  year = {2025},
+  doi = {10.1038/s41586-024-08449-y},
+  eprint = {2408.13687},
+  archivePrefix = {arXiv},
+}
+
+@article{google2026belowcorrection,
+  author = {{Google Quantum AI and Collaborators}},
+  title = {Author Correction: Quantum error correction below the surface code threshold},
+  journal = {Nature},
+  volume = {653},
+  number = {8114},
+  pages = {E5},
+  year = {2026},
+  doi = {10.1038/s41586-026-10559-8},
+}
+
+@misc{google2024data,
+  author = {{Google Quantum AI}},
+  title = {Data for "Quantum error correction below the surface code threshold"},
+  publisher = {Zenodo},
+  version = {1.0.0},
+  year = {2024},
+  doi = {10.5281/zenodo.13273331},
+}
+
+@article{chen2021exponential,
+  author = {{Google Quantum AI}},
+  title = {Exponential suppression of bit or phase errors with cyclic error correction},
+  journal = {Nature},
+  volume = {595},
+  number = {7867},
+  pages = {383--387},
+  year = {2021},
+  doi = {10.1038/s41586-021-03588-y},
+}
+
+@article{mcewen2021removing,
+  author = {M. McEwen and D. Kafri and Z. Chen and J. Atalaya and K. J. Satzinger and others},
+  title = {Removing leakage-induced correlated errors in superconducting quantum error correction},
+  journal = {Nature Communications},
+  volume = {12},
+  number = {1},
+  pages = {1761},
+  year = {2021},
+  doi = {10.1038/s41467-021-21982-y},
+  eprint = {2102.06131},
+  archivePrefix = {arXiv},
+}
+
+% ------------------------------------------- error-model estimation
+
+@article{spitz2018adaptive,
+  author = {Stephen T. Spitz and Brian Tarasinski and Carlo W. J. Beenakker and Thomas E. O'Brien},
+  title = {Adaptive Weight Estimator for Quantum Error Correction in a Time-Dependent Environment},
+  journal = {Advanced Quantum Technologies},
+  volume = {1},
+  number = {1},
+  pages = {1800012},
+  year = {2018},
+  doi = {10.1002/qute.201800012},
+}
+
+@misc{takou2026logical,
+  author = {Evangelia Takou and Cesar Benito and Arian Vezvaee and Daniel A. Lidar and Kenneth R. Brown},
+  title = {Logical error estimation from syndrome data of surface-code experiments},
+  year = {2026},
+  eprint = {2606.11496},
+  archivePrefix = {arXiv},
+}
+
+@misc{stein2026calibration,
+  author = {Samuel Stein and Shuwen Kan and Chenxu Liu and Adrian Harkness and Sean Garner and Zefan Du and Yufei Ding and Ying Mao and Ang Li},
+  title = {Calibration-Conditioned {FiLM} Decoders for Low-Latency Decoding of Quantum Error Correction Evaluated on {IBM} Repetition-Code Experiments},
+  year = {2026},
+  eprint = {2601.16123},
+  archivePrefix = {arXiv},
+}
+
+@article{sivak2024optimization,
+  author = {Volodymyr Sivak and Michael Newman and Paul Klimov},
+  title = {Optimization of decoder priors for accurate quantum error correction},
+  journal = {Physical Review Letters},
+  volume = {133},
+  number = {15},
+  pages = {150603},
+  year = {2024},
+  doi = {10.1103/PhysRevLett.133.150603},
+  eprint = {2406.02700},
+  archivePrefix = {arXiv},
+}
+
+@misc{cao2026differentiable,
+  author = {Hanyan Cao and Dongyang Feng and Cheng Ye and Feng Pan},
+  title = {Differentiable Maximum Likelihood Noise Estimation for Quantum Error Correction},
+  year = {2026},
+  eprint = {2602.19722},
+  archivePrefix = {arXiv},
+}
+
+@misc{blumekohout2025estimating,
+  author = {Robin Blume-Kohout and Kevin Young},
+  title = {Estimating detector error models from syndrome data},
+  year = {2025},
+  eprint = {2504.14643},
+  archivePrefix = {arXiv},
+}
+
+@misc{he2026paems,
+  author = {Songhuan He and Yifei Cui and Bo Liu and others},
+  title = {{PAEMS}: Precise and Adaptive Error Model for Superconducting Quantum Processors},
+  year = {2026},
+  eprint = {2603.29439},
+  archivePrefix = {arXiv},
+}
+
+@article{varbanov2020leakage,
+  author = {B. M. Varbanov and F. Battistel and B. M. Tarasinski and V. P. Ostroukh and T. E. O'Brien and L. DiCarlo and B. M. Terhal},
+  title = {Leakage detection for a transmon-based surface code},
+  journal = {npj Quantum Information},
+  volume = {6},
+  number = {1},
+  pages = {102},
+  year = {2020},
+  doi = {10.1038/s41534-020-00330-w},
+  eprint = {2002.07119},
+  archivePrefix = {arXiv},
+}
+
+@misc{gulacsi2025revealing,
+  author = {Bal{\'a}zs Gul{\'a}csi and Joris Kattem{\"o}lle and Guido Burkard},
+  title = {Revealing correlated noise with single-qubit operations},
+  year = {2025},
+  eprint = {2502.09706},
+  archivePrefix = {arXiv},
+}
+
+% ---------------------------------------------------------------- software
+
+@inproceedings{hagberg2008networkx,
+  author = {Aric A. Hagberg and Daniel A. Schult and Pieter J. Swart},
+  title = {Exploring Network Structure, Dynamics, and Function using {NetworkX}},
+  booktitle = {Proceedings of the 7th Python in Science Conference},
+  pages = {11--15},
+  year = {2008},
+  doi = {10.25080/TCWV9851},
+}

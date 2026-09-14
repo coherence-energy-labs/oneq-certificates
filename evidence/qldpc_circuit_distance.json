@@ -1,0 +1,53 @@
+{
+  "schema": "oneq-qldpc-circuit-distance/1",
+  "circuit": "reference schedule (Bravyi Table 5), r=3",
+  "mechanisms": 2304,
+  "detectors": 288,
+  "definition": "d = min |e| s.t. De=0, Ge=1 (unit weights)",
+  "scope": "circuit distance of THIS r=3 DEM under this noise family; not the code distance, not asymptotic",
+  "upper_bound": {
+    "value": 12,
+    "witness_support": [
+      19,
+      20,
+      100,
+      132,
+      165,
+      224,
+      356,
+      370,
+      517,
+      853,
+      859,
+      870
+    ],
+    "witness_detectors_fired": 0,
+    "witness_observable_flip": 1,
+    "solver_status": "stim-search (producer, untrusted)",
+    "seconds": 5.1,
+    "note": "the witness is checkable by inspection: it fires no detector and flips the observable"
+  },
+  "lower_bound": null,
+  "flat_lower_bound": {
+    "lp_bound": 1.0,
+    "certified_threshold": null,
+    "certified_lower_bound": 1,
+    "method": "root-only branch-dual tree = the flat exact dual, checked bound-only; no branching, no solver",
+    "seconds": 1.0,
+    "interpretation": "the LP relaxation of the distance problem is essentially vacuous (bound 1.0 against an upper bound of 12): unlike per-shot decoding, where the flat dual closes 99.15% of instances, the distance instance's relaxation is far from tight"
+  },
+  "honest_note": "the branch-dual ladder did NOT close the tight lower bound (T=11) within a 200k-node budget: certifying a distance lower bound is exactly the regime where branch-and-bound is expected to be expensive, and the paper says so rather than hiding the budget",
+  "verdict": "UPPER 12 (witness exhibited and hand-verified); no nontrivial certified LOWER bound achieved -- a measured limit of the method, reported as such",
+  "lower_bound_attempt": {
+    "max_nodes_budget": 200000,
+    "max_depth_budget": 120,
+    "threshold_attempted": 11,
+    "closed": false
+  },
+  "observable_scope": {
+    "observable_rows_in_dem": 1,
+    "logical_qubits_in_code": 12,
+    "consequence": "the shipped memory-Z circuit declares ONE OBSERVABLE_INCLUDE, so this DEM can only bound the SELECTED-observable fault weight; bounding d_DEM over all 12 logicals requires a circuit declaring all 12 observables -- named as future work, not claimed"
+  },
+  "renamed": "d_DEM (selected-observable fault weight under the declared DEM) -- NOT the full circuit distance, which minimizes over every logical-action row and would need a circuit declaring all 12 observables"
+}

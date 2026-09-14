@@ -1,0 +1,43 @@
+{
+  "schema": "oneq-qldpc-exact-cert/1",
+  "reference_checker_sha256": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "runs": {
+    "p0.01": {
+      "sampled": 400,
+      "trivial_tier0": 84,
+      "nontrivial": 316,
+      "float_certified": 316,
+      "exact_certified": 316,
+      "float_exact_disagreements": 0,
+      "residue": 0,
+      "negative_control_heavier_refused": 316,
+      "negative_control_float_type_rejected": 316,
+      "max_exact_gap": {
+        "num": 0,
+        "den": 1
+      },
+      "all_shot_objective_certified": 400
+    },
+    "p0.02": {
+      "sampled": 500,
+      "trivial_tier0": 27,
+      "nontrivial": 473,
+      "float_certified": 473,
+      "exact_certified": 473,
+      "float_exact_disagreements": 0,
+      "residue": 0,
+      "negative_control_heavier_refused": 473,
+      "negative_control_float_type_rejected": 473,
+      "max_exact_gap": {
+        "num": 0,
+        "den": 1
+      },
+      "all_shot_objective_certified": 500
+    }
+  },
+  "cross_validation": {
+    "attempted": 25,
+    "agreed": 25,
+    "checker": "independently authored exact reference, pinned by sha256"
+  }
+}

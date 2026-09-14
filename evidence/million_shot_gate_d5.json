@@ -1,0 +1,52 @@
+{
+  "schema": "oneq-million-shot-gate/1",
+  "distance": 5,
+  "rounds": 25,
+  "p": 0.005,
+  "shots": 962500,
+  "nontrivial": 962500,
+  "certified": 960181,
+  "certified_rate": 0.9975906493506493,
+  "rung_histogram": {
+    "0": 705621,
+    "1": 222568,
+    "2": 23337,
+    "3": 8655
+  },
+  "forgeries_attempted": 5775001,
+  "forgeries_accepted": 0,
+  "failed_chunks": 150,
+  "shots_lost_to_failed_chunks": 37500,
+  "failed_chunk_reasons": [
+    "ImportError: DLL load failed while importing _core: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _direct: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _flapack: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _group_columns: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _propack: The paging file is too small for this operation to complete."
+  ],
+  "battery_attacks_that_were_not_actually_false": 0,
+  "per_attack": {
+    "E_dropped_edge": 962500,
+    "F_duplicated_edge": 962500,
+    "I_mismatched_pair": 962500,
+    "D_spurious_cycle": 962500,
+    "G_dual_inflated_to_meet_a_worse_primal": 962500,
+    "H_negative_dual_hides_inflation": 962500,
+    "A_suboptimal": 1
+  },
+  "per_attack_accepted": {},
+  "accepted_examples": [],
+  "wall_seconds": 11073.929851599998,
+  "core_seconds": 50752.9664598999,
+  "workers": 5,
+  "ms_per_nontrivial_shot": 52.73035476353237,
+  "uncertified_gap": {
+    "n": 2319,
+    "mean": 0.35571168305304013,
+    "median": 0.250322,
+    "p90": 0.8218520000000001,
+    "max": 2.699569
+  },
+  "gate": "forgeries_accepted MUST be 0. A single acceptance means the checker can bless a wrong correction, which ends the claim.",
+  "scope": "simulated circuit noise; this measures the CHECKER's soundness at volume, not that the certification RATE carries over to hardware noise"
+}

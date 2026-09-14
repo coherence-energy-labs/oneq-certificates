@@ -1,0 +1,91 @@
+{
+  "schema": "oneq-qldpc-bb-family/1",
+  "reference_checker_sha256": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "protocol": "code-capacity X errors on the Z sector, p=0.01, uniform weights, 200 nontrivial shots per code; tier 0/1/2 + branch-dual closure; every flat certificate through the pinned reference checker",
+  "codes": {
+    "[[72,12,6]]": {
+      "nontrivial": 200,
+      "trivial_tier0": 218,
+      "sampled": 418,
+      "tier1": 197,
+      "tier2": 3,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "ref_checked": 200,
+      "ref_agreed": 200,
+      "bp_osd_logical_faults_repaired": 3,
+      "seconds": 1.5,
+      "code": {
+        "n": 72,
+        "k": 12,
+        "l": 6,
+        "m": 6,
+        "published": "[[72,12,6]] (Bravyi et al. Table 3)"
+      }
+    },
+    "[[108,8,10]]": {
+      "nontrivial": 200,
+      "trivial_tier0": 114,
+      "sampled": 314,
+      "tier1": 199,
+      "tier2": 1,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "ref_checked": 200,
+      "ref_agreed": 200,
+      "bp_osd_logical_faults_repaired": 1,
+      "seconds": 1.8,
+      "code": {
+        "n": 108,
+        "k": 8,
+        "l": 9,
+        "m": 6,
+        "published": "[[108,8,10]] (Bravyi et al. Table 3)"
+      }
+    },
+    "[[144,12,12]]": {
+      "nontrivial": 200,
+      "trivial_tier0": 54,
+      "sampled": 254,
+      "tier1": 198,
+      "tier2": 2,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "ref_checked": 200,
+      "ref_agreed": 200,
+      "bp_osd_logical_faults_repaired": 1,
+      "seconds": 2.1,
+      "code": {
+        "n": 144,
+        "k": 12,
+        "l": 12,
+        "m": 6,
+        "published": "[[144,12,12]] (Bravyi et al. Table 3)"
+      }
+    },
+    "[[288,12,18]]": {
+      "nontrivial": 200,
+      "trivial_tier0": 13,
+      "sampled": 213,
+      "tier1": 197,
+      "tier2": 3,
+      "tierBD": 0,
+      "open": 0,
+      "exact_certified": 200,
+      "ref_checked": 200,
+      "ref_agreed": 200,
+      "bp_osd_logical_faults_repaired": 3,
+      "seconds": 5.3,
+      "code": {
+        "n": 288,
+        "k": 12,
+        "l": 12,
+        "m": 12,
+        "published": "[[288,12,18]] (Bravyi et al. Table 3)"
+      }
+    }
+  }
+}

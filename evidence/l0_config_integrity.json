@@ -1,0 +1,53 @@
+{
+  "gate": "L0-config-integrity",
+  "seed": 20260819,
+  "edges": 96,
+  "bits_per_field": 20,
+  "single_bit_sweep": {
+    "corruptions": 3840,
+    "undetected": 0,
+    "detection_rate_ppm": 1000000
+  },
+  "read_multiplicity_sweep": {
+    "x1": {
+      "corruptions": 96,
+      "undetected": 0
+    },
+    "x2": {
+      "corruptions": 96,
+      "undetected": 0
+    },
+    "x3": {
+      "corruptions": 96,
+      "undetected": 0
+    },
+    "x4": {
+      "corruptions": 96,
+      "undetected": 0
+    },
+    "x8": {
+      "corruptions": 96,
+      "undetected": 0
+    }
+  },
+  "paired_mask_arms": {
+    "with_mask_replica": {
+      "mask_corruptions": 96,
+      "detected": 96
+    },
+    "without_mask_replica": {
+      "mask_corruptions": 96,
+      "detected": 0
+    }
+  },
+  "untouched_edge_invisible": true,
+  "exposed_cycles_at_1p1us": {
+    "10ms": 9090,
+    "100ms": 90909,
+    "l0": 1
+  },
+  "seconds": 0.4,
+  "claims": "100% detection of single-bit configuration faults on the edges the decode actually read, in ONE cycle",
+  "does_not_claim": "anything about P2 (transient algorithm state) or P3 (the output register after commit), nor about edges the decode never touched",
+  "verdict": "PASS"
+}

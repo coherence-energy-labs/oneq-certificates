@@ -1,0 +1,264 @@
+{
+  "schema": "oneq-gap-distribution/2",
+  "rows": [
+    {
+      "distance": 3,
+      "rounds": 3,
+      "p": 0.005,
+      "shots": 400,
+      "nontrivial": 230,
+      "mwpm_certified_exact": 230,
+      "seconds": 0.6353715000000193,
+      "decoders": {
+        "belief_matching": {
+          "n": 230,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 230,
+            "mean": 0.06817686697385014,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 1.5226972044478881,
+            "max": 5.979770404140057,
+            "frac_zero": 0.9608695652173913,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 230,
+            "mean": 0.06817686697385013,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 1.5226972044478881,
+            "max": 5.979770404140057,
+            "frac_zero": 0.9608695652173913,
+            "frac_below_zero": 0.0
+          }
+        },
+        "bp_osd": {
+          "n": 230,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 230,
+            "mean": 3.337945405189005,
+            "median": 0.0,
+            "p90": 11.570222379813146,
+            "p99": 38.10375837281481,
+            "max": 67.96885072131315,
+            "frac_zero": 0.8130434782608695,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 230,
+            "mean": 3.337945405189005,
+            "median": 0.0,
+            "p90": 11.570222379813146,
+            "p99": 38.10375837281481,
+            "max": 67.96885072131315,
+            "frac_zero": 0.8130434782608695,
+            "frac_below_zero": 0.0
+          }
+        },
+        "mwpm": {
+          "n": 230,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 230,
+            "mean": 7.723290606088046e-18,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 8.881784197001252e-16,
+            "max": 1.7763568394002505e-15,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 230,
+            "mean": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 0.0,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0
+          }
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "rounds": 5,
+      "p": 0.005,
+      "shots": 400,
+      "nontrivial": 395,
+      "mwpm_certified_exact": 392,
+      "seconds": 4.891499300000078,
+      "decoders": {
+        "belief_matching": {
+          "n": 395,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 395,
+            "mean": 0.1915489191371416,
+            "median": 0.0,
+            "p90": 0.5722325765759539,
+            "p99": 3.036893774442388,
+            "max": 6.170478318606957,
+            "frac_zero": 0.8658227848101265,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 392,
+            "mean": 0.1850777197429001,
+            "median": 0.0,
+            "p90": 0.46155316005171354,
+            "p99": 3.038404825544574,
+            "max": 6.170478318606957,
+            "frac_zero": 0.8724489795918368,
+            "frac_below_zero": 0.0
+          }
+        },
+        "bp_osd": {
+          "n": 395,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 395,
+            "mean": 7.204361170953014,
+            "median": 0.0,
+            "p90": 32.8177026980607,
+            "p99": 70.36071207223569,
+            "max": 147.97293806988603,
+            "frac_zero": 0.7215189873417721,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 392,
+            "mean": 7.0760881154358195,
+            "median": 0.0,
+            "p90": 32.21758525696347,
+            "p99": 60.77818347301044,
+            "max": 147.97293806988603,
+            "frac_zero": 0.7270408163265306,
+            "frac_below_zero": 0.0
+          }
+        },
+        "mwpm": {
+          "n": 395,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 395,
+            "mean": 0.0029429823995858226,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 3.552713678800501e-15,
+            "max": 0.7769997194206084,
+            "frac_zero": 0.9924050632911392,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 392,
+            "mean": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 0.0,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0
+          }
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "rounds": 7,
+      "p": 0.005,
+      "shots": 400,
+      "nontrivial": 400,
+      "mwpm_certified_exact": 378,
+      "seconds": 68.37117420000004,
+      "decoders": {
+        "belief_matching": {
+          "n": 400,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 400,
+            "mean": 0.7217253806909187,
+            "median": 0.0,
+            "p90": 2.4075666927762356,
+            "p99": 5.146542145355748,
+            "max": 8.408822688968414,
+            "frac_zero": 0.555,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 378,
+            "mean": 0.6311214516839685,
+            "median": 0.0,
+            "p90": 2.1359002539072316,
+            "p99": 4.879739274532992,
+            "max": 8.408822688968414,
+            "frac_zero": 0.5873015873015873,
+            "frac_below_zero": 0.0
+          }
+        },
+        "bp_osd": {
+          "n": 400,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 400,
+            "mean": 1.6134003146653464,
+            "median": 0.0,
+            "p90": 1.6043484582265612,
+            "p99": 52.06688398704407,
+            "max": 78.72639428123202,
+            "frac_zero": 0.7025,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 378,
+            "mean": 1.6124607147385395,
+            "median": 0.0,
+            "p90": 1.391469699144121,
+            "p99": 52.20328643117647,
+            "max": 78.72639428123202,
+            "frac_zero": 0.7433862433862434,
+            "frac_below_zero": 0.0
+          }
+        },
+        "mwpm": {
+          "n": 400,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 400,
+            "mean": 0.05132393475144213,
+            "median": 0.0,
+            "p90": 3.907985046680632e-15,
+            "p99": 1.6347401336115455,
+            "max": 2.09370457661435,
+            "frac_zero": 0.945,
+            "frac_below_zero": 0.0
+          },
+          "gap_vs_proven_optimum": {
+            "n": 378,
+            "mean": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 0.0,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "lower_bound_source": "a certified cut packing on the SAME shot -- checkable edge by edge, not another decoder's opinion",
+  "two_columns_on_purpose": {
+    "gap_vs_certified_bound": "weight minus the bound. Includes OUR slack wherever the bound did not close, so it overstates the decoder's fault.",
+    "gap_vs_proven_optimum": "restricted to shots where MWPM was PROVEN optimal. There the bound IS the optimum, so this is exactly the decoder's excess weight -- the number worth quoting."
+  },
+  "what_gap_is_not": "weight, not homology class. A heavier correction in the right class is harmless; a lighter one in the wrong class is a logical error. Neither number substitutes for the other.",
+  "a_gap_is_not_a_defect": "BP-OSD does not minimise matching weight -- it maximises likelihood over the full hypergraph, where decomposed components are correlated and the min-weight T-join is not the maximum-likelihood answer. A large gap says it departed from the certified minimum-weight correction, not that it was wrong. Reading this table as a decoder scoreboard is a misuse.",
+  "belief_matching_absent_on_purpose": "its API returns predicted OBSERVABLES, not a correction, so there is no edge set to weigh -- no gap and no degraded receipt are possible. A decoder that reports only 'the logical qubit flipped' forecloses every honest receipt this milestone is about.",
+  "self_consistency": "no syndrome-consistent correction can weigh LESS than the certified bound; frac_below_zero must be 0 for every decoder, and a nonzero value means the harness or the bound is broken",
+  "why_it_is_new": "logical error rate averages this away. Two decoders with the same error rate can fail completely differently -- consistently a little suboptimal versus usually exact with a heavy tail -- and no benchmark distinguishes them, because none asks how far from optimal an individual answer was."
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "oneq-checker-equivalence/1",
+  "cases": 1500,
+  "seed": 20260804,
+  "calls_compared": 24920,
+  "accepted": 427,
+  "rejected": 4073,
+  "raised": 0,
+  "exact_calls": 500,
+  "bnb_calls": 15420,
+  "bnb_accepting": 1666,
+  "malformed_calls": 1500,
+  "matching_calls": 3000,
+  "matching_accepting": 348,
+  "divergences": 0,
+  "declared_reason_aliases_used": 4000,
+  "declared_reason_aliases": [
+    {
+      "frozen": "^TREE REFUSED: facet \\(.*\\) has RIGHT parity$",
+      "live": "^TREE REFUSED: facet \\(.*\\) has the RIGHT parity -- not a face of the relaxation$",
+      "why": "the tree leaf now states WHY the parity is wrong, in the same words the flat checker already used"
+    },
+    {
+      "frozen": "^TREE REFUSED: duplicate facet$",
+      "live": "^TREE REFUSED: facet \\(.*\\) listed twice$",
+      "why": "names WHICH facet was duplicated instead of only that one was"
+    },
+    {
+      "frozen": "^TREE REFUSED: redundant check \\(.*\\) invalid$",
+      "live": "^TREE REFUSED: redundant check \\(.*\\) is not >=2 valid rows$",
+      "why": "states the rule that was violated rather than the word 'invalid'"
+    }
+  ],
+  "frozen_sha256": {
+    "qldpc_check.py": "eba3f2d6280a30613323ca8bb1fd66ae81670a5ddfcf76c9b560b395ac5e8f34",
+    "tjoin_exact.py": "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+    "matching_cert.py": "720952b54ea4c139b4f7dbcfb41732db54756b40df769057bfa0467015478b22"
+  },
+  "claim": "the refactored trust modules return the identical verdict, reason string, primal weight and dual bound as the pre-refactor bytes, on every case"
+}

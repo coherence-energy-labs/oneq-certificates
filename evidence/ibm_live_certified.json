@@ -1,0 +1,32 @@
+{
+  "shots": 40000,
+  "nontrivial": 22842,
+  "certified": 22840,
+  "certified_rate": 0.9999124419928203,
+  "observable": {
+    "observed_shots": 22842,
+    "logical_errors": 107,
+    "logical_errors_opposite_cut": 324,
+    "declared_wrong_only": 2,
+    "opposite_wrong_only": 219,
+    "delta_S_certified_zero": 22840,
+    "delta_S_unknown": 2,
+    "logical_error_rate": 0.004684353384116977,
+    "logical_error_rate_opposite_cut": 0.014184397163120567,
+    "delta_S": null,
+    "delta_S_note": "2 shot(s) were refused, so E is unknown there and delta_S is not determined",
+    "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+  },
+  "nonreproducible": {
+    "note": "wall-clock, machine- and load-dependent; NOT part of the re-derivable record and never compared",
+    "cert_ms_per_shot": 2.9974135846260896
+  },
+  "schema": "oneq-ibm-live/1",
+  "mode": "fetch(live hardware)",
+  "provider": "ibm_quantum",
+  "backend": "ibm_fez",
+  "job_id": "dafvcophvn6c73cptnp0",
+  "prereg_sha256": "f94c62c58c87501a1a3355d9f664adbb5214288d1dee68585a0363dd7fefe375",
+  "model": "uniform",
+  "weights": "uniform, declared (the error model is OURS and says so -- unlike the Google corpus)"
+}

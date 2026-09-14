@@ -1,0 +1,56 @@
+{
+  "schema": "oneq-stale-calibration-fault/1",
+  "distance": 7,
+  "rounds": 7,
+  "p": 0.005,
+  "shots": 800,
+  "rows": [
+    {
+      "drift_factor": 1.0,
+      "shots": 800,
+      "syndrome_consistent": 800,
+      "genuinely_suboptimal": 0,
+      "syndrome_check_caught": 0,
+      "certificate_caught": 0,
+      "mean_excess_weight": 0.0,
+      "logical_errors_true_model": 5,
+      "logical_errors_stale_model": 5
+    },
+    {
+      "drift_factor": 1.5,
+      "shots": 800,
+      "syndrome_consistent": 800,
+      "genuinely_suboptimal": 64,
+      "syndrome_check_caught": 0,
+      "certificate_caught": 64,
+      "mean_excess_weight": 0.21729430121192794,
+      "logical_errors_true_model": 5,
+      "logical_errors_stale_model": 6
+    },
+    {
+      "drift_factor": 2.0,
+      "shots": 800,
+      "syndrome_consistent": 800,
+      "genuinely_suboptimal": 103,
+      "syndrome_check_caught": 0,
+      "certificate_caught": 103,
+      "mean_excess_weight": 0.35752523984207407,
+      "logical_errors_true_model": 5,
+      "logical_errors_stale_model": 6
+    },
+    {
+      "drift_factor": 3.0,
+      "shots": 800,
+      "syndrome_consistent": 800,
+      "genuinely_suboptimal": 171,
+      "syndrome_check_caught": 0,
+      "certificate_caught": 171,
+      "mean_excess_weight": 0.6375791271645886,
+      "logical_errors_true_model": 5,
+      "logical_errors_stale_model": 7
+    }
+  ],
+  "why_this_is_not_a_constructed_fault": "the decoder runs UNMODIFIED and its output is never touched. The fault is upstream, in the graph it was configured with -- a stale calibration snapshot, which is a real and documented operational failure, not a mutant designed against the detector it is being scored by.",
+  "why_nothing_deployed_notices": "the correction is syndrome-consistent BY CONSTRUCTION: the decoder solved a correct problem with wrong weights. The only downstream symptom is a slightly higher logical error rate, which is indistinguishable from the device having a worse day. The failure looks like physics.",
+  "control": "drift 1.0 must produce zero suboptimal corrections; a nonzero count there means the harness is manufacturing defects rather than detecting them"
+}

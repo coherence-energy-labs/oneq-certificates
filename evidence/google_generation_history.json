@@ -1,0 +1,419 @@
+{
+ "schema": "oneq-google-generation-history/1",
+ "how_produced": "experiments/m0_prior_art/google_generation_history.py (generations 1-2 read from pinned git blobs)",
+ "generations": {
+  "1": {
+   "source": {
+    "commit": "9ca8bddca662db1dd3dd16daa8a5f7edc6e2721f",
+    "path": "evidence/google_corpus_gate.json",
+    "blob": "bad4aa33ce3eb1dc0fa6cbdc7330bd096429a9b5"
+   },
+   "per_config": {
+    "d3_at_q4_5_X_r13": {
+     "nontrivial": 49164,
+     "certified": 47293,
+     "rate": 0.9619436986412823
+    },
+    "d3_at_q4_5_X_r30": {
+     "nontrivial": 49977,
+     "certified": 44791,
+     "rate": 0.8962322668427477
+    },
+    "d3_at_q4_5_Z_r13": {
+     "nontrivial": 47631,
+     "certified": 46033,
+     "rate": 0.966450420944343
+    },
+    "d3_at_q4_5_Z_r30": {
+     "nontrivial": 49965,
+     "certified": 44891,
+     "rate": 0.898448914239968
+    },
+    "d5_at_q8_7_X_r13": {
+     "nontrivial": 50000,
+     "certified": 44109,
+     "rate": 0.88218
+    },
+    "d5_at_q8_7_X_r30": {
+     "nontrivial": 50000,
+     "certified": 33840,
+     "rate": 0.6768
+    },
+    "d5_at_q8_7_Z_r13": {
+     "nontrivial": 49995,
+     "certified": 44650,
+     "rate": 0.8930893089308931
+    },
+    "d5_at_q8_7_Z_r30": {
+     "nontrivial": 50000,
+     "certified": 34837,
+     "rate": 0.69674
+    },
+    "d7_at_q6_7_X_r13": {
+     "nontrivial": 50000,
+     "certified": 39231,
+     "rate": 0.78462
+    },
+    "d7_at_q6_7_X_r30": {
+     "nontrivial": 50000,
+     "certified": 24511,
+     "rate": 0.49022
+    },
+    "d7_at_q6_7_Z_r13": {
+     "nontrivial": 50000,
+     "certified": 39265,
+     "rate": 0.7853
+    },
+    "d7_at_q6_7_Z_r30": {
+     "nontrivial": 50000,
+     "certified": 24651,
+     "rate": 0.49302
+    }
+   },
+   "nontrivial": 596732,
+   "certified": 468102,
+   "rate": 0.7844425973468827,
+   "forgeries_attempted": 3752657,
+   "forgeries_accepted": 0,
+   "min_config_nontrivial": 47631,
+   "max_config_nontrivial": 50000
+  },
+  "2": {
+   "source": {
+    "commit": "3760cc72f39a5785b50900b68101843a1d8f56d7",
+    "path": "evidence/google_corpus_gate.json",
+    "blob": "ce0edc5b1e4d530733c32babe3844176135a540e"
+   },
+   "per_config": {
+    "d3_at_q4_5_X_r13": {
+     "nontrivial": 9841,
+     "certified": 9758,
+     "rate": 0.9915658977746165
+    },
+    "d3_at_q4_5_X_r30": {
+     "nontrivial": 9994,
+     "certified": 9873,
+     "rate": 0.9878927356413848
+    },
+    "d3_at_q4_5_Z_r13": {
+     "nontrivial": 9560,
+     "certified": 9502,
+     "rate": 0.9939330543933055
+    },
+    "d3_at_q4_5_Z_r30": {
+     "nontrivial": 9991,
+     "certified": 9888,
+     "rate": 0.9896907216494846
+    },
+    "d5_at_q8_7_X_r13": {
+     "nontrivial": 10000,
+     "certified": 9586,
+     "rate": 0.9586
+    },
+    "d5_at_q8_7_X_r30": {
+     "nontrivial": 10000,
+     "certified": 8940,
+     "rate": 0.894
+    },
+    "d5_at_q8_7_Z_r13": {
+     "nontrivial": 9998,
+     "certified": 9635,
+     "rate": 0.9636927385477095
+    },
+    "d5_at_q8_7_Z_r30": {
+     "nontrivial": 10000,
+     "certified": 8949,
+     "rate": 0.8949
+    },
+    "d7_at_q6_7_X_r13": {
+     "nontrivial": 8200,
+     "certified": 7435,
+     "rate": 0.9067073170731708
+    },
+    "d7_at_q6_7_X_r30": {
+     "nontrivial": 800,
+     "certified": 589,
+     "rate": 0.73625
+    },
+    "d7_at_q6_7_Z_r13": {
+     "nontrivial": 8800,
+     "certified": 7971,
+     "rate": 0.9057954545454545
+    },
+    "d7_at_q6_7_Z_r30": {
+     "nontrivial": 10000,
+     "certified": 7648,
+     "rate": 0.7648
+    }
+   },
+   "nontrivial": 107184,
+   "certified": 99774,
+   "rate": 0.9308665472458576,
+   "forgeries_attempted": 677860,
+   "forgeries_accepted": 0,
+   "min_config_nontrivial": 800,
+   "max_config_nontrivial": 10000
+  },
+  "3": {
+   "source": {
+    "path": "evidence/google_corpus_gate_gen3.json"
+   },
+   "per_config": {
+    "d3_at_q4_5_X_r13": {
+     "nontrivial": 9792,
+     "certified": 9791,
+     "rate": 0.9998978758169934
+    },
+    "d3_at_q4_5_X_r30": {
+     "nontrivial": 9744,
+     "certified": 9742,
+     "rate": 0.9997947454844006
+    },
+    "d3_at_q4_5_Z_r13": {
+     "nontrivial": 9560,
+     "certified": 9558,
+     "rate": 0.9997907949790795
+    },
+    "d3_at_q4_5_Z_r30": {
+     "nontrivial": 9891,
+     "certified": 9888,
+     "rate": 0.9996966939642099
+    },
+    "d5_at_q8_7_X_r13": {
+     "nontrivial": 10000,
+     "certified": 9871,
+     "rate": 0.9871
+    },
+    "d5_at_q8_7_X_r30": {
+     "nontrivial": 10000,
+     "certified": 9586,
+     "rate": 0.9586
+    },
+    "d5_at_q8_7_Z_r13": {
+     "nontrivial": 9998,
+     "certified": 9890,
+     "rate": 0.9891978395679136
+    },
+    "d5_at_q8_7_Z_r30": {
+     "nontrivial": 10000,
+     "certified": 9585,
+     "rate": 0.9585
+    },
+    "d7_at_q6_7_X_r13": {
+     "nontrivial": 10000,
+     "certified": 9540,
+     "rate": 0.954
+    },
+    "d7_at_q6_7_X_r30": {
+     "nontrivial": 9450,
+     "certified": 8014,
+     "rate": 0.848042328042328
+    },
+    "d7_at_q6_7_Z_r13": {
+     "nontrivial": 9500,
+     "certified": 9085,
+     "rate": 0.9563157894736842
+    },
+    "d7_at_q6_7_Z_r30": {
+     "nontrivial": 9300,
+     "certified": 8040,
+     "rate": 0.864516129032258
+    }
+   },
+   "nontrivial": 117235,
+   "certified": 112590,
+   "rate": 0.9603787264895296,
+   "forgeries_attempted": 737773,
+   "forgeries_accepted": 0,
+   "min_config_nontrivial": 9300,
+   "max_config_nontrivial": 10000
+  },
+  "4": {
+   "source": {
+    "path": "evidence/google_corpus_gate_gen4.json"
+   },
+   "per_config": {
+    "d3_at_q4_5_X_r13": {
+     "nontrivial": 9841,
+     "certified": 9841,
+     "rate": 1.0
+    },
+    "d3_at_q4_5_X_r30": {
+     "nontrivial": 9994,
+     "certified": 9994,
+     "rate": 1.0
+    },
+    "d3_at_q4_5_Z_r13": {
+     "nontrivial": 9560,
+     "certified": 9560,
+     "rate": 1.0
+    },
+    "d3_at_q4_5_Z_r30": {
+     "nontrivial": 9991,
+     "certified": 9990,
+     "rate": 0.9998999099189271
+    },
+    "d5_at_q8_7_X_r13": {
+     "nontrivial": 10000,
+     "certified": 9967,
+     "rate": 0.9967
+    },
+    "d5_at_q8_7_X_r30": {
+     "nontrivial": 10000,
+     "certified": 9875,
+     "rate": 0.9875
+    },
+    "d5_at_q8_7_Z_r13": {
+     "nontrivial": 9998,
+     "certified": 9970,
+     "rate": 0.9971994398879775
+    },
+    "d5_at_q8_7_Z_r30": {
+     "nontrivial": 10000,
+     "certified": 9896,
+     "rate": 0.9896
+    },
+    "d7_at_q6_7_X_r13": {
+     "nontrivial": 10000,
+     "certified": 9830,
+     "rate": 0.983
+    },
+    "d7_at_q6_7_X_r30": {
+     "nontrivial": 10000,
+     "certified": 9376,
+     "rate": 0.9376
+    },
+    "d7_at_q6_7_Z_r13": {
+     "nontrivial": 10000,
+     "certified": 9849,
+     "rate": 0.9849
+    },
+    "d7_at_q6_7_Z_r30": {
+     "nontrivial": 10000,
+     "certified": 9471,
+     "rate": 0.9471
+    }
+   },
+   "nontrivial": 119384,
+   "certified": 117619,
+   "rate": 0.985215774308115,
+   "forgeries_attempted": 751060,
+   "forgeries_accepted": 0,
+   "min_config_nontrivial": 9560,
+   "max_config_nontrivial": 10000
+  },
+  "5": {
+   "per_config": {
+    "d7_at_q6_7_X_r30": {
+     "nontrivial": 50000,
+     "certified": 49081,
+     "rate": 0.98162,
+     "forgeries_attempted": 300000,
+     "forgeries_accepted": 0,
+     "source": "evidence/corpus_escalated_d7X30.json"
+    },
+    "d7_at_q6_7_Z_r30": {
+     "nontrivial": 50000,
+     "certified": 49104,
+     "rate": 0.98208,
+     "forgeries_attempted": 300000,
+     "forgeries_accepted": 0,
+     "source": "evidence/corpus_escalated_d7Z30.json"
+    }
+   },
+   "scope": "d=7, 30 rounds only"
+  },
+  "6": {
+   "per_config": {
+    "d7_at_q6_7_X_r30": {
+     "nontrivial": 50000,
+     "certified": 49999,
+     "rate": 0.99998,
+     "forgeries_attempted": 300000,
+     "forgeries_accepted": 0,
+     "source": "evidence/corpus_gen6_d7X30.json"
+    },
+    "d7_at_q6_7_Z_r30": {
+     "nontrivial": 50000,
+     "certified": 49999,
+     "rate": 0.99998,
+     "forgeries_attempted": 300000,
+     "forgeries_accepted": 0,
+     "source": "evidence/corpus_gen6_d7Z30.json"
+    }
+   },
+   "scope": "d=7, 30 rounds only"
+  }
+ },
+ "final_generation": {
+  "rule": "each configuration counted at the last generation that ran it: generation 4 for eleven configurations, generation 6 for d=7, 30 rounds (both bases)",
+  "per_config": {
+   "d3_at_q4_5_X_r13": {
+    "nontrivial": 9841,
+    "certified": 9841,
+    "rate": 1.0
+   },
+   "d3_at_q4_5_X_r30": {
+    "nontrivial": 9994,
+    "certified": 9994,
+    "rate": 1.0
+   },
+   "d3_at_q4_5_Z_r13": {
+    "nontrivial": 9560,
+    "certified": 9560,
+    "rate": 1.0
+   },
+   "d3_at_q4_5_Z_r30": {
+    "nontrivial": 9991,
+    "certified": 9990,
+    "rate": 0.9998999099189271
+   },
+   "d5_at_q8_7_X_r13": {
+    "nontrivial": 10000,
+    "certified": 9967,
+    "rate": 0.9967
+   },
+   "d5_at_q8_7_X_r30": {
+    "nontrivial": 10000,
+    "certified": 9875,
+    "rate": 0.9875
+   },
+   "d5_at_q8_7_Z_r13": {
+    "nontrivial": 9998,
+    "certified": 9970,
+    "rate": 0.9971994398879775
+   },
+   "d5_at_q8_7_Z_r30": {
+    "nontrivial": 10000,
+    "certified": 9896,
+    "rate": 0.9896
+   },
+   "d7_at_q6_7_X_r13": {
+    "nontrivial": 10000,
+    "certified": 9830,
+    "rate": 0.983
+   },
+   "d7_at_q6_7_X_r30": {
+    "nontrivial": 50000,
+    "certified": 49999,
+    "rate": 0.99998
+   },
+   "d7_at_q6_7_Z_r13": {
+    "nontrivial": 10000,
+    "certified": 9849,
+    "rate": 0.9849
+   },
+   "d7_at_q6_7_Z_r30": {
+    "nontrivial": 50000,
+    "certified": 49999,
+    "rate": 0.99998
+   }
+  },
+  "nontrivial": 199384,
+  "certified": 198770,
+  "rate": 0.9969205151867753,
+  "forgeries_attempted_gen4_gen5_gen6": 1951060,
+  "forgeries_accepted": 0
+ },
+ "coverage_note": "generation 1 ran 50,000 shots per configuration; generations 2 and 3 ran partial, unequal coverage, so their aggregates weight configurations unequally; generation 4 ran every configuration at 10,000 shots."
+}

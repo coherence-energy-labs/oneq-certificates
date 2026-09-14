@@ -1,0 +1,30 @@
+{
+  "schema": "oneq-heavyhex-transpiler/1",
+  "code": "[[144,12,12]] gross, both sectors",
+  "lattice": {
+    "model": "IBM-style heavy-hex, generated here",
+    "rows": 13,
+    "width": 33,
+    "sites": 429,
+    "max_degree": 3
+  },
+  "checks": 144,
+  "native_cnots": 864,
+  "heavy_hex_cnots": 25794,
+  "overhead_ratio": 29.854,
+  "overhead_ratio_no_retrace_bound": 15.427,
+  "swap_steps": 4155,
+  "steiner_edges_total": 4155,
+  "mean_tree_edges": 28.85,
+  "certified_blocks": 144,
+  "certification": "symplectic propagation of the measured Z back through each CNOT list; the resulting support must EQUAL the intended check support -- not a subset, not a superset",
+  "schedule": {
+    "layers": 45,
+    "cnot_depth_greedy": 9912,
+    "note": "greedy conflict-free layering; an upper bound from one heuristic, not a claimed optimum"
+  },
+  "baseline": "864 CNOTs = sum of check weights, what the code's own connectivity achieves (Bravyi et al. schedule); the ratio is against that",
+  "scope": "two-qubit gate count on a degree-3 model lattice; no crosstalk, leakage or control-stack constraints -- each of those makes a real device worse, so this ratio is a LOWER BOUND on true overhead",
+  "adoptable_under_3x": false,
+  "verdict_valid": true
+}

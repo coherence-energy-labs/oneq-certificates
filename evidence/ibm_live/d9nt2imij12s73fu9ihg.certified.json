@@ -1,0 +1,14 @@
+{
+  "shots": 4000,
+  "nontrivial": 2296,
+  "certified": 2296,
+  "certified_rate": 1.0,
+  "cert_ms_per_shot": 2.152734320484358,
+  "schema": "oneq-ibm-live/1",
+  "mode": "fetch(live hardware)",
+  "provider": "ibm_quantum",
+  "backend": "ibm_fez",
+  "job_id": "d9nt2imij12s73fu9ihg",
+  "prereg_sha256": "0a3607c9bab9a75329762ae12041d9303b6f649ddadb90868d5710871cddf6a1",
+  "weights": "uniform, declared (the error model is OURS and says so -- unlike the Google corpus)"
+}

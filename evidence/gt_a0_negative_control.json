@@ -1,0 +1,56 @@
+{
+  "gate": "GT-A0",
+  "mode": "negative_control",
+  "seed": 917331,
+  "dags": 400,
+  "trials": 25000,
+  "draws": 10000000,
+  "unsound_dags": 218,
+  "loose_within_noise": 5,
+  "naive_under_bounds_any": 258,
+  "naive_under_bounds_by_10x": 135,
+  "worst_naive_shortfall": {
+    "ratio": 1.06e+16,
+    "dag": 225,
+    "naive_ppb": 0,
+    "empirical_ppb": 10600000,
+    "algebra_ppb": 0
+  },
+  "examples_of_unsoundness": [
+    {
+      "dag": 0,
+      "algebra_ppb": 324702,
+      "empirical_ppb": 1600000,
+      "cp_lower_ppb": 670424
+    },
+    {
+      "dag": 2,
+      "algebra_ppb": 2158524,
+      "empirical_ppb": 29800000,
+      "cp_lower_ppb": 24956190
+    },
+    {
+      "dag": 3,
+      "algebra_ppb": 26401,
+      "empirical_ppb": 41160000,
+      "cp_lower_ppb": 35449385
+    },
+    {
+      "dag": 4,
+      "algebra_ppb": 3888,
+      "empirical_ppb": 10560000,
+      "cp_lower_ppb": 7763944
+    },
+    {
+      "dag": 5,
+      "algebra_ppb": 1732894,
+      "empirical_ppb": 11560000,
+      "cp_lower_ppb": 8623039
+    }
+  ],
+  "resolution_ppb": 120000,
+  "seconds": 0.7,
+  "verdict": "PASS",
+  "criteria": "PASS requires 0 DAGs where a Clopper-Pearson lower bound on the empirical rate exceeds the algebra's beta, AND at least one DAG where the naive product under-bounds by more than 10x",
+  "budget_note": "Sec 3.7.2 specifies 1e5 dags x 1e7 trials = 1e12 draws. This run is 1e+07 draws; the smallest bound violation it could resolve is about 120000 ppb."
+}

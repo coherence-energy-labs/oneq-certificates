@@ -1,0 +1,71 @@
+{
+  "schema": "oneq-decoder-mutation-gate/2",
+  "distance": 7,
+  "rounds": 7,
+  "shots": 300,
+  "p": 0.005,
+  "per_mutant": {
+    "M1_off_by_one_edge": {
+      "n": 300,
+      "syndrome_caught": 300,
+      "certificate_caught": 300,
+      "truly_defective": 300
+    },
+    "M2_greedy_boundary": {
+      "n": 296,
+      "syndrome_caught": 296,
+      "certificate_caught": 296,
+      "truly_defective": 296
+    },
+    "M3_dropped_edge": {
+      "n": 300,
+      "syndrome_caught": 300,
+      "certificate_caught": 300,
+      "truly_defective": 300
+    },
+    "M6_truncated_path": {
+      "n": 300,
+      "syndrome_caught": 300,
+      "certificate_caught": 300,
+      "truly_defective": 300
+    },
+    "M7_added_cycle_STEALTH": {
+      "n": 300,
+      "syndrome_caught": 0,
+      "certificate_caught": 300,
+      "truly_defective": 300
+    },
+    "M9_detour_STEALTH": {
+      "n": 300,
+      "syndrome_caught": 0,
+      "certificate_caught": 300,
+      "truly_defective": 300
+    },
+    "M4_stale_cache": {
+      "n": 299,
+      "syndrome_caught": 299,
+      "certificate_caught": 299,
+      "truly_defective": 299
+    },
+    "M8_boundary_pair_swap_STEALTH": {
+      "n": 2,
+      "syndrome_caught": 0,
+      "certificate_caught": 2,
+      "truly_defective": 2
+    }
+  },
+  "all_defective": {
+    "n": 2097,
+    "syndrome_caught": 1495,
+    "certificate_caught": 2097
+  },
+  "stealth_only": {
+    "n": 602,
+    "syndrome_caught": 0,
+    "certificate_caught": 602
+  },
+  "negative_control_M5": null,
+  "the_two_numbers": "on the STEALTH class -- corrections that explain the syndrome EXACTLY and are strictly heavier -- syndrome consistency is structurally blind, and the certificate is not. That is the whole claim, and the all-defective row is the diluted version of it: mixing in mutants that break the syndrome flatters the detector that only checks the syndrome.",
+  "what_this_cannot_model": "mutating decoder OUTPUT models wrong-answer defects, not crashes, hangs, memory errors, or faults that change which shots are hard. A seeded-fault campaign against PyMatching's C++ would cover those; this covers the class the certificate is about.",
+  "negative_control_rationale": "M5 is an equal-weight ALTERNATIVE OPTIMUM, not a defect. Minimum-weight corrections are not unique and flagging one is a false alarm. A gate that catches everything is as useless as one that catches nothing."
+}

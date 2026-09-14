@@ -1,0 +1,82 @@
+{
+  "schema": "oneq-decoder-mutation-gate/2",
+  "distance": 3,
+  "rounds": 3,
+  "shots": 300,
+  "p": 0.005,
+  "per_mutant": {
+    "M1_off_by_one_edge": {
+      "n": 170,
+      "syndrome_caught": 170,
+      "certificate_caught": 170,
+      "truly_defective": 170
+    },
+    "M3_dropped_edge": {
+      "n": 170,
+      "syndrome_caught": 170,
+      "certificate_caught": 170,
+      "truly_defective": 170
+    },
+    "M5_equal_weight_alternative": {
+      "n": 50,
+      "syndrome_caught": 0,
+      "certificate_caught": 0,
+      "truly_defective": 0
+    },
+    "M2_greedy_boundary": {
+      "n": 120,
+      "syndrome_caught": 120,
+      "certificate_caught": 120,
+      "truly_defective": 120
+    },
+    "M4_stale_cache": {
+      "n": 169,
+      "syndrome_caught": 168,
+      "certificate_caught": 168,
+      "truly_defective": 168
+    },
+    "M6_truncated_path": {
+      "n": 28,
+      "syndrome_caught": 28,
+      "certificate_caught": 28,
+      "truly_defective": 28
+    },
+    "M9_detour_STEALTH": {
+      "n": 120,
+      "syndrome_caught": 0,
+      "certificate_caught": 120,
+      "truly_defective": 120
+    },
+    "M8_boundary_pair_swap_STEALTH": {
+      "n": 1,
+      "syndrome_caught": 0,
+      "certificate_caught": 1,
+      "truly_defective": 1
+    },
+    "M7_added_cycle_STEALTH": {
+      "n": 1,
+      "syndrome_caught": 0,
+      "certificate_caught": 1,
+      "truly_defective": 1
+    }
+  },
+  "all_defective": {
+    "n": 778,
+    "syndrome_caught": 656,
+    "certificate_caught": 778
+  },
+  "stealth_only": {
+    "n": 122,
+    "syndrome_caught": 0,
+    "certificate_caught": 122
+  },
+  "negative_control_M5": {
+    "n": 50,
+    "syndrome_caught": 0,
+    "certificate_caught": 0,
+    "truly_defective": 0
+  },
+  "the_two_numbers": "on the STEALTH class -- corrections that explain the syndrome EXACTLY and are strictly heavier -- syndrome consistency is structurally blind, and the certificate is not. That is the whole claim, and the all-defective row is the diluted version of it: mixing in mutants that break the syndrome flatters the detector that only checks the syndrome.",
+  "what_this_cannot_model": "mutating decoder OUTPUT models wrong-answer defects, not crashes, hangs, memory errors, or faults that change which shots are hard. A seeded-fault campaign against PyMatching's C++ would cover those; this covers the class the certificate is about.",
+  "negative_control_rationale": "M5 is an equal-weight ALTERNATIVE OPTIMUM, not a defect. Minimum-weight corrections are not unique and flagging one is a false alarm. A gate that catches everything is as useless as one that catches nothing."
+}

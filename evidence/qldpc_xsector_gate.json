@@ -1,0 +1,12 @@
+{
+  "schema": "oneq-qldpc-xsector/1",
+  "sector": "H_X detecting Z errors -- symmetry MEASURED, not assumed",
+  "p": 0.02,
+  "seed": 4,
+  "shots": 200,
+  "nontrivial": 189,
+  "proven": 183,
+  "repaired": 6,
+  "certified_total": 189,
+  "certified_rate": 1.0
+}

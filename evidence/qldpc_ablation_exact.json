@@ -1,0 +1,44 @@
+{
+  "schema": "oneq-qldpc-ablation-exact/1",
+  "purpose": "exactify the two float-provisional circuit ablations so no dataset in either paper is float-provisional",
+  "runs": {
+    "surface_d3r3_p005": {
+      "shots": 200,
+      "nontrivial": 112,
+      "trivial_tier0": 88,
+      "tier1": 106,
+      "tier2": 1,
+      "tierBD": 5,
+      "open": 0,
+      "exact_certified": 112,
+      "ref_checked": 107,
+      "ref_agreed": 107,
+      "obs_match": 111,
+      "obs_checked": 112,
+      "detectors": 24,
+      "mechanisms": 221,
+      "weights_sha256": "b0e45652caf4fd004b4c71b0e1d9a738c681a601bdf0bbcaf112277fa4ab09e5",
+      "weight_rule": "c_i = floor(1000*log((1-p_i)/p_i) + 1/2)",
+      "seconds": 1.2
+    },
+    "bb_sequential_r3_p002": {
+      "shots": 150,
+      "nontrivial": 150,
+      "trivial_tier0": 0,
+      "tier1": 113,
+      "tier2": 25,
+      "tierBD": 12,
+      "open": 0,
+      "exact_certified": 150,
+      "ref_checked": 138,
+      "ref_agreed": 138,
+      "obs_match": 150,
+      "obs_checked": 150,
+      "detectors": 288,
+      "mechanisms": 2304,
+      "weights_sha256": "bec4549d0112f78700c3e8c6e58f8f4e7432560567e96ca5121cbcbef6a93a09",
+      "weight_rule": "c_i = floor(1000*log((1-p_i)/p_i) + 1/2)",
+      "seconds": 36.8
+    }
+  }
+}

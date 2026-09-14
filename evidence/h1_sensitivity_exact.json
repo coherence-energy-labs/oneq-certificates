@@ -1,0 +1,88 @@
+{
+  "schema": "oneq-h1-sensitivity-exact/1",
+  "gate": "H-1: sensitivity is exact",
+  "criterion": "exact agreement, 0 discrepancies, against BOTH references -- not a tolerance",
+  "circuit": {
+    "logical_qubits": 5,
+    "flag_qubit": 5,
+    "gates": [
+      [
+        "H",
+        "5"
+      ],
+      [
+        "CX",
+        "5",
+        "0"
+      ],
+      [
+        "CX",
+        "5",
+        "1"
+      ],
+      [
+        "CX",
+        "5",
+        "2"
+      ],
+      [
+        "H",
+        "0"
+      ],
+      [
+        "S",
+        "1"
+      ],
+      [
+        "CX",
+        "1",
+        "2"
+      ],
+      [
+        "CX",
+        "3",
+        "4"
+      ],
+      [
+        "S",
+        "4"
+      ],
+      [
+        "CX",
+        "5",
+        "2"
+      ],
+      [
+        "CX",
+        "5",
+        "1"
+      ],
+      [
+        "CX",
+        "5",
+        "0"
+      ],
+      [
+        "H",
+        "5"
+      ],
+      [
+        "M",
+        "5"
+      ]
+    ]
+  },
+  "faults_enumerated": 252,
+  "detected": 88,
+  "undetected_harmless": 2,
+  "undetected_dangerous": 162,
+  "w_undetected": 162,
+  "discrepancies": 0,
+  "first_discrepancies": [],
+  "references": {
+    "A": "stim.Tableau over compiled inter-measurement segments",
+    "B": "hand-written symplectic propagator over GF(2)^2n (H: swap x,z | S: z ^= x | CNOT: x_t ^= x_c, z_c ^= z_t)"
+  },
+  "why_per_fault": "agreement is required on EVERY fault, not on the total: two different classifications can sum to the same w_undetected and still disagree everywhere",
+  "passed": true
+}

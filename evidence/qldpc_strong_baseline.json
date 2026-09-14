@@ -1,0 +1,228 @@
+{
+  "schema": "oneq-qldpc-strong-baseline/1",
+  "question": "does the certified pipeline still beat BP-OSD when BP-OSD is WELL configured, or was the advantage an artifact of the papers' baseline?",
+  "protocol": "[[144,12,12]] Z-sector, 200 fixed nontrivial syndromes per noise level shared across all configurations, uniform weights",
+  "levels": {
+    "p=0.01": {
+      "pipeline_logical_errors": 0,
+      "pipeline_seconds": 1.4,
+      "configs": {
+        "baseline_30_osdcs5": {
+          "bp_osd_logical_errors": 1,
+          "tier1_rate": 99.5,
+          "paired_2x2": {
+            "both_ok": 199,
+            "bp_wrong_pipe_ok": 1,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 1
+        },
+        "strong_100_osdcs10": {
+          "bp_osd_logical_errors": 0,
+          "tier1_rate": 100.0,
+          "paired_2x2": {
+            "both_ok": 200,
+            "bp_wrong_pipe_ok": 0,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 0
+        },
+        "strongest_ps_100_osdcs10": {
+          "bp_osd_logical_errors": 0,
+          "tier1_rate": 100.0,
+          "paired_2x2": {
+            "both_ok": 200,
+            "bp_wrong_pipe_ok": 0,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 0
+        }
+      }
+    },
+    "p=0.02": {
+      "pipeline_logical_errors": 0,
+      "pipeline_seconds": 1.1,
+      "configs": {
+        "baseline_30_osdcs5": {
+          "bp_osd_logical_errors": 9,
+          "tier1_rate": 95.0,
+          "paired_2x2": {
+            "both_ok": 191,
+            "bp_wrong_pipe_ok": 9,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 0.00390625,
+          "pipeline_advantage": 9
+        },
+        "strong_100_osdcs10": {
+          "bp_osd_logical_errors": 0,
+          "tier1_rate": 100.0,
+          "paired_2x2": {
+            "both_ok": 200,
+            "bp_wrong_pipe_ok": 0,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 0
+        },
+        "strongest_ps_100_osdcs10": {
+          "bp_osd_logical_errors": 3,
+          "tier1_rate": 98.5,
+          "paired_2x2": {
+            "both_ok": 197,
+            "bp_wrong_pipe_ok": 3,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 0.25,
+          "pipeline_advantage": 3
+        }
+      }
+    },
+    "p=0.03": {
+      "pipeline_logical_errors": 0,
+      "pipeline_seconds": 1.2,
+      "configs": {
+        "baseline_30_osdcs5": {
+          "bp_osd_logical_errors": 31,
+          "tier1_rate": 82.5,
+          "paired_2x2": {
+            "both_ok": 169,
+            "bp_wrong_pipe_ok": 31,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 9.313225746154785e-10,
+          "pipeline_advantage": 31
+        },
+        "strong_100_osdcs10": {
+          "bp_osd_logical_errors": 1,
+          "tier1_rate": 99.5,
+          "paired_2x2": {
+            "both_ok": 199,
+            "bp_wrong_pipe_ok": 1,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 1
+        },
+        "strongest_ps_100_osdcs10": {
+          "bp_osd_logical_errors": 0,
+          "tier1_rate": 100.0,
+          "paired_2x2": {
+            "both_ok": 200,
+            "bp_wrong_pipe_ok": 0,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 0
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 0
+        }
+      }
+    },
+    "p=0.05": {
+      "pipeline_logical_errors": 9,
+      "pipeline_seconds": 2.9,
+      "configs": {
+        "baseline_30_osdcs5": {
+          "bp_osd_logical_errors": 114,
+          "tier1_rate": 42.0,
+          "paired_2x2": {
+            "both_ok": 86,
+            "bp_wrong_pipe_ok": 105,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 9
+          },
+          "mcnemar_two_sided_p": 4.930380657631324e-32,
+          "pipeline_advantage": 105
+        },
+        "strong_100_osdcs10": {
+          "bp_osd_logical_errors": 109,
+          "tier1_rate": 43.0,
+          "paired_2x2": {
+            "both_ok": 90,
+            "bp_wrong_pipe_ok": 101,
+            "bp_ok_pipe_wrong": 1,
+            "both_wrong": 8
+          },
+          "mcnemar_two_sided_p": 4.062633661888211e-29,
+          "pipeline_advantage": 100
+        },
+        "strongest_ps_100_osdcs10": {
+          "bp_osd_logical_errors": 9,
+          "tier1_rate": 93.5,
+          "paired_2x2": {
+            "both_ok": 189,
+            "bp_wrong_pipe_ok": 2,
+            "bp_ok_pipe_wrong": 2,
+            "both_wrong": 7
+          },
+          "mcnemar_two_sided_p": 1.0,
+          "pipeline_advantage": 0
+        }
+      }
+    },
+    "p=0.07": {
+      "pipeline_logical_errors": 34,
+      "pipeline_seconds": 15.9,
+      "configs": {
+        "baseline_30_osdcs5": {
+          "bp_osd_logical_errors": 172,
+          "tier1_rate": 12.0,
+          "paired_2x2": {
+            "both_ok": 28,
+            "bp_wrong_pipe_ok": 138,
+            "bp_ok_pipe_wrong": 0,
+            "both_wrong": 34
+          },
+          "mcnemar_two_sided_p": 5.739718509874451e-42,
+          "pipeline_advantage": 138
+        },
+        "strong_100_osdcs10": {
+          "bp_osd_logical_errors": 41,
+          "tier1_rate": 72.0,
+          "paired_2x2": {
+            "both_ok": 152,
+            "bp_wrong_pipe_ok": 14,
+            "bp_ok_pipe_wrong": 7,
+            "both_wrong": 27
+          },
+          "mcnemar_two_sided_p": 0.18924713134765625,
+          "pipeline_advantage": 7
+        },
+        "strongest_ps_100_osdcs10": {
+          "bp_osd_logical_errors": 32,
+          "tier1_rate": 74.0,
+          "paired_2x2": {
+            "both_ok": 160,
+            "bp_wrong_pipe_ok": 6,
+            "bp_ok_pipe_wrong": 8,
+            "both_wrong": 26
+          },
+          "mcnemar_two_sided_p": 0.79052734375,
+          "pipeline_advantage": -2
+        }
+      }
+    }
+  },
+  "verdict": {
+    "advantage_vs_strongest_by_noise": {
+      "p=0.01": 0,
+      "p=0.02": 3,
+      "p=0.03": 0,
+      "p=0.05": 0,
+      "p=0.07": -2
+    },
+    "advantage_survives_anywhere": true,
+    "crossover": "the noise level(s) where the strongest BP-OSD still commits logical errors the certified pipeline does not"
+  }
+}

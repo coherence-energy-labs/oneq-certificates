@@ -1,0 +1,167 @@
+\documentclass[aps,pra,twocolumn,superscriptaddress,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\input{../owner.tex}
+\input{generated/numbers.tex}
+
+\newtheorem{lemma}{Lemma}
+\newcommand{\GF}{\mathrm{GF}(2)}
+
+\begin{document}
+
+\title{Exact, independently checkable optimality receipts for BP-OSD on the [[144,12,12]] bivariate-bicycle code}
+
+\OwnerAuthor
+\OwnerAffiliation
+
+\date{\today}
+
+\begin{abstract}
+General quantum decoding is NP-hard, so no polynomial-time decoder is expected to return an optimum on every instance; that does not rule out checkable optimality witnesses on the instances that arise in practice. We attach to each syndrome decoded by BP-OSD a dual solution of the Feldman--Wainwright--Karger linear-programming relaxation adapted to syndromes, verified in exact rational arithmetic from the check matrix, the weights and the syndrome alone, with no solver and no trust in the producer. When the exact lower bound excludes every smaller objective value on the weight lattice, the correction is minimum-weight. When the relaxation is not tight, a tree of such duals over a partition of the feasible set closes the proof. On the [[144,12,12]] bivariate-bicycle code, in a preregistered campaign whose seeds were derived from a frozen commit, all \HoNontrivial\ nontrivial simulated syndromes across \HoRungs\ datasets, from code-capacity noise to circuit-level noise under the code's published syndrome-extraction schedule, received an exact receipt: \HoFlat\ from a single dual (\HoFlatPct\%) and \HoTrees\ from small trees (at most \TreeNodesMax\ nodes). Every flat certificate was re-verified by a separately written reference checker and every tree by a second tree checker. Where the relaxation's primal is integral, a refused BP-OSD answer is replaced by a certified better correction. Against the stated BP-OSD configuration at stress noise, this removes \HoStressBpWrongPipeOk\ of \HoStressBpWrongTotal\ logical-frame errors with none introduced; against a strongly configured BP-OSD the error counts converge, which bounds every advantage claim here. What the receipts provide without access to the true error is per-shot knowledge of whether the decoder found the minimum-weight correction. All results are simulations.
+\end{abstract}
+
+\maketitle
+
+% ======================================================================
+\section{Introduction}
+
+Decoding a stabilizer code is NP-hard in general~\cite{berlekamp1978,hsieh2011np}, and belief propagation with ordered-statistics post-processing (BP-OSD)~\cite{panteleev2021degenerate,roffe2020decoding} is a standard heuristic for quantum low-density parity-check codes, including the bivariate-bicycle codes proposed as near-term memories~\cite{bravyi2024high}. A BP-OSD implementation returns a correction without a witness of its quality, and the only property routinely checked, that the correction explains the syndrome, is satisfied equally by an optimal and a suboptimal answer.
+
+Hardness does not preclude witnesses on particular instances. A companion manuscript, \textit{Certifying quantum error-correction decoders}, attached linear-programming duals to matching decoders and audited them at scale; those receipts proved optimality to within a small additive slack under floating-point weights. This paper asks whether the same discipline survives the move to a code without a matching structure, and demands a stronger receipt: an exact rational proof under a published integer objective. We make three contributions. First, a receipt system for BP-OSD built from the Feldman--Wainwright--Karger (FWK) relaxation~\cite{feldman2005lp}, checked in exact arithmetic by a checker that imports no producer code, with a certified repair when BP-OSD is refused and branch-dual trees when the relaxation is not tight. Second, a preregistered, frozen measurement of receipt coverage on the [[144,12,12]] code, including circuit-level noise under the code's published syndrome-extraction schedule. Third, a strong-baseline test that fixes the scope of any claimed decoding advantage. Every number is a simulation; Sec.~\ref{sec:scope} states what that does and does not limit.
+
+% ======================================================================
+\section{Problem and relaxation}
+\label{sec:problem}
+
+Given a sparse check matrix $H$ over $\GF$ with rows (checks) $j$ of support $N(j)$, non-negative rational weights $w$, and a syndrome $s$, the decoding problem is to find $e\in\{0,1\}^n$ minimising $w^\top e$ subject to $He=s \pmod 2$. With $w_i=1$ this is minimum Hamming weight. For heterogeneous and circuit-level noise we publish an integer weight vector, generated as $c_i=\lfloor 1000\log((1-p_i)/p_i)+\tfrac12\rfloor$, and that vector, not the logarithms it approximates, is the normative objective. Changing the scale factor from $10^3$ to $10^5$ on identical syndromes certified \ScaleCertified\ shots with \ScaleSupportChanges\ changes in any selected correction. Minimum weight under independent mechanism weights is not maximum likelihood over degenerate cosets, and every claim below is conformance to this stated specification.
+
+\paragraph*{Relaxation.} Each check $j$ is relaxed to its local codeword polytope~\cite{feldman2005lp}, adapted to the syndrome bit: for every $F\subseteq N(j)$ with $|F|\not\equiv s_j \pmod 2$,
+\begin{equation}
+\sum_{i\in F}(1-x_i)+\sum_{i\in N(j)\setminus F}x_i\;\ge\;1 .
+\label{eq:facet}
+\end{equation}
+Minimising $w^\top x$ over these constraints and $[0,1]^n$ lower-bounds the integer optimum, so any feasible dual solution certifies a lower bound.
+
+\begin{lemma}[safe dual]
+Write the validated facets as $a_r^\top x\ge b_r$. For any $y\ge0$, let $z_i=\max\bigl(0,(A^\top y)_i-w_i\bigr)$. Then $L=\sum_r b_r y_r-\sum_i z_i$ is a lower bound on $w^\top e$ for every feasible $e$.
+\end{lemma}
+\begin{proof}
+For $x\in[0,1]^n$ satisfying the facets, $w^\top x\ge (A^\top y)^\top x-z^\top x\ge y^\top Ax-\sum_i z_i\ge b^\top y-\sum_i z_i$.
+\end{proof}
+The lemma holds for every $y\ge 0$, so the checker needs no feasibility tolerance: it recomputes $z$ and $L$ exactly from whatever multipliers the certificate lists. If all weights lie in $(1/D)\mathbb{Z}$, every feasible objective lies on that lattice, and a lower bound $L>U-1/D$ proves a feasible candidate of objective $U$ optimal; $L>U$ is an instrument failure and is reported as one.
+
+% ======================================================================
+\section{The receipt ladder}
+\label{sec:ladder}
+
+Every shot receives a receipt naming its tier.
+\begin{description}
+\item[Tier 0.] For $s=0$ the empty correction is optimal at cost zero. Trivial shots are excluded from the nontrivial rates below.
+\item[Tier 1, certified optimal.] The checker verifies $He=s$, reconstructs every facet and cut, computes $L$ exactly, and verifies $L>U-1/D$ for BP-OSD's answer.
+\item[Tier 2, certified repair.] When BP-OSD's answer is refused and the relaxation's primal is integral, that primal is a minimum-weight correction certified by the same dual under the same rule~\cite{feldman2005lp}; the checker re-verifies $He=s$ from scratch. In the instance that exposed this tier, BP-OSD returned weight \DiscBpWeight\ against a tight bound of \DiscBound; the difference was a weight-\DiscFaultWeight\ logical operator, and the certified repair lay in the same coset as the sampled fault.
+\item[Tier BD, branch duals.] When the flat relaxation is fractional, branching on a coordinate partitions the binary feasible set into $x_k=0$ and $x_k=1$, each again a syndrome instance. The receipt is a tree whose leaves carry either a safe dual proving the bound on the reduced instance or a $\GF$ row combination showing that no completion exists. The checker walks the tree in exact arithmetic without a solver. The producer may consult a mixed-integer solver for the candidate and for branching choices; nothing it reports is trusted.
+\end{description}
+Redundant parity checks, sums of rows over $\GF$, are generated adaptively in the manner of Zhang and Siegel~\cite{zhangsiegel2012adaptive}. Each cut is named by the rows it sums, and the checker re-derives its support and parity from $(H,s)$.
+
+Two soundness statements are kept separate. The mathematical one: under the declared parsing and rational-domain assumptions, checker acceptance implies objective optimality, by the lemma and the partition argument. The implementation one: the checker is separately reimplemented, mutation-tested, and exercised on the released corpus. The second is strong evidence, not formal verification.
+
+% ======================================================================
+\section{The checker}
+\label{sec:checker}
+
+The exact checker admits only rationals, rejecting floating-point values by type, and imports nothing beyond the Python standard library's \texttt{fractions}, \texttt{math} and \texttt{dataclasses}; producers may use anything. Verification costs $O(\mathrm{nnz}(H_R)+\mathrm{nnz}(C)+n)$ arithmetic operations for the reconstructed redundant rows $H_R$ and listed facet--multiplier pairs $C$, with bit complexity governed by the size of the rationals. Held-out certificates listed at most \HoMaxFacets\ facets, with numerators of at most \HoMaxNumBits\ bits and denominators of at most \HoMaxDenBits\ bits. Median exact checking time per shot ranged from \TimeExactCheckMedLo\ to \TimeExactCheckMedHi\ ms across datasets, against median producer times of \TimeLpMedLo\ to \TimeLpMedHi\ ms.
+
+Independence is stated at three levels. A reference checker for flat certificates was written from the mathematical specification without importing or inspecting the producer or the production checker, and is pinned by hash; a second tree checker was written the same way from the tree schema. Both ran on the same workstation, so a separate execution environment and independent third-party reproduction have not yet been achieved. The checker's source is exercised by mutation testing, in which named tests must fail for each injected defect: a sign inversion, a deleted feasibility pass, a syndrome taken on faith on each path that recomputes it, a forgotten parity on redundant checks, a loosened facet-parity rule, a removed slack derivation, a duplicate facet, and a lattice rule loosened by one level. Certificate-level forgeries (a certificate replayed from another syndrome or matrix, a heavier feasible candidate, a floating-point multiplier, an inflated dual, an incomplete partition) are refused, and the second tree checker refuses all \TreeMutants\ of its forged-tree classes.
+
+% ======================================================================
+\section{Adaptive facet separation at circuit-level degrees}
+\label{sec:separation}
+
+Adaptive linear-programming decoding, which starts with no facets and repeatedly adds the most violated facet per check, is due to Taghavi and Siegel~\cite{taghavi2008adaptive}, including the $O(\deg)$ separation rule and its exactness. We restate the rule for syndromes. Writing $\mathrm{LHS}(F)$ for the left side of~\eqref{eq:facet} and $F_0=\{i:x_i>\tfrac12\}$,
+\[
+\mathrm{LHS}(F)=\mathrm{LHS}(F_0)+\sum_{i\in F\triangle F_0}\bigl|2x_i-1\bigr| ,
+\]
+so the minimiser over the wrong-parity family is $F_0$ itself when $|F_0|$ already has the wrong parity, and otherwise $F_0$ with the coordinate nearest $\tfrac12$ toggled. The shipped rule matches brute force over all wrong-parity subsets on \SepInstances\ random instances with \SepSuboptimal\ suboptimal separations (largest discrepancy \SepWorstGap), and agrees with a separately written reference implementation on \SepRefInstances\ further instances, including exact ties at $\tfrac12$. At convergence no facet of the full family is violated, so the lazy relaxation equals full enumeration; on \EnsLazyCodes\ random codes where enumeration was feasible the two agreed to within \EnsLazyWorst.
+
+This matters at circuit level, where detector degrees reach \SurfaceDegreeMax\ and a full facet family has $2^{46}$ rows. Degree-capped enumeration remains sound, since a subset of facets only enlarges the feasible region, and matched full tightness on \EnsCappedTight\ random codes; adaptive separation needs no cap. Deployed first, with enumeration only on refusal, it gave identical coverage on a circuit-level surface-code benchmark at \TieredMs\ against \EnumMs\ ms per shot, a factor of \TieredSpeedup.
+
+% ======================================================================
+\section{Results}
+\label{sec:results}
+
+All shots were sampled with Stim~\cite{gidney2021stim} on a single workstation. BP-OSD used min-sum belief propagation with a parallel schedule, 30 iterations (40 at circuit level), and OSD-CS of order 5~\cite{roffe2020decoding}; Sec.~\ref{sec:strong} tests this choice.
+
+\subsection{Preregistered held-out campaign}
+\label{sec:heldout}
+
+The protocol, datasets, endpoints and seed rule were committed and tagged before any held-out shot was sampled. Each dataset's seed is the first 16 hexadecimal digits of $\mathrm{SHA256}(\texttt{"oneq-heldout-2026||"}+\text{dataset}+\texttt{"||"}+\text{freeze commit})$, masked to 63 bits and reduced modulo $2^{31}-1$ for the circuit dataset; all seeds re-derive from the tagged commit by this rule. Code and experiment directories are byte-identical between the freeze and results commits, and no shots were excluded or re-run. Sampling continued until each dataset's predeclared number of nontrivial syndromes was reached. Table~\ref{tab:heldout} gives the result.
+
+\begin{table*}[tbp]
+\caption{Preregistered held-out campaign on the [[144,12,12]] code. $N$ counts nontrivial syndromes; tier 1 is BP-OSD's answer certified, tier 2 a certified repair, BD a branch-dual tree. The last column is the one-sided exact 95\% Clopper--Pearson lower bound on the certified fraction, floored. Phenomenological datasets use four rounds of noisy syndrome measurement.}
+\label{tab:heldout}
+\input{generated/tab_heldout.tex}
+\end{table*}
+
+All \HoNontrivial\ nontrivial syndromes received exact receipts: \HoFlat\ flat, of which all \HoFlatRefAgreed\ were accepted by the reference checker, and \HoTrees\ trees, all accepted by both tree checkers. No receipt in these totals rests on a solver's reported status. Across held-out and development datasets, the \TreeCount\ stored trees had a median of \TreeNodesMedian\ nodes, a 95th percentile of \TreeNodesPNinetyFive, at most \TreeNodesMax\ nodes and depth \TreeDepthMax, and at most \TreeBytesMax\ serialised bytes. Tree size is exponential in the worst case, and this is not a polynomial-time exact decoder: the informative quantity is that \HoFlatPct\% of held-out syndromes needed no tree.
+
+On the stress dataset the predeclared paired comparison of logical-frame outcomes, judged retrospectively against the sampled fault, was: both correct \HoStressBothOk; BP-OSD wrong and receipt pipeline correct \HoStressBpWrongPipeOk; BP-OSD correct and pipeline wrong \HoStressBpOkPipeWrong; both wrong \HoStressBothWrong\ (exact two-sided McNemar $p=\HoStressMcNemar$, a descriptive summary of this dataset). A separate development run showed the same one-sided structure, \PairedRunBpWrongPipeOk\ against \PairedRunBpOkPipeWrong.
+
+\subsection{Circuit level under the published schedule}
+
+The circuit dataset implements the code's published depth-8 syndrome-extraction cycle~\cite{bravyi2024high} in Stim, memory-Z over three rounds at uniform circuit-level noise $p=0.002$, with 288 detectors and 2{,}304 mechanisms under published integer weights; the noise family is ours and does not fault idle locations as the original error model does. The transcription was validated at the fault level, not only noiselessly: an operation generator written independently from a hashed layer manifest reproduces the circuit exactly (\XvalOps\ operations, \XvalRecords\ measurement records), and every single $X$ and $Z$ fault at every location, \XvalFaults\ in total, was propagated by a separately written symplectic engine and compared with Stim's detector and observable signature, with \XvalMismatches\ mismatches. The held-out run certified all \HoRefschedNontrivial\ nontrivial shots: \HoRefschedTierOne\ BP-OSD answers directly, \HoRefschedTierTwo\ certified repairs and \HoRefschedTrees\ trees (flat-only \HoRefschedFlatPct\%). The logical observable agreed with the sampled truth on \HoRefschedObsAgree\ of \HoRefschedNontrivial.
+
+Two further circuit datasets remain float-provisional and are reported only as ablations: a distance-3 surface-code control (\SurfaceNontrivial\ nontrivial shots, all numerically tight) and a custom sequential schedule for the same code (\SeqCertified\ of \SeqNontrivial, \SeqPct\%), whose hook-error behaviour we do not claim matches the published schedule.
+
+\paragraph*{Where the method stops.} The same tree machinery bounds the weight $d_{\mathrm{DEM}}$ of the lightest undetectable fault that flips the declared observable of the circuit dataset. A weight-\DistUpper\ fault found by Stim's search fires no detector and flips the observable, so $d_{\mathrm{DEM}}\le\DistUpper$ and the circuit distance is at most \DistUpper. A lower bound was not achieved: the flat relaxation of the distance problem gives only \DistFlatBound, and tree closure at the tight threshold did not finish within \DistNodeBudget\ nodes. Certifying distance lower bounds is where branch-and-bound is expected to be expensive, and nothing else in this paper depends on a distance claim.
+
+\subsection{Development data and mechanism validation}
+
+Before the held-out campaign, development datasets over the same code covered the same noise families; \DevExactFlat\ flat certificates there were all re-verified by the reference checker, and every one of the \DevResidues\ shots the flat relaxation left open was closed by a tree. The held-out campaign supersedes those rates. Each mechanism was first validated against exact ground truth on random codes: on \EnsLadderCodes\ codes the base relaxation was tight on \EnsBaseTight, redundant-parity cuts raised that to \EnsCutsTight, and no bound ever exceeded a feasible answer's weight (\EnsImpossible\ cases). On stress-noise samples the fractional residue was \RpcResidueSix\ shots of \RpcShots\ after 6 rounds of cut generation and \RpcResidueTwentyFive\ after 25, a measured plateau whose structure we leave open.
+
+\subsection{What the advantage is: a strong baseline}
+\label{sec:strong}
+
+The comparisons above use one BP-OSD configuration. We therefore reran identical syndromes, 200 nontrivial per noise level, against stronger configurations, the strongest being product-sum belief propagation with 100 iterations and OSD-CS of order 10 (Table~\ref{tab:strong}).
+
+\begin{table}[tbp]
+\caption{Logical-frame errors on 200 shared nontrivial syndromes per noise level, and BP-OSD's tier-1 rate, for the stated and the strongest BP-OSD configuration.}
+\label{tab:strong}
+\small\setlength{\tabcolsep}{3pt}
+\input{generated/tab_strong.tex}
+\end{table}
+
+Three facts follow. The receipt pipeline's error count does not depend on the BP-OSD configuration, because its answer is the certified minimum-weight correction. A well-configured BP-OSD converges to that floor: at $p=0.05$ the strongest configuration commits \StrongFiveStrongest\ errors against the pipeline's \StrongFivePipeline, with discordant cells \StrongFiveDiscordant. At $p=0.07$ the strongest configuration commits \StrongSevenStrongest\ against \StrongSevenPipeline, because minimum weight is not maximum likelihood under degeneracy. The large advantages at stress noise are therefore advantages over the stated baseline, not over BP-OSD as such. What survives is an instrument: BP-OSD's tier-1 rate rises from \StrongFiveTierOneStated\% to \StrongFiveTierOneStrongest\% between the two configurations at $p=0.05$, a measurement of decoder quality made without access to the true error.
+
+% ======================================================================
+\section{Scope and limitations}
+\label{sec:scope}
+
+\paragraph*{Every shot is simulated.} No device has run the [[144,12,12]] code, so every rate is a property of the code, the noise model and the decoder configuration. Soundness does not depend on where a syndrome came from: the checker validates $(H,w,s)$ alone, and a syndrome from a device is the same object. What hardware would change is the certification rate.
+
+\paragraph*{Conformance, not maximum likelihood.} A receipt proves minimum weight under the declared objective. It does not prove that the sampled fault was recovered, that the optimum is unique, or that all optima share a logical frame. Frame determinacy can itself be proven with the tree machinery, one tree per logical bit on the system augmented by that bit: on \FrameValInstances\ random instances this gave \FrameValProofs\ proofs, all correct, \FrameValRefusals\ refusals and \FrameValFalse\ false proofs, and \FrameAllCertified\ of \FrameShots\ demonstration shots of the code were proven determinate on all 12 logical bits in \FrameSecLo--\FrameSecHi\ s each. The tables above do not carry frame receipts.
+
+\paragraph*{Other limits.} One decoder implementation; one qLDPC code plus a surface-code control; the stress comparison is not compute-matched; shot counts are limited by one workstation. Regenerating the \HoFlat\ held-out flat certificates from the shipped records gave \HoFlatByteIdentical\ byte-identical to the run of record and \HoFlatDifferentValid\ that differ while remaining exact and accepted by both checkers (\HoFlatNoHash\ circuit records carry no hash to compare); why those \HoFlatDifferentValid\ choose a different optimal dual is not established. Solver nondeterminism, process history and solver threading were each tested and ruled out. For that reason every certificate is shipped rather than left to be regenerated.
+
+% ======================================================================
+\section{Related work}
+\label{sec:related}
+
+Certifying algorithms~\cite{mcconnell2011certifying} and program checking~\cite{blumkannan1995} are classical. Linear-programming decoding and the property that an integral optimum certifies maximum likelihood are due to Feldman, Wainwright and Karger~\cite{feldman2005lp}; adaptive separation to Taghavi and Siegel~\cite{taghavi2008adaptive}; adaptive cut generation to Zhang and Siegel~\cite{zhangsiegel2012adaptive}. Linear-programming decoding has been extended to quantum stabilizer codes~\cite{li2018lp}; local-optimality certificates exist for Tanner codes~\cite{halabi2011local}; integer programming has been used to decode quantum codes, with optimality living inside the solver~\cite{landahl2011fault}; and linear programming has been combined with message passing and with OSD for quantum LDPC codes~\cite{javed2023low,gu2025power}. A primal--dual certifying direction for quantum decoding with certifiable proximity bounds has appeared~\cite{wu2025minimum}. Independently checkable branch-and-bound certificates are established in exact integer programming~\cite{cheung2017verifying,eifler2023computational,steffy2013valid}, so the branch-dual receipt is not new at that level of generality; what is specific here is its syndrome-decoding form, reconstructed from $(H,s)$ at every node and deployed behind a third-party heuristic decoder. Recent experiments decode with neural-network decoders fine-tuned on device data~\cite{google2025below}, and ensembling yields per-shot confidence~\cite{shutty2024efficient}; neither is an optimality proof a third party can check.
+
+Three concurrent preprints are close. Krishnamoorthy \textit{et al.}~\cite{krishnamoorthy2026certified} certify decoding decisions on the same bivariate-bicycle codes, but their target is the degenerate-coset maximum-likelihood class, established statistically or through a constant-factor partition-function estimate; it has no linear program or dual, is not re-checkable from $(H,w,s)$ alone, and does not repair BP-OSD. Shen and Zhong~\cite{shen2026capability} test decoder libraries for conformance with a standalone verifier, aimed at libraries rather than per-shot optimality. Leverrier and Urbanke~\cite{leverrier2026approximating} give a decoder with circuit-level results on the same code that carries no certificate once pruned. Under a logged search protocol we did not find a prior report of exact, independently re-checkable, minimum-weight receipt coverage for BP-OSD on this code.
+
+% ======================================================================
+\section{Reproducibility}
+
+Seeds, the frozen protocol, per-shot records bound by hash to weight vectors and checker hashes, every flat certificate and every tree are released with the code, and one command re-checks all stored receipts with both checkers without a producer. Every number in this paper is typeset from a macro generated from a JSON artifact.
+
+\paragraph*{Use of AI tools.} AI tools assisted with software development and manuscript preparation; the author is responsible for all content.
+
+\bibliography{refs}
+
+\end{document}

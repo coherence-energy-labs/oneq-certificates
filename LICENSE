@@ -1,0 +1,25 @@
+Apache License 2.0
+
+Copyright 2026 Coherence Energy Labs
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+---
+Why Apache-2.0 and not "all rights reserved":
+
+This project's entire thesis is that a stranger can check the claims. Default
+copyright makes that legally impossible -- a reviewer may read the code but not
+run, fork, or redistribute the verifier. A verification thesis shipped without
+a licence is a verification thesis nobody is permitted to act on.
+
+IBM's qcode-discovery catalogue rows reproduced in the release bundle remain
+under their own upstream licence; nothing here relicenses them.

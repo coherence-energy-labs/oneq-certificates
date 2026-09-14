@@ -1,0 +1,50 @@
+{
+  "schema": "oneq-growth-vs-lp/1",
+  "p": 0.005,
+  "rows": [
+    {
+      "distance": 3,
+      "shots": 120,
+      "nontrivial": 70,
+      "certified_growth": 64,
+      "certified_lp": 70,
+      "growth_duals_infeasible": 0,
+      "mean_gap_growth": 0.11955901448207441,
+      "mean_gap_lp": 5.075305255429287e-17,
+      "max_gap_growth": 2.941414106120864,
+      "sec_per_shot_growth": 7.470142882084473e-05,
+      "sec_per_shot_lp": 0.004737015714636072,
+      "speedup": 63.41265206582303
+    },
+    {
+      "distance": 5,
+      "shots": 120,
+      "nontrivial": 118,
+      "certified_growth": 67,
+      "certified_lp": 115,
+      "growth_duals_infeasible": 0,
+      "mean_gap_growth": 1.0285223487279789,
+      "mean_gap_lp": 0.02111354331033423,
+      "max_gap_growth": 8.968540680244153,
+      "sec_per_shot_growth": 0.0006438627124071452,
+      "sec_per_shot_lp": 0.014883435592479547,
+      "speedup": 23.11585265876996
+    },
+    {
+      "distance": 7,
+      "shots": 120,
+      "nontrivial": 120,
+      "certified_growth": 31,
+      "certified_lp": 113,
+      "growth_duals_infeasible": 0,
+      "mean_gap_growth": 3.161206438657552,
+      "mean_gap_lp": 0.05249522020054052,
+      "max_gap_growth": 15.369110224387242,
+      "sec_per_shot_growth": 0.00618113249996289,
+      "sec_per_shot_lp": 0.10972148083322585,
+      "speedup": 17.751032004876873
+    }
+  ],
+  "why": "both producers are checked by the SAME independent checker, so soundness is not at stake; the questions are tightness (does growth certify as many shots) and speed (10^6 shots is unreachable at one LP per shot)",
+  "infeasible_means": "a growth dual refused for infeasibility is a PRODUCER defect that the checker caught -- it cannot become a false certificate, only a lost one"
+}

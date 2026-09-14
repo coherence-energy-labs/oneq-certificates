@@ -1,0 +1,96 @@
+{
+  "schema": "oneq-claims-registry/1",
+  "claims": [
+    {
+      "claim_id": "lazy_speed_ratio",
+      "value": 10.651189808670162,
+      "display": "10.7\u00d7",
+      "source": "evidence/qldpc_circuit_gate*.json",
+      "derivation": "enum cert_ms / lazy cert_ms"
+    },
+    {
+      "claim_id": "stress_canonical_rate_ratio",
+      "value": 20.11111111111111,
+      "display": "20.1",
+      "source": "evidence/per_shot/stress_p05.jsonl",
+      "derivation": "bposd_wrong / pipeline_wrong"
+    },
+    {
+      "claim_id": "stress_canonical_discordant",
+      "value": 172,
+      "display": "172",
+      "source": "evidence/per_shot/stress_p05.jsonl",
+      "derivation": "bp_wrong & pipe_correct count"
+    },
+    {
+      "claim_id": "stress_effect_size_points",
+      "value": 57.3,
+      "display": "57.3 percentage points",
+      "source": "evidence/per_shot/stress_p05.jsonl",
+      "derivation": "(bp_wrong - pipe_wrong)/N * 100"
+    },
+    {
+      "claim_id": "mcnemar_canonical",
+      "value": 3.3409558876152446e-52,
+      "display": "3.3\u00d710\u207b\u2075\u00b2",
+      "source": "evidence/per_shot/stress_p05.jsonl",
+      "derivation": "two-sided exact: 2*(1/2)^discordant"
+    },
+    {
+      "claim_id": "max_facets_per_certificate",
+      "value": 79,
+      "display": "79 facets",
+      "source": "evidence/qldpc_exact_all.json",
+      "derivation": "max over rungs"
+    },
+    {
+      "claim_id": "max_numerator_bits",
+      "value": 18,
+      "display": "18-bit numerators",
+      "source": "evidence/qldpc_exact_all.json",
+      "derivation": "max over rungs"
+    },
+    {
+      "claim_id": "heldout_max_facets_per_certificate",
+      "value": 91,
+      "display": "91 facets",
+      "source": "evidence/qldpc_heldout.json",
+      "derivation": "max over held-out rungs"
+    },
+    {
+      "claim_id": "heldout_max_numerator_bits",
+      "value": 19,
+      "display": "19-bit numerators",
+      "source": "evidence/qldpc_heldout.json",
+      "derivation": "max over held-out rungs"
+    },
+    {
+      "claim_id": "bnb_closed",
+      "value": 23,
+      "display": "23/23",
+      "source": "evidence/qldpc_bnb_residue.json",
+      "derivation": "residual shots closed by branch-dual trees"
+    },
+    {
+      "claim_id": "bnb_trees_noncircuit",
+      "value": 19,
+      "display": "19 certified branch-and-bound trees",
+      "source": "evidence/qldpc_bnb_residue.json",
+      "derivation": "non-circuit flat-LP residual shots, all closed (the paper counts the refsched circuit's 4 separately)"
+    },
+    {
+      "claim_id": "bnb_validation",
+      "value": 162,
+      "display": "162/162 flat-LP-loose random instances",
+      "source": "evidence/qldpc_bnb_residue.json:validation",
+      "derivation": "randomized brute-force validation of the mechanism"
+    },
+    {
+      "claim_id": "mcnemar_paired",
+      "value": 1.6704779438076223e-52,
+      "display": "1.7\u00d710\u207b\u2075\u00b2",
+      "source": "evidence/qldpc_paired_stress.json",
+      "derivation": "two-sided exact: 2*(1/2)^discordant"
+    }
+  ]
+}

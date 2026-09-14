@@ -1,0 +1,13 @@
+{
+  "schema": "oneq-dem-mechanism-audit/1",
+  "circuit": "reference schedule r=3, p=0.002",
+  "physical_signatures": 2304,
+  "dem_signatures": 2304,
+  "coverage_missing_from_dem": 0,
+  "invented_by_dem": 0,
+  "common": 2304,
+  "probability_max_rel_dev": 0.0056,
+  "probability_median_rel_dev": 0.0,
+  "enumeration_seconds": 9.4,
+  "note": "first-order accounting: the DEM merges identical signatures by odd-parity combination, so deviations of order p are expected and reported rather than hidden; what must be ZERO is missing coverage and invented mechanisms"
+}

@@ -1,0 +1,389 @@
+{
+  "schema": "oneq-qldpc-exact-all/1",
+  "reference_checker_sha256": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "rungs": {
+    "uniform_p01": {
+      "nontrivial": 300,
+      "trivial_tier0": 97,
+      "sampled": 397,
+      "tier1": 299,
+      "tier2": 1,
+      "exact_certified": 300,
+      "float_only_disagreements": 0,
+      "ref_checked": 300,
+      "ref_agreed": 300,
+      "tier3A": 0,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1,
+        "rounding": "uniform-unit",
+        "definition": "w_i = 1 (Hamming weight)",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.026,
+          "p95_ms": 0.035,
+          "max_ms": 0.514
+        },
+        "lp_ns": {
+          "median_ms": 8.513,
+          "p95_ms": 10.418,
+          "max_ms": 207.568
+        },
+        "exactify_ns": {
+          "median_ms": 0.018,
+          "p95_ms": 0.024,
+          "max_ms": 0.055
+        },
+        "exact_check_ns": {
+          "median_ms": 0.174,
+          "p95_ms": 0.227,
+          "max_ms": 0.35
+        },
+        "ref_check_ns": {
+          "median_ms": 2.902,
+          "p95_ms": 3.417,
+          "max_ms": 4.055
+        },
+        "milp_ns": {}
+      },
+      "certificate_sizes": {
+        "max_num_bits": 3,
+        "max_den_bits": 3,
+        "max_facets": 16
+      }
+    },
+    "uniform_p02": {
+      "nontrivial": 470,
+      "trivial_tier0": 32,
+      "sampled": 502,
+      "tier1": 449,
+      "tier2": 20,
+      "exact_certified": 469,
+      "float_only_disagreements": 0,
+      "ref_checked": 469,
+      "ref_agreed": 469,
+      "tier3A": 1,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1,
+        "rounding": "uniform-unit",
+        "definition": "w_i = 1 (Hamming weight)",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.029,
+          "p95_ms": 0.407,
+          "max_ms": 0.701
+        },
+        "lp_ns": {
+          "median_ms": 8.926,
+          "p95_ms": 10.828,
+          "max_ms": 15.942
+        },
+        "exactify_ns": {
+          "median_ms": 0.02,
+          "p95_ms": 0.029,
+          "max_ms": 0.048
+        },
+        "exact_check_ns": {
+          "median_ms": 0.207,
+          "p95_ms": 0.276,
+          "max_ms": 0.404
+        },
+        "ref_check_ns": {
+          "median_ms": 3.079,
+          "p95_ms": 3.605,
+          "max_ms": 7.268
+        },
+        "milp_ns": {
+          "median_ms": 40.087,
+          "p95_ms": 40.087,
+          "max_ms": 40.087
+        }
+      },
+      "certificate_sizes": {
+        "max_num_bits": 3,
+        "max_den_bits": 3,
+        "max_facets": 16
+      }
+    },
+    "hetero_p02": {
+      "nontrivial": 300,
+      "trivial_tier0": 5,
+      "sampled": 305,
+      "tier1": 297,
+      "tier2": 2,
+      "exact_certified": 299,
+      "float_only_disagreements": 0,
+      "ref_checked": 299,
+      "ref_agreed": 299,
+      "tier3A": 1,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1000,
+        "rounding": "floor(scale*llr + 1/2), float64 llr, half-up",
+        "definition": "c_i = floor(scale * log((1-p_i)/p_i) + 1/2)",
+        "weights_sha256": "c2d00f179c80c7d4d9688df3b134094e06fd561021ba3904a1f5a2210c15bbc3"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.029,
+          "p95_ms": 0.057,
+          "max_ms": 0.538
+        },
+        "lp_ns": {
+          "median_ms": 8.422,
+          "p95_ms": 10.356,
+          "max_ms": 12.375
+        },
+        "exactify_ns": {
+          "median_ms": 0.024,
+          "p95_ms": 0.04,
+          "max_ms": 0.136
+        },
+        "exact_check_ns": {
+          "median_ms": 0.249,
+          "p95_ms": 0.389,
+          "max_ms": 0.752
+        },
+        "ref_check_ns": {
+          "median_ms": 3.05,
+          "p95_ms": 3.771,
+          "max_ms": 4.345
+        },
+        "milp_ns": {
+          "median_ms": 812.351,
+          "p95_ms": 812.351,
+          "max_ms": 812.351
+        }
+      },
+      "certificate_sizes": {
+        "max_num_bits": 18,
+        "max_den_bits": 6,
+        "max_facets": 55
+      }
+    },
+    "phenom_p01": {
+      "nontrivial": 150,
+      "trivial_tier0": 0,
+      "sampled": 150,
+      "tier1": 150,
+      "tier2": 0,
+      "exact_certified": 150,
+      "float_only_disagreements": 0,
+      "ref_checked": 150,
+      "ref_agreed": 150,
+      "tier3A": 0,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1000,
+        "rounding": "floor(scale*llr + 1/2), float64 llr, half-up",
+        "definition": "c_i = floor(scale * log((1-p_i)/p_i) + 1/2)",
+        "weights_sha256": "3b890ceed738bcbe1323a6c4920c89dc0a983a790d57c9abe3f4d64409a6fca4"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.141,
+          "p95_ms": 0.387,
+          "max_ms": 6.713
+        },
+        "lp_ns": {
+          "median_ms": 159.413,
+          "p95_ms": 314.624,
+          "max_ms": 440.953
+        },
+        "exactify_ns": {
+          "median_ms": 0.034,
+          "p95_ms": 0.055,
+          "max_ms": 0.881
+        },
+        "exact_check_ns": {
+          "median_ms": 1.168,
+          "p95_ms": 2.218,
+          "max_ms": 3.613
+        },
+        "ref_check_ns": {
+          "median_ms": 85.595,
+          "p95_ms": 125.794,
+          "max_ms": 165.295
+        },
+        "milp_ns": {}
+      },
+      "certificate_sizes": {
+        "max_num_bits": 14,
+        "max_den_bits": 3,
+        "max_facets": 28
+      }
+    },
+    "phenom_p02": {
+      "nontrivial": 150,
+      "trivial_tier0": 0,
+      "sampled": 150,
+      "tier1": 150,
+      "tier2": 0,
+      "exact_certified": 150,
+      "float_only_disagreements": 0,
+      "ref_checked": 150,
+      "ref_agreed": 150,
+      "tier3A": 0,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1000,
+        "rounding": "floor(scale*llr + 1/2), float64 llr, half-up",
+        "definition": "c_i = floor(scale * log((1-p_i)/p_i) + 1/2)",
+        "weights_sha256": "d5f46f92bd367ea04a543a4c5ade5fe271eb5b0842135af76fb1730fcce87c33"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.243,
+          "p95_ms": 4.581,
+          "max_ms": 6.155
+        },
+        "lp_ns": {
+          "median_ms": 138.983,
+          "p95_ms": 201.945,
+          "max_ms": 450.736
+        },
+        "exactify_ns": {
+          "median_ms": 0.052,
+          "p95_ms": 0.133,
+          "max_ms": 0.344
+        },
+        "exact_check_ns": {
+          "median_ms": 1.374,
+          "p95_ms": 2.088,
+          "max_ms": 2.641
+        },
+        "ref_check_ns": {
+          "median_ms": 74.591,
+          "p95_ms": 95.396,
+          "max_ms": 124.341
+        },
+        "milp_ns": {}
+      },
+      "certificate_sizes": {
+        "max_num_bits": 17,
+        "max_den_bits": 4,
+        "max_facets": 79
+      }
+    },
+    "stress_p05": {
+      "nontrivial": 300,
+      "trivial_tier0": 0,
+      "sampled": 300,
+      "tier1": 113,
+      "tier2": 170,
+      "exact_certified": 283,
+      "float_only_disagreements": 0,
+      "ref_checked": 283,
+      "ref_agreed": 283,
+      "tier3A": 17,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1,
+        "rounding": "uniform-unit",
+        "definition": "w_i = 1 (Hamming weight)",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.56,
+          "p95_ms": 0.75,
+          "max_ms": 2.273
+        },
+        "lp_ns": {
+          "median_ms": 10.891,
+          "p95_ms": 26.756,
+          "max_ms": 87.822
+        },
+        "exactify_ns": {
+          "median_ms": 0.034,
+          "p95_ms": 0.105,
+          "max_ms": 0.4
+        },
+        "exact_check_ns": {
+          "median_ms": 0.338,
+          "p95_ms": 0.683,
+          "max_ms": 1.954
+        },
+        "ref_check_ns": {
+          "median_ms": 3.803,
+          "p95_ms": 4.654,
+          "max_ms": 6.39
+        },
+        "milp_ns": {
+          "median_ms": 616.424,
+          "p95_ms": 1469.997,
+          "max_ms": 1550.899
+        }
+      },
+      "certificate_sizes": {
+        "max_num_bits": 7,
+        "max_den_bits": 7,
+        "max_facets": 50
+      }
+    },
+    "xsector_p02": {
+      "nontrivial": 200,
+      "trivial_tier0": 13,
+      "sampled": 213,
+      "tier1": 185,
+      "tier2": 15,
+      "exact_certified": 200,
+      "float_only_disagreements": 0,
+      "ref_checked": 200,
+      "ref_agreed": 200,
+      "tier3A": 0,
+      "tier3B": 0,
+      "residue_unsolved": 0,
+      "weights_spec": {
+        "scale": 1,
+        "rounding": "uniform-unit",
+        "definition": "w_i = 1 (Hamming weight)",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d"
+      },
+      "timing": {
+        "bposd_ns": {
+          "median_ms": 0.036,
+          "p95_ms": 0.577,
+          "max_ms": 1.155
+        },
+        "lp_ns": {
+          "median_ms": 11.234,
+          "p95_ms": 15.009,
+          "max_ms": 42.009
+        },
+        "exactify_ns": {
+          "median_ms": 0.025,
+          "p95_ms": 0.041,
+          "max_ms": 0.124
+        },
+        "exact_check_ns": {
+          "median_ms": 0.247,
+          "p95_ms": 0.628,
+          "max_ms": 1.696
+        },
+        "ref_check_ns": {
+          "median_ms": 3.809,
+          "p95_ms": 5.627,
+          "max_ms": 65.377
+        },
+        "milp_ns": {}
+      },
+      "certificate_sizes": {
+        "max_num_bits": 3,
+        "max_den_bits": 3,
+        "max_facets": 27
+      }
+    }
+  }
+}

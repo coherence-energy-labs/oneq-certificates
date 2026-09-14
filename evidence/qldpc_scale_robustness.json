@@ -1,0 +1,34 @@
+{
+  "schema": "oneq-qldpc-scale-robustness/1",
+  "rung": "hetero_p02 (same channel seed 4242, shots seed 2101)",
+  "scales": {
+    "1000": {
+      "certified": 299,
+      "weights_sha256": "c2d00f179c80c7d4d9688df3b134094e06fd561021ba3904a1f5a2210c15bbc3",
+      "tier_disagreements_vs_S1000": 0,
+      "support_disagreements_vs_S1000": 0
+    },
+    "10000": {
+      "certified": 299,
+      "weights_sha256": "d4c95a6eebffaec3b54d0b1ce63625667a848fc71a09b6f96a87935c4c229531",
+      "tier_disagreements_vs_S1000": 0,
+      "support_disagreements_vs_S1000": 0
+    },
+    "100000": {
+      "certified": 299,
+      "weights_sha256": "e69667177924223d710673a652d469a078e0c93c123534c9e74f11c747d29bc9",
+      "tier_disagreements_vs_S1000": 1,
+      "support_disagreements_vs_S1000": 0
+    }
+  },
+  "tier_change_detail": [
+    {
+      "scale": 100000,
+      "shot_index": 71,
+      "tier_at_S1000": "3A",
+      "tier_at_this_scale": "3B",
+      "selected_support_changed": false,
+      "support_size": 13
+    }
+  ]
+}

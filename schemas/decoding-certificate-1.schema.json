@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://one-q.org/schemas/decoding-certificate-1.schema.json",
+  "title": "ONE-Q decoding certificate v1",
+  "description": "A decoder's answer together with a witness that an independent checker can validate without trusting the decoder. Validating against this schema proves the document is WELL FORMED. It does not and cannot prove the claim is TRUE -- that requires re-running the checker against a decoding graph the verifier supplies itself. A schema-valid certificate for a wrong correction is entirely possible, and the two checks must never be conflated.",
+  "type": "object",
+  "required": ["schema", "graph_sha256", "syndrome", "proven_optimal", "weight", "certified_lower_bound", "optimality_gap_at_most", "reason"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "oneq-decoding-certificate/1"},
+    "graph_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 over the canonicalised weighted decoding graph (parallel edges collapsed to the cheapest, edges sorted). Binds the certificate to ONE graph: without it, a genuine certificate for an easy graph can be replayed against a hard one and every arithmetic check still passes. A verifier recomputes this from its own graph rather than trusting the field."
+    },
+    "syndrome": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0},
+      "uniqueItems": true,
+      "description": "Indices of the detectors that fired, sorted ascending. The virtual boundary is never listed here; it joins the odd-degree target set implicitly when the syndrome has odd parity."
+    },
+    "proven_optimal": {
+      "type": "boolean",
+      "description": "false marks a DEGRADED RECEIPT: the correction explains the syndrome and its weight exceeds a checked lower bound by at most optimality_gap_at_most, but optimality was not proven. Emitting these rather than staying silent is the point -- it makes 'not proven' distinguishable from 'not checked'."
+    },
+    "weight": {"$ref": "#/$defs/f64", "description": "Total weight of the correction."},
+    "certified_lower_bound": {"$ref": "#/$defs/f64", "description": "Objective of the feasible cut packing: a lower bound on the minimum-weight T-join, valid by weak duality however it was produced."},
+    "optimality_gap_at_most": {"$ref": "#/$defs/f64", "description": "weight minus certified_lower_bound, floored at zero. Zero exactly when proven_optimal is true."},
+    "reason": {"type": "string", "description": "Human-readable verdict from the checker. Never load-bearing: a verifier must re-derive the verdict, not read it."},
+    "correction": {
+      "type": "array",
+      "description": "The edge set. Each entry is [u, v] with the virtual boundary as -1, in canonical order. Absent on a degraded receipt.",
+      "items": {
+        "type": "array",
+        "items": {"type": "integer", "minimum": -1},
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "dual": {
+      "type": "array",
+      "description": "The cut packing: [[members, value], ...] sorted by members. A member set MUST NOT appear twice: a dual is a map from vertex sets to values, and a list encodes one only while the keys are distinct. This is not pedantry -- the two reference implementations disagreed on such a document (Python built a dict and kept the last value, reading an objective of 2.0 and ACCEPTING; JavaScript summed the array, read 2.4 and refused as infeasible). Neither reading is right, so both now refuse. JSON Schema cannot express uniqueness over a projection of an array element, so the checkers enforce it. Each member set must have ODD intersection with the odd-degree target set -- an even set is not a dual variable at all -- and each value must be non-negative. Both rules are enforced by the checker, not by this schema, because a schema cannot see the syndrome-dependent parity.",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          {"type": "array", "items": {"type": "integer", "minimum": -1}, "uniqueItems": true},
+          {"$ref": "#/$defs/f64"}
+        ]
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Optional provenance: device, code distance, rounds, error-model source. Never consulted by the checker.",
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"proven_optimal": {"const": true}}, "required": ["proven_optimal"]},
+      "then": {
+        "required": ["correction", "dual"],
+        "description": "A document claiming optimality MUST carry the witness. A claim without a witness is exactly the unverifiable assertion this format exists to replace."
+      }
+    }
+  ],
+  "$defs": {
+    "f64": {
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{16}$",
+      "description": "An IEEE-754 double as its exact 64-bit big-endian pattern. Decimal JSON numbers are NOT used: a decimal round-trip is not guaranteed bit-identical across languages (Python writes 1e-05 where JavaScript writes 0.00001), and a checker that re-parses a slightly different weight can refuse a valid certificate or accept a marginal one. Read with f64::from_bits, DataView.getFloat64, or struct.unpack('>d')."
+    }
+  }
+}

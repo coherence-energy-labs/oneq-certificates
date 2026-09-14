@@ -1,0 +1,123 @@
+{
+  "schema": "oneq-checker-scaling/2",
+  "rows": [
+    {
+      "distance": 3,
+      "rounds": 3,
+      "nnz": 78,
+      "nodes": 25,
+      "shots_timed": 50,
+      "support_mean": 3.28,
+      "support_max": 8,
+      "check_ms_mean": 0.0344340005540289,
+      "check_ms_median": 0.0325499931932427,
+      "work_units": 255.83999999999997
+    },
+    {
+      "distance": 3,
+      "rounds": 9,
+      "nnz": 270,
+      "nodes": 73,
+      "shots_timed": 50,
+      "support_mean": 5.96,
+      "support_max": 13,
+      "check_ms_mean": 0.10441599908517674,
+      "check_ms_median": 0.1016000023810193,
+      "work_units": 1609.2
+    },
+    {
+      "distance": 5,
+      "rounds": 5,
+      "nnz": 502,
+      "nodes": 121,
+      "shots_timed": 50,
+      "support_mean": 9.98,
+      "support_max": 30,
+      "check_ms_mean": 0.1854339992860332,
+      "check_ms_median": 0.1859499971033074,
+      "work_units": 5009.96
+    },
+    {
+      "distance": 5,
+      "rounds": 15,
+      "nnz": 1622,
+      "nodes": 361,
+      "shots_timed": 50,
+      "support_mean": 29.66,
+      "support_max": 59,
+      "check_ms_mean": 0.6308680004440248,
+      "check_ms_median": 0.6183499936014414,
+      "work_units": 48108.52
+    },
+    {
+      "distance": 5,
+      "rounds": 25,
+      "nnz": 2742,
+      "nodes": 601,
+      "shots_timed": 50,
+      "support_mean": 51.32,
+      "support_max": 89,
+      "check_ms_mean": 1.3183100003516302,
+      "check_ms_median": 1.3149500009603798,
+      "work_units": 140719.44
+    },
+    {
+      "distance": 7,
+      "rounds": 7,
+      "nnz": 1558,
+      "nodes": 337,
+      "shots_timed": 50,
+      "support_mean": 32.06,
+      "support_max": 62,
+      "check_ms_mean": 0.7563479995587841,
+      "check_ms_median": 0.7441499983542599,
+      "work_units": 49949.48
+    },
+    {
+      "distance": 7,
+      "rounds": 15,
+      "nnz": 3478,
+      "nodes": 721,
+      "shots_timed": 50,
+      "support_mean": 72.4,
+      "support_max": 105,
+      "check_ms_mean": 1.849703999760095,
+      "check_ms_median": 1.8293000030098483,
+      "work_units": 251807.2
+    },
+    {
+      "distance": 7,
+      "rounds": 25,
+      "nnz": 5878,
+      "nodes": 1201,
+      "shots_timed": 50,
+      "support_mean": 119.12,
+      "support_max": 164,
+      "check_ms_mean": 3.29026400053408,
+      "check_ms_median": 3.227099994546734,
+      "work_units": 700187.36
+    }
+  ],
+  "fit_time_vs_work": {
+    "exponent": 0.5785990958272937,
+    "intercept": -6.608760456931269,
+    "r_squared": 0.9989012978008878,
+    "x": "log(nnz * mean|support(z)|)",
+    "y": "log(median check ms)"
+  },
+  "fit_support_vs_nnz": {
+    "exponent": 0.8593550987703488,
+    "intercept": -2.8381848234826283,
+    "note": "|support(z)| vs nnz -- reported because a support that grows with the graph is what would make a per-dual scan superlinear"
+  },
+  "fit_time_vs_nnz": {
+    "exponent": 1.0759125185793303,
+    "intercept": -8.25156719264393,
+    "r_squared": 0.9949624706246313,
+    "note": "median check ms vs nnz -- THE headline number"
+  },
+  "what_is_claimed": "feasibility is one pass over the edges accumulating, per edge, the duals whose boundary it crosses -- O(nnz * |support(z)|), NOT O(nnz). The headline is only honest if |support(z)| stays small as the graph grows, so both fits are reported.",
+  "why_the_producer_is_excluded": "the producer is the expensive half and it is not what a verifier runs. Timing them together would hide the property the argument depends on: that CHECKING is cheap even though PRODUCING is not.",
+  "method": "minimum of repeated timings per shot -- the minimum is the least contaminated by other load. Run on an otherwise idle machine; a measurement taken under load measures the load.",
+  "falsifier": "an exponent materially above 1.0 on nnz*|z| means the claim is wrong"
+}

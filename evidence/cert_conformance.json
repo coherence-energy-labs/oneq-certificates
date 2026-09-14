@@ -1,0 +1,25 @@
+{
+  "schema": "oneq-certificate-conformance-result/1",
+  "vectors": 56,
+  "expected_accept": 8,
+  "expected_refuse": 48,
+  "agree": "conformance: 56/56 agree",
+  "javascript_exit": 0,
+  "implementations": [
+    {
+      "lang": "python",
+      "file": "src/oneq/matching_cert.py + cert_format.py",
+      "runtime": "3.14.3"
+    },
+    {
+      "lang": "javascript",
+      "file": "verifier-js/verify-certificate.mjs",
+      "runtime": "v24.18.0",
+      "dependencies": "none (node built-ins only)"
+    }
+  ],
+  "what_agreement_means": "two implementations written from the spec in different languages, sharing no code, reach the same verdict on every vector. One implementation passing its own tests is not evidence.",
+  "divergence_this_found": "Python deserialised a repeated dual member set into a dict (last value wins) while the JavaScript summed the array: objective 2.0 and ACCEPT against 2.4 and refuse, on identical bytes. Neither reading was right; both now refuse, and the case is a permanent vector.",
+  "why_mostly_refusals": "a suite where everything verifies would not notice a checker that accepts everything -- the failure that matters, since such a checker is worthless and looks perfect",
+  "harness_can_fail": "proven: corrupting one dual value drops the count (tests/test_cert_conformance.py)"
+}

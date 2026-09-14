@@ -1,0 +1,79 @@
+{
+  "schema": "oneq-l2prime-synth/1",
+  "tool": "yosys 0.67 (yowasp WASM build)",
+  "claim": "real synthesis cell counts for the L2' detector, measured rather than estimated",
+  "rows": [
+    {
+      "d": 3,
+      "popcount": 8,
+      "n_det": 32,
+      "generic_cells": 13,
+      "lut4_cells": -1,
+      "lut4s": -1,
+      "cells_generic": {},
+      "cells_lut4": {}
+    },
+    {
+      "d": 5,
+      "popcount": 18,
+      "n_det": 32,
+      "generic_cells": 23,
+      "lut4_cells": -1,
+      "lut4s": -1,
+      "cells_generic": {},
+      "cells_lut4": {}
+    },
+    {
+      "d": 7,
+      "popcount": 32,
+      "n_det": 32,
+      "generic_cells": 37,
+      "lut4_cells": -1,
+      "lut4s": -1,
+      "cells_generic": {},
+      "cells_lut4": {}
+    },
+    {
+      "d": 9,
+      "popcount": 50,
+      "n_det": 64,
+      "generic_cells": 55,
+      "lut4_cells": -1,
+      "lut4s": -1,
+      "cells_generic": {},
+      "cells_lut4": {}
+    },
+    {
+      "d": 11,
+      "popcount": 72,
+      "n_det": 128,
+      "generic_cells": 77,
+      "lut4_cells": -1,
+      "lut4s": -1,
+      "cells_generic": {},
+      "cells_lut4": {}
+    },
+    {
+      "d": 15,
+      "popcount": 128,
+      "n_det": 128,
+      "generic_cells": 133,
+      "lut4_cells": -1,
+      "lut4s": -1,
+      "cells_generic": {},
+      "cells_lut4": {}
+    }
+  ],
+  "largest": {
+    "d": 15,
+    "popcount": 128,
+    "generic_cells": 133
+  },
+  "lut4_mapping_completed": false,
+  "NO_LUT_NUMBER_IS_CLAIMED": "ABC does not complete in the WASM yosys build on this machine -- confirmed across THREE independent flows (abc -lut 4, synth_ecp5, synth_ice40), all of which stall at ABC/ABC9 execution. It is a tooling limit, not a flow choice, so no LUT4 count is reported. Generic cell counts ARE real synthesis output and are what this gate stands behind. Converting them to LUTs analytically would be an estimate wearing a measurement's clothes.",
+  "cell_scaling_measured": "generic cells = popcount(F_MASK) + 5 at every width measured (13/23/37/55/77/133 at popcount 8/18/32/50/72/128)",
+  "ibm_reference_luts": 2106738,
+  "what_this_compares_to": "C2's ~5,400 LUT / 0.26% figure is for the WHOLE three-layer detector (L0 CRC-32C + L1 syndrome consistency + L2 restricted Edmonds certificate). L2' is a FOURTH layer and a small one, so the honest number is its MARGINAL cost, not a comparison against 5,400.",
+  "if_you_do_map_it": "LUT counts are technology-dependent. These are LUT4s from `abc -lut 4`; a LUT6 architecture -- which is what IBM's 2,106,738 figure would be on -- packs strictly better, so the LUT4 count is a CONSERVATIVE UPPER BOUND on the LUT6 cost. Quoting a LUT4 number against a LUT6 baseline without saying so would overstate our own layer's cost.",
+  "passed": true
+}

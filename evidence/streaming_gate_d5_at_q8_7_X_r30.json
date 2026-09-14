@@ -1,0 +1,27 @@
+{
+  "schema": "oneq-streaming-gate/1",
+  "config": "d5_at_q8_7_X_r30",
+  "nontrivial_shots": 1500,
+  "workers": 4,
+  "equivalence": {
+    "sampled": 300,
+    "mismatches": 0,
+    "claim": "streaming certificates are byte-identical (canonical JSON) to the batch path on the sampled prefix"
+  },
+  "tiers": {
+    "certified": 1479,
+    "degraded": 21,
+    "deferred": 0
+  },
+  "certified_rate": 0.986,
+  "throughput_shots_per_s": 27.410254186324288,
+  "wall_s": 54.724045599999954,
+  "latency_s": {
+    "p50": 0.517811649999885,
+    "p90": 1.01536019999985,
+    "p99": 1.4579033100000238,
+    "max": 1.8464576000001216
+  },
+  "watermark_final": 1499,
+  "reading": "no fabricated target: compare throughput to the device rate YOU care about; latency p99 answers the post-selection row of the latency map"
+}

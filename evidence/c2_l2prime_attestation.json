@@ -1,0 +1,61 @@
+{
+  "schema": "oneq-c2-l2prime/1",
+  "layer": "L2' certified logical-class attestation: two homologically equivalent representatives whose mask bits share nothing, checked inline against a GF(2) functional of the syndrome",
+  "noise": "circuit-level depolarizing p=0.001, rounds=d",
+  "levels": {
+    "d=3": {
+      "shots": 200000,
+      "mechanisms": 286,
+      "detectors": 24,
+      "difference_functional_weight": 8,
+      "false_positives_on_clean": 0,
+      "false_positive_rate": 0.0,
+      "trials": 20,
+      "activated_trials": 9,
+      "L2prime_trial_detection_given_activation": 1.0,
+      "L2prime_per_shot_detection_given_activation": 1.0,
+      "L1_detections": 0,
+      "L2_detections": 0,
+      "weight_fault_activated_trials": 14,
+      "L2prime_detection_on_WEIGHT_faults": 0.0,
+      "seconds": 0.8
+    },
+    "d=5": {
+      "shots": 200000,
+      "mechanisms": 1953,
+      "detectors": 120,
+      "difference_functional_weight": 18,
+      "false_positives_on_clean": 0,
+      "false_positive_rate": 0.0,
+      "trials": 20,
+      "activated_trials": 3,
+      "L2prime_trial_detection_given_activation": 1.0,
+      "L2prime_per_shot_detection_given_activation": 1.0,
+      "L1_detections": 0,
+      "L2_detections": 0,
+      "weight_fault_activated_trials": 6,
+      "L2prime_detection_on_WEIGHT_faults": 0.0,
+      "seconds": 4.2
+    },
+    "d=7": {
+      "shots": 200000,
+      "mechanisms": 6602,
+      "detectors": 336,
+      "difference_functional_weight": 32,
+      "false_positives_on_clean": 0,
+      "false_positive_rate": 0.0,
+      "trials": 20,
+      "activated_trials": 2,
+      "L2prime_trial_detection_given_activation": 1.0,
+      "L2prime_per_shot_detection_given_activation": 1.0,
+      "L1_detections": 0,
+      "L2_detections": 0,
+      "weight_fault_activated_trials": 0,
+      "L2prime_detection_on_WEIGHT_faults": null,
+      "seconds": 12.9
+    }
+  },
+  "why_L1_and_L2_cannot": "a mask flip changes no edge weight, so the correction is unchanged, so every check that reads only the correction returns an unchanged verdict",
+  "cost": "one extra observable column: 1 bit per mechanism on a table that already exists, plus a fixed syndrome parity. Against the spec's own baselines -- CRAM scrub ~0% logic but scrub-latency, SRAM ECC 12.5% of memory bits, DMR 2x, selective TMR 37% LUT, full TMR >200% -- this buys per-shot coverage of the mask class from the code's degeneracy rather than from replicated hardware",
+  "scope": "detection is conditioned on ACTIVATION; an unactivated fault is invisible to every inline layer. False positives on clean shots are reported because a detector that fires on healthy hardware is worse than no detector."
+}

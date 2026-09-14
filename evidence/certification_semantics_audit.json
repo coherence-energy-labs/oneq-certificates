@@ -1,0 +1,263 @@
+{
+ "schema": "oneq-certification-semantics-audit/1",
+ "how_produced": "experiments/m0_prior_art/certification_semantics_audit.py",
+ "rows": [
+  {
+   "config": {
+    "name": "million_shot_d5_r25",
+    "artifact": "evidence/million_shot_gate_d5_merged.json",
+    "commit": "d4a81ee",
+    "kind": "sim",
+    "d": 5,
+    "rounds": 25,
+    "p": 0.005,
+    "seed": 20260913,
+    "shots": 400,
+    "method": "certify"
+   },
+   "nontrivial_sampled": 400,
+   "accepted_by_pinned_code": 399,
+   "pinned_rate": 0.9975,
+   "inadmissible_certificates": {},
+   "admissible_certificates": 399,
+   "eps_exact_max": "39364066437750034037/289874685620388417004374904012800",
+   "eps_max": 1.3579684046402068e-13,
+   "eps_median": 2.309527957380334e-14,
+   "eps_exactly_zero": 3,
+   "eps_negative": 0,
+   "certificates_with_any_edge_overload": 388,
+   "largest_edge_overload": 6.217248937900877e-15,
+   "head_exact_checker_accepts_same_certificate": 54,
+   "head_producer_base_ladder_certifies": 114,
+   "head_producer_with_escalation_certifies": 151,
+   "rule_level_bound": {
+    "gap_tolerance": 1e-06,
+    "edge_tolerance": 1e-09,
+    "min_edge_weight": 2.800387204353814,
+    "largest_dual_mass_in_sample": 189.09903660343107,
+    "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 6.75e-08"
+   },
+   "judge_seconds": 901.3840694999963,
+   "supplementary_oracle_not_exact": {
+    "n": 399,
+    "exactly_equal": 370,
+    "max_primal_minus_oracle": 2.6645352591003757e-15,
+    "min_primal_minus_oracle": 0.0,
+    "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
+   },
+   "export_seconds": 24.394126800005324
+  },
+  {
+   "config": {
+    "name": "gap_distribution_d3",
+    "artifact": "evidence/gap_distribution.json",
+    "commit": "cce1e91",
+    "kind": "sim",
+    "d": 3,
+    "rounds": 3,
+    "p": 0.005,
+    "seed": 31337,
+    "shots": 400,
+    "method": "certify"
+   },
+   "nontrivial_sampled": 230,
+   "accepted_by_pinned_code": 230,
+   "pinned_rate": 1.0,
+   "inadmissible_certificates": {},
+   "admissible_certificates": 230,
+   "eps_exact_max": "26479881881006757/9825729743543795427889255546880",
+   "eps_max": 2.6949532067484277e-15,
+   "eps_median": 0.0,
+   "eps_exactly_zero": 190,
+   "eps_negative": 0,
+   "certificates_with_any_edge_overload": 33,
+   "largest_edge_overload": 8.881784197001252e-16,
+   "head_exact_checker_accepts_same_certificate": 213,
+   "head_producer_base_ladder_certifies": 227,
+   "head_producer_with_escalation_certifies": 228,
+   "rule_level_bound": {
+    "gap_tolerance": 1e-06,
+    "edge_tolerance": 1e-09,
+    "min_edge_weight": 2.941414106120864,
+    "largest_dual_mass_in_sample": 19.863228174576683,
+    "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 6.75e-09"
+   },
+   "judge_seconds": 1.1949503000068944,
+   "supplementary_oracle_not_exact": {
+    "n": 230,
+    "exactly_equal": 230,
+    "max_primal_minus_oracle": 0.0,
+    "min_primal_minus_oracle": 0.0,
+    "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
+   },
+   "export_seconds": 3.335214399994584
+  },
+  {
+   "config": {
+    "name": "gap_distribution_d5",
+    "artifact": "evidence/gap_distribution.json",
+    "commit": "cce1e91",
+    "kind": "sim",
+    "d": 5,
+    "rounds": 5,
+    "p": 0.005,
+    "seed": 31337,
+    "shots": 400,
+    "method": "certify"
+   },
+   "nontrivial_sampled": 395,
+   "accepted_by_pinned_code": 392,
+   "pinned_rate": 0.9924050632911392,
+   "inadmissible_certificates": {},
+   "admissible_certificates": 392,
+   "eps_exact_max": "483061451054547061/25925802380343304181194701144064",
+   "eps_max": 1.8632459044769993e-14,
+   "eps_median": 0.0,
+   "eps_exactly_zero": 234,
+   "eps_negative": 0,
+   "certificates_with_any_edge_overload": 131,
+   "largest_edge_overload": 4.6629367034256575e-15,
+   "head_exact_checker_accepts_same_certificate": 339,
+   "head_producer_base_ladder_certifies": 380,
+   "head_producer_with_escalation_certifies": 388,
+   "rule_level_bound": {
+    "gap_tolerance": 1e-06,
+    "edge_tolerance": 1e-09,
+    "min_edge_weight": 2.800387204353814,
+    "largest_dual_mass_in_sample": 53.615004800666284,
+    "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 1.91e-08"
+   },
+   "judge_seconds": 13.647319900017465,
+   "supplementary_oracle_not_exact": {
+    "n": 392,
+    "exactly_equal": 390,
+    "max_primal_minus_oracle": 8.881784197001252e-16,
+    "min_primal_minus_oracle": 0.0,
+    "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
+   },
+   "export_seconds": 2.5267059999750927
+  },
+  {
+   "config": {
+    "name": "gap_distribution_d7",
+    "artifact": "evidence/gap_distribution.json",
+    "commit": "cce1e91",
+    "kind": "sim",
+    "d": 7,
+    "rounds": 7,
+    "p": 0.005,
+    "seed": 31337,
+    "shots": 400,
+    "method": "certify"
+   },
+   "nontrivial_sampled": 400,
+   "accepted_by_pinned_code": 378,
+   "pinned_rate": 0.945,
+   "inadmissible_certificates": {},
+   "admissible_certificates": 378,
+   "eps_exact_max": "189925994905369763/2645333545732424215410019139584",
+   "eps_max": 7.1796615293284e-14,
+   "eps_median": 9.53322270715618e-15,
+   "eps_exactly_zero": 22,
+   "eps_negative": 0,
+   "certificates_with_any_edge_overload": 333,
+   "largest_edge_overload": 3.552713678800501e-15,
+   "head_exact_checker_accepts_same_certificate": 124,
+   "head_producer_base_ladder_certifies": 246,
+   "head_producer_with_escalation_certifies": 292,
+   "rule_level_bound": {
+    "gap_tolerance": 1e-06,
+    "edge_tolerance": 1e-09,
+    "min_edge_weight": 2.800387204353814,
+    "largest_dual_mass_in_sample": 103.94416788484207,
+    "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 3.71e-08"
+   },
+   "judge_seconds": 208.00026850000722,
+   "supplementary_oracle_not_exact": {
+    "n": 378,
+    "exactly_equal": 362,
+    "max_primal_minus_oracle": 1.7763568394002505e-15,
+    "min_primal_minus_oracle": 0.0,
+    "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
+   },
+   "export_seconds": 6.91181950000464
+  },
+  {
+   "config": {
+    "name": "willow_gen4_d5_X_r13",
+    "artifact": "evidence/google_corpus_gate_gen4.json",
+    "commit": "06344ae",
+    "kind": "willow",
+    "config": "d5_at_q8_7_X_r13",
+    "lo": 0,
+    "shots": 150,
+    "method": "certify"
+   },
+   "nontrivial_sampled": 150,
+   "accepted_by_pinned_code": 149,
+   "pinned_rate": 0.9933333333333333,
+   "inadmissible_certificates": {},
+   "admissible_certificates": 149,
+   "eps_exact_max": "666044049707758085/14170861051364134320371660750848",
+   "eps_max": 4.70009583252277e-14,
+   "eps_median": 3.8118822163454736e-15,
+   "eps_exactly_zero": 53,
+   "eps_negative": 0,
+   "certificates_with_any_edge_overload": 81,
+   "largest_edge_overload": 2.6645352591003757e-15,
+   "head_exact_checker_accepts_same_certificate": 110,
+   "head_producer_base_ladder_certifies": 132,
+   "head_producer_with_escalation_certifies": 135,
+   "rule_level_bound": {
+    "gap_tolerance": 1e-06,
+    "edge_tolerance": 1e-09,
+    "min_edge_weight": 3.8551796843515747,
+    "largest_dual_mass_in_sample": 132.51127890508812,
+    "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 3.44e-08"
+   },
+   "judge_seconds": 24.4792027999938,
+   "export_seconds": 4.428963399986969
+  },
+  {
+   "config": {
+    "name": "willow_gen6_d7_X_r30",
+    "artifact": "evidence/corpus_gen6_d7X30.json",
+    "commit": "f57e87d",
+    "kind": "willow",
+    "config": "d7_at_q6_7_X_r30",
+    "lo": 0,
+    "shots": 40,
+    "method": "certify_hard"
+   },
+   "nontrivial_sampled": 40,
+   "accepted_by_pinned_code": 40,
+   "pinned_rate": 1.0,
+   "inadmissible_certificates": {},
+   "admissible_certificates": 40,
+   "eps_exact_max": "786223620686516091/3012293204137550116020430045184",
+   "eps_max": 2.6100501093538794e-13,
+   "eps_median": 8.7049976851011e-14,
+   "eps_exactly_zero": 0,
+   "eps_negative": 0,
+   "certificates_with_any_edge_overload": 40,
+   "largest_edge_overload": 3.941291737419306e-15,
+   "head_exact_checker_accepts_same_certificate": 2,
+   "head_producer_base_ladder_certifies": 3,
+   "head_producer_with_escalation_certifies": 3,
+   "rule_level_bound": {
+    "gap_tolerance": 1e-06,
+    "edge_tolerance": 1e-09,
+    "min_edge_weight": 3.8551796843515747,
+    "largest_dual_mass_in_sample": 523.4654485053227,
+    "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 1.36e-07"
+   },
+   "judge_seconds": 570.4713792999974,
+   "export_seconds": 28.489893500023754
+  }
+ ],
+ "claim_classes": {
+  "exact": "w(J) = OPT over the IEEE-double weights, exactly",
+  "epsilon": "w(J) - OPT <= eps with eps proven in exact arithmetic"
+ },
+ "pinned_acceptance_rule": "float gap <= 1e-6 and per-edge overload <= 1e-9, no NaN guard; replaced 2026-08-04 (86cbc2e) after external-audit finding 4"
+}

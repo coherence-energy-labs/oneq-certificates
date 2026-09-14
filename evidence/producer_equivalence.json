@@ -1,0 +1,23 @@
+{
+  "schema": "oneq-producer-equivalence/1",
+  "cases": 120,
+  "seed": 20260804,
+  "divergences": 0,
+  "stats": {
+    "instances": 120,
+    "fd_cert": 240,
+    "lazy_cert": 120,
+    "milp": 120,
+    "bnb_tree": 124,
+    "verified": 117,
+    "verify_fail": 0,
+    "bnb_branching": 9,
+    "tjoin": 120,
+    "tjoin_bound": 120
+  },
+  "frozen_sha256": {
+    "tjoin_exact.py": "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+    "qldpc_cert.py": "825804bb86d5248a5be68213620c1888b9e44d6ec5c62a4026537bafab37b2c9"
+  },
+  "claim": "the refactored producers emit byte-identical certificates, bounds, tiers and branch trees, and every certificate they emit still verifies"
+}

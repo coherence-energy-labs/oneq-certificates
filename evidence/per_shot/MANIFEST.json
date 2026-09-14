@@ -1,0 +1,181 @@
+{
+  "schema": "oneq-per-shot-manifest/3",
+  "reference_checker_sha256": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "own_exact_checker": "src/oneq/qldpc_check.py:check_qldpc_exact",
+  "rungs": {
+    "bb_refsched": {
+      "records_file": "evidence/per_shot/bb_refsched.jsonl",
+      "records_sha256": "c94b409bed470ffbef07314031dc55f646b92f32b18b7d902392caf5ee417464",
+      "record_count": 150,
+      "weights_file": "evidence/weights/bb_refsched_weights.json",
+      "weights_sha256": "23ef56ea2f448b7d4fa610948975b9d700f9de4a58eaabf3e2e6be0e91727fd5",
+      "exact_certified": 146,
+      "ref_checked": 146,
+      "tier3A": 4,
+      "tier3B": 0
+    },
+    "hetero_p02": {
+      "records_file": "evidence/per_shot/hetero_p02.jsonl",
+      "records_sha256": "6a61e245c2be40d859adef22ce328e8b0286a51ca3166d945f51f95614022f70",
+      "record_count": 300,
+      "weights_file": "evidence/weights/hetero_p02_weights.json",
+      "weights_sha256": "c2d00f179c80c7d4d9688df3b134094e06fd561021ba3904a1f5a2210c15bbc3",
+      "exact_certified": 299,
+      "ref_checked": 299,
+      "tier3A": 1,
+      "tier3B": 0
+    },
+    "phenom_p01": {
+      "records_file": "evidence/per_shot/phenom_p01.jsonl",
+      "records_sha256": "b07e13d81ae9ac56b0882ef799d61e5ba67e5c7c5bf460d2ecea5ed62c2b1273",
+      "record_count": 150,
+      "weights_file": "evidence/weights/phenom_p01_weights.json",
+      "weights_sha256": "3b890ceed738bcbe1323a6c4920c89dc0a983a790d57c9abe3f4d64409a6fca4",
+      "exact_certified": 150,
+      "ref_checked": 150,
+      "tier3A": 0,
+      "tier3B": 0
+    },
+    "phenom_p02": {
+      "records_file": "evidence/per_shot/phenom_p02.jsonl",
+      "records_sha256": "2a38f846a5613fa103fd65761642aabe2689725a6fded9e1a566d3dc77971801",
+      "record_count": 150,
+      "weights_file": "evidence/weights/phenom_p02_weights.json",
+      "weights_sha256": "d5f46f92bd367ea04a543a4c5ade5fe271eb5b0842135af76fb1730fcce87c33",
+      "exact_certified": 150,
+      "ref_checked": 150,
+      "tier3A": 0,
+      "tier3B": 0
+    },
+    "stress_p05": {
+      "records_file": "evidence/per_shot/stress_p05.jsonl",
+      "records_sha256": "c3f14093866b84d42bf950615f0487f63e849bd3c3aa654592bb97abe86a2e3c",
+      "record_count": 300,
+      "weights_file": "evidence/weights/stress_p05_weights.json",
+      "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+      "exact_certified": 283,
+      "ref_checked": 283,
+      "tier3A": 17,
+      "tier3B": 0
+    },
+    "uniform_p01": {
+      "records_file": "evidence/per_shot/uniform_p01.jsonl",
+      "records_sha256": "761e3142008959479be6fb849ebbad7abfeedfdb110dc9b34d71a32b4e2b623f",
+      "record_count": 300,
+      "weights_file": "evidence/weights/uniform_p01_weights.json",
+      "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+      "exact_certified": 300,
+      "ref_checked": 300,
+      "tier3A": 0,
+      "tier3B": 0
+    },
+    "uniform_p02": {
+      "records_file": "evidence/per_shot/uniform_p02.jsonl",
+      "records_sha256": "806e0eb1fc81641d58b44af42c330149d3286a4a25be3f827dd17dc377962da7",
+      "record_count": 470,
+      "weights_file": "evidence/weights/uniform_p02_weights.json",
+      "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+      "exact_certified": 469,
+      "ref_checked": 469,
+      "tier3A": 1,
+      "tier3B": 0
+    },
+    "xsector_p02": {
+      "records_file": "evidence/per_shot/xsector_p02.jsonl",
+      "records_sha256": "c577ff8aab31b69fe12e5483ff1a1af041e99d09588235d9fa138eaf839b8d89",
+      "record_count": 200,
+      "weights_file": "evidence/weights/xsector_p02_weights.json",
+      "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+      "exact_certified": 200,
+      "ref_checked": 200,
+      "tier3A": 0,
+      "tier3B": 0
+    }
+  },
+  "heldout": {
+    "freeze_commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+    "seed_rule": "SHA256('oneq-heldout-2026'||rung||freeze_sha)[:16] hex as int, 63-bit mask",
+    "rungs": {
+      "uniform_p01": {
+        "records_file": "evidence/per_shot/heldout_uniform_p01.jsonl",
+        "records_sha256": "3f7196359f9c2237c7eec0394afd1788ccb94bbab531a7a3dbb5bda333f682a2",
+        "record_count": 300,
+        "weights_file": "evidence/weights/heldout_uniform_p01_weights.json",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+        "exact_certified": 300,
+        "nontrivial": 300,
+        "seed": 6294391525810844666
+      },
+      "uniform_p02": {
+        "records_file": "evidence/per_shot/heldout_uniform_p02.jsonl",
+        "records_sha256": "72367b7054cc6d03b8e5718f31e329ea78c590b383f84dae9d12d4e17795789c",
+        "record_count": 470,
+        "weights_file": "evidence/weights/heldout_uniform_p02_weights.json",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+        "exact_certified": 470,
+        "nontrivial": 470,
+        "seed": 2535201941765108072
+      },
+      "hetero_p02": {
+        "records_file": "evidence/per_shot/heldout_hetero_p02.jsonl",
+        "records_sha256": "906299e9aedda8c2625a261c46d69bfdab19e8eb6bb1542e14feb0a14951f478",
+        "record_count": 300,
+        "weights_file": "evidence/weights/heldout_hetero_p02_weights.json",
+        "weights_sha256": "66f480b3347b34c4133102527740cf3a0d4ccca472219d10acc608b301241f28",
+        "exact_certified": 300,
+        "nontrivial": 300,
+        "seed": 4215848402049489662
+      },
+      "phenom_p01": {
+        "records_file": "evidence/per_shot/heldout_phenom_p01.jsonl",
+        "records_sha256": "142032cd1112fd59831265bdefd6ff231cb1cf2ffbc078fa846ba926f47f776e",
+        "record_count": 150,
+        "weights_file": "evidence/weights/heldout_phenom_p01_weights.json",
+        "weights_sha256": "3b890ceed738bcbe1323a6c4920c89dc0a983a790d57c9abe3f4d64409a6fca4",
+        "exact_certified": 150,
+        "nontrivial": 150,
+        "seed": 5357248536798031401
+      },
+      "phenom_p02": {
+        "records_file": "evidence/per_shot/heldout_phenom_p02.jsonl",
+        "records_sha256": "7226b90b338987d5f2d918ed378d521c525a4335326938fe122594134d550926",
+        "record_count": 150,
+        "weights_file": "evidence/weights/heldout_phenom_p02_weights.json",
+        "weights_sha256": "d5f46f92bd367ea04a543a4c5ade5fe271eb5b0842135af76fb1730fcce87c33",
+        "exact_certified": 150,
+        "nontrivial": 150,
+        "seed": 698970369817370637
+      },
+      "xsector_p02": {
+        "records_file": "evidence/per_shot/heldout_xsector_p02.jsonl",
+        "records_sha256": "d107299b0d4f587ae62d44528efe6bfdd828505721fac28f143e50cb91a38c19",
+        "record_count": 200,
+        "weights_file": "evidence/weights/heldout_xsector_p02_weights.json",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+        "exact_certified": 200,
+        "nontrivial": 200,
+        "seed": 4062396606467270533
+      },
+      "stress_p05": {
+        "records_file": "evidence/per_shot/heldout_stress_p05.jsonl",
+        "records_sha256": "c8a0aadfc26d027c704bd1059a08126a4406b1872170ecba8c31cbcaf85a5c43",
+        "record_count": 300,
+        "weights_file": "evidence/weights/heldout_stress_p05_weights.json",
+        "weights_sha256": "ab808b98b54dd54a9d12d161e3e90ea3b596726a07a5edd70b55125dd127f49d",
+        "exact_certified": 300,
+        "nontrivial": 300,
+        "seed": 8355428166015213666
+      },
+      "bb_refsched": {
+        "records_file": "evidence/per_shot/heldout_bb_refsched.jsonl",
+        "records_sha256": "69dc6e271bf41e7f7a6457040e9b50e15685f4b52b52aa7039da093acfa7f34d",
+        "record_count": 149,
+        "weights_file": "evidence/weights/heldout_bb_refsched_weights.json",
+        "weights_sha256": "23ef56ea2f448b7d4fa610948975b9d700f9de4a58eaabf3e2e6be0e91727fd5",
+        "exact_certified": 149,
+        "nontrivial": 149,
+        "seed": 266662329
+      }
+    }
+  }
+}

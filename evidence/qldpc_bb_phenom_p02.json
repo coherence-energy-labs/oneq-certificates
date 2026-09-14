@@ -1,0 +1,22 @@
+{
+  "schema": "oneq-qldpc-bb-phenom/1",
+  "code": "[[144,12,12]] gross, self-verified",
+  "noise": "phenomenological: data p=0.02, measurement pm=0.02, rounds=4 + final perfect round; log-likelihood weights; NO circuit-level correlations (labeled)",
+  "mechanisms": 864,
+  "spacetime_checks": 360,
+  "shots": 150,
+  "nontrivial": 150,
+  "bp_osd_syndrome_valid": 150,
+  "bp_osd_proven": 149,
+  "repaired": 1,
+  "bp_osd_logical_faults": 1,
+  "repair_logical": 0,
+  "certified_total": 150,
+  "certified_rate": 1.0,
+  "residue": {
+    "n": 0,
+    "milp_decoded": 0,
+    "gap_mean": 0.0
+  },
+  "cert_ms_per_shot": 189.3799226666791
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "oneq-qldpc-bb-circuit-gate/1",
+  "circuit": "[[144,12,12]] gross code, OWN syndrome-extraction circuit (sequential schedule, stated non-optimized; memory-Z; both sectors extracted, Z-sector decoded), r=3, uniform circuit-level p=0.002",
+  "detectors": 288,
+  "mechanisms": 2304,
+  "detector_degree_median": 41,
+  "detector_degree_max": 41,
+  "shots": 150,
+  "nontrivial": 150,
+  "bp_osd_syndrome_valid": 150,
+  "proven": 113,
+  "repaired": 25,
+  "certified_total": 138,
+  "certified_rate": 0.92,
+  "residue": 12,
+  "milp_exact_on_residue": 12,
+  "observable_agreement": [
+    150,
+    150
+  ],
+  "cert_ms_per_shot": 20.800836666666857,
+  "honest_scope": "sequential CNOT schedule, NOT the depth-7 interleaved one -- valid circuit, no circuit-distance claim; min-weight conformance, not ML over degenerate cosets; certified rate applies to THIS circuit"
+}

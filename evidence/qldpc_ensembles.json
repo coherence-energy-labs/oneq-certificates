@@ -1,0 +1,30 @@
+{
+  "schema": "oneq-qldpc-ensembles/1",
+  "seeds": {
+    "lazy": 9,
+    "capped": 5,
+    "ladder": 20260801,
+    "milp": 99
+  },
+  "lazy_vs_enum": {
+    "codes": 40,
+    "worst_abs_diff": 4.440892098500626e-16
+  },
+  "capped_facets": {
+    "codes": 40,
+    "ordering_violations": 0,
+    "tight_full": 23,
+    "tight_capped_F3": 23
+  },
+  "ladder_vs_bruteforce": {
+    "codes": 60,
+    "base_lp_tight": 43,
+    "honest_gaps": 17,
+    "impossible_bucket": 0,
+    "with_cuts_tight": 59
+  },
+  "milp_vs_bruteforce": {
+    "codes": 40,
+    "exact_agreement": 40
+  }
+}

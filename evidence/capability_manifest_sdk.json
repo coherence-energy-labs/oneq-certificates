@@ -1,0 +1,127 @@
+{
+  "schema": "oneq-capability-manifest/1",
+  "backend": "sdk:qiskit",
+  "probe_expiry": "2026-11-18",
+  "capability_source_note": "EVERY field here is sdk_expressible. capability.admit ignores all of them by construction.",
+  "fields": {
+    "conditional_operand_bits": {
+      "value": 33,
+      "source": "sdk_expressible",
+      "probe": "probe_operand_width",
+      "measured_at": "2026-08-20"
+    },
+    "nesting_depth_max": {
+      "value": 2,
+      "source": "sdk_expressible",
+      "probe": "probe_nesting",
+      "measured_at": "2026-08-20"
+    },
+    "measure_in_conditional": {
+      "value": true,
+      "source": "sdk_expressible",
+      "probe": "probe_measure_in_cond",
+      "measured_at": "2026-08-20"
+    },
+    "reset_in_conditional": {
+      "value": true,
+      "source": "sdk_expressible",
+      "probe": "probe_reset_in_cond",
+      "measured_at": "2026-08-20"
+    },
+    "realtime_arithmetic": {
+      "value": "int",
+      "source": "sdk_expressible",
+      "probe": "probe_arithmetic",
+      "measured_at": "2026-08-20"
+    },
+    "max_conditionals_per_job": {
+      "value": 300,
+      "source": "sdk_expressible",
+      "probe": "probe_broadcast_budget",
+      "measured_at": "2026-08-20"
+    }
+  },
+  "results": [
+    {
+      "probe": "probe_if_only",
+      "client_accepted": true,
+      "documented": true,
+      "error": null
+    },
+    {
+      "probe": "probe_operand_width",
+      "client_accepted": true,
+      "documented": 32,
+      "error": null,
+      "value": 33,
+      "agrees_with_documentation": false
+    },
+    {
+      "probe": "probe_nesting",
+      "client_accepted": true,
+      "documented": 1,
+      "error": null,
+      "value": 2,
+      "agrees_with_documentation": false
+    },
+    {
+      "probe": "probe_measure_in_cond",
+      "client_accepted": true,
+      "documented": false,
+      "error": null,
+      "value": true,
+      "agrees_with_documentation": false
+    },
+    {
+      "probe": "probe_reset_in_cond",
+      "client_accepted": true,
+      "documented": false,
+      "error": null,
+      "value": true,
+      "agrees_with_documentation": false
+    },
+    {
+      "probe": "probe_arithmetic",
+      "client_accepted": true,
+      "documented": "none",
+      "error": null,
+      "value": "int",
+      "agrees_with_documentation": false
+    },
+    {
+      "probe": "probe_broadcast_budget",
+      "client_accepted": true,
+      "documented": 300,
+      "error": null,
+      "value": 300,
+      "agrees_with_documentation": true
+    }
+  ],
+  "not_runnable_offline": [
+    {
+      "probe": "probe_feedforward_lat",
+      "field": "feedforward_latency_ns_p50",
+      "why": "needs a backend: MEASURED conditional-chain latency, never quoted"
+    },
+    {
+      "probe": "probe_user_code",
+      "field": "user_code_in_realtime",
+      "why": "needs a backend: does a 1-line Wasm identity function upload, call and return"
+    },
+    {
+      "probe": "probe_wasm_io_width",
+      "field": "wasm_abi_type_set",
+      "why": "needs a backend: is a return value above 2^32-1 rejected"
+    },
+    {
+      "probe": "probe_herald_exposed",
+      "field": "herald_exposed",
+      "why": "needs a backend: are meas_level=1 or erasure flags present in the result"
+    },
+    {
+      "probe": "probe_decoder_replace",
+      "field": "decoder_replaceable",
+      "why": "needs a backend: is a user decoder accepted"
+    }
+  ]
+}

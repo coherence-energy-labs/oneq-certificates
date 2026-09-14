@@ -1,0 +1,57 @@
+{
+  "schema": "oneq-qldpc-circuit-binding/1",
+  "stim_version": "1.16.0",
+  "circuits": {
+    "surface_d3r3_p005": {
+      "artifacts": [
+        "evidence/qldpc_circuit_gate.json",
+        "evidence/qldpc_circuit_gate_lazy.json"
+      ],
+      "generator": "stim.Circuit.generated surface_code:rotated_memory_x d=3 r=3, all four noise knobs = 0.005",
+      "circuit_sha256": "895d2f27caf82f0928533c072b5a55330304ebb0d0dbb8a03252205419a8b8f7",
+      "dem_sha256": "28258ca8f09d355140b8692e9a3d0006937bb7bbccc55e2f94a823ced91f7e02",
+      "decompose_errors": false,
+      "flatten_loops": "dem.flattened() applied in dem_to_matrices",
+      "approximate_disjoint_errors": "not passed (stim default: refuses rather than approximates)",
+      "ignore_decomposition_failures": "n/a (decompose_errors=False)",
+      "mechanism_count": 221,
+      "mechanism_order_sha256": "fece3c9f079f14a027955ed5bde028dced11570cc1e3f7f854fe128f6ca0bbb5",
+      "weight_vector_sha256": "ea1559e4eb691c8b51ceef530a682777eb615a06dab6883b1e9ca23ecd2a31bf",
+      "decoder_configuration": {
+        "package": "ldpc.BpOsdDecoder",
+        "max_iter": 40,
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "osd_method": "osd_cs",
+        "osd_order": 5,
+        "error_channel": "per-mechanism DEM probabilities"
+      },
+      "decoder_configuration_sha256": "451688749bb97348f760e3ceaea716d566a9013cf86181faea59e5bbf5b2d485"
+    },
+    "bb_own_sequential_r3_p002": {
+      "artifacts": [
+        "evidence/qldpc_bb_circuit_gate.json"
+      ],
+      "generator": "build_circuit(r=3, p=0.002): custom sequential schedule, X-sector six CNOT layers then Z-sector six, memory-Z, both sectors extracted",
+      "circuit_sha256": "bbfe99086733d51d6414e83511e3f0c80ee839ac8d84cd5a696a14f3cb74c7a4",
+      "dem_sha256": "c473221129350e3ae0d07fea5e98ad6b1719d45bed15be78efa2188466de6120",
+      "decompose_errors": false,
+      "flatten_loops": "dem.flattened() applied in dem_to_matrices",
+      "approximate_disjoint_errors": "not passed (stim default: refuses rather than approximates)",
+      "ignore_decomposition_failures": "n/a (decompose_errors=False)",
+      "mechanism_count": 2304,
+      "mechanism_order_sha256": "34d5ec99390befdb047a95cfadba37c3a3c2bb2ed2b97b4d3aa989bc3ee1e792",
+      "weight_vector_sha256": "d52f69d24855f380707419c3790beb8c01a0af2345173370c16bfb32c20273f7",
+      "decoder_configuration": {
+        "package": "ldpc.BpOsdDecoder",
+        "max_iter": 40,
+        "bp_method": "ms",
+        "schedule": "parallel",
+        "osd_method": "osd_cs",
+        "osd_order": 5,
+        "error_channel": "per-mechanism DEM probabilities"
+      },
+      "decoder_configuration_sha256": "451688749bb97348f760e3ceaea716d566a9013cf86181faea59e5bbf5b2d485"
+    }
+  }
+}

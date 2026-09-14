@@ -1,0 +1,15 @@
+{
+  "schema": "oneq-refsched-fault-xval/1",
+  "rounds": 3,
+  "part1_transcription": {
+    "ops": 325,
+    "records": 576,
+    "identical": true
+  },
+  "part2_fault_signatures": {
+    "checked": 12816,
+    "mismatches": 0,
+    "seconds": 4.4
+  },
+  "engines": "manifest-derived op generator + hand-rolled symplectic propagator vs stim deterministic sampling; shared inputs: the published layer manifest and the code matrices only"
+}

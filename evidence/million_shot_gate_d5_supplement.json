@@ -1,0 +1,51 @@
+{
+  "schema": "oneq-million-shot-gate/1",
+  "distance": 5,
+  "rounds": 25,
+  "p": 0.005,
+  "shots": 12750,
+  "nontrivial": 12750,
+  "certified": 12721,
+  "certified_rate": 0.9977254901960785,
+  "rung_histogram": {
+    "0": 9381,
+    "1": 2889,
+    "2": 342,
+    "3": 109
+  },
+  "forgeries_attempted": 76500,
+  "forgeries_accepted": 0,
+  "failed_chunks": 99,
+  "shots_lost_to_failed_chunks": 24750,
+  "failed_chunk_reasons": [
+    "ImportError: DLL load failed while importing _core: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _cythonized_array_utils: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _generator: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _qhull: The paging file is too small for this operation to complete.",
+    "ImportError: DLL load failed while importing _ufuncs: The paging file is too small for this operation to complete."
+  ],
+  "battery_attacks_that_were_not_actually_false": 0,
+  "per_attack": {
+    "E_dropped_edge": 12750,
+    "F_duplicated_edge": 12750,
+    "I_mismatched_pair": 12750,
+    "D_spurious_cycle": 12750,
+    "G_dual_inflated_to_meet_a_worse_primal": 12750,
+    "H_negative_dual_hides_inflation": 12750
+  },
+  "per_attack_accepted": {},
+  "accepted_examples": [],
+  "wall_seconds": 689.7661310000003,
+  "core_seconds": 726.7599968000068,
+  "workers": 3,
+  "ms_per_nontrivial_shot": 57.00078406274564,
+  "uncertified_gap": {
+    "n": 29,
+    "mean": 0.365297448275862,
+    "median": 0.333052,
+    "p90": 0.6798393999999999,
+    "max": 1.362258
+  },
+  "gate": "forgeries_accepted MUST be 0. A single acceptance means the checker can bless a wrong correction, which ends the claim.",
+  "scope": "simulated circuit noise; this measures the CHECKER's soundness at volume, not that the certification RATE carries over to hardware noise"
+}

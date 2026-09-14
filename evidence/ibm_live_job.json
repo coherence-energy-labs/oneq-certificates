@@ -1,0 +1,26 @@
+{
+  "prereg_sha256": "f94c62c58c87501a1a3355d9f664adbb5214288d1dee68585a0363dd7fefe375",
+  "provider": "ibm_quantum",
+  "backend": "ibm_fez",
+  "job_id": "dafvcophvn6c73cptnp0",
+  "config": {
+    "distance": 5,
+    "rounds": 13,
+    "shots": 40000,
+    "layout": [
+      16,
+      24,
+      37,
+      46,
+      57,
+      23,
+      25,
+      45,
+      47
+    ],
+    "code": "repetition(bit-flip)",
+    "weights": "uniform, declared",
+    "analysis": "detectors from round diffs; pymatching decode; certify_hard per shot; artifact schema oneq-ibm-live/1"
+  },
+  "submitted_utc": "2026-09-08T11:49:55Z"
+}

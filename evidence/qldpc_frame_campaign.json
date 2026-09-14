@@ -1,0 +1,49 @@
+{
+  "schema": "oneq-qldpc-frame-campaign/1",
+  "threshold_rule": "bound-only trees prove min > U on the opposite-frame system: a differing-frame solution AT weight U would break determinacy, so U (not U-delta) is the correct exclusion threshold",
+  "per_rung_cap": 120,
+  "mechanism_validation": "300 random instances vs brute force: 231 proofs all truly determinate, 69 honest refusals, 0 false proofs",
+  "rungs": {
+    "uniform_p01": {
+      "shots_available": 300,
+      "shots_checked": 120,
+      "frame_certified": 120,
+      "frame_ambiguous": 0,
+      "frame_unchecked": 0,
+      "bits_proven": 1440,
+      "bits_total": 1440,
+      "witnesses": 0,
+      "seconds": 103.5,
+      "frame_certified_rate": 100.0
+    },
+    "uniform_p02": {
+      "shots_available": 470,
+      "shots_checked": 120,
+      "frame_certified": 120,
+      "frame_ambiguous": 0,
+      "frame_unchecked": 0,
+      "bits_proven": 1440,
+      "bits_total": 1440,
+      "witnesses": 0,
+      "seconds": 97.2,
+      "frame_certified_rate": 100.0
+    },
+    "stress_p05": {
+      "shots_available": 300,
+      "shots_checked": 120,
+      "frame_certified": 117,
+      "frame_ambiguous": 3,
+      "frame_unchecked": 0,
+      "bits_proven": 1420,
+      "bits_total": 1440,
+      "witnesses": 20,
+      "seconds": 118.3,
+      "frame_certified_rate": 97.5
+    }
+  },
+  "total": {
+    "shots_checked": 360,
+    "frame_certified": 357,
+    "rate": 99.17
+  }
+}
