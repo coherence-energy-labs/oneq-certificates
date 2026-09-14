@@ -892,7 +892,7 @@
     {
       "name": "REPRODUCE.md",
       "digest": {
-        "sha256": "f1856c52365828409418a039483611f58c5267d0cd31dd31f38acd16c834ca05"
+        "sha256": "b92919b086f1b12fe2c473ab2e21e7620ce7fbc365453d4801ee453939811cf9"
       }
     },
     {
@@ -1270,7 +1270,7 @@
     {
       "name": "paper/certifying-decoders/main.tex",
       "digest": {
-        "sha256": "856384583fd487040808f4040ef36c661265063d17176806ed1ea30956d7941a"
+        "sha256": "5d66441ca62213a9806723a6057d1f87ec570128e48c2869513a404d160488fc"
       }
     },
     {
@@ -1300,7 +1300,7 @@
     {
       "name": "paper/qldpc-certificates/main.tex",
       "digest": {
-        "sha256": "9e05fa2f62747deda64c1eea0b9b24f1aaba7c551790235aab2e1575e8a3139e"
+        "sha256": "92aa03c38cf33a07313f52aa04c5c34958d7e04744b4d6833e2357bf0be98231"
       }
     },
     {
@@ -1604,7 +1604,7 @@
         {
           "uri": "git+https://one-q.org/ONE_Q",
           "digest": {
-            "gitCommit": "8c4ea97ef5b65587b0c9476e2ccdafa6c4a0d02d"
+            "gitCommit": "b7d437709e3a2b1e91ca65b993e247ebd8a73b71"
           }
         }
       ],
@@ -1624,7 +1624,7 @@
         "id": "https://one-q.org/local"
       },
       "metadata": {
-        "invocationId": "8c4ea97ef5b65587b0c9476e2ccdafa6c4a0d02d"
+        "invocationId": "b7d437709e3a2b1e91ca65b993e247ebd8a73b71"
       }
     },
     "claims": {

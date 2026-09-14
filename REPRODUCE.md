@@ -107,7 +107,7 @@ See `docs/HELD_OUT_RESULTS.md` finding F4.
 python tools/gate_all.py                # all 105 gates incl. provenance, registry,
                                         # both equivalence arbiters and their
                                         # self-proofs, and the overhead gates
-python -m pytest tests/ -q              # 4,247 tests, 0 skips expected
+python -m pytest tests/ -q              # 4,249 tests, 0 skips expected
 python tools/mutation_gate.py           # 500 mutants, all must be killed
 ```
 
