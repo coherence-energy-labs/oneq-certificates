@@ -1,0 +1,140 @@
+{
+ "schema": "oneq-mutation-score/1",
+ "target": "src/oneq/matching_cert_epsilon.py",
+ "target_sha256": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+ "tests": {
+  "tests/test_matching_cert_epsilon.py": "aee2f86aef8963f73b598cedc9397e949b7a955c30c336f2834d519dd5c3946c",
+  "tests/test_replay_epsilon_receipts.py": "19f2651c3b7f3435e12b75d616c6e5a814ac548d470d0057a485c93d78e120a6"
+ },
+ "copied": [
+  "conftest.py",
+  "pyproject.toml",
+  "src",
+  "tools",
+  "conformance",
+  "experiments/m0_prior_art"
+ ],
+ "operators": [
+  "AOR",
+  "BRK",
+  "CRP",
+  "LCR",
+  "MMS",
+  "NEG",
+  "ROR",
+  "UOD"
+ ],
+ "sites": 97,
+ "mutants_run": 97,
+ "unsplicable": 0,
+ "killed": 93,
+ "survived": 4,
+ "timeout": 0,
+ "score_killed_over_run": 0.9587628865979382,
+ "equivalent_declared": 4,
+ "score_excluding_equivalents": 1.0,
+ "by_operator": {
+  "CRP": {
+   "killed": 22,
+   "survived": 0,
+   "timeout": 0
+  },
+  "ROR": {
+   "killed": 20,
+   "survived": 3,
+   "timeout": 0
+  },
+  "NEG": {
+   "killed": 27,
+   "survived": 0,
+   "timeout": 0
+  },
+  "UOD": {
+   "killed": 6,
+   "survived": 0,
+   "timeout": 0
+  },
+  "LCR": {
+   "killed": 5,
+   "survived": 0,
+   "timeout": 0
+  },
+  "AOR": {
+   "killed": 11,
+   "survived": 1,
+   "timeout": 0
+  },
+  "BRK": {
+   "killed": 1,
+   "survived": 0,
+   "timeout": 0
+  },
+  "MMS": {
+   "killed": 1,
+   "survived": 0,
+   "timeout": 0
+  }
+ },
+ "survivors": [
+  {
+   "operator": "ROR",
+   "kind": "Compare",
+   "lineno": 84,
+   "col": 21,
+   "end_lineno": 84,
+   "end_col": 37,
+   "detail": "LtE->Lt",
+   "index": 0,
+   "original": "return (u, v) if (u, v) <= (v, u) else (v, u)",
+   "mutant": "return (u, v) if ((u, v) < (v, u)) else (v, u)",
+   "equivalent": "(u, v) and (v, u) compare equal only when u == v, and both branches then return the same tuple, so the mutant agrees with the original on every input."
+  },
+  {
+   "operator": "ROR",
+   "kind": "Compare",
+   "lineno": 99,
+   "col": 25,
+   "end_lineno": 99,
+   "end_col": 34,
+   "detail": "Lt->LtE",
+   "index": 0,
+   "original": "if k not in W or wf < W[k]:",
+   "mutant": "if k not in W or (wf <= W[k]):",
+   "equivalent": "the mutant replaces a stored parallel-edge weight by an equal weight only when wf == W[k], which stores the same value."
+  },
+  {
+   "operator": "AOR",
+   "kind": "BinOp",
+   "lineno": 131,
+   "col": 25,
+   "end_lineno": 131,
+   "end_col": 42,
+   "detail": "Add->Sub",
+   "index": 0,
+   "original": "deg[x] = deg.get(x, 0) + 1",
+   "mutant": "deg[x] = (deg.get(x, 0) - 1)",
+   "equivalent": "only the parity of each degree is read (n % 2 in _correction), and -n and n have the same parity in Python."
+  },
+  {
+   "operator": "ROR",
+   "kind": "Compare",
+   "lineno": 161,
+   "col": 11,
+   "end_lineno": 161,
+   "end_col": 19,
+   "detail": "Gt->GtE",
+   "index": 0,
+   "original": "if L > W[k]:",
+   "mutant": "if (L >= W[k]):",
+   "equivalent": "when L == W[k] the candidate W[k] / L equals 1, and theta starts at 1 and only decreases, so min(theta, 1) is unchanged; L is positive on every loaded edge, so no division by zero is introduced."
+  }
+ ],
+ "baseline_seconds": [
+  2.95,
+  2.89
+ ],
+ "wall_seconds": 87.1,
+ "command": "python tools/mutation_score.py src/oneq/matching_cert_epsilon.py --tests tests/test_matching_cert_epsilon.py tests/test_replay_epsilon_receipts.py --workers 2 --equivalents evidence/mutation_score/matching_cert_epsilon.equivalents.json",
+ "digest_domain": "sha256-lf",
+ "digest_domain_note": "2026-09-15: pins re-recorded from working-tree bytes to CRLF-normalised bytes (what git stores). Each file was verified to be the bytes the score was measured on and, normalised, the blob at HEAD, so the score is unchanged."
+}

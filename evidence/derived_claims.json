@@ -98,6 +98,8 @@
   "heldout_flat_total": 2002,
   "heldout_flat_rate": 99.15,
   "heldout_flat_ref_agreed": 2002,
+  "heldout_tier1_rate": 88.16,
+  "heldout_tier2_rate": 10.99,
   "heldout_refsched_flat_only": 98.65,
   "refsched_exact_rate": 97.33,
   "refsched_cp_lb": 94.0,
@@ -109,5 +111,10 @@
   "stress_pipeline_errors": 5,
   "stress_rr": 38.6,
   "stress_rr_ci_lo": 15.9,
-  "stress_rr_ci_hi": 93.8
+  "stress_rr_ci_hi": 93.8,
+  "hw_final_gen4_nontrivial": 99384,
+  "hw_final_gen4_certified": 98772,
+  "hw_final_gen6_nontrivial": 100000,
+  "hw_final_gen6_certified": 99998,
+  "detection_defect_mutant_corrections": 4862
 }

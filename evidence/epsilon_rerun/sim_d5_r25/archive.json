@@ -1,0 +1,11 @@
+{
+ "schema": "oneq-epsilon-receipt-archive/1",
+ "config": "sim_d5_r25",
+ "archive": "sim_d5_r25.tar",
+ "sha256": "74761e8d75fdc0d1d791730626c196e8f6f1fcd42ecd46e6750b55b755b0eae1",
+ "bytes": 823695360,
+ "members": 4000,
+ "chunks_index_sha256": "1d5d66db922742cdd1d596ecd2d3578748dabf116b32436be6eefa4bdd3a0fd8",
+ "extract_to": "the repository root (members are data/epsilon_receipts/<config>/chunk_*.jsonl.gz)",
+ "then": "python tools/replay_epsilon_receipts.py --config sim_d5_r25 --jobs 8"
+}

@@ -1,0 +1,46 @@
+{
+ "schema": "oneq-epsilon-rerun/1",
+ "config": "willow_d3_at_q4_5_X_r13",
+ "spec": {
+  "kind": "willow",
+  "corpus_config": "d3_at_q4_5_X_r13",
+  "chunk": 250,
+  "seeds": [
+   1,
+   40
+  ],
+  "method": "certify",
+  "reproduces": "evidence/corpus_gen4/d3_at_q4_5_X_r13.json (generation 4, base ladder)"
+ },
+ "eps_max": "1/1000000",
+ "chunks": 40,
+ "shots": 10000,
+ "nontrivial": 9841,
+ "status": {
+  "EPSILON_OPTIMAL": 1414,
+  "EXACT_OPTIMAL": 8427,
+  "TRIVIAL": 159
+ },
+ "accepted": 9841,
+ "accepted_rate": 1.0,
+ "largest_accepted_epsilon": "17585796650670785/361181576271969787633463197696",
+ "largest_accepted_epsilon_float": 4.8689628170371226e-14,
+ "forgeries_attempted": 86409,
+ "forgeries_accepted": 0,
+ "forgeries_by_class": {
+  "E_dropped_edge": 9196,
+  "F_duplicated_edge": 9841,
+  "I_mismatched_pair": 9841,
+  "A_suboptimal": 8748,
+  "D_spurious_cycle": 9841,
+  "G_dual_inflated_to_meet_a_worse_primal": 9841,
+  "H_negative_dual_hides_inflation": 9419,
+  "N_nan_dual": 9841,
+  "N_inf_dual": 9841
+ },
+ "forgeries_accepted_by_class": {},
+ "battery_attacks_not_false": 0,
+ "chunk_failures_retried": 0,
+ "instance": "evidence/instances/matching_willow_d3_at_q4_5_X_r13.json",
+ "receipts": "data/epsilon_receipts/willow_d3_at_q4_5_X_r13/ (per-chunk sha256 in chunks.jsonl)"
+}

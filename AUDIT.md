@@ -25,21 +25,17 @@ defending it, or an honest record of where it stops.
 **From the signed tarball alone** — no repository, no network:
 
 ```
-sha256sum -c SHA256SUMS                                    # 180 files
-node verifier-js/verify-certificate.mjs      --conformance conformance/cert_vectors.json           # 56/56, 47 refusals
+sha256sum -c SHA256SUMS                                    # 374 files
+node verifier-js/verify-certificate.mjs      --conformance conformance/cert_vectors.json           # 56/56, 48 refusals
 python tools/external/exact_lp_certificate_reference.py --self-test
-python tools/recheck_all.py                                # every stored tree
+python tools/recheck_all.py                                # complete pinned replay: 2,042 receipts
+python tools/replay_epsilon_receipts.py --jobs 8           # paper 1's rerun receipts (needs the archives)
 ```
 
-**If you also have the repository**, add the wall:
-
-```
-python tools/gate_all.py --fast        # 26 gates
-python -m pytest tests/ -q             # ~1,240 tests, 0 skips
-python tools/mutation_gate.py          # 500 mutants, all must be killed
-```
-
-The first block is the one that matters: it needs nothing from us.
+**With the full development repository**, `REPRODUCE.md` §3 adds the wall:
+every gate, the whole test suite and the mutation gate, with counts that
+`tools/doc_claims_gate.py` holds to the artifacts. None of it is needed for a
+verdict. The first block is the one that matters: it needs nothing from us.
 
 If any of those fails on a clean clone, stop and tell us — that failure
 is worth more than anything below. It has happened: the last audit pass
@@ -105,13 +101,16 @@ they are the load-bearing part:
 - C2 mask flips: L2′ is 0% on *weight* faults by design. If it fires
   there, it is a second copy of L2, not a complementary layer.
 
-**4. The tree corpus is PARTIAL, and the count is reconciled here.**
-The evidence reports 60 stored trees; **36 are embedded in full** and are
-the ones `recheck_all.py` re-verifies through both checkers. The other 24
-are summarised — tier and outcome recorded, structure not — so they
-cannot be independently re-checked from this bundle and you should not
-count them as verified. External audit 2026-08-04, finding 7: the gap was
-real and was not disclosed. Treat the re-checkable corpus as 36.
+**4. The paper-2 receipt corpus is complete, and replay fails if it is not.**
+`recheck_all.py` replays every one of the 2,042 receipts named by the pinned
+`evidence/receipt_manifest.json` (2,002 flat certificates and 40 branch-dual
+trees: 17 held-out, 23 development) through two independently written
+checkers, against persisted instances and integer weight vectors, and fails on
+any missing, duplicated, unlisted or altered receipt or bound file. External
+audit 2026-08-04, finding 7, and 2026-09-14, R-01/R-04: earlier releases
+re-checked 36 embedded trees and exited cleanly when files were absent. Tree
+records elsewhere in the evidence that keep only tier and outcome cannot be
+re-checked from this bundle and support no claim in either paper.
 
 **5. Check the numbers we refused to produce.** Absence is a claim too:
 - C2's ~5,400 LUT figure is **unverified** — ABC will not complete in the
@@ -132,10 +131,21 @@ preregistration and we are not going to pretend otherwise.
 
 ## READ THIS BEFORE QUOTING ANY CERTIFIED RATE
 
+Paper 1's rates are acceptances of `src/oneq/matching_cert_epsilon.py`, which
+decides a DECLARED claim: it scales the packing to feasibility, computes the
+correction's proven slack exactly in rational arithmetic, and accepts iff that
+slack is at most eps_max = 1e-6, returning EXACT_OPTIMAL, EPSILON_OPTIMAL,
+NOT_PROVEN, INVALID_INPUT or VERIFIER_FAILURE. The external audit of 2026-09-14
+showed that the original runs' tolerance rule (float gap <= 1e-6, no NaN guard)
+is not a proof; those runs were repeated under the epsilon checker with every
+receipt kept (`evidence/epsilon_rerun/`), and their original rates are
+historical. The exact checker described next is a separate, stricter
+measurement.
+
 The external audit of 2026-08-04 found that the MWPM checker accepted on
 a 1e-6 tolerance, which certified provably suboptimal corrections. That
-is fixed. **Acceptance is now exact, with no epsilon anywhere in the
-decision**, and it is exact with respect to the ORIGINAL IEEE double
+is fixed. **`matching_cert.check` now accepts only exact optimality, with
+no epsilon anywhere in the decision**, and it is exact with respect to the ORIGINAL IEEE double
 weights — nothing is quantised and no fixed-point vector is declared.
 
 **A previous version of this section said the opposite and was wrong.**

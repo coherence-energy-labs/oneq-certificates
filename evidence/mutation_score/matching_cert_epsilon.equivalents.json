@@ -1,0 +1,6 @@
+{
+ "ROR|LtE->Lt|return (u, v) if (u, v) <= (v, u) else (v, u)": "(u, v) and (v, u) compare equal only when u == v, and both branches then return the same tuple, so the mutant agrees with the original on every input.",
+ "ROR|Lt->LtE|if k not in W or wf < W[k]:": "the mutant replaces a stored parallel-edge weight by an equal weight only when wf == W[k], which stores the same value.",
+ "AOR|Add->Sub|deg[x] = deg.get(x, 0) + 1": "only the parity of each degree is read (n % 2 in _correction), and -n and n have the same parity in Python.",
+ "ROR|Gt->GtE|if L > W[k]:": "when L == W[k] the candidate W[k] / L equals 1, and theta starts at 1 and only decreases, so min(theta, 1) is unchanged; L is positive on every loaded edge, so no division by zero is introduced."
+}

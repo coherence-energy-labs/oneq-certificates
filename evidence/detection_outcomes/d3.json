@@ -1,0 +1,307 @@
+{
+ "schema": "oneq-detection-outcomes/1",
+ "eps_max": "1/1000000",
+ "command": "python experiments/m0_prior_art/detection_outcomes.py 3",
+ "seeded_faults": {
+  "distance": 3,
+  "rounds": 3,
+  "shots": 300,
+  "p": 0.005,
+  "sampler_seed": 7,
+  "clean_output_base_ladder": {
+   "n": 170,
+   "defective": 0,
+   "invalid": 0,
+   "certified": 170,
+   "proven_suboptimal": 0,
+   "not_proven": 0,
+   "false_alarms": 0,
+   "missed": 0,
+   "not_proven_on_defective": 0,
+   "mean_excess_of_suboptimal": 0.0
+  },
+  "clean_output_full_ladder": {
+   "n": 170,
+   "defective": 0,
+   "invalid": 0,
+   "certified": 170,
+   "proven_suboptimal": 0,
+   "not_proven": 0,
+   "false_alarms": 0,
+   "missed": 0,
+   "not_proven_on_defective": 0,
+   "mean_excess_of_suboptimal": 0.0
+  },
+  "clean_output_pymatching_above_optimum": 0,
+  "clean_output_pymatching_excess_positive": 0,
+  "per_mutant": {
+   "M1_off_by_one_edge": {
+    "n": 170,
+    "defective": 170,
+    "invalid": 170,
+    "certified": 0,
+    "proven_suboptimal": 0,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.0
+   },
+   "M2_greedy_boundary": {
+    "n": 120,
+    "defective": 120,
+    "invalid": 120,
+    "certified": 0,
+    "proven_suboptimal": 0,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.0
+   },
+   "M3_dropped_edge": {
+    "n": 170,
+    "defective": 170,
+    "invalid": 170,
+    "certified": 0,
+    "proven_suboptimal": 0,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.0
+   },
+   "M4_stale_cache": {
+    "n": 169,
+    "defective": 168,
+    "invalid": 168,
+    "certified": 1,
+    "proven_suboptimal": 0,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.0
+   },
+   "M5_equal_weight_alternative": {
+    "n": 50,
+    "defective": 0,
+    "invalid": 0,
+    "certified": 50,
+    "proven_suboptimal": 0,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.0
+   },
+   "M6_truncated_path": {
+    "n": 28,
+    "defective": 28,
+    "invalid": 28,
+    "certified": 0,
+    "proven_suboptimal": 0,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.0
+   },
+   "M7_added_cycle_STEALTH": {
+    "n": 1,
+    "defective": 1,
+    "invalid": 0,
+    "certified": 0,
+    "proven_suboptimal": 1,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 9.269968738561966
+   },
+   "M8_boundary_pair_swap_STEALTH": {
+    "n": 1,
+    "defective": 1,
+    "invalid": 0,
+    "certified": 0,
+    "proven_suboptimal": 1,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 0.2779953755963973
+   },
+   "M9_detour_STEALTH": {
+    "n": 120,
+    "defective": 120,
+    "invalid": 0,
+    "certified": 0,
+    "proven_suboptimal": 120,
+    "not_proven": 0,
+    "false_alarms": 0,
+    "missed": 0,
+    "not_proven_on_defective": 0,
+    "mean_excess_of_suboptimal": 5.795636452141958
+   }
+  },
+  "legacy_definition": {
+   "M1_off_by_one_edge": {
+    "n": 170,
+    "truly_defective": 170
+   },
+   "M3_dropped_edge": {
+    "n": 170,
+    "truly_defective": 170
+   },
+   "M5_equal_weight_alternative": {
+    "n": 50,
+    "truly_defective": 0
+   },
+   "M2_greedy_boundary": {
+    "n": 120,
+    "truly_defective": 120
+   },
+   "M4_stale_cache": {
+    "n": 169,
+    "truly_defective": 168
+   },
+   "M6_truncated_path": {
+    "n": 28,
+    "truly_defective": 28
+   },
+   "M9_detour_STEALTH": {
+    "n": 120,
+    "truly_defective": 120
+   },
+   "M8_boundary_pair_swap_STEALTH": {
+    "n": 1,
+    "truly_defective": 1
+   },
+   "M7_added_cycle_STEALTH": {
+    "n": 1,
+    "truly_defective": 1
+   }
+  },
+  "oracle_failures": []
+ },
+ "stale_calibration": {
+  "distance": 3,
+  "rounds": 3,
+  "shots": 800,
+  "p": 0.005,
+  "sampler_seed": 20260731,
+  "drift_rng_seed": 7,
+  "drift_definition": "each error mechanism's probability is multiplied by an independent factor exp(U), U uniform on [-ln f, ln f], clipped to [1e-12, 0.49]; the stale graph is rebuilt from the drifted model; the true model is the reference supplied to the checker",
+  "rows": [
+   {
+    "drift_factor": 1.0,
+    "outcomes": {
+     "n": 452,
+     "defective": 0,
+     "invalid": 0,
+     "certified": 452,
+     "proven_suboptimal": 0,
+     "not_proven": 0,
+     "false_alarms": 0,
+     "missed": 0,
+     "not_proven_on_defective": 0,
+     "mean_excess_of_suboptimal": 0.0
+    },
+    "logical_cells": {
+     "both_correct": 445,
+     "stale_only_wrong": 0,
+     "true_only_wrong": 0,
+     "both_wrong": 7
+    },
+    "legacy_suboptimal_vs_true_decoder": 0,
+    "skipped": {
+     "not_expressible": 0,
+     "decode_error": 0,
+     "oracle": 0
+    }
+   },
+   {
+    "drift_factor": 1.5,
+    "outcomes": {
+     "n": 452,
+     "defective": 14,
+     "invalid": 0,
+     "certified": 438,
+     "proven_suboptimal": 14,
+     "not_proven": 0,
+     "false_alarms": 0,
+     "missed": 0,
+     "not_proven_on_defective": 0,
+     "mean_excess_of_suboptimal": 0.13488801728080305
+    },
+    "logical_cells": {
+     "both_correct": 445,
+     "stale_only_wrong": 0,
+     "true_only_wrong": 1,
+     "both_wrong": 6
+    },
+    "legacy_suboptimal_vs_true_decoder": 14,
+    "skipped": {
+     "not_expressible": 0,
+     "decode_error": 0,
+     "oracle": 0
+    }
+   },
+   {
+    "drift_factor": 2.0,
+    "outcomes": {
+     "n": 452,
+     "defective": 16,
+     "invalid": 0,
+     "certified": 436,
+     "proven_suboptimal": 16,
+     "not_proven": 0,
+     "false_alarms": 0,
+     "missed": 0,
+     "not_proven_on_defective": 0,
+     "mean_excess_of_suboptimal": 0.17039168118459186
+    },
+    "logical_cells": {
+     "both_correct": 445,
+     "stale_only_wrong": 0,
+     "true_only_wrong": 1,
+     "both_wrong": 6
+    },
+    "legacy_suboptimal_vs_true_decoder": 16,
+    "skipped": {
+     "not_expressible": 0,
+     "decode_error": 0,
+     "oracle": 0
+    }
+   },
+   {
+    "drift_factor": 3.0,
+    "outcomes": {
+     "n": 452,
+     "defective": 24,
+     "invalid": 0,
+     "certified": 428,
+     "proven_suboptimal": 24,
+     "not_proven": 0,
+     "false_alarms": 0,
+     "missed": 0,
+     "not_proven_on_defective": 0,
+     "mean_excess_of_suboptimal": 0.3973647256978998
+    },
+    "logical_cells": {
+     "both_correct": 444,
+     "stale_only_wrong": 1,
+     "true_only_wrong": 1,
+     "both_wrong": 6
+    },
+    "legacy_suboptimal_vs_true_decoder": 24,
+    "skipped": {
+     "not_expressible": 0,
+     "decode_error": 0,
+     "oracle": 0
+    }
+   }
+  ]
+ },
+ "wall_seconds": 12.4
+}

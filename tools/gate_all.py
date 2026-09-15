@@ -2016,6 +2016,17 @@ def main() -> int:
                         "--json", "evidence/roadmap.json"], env=env))
     results.append(run("claims provenance + bundle completeness",
                        [PY, "tools/claims_provenance_gate.py"], env=env))
+    # THE RECEIPT CORPUS, COMPLETELY (external audit 2026-09-14, R-01/R-03).
+    # Every receipt behind paper 2, against the pinned manifest and the
+    # persisted instances: missing, duplicated, unlisted or altered fails.
+    # The second gate rebuilds each persisted instance from its construction
+    # and requires byte-for-byte agreement -- reproduction kept separate from
+    # replay, so the replay never checks proofs against a rebuilt input.
+    results.append(run("receipt corpus: complete pinned replay",
+                       [PY, "tools/replay_receipts.py"], env=env))
+    results.append(run("receipt instances rebuild exactly",
+                       [PY, "tools/export_receipt_instances.py", "--verify"],
+                       env=env))
     results.append(run("code standards + checker independence",
                        [PY, "tools/standards_gate.py"], env=env))
     # The audit-debt register must describe THIS tree. It had drifted --

@@ -294,6 +294,12 @@ def main() -> int:
         out["heldout_flat_rate"] = math.floor(flat / tot * 10000) / 100
         out["heldout_flat_ref_agreed"] = sum(
             int(r0.get("ref_agreed", 0)) for r0 in ho["rungs"].values())
+        # the tier split as paper 2 states it: a share of all nontrivial held-out shots, floored
+        # exactly as paper/tools/make_numbers_qldpc.py's PF floors it
+        nontrivial = sum(int(r0["nontrivial"]) for r0 in ho["rungs"].values())
+        for t in ("tier1", "tier2"):
+            share = sum(int(r0.get(t, 0)) for r0 in ho["rungs"].values()) / nontrivial
+            out[f"heldout_{t}_rate"] = math.floor(100 * share * 100 + 1e-9) / 100
         # held-out refsched flat-only rate (flat = t1 + t2)
         rr = ho["rungs"].get("bb_refsched")
         if rr:
@@ -343,6 +349,24 @@ def main() -> int:
         out["stress_rr"] = round(rr, 1)
         out["stress_rr_ci_lo"] = round(math.exp(math.log(rr) - half), 1)
         out["stress_rr_ci_hi"] = round(math.exp(math.log(rr) + half), 1)
+    # THE FINAL HARDWARE AGGREGATE, SPLIT BY PRODUCER GENERATION (audit M10). Paper 1 reports each
+    # part, so each part must trace: the ten configurations generation 4 still holds and the two
+    # d=7x30 configurations generation 6 finished, from the per-configuration table
+    # paper/tools/make_numbers.py reads.
+    gh = _j("google_generation_history.json")
+    if gh:
+        fin = gh["final_generation"]["per_config"]
+        gen6 = [c for c in fin if c.startswith("d7") and c.endswith("_r30")]
+        for part, cs in (("gen4", [c for c in fin if c not in gen6]), ("gen6", gen6)):
+            out[f"hw_final_{part}_nontrivial"] = sum(fin[c]["nontrivial"] for c in cs)
+            out[f"hw_final_{part}_certified"] = sum(fin[c]["certified"] for c in cs)
+    # DETECTION UNDER THE SOUND CHECKER (audit M6 / A-03): every correction a defect-seeding mutant
+    # produced at d=3, 5 and 7. M5, the equal-weight control, seeds no defect.
+    det = [_j(f"detection_outcomes/d{d}.json") for d in (3, 5, 7)]
+    if all(det):
+        out["detection_defect_mutant_corrections"] = sum(
+            t["n"] for doc in det for name, t in doc["seeded_faults"]["per_mutant"].items()
+            if not name.startswith("M5"))
     dest = EVID / "derived_claims.json"
     dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
 

@@ -237,7 +237,11 @@ def main() -> int:
               f"no-hash {c['hash_unavailable']:>3}  ref {c['ref_agreed']:>4}", flush=True)
     out["totals"] = tot
     out["seconds"] = round(time.perf_counter() - t0, 1)
-    OUT.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
+    # LF on every platform. Without newline="\n" this wrote CRLF on Windows, the release
+    # normalised the shipped copy to LF, and the receipt manifest's pin -- taken over the CRLF
+    # bytes -- no longer matched the file a reader receives (2026-09-15, found by rehearsing
+    # the public tree).
+    OUT.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"\nTOTAL flat certificates stored: {tot['attempted']}  exact-accepted {tot['exact_accepted']}  "
           f"identical-to-run {tot['hash_matched']}  valid-but-different {tot['hash_differs_but_valid']}  "
           f"no-hash {tot['hash_unavailable']}  reference-agreed {tot['ref_agreed']}  "

@@ -1,0 +1,11 @@
+{
+ "schema": "oneq-epsilon-receipt-archive/1",
+ "config": "willow_d5_at_q8_7_X_r13",
+ "archive": "willow_d5_at_q8_7_X_r13.tar",
+ "sha256": "c0cab62134ea407ddfc01785f7f94ffe1cb8c14f1a95a63df2b04c8a6a5fc565",
+ "bytes": 4761600,
+ "members": 40,
+ "chunks_index_sha256": "ee3097f045cae84bdb47866a364133c7d9d8f5cab481538730b7268038267a5e",
+ "extract_to": "the repository root (members are data/epsilon_receipts/<config>/chunk_*.jsonl.gz)",
+ "then": "python tools/replay_epsilon_receipts.py --config willow_d5_at_q8_7_X_r13 --jobs 8"
+}

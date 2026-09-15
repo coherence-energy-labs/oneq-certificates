@@ -140,7 +140,13 @@ def run_rung(*, name, checks, wint, wspec, sample_syndrome, decoder,
                              [int(i) for i in np.flatnonzero(e_bp)],
                          "objective": int(sum(wint[int(i)] for i in
                                               np.flatnonzero(e_bp))),
-                         "syndrome_valid": True}}
+                         # COMPUTED, not asserted (external audit 2026-09-14,
+                         # B-06): the frozen held-out run wrote True here
+                         # unconditionally; its records are checked after
+                         # the fact by qldpc_bposd_syndrome_validity.py.
+                         "syndrome_valid": bool(all(
+                             sum(int(e_bp[i]) for i in chk) % 2 == int(syn[j])
+                             for j, chk in enumerate(checks)))}}
         candidate, tier, fc = None, None, None
         if cert is not None:
             bp_sup = tuple(int(i) for i in np.flatnonzero(e_bp))

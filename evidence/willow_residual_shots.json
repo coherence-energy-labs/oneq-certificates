@@ -1,0 +1,56 @@
+{
+ "schema": "oneq-willow-residual-shots/1",
+ "pinned_commit": "f57e87d",
+ "shots": {
+  "X": {
+   "config": "d7_at_q6_7_X_r30",
+   "chunk": [
+    26700,
+    26750
+   ],
+   "pinned_uncertified": 1,
+   "gap_reproduced": true,
+   "shot": 26714,
+   "gap": 0.803199,
+   "detectors_fired": 91,
+   "pymatching_weight": 281.87508432373755,
+   "exact_min_tjoin_weight": 281.87508432373755,
+   "pymatching_minus_optimum": 0.0,
+   "oracle_note": "ok",
+   "head_exact_tier": {
+    "accepted": false,
+    "bound": 281.55357498245036,
+    "gap": 0.32150934128719655,
+    "exit": {
+     "reason": "max_rounds_exhausted",
+     "rounds": 200
+    }
+   }
+  },
+  "Z": {
+   "config": "d7_at_q6_7_Z_r30",
+   "chunk": [
+    5300,
+    5350
+   ],
+   "pinned_uncertified": 1,
+   "gap_reproduced": true,
+   "shot": 5302,
+   "gap": 0.111032,
+   "detectors_fired": 127,
+   "pymatching_weight": 408.07096776850545,
+   "exact_min_tjoin_weight": 408.07096776850545,
+   "pymatching_minus_optimum": 0.0,
+   "oracle_note": "ok",
+   "head_exact_tier": {
+    "accepted": false,
+    "bound": 406.5665640650758,
+    "gap": 1.5044037034296593,
+    "exit": {
+     "reason": "max_rounds_exhausted",
+     "rounds": 200
+    }
+   }
+  }
+ }
+}

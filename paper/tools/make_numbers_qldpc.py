@@ -97,6 +97,20 @@ def build() -> dict[str, str]:
             rf"$\ge {PF(cp_lower(r['exact_certified'], r['nontrivial']))}\%$ \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     files["tab_heldout.tex"] = "\n".join(lines) + "\n"
+    tier1 = sum(rungs[k]["tier1"] for k in RUNG_ORDER)
+    tier2 = sum(rungs[k]["tier2"] for k in RUNG_ORDER)
+    if tier1 + tier2 != tot_flat:
+        raise SystemExit("tier split does not sum to the flat count")
+    M["HoTierOne"] = I(tier1)
+    M["HoTierTwo"] = I(tier2)
+    M["HoTierOnePct"] = PF(tier1 / tot_n)
+    M["HoTierTwoPct"] = PF(tier2 / tot_n)
+    from scipy.stats import beta as _beta
+    M["HoFlatLowerBound"] = PF(float(_beta.ppf(0.05, tot_flat, tot_n - tot_flat + 1)))
+    man = J("receipt_manifest.json")
+    M["ReplayReceipts"] = I(len(man["receipts"]))
+    M["ReplayTrees"] = I(sum(v for k, v in man["expected_counts"].items() if "tree" in k))
+    M["ReplayDevTrees"] = I(man["expected_counts"]["dev_tree"] + man["expected_counts"]["dev_refsched_tree"])
     M["HoNontrivial"] = I(tot_n)
     M["HoCertified"] = I(tot_cert)
     M["HoFlat"] = I(tot_flat)
@@ -121,6 +135,9 @@ def build() -> dict[str, str]:
     if of != rs["nontrivial"]:
         raise SystemExit("observable agreement is not over the nontrivial shots")
     M["HoRefschedObsAgree"] = I(agreed)
+    # zero observed disagreements in N: one-sided 95% UPPER bound, ceilinged
+    if agreed == of:
+        M["HoRefschedObsUpperPct"] = f"{math.ceil(100 * (1 - 0.05 ** (1 / of)) * 100) / 100:.2f}"
 
     add = J("qldpc_heldout_addendum.json")
     t = add["stress_paired_2x2"]
@@ -134,7 +151,25 @@ def build() -> dict[str, str]:
     if t["bp_correct_pipeline_wrong"] == 0 and not math.isclose(t["mcnemar_exact_two_sided_p"], expect_p, rel_tol=1e-9):
         raise SystemExit("McNemar value disagrees with 2*(1/2)^discordant")
     M["HoStressMcNemar"] = SCI(t["mcnemar_exact_two_sided_p"])
-    ts = add["tree_stats"]
+    # tree statistics over EVERY stored tree (17 held-out + 23 development), with
+    # the definitions qldpc_heldout_addendum.py used, checked against its 36-tree record
+    def _nodes(t):
+        return 1 + (_nodes(t[2]) + _nodes(t[3]) if t[0] == "branch" else 0)
+
+    def _depth(t):
+        return 1 + (max(_depth(t[2]), _depth(t[3])) if t[0] == "branch" else 0)
+
+    def _stats(trees):
+        c = sorted(_nodes(t["tree"]) for t in trees)
+        return {"count": len(c), "nodes_median": c[len(c) // 2],
+                "nodes_p95": c[max(0, int(len(c) * 0.95) - 1)], "nodes_max": c[-1],
+                "depth_max": max(_depth(t["tree"]) for t in trees),
+                "serialized_bytes_max": max(len(json.dumps(t["tree"])) for t in trees)}
+
+    ts_old = {k: v for k, v in add["tree_stats"].items() if k != "note"}
+    if _stats(add["bd_trees"] + add["dev_bd_trees"]) != ts_old:
+        raise SystemExit("tree statistics no longer reproduce the addendum's 36-tree record")
+    ts = _stats(add["bd_trees"] + add["dev_bd_trees"] + J("qldpc_dev_refsched_trees.json")["trees"])
     M["TreeCount"] = I(ts["count"])
     M["TreeNodesMedian"] = I(ts["nodes_median"])
     M["TreeNodesPNinetyFive"] = I(ts["nodes_p95"])
@@ -166,28 +201,43 @@ def build() -> dict[str, str]:
         M["DevMaxFacets"] = I(max(s["max_facets"] for s in dsz))
         M["DevMaxNumBits"] = I(max(s["max_num_bits"] for s in dsz))
 
-    # ------------------------------------------------ strong baseline
-    sb = J("qldpc_strong_baseline.json")["levels"]
-    lines = [r"\begin{tabular}{@{}lccc@{}}", r"\toprule",
-             r" & receipt & BP-OSD errors & tier-1 rate (\%) \\",
-             r"$p$ & pipeline & stated / strongest & stated / strongest \\",
+    # ------------------------------------------------ strong baseline (v2: receipts on every answer)
+    sbd = J("qldpc_strong_baseline_v2.json")
+    sb = sbd["levels"]
+    order = ("baseline_30_osdcs5", "strong_100_osdcs10", "strongest_ps_100_osdcs10")
+    lines = [r"\begin{tabular}{@{}lccccc@{}}", r"\toprule",
+             r" & fixed & receipt pipeline & BP-OSD & \multicolumn{2}{c}{strongest: pipeline vs reference} \\",
+             r"$p$ & reference & A / B / C & A / B / C & other optimum & other frame \\",
              r"\midrule"]
     for lvl in ("p=0.01", "p=0.02", "p=0.03", "p=0.05", "p=0.07"):
         v = sb[lvl]
-        a, b = v["configs"]["baseline_30_osdcs5"], v["configs"]["strongest_ps_100_osdcs10"]
-        lines.append(rf"{lvl[2:]} & {v['pipeline_logical_errors']} & {a['bp_osd_logical_errors']} / "
-                     rf"{b['bp_osd_logical_errors']} & {a['tier1_rate']:.1f} / {b['tier1_rate']:.1f} \\")
+        if v["reference"]["unresolved"] or any(v["configs"][c]["unresolved"] for c in order):
+            raise SystemExit(f"{lvl}: an answer without a receipt; the table would mix evidence classes")
+        pe = " / ".join(str(v["configs"][c]["pipeline_logical_errors_on_resolved"]) for c in order)
+        be = " / ".join(str(v["configs"][c]["bp_osd_logical_errors"]) for c in order)
+        s = v["configs"][order[2]]
+        lines.append(rf"{lvl[2:]} & {v['reference']['logical_errors_on_resolved']} & {pe} & {be} & "
+                     rf"{s['pipeline_vs_reference_different_optimum']} & {s['pipeline_vs_reference_frame_differs']} \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     files["tab_strong.tex"] = "\n".join(lines) + "\n"
     f5, f7 = sb["p=0.05"], sb["p=0.07"]
-    M["StrongFiveStrongest"] = I(f5["configs"]["strongest_ps_100_osdcs10"]["bp_osd_logical_errors"])
-    M["StrongFivePipeline"] = I(f5["pipeline_logical_errors"])
-    c = f5["configs"]["strongest_ps_100_osdcs10"]["paired_2x2"]
-    M["StrongFiveDiscordant"] = f"{c['bp_wrong_pipe_ok']} versus {c['bp_ok_pipe_wrong']}"
-    M["StrongSevenStrongest"] = I(f7["configs"]["strongest_ps_100_osdcs10"]["bp_osd_logical_errors"])
-    M["StrongSevenPipeline"] = I(f7["pipeline_logical_errors"])
-    M["StrongFiveTierOneStated"] = f"{f5['configs']['baseline_30_osdcs5']['tier1_rate']:.1f}"
-    M["StrongFiveTierOneStrongest"] = f"{f5['configs']['strongest_ps_100_osdcs10']['tier1_rate']:.1f}"
+    strongest = order[2]
+    c0 = sb["p=0.01"]["configs"][order[0]]
+    M["StrongShots"] = I(c0["tier1"] + c0["tier2"] + c0["tierBD"] + c0["unresolved"])
+    M["StrongFiveStrongest"] = I(f5["configs"][strongest]["bp_osd_logical_errors"])
+    M["StrongFiveReference"] = I(f5["reference"]["logical_errors_on_resolved"])
+    M["StrongFivePipelineStrongest"] = I(f5["configs"][strongest]["pipeline_logical_errors_on_resolved"])
+    M["StrongSevenStrongest"] = I(f7["configs"][strongest]["bp_osd_logical_errors"])
+    M["StrongSevenReference"] = I(f7["reference"]["logical_errors_on_resolved"])
+    M["StrongSevenPipelineStrongest"] = I(f7["configs"][strongest]["pipeline_logical_errors_on_resolved"])
+    M["StrongSevenOtherOptimum"] = I(f7["configs"][strongest]["pipeline_vs_reference_different_optimum"])
+    M["StrongSevenOtherFrame"] = I(f7["configs"][strongest]["pipeline_vs_reference_frame_differs"])
+    M["StrongFiveOtherOptimum"] = I(f5["configs"][strongest]["pipeline_vs_reference_different_optimum"])
+    M["StrongFiveOtherFrame"] = I(f5["configs"][strongest]["pipeline_vs_reference_frame_differs"])
+    M["StrongFiveTierOneStated"] = f"{f5['configs'][order[0]]['tier1_rate']:.1f}"
+    M["StrongFiveTierOneStrongest"] = f"{f5['configs'][strongest]['tier1_rate']:.1f}"
+    M["StrongTreesSeven"] = I(f7["reference"]["by_tier"]["tierBD"])
+    M["StrongTreesFive"] = I(f5["reference"]["by_tier"]["tierBD"])
 
     # ------------------------------------------------ mechanism validations
     cb = J("qldpc_claims_backing.json")
@@ -271,6 +321,35 @@ def build() -> dict[str, str]:
         return f"{math.floor(min(vals) * f) / f:.{k}f}", f"{math.ceil(max(vals) * f) / f:.{k}f}"
     M["TimeExactCheckMedLo"], M["TimeExactCheckMedHi"] = rng(ex_med, 2)
     M["TimeLpMedLo"], M["TimeLpMedHi"] = rng(lp_med, 1)
+
+    # ------------------------------------------------ a checker in a second language
+    js = J("qldpc_js_agreement.json")
+    js_src = ROOT / js["checker"]
+    if __import__("hashlib").sha256(js_src.read_bytes()).hexdigest() != js["checker_sha256"]:
+        raise SystemExit("JavaScript agreement: the checker changed since the artifact was written; re-run it")
+    if (js["disagreements"] or js["flat_receipts_accepted"] != js["flat_receipts"]
+            or js["planted_defects_refused_for_their_reason"] != js["planted_defects"]):
+        raise SystemExit("JavaScript agreement: the text says every receipt accepted and every defect refused")
+    M["JsFlatAccepted"] = I(js["flat_receipts_accepted"])
+    M["JsDefects"] = I(js["planted_defects"])
+    M["JsDefectClasses"] = I(len([k for k in js["planted_by_class"] if k != "lattice_boundary_accept"]))
+
+    # ------------------------------------------------ operator mutation score of the checker's tests
+    mu = J("mutation_score/qldpc_check.json")
+
+    def sha(p):   # the pins' domain: CRLF normalised to LF, the bytes git stores (tools/mutation_score.py)
+        return __import__("hashlib").sha256(p.read_bytes().replace(bytes([13, 10]), bytes([10]))).hexdigest()
+
+    if mu.get("digest_domain") != "sha256-lf":
+        raise SystemExit("mutation score: its pins are not in the sha256-lf domain; re-record or re-run it")
+    if sha(ROOT / mu["target"]) != mu["target_sha256"] or any(
+            sha(ROOT / t) != h for t, h in mu["tests"].items()):
+        raise SystemExit("mutation score: the checker or its tests changed since the score was measured; re-run it")
+    if mu["timeout"] or any(not x["equivalent"] for x in mu["survivors"]):
+        raise SystemExit("mutation score: a non-equivalent mutant survives; the text says none does")
+    M["MutQRun"] = I(mu["mutants_run"])
+    M["MutQKilled"] = I(mu["killed"])
+    M["MutQEquivalent"] = I(mu["equivalent_declared"])
 
     body = ["% GENERATED by paper/tools/make_numbers_qldpc.py from evidence/ -- do not edit.",
             "% Percentages are floored at the last shown digit."]

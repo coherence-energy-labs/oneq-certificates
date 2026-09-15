@@ -1,0 +1,470 @@
+{
+ "schema": "oneq-revision-snapshots/1",
+ "what": "source of the revisions that produced the papers' historical results: the producing scripts and every module they import, read from each revision's git objects",
+ "revisions": {
+  "aba2aec": {
+   "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+   "produced": "paper 2: the frozen held-out campaign (seeds derive from this commit)",
+   "entry": [
+    "experiments/m0_prior_art/qldpc_heldout_gate.py",
+    "experiments/m0_prior_art/qldpc_bb_refsched_gate.py"
+   ],
+   "archive": "oneq-source-aba2aec.tar",
+   "archive_sha256": "074435046cf57c93b1427b0f45395915ec2abcd53199c7b8c1be67ace84eab7b",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/qldpc_bb_circuit_gate.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "5e28006f85578b9d56aa018c50ebb52cf1b79172",
+     "sha256": "9a6f4d156fad7eb33df691b251b4bee566699ed8c650bd8cb960c0f158345e8d",
+     "bytes": 13869
+    },
+    {
+     "path": "experiments/m0_prior_art/qldpc_bb_gate.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "2623a8001f29aa7c270b1ea2d82f1b5a55e4f86c",
+     "sha256": "d1e3ae6ca78d4769b1a31a5aceca3b2a3ec6d9b33fec06d094a3c3976dde51ae",
+     "bytes": 14242
+    },
+    {
+     "path": "experiments/m0_prior_art/qldpc_bb_phenom.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "37a107ebad2fd363cc5f03af95082a792152bab7",
+     "sha256": "303e51cca9425763bbb51ee9f3af1f1b530f81b9dd3b5ca7dc82a75387290f68",
+     "bytes": 10481
+    },
+    {
+     "path": "experiments/m0_prior_art/qldpc_bb_refsched_gate.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "b90b8cbd58f36913d4c60e0bf6d4fa1b67550b48",
+     "sha256": "9b81fc95b1918db0c2935c781a36fef512da6cd08537606d569cfdbda27d29fa",
+     "bytes": 17900
+    },
+    {
+     "path": "experiments/m0_prior_art/qldpc_circuit_gate.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "e5afcdf21bbe4011d6ba346fc6687465cbdd0529",
+     "sha256": "88fa8c81b0309fd40fb936c5e223b6f4b4523009b1a450473c3823777963fd44",
+     "bytes": 11877
+    },
+    {
+     "path": "experiments/m0_prior_art/qldpc_exact_all_gate.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "a3f7ac03be2d6321674ace26cb7bfb34aa74e13d",
+     "sha256": "cf72e2c9a60a121a07ce6633286f40a21b635eeb6fab69a3109973d2c8c8a26f",
+     "bytes": 20190
+    },
+    {
+     "path": "experiments/m0_prior_art/qldpc_heldout_gate.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "e24afe04602ddd62276a606db9b8458020abbbcf",
+     "sha256": "60559ce0abd44686b7c4b8dc848508bbc4f50f7fbb2bff60d77a150363ed0391",
+     "bytes": 9391
+    },
+    {
+     "path": "src/oneq/__init__.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "da9fdb831c045585fe15a9135939da8a68c067b0",
+     "sha256": "5203fa6f3b7cc3ff848e81eb8668236718b189240b755dcb7e5c1e5092d7847b",
+     "bytes": 552
+    },
+    {
+     "path": "src/oneq/api.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "08cf6525392205466735e261652dec06ef380d0f",
+     "sha256": "a26b25e212960cb11456cf97380758d10ed37640da335eae1c47f5273da7a956",
+     "bytes": 9268
+    },
+    {
+     "path": "src/oneq/cert_format.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "fc9bbd1c9a9bd402a08881c25237c37acd50d8ef",
+     "sha256": "65176f0dd9a1b06de74d93329f6d136540126b2f1bb38ce370a1b55c33f565a4",
+     "bytes": 10890
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "0820690ffc6cc1c5e2ab372b150e7f6ce678e8df",
+     "sha256": "9ba20be1e0bb560c20a59e7f6e6e9489bbd30d226927e0260cea42542198b426",
+     "bytes": 20873
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "dfd0a4109bdcdb58884c241766efc63253f644b4",
+     "sha256": "8743421b7e1eb1def0ad63eba66d95bf14d33c67a31a43216624b9a1b1009fcd",
+     "bytes": 18173
+    },
+    {
+     "path": "src/oneq/moat_dual.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "d546784c72e5e5653a09d8420d4894386be0a01a",
+     "sha256": "8d78d76aaf70920fec4a7235116c73a6c741db3d0b7773b8acd0e838b9172646",
+     "bytes": 13636
+    },
+    {
+     "path": "src/oneq/moat_growth.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "6c9f701b8c3d0c2587810513827777ea0e2404b5",
+     "sha256": "f71d14e2ad1a18eca9ec18983079371a39cdd81576edd51b80b3c87c37bc8840",
+     "bytes": 35744
+    },
+    {
+     "path": "src/oneq/passport.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "3efd157382b7453b388fa15f1fd4f5271611823a",
+     "sha256": "4a673f0c39b7206fee2cc79f763968c09d1d3058ddc06a5aff2610068f7763c1",
+     "bytes": 16547
+    },
+    {
+     "path": "src/oneq/qldpc_cert.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "a1b64bf560cdb958577a92e5ba067a365cfbcbca",
+     "sha256": "5014a1fa49445b8a26305aabfb2cfd5b23a54061a521d426677c5a37f29f8fe8",
+     "bytes": 34145
+    },
+    {
+     "path": "src/oneq/qldpc_check.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "87bccf706a0758cdb50f91473fa67ce9ad85705b",
+     "sha256": "c7034dabe85b161c4516fff468332e188516a310d142e7bc73e38fa80eafc666",
+     "bytes": 25417
+    },
+    {
+     "path": "src/oneq/streaming.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "bcb85e796c78f73ddf82878f9b7aad0d2b030118",
+     "sha256": "682b3dd08952097132bec27c4b37ef4a2008c57b0949df583cc15bd565415eed",
+     "bytes": 7895
+    },
+    {
+     "path": "src/oneq/tjoin_exact.py",
+     "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+     "blob": "e413aa873773043dc113ccc0ec5f0b929caa7205",
+     "sha256": "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+     "bytes": 6945
+    }
+   ]
+  },
+  "d4a81ee": {
+   "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+   "produced": "paper 1: the original 10^6-shot simulation (million_shot_gate_d5_*)",
+   "entry": [
+    "experiments/m0_prior_art/million_shot_gate.py"
+   ],
+   "archive": "oneq-source-d4a81ee.tar",
+   "archive_sha256": "171b5863ac60f1ccec91c50d6d3f791e68227c9d3a9ed6a441ccc7a66a4d72ca",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/million_shot_gate.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "8d0ba8abfa0544b629461438ee346315f3e48050",
+     "sha256": "9a06ca9242250e22c0ca452fc2cc33b0ac5737ad23c40da861327a7393c918d0",
+     "bytes": 12581
+    },
+    {
+     "path": "src/oneq/__init__.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "e7bebcfe5d45108460a4610cb42aec498e335713",
+     "sha256": "5e931b53e57267cf72853e52e94ee746d5e522385ab490c98f80314fee8a154a",
+     "bytes": 274
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "a38c7f731fccd3952c7206471c596dde0cdbdca9",
+     "sha256": "532f52539debae912cea97eb97f5868a638a3f9696730f5ea6fda134fae58fd9",
+     "bytes": 16447
+    },
+    {
+     "path": "src/oneq/forgeries.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "3cc0194a4a159f1afc2d5d9ddc7bf075988d6d81",
+     "sha256": "d80a675d4314e2763ca841667461079dd23d94c48827c3967b9bd643b033c6c7",
+     "bytes": 8091
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "020ddd0d117ca7fe688443137385f7f47f21e48f",
+     "sha256": "5b80b1b97d74564809f53a47730d79738e90dc3bc13ccc9833b4693912c4af35",
+     "bytes": 17863
+    },
+    {
+     "path": "src/oneq/moat_dual.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "d546784c72e5e5653a09d8420d4894386be0a01a",
+     "sha256": "8d78d76aaf70920fec4a7235116c73a6c741db3d0b7773b8acd0e838b9172646",
+     "bytes": 13636
+    },
+    {
+     "path": "src/oneq/moat_growth.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "49d516f1581a42170db5460546635923e082ff79",
+     "sha256": "464c76a4834d8ee94f1f4e176b63670aef99b949de5c3794091705b8a0b24f53",
+     "bytes": 30824
+    },
+    {
+     "path": "src/oneq/passport.py",
+     "commit": "d4a81eef551705371de69f3b33c9343ed5f33a51",
+     "blob": "3efd157382b7453b388fa15f1fd4f5271611823a",
+     "sha256": "4a673f0c39b7206fee2cc79f763968c09d1d3058ddc06a5aff2610068f7763c1",
+     "bytes": 16547
+    }
+   ]
+  },
+  "cce1e91": {
+   "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+   "produced": "paper 1: the gap distribution",
+   "entry": [
+    "experiments/m0_prior_art/gap_distribution.py"
+   ],
+   "archive": "oneq-source-cce1e91.tar",
+   "archive_sha256": "ab933560802128e3cde4dcd5df05541963d4cd65ba56d93647f607b0fcef6fc4",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/gap_distribution.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "6be742fa919646fc5f3441d0094224fa41aa18f1",
+     "sha256": "9c729c62c86bf57131587982faa67d4c0335c1ecb62f1fa3acdda04b1c4ceb9b",
+     "bytes": 21038
+    },
+    {
+     "path": "src/oneq/__init__.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "e7bebcfe5d45108460a4610cb42aec498e335713",
+     "sha256": "5e931b53e57267cf72853e52e94ee746d5e522385ab490c98f80314fee8a154a",
+     "bytes": 274
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "29732d3135ab9faee736649606cd17d765546c29",
+     "sha256": "d86c69b3c55ef78c2d0fe7e0352326b150de92ea1a4425f1fd266a4d10c865aa",
+     "bytes": 7698
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "020ddd0d117ca7fe688443137385f7f47f21e48f",
+     "sha256": "5b80b1b97d74564809f53a47730d79738e90dc3bc13ccc9833b4693912c4af35",
+     "bytes": 17863
+    },
+    {
+     "path": "src/oneq/moat_dual.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "d546784c72e5e5653a09d8420d4894386be0a01a",
+     "sha256": "8d78d76aaf70920fec4a7235116c73a6c741db3d0b7773b8acd0e838b9172646",
+     "bytes": 13636
+    },
+    {
+     "path": "src/oneq/moat_growth.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "e1fe6eb2dd3632516042568171c9d99c86f66aae",
+     "sha256": "a5880ea4e3d0803bd762be5a06d5a17440eb70ae23fab590f153de5879762a08",
+     "bytes": 13504
+    },
+    {
+     "path": "src/oneq/passport.py",
+     "commit": "cce1e91e9bc7ec998709953004f10ad781a72963",
+     "blob": "3efd157382b7453b388fa15f1fd4f5271611823a",
+     "sha256": "4a673f0c39b7206fee2cc79f763968c09d1d3058ddc06a5aff2610068f7763c1",
+     "bytes": 16547
+    }
+   ]
+  },
+  "06344ae": {
+   "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+   "produced": "paper 1: Willow generation 4",
+   "entry": [
+    "experiments/m0_prior_art/google_corpus_gate.py"
+   ],
+   "archive": "oneq-source-06344ae.tar",
+   "archive_sha256": "1712e819609f733e72f120b0f0bc889b2f957ab3f371ef2d2e31525b10f7a9c2",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/google_corpus_gate.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "e39e9fda211a030172bd94493a02675b0cebb8ff",
+     "sha256": "6496967b433d05bd12cfbea1f1d37ad985c7779109527844fdcd8c34eb904b0a",
+     "bytes": 14495
+    },
+    {
+     "path": "src/oneq/__init__.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "e7bebcfe5d45108460a4610cb42aec498e335713",
+     "sha256": "5e931b53e57267cf72853e52e94ee746d5e522385ab490c98f80314fee8a154a",
+     "bytes": 274
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "a38c7f731fccd3952c7206471c596dde0cdbdca9",
+     "sha256": "532f52539debae912cea97eb97f5868a638a3f9696730f5ea6fda134fae58fd9",
+     "bytes": 16447
+    },
+    {
+     "path": "src/oneq/forgeries.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "3cc0194a4a159f1afc2d5d9ddc7bf075988d6d81",
+     "sha256": "d80a675d4314e2763ca841667461079dd23d94c48827c3967b9bd643b033c6c7",
+     "bytes": 8091
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "020ddd0d117ca7fe688443137385f7f47f21e48f",
+     "sha256": "5b80b1b97d74564809f53a47730d79738e90dc3bc13ccc9833b4693912c4af35",
+     "bytes": 17863
+    },
+    {
+     "path": "src/oneq/moat_dual.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "d546784c72e5e5653a09d8420d4894386be0a01a",
+     "sha256": "8d78d76aaf70920fec4a7235116c73a6c741db3d0b7773b8acd0e838b9172646",
+     "bytes": 13636
+    },
+    {
+     "path": "src/oneq/moat_growth.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "46bcff7032e85826e34523a2809928e2f33843f9",
+     "sha256": "5c542e02778f9dc3dad5682fed0edaec950919380a982a026242eafd3d517e36",
+     "bytes": 29698
+    },
+    {
+     "path": "src/oneq/passport.py",
+     "commit": "06344aedaf619d7cfb50e3348a0162c3c4187b05",
+     "blob": "3efd157382b7453b388fa15f1fd4f5271611823a",
+     "sha256": "4a673f0c39b7206fee2cc79f763968c09d1d3058ddc06a5aff2610068f7763c1",
+     "bytes": 16547
+    }
+   ]
+  },
+  "f57e87d": {
+   "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+   "produced": "paper 1: Willow generation 6 (distance 7, 30 rounds)",
+   "entry": [
+    "experiments/m0_prior_art/google_corpus_gate.py",
+    "experiments/m0_prior_art/corpus_chunk_runner.py",
+    "tools/corpus_chunk_driver.py"
+   ],
+   "archive": "oneq-source-f57e87d.tar",
+   "archive_sha256": "9504d0d8be27c176ff0e602eeed9d38eee155a5e412fe8b8a3fd1685a3d72eab",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/corpus_chunk_runner.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "895a2f5c593ce22b9d1ff425542f2e66467f02fd",
+     "sha256": "f5f215910b7f28cfc2d68e287d6213d834f43108a6a69205d34cde2f809ad8e4",
+     "bytes": 2014
+    },
+    {
+     "path": "experiments/m0_prior_art/google_corpus_gate.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "02f2b4a7620126c5f424960b46f3cfa355763551",
+     "sha256": "e0b15e7b991ff5114d7ed624dc3bfcece60c57353d43e94225ab39a200e1f8aa",
+     "bytes": 14654
+    },
+    {
+     "path": "src/oneq/__init__.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "da9fdb831c045585fe15a9135939da8a68c067b0",
+     "sha256": "5203fa6f3b7cc3ff848e81eb8668236718b189240b755dcb7e5c1e5092d7847b",
+     "bytes": 552
+    },
+    {
+     "path": "src/oneq/api.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "08cf6525392205466735e261652dec06ef380d0f",
+     "sha256": "a26b25e212960cb11456cf97380758d10ed37640da335eae1c47f5273da7a956",
+     "bytes": 9268
+    },
+    {
+     "path": "src/oneq/cert_format.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "fc9bbd1c9a9bd402a08881c25237c37acd50d8ef",
+     "sha256": "65176f0dd9a1b06de74d93329f6d136540126b2f1bb38ce370a1b55c33f565a4",
+     "bytes": 10890
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "0820690ffc6cc1c5e2ab372b150e7f6ce678e8df",
+     "sha256": "9ba20be1e0bb560c20a59e7f6e6e9489bbd30d226927e0260cea42542198b426",
+     "bytes": 20873
+    },
+    {
+     "path": "src/oneq/forgeries.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "3cc0194a4a159f1afc2d5d9ddc7bf075988d6d81",
+     "sha256": "d80a675d4314e2763ca841667461079dd23d94c48827c3967b9bd643b033c6c7",
+     "bytes": 8091
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "dfd0a4109bdcdb58884c241766efc63253f644b4",
+     "sha256": "8743421b7e1eb1def0ad63eba66d95bf14d33c67a31a43216624b9a1b1009fcd",
+     "bytes": 18173
+    },
+    {
+     "path": "src/oneq/moat_dual.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "d546784c72e5e5653a09d8420d4894386be0a01a",
+     "sha256": "8d78d76aaf70920fec4a7235116c73a6c741db3d0b7773b8acd0e838b9172646",
+     "bytes": 13636
+    },
+    {
+     "path": "src/oneq/moat_growth.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "6c9f701b8c3d0c2587810513827777ea0e2404b5",
+     "sha256": "f71d14e2ad1a18eca9ec18983079371a39cdd81576edd51b80b3c87c37bc8840",
+     "bytes": 35744
+    },
+    {
+     "path": "src/oneq/passport.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "3efd157382b7453b388fa15f1fd4f5271611823a",
+     "sha256": "4a673f0c39b7206fee2cc79f763968c09d1d3058ddc06a5aff2610068f7763c1",
+     "bytes": 16547
+    },
+    {
+     "path": "src/oneq/qldpc_cert.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "5d9ce6d77087948b7ba8701172cbbcf2103790f5",
+     "sha256": "f5b8fe95969fbbcf098c1fb649550154af2b10c35bca321f52b0ad75279beed0",
+     "bytes": 32517
+    },
+    {
+     "path": "src/oneq/qldpc_check.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "feb4a7784c127cfbed1193ecffef77ca4b818469",
+     "sha256": "b02455f6949f825ffaf28b33bfb2d9bdeecc1072dc834b54799262618248af5e",
+     "bytes": 23751
+    },
+    {
+     "path": "src/oneq/streaming.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "bcb85e796c78f73ddf82878f9b7aad0d2b030118",
+     "sha256": "682b3dd08952097132bec27c4b37ef4a2008c57b0949df583cc15bd565415eed",
+     "bytes": 7895
+    },
+    {
+     "path": "src/oneq/tjoin_exact.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "e413aa873773043dc113ccc0ec5f0b929caa7205",
+     "sha256": "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+     "bytes": 6945
+    },
+    {
+     "path": "tools/corpus_chunk_driver.py",
+     "commit": "f57e87dd2f4e25cbe46a24d424c5304519e98448",
+     "blob": "f9733ea62d2a88188c5d9adf8d510d18defcf71b",
+     "sha256": "d47b504a95bae89a426e38e65f6150f5c8f2b98c9017ab1f93f2acad643eab3a",
+     "bytes": 9813
+    }
+   ]
+  }
+ }
+}

@@ -104,6 +104,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .matching_cert import BOUNDARY, MatchingCertificate, check
+from .matching_cert_epsilon import check_epsilon
 from .moat_dual import MoatEngine
 from .moat_growth import (build_adj, cs_family, matching_dual_candidates,
                           moat_growth, tight_components)
@@ -210,7 +211,14 @@ class CertifyingDecoder:
     def __init__(self, edges, *, ladder=DEFAULT_LADDER,
                  max_family: int = 600, max_candidates: int = 3000,
                  blossom_rounds: int = 12, blossom_levels: int = 6,
-                 l0_table=None, l0_masks=None):
+                 l0_table=None, l0_masks=None, epsilon_max=None):
+        # EPSILON ACCEPTANCE (external audit 2026-09-14, A-01). None keeps
+        # the exact rule. A finite non-negative rational makes every rung's
+        # certificate go to matching_cert_epsilon.check_epsilon, and the
+        # ladder stops at the first certificate that PROVES the correction
+        # within epsilon_max of optimal -- the claim paper 1 makes -- instead
+        # of escalating toward an exact proof that claim does not need.
+        self.epsilon_max = epsilon_max
         # *** L0: THE CONFIGURATION IS CHECKED BEFORE ANYTHING IS DERIVED
         # FROM IT. *** Every structure below -- the moat engine, the
         # adjacency, the weight map -- comes from ONE read of `edges`, so
@@ -262,7 +270,8 @@ class CertifyingDecoder:
             self._escalated = CertifyingDecoder(
                 self.edges, ladder=ESCALATION_LADDER,
                 max_family=12000, max_candidates=60000,
-                blossom_rounds=60, blossom_levels=999)
+                blossom_rounds=60, blossom_levels=999,
+                epsilon_max=self.epsilon_max)
         return self._escalated
 
     def certify_exact(self, syndrome, correction, *, seed_sets=None) -> Certified:
@@ -695,6 +704,24 @@ class CertifyingDecoder:
                 best_bound, best_z = obj, z
             cert = MatchingCertificate(matched_edges=corr, node_potentials={},
                                        blossom_duals=z)
+            if self.epsilon_max is not None:
+                v = check_epsilon(edges=self.edges, syndrome=syndrome, cert=cert,
+                                  eps_max=self.epsilon_max)
+                if v.accepted:
+                    if v.lower_bound is None or v.epsilon is None:
+                        # An acceptance IS a bound and a proven slack; one carrying neither is not a
+                        # certificate anyone can check, so it stops here instead of passing.
+                        raise RuntimeError(f"check_epsilon accepted ({v.status}) without its bound and slack")
+                    return Certified(True, f"{v.status}: {v.reason}", rung, primal,
+                                     float(v.lower_bound), float(v.epsilon), cert, dict(z),
+                                     {"rungs_tried": tried, "acceptance": "epsilon",
+                                      "epsilon": str(v.epsilon), "eps_max": str(v.eps_max),
+                                      "status": v.status},
+                                     syndrome_consistent=True)
+                best_reason = f"{v.status}: {v.reason}"
+                if v.status != "NOT_PROVEN":
+                    break                      # invalid input: no richer family repairs it
+                continue
             r = check(edges=self.edges, syndrome=syndrome, cert=cert)
             if r.accepted:
                 return Certified(True, r.reason, rung, primal, obj, 0.0, cert,

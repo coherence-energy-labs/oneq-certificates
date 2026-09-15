@@ -1,0 +1,30 @@
+{
+ "schema": "oneq-qldpc-js-agreement/2",
+ "checker": "verifier-js/verify-qldpc-flat.mjs",
+ "checker_sha256": "5e6e3bb6e6b80d0a1ad11b3ff79d80ea171cefcdd1b01cfd2fb0826116462cfe",
+ "node": "v24.18.0",
+ "manifest_sha256": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
+ "flat_receipts": 2002,
+ "flat_receipts_accepted": 2002,
+ "planted_defects": 104,
+ "planted_defects_refused_for_their_reason": 104,
+ "lattice_boundary_accepts": 8,
+ "planted_by_class": {
+  "candidate_extra_variable": 8,
+  "candidate_variable_out_of_range": 8,
+  "syndrome_bit_dropped": 8,
+  "infeasible_empty_candidate": 8,
+  "facet_variable_outside_check": 8,
+  "facet_wrong_parity": 8,
+  "facet_listed_twice": 8,
+  "negative_multiplier": 8,
+  "zero_denominator": 8,
+  "row_out_of_range": 8,
+  "combined_check_with_one_row": 8,
+  "combined_check_parity_is_xor": 8,
+  "lattice_boundary_refuse": 8,
+  "lattice_boundary_accept": 8
+ },
+ "disagreements": [],
+ "command": "python tools/qldpc_js_agreement.py"
+}

@@ -1,0 +1,10 @@
+{
+ "CRP|0->1|return None, 0, \"negative facet dual\"": "the middle value of _exact_facet_scan's result is the facet count, read only on success: _exact_safe_dual_bound discards it and check_qldpc_exact returns before reading it whenever the third value is an error.",
+ "CRP|0->1|return None, 0, (f\"redundant check {rows} is not >=2 \"": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it.",
+ "CRP|0->1|return None, 0, f\"facet names check {j} of {m}\"": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it.",
+ "CRP|0->1|return None, 0, f\"facet ({jname},{sorted(Fs)}) escapes its check\"": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it.",
+ "CRP|0->1|return None, 0, (f\"facet ({jname},{sorted(Fs)}) has the RIGHT \"": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it.",
+ "CRP|0->1|return None, 0, f\"facet ({jname},{sorted(Fs)}) listed twice\"": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it.",
+ "ROR|Gt->GtE|if slack > 0:": "when slack == 0 the mutant adds zero to z_total, which leaves the bound unchanged.",
+ "CRP|False->True|False, f\"IMPOSSIBLE: exact bound {L} exceeds the weight {U} \"": "unreachable: every input that passes validation has non-negative exact weights, facets checked for support, parity, range and uniqueness, and a verified feasible candidate, so L <= LP optimum <= integer optimum <= U by weak duality, and the branch L > U never runs."
+}

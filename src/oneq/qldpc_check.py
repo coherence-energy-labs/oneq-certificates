@@ -16,6 +16,7 @@ qldpc_cert.py's module docstring and in the paper.
 
 from __future__ import annotations
 
+import operator
 from dataclasses import dataclass, field
 from fractions import Fraction
 from math import lcm
@@ -56,12 +57,18 @@ def _validate_instance(checks, weights, syndrome, tol):
     supports, dup_err = _canonical_supports(checks)
     if dup_err:
         return None, QldpcCheckResult(False, dup_err)
-    syn = [int(b) & 1 for b in syndrome]
+    syn, syn_err = _binary_syndrome(syndrome)
+    if syn_err:
+        return None, QldpcCheckResult(False, syn_err)
     if len(syn) != m:
         return None, QldpcCheckResult(False,
                                       "syndrome length != number of checks")
     w = {int(i): float(v) for i, v in weights.items()}
-    if any(v < -tol for v in w.values()):
+    # NO TOLERANCE ON THE SIGN (mutation score, 2026-09-14). `v < -tol` let a
+    # weight of -1e-10 through, and the exact gate behind this screen never
+    # re-checks signs: a free variable at -1e-10 made a correction 1e-10 above
+    # the optimum "OPTIMAL". A weight's sign is data, not a rounding artefact.
+    if any(v < 0 for v in w.values()):
         return None, QldpcCheckResult(False, "negative variable weight")
     return (m, supports, syn, w), None
 
@@ -641,7 +648,9 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
     supports, dup_err = _canonical_supports(checks)
     if dup_err:
         return QldpcCheckResult(False, dup_err)
-    syn = [int(b) & 1 for b in syndrome]
+    syn, syn_err = _binary_syndrome(syndrome)
+    if syn_err:
+        return QldpcCheckResult(False, syn_err)
     if len(syn) != m:
         return QldpcCheckResult(False, "syndrome length != checks")
     try:
@@ -676,6 +685,22 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
                                   "den": U.denominator}})
     except (TypeError, ValueError) as exc:
         return QldpcCheckResult(False, f"REJECTED MALFORMED INPUT: {exc}")
+
+
+def _binary_syndrome(syndrome):
+    """The syndrome is a vector over GF(2): every entry must be the integer
+    0 or 1. Masking with & 1 would silently read 2 as 0 and -1 as 1, so a
+    malformed instance is refused, never reinterpreted. Returns (syn, error)."""
+    syn = []
+    for j, b in enumerate(syndrome):
+        try:
+            v = operator.index(b)
+        except TypeError:
+            return None, f"syndrome[{j}] is not an integer"
+        if v not in (0, 1):
+            return None, f"syndrome[{j}] = {v} is not 0 or 1"
+        syn.append(int(v))
+    return syn, None
 
 
 def _canonical_supports(checks):
@@ -746,7 +771,9 @@ def check_qldpc_exact(*, checks, weights, syndrome, cert: QldpcCertificate,
     supports, dup_err = _canonical_supports(checks)
     if dup_err:
         return QldpcCheckResult(False, dup_err)
-    syn = [int(b) & 1 for b in syndrome]
+    syn, syn_err = _binary_syndrome(syndrome)
+    if syn_err:
+        return QldpcCheckResult(False, syn_err)
     if len(syn) != m:
         return QldpcCheckResult(False, "syndrome length != number of checks")
     try:

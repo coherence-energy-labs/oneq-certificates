@@ -1,0 +1,22 @@
+{
+ "kind": "COMPLETE",
+ "battery_per_chunk": 1,
+ "results": [
+  {
+   "config": "sim_d5_r25",
+   "chunks": 4000,
+   "complete_plan": true,
+   "nontrivial": 1000000,
+   "receipts_rechecked": 1000000,
+   "full": true,
+   "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6",
+   "battery": {
+    "boundary_attempts": 3999,
+    "boundary_just_outside_refused": 3999,
+    "boundary_just_inside_accepted": 4000,
+    "substituted_graph_refused": 4000,
+    "boundary_excess_over_eps_max_max": 1.3321061313099315e-15
+   }
+  }
+ ]
+}

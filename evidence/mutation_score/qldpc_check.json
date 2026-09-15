@@ -1,0 +1,196 @@
+{
+ "schema": "oneq-mutation-score/1",
+ "target": "src/oneq/qldpc_check.py",
+ "target_sha256": "2580ac1f14a97f54a2436b411dbe15609cc69b3bab4848d38a08d7dc7a22eee0",
+ "tests": {
+  "tests/test_qldpc_check_contract.py": "58444ab7aaf85cb8094f8b056e8d76c7f05f7d2bcbeb0341a53764d11e2042db",
+  "tests/test_qldpc_cert.py": "f2cd717bff20fbe1f9d7c2c8aa15bc922d99d8432d5688b9bc98a337d2660977",
+  "tests/test_qldpc_exact.py": "9c96b2b38e6d86bd3c1c50cf9357778dd46fcda09bb20428484d541612f4694f",
+  "tests/test_qldpc_bnb.py": "f38660d9e7af24b18edb158bee3c8f740865057cc8da48d69609b394a69fd3cb",
+  "tests/test_qldpc_syndrome_domain.py": "a530e1ca8d49a44079569ef522f6f7fcfdc6d17e092021b94055410889ffc9de",
+  "tests/test_exact_dual_polish.py": "4e670098d53b377cc748f97c6859cd81de92e2b4292907bcc0be992323e67bd9",
+  "tests/test_exact_dual_repair.py": "3ba66448aee8071f24685a6b5ce425e76c517df2db2b9abc1b2ab95427c6b90f",
+  "tests/test_qldpc_heldout_flat_certs.py": "ee3dda5fe125dd4559a7823fcbdf2e2ba02b70ac1438d656c90f6e55fe2e24e6"
+ },
+ "copied": [
+  "conftest.py",
+  "pyproject.toml",
+  "src",
+  "tools",
+  "conformance",
+  "experiments/m0_prior_art",
+  "evidence/qldpc_heldout_flat_certs.json",
+  "evidence/qldpc_heldout.json"
+ ],
+ "operators": [
+  "AOR",
+  "BRK",
+  "CRP",
+  "LCR",
+  "NEG",
+  "ROR",
+  "UOD"
+ ],
+ "sites": 321,
+ "mutants_run": 321,
+ "unsplicable": 0,
+ "killed": 313,
+ "survived": 8,
+ "timeout": 0,
+ "score_killed_over_run": 0.9750778816199377,
+ "equivalent_declared": 8,
+ "score_excluding_equivalents": 1.0,
+ "by_operator": {
+  "NEG": {
+   "killed": 75,
+   "survived": 0,
+   "timeout": 0
+  },
+  "CRP": {
+   "killed": 103,
+   "survived": 7,
+   "timeout": 0
+  },
+  "ROR": {
+   "killed": 74,
+   "survived": 1,
+   "timeout": 0
+  },
+  "AOR": {
+   "killed": 43,
+   "survived": 0,
+   "timeout": 0
+  },
+  "LCR": {
+   "killed": 7,
+   "survived": 0,
+   "timeout": 0
+  },
+  "UOD": {
+   "killed": 9,
+   "survived": 0,
+   "timeout": 0
+  },
+  "BRK": {
+   "killed": 2,
+   "survived": 0,
+   "timeout": 0
+  }
+ },
+ "survivors": [
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 448,
+   "col": 25,
+   "end_lineno": 448,
+   "end_col": 26,
+   "detail": "0->1",
+   "index": 0,
+   "original": "return None, 0, \"negative facet dual\"",
+   "mutant": "return None, (1), \"negative facet dual\"",
+   "equivalent": "the middle value of _exact_facet_scan's result is the facet count, read only on success: _exact_safe_dual_bound discards it and check_qldpc_exact returns before reading it whenever the third value is an error."
+  },
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 455,
+   "col": 29,
+   "end_lineno": 455,
+   "end_col": 30,
+   "detail": "0->1",
+   "index": 0,
+   "original": "return None, 0, (f\"redundant check {rows} is not >=2 \"",
+   "mutant": "return None, (1), (f\"redundant check {rows} is not >=2 \"",
+   "equivalent": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it."
+  },
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 466,
+   "col": 29,
+   "end_lineno": 466,
+   "end_col": 30,
+   "detail": "0->1",
+   "index": 0,
+   "original": "return None, 0, f\"facet names check {j} of {m}\"",
+   "mutant": "return None, (1), f\"facet names check {j} of {m}\"",
+   "equivalent": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it."
+  },
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 469,
+   "col": 25,
+   "end_lineno": 469,
+   "end_col": 26,
+   "detail": "0->1",
+   "index": 0,
+   "original": "return None, 0, f\"facet ({jname},{sorted(Fs)}) escapes its check\"",
+   "mutant": "return None, (1), f\"facet ({jname},{sorted(Fs)}) escapes its check\"",
+   "equivalent": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it."
+  },
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 471,
+   "col": 25,
+   "end_lineno": 471,
+   "end_col": 26,
+   "detail": "0->1",
+   "index": 0,
+   "original": "return None, 0, (f\"facet ({jname},{sorted(Fs)}) has the RIGHT \"",
+   "mutant": "return None, (1), (f\"facet ({jname},{sorted(Fs)}) has the RIGHT \"",
+   "equivalent": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it."
+  },
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 475,
+   "col": 25,
+   "end_lineno": 475,
+   "end_col": 26,
+   "detail": "0->1",
+   "index": 0,
+   "original": "return None, 0, f\"facet ({jname},{sorted(Fs)}) listed twice\"",
+   "mutant": "return None, (1), f\"facet ({jname},{sorted(Fs)}) listed twice\"",
+   "equivalent": "the middle value of _exact_facet_scan's result is read only on success; on this error return every caller discards it."
+  },
+  {
+   "operator": "ROR",
+   "kind": "Compare",
+   "lineno": 483,
+   "col": 11,
+   "end_lineno": 483,
+   "end_col": 20,
+   "detail": "Gt->GtE",
+   "index": 0,
+   "original": "if slack > 0:",
+   "mutant": "if (slack >= 0):",
+   "equivalent": "when slack == 0 the mutant adds zero to z_total, which leaves the bound unchanged."
+  },
+  {
+   "operator": "CRP",
+   "kind": "Constant",
+   "lineno": 819,
+   "col": 12,
+   "end_lineno": 819,
+   "end_col": 17,
+   "detail": "False->True",
+   "index": 0,
+   "original": "False, f\"IMPOSSIBLE: exact bound {L} exceeds the weight {U} \"",
+   "mutant": "(True), f\"IMPOSSIBLE: exact bound {L} exceeds the weight {U} \"",
+   "equivalent": "unreachable: every input that passes validation has non-negative exact weights, facets checked for support, parity, range and uniqueness, and a verified feasible candidate, so L <= LP optimum <= integer optimum <= U by weak duality, and the branch L > U never runs."
+  }
+ ],
+ "baseline_seconds": [
+  4.5,
+  3.96,
+  4.33,
+  3.95
+ ],
+ "wall_seconds": 140.7,
+ "command": "python tools/mutation_score.py src/oneq/qldpc_check.py --tests tests/test_qldpc_check_contract.py tests/test_qldpc_cert.py tests/test_qldpc_exact.py tests/test_qldpc_bnb.py tests/test_qldpc_syndrome_domain.py tests/test_exact_dual_polish.py tests/test_exact_dual_repair.py tests/test_qldpc_heldout_flat_certs.py --copy evidence/qldpc_heldout_flat_certs.json evidence/qldpc_heldout.json --workers 4 --equivalents evidence/mutation_score/qldpc_check.equivalents.json",
+ "digest_domain": "sha256-lf",
+ "digest_domain_note": "2026-09-15: pins re-recorded from working-tree bytes to CRLF-normalised bytes (what git stores). Each file was verified to be the bytes the score was measured on and, normalised, the blob at HEAD, so the score is unchanged."
+}

@@ -1,0 +1,22 @@
+{
+ "kind": "COMPLETE",
+ "battery_per_chunk": 1,
+ "results": [
+  {
+   "config": "willow_d5_at_q8_7_X_r30",
+   "chunks": 40,
+   "complete_plan": true,
+   "nontrivial": 10000,
+   "receipts_rechecked": 10000,
+   "full": true,
+   "instance_sha256": "d47d7ec4a5a4624799708e489dd145101b35d3efaf7f3b26e7359aca0c2cfbd0",
+   "battery": {
+    "boundary_attempts": 40,
+    "boundary_just_outside_refused": 40,
+    "boundary_just_inside_accepted": 40,
+    "substituted_graph_refused": 40,
+    "boundary_excess_over_eps_max_max": 1.2242724171588984e-15
+   }
+  }
+ ]
+}

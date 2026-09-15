@@ -41,15 +41,24 @@ producers. Neither needs an LP or MIP solver.
 
 ```
 python tools/external/exact_lp_certificate_reference.py --self-test
-python tools/recheck_all.py             # every stored certificate + tree
+python tools/recheck_all.py             # paper 2: the complete pinned replay
 ```
 
-`recheck_all.py` walks the evidence tree and re-verifies, in exact
-rational arithmetic: every stored branch-dual tree (held-out and
-development) through BOTH the production checker and the
-separately-implemented `tools/external/tree_checker_b.py`, and the
-sampled flat certificates it can rebuild. It prints counts and exits
-nonzero on any disagreement.
+`recheck_all.py` replays every one of the 2,042 receipts named by the pinned
+`evidence/receipt_manifest.json` (2,002 flat certificates and 40 branch-dual
+trees), each through two independently written checkers, against the persisted
+instances and integer weight vectors, and fails if any receipt or bound file is
+missing, duplicated, unlisted or altered.
+
+For paper 1's rerun, obtain the receipt archives (release assets, each
+identified by the sha256 in `evidence/epsilon_rerun/<config>/archive.json`),
+place them in `data/epsilon_receipts_archive/`, and from the repository root run
+
+```
+python tools/pack_epsilon_receipts.py --verify       # archive hashes, then every member
+tar -xf data/epsilon_receipts_archive/<config>.tar   # once per configuration
+python tools/replay_epsilon_receipts.py --jobs 8     # two verifiers, every receipt
+```
 
 ## 2. Re-run the frozen held-out campaign end to end (~2 minutes)
 
@@ -104,10 +113,10 @@ See `docs/HELD_OUT_RESULTS.md` finding F4.
 ## 3. Re-run the whole wall (~10 minutes)
 
 ```
-python tools/gate_all.py                # all 105 gates incl. provenance, registry,
+python tools/gate_all.py                # every gate, incl. provenance, registry,
                                         # both equivalence arbiters and their
                                         # self-proofs, and the overhead gates
-python -m pytest tests/ -q              # 4,249 tests, 0 skips expected
+python -m pytest tests/ -q              # 4,404 tests
 python tools/mutation_gate.py           # 500 mutants, all must be killed
 ```
 

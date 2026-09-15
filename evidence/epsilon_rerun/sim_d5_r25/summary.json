@@ -1,0 +1,48 @@
+{
+ "schema": "oneq-epsilon-rerun/1",
+ "config": "sim_d5_r25",
+ "spec": {
+  "kind": "sim",
+  "d": 5,
+  "rounds": 25,
+  "p": 0.005,
+  "chunk": 250,
+  "seeds": [
+   1,
+   4000
+  ],
+  "method": "certify",
+  "reproduces": "evidence/million_shot_gate_d5_merged.json (seed plan of million_shot_gate.py: --shots 1000000 --chunk 250 --seed-base 1)"
+ },
+ "eps_max": "1/1000000",
+ "chunks": 4000,
+ "shots": 1000000,
+ "nontrivial": 1000000,
+ "status": {
+  "EPSILON_OPTIMAL": 989517,
+  "EXACT_OPTIMAL": 8628,
+  "NOT_PROVEN": 1855
+ },
+ "accepted": 998145,
+ "accepted_rate": 0.998145,
+ "largest_accepted_epsilon": "159399804440463872923/25778481691613822601013518925824",
+ "largest_accepted_epsilon_float": 6.183444251967692e-12,
+ "forgeries_attempted": 8000001,
+ "forgeries_accepted": 0,
+ "forgeries_by_class": {
+  "E_dropped_edge": 1000000,
+  "F_duplicated_edge": 1000000,
+  "I_mismatched_pair": 1000000,
+  "D_spurious_cycle": 1000000,
+  "G_dual_inflated_to_meet_a_worse_primal": 1000000,
+  "H_negative_dual_hides_inflation": 1000000,
+  "N_nan_dual": 1000000,
+  "N_inf_dual": 1000000,
+  "A_suboptimal": 1
+ },
+ "forgeries_accepted_by_class": {},
+ "battery_attacks_not_false": 0,
+ "chunk_failures_retried": 0,
+ "instance": "evidence/instances/matching_sim_d5_r25.json",
+ "receipts": "data/epsilon_receipts/sim_d5_r25/ (per-chunk sha256 in chunks.jsonl)"
+}

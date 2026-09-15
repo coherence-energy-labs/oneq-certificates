@@ -134,6 +134,13 @@ def build(name: str, release: bool) -> int:
               f"name and affiliation are the owner's to set; a release build "
               f"will not produce a finished-looking file without them.")
         return 2
+    numbers = (src / "generated" / "numbers.tex").read_text(encoding="utf-8")
+    if release and "[pending]" in numbers:
+        pending = sorted(set(re.findall(r"\\newcommand\{\\(\w+)\}\{\\textbf\{\[pending\]\}\}", numbers)))
+        print(f"REFUSED: {len(pending)} numbers are still pending an experiment "
+              f"({', '.join(pending[:6])}{', ...' if len(pending) > 6 else ''}); a release build "
+              f"will not typeset a result that does not exist yet.")
+        return 2
     abstract = detex_abstract(tex, load_macros(src / "generated" / "numbers.tex"))
     out = src / "build"
     shutil.rmtree(out, ignore_errors=True)
