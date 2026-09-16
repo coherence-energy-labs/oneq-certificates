@@ -1,32 +1,88 @@
 {
-  "shots": 40000,
-  "nontrivial": 22842,
-  "certified": 22840,
-  "certified_rate": 0.9999124419928203,
+  "shots": 20000,
+  "nontrivial": 5452,
+  "certified": 5452,
+  "certified_rate": 1.0,
   "observable": {
-    "observed_shots": 22842,
-    "logical_errors": 107,
-    "logical_errors_opposite_cut": 324,
-    "declared_wrong_only": 2,
-    "opposite_wrong_only": 219,
-    "delta_S_certified_zero": 22840,
-    "delta_S_unknown": 2,
-    "logical_error_rate": 0.004684353384116977,
-    "logical_error_rate_opposite_cut": 0.014184397163120567,
-    "delta_S": null,
-    "delta_S_note": "2 shot(s) were refused, so E is unknown there and delta_S is not determined",
+    "observed_shots": 5452,
+    "logical_errors": 54,
+    "logical_errors_opposite_cut": 510,
+    "declared_wrong_only": 21,
+    "opposite_wrong_only": 477,
+    "delta_S_certified_zero": 5452,
+    "delta_S_unknown": 0,
+    "logical_error_rate": 0.009904622157006602,
+    "logical_error_rate_opposite_cut": 0.09354365370506236,
+    "delta_S": 0.0,
+    "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
     "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
   },
   "nonreproducible": {
     "note": "wall-clock, machine- and load-dependent; NOT part of the re-derivable record and never compared",
-    "cert_ms_per_shot": 2.9974135846260896
+    "cert_ms_per_shot": 3.342652072632353
   },
   "schema": "oneq-ibm-live/1",
   "mode": "fetch(live hardware)",
   "provider": "ibm_quantum",
-  "backend": "ibm_fez",
-  "job_id": "dafvcophvn6c73cptnp0",
-  "prereg_sha256": "f94c62c58c87501a1a3355d9f664adbb5214288d1dee68585a0363dd7fefe375",
-  "model": "uniform",
-  "weights": "uniform, declared (the error model is OURS and says so -- unlike the Google corpus)"
+  "backend": "ibm_marrakesh",
+  "job_id": "dakvgpmlg97s73c8b3p0",
+  "prereg_sha256": "dce08338f60396457635adffdaf05c2ac77179f8a7d19474ee61b0c8d13f5a66",
+  "model": "calibrated",
+  "weights": "calibrated from ibm_marrakesh published calibration for physical qubits data=[131, 133, 135] ancilla=[132, 134]; snapshot pinned in this artifact",
+  "calibration": {
+    "backend": "ibm_marrakesh",
+    "physical_qubits": [
+      131,
+      133,
+      135,
+      132,
+      134
+    ],
+    "dt_seconds": 4e-09,
+    "readout_error": {
+      "131": 0.009521484375,
+      "133": 0.01806640625,
+      "135": 0.01708984375,
+      "132": 0.011474609375,
+      "134": 0.00634765625
+    },
+    "t1_seconds": {
+      "131": 0.000294934738315187,
+      "133": 0.00027087227211447095,
+      "135": 0.00029248520241772043,
+      "132": 0.00024304396787945114,
+      "134": 0.0003061954077439437
+    },
+    "t2_seconds": {
+      "131": 0.000156350265613205,
+      "133": 0.000254221783858163,
+      "135": 9.155258099952684e-05,
+      "132": 9.161794000668814e-05,
+      "134": 0.00014979542529772427
+    },
+    "sx_error": {
+      "131": 0.00015874712640335736,
+      "133": 0.0002129950449100181,
+      "135": 0.0002826626228957868,
+      "132": 0.0003816593136588711,
+      "134": 0.0006527223825822528
+    },
+    "two_qubit_error": {
+      "cz:131-132": 0.0014278099273765388,
+      "cz:132-131": 0.0014278099273765388,
+      "cz:132-133": 0.002212490366075265,
+      "cz:133-132": 0.002212490366075265,
+      "cz:133-134": 0.020338779271974694,
+      "cz:134-133": 0.020338779271974694,
+      "cz:134-135": 0.0015284957888545558,
+      "cz:135-134": 0.0015284957888545558
+    },
+    "measure_duration_seconds": {
+      "131": 2.684e-06,
+      "133": 2.684e-06,
+      "135": 2.684e-06,
+      "132": 2.684e-06,
+      "134": 2.684e-06
+    }
+  }
 }

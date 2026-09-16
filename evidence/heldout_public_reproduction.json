@@ -1,0 +1,64 @@
+{
+ "schema": "oneq-heldout-public-reproduction/1",
+ "passed": true,
+ "runner_exit": 0,
+ "seconds": 154.7,
+ "freeze_identity": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+ "snapshot": "oneq-source-aba2aec.tar",
+ "snapshot_sha256": "074435046cf57c93b1427b0f45395915ec2abcd53199c7b8c1be67ace84eab7b",
+ "reproduction_dir": "C:\\Users\\Josh\\AppData\\Local\\Temp\\claude\\c--Users-Josh-Projects-Coherence-A-C-E\\824a9479-674b-407d-ae95-4f5b37b09361\\scratchpad\\papers\\heldout_repro\\oneq-aba2aec",
+ "compared_fields": [
+  "nontrivial",
+  "trivial_tier0",
+  "sampled",
+  "tier1",
+  "tier2",
+  "exact_certified",
+  "float_only_disagreements",
+  "ref_checked",
+  "ref_agreed",
+  "tier3A",
+  "tier3B",
+  "residue_unsolved",
+  "weights_spec",
+  "seed"
+ ],
+ "rungs_compared": 8,
+ "per_shot_records": {
+  "heldout_bb_refsched.jsonl": {
+   "reproduced_sha256": "69dc6e271bf41e7f7a6457040e9b50e15685f4b52b52aa7039da093acfa7f34d",
+   "identical_to_shipped": true
+  },
+  "heldout_hetero_p02.jsonl": {
+   "reproduced_sha256": "906299e9aedda8c2625a261c46d69bfdab19e8eb6bb1542e14feb0a14951f478",
+   "identical_to_shipped": true
+  },
+  "heldout_phenom_p01.jsonl": {
+   "reproduced_sha256": "142032cd1112fd59831265bdefd6ff231cb1cf2ffbc078fa846ba926f47f776e",
+   "identical_to_shipped": true
+  },
+  "heldout_phenom_p02.jsonl": {
+   "reproduced_sha256": "7226b90b338987d5f2d918ed378d521c525a4335326938fe122594134d550926",
+   "identical_to_shipped": true
+  },
+  "heldout_stress_p05.jsonl": {
+   "reproduced_sha256": "c8a0aadfc26d027c704bd1059a08126a4406b1872170ecba8c31cbcaf85a5c43",
+   "identical_to_shipped": true
+  },
+  "heldout_uniform_p01.jsonl": {
+   "reproduced_sha256": "3f7196359f9c2237c7eec0394afd1788ccb94bbab531a7a3dbb5bda333f682a2",
+   "identical_to_shipped": true
+  },
+  "heldout_uniform_p02.jsonl": {
+   "reproduced_sha256": "72367b7054cc6d03b8e5718f31e329ea78c590b383f84dae9d12d4e17795789c",
+   "identical_to_shipped": true
+  },
+  "heldout_xsector_p02.jsonl": {
+   "reproduced_sha256": "d107299b0d4f587ae62d44528efe6bfdd828505721fac28f143e50cb91a38c19",
+   "identical_to_shipped": true
+  }
+ },
+ "differences": [],
+ "python": "3.14.3",
+ "command": "python tools/reproduce_heldout_public.py --work <dir>"
+}

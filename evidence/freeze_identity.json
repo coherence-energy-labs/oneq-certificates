@@ -1,0 +1,12 @@
+{
+ "schema": "oneq-freeze-identity/1",
+ "campaign": "paper 2's frozen held-out campaign",
+ "tag": "held-out-freeze",
+ "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+ "predeclaration": "docs/HELD_OUT_PREDECLARATION.md",
+ "predeclaration_sha256_at_freeze": "121f1492419162c72a647058a8605fa7717c20e7ada6f0d31a86065f8e702e5e",
+ "source_snapshot": "oneq-source-aba2aec.tar",
+ "source_snapshot_manifest": "evidence/revision_snapshots.json",
+ "seed_rule": "SHA256(b'oneq-heldout-2026||' + dataset + b'||' + commit)[:16] as an integer masked to 63 bits; the circuit rung additionally reduced modulo 2^31 - 1",
+ "why": "The frozen runner reads its freeze commit with `git rev-parse held-out-freeze` and derives every seed from it. A public release carries no git history, so a reader who reproduces from the source snapshot needs the identity stated explicitly. tools/reproduce_heldout_public.py supplies THIS value to the frozen runner without editing a byte of it, and refuses if the snapshot does not verify against its manifest."
+}

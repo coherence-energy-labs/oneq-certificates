@@ -1,0 +1,59 @@
+# External follow-up audit of paper 2 — 2026-09-15 — findings register
+
+The second external audit of *Exact, independently checkable optimality receipts for BP-OSD on
+[[144,12,12]]*, against the public release `coherence-energy-labs/oneq-certificates` at
+`5f5673e` (release v2026.09.15.1) and the review packet. Source: the auditor's report and test
+package `QEC_Revision_Audit_Tests_and_Patch_2026-09-15.zip` (independent small-instance tests
+of the two published JavaScript checkers: 3,123 cases, 0 unexpected verdicts; a piped-output
+experiment; a proposed two-line patch). The first audit's register is
+`docs/EXTERNAL_AUDIT_2026-09-14.md`.
+
+**Every finding below was re-verified here against source and artifacts before being accepted.**
+Verdicts: CONFIRMED (defect is real), QUALIFIES (claim must narrow), RESOLVED (not a defect;
+explanation needed), NOTED (accepted without a change owed).
+
+## What survived
+
+- **Mathematics: no counterexample.** The auditor's 1,638 flat and 1,485 tree cases against the
+  published checker bytes (blob-verified) produced 0 unexpected verdicts; the checkers here are
+  byte-identical to the audited copies (sha256 `5e6e3bb6…` flat, `4a79c703…` tree).
+- **The prior corrections are real** (the auditor closes them): the logical-frame argument, the
+  solver fallback checked before use, the complete manifest-pinned replay, the 40-tree inventory.
+- **Table I arithmetic reconciles** to the digit (2,153 / 134 / 2,019 / 1,780 / 222 / 17; 88.16%;
+  99.15% and 98.73% under flooring; 1.99% upper endpoint).
+
+## Register
+
+| ID | Verdict | Finding (verified) | Closure |
+|---|---|---|---|
+| F-1 | **CONFIRMED** | Both JavaScript checkers wrote their verdicts then called `process.exit()`; on POSIX a pipe drains asynchronously, so a batch past 65,536 bytes lost verdicts and the summary with exit 0. Reproduced here on Linux, Node v22.16.0: 950 / 745 of 2,002 rows, three of three repetitions; the proposed `process.exitCode` fix delivers all 2,002 and the summary. The Python harnesses caught it only by reconciling receipt ids. | **RESOLVED** (`fa0551b`): every checker in `verifier-js/` (nine files) now sets `process.exitCode`; `tests/test_js_checkers_drain_stdout.py` holds the pattern statically and pushes a 2,002-receipt batch through a real pipe (the old checker fails it on Linux); the real corpus agreements pass on Linux through pipes: 2,002 flat, 40 trees, 104 + 55 planted defects, 56/56 conformance. The manuscript's Sec. IV states the defect. |
+| F-2 | **CONFIRMED** | The strong-baseline runner (v2) checked every receipt during the run and discarded it: `exact_flat` used as yes/no, `tree_receipt` returning a node count; the 2,042-receipt replay never read a strong-baseline proof. "The checker accepted a proof during our run" is not "the reader has the proof". | **RESOLVED** (v3): `qldpc_strong_baseline_v3.py` retains every proof content-addressed, every decision names its proof, the sampled error is kept; `tools/replay_strong_baseline.py` rebuilds every summary number from records and proofs alone with the production checkers and writes a verdict the paper's generator requires; v2's numbers reproduce level by level; the proofs and manifest ship in the bundle. |
+| F-3 | **QUALIFIES** | The manuscript read the tier-1 rate as "how often BP-OSD found the declared optimum"; the implementation measures how often the flat route proves it, and a tier-1 refusal does not establish a miss. The stronger measurement — BP-OSD's answer feasible with weight equal to the certified optimum — was available and not computed. | **RESOLVED**: computed on the v2 records first (at p=0.07 under C: 146 tier-1 against 196 optimum hits of 200; under B: 143 against 171), then carried in v3's summary; Table III reports tier-1 and optimum-hit for A / B / C at all five levels; Sec. VI D states both numbers and that every tier-1 answer is an optimum hit. |
+| F-4 | **CONFIRMED** | Abstract: "at the highest shared noise level it rises from 42.0% to 93.5%" — those are the p=0.05 values; p=0.07 reads 12.0% → 73.0%. | **RESOLVED**: the abstract names p=0.05 and the flat-receipt route explicitly. |
+| F-5 | **CONFIRMED** | "All shots were sampled with Stim" — the non-circuit and strong-baseline samplers use NumPy; Stim samples the circuit-level detector error model. | **RESOLVED**: Sec. VI states the two sampling paths. |
+| F-6 | **QUALIFIES** | Related work implied every receipt proves optimality through an attaining dual; the lattice rule needs only L > U − 1/D. | **RESOLVED**: reworded; attaining is the special case L = U. |
+| F-7 | **QUALIFIES** | "Independently written checkers" (abstract, Sec. VI A) against Sec. IV's "separate implementations, not independent". | **RESOLVED**: "separately written" everywhere. |
+| F-8 | **QUALIFIES** | The JavaScript checkers' authorship and AI assistance unstated; whether writing them exposed a specification ambiguity unstated. | **RESOLVED**: Sec. IV states the author, the AI assistance, that no specification ambiguity was exposed, and what was exposed instead (three dark harness rules; the pipe defect). |
+| F-9 | **QUALIFIES** | Sec. IV: "admits only rationals" beside a defect in a floating-point screen inside the same module. | **RESOLVED**: the screen is named, who calls it, and that no receipt is accepted on its verdict. |
+| F-10 | **CONFIRMED** | Table II's receipts (about 3,000 flats and 64 trees) were outside the 2,042-receipt replay corpus. | **RESOLVED** with F-2: the strong-baseline proofs are a second, manifest-pinned corpus with its own replay; tree sizes reported (largest tree, bytes, median at p=0.07). |
+| F-11 | **QUALIFIES** | The tier-1 column was dropped from Table II. | **RESOLVED**: Table III. |
+| F-12 | **QUALIFIES** | Tier 2 is stronger than "not proven optimal": each of the 222 is a BP-OSD answer proven strictly heavier. | **RESOLVED**: Sec. VI A says so. |
+| F-13 | **QUALIFIES** | Sec. VI D: "every answer counted carries a checked exact receipt" — raw BP-OSD answers are counted too. | **RESOLVED**: restricted to reference and pipeline answers. |
+| F-14 | **CONFIRMED** | The public reproduction route: the frozen runner asserts `git rev-parse held-out-freeze`; the release has no git history; the register the packet points to was not in the public `docs/`. | **RESOLVED**: `tools/reproduce_heldout_public.py` verifies the snapshot, extracts it into a separate directory, supplies the pinned reference checker and the declared freeze identity (`evidence/freeze_identity.json`) to the frozen runner in-process without editing a byte, runs the campaign and compares every non-timing number to the shipped result (run recorded in `evidence/heldout_public_reproduction.json`); both audit registers now ship in the bundle. |
+| F-15 | **QUALIFIES** | "2,042 stored receipts, held-out and development" — the 1,851 development flats are not stored; four development trees were reconstructed after the fact. | **RESOLVED**: Sec. VI A says which receipts are stored and notes the four. |
+| F-16 | **QUALIFIES** | Circuit dataset "fixed 150 sampled shots": predeclared rule or deviation? | **RESOLVED**: Sec. VI A cites the predeclaration's "150" beside nontrivial targets and records the raw-shot reading as a deviation, not a re-run. |
+| F-17 | **QUALIFIES** | Lean-QEC uncited in the distance paragraph. | **RESOLVED**: cited. |
+| F-18 | **NOTED** | BP-OSD's observable outcome on the 149 circuit shots is recoverable from seeds and records. | OPEN — an afternoon's replay; not done in this pass. |
+| F-19 | **NOTED** | The freeze tag's push to GitHub is third-party evidence of its date; OpenTimestamps going forward. | OPEN — the tag object is lightweight on GitHub (no tagger date); the commit date is `2026-08-03 15:55:10 -0400`; a push-event record was not retrievable through the API. Timestamping is adopted for future freezes. |
+| F-20 | **NOTED** (paper 1) | "8,628 exactly" (ε-checker) vs Table I's 54/400 (rational-repair checker) need their definitions; 8,000,001 = 8n + 1 needs its sentence; "converged bound equals the minimum" needs "when it converges; capped"; 6,147 = 3 × 2,049. | **RESOLVED** in the paper 1 source: each sentence now says what it means. The rerun-cost scoping (about 15 s per shot per worker on the shared machine against 3.87 s core time in the run of record) waits for the rerun to finish so the number is generated, not typed. |
+
+## Status — 2026-09-16 (UTC, in progress)
+
+| item | status |
+|---|---|
+| F-1 JavaScript checkers | closed and Linux-verified on the real corpus |
+| F-2 / F-10 proof retention | **closed**: `evidence/qldpc_strong_baseline_v3.json` with 955 content-addressed proofs (891 flat, 64 tree) under `evidence/strong_baseline_v3/`, pinned by its MANIFEST; `tools/replay_strong_baseline.py` re-checks every decision's proof against the persisted instances and recomputes every summary number (`evidence/strong_baseline_v3_replay.json`: 4,000 decisions, 996 distinct proof checks, passed); the rehearsal runs the replay as a step; v2 and v3 numbers identical |
+| F-3 / F-11 instrument table | **closed**: Table III of paper 2 reports tier-1 and optimum-hit rates for A, B, C at all five noise levels from v3; the generator refuses if any tier-1 decision is not an optimum hit |
+| mint integrity (found while closing the above) | **closed**: a mint bound to 87b3b97 carried two evidence files the commit did not contain; `build_certificate_bundle.py` now refuses to sign from a tree whose bundled sources differ from HEAD and records the difference in unsigned dry runs (`tests/test_bundle_refuses_dirty_source.py`); v2026.09.16 was re-minted from a clean tree |
+| F-14 public route | **closed**: `evidence/heldout_public_reproduction.json` — the frozen campaign re-run from the verified snapshot with the declared identity, 8 rungs compared on 14 non-timing fields with no difference, and all 8 per-shot record files byte-identical to the shipped ones, in 155 s. (The byte identity also narrows ledger R56b: a full re-run of the frozen producer reproduces its records exactly on this environment; the 58 divergent certificates arose in the separate regeneration lane, not in the campaign path.) |
+| manuscript corrections F-4..F-9, F-12, F-13, F-15..F-17, F-20 | applied in source |

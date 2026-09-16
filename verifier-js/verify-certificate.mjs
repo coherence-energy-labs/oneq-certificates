@@ -440,5 +440,5 @@ function main(argv) {
 // fails to match and the CLI exits 0 having run nothing. A conformance harness
 // that reports success by doing nothing is worse than one that errors.
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  process.exit(main(process.argv.slice(2)));
+  process.exitCode = main(process.argv.slice(2));   // not process.exit(): a piped stdout may not have drained
 }

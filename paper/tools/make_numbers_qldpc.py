@@ -201,10 +201,43 @@ def build() -> dict[str, str]:
         M["DevMaxFacets"] = I(max(s["max_facets"] for s in dsz))
         M["DevMaxNumBits"] = I(max(s["max_num_bits"] for s in dsz))
 
-    # ------------------------------------------------ strong baseline (v2: receipts on every answer)
-    sbd = J("qldpc_strong_baseline_v2.json")
+    # ------------------------------------------------ strong baseline (v3: every proof retained and replayed)
+    sbd = J("qldpc_strong_baseline_v3.json")
     sb = sbd["levels"]
+    rp = J("strong_baseline_v3_replay.json")
+    if not rp.get("passed") or rp.get("summary_sha256") != __import__("hashlib").sha256(
+            (EV / "qldpc_strong_baseline_v3.json").read_bytes()).hexdigest():
+        raise SystemExit("strong baseline: no passing no-producer replay of THIS summary "
+                         "(python tools/replay_strong_baseline.py)")
     order = ("baseline_30_osdcs5", "strong_100_osdcs10", "strongest_ps_100_osdcs10")
+    inst = [r"\begin{tabular}{@{}lcccccc@{}}", r"\toprule",
+            r" & \multicolumn{3}{c}{tier 1: BP-OSD's answer certified by the flat route} & "
+            r"\multicolumn{3}{c}{optimum hit: BP-OSD's answer feasible at the certified optimum} \\",
+            r"$p$ & A & B & C & A & B & C \\", r"\midrule"]
+    for lvl in ("p=0.01", "p=0.02", "p=0.03", "p=0.05", "p=0.07"):
+        v = sb[lvl]
+        t1 = " & ".join(str(v["configs"][c]["tier1"]) for c in order)
+        oh = " & ".join(str(v["configs"][c]["optimum_hit"]) for c in order)
+        inst.append(rf"{lvl[2:]} & {t1} & {oh} \\")
+    inst += [r"\bottomrule", r"\end{tabular}"]
+    files["tab_instrument.tex"] = "\n".join(inst) + "\n"
+    f5i, f7i = sb["p=0.05"], sb["p=0.07"]
+    M["StrongFiveOptHitStated"] = f"{f5i['configs'][order[0]]['optimum_hit_rate']:.1f}"
+    M["StrongFiveOptHitStrongest"] = f"{f5i['configs'][order[2]]['optimum_hit_rate']:.1f}"
+    M["StrongSevenTierOneStated"] = f"{f7i['configs'][order[0]]['tier1_rate']:.1f}"
+    M["StrongSevenTierOneStrongest"] = f"{f7i['configs'][order[2]]['tier1_rate']:.1f}"
+    M["StrongSevenOptHitStated"] = f"{f7i['configs'][order[0]]['optimum_hit_rate']:.1f}"
+    M["StrongSevenOptHitStrongest"] = f"{f7i['configs'][order[2]]['optimum_hit_rate']:.1f}"
+    M["StrongSevenOptHitNotTierOne"] = I(f7i["configs"][order[2]]["optimum_hit_not_tier1"])
+    if any(v["configs"][c]["tier1_not_optimum_hit"] for v in sb.values() for c in order):
+        raise SystemExit("strong baseline: a tier-1 answer that is not an optimum hit; the text says none exists")
+    M["StrongProofsFlat"] = I(sbd["proofs"]["flat"])
+    M["StrongProofsTree"] = I(sbd["proofs"]["tree"])
+    M["StrongTreeNodesMax"] = I(max(v["reference"]["trees"]["nodes_max"] or 0 for v in sb.values()))
+    M["StrongTreeNodesMedianSeven"] = I(int(round(f7i["reference"]["trees"]["nodes_median"])))
+    M["StrongTreeBytesMax"] = I(max(v["reference"]["trees"]["bytes_max"] or 0 for v in sb.values()))
+    M["StrongReplayDecisions"] = I(rp["decisions"])
+    M["StrongReplayProofChecks"] = I(rp["proof_checks"])
     lines = [r"\begin{tabular}{@{}lccccc@{}}", r"\toprule",
              r" & fixed & receipt pipeline & BP-OSD & \multicolumn{2}{c}{strongest: pipeline vs reference} \\",
              r"$p$ & reference & A / B / C & A / B / C & other optimum & other frame \\",

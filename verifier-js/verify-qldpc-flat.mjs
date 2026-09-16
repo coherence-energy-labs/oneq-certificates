@@ -224,7 +224,10 @@ function main() {
   }
   process.stdout.write(out.join("\n") + "\n");
   process.stdout.write(`SUMMARY\taccepted=${accepted}\trefused=${refused}\tmismatches=${mismatches}\n`);
-  process.exit(mismatches === 0 ? 0 : 1);
+  // NOT process.exit(): on POSIX a pipe is written asynchronously, and exiting here abandons
+  // whatever has not drained -- an external audit (2026-09-15) measured exactly 65,536 bytes of
+  // verdicts delivered, no summary, exit 0. Set the code and let the process end on its own.
+  process.exitCode = mismatches === 0 ? 0 : 1;
 }
 
 main();

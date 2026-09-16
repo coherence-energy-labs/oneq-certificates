@@ -1,0 +1,18 @@
+{
+ "schema": "oneq-strong-baseline-replay/1",
+ "passed": true,
+ "summary": "evidence/qldpc_strong_baseline_v3.json",
+ "summary_sha256": "166e12f4a796dec04308ed5d1c1752ed31c17450b3f359842e0cbb5e4e4e4dba",
+ "manifest_sha256": "64df7ec7bc89584cdcab8890c37496b7eb3aecbc1ec372a4653a5343a1dceb3a",
+ "decisions": 4000,
+ "proof_checks": 996,
+ "proofs": 955,
+ "note": "proof_checks counts distinct (proof, candidate) pairs decided by the production checker; decisions that share a proof and a candidate are decided once and counted once here",
+ "proofs_by_kind": {
+  "flat": 891,
+  "tree": 64
+ },
+ "disagreements": [],
+ "command": "python tools/replay_strong_baseline.py",
+ "reads": "records, proofs and the persisted instances only: no producer, no solver, no BP-OSD"
+}

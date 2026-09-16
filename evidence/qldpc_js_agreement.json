@@ -1,7 +1,7 @@
 {
  "schema": "oneq-qldpc-js-agreement/2",
  "checker": "verifier-js/verify-qldpc-flat.mjs",
- "checker_sha256": "5e6e3bb6e6b80d0a1ad11b3ff79d80ea171cefcdd1b01cfd2fb0826116462cfe",
+ "checker_sha256": "93a15cbc9dba9eed1c1225b00b4f3a8e0b7361cb8dfd09891d07d6579fd92104",
  "node": "v24.18.0",
  "manifest_sha256": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
  "flat_receipts": 2002,

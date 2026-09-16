@@ -1,0 +1,1 @@
+{"kind":"flat","instance":"evidence/instances/bb144_z_code_capacity.json","weights":"uniform-1","syndrome_support":[2,3,6,23,27,28,29,30,31,36,37,40,43,52,59,70],"facet_duals":[[2,[],1,1],[6,[],1,1],[23,[],1,1],[27,[],1,1],[31,[],1,1],[52,[],1,1],[59,[],1,1],[70,[],1,1]]}

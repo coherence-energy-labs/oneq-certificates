@@ -1,7 +1,7 @@
 {
  "schema": "oneq-qldpc-tree-js-agreement/1",
  "checker": "verifier-js/verify-qldpc-tree.mjs",
- "checker_sha256": "4a79c7037b4b3673d25c928d42618306fdf2953e19e61bde1d1b741146cd99da",
+ "checker_sha256": "700de312361a87e981761cd0210bce722667a91cf0afbba70d7d5ae189b9c212",
  "node": "v24.18.0",
  "manifest_sha256": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
  "trees": 40,

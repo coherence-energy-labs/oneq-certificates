@@ -5,7 +5,7 @@ claim lives, and the commands that re-derive it. Nothing here is evidence itself
 an artifact or a command.
 
 Two manuscripts, one repository, one public release
-(https://github.com/coherence-energy-labs/oneq-certificates, release v2026.09.15.1):
+(https://github.com/coherence-energy-labs/oneq-certificates, release v2026.09.16):
 
 | | Paper 1 | Paper 2 |
 |---|---|---|
@@ -13,8 +13,8 @@ Two manuscripts, one repository, one public release
 | Source | `paper/certifying-decoders/main.tex` | `paper/qldpc-certificates/main.tex` |
 | Long-form record | `docs/PAPER_DRAFT.md` (the typeset manuscript governs where they differ) | `docs/PAPER2_QLDPC_DRAFT.md` (same rule) |
 | Numbers | `paper/certifying-decoders/generated/*.tex`, from `paper/tools/make_numbers.py` | `paper/qldpc-certificates/generated/*.tex`, from `paper/tools/make_numbers_qldpc.py` |
-| State on 2026-09-15 | **Draft-complete except 16 numbers** that wait on the Willow d=7×30 rerun (below); everything else builds and traces | **Complete**; builds clean, every number traces, all register items closed |
-| Length | 9 pages, abstract 1,527 characters | 7 pages, abstract 1,868 characters (arXiv limit 1,920) |
+| State on 2026-09-16 | **Draft-complete except 16 numbers** that wait on the Willow d=7×30 rerun (below); everything else builds and traces | **Complete after the 2026-09-15 follow-up audit** (`docs/EXTERNAL_AUDIT_2026-09-15.md`: 20 findings, 17 closed, 3 open and named: BP-OSD's outcome on the 149 circuit shots, timestamping future freezes, paper 1's rerun-cost sentence); builds clean, every number traces, every proof retained and replayed |
+| Length | 9 pages, abstract 1,527 characters | 7 pages, abstract 1,887 characters (arXiv limit 1,920) |
 
 ## How to read them in the order that catches the most
 
@@ -39,9 +39,9 @@ Two manuscripts, one repository, one public release
    Paper 1: `tools/replay_epsilon_receipts.py` re-decides every retained ε-receipt of the rerun with a
    second, integer-arithmetic verifier and runs the boundary, non-finite and graph-substitution
    attacks (receipts are release assets; sha256 pinned in `evidence/epsilon_rerun/*.json`).
-5. **Then read the text against the register.** `docs/EXTERNAL_AUDIT_2026-09-14.md` holds every
-   finding two independent audits raised against both papers, its verdict, and its closure with the
-   commit that closed it. A referee's likeliest objections are already rows there; the useful review
+5. **Then read the text against the registers.** `docs/EXTERNAL_AUDIT_2026-09-14.md` and
+   `docs/EXTERNAL_AUDIT_2026-09-15.md` hold every finding three external audits raised against both
+   papers, its verdict after re-verification here, and its closure with the commit that closed it. A referee's likeliest objections are already rows there; the useful review
    is the objection that is not.
 
 ## Paper 1 — the claims, and where each one lives
@@ -80,7 +80,9 @@ not exact optimality at scale; optimality for the given weights only; blind to t
 | Preregistered campaign: 2,019 nontrivial shots, 2,002 flat + 17 trees, 1,780 tier-1, 222 repairs | MEASURED, preregistered | `docs/HELD_OUT_PREDECLARATION.md` (tag `held-out-freeze`), `evidence/qldpc_heldout.json`, Table I |
 | Every stored receipt replays under two Python checkers and a JavaScript checker per receipt kind | MEASURED | `tools/replay_receipts.py`; `evidence/qldpc_js_agreement.json`; `evidence/qldpc_tree_js_agreement.json` |
 | Circuit level under the published depth-8 schedule: 149/149, transcription validated at fault level (0 mismatches) | MEASURED | `evidence/qldpc_refsched_fault_xval.json`; Sec. VI B |
-| Strong baseline: pipeline errors change with the BP-OSD configuration; the advantage is over the stated configuration, not BP-OSD as such; the instrument that survives is the tier-1 rate | MEASURED | `evidence/qldpc_strong_baseline_v2.json`, Table II |
+| Strong baseline: pipeline errors change with the BP-OSD configuration; the advantage is over the stated configuration, not BP-OSD as such | MEASURED, every proof retained | `evidence/qldpc_strong_baseline_v3.json`, Table II; the 955 proofs under `evidence/strong_baseline_v3/`; `python tools/replay_strong_baseline.py` rebuilds every number from records and proofs alone (`evidence/strong_baseline_v3_replay.json`) |
+| The instrument, two ways: tier-1 (the flat route proves BP-OSD's answer) and optimum-hit (BP-OSD's answer feasible at the certified optimum) at all five levels; at p=0.07 under C, 146 vs 196 of 200 | MEASURED | Table III, same artifact and replay |
+| The frozen held-out campaign re-runs from the public source snapshot alone, no git history | MEASURED | `python tools/reproduce_heldout_public.py --work <dir>`; `evidence/heldout_public_reproduction.json` (8 rungs, 14 fields, all record files byte-identical, 155 s) |
 | Mutation score of the checker's tests: 313 of 321 killed, 8 equivalent with reasons | MEASURED | `evidence/mutation_score/qldpc_check.json` |
 | 58 of 2,002 regenerated flat certificates differ from the run of record while remaining exact; cause open | OBSERVED | Sec. VII; ledger R56b |
 | "Under a logged search protocol we did not find a prior report of exact, independently re-checkable, minimum-weight receipt coverage for BP-OSD on this code" | OBSERVED (search of 2026-09-15) | `docs/PAPER2_LITERATURE_SEARCH.md`; nearest: arXiv:2608.25545, cited and distinguished in Sec. VIII |
@@ -97,7 +99,7 @@ not exact optimality at scale; optimality for the given weights only; blind to t
   evidence tree, and `tests/test_paper_*.py`, `tests/test_doc_claims_*.py`,
   `tests/test_bundle_carries_the_papers_evidence.py` hold the builder, the bibliography and the bundle.
 - What cannot be checked from the release alone: re-running the sampling and production needs the
-  code at the freeze commits, shipped as source snapshots in release v2026.09.15.1
+  code at the freeze commits, shipped as source snapshots in release v2026.09.16
   (`evidence/revision_snapshots.json`); the 17.3 GB of ε-receipts for paper 1 are release assets, not
   repository files.
 
