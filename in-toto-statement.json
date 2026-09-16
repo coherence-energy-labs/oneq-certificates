@@ -326,6 +326,12 @@
       }
     },
     {
+      "name": "evidence/qldpc_tree_js_agreement.json",
+      "digest": {
+        "sha256": "eba264a3004a4366ac252e782a6913832bb98c17d3786d884a2a85d6661d3370"
+      }
+    },
+    {
       "name": "evidence/revision_snapshots.json",
       "digest": {
         "sha256": "2a22830eadc0b1ab80bc859755a03096e2b09fa3cb0a817414964b1d2b992fcc"
@@ -1390,13 +1396,13 @@
     {
       "name": "AUDIT.md",
       "digest": {
-        "sha256": "3178c826b1e9670607225d2922bbcfd48b4c421a9f03c21416a17322bc7d09ac"
+        "sha256": "8f02cdd5ce1347025608a3078116ba28c962620caef260b566c98d98b003e09b"
       }
     },
     {
       "name": "REPRODUCE.md",
       "digest": {
-        "sha256": "e8b97634e62aa83a028a0504bcc1cc979821608b4ce4695fbce9c5a206b7bb64"
+        "sha256": "5e9536b4b3712c8ce1a6f83a89304ef204a548278c7382655ca16a1e188b198d"
       }
     },
     {
@@ -1427,6 +1433,24 @@
       "name": "docs/HELD_OUT_RESULTS.md",
       "digest": {
         "sha256": "537649f4186179bf12d4b5faedb1d1f9958ff9a1677c58c2305feac238692eb0"
+      }
+    },
+    {
+      "name": "docs/PAPER1_LITERATURE_SEARCH.md",
+      "digest": {
+        "sha256": "d9973d7ce1f05fcd58e6fdd1494c3a723c60663bcfc73e37e89251cf83486ce8"
+      }
+    },
+    {
+      "name": "docs/PAPER2_LITERATURE_SEARCH.md",
+      "digest": {
+        "sha256": "1ee2a8cb4427cf16e790e33906ce5f8873b9b0c86d0254d15e0dda68105b6863"
+      }
+    },
+    {
+      "name": "docs/REVIEW_PACKET.md",
+      "digest": {
+        "sha256": "a850acc69947325d2b5448639463912dde9d33968f882e88febf4b4996b6f0e2"
       }
     },
     {
@@ -1822,7 +1846,7 @@
     {
       "name": "paper/certifying-decoders/main.tex",
       "digest": {
-        "sha256": "d905fd12fb4bb1a47835e2977e623ce7ce27b0b08e6527a6d1ee51c4422d2ff0"
+        "sha256": "1f3b2cc5a6a466e91aa3464f49778f59914af940aff4761812e381408294eefa"
       }
     },
     {
@@ -1834,7 +1858,7 @@
     {
       "name": "paper/qldpc-certificates/generated/numbers.tex",
       "digest": {
-        "sha256": "d99f197bf52de56ca39e0f0421589c9c18becf50df74fe728e61a181c4e0137c"
+        "sha256": "9e7dce403d97f90565cd18a1fe9506d405717804ef4de7a7b51f49af888585b8"
       }
     },
     {
@@ -1852,13 +1876,13 @@
     {
       "name": "paper/qldpc-certificates/main.tex",
       "digest": {
-        "sha256": "ab16d1f9c15f6a71401e403d08f23a82a4a30bc4d44680d0534525d33680bdc5"
+        "sha256": "43ca9d3683418fcef3df1da2ca6be44826e53c937b2a193bd7781f8b20526c5d"
       }
     },
     {
       "name": "paper/refs.bib",
       "digest": {
-        "sha256": "485633d47954c440dd2eb11b11fcf4f4882403c0e1ea784cc6852a45115581b1"
+        "sha256": "af024873745b7c871d154151c44acb2a653ab1f0212ee7c5db219823af9089cf"
       }
     },
     {
@@ -1888,7 +1912,7 @@
     {
       "name": "paper/tools/make_numbers_qldpc.py",
       "digest": {
-        "sha256": "bb22730579c12b7b6bcfdb0ab7fdf3ef933c9bad11444dd51c4632d03507cb6f"
+        "sha256": "ff957fb79cc0e7532112dab86f62456c39621ae427dbb59ac33fb77335f598b5"
       }
     },
     {
@@ -2180,6 +2204,12 @@
       }
     },
     {
+      "name": "tools/qldpc_tree_js_agreement.py",
+      "digest": {
+        "sha256": "583422e640f9aa982f7fefb46f55b0d3f895444a27762cee2948cf0c29a636e9"
+      }
+    },
+    {
       "name": "tools/receipt_manifest.py",
       "digest": {
         "sha256": "b04a10ff7971d44321a1f731f7fad9416a3b4fad6fe06643a01542921f588fd1"
@@ -2238,6 +2268,12 @@
       "digest": {
         "sha256": "5e6e3bb6e6b80d0a1ad11b3ff79d80ea171cefcdd1b01cfd2fb0826116462cfe"
       }
+    },
+    {
+      "name": "verifier-js/verify-qldpc-tree.mjs",
+      "digest": {
+        "sha256": "4a79c7037b4b3673d25c928d42618306fdf2953e19e61bde1d1b741146cd99da"
+      }
     }
   ],
   "predicateType": "https://one-q.org/DecodingCertification/v0.1",
@@ -2252,7 +2288,7 @@
         {
           "uri": "git+https://one-q.org/ONE_Q",
           "digest": {
-            "gitCommit": "17bedcf742af3f7ca2358e6520c764d91ffeb276"
+            "gitCommit": "2c29f78fdde15f30acde173886a3040334c4bc5d"
           }
         }
       ],
@@ -2272,7 +2308,7 @@
         "id": "https://one-q.org/local"
       },
       "metadata": {
-        "invocationId": "17bedcf742af3f7ca2358e6520c764d91ffeb276"
+        "invocationId": "2c29f78fdde15f30acde173886a3040334c4bc5d"
       }
     },
     "claims": {

@@ -334,6 +334,17 @@ def build() -> dict[str, str]:
     M["JsDefects"] = I(js["planted_defects"])
     M["JsDefectClasses"] = I(len([k for k in js["planted_by_class"] if k != "lattice_boundary_accept"]))
 
+    jt = J("qldpc_tree_js_agreement.json")
+    jt_src = ROOT / jt["checker"]
+    if __import__("hashlib").sha256(jt_src.read_bytes()).hexdigest() != jt["checker_sha256"]:
+        raise SystemExit("JavaScript tree agreement: the checker changed since the artifact was written; re-run it")
+    if (jt["disagreements"] or jt["trees_accepted"] != jt["trees"]
+            or jt["planted_defects_refused_for_their_reason"] != jt["planted_defects"]):
+        raise SystemExit("JavaScript tree agreement: the text says every tree accepted and every defect refused")
+    M["JsTreeAccepted"] = I(jt["trees_accepted"])
+    M["JsTreeDefects"] = I(jt["planted_defects"])
+    M["JsTreeDefectClasses"] = I(len(jt["planted_by_class"]))
+
     # ------------------------------------------------ operator mutation score of the checker's tests
     mu = J("mutation_score/qldpc_check.json")
 

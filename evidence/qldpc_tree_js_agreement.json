@@ -1,0 +1,36 @@
+{
+ "schema": "oneq-qldpc-tree-js-agreement/1",
+ "checker": "verifier-js/verify-qldpc-tree.mjs",
+ "checker_sha256": "4a79c7037b4b3673d25c928d42618306fdf2953e19e61bde1d1b741146cd99da",
+ "node": "v24.18.0",
+ "manifest_sha256": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
+ "trees": 40,
+ "trees_by_cohort": {
+  "heldout_tree": 17,
+  "dev_tree": 19,
+  "dev_refsched_tree": 4
+ },
+ "trees_accepted": 40,
+ "synthetic_receipts_accepted": 2,
+ "planted_defects": 55,
+ "planted_defects_refused_for_their_reason": 55,
+ "planted_by_class": {
+  "candidate_extra_variable": 5,
+  "syndrome_bit_dropped": 5,
+  "unknown_node_kind": 5,
+  "empty_leaf_on_open_branch": 4,
+  "branch_on_fixed_variable": 4,
+  "branch_missing_child": 4,
+  "leaf_duals_zeroed": 5,
+  "facet_on_fixed_variable": 4,
+  "facet_wrong_parity": 5,
+  "negative_multiplier": 5,
+  "row_out_of_range": 5,
+  "infeasible_leaf_support_not_empty": 1,
+  "infeasible_leaf_even_parity": 1,
+  "lattice_boundary_leaf": 1,
+  "overloaded_multiplier": 1
+ },
+ "disagreements": [],
+ "command": "python tools/qldpc_tree_js_agreement.py"
+}
