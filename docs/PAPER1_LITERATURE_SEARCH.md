@@ -17,6 +17,38 @@ that observation.
 
 ## Rounds and dates
 
+- **2026-09-16, the round behind Sec.~"Certifying against a model measured from the run itself".**
+  That section added a knowledge claim to the manuscript, so the searches behind it are logged here
+  and its verdict is register row 29. Web index, twelve queries, verbatim:
+  `two-point correlation pij method estimating decoding graph edge probabilities from detector data
+  surface code`; `leakage induced correlated errors superconducting quantum error correction leakage
+  lifetime rounds`; `hidden Markov model leakage detection decoder surface code transmon`; `data
+  qubit leakage versus ancilla leakage distinguishing syndrome signature repetition code`; `learned
+  noise model beats vendor detector error model decoding logical error rate IBM experiment 2026`;
+  `temporally correlated errors beyond detector error model repetition code experiment long range
+  detector correlations`; `leakage aware decoder hidden Markov state inserted as decoding graph edges
+  weights improve logical error rate`; `arXiv 2026 correlated flipping adjacent detectors consecutive
+  rounds repetition code Google high distance noise floor`; `PAEMS precise adaptive error model
+  superconducting quantum processors detector error model refit`; `per-shot optimality certificate
+  decoder learned noise model proof carrying quantum error correction verifiable minimum weight`;
+  `two-state Markov leakage model closed form pairwise edge probabilities all round separations
+  matching graph analytic lowering`; `leakage localization data qubit versus ancilla likelihood
+  comparison different devices IBM measured syndrome statistics 2026`. Three sources were fetched in
+  full: arXiv:2512.10814 (DEM estimation on Willow, long-range detector correlations),
+  arXiv:2504.20212 (estimating decoding graphs and hypergraphs), arXiv:2601.16123 (Stein et al.).
+  **What the round FOUND, and it narrowed the manuscript before anything was written:** the
+  estimator is prior art (Spitz et al., arXiv:1712.02360; Google's analysis, arXiv:2102.06132);
+  estimated models beating device-informed ones on IBM is prior art (Takou et al., arXiv:2606.11496)
+  and is done *better* on our own two processors by Stein et al. (arXiv:2601.16123, 11.1x at d=11
+  against calibration-weighted matching, held out on unseen chains). The section states both, and
+  claims no priority for its decoding margin. **What it did NOT find:** a per-shot,
+  third-party-checkable optimality witness over a model estimated from the shots being decoded.
+  The nearest are HyperBlossom (arXiv:2508.04969, certifiable proximity bounds for a decoder under a
+  given model) and Krishnamoorthy et al. (arXiv:2608.25545, certificates internal to a sampler);
+  none of the estimated-DEM papers carries a per-shot witness at all. Not searched this round:
+  Google Scholar, Semantic Scholar, IEEE Xplore, non-English venues, and any venue's 2026 Q3
+  proceedings not yet indexed by the web index used.
+
 - **2026-09-15, pre-review refresh.** Web index, two queries, verbatim:
   `certified optimality decoder quantum error correction dual certificate minimum weight
   perfect matching receipt arXiv 2026`; `verifiable decoder output syndrome decoding

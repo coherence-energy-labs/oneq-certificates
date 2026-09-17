@@ -238,7 +238,7 @@
     {
       "name": "evidence/mutation_gate.json",
       "digest": {
-        "sha256": "b68230c2aaaac693eb2c6db19adc985a19f3ed6c88d3d48e0f4d024c19f53dd6"
+        "sha256": "d848c21541b62b68bb8c37ce2c28483964f854349a2f796bc0f175e384f82a55"
       }
     },
     {
@@ -250,7 +250,7 @@
     {
       "name": "evidence/derived_claims.json",
       "digest": {
-        "sha256": "3c5aad4438a2c49591c01c7175981a65fea103d8b12057b8977f4ed4e3968e91"
+        "sha256": "e4dfe315943a0a8e5532672f3034ce81a2e647db58f6ec6ae26766b9e5266007"
       }
     },
     {
@@ -323,6 +323,18 @@
       "name": "evidence/strong_baseline_v3_replay.json",
       "digest": {
         "sha256": "31aa65bfad965e7c5bfc601187597b55aa801fee56726a96d9e032f234ff0963"
+      }
+    },
+    {
+      "name": "evidence/bposd_circuit_outcome.json",
+      "digest": {
+        "sha256": "d830806627599f57298ebfcba8d929323a89af8f46a46bd2576f593f9f52812c"
+      }
+    },
+    {
+      "name": "evidence/certified_measured_lane.json",
+      "digest": {
+        "sha256": "d347af465758da66aea7fc6aea0820152930521830c7ff1069846bfdfb17b3b4"
       }
     },
     {
@@ -7030,7 +7042,7 @@
     {
       "name": "evidence/heldout_qldpc_bb_refsched_gate.json",
       "digest": {
-        "sha256": "124ee20c4de629f0fcd93fe7cbe4fff375eaf22daf4069173ef8ff96f360bac6"
+        "sha256": "0244237f9d727ccf94b20d8921bd232ae4b0edeb361d2e958e4347afe9c0a7bb"
       }
     },
     {
@@ -7228,7 +7240,7 @@
     {
       "name": "evidence/ibm_live_job.json",
       "digest": {
-        "sha256": "4f0383f33fa7b922bd3c2dab6e0548de72bedaa33be9111141f139b22e3b3170"
+        "sha256": "04e5c8c38edd6441061f376adb8b20945e0119f9fdf05f15c6148c25ff975198"
       }
     },
     {
@@ -7276,13 +7288,13 @@
     {
       "name": "AUDIT.md",
       "digest": {
-        "sha256": "361d6621c608030ed520ebd17686a3179ed753710eb825afd1d75c62b0a96d45"
+        "sha256": "507d4fe6eb835465120732c5f28e8611eb96b3b487eb5ea784ff21ee6408db5f"
       }
     },
     {
       "name": "REPRODUCE.md",
       "digest": {
-        "sha256": "3ae47bc24fc0ae8a2b05b73d290d499103772e902247044d2cda0b8beba526eb"
+        "sha256": "4336140dfcfdb394bfc8f34e91ab265492f0902521bcc2537961e360d93aa392"
       }
     },
     {
@@ -7312,7 +7324,7 @@
     {
       "name": "docs/EXTERNAL_AUDIT_2026-09-15.md",
       "digest": {
-        "sha256": "3f893b8a06190b081073627712b1a0f912c22f846f7df794f35cdb8940944998"
+        "sha256": "a56be3247713f8ad7a87e8f981ed3ddb9d6fa707770c5207d6e9cdfa22e28457"
       }
     },
     {
@@ -7330,7 +7342,7 @@
     {
       "name": "docs/PAPER1_LITERATURE_SEARCH.md",
       "digest": {
-        "sha256": "d9973d7ce1f05fcd58e6fdd1494c3a723c60663bcfc73e37e89251cf83486ce8"
+        "sha256": "b62a65ce296e15d9979a06cf95e9986afe8816cc6c240a8c072c13e0d95787c9"
       }
     },
     {
@@ -7340,15 +7352,45 @@
       }
     },
     {
+      "name": "docs/PREREG_measured_model_program_2026-09-16.md",
+      "digest": {
+        "sha256": "d800f533f1c71203c40fb565c6e052d9ec3ddd745935e12ac8466c983d81f8b7"
+      }
+    },
+    {
+      "name": "docs/PRIOR_ART_REGISTER.md",
+      "digest": {
+        "sha256": "5f2f7ceb06423f32d7d13aa3b680c3aed9302d933258df11bbdcd60ee348a1dd"
+      }
+    },
+    {
       "name": "docs/REVIEW_PACKET.md",
       "digest": {
-        "sha256": "dfe3b071cbe735e940389d7dbcee8e6fbd313aa13fbf3b613025c5e34f621a5e"
+        "sha256": "ffc811dbd5cc1ca439e0f4c2ef5a10f9026caa3307d74e3a6f329bdcffbcdacd"
       }
     },
     {
       "name": "experiments/b1_analog/tcert_gate.py",
       "digest": {
         "sha256": "17a7c111d6e55e8ba9e2958054c16a62bdd1b259587be23ee83145f821e9dd04"
+      }
+    },
+    {
+      "name": "experiments/dual_observable/certified_measured_lane.py",
+      "digest": {
+        "sha256": "ee3eae762b5f1d23d6339a84a07da6606f5e15d97065fe1cbc781526ac91cf71"
+      }
+    },
+    {
+      "name": "experiments/dual_observable/hardware_noise_floor.py",
+      "digest": {
+        "sha256": "0d565aa5004cb05965d16f3b7f99f1888a6cf84a5c60703bd4296457cb7d3ce6"
+      }
+    },
+    {
+      "name": "experiments/dual_observable/measured_model_lane.py",
+      "digest": {
+        "sha256": "a74486948c1fe7e503bc329f4eb3d9c5d576c10526f96c72b851cb98dc851b34"
       }
     },
     {
@@ -7708,7 +7750,7 @@
     {
       "name": "paper/certifying-decoders/generated/numbers.tex",
       "digest": {
-        "sha256": "7f21386d99effa1ff0e351d915ef7e7dadc36fd47a60ae26b4fe5a2893e24d7e"
+        "sha256": "8d6eefdc5a61f39b36d2fe23fa113eb3299cb55086369ad29429b7965ddf33f9"
       }
     },
     {
@@ -7744,7 +7786,7 @@
     {
       "name": "paper/certifying-decoders/main.tex",
       "digest": {
-        "sha256": "9a77a2c57009f2a9467f8b923f12ef4cb4af568302f4ec4a9bd95b1cdaa5df2b"
+        "sha256": "962e5f2b85b09e53d1fc0ec6ef2c34717dd4f72fb063bd4e650ddc6983292f2c"
       }
     },
     {
@@ -7756,7 +7798,7 @@
     {
       "name": "paper/qldpc-certificates/generated/numbers.tex",
       "digest": {
-        "sha256": "7e7d98139dd0f9ce6f23fa68bed60e557f467048208aed7ac4905d02de8191cc"
+        "sha256": "db1933cf04147a91d3893c66966e5a3ca466ffce1039cbb2a4f56cfcfc657d0a"
       }
     },
     {
@@ -7780,7 +7822,7 @@
     {
       "name": "paper/qldpc-certificates/main.tex",
       "digest": {
-        "sha256": "3862ade911e7115890f315d9511caea9b8363b980767ad71a50f03157ef09191"
+        "sha256": "cc30b380cd60446d74a77a3c8265a470358487b24d6c73421a55cb591ecf10ac"
       }
     },
     {
@@ -7810,13 +7852,13 @@
     {
       "name": "paper/tools/make_numbers.py",
       "digest": {
-        "sha256": "d82b9dfb7c34823c869378b83ada927d74fe937115688eaaaa36e587273e4764"
+        "sha256": "a7b896e9f447457cd5d564dda7a62c73e35b90f9fa37a035016bc04119045207"
       }
     },
     {
       "name": "paper/tools/make_numbers_qldpc.py",
       "digest": {
-        "sha256": "dccdc228648ee4da6dce0f568bb10e3ba9668f5257a5fc42f5d99650952332ed"
+        "sha256": "7585c29ecbac700266b28e847e9a0942527507159967c1db5d37710d0b25e647"
       }
     },
     {
@@ -7868,9 +7910,33 @@
       }
     },
     {
+      "name": "src/oneq/certified_weight.py",
+      "digest": {
+        "sha256": "5868df73eb1d256f031dfaa932dfa5f0c6c80e3ab06df4023b18c5a461687e95"
+      }
+    },
+    {
       "name": "src/oneq/certifying_decoder.py",
       "digest": {
         "sha256": "e71abc4c645337ef201a50d949a93a89e197f7de8b6b2a28e3519cd1d3d69de4"
+      }
+    },
+    {
+      "name": "src/oneq/dem_calibration.py",
+      "digest": {
+        "sha256": "d3b37ac1f3f1083f97b8bcfb239bcf0a1132b20fcabc3ad12d151e994abdf56c"
+      }
+    },
+    {
+      "name": "src/oneq/dem_families.py",
+      "digest": {
+        "sha256": "e93e027d3fd2b814b62ed7ed4cff3b97ae4713c8852ee539e17d3fd39e60d476"
+      }
+    },
+    {
+      "name": "src/oneq/dem_measured.py",
+      "digest": {
+        "sha256": "752edc4c9d045ebbfcf4458d1ed5a46c4573bd301c5299ec7da14f694289cdf6"
       }
     },
     {
@@ -7889,6 +7955,12 @@
       "name": "src/oneq/exact_lp.py",
       "digest": {
         "sha256": "81654d2b63321e1ba793de3bb04610112e8f08bb086d6a7842278f62990b735b"
+      }
+    },
+    {
+      "name": "src/oneq/exchangeability.py",
+      "digest": {
+        "sha256": "cbd0734f27e104cc65913336fe264e6ad0eac830ceb5af3728d3dd6e0829ec70"
       }
     },
     {
@@ -7952,6 +8024,12 @@
       }
     },
     {
+      "name": "src/oneq/soft_estimator.py",
+      "digest": {
+        "sha256": "9d3ede302a3bc3e43d9efbbede669d6160ffd48f4a6397c7deac77c8ed305194"
+      }
+    },
+    {
       "name": "src/oneq/streaming.py",
       "digest": {
         "sha256": "f95cb624a999418ecfcacfb1039495c86d24525571cf57db37e518dd5464ed4e"
@@ -7967,6 +8045,12 @@
       "name": "tests/test_audit_2026_08_04.py",
       "digest": {
         "sha256": "2c2802c81a5990847cbfd3ea9446727ddc4af22c29ba71c4de0854d571747cd7"
+      }
+    },
+    {
+      "name": "tools/bposd_circuit_outcome.py",
+      "digest": {
+        "sha256": "43b9c799a5b69720a863242295d68935f39f7b83822fafdd816456c361f36a49"
       }
     },
     {
@@ -8080,7 +8164,7 @@
     {
       "name": "tools/mutation_gate.py",
       "digest": {
-        "sha256": "4f54d7db8a652cfe88e249ee59544c7353b561210419a38447c3758d58361d18"
+        "sha256": "75887218823c22dd90f5068e28c4f1acd43461fd0a6aebf88bc3d5570c71ef9c"
       }
     },
     {
@@ -8204,11 +8288,12 @@
         {
           "uri": "git+https://one-q.org/ONE_Q",
           "digest": {
-            "gitCommit": "f1fdf54e000cb6c69f26a4e86d017d9b94f3b9b7"
+            "gitCommit": "d5cfa1075547c307729f871c4926fc75cac51934"
           }
         }
       ],
       "sourcesDifferingFromCommit": [],
+      "sourceComparisonUnavailable": null,
       "internalParameters": {
         "library_versions": {
           "stim": "1.16.0",
@@ -8225,7 +8310,7 @@
         "id": "https://one-q.org/local"
       },
       "metadata": {
-        "invocationId": "f1fdf54e000cb6c69f26a4e86d017d9b94f3b9b7"
+        "invocationId": "d5cfa1075547c307729f871c4926fc75cac51934"
       }
     },
     "claims": {

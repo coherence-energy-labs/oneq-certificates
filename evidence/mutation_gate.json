@@ -19,6 +19,8 @@
     "src\\oneq\\transparency.py",
     "src\\oneq\\bakeoff.py",
     "src\\oneq\\distance_portfolio.py",
+    "src\\oneq\\latent_burst.py",
+    "src\\oneq\\latent_data.py",
     "src\\oneq\\latent_parity.py",
     "src\\oneq\\branch_certificate.py",
     "src\\oneq\\matching_cert_strict.py",
@@ -121,8 +123,8 @@
     "experiments\\g3_abft\\c2_l2prime_class_attestation.py"
   ],
   "mutated": "sandbox-copy",
-  "total": 500,
-  "killed": 500,
+  "total": 504,
+  "killed": 504,
   "survived": 0,
   "skipped": 0,
   "timed_out": 0,
@@ -3473,6 +3475,42 @@
       "replace": "        pass  # noqa",
       "must_fail": "test_a_SOLVER_THAT_CANNOT_BE_STOPPED_is_REFUSED_not_humoured",
       "target": "distance_portfolio",
+      "outcome": "killed"
+    },
+    {
+      "id": "M519-the-leave-one-out-posterior-reads-the-node-it-prices",
+      "why": "the emission of the masked round is restored for the healthy state, so the 'leave-one-out' burst posterior is once again computed from the very detector it is about to price -- the circularity that made the per-shot lowering decode WORSE than the model it was correcting (139 -> 193 held out, ledger R65)",
+      "find": "        e0[:, mask_round] = 1.0",
+      "replace": "        pass",
+      "must_fail": "test_leave_one_out_posterior_ignores_the_nodes_own_firing",
+      "target": "latent_burst",
+      "outcome": "killed"
+    },
+    {
+      "id": "M520-the-chain-lowering-loses-its-decay",
+      "why": "the transition matrix stops being advanced with the span, so every same-position pair edge is priced at separation one: a burst forty rounds apart costs exactly what an adjacent one costs, and the decoding graph asserts a memory that never fades",
+      "find": "        As = As @ A",
+      "replace": "        pass",
+      "must_fail": "test_chain_edges_k_reduce_to_the_two_state_formula",
+      "target": "latent_burst",
+      "outcome": "killed"
+    },
+    {
+      "id": "M521-a-data-qubit-is-seen-by-only-one-detector-position",
+      "why": "the emission stops summing over BOTH detector positions adjacent to a data qubit, so the model degenerates into a per-position model wearing a data-qubit name -- and the cross-position correlation it was built to explain becomes unreachable while the fit still returns numbers",
+      "find": "        for j in (q, q + 1):",
+      "replace": "        for j in (q,):",
+      "must_fail": "test_joint_em_recovers_planted_per_qubit_chains",
+      "target": "latent_data",
+      "outcome": "killed"
+    },
+    {
+      "id": "M522-the-data-qubit-overlay-flips-only-one-side",
+      "why": "a loud data qubit flips only the detector on one side of it, so the overlay generates no cross-position memory at all -- and a NULL built from it would read 'beyond the model' for a record the model actually explains, which is the direction that manufactures a finding",
+      "find": "            for q in (j - 1, j):",
+      "replace": "            for q in (j,):",
+      "must_fail": "test_overlay_has_cross_position_memory_and_the_ancilla_overlay_has_none",
+      "target": "latent_data",
       "outcome": "killed"
     },
     {

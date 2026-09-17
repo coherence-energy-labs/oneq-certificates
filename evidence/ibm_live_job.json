@@ -1,22 +1,30 @@
 {
-  "prereg_sha256": "dce08338f60396457635adffdaf05c2ac77179f8a7d19474ee61b0c8d13f5a66",
+  "prereg_sha256": "95a4e06ca013fb894af77cacd392db562ed3d85b1a68149b429aee6168864085",
   "provider": "ibm_quantum",
-  "backend": "ibm_marrakesh",
-  "job_id": "dakvgpmlg97s73c8b3p0",
+  "backend": "ibm_kingston",
+  "job_id": "dal869mlg97s73c8oumg",
   "config": {
-    "distance": 3,
+    "distance": 7,
     "rounds": 13,
     "shots": 20000,
     "layout": [
-      131,
-      133,
-      135,
-      132,
-      134
+      17,
+      26,
+      37,
+      44,
+      42,
+      36,
+      20,
+      27,
+      25,
+      45,
+      43,
+      41,
+      21
     ],
     "code": "repetition(bit-flip)",
     "weights": "uniform, declared",
     "analysis": "detectors from round diffs; pymatching decode; certify_hard per shot; artifact schema oneq-ibm-live/1"
   },
-  "submitted_utc": "2026-09-16T02:01:12Z"
+  "submitted_utc": "2026-09-16T11:53:12Z"
 }

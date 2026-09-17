@@ -13,8 +13,13 @@ Two manuscripts, one repository, one public release
 | Source | `paper/certifying-decoders/main.tex` | `paper/qldpc-certificates/main.tex` |
 | Long-form record | `docs/PAPER_DRAFT.md` (the typeset manuscript governs where they differ) | `docs/PAPER2_QLDPC_DRAFT.md` (same rule) |
 | Numbers | `paper/certifying-decoders/generated/*.tex`, from `paper/tools/make_numbers.py` | `paper/qldpc-certificates/generated/*.tex`, from `paper/tools/make_numbers_qldpc.py` |
-| State on 2026-09-16 | **Draft-complete except 16 numbers** that wait on the Willow d=7×30 rerun (below); everything else builds and traces | **Complete after the 2026-09-15 follow-up audit** (`docs/EXTERNAL_AUDIT_2026-09-15.md`: 20 findings, 17 closed, 3 open and named: BP-OSD's outcome on the 149 circuit shots, timestamping future freezes, paper 1's rerun-cost sentence); builds clean, every number traces, every proof retained and replayed |
-| Length | 9 pages, abstract 1,527 characters | 7 pages, abstract 1,887 characters (arXiv limit 1,920) |
+| State on 2026-09-16 | **Draft-complete except 16 numbers** that wait on the Willow d=7×30 rerun (below); everything else builds and traces | **Complete after the 2026-09-15 follow-up audit** (`docs/EXTERNAL_AUDIT_2026-09-15.md`: 20 findings, 19 closed, 1 open and named: paper 1's rerun-cost sentence (F-19 closed 2026-09-16: the archive and statement carry Bitcoin-anchored OpenTimestamps proofs, block 967247); F-18, BP-OSD's own outcome on the 149 circuit shots, closed after the v2026.09.16 tag and ships in the next); builds clean, every number traces, every proof retained and replayed |
+| Length | 10 pages, abstract 1,527 characters | 7 pages, abstract 1,887 characters (arXiv limit 1,920) |
+
+**If you are an unaffiliated reader deciding whether to spend time on this**, start with
+`docs/REVERIFIER_INVITATION.md`. It states in three tiers what re-verification would involve, from
+thirty minutes to a couple of days, says plainly where this work is weaker than a skim suggests,
+and commits in advance to publishing whatever you find.
 
 ## How to read them in the order that catches the most
 
@@ -56,7 +61,9 @@ Two manuscripts, one repository, one public release
 | Stale calibration: 547 suboptimal all proven, 2 false alarms in 6,147, discordant cells at d=3 | MEASURED | `evidence/stale_calibration*.json`, Table II |
 | Both residual d=7×30 shots: decoder exactly optimal, exact tier capped at 200 rounds | MEASURED | `evidence/willow_residual_shots.json` |
 | Certification costs ~6,610× batch decoding | MEASURED | `evidence/decode_vs_certify.json` |
-| Literature: no forgery battery, upstream-fault experiment or hardware certification rates found elsewhere | OBSERVED (search of 2026-09-15) | `docs/PAPER1_LITERATURE_SEARCH.md` |
+| Certifying against a model **measured from the run itself**: 40,963 of 40,979 held-out nontrivial shots certified exactly minimum-weight, six records, two IBM processors, d=3 and 5, r=13 and 40; every refusal on a 40-round record | MEASURED, held out, preregistered | `evidence/certified_measured_lane.json` (`totals` block); `docs/PREREG_measured_model_program_2026-09-16.md` §A; lane `experiments/dual_observable/certified_measured_lane.py` |
+| The decoding margin in that section (1,517 → 17 errors) is **context, not a claim**: the estimator is Spitz et al., and Stein et al. beat calibration-weighted matching by 11.1× at d=11 on these same two processors | OBSERVED (search of 2026-09-16) | register rows 14, 15, 29–32 in `docs/PRIOR_ART_REGISTER.md` |
+| Literature: no forgery battery, upstream-fault experiment or hardware certification rates found elsewhere; and no per-shot optimality witness over a model estimated from the decoded shots | OBSERVED (searches of 2026-09-15 and 2026-09-16, twelve queries logged verbatim) | `docs/PAPER1_LITERATURE_SEARCH.md`, `docs/PRIOR_ART_REGISTER.md` |
 
 **What is pending and why.** The 16 `[pending]` macros are the Willow totals (`EpsHw*`), the forgery
 total, the largest slack over all reruns, and the boundary-attack counts of the complete replay. They

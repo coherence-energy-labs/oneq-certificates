@@ -1,0 +1,703 @@
+{
+ "schema": "oneq/certified-measured-lane/v1",
+ "max_span": 6,
+ "runs": [
+  {
+   "record": "evidence/rep_d3_r13_kingston.json",
+   "backend": "ibm_kingston",
+   "distance": 3,
+   "rounds": 13,
+   "held_out_shots": 10000,
+   "fitted_on_shots": 10000,
+   "measured_graph_stats": {
+    "pairs_measured": 140,
+    "code_edges": 40,
+    "floored": 0,
+    "multi_round_added": 100,
+    "max_span": 6,
+    "pfloor": 1e-05,
+    "damping": 1.0,
+    "unsatisfiable_marginals": 28,
+    "n_nodes": 28
+   },
+   "models": {
+    "dem": {
+     "shots": 10000,
+     "nontrivial": 2777,
+     "certified": 2777,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 2777,
+      "logical_errors": 139,
+      "logical_errors_opposite_cut": 171,
+      "declared_wrong_only": 5,
+      "opposite_wrong_only": 37,
+      "delta_S_certified_zero": 2777,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.05005401512423478,
+      "logical_error_rate_opposite_cut": 0.061577241627655745,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 68,
+     "seconds": 11.0
+    },
+    "uniform": {
+     "shots": 10000,
+     "nontrivial": 2777,
+     "certified": 2777,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 2777,
+      "logical_errors": 141,
+      "logical_errors_opposite_cut": 173,
+      "declared_wrong_only": 5,
+      "opposite_wrong_only": 37,
+      "delta_S_certified_zero": 2777,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.05077421678069859,
+      "logical_error_rate_opposite_cut": 0.062297443284119555,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 68,
+     "seconds": 7.3
+    },
+    "measured": {
+     "shots": 10000,
+     "nontrivial": 2777,
+     "certified": 2777,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 2777,
+      "logical_errors": 2,
+      "logical_errors_opposite_cut": 40,
+      "declared_wrong_only": 2,
+      "opposite_wrong_only": 40,
+      "delta_S_certified_zero": 2777,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.0007202016564638099,
+      "logical_error_rate_opposite_cut": 0.014404033129276198,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 168,
+     "seconds": 11.3
+    }
+   },
+   "score_measured_errors": 2,
+   "verdicts": {
+    "A1_certified": {
+     "certified_rate": 1.0,
+     "nontrivial": 2777,
+     "met": true
+    },
+    "A2_beats_dem": {
+     "measured": 2,
+     "dem": 139,
+     "uniform": 141,
+     "met": true
+    },
+    "A3_agrees_with_score": {
+     "certified_lane": 2,
+     "score": 2,
+     "met": true
+    },
+    "A4_cut_discriminates": {
+     "declared": 2,
+     "opposite": 40,
+     "met": true
+    }
+   }
+  },
+  {
+   "record": "evidence/rep_d3_r40_kingston.json",
+   "backend": "ibm_kingston",
+   "distance": 3,
+   "rounds": 40,
+   "held_out_shots": 10000,
+   "fitted_on_shots": 10000,
+   "measured_graph_stats": {
+    "pairs_measured": 491,
+    "code_edges": 121,
+    "floored": 0,
+    "multi_round_added": 370,
+    "max_span": 6,
+    "pfloor": 1e-05,
+    "damping": 1.0,
+    "unsatisfiable_marginals": 82,
+    "n_nodes": 82
+   },
+   "models": {
+    "dem": {
+     "shots": 10000,
+     "nontrivial": 5802,
+     "certified": 5802,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 5802,
+      "logical_errors": 403,
+      "logical_errors_opposite_cut": 441,
+      "declared_wrong_only": 2,
+      "opposite_wrong_only": 40,
+      "delta_S_certified_zero": 5802,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.06945880730782489,
+      "logical_error_rate_opposite_cut": 0.07600827300930714,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 203,
+     "seconds": 28.7
+    },
+    "uniform": {
+     "shots": 10000,
+     "nontrivial": 5802,
+     "certified": 5802,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 5802,
+      "logical_errors": 413,
+      "logical_errors_opposite_cut": 453,
+      "declared_wrong_only": 1,
+      "opposite_wrong_only": 41,
+      "delta_S_certified_zero": 5802,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.0711823509134781,
+      "logical_error_rate_opposite_cut": 0.07807652533609101,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 203,
+     "seconds": 20.2
+    },
+    "measured": {
+     "shots": 10000,
+     "nontrivial": 5802,
+     "certified": 5801,
+     "certified_rate": 0.9998276456394347,
+     "observable": {
+      "observed_shots": 5802,
+      "logical_errors": 2,
+      "logical_errors_opposite_cut": 44,
+      "declared_wrong_only": 0,
+      "opposite_wrong_only": 42,
+      "delta_S_certified_zero": 5801,
+      "delta_S_unknown": 1,
+      "logical_error_rate": 0.0003447087211306446,
+      "logical_error_rate_opposite_cut": 0.007583591864874182,
+      "delta_S": null,
+      "delta_S_note": "1 shot(s) were refused, so E is unknown there and delta_S is not determined",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 573,
+     "seconds": 52.0
+    }
+   },
+   "score_measured_errors": 2,
+   "verdicts": {
+    "A1_certified": {
+     "certified_rate": 0.9998276456394347,
+     "nontrivial": 5802,
+     "met": true
+    },
+    "A2_beats_dem": {
+     "measured": 2,
+     "dem": 403,
+     "uniform": 413,
+     "met": true
+    },
+    "A3_agrees_with_score": {
+     "certified_lane": 2,
+     "score": 2,
+     "met": true
+    },
+    "A4_cut_discriminates": {
+     "declared": 2,
+     "opposite": 44,
+     "met": true
+    }
+   }
+  },
+  {
+   "record": "evidence/hardware_noise_floor_fez_d3_20k.json",
+   "backend": "ibm_fez",
+   "distance": 3,
+   "rounds": 13,
+   "held_out_shots": 10000,
+   "fitted_on_shots": 10000,
+   "measured_graph_stats": {
+    "pairs_measured": 140,
+    "code_edges": 40,
+    "floored": 4,
+    "multi_round_added": 100,
+    "max_span": 6,
+    "pfloor": 1e-05,
+    "damping": 1.0,
+    "unsatisfiable_marginals": 28,
+    "n_nodes": 28
+   },
+   "models": {
+    "dem": {
+     "shots": 10000,
+     "nontrivial": 8026,
+     "certified": 8026,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 8026,
+      "logical_errors": 123,
+      "logical_errors_opposite_cut": 315,
+      "declared_wrong_only": 13,
+      "opposite_wrong_only": 205,
+      "delta_S_certified_zero": 8026,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.015325193122352355,
+      "logical_error_rate_opposite_cut": 0.03924744580114627,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 68,
+     "seconds": 26.0
+    },
+    "uniform": {
+     "shots": 10000,
+     "nontrivial": 8026,
+     "certified": 8026,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 8026,
+      "logical_errors": 247,
+      "logical_errors_opposite_cut": 431,
+      "declared_wrong_only": 17,
+      "opposite_wrong_only": 201,
+      "delta_S_certified_zero": 8026,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.030774981310740093,
+      "logical_error_rate_opposite_cut": 0.05370047346125093,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 68,
+     "seconds": 26.3
+    },
+    "measured": {
+     "shots": 10000,
+     "nontrivial": 8026,
+     "certified": 8026,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 8026,
+      "logical_errors": 2,
+      "logical_errors_opposite_cut": 216,
+      "declared_wrong_only": 2,
+      "opposite_wrong_only": 216,
+      "delta_S_certified_zero": 8026,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.00024919013207077,
+      "logical_error_rate_opposite_cut": 0.02691253426364316,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 168,
+     "seconds": 37.1
+    }
+   },
+   "score_measured_errors": 2,
+   "verdicts": {
+    "A1_certified": {
+     "certified_rate": 1.0,
+     "nontrivial": 8026,
+     "met": true
+    },
+    "A2_beats_dem": {
+     "measured": 2,
+     "dem": 123,
+     "uniform": 247,
+     "met": true
+    },
+    "A3_agrees_with_score": {
+     "certified_lane": 2,
+     "score": 2,
+     "met": true
+    },
+    "A4_cut_discriminates": {
+     "declared": 2,
+     "opposite": 216,
+     "met": true
+    }
+   }
+  },
+  {
+   "record": "evidence/rep_d3_r40_fez.json",
+   "backend": "ibm_fez",
+   "distance": 3,
+   "rounds": 40,
+   "held_out_shots": 10000,
+   "fitted_on_shots": 10000,
+   "measured_graph_stats": {
+    "pairs_measured": 491,
+    "code_edges": 121,
+    "floored": 2,
+    "multi_round_added": 370,
+    "max_span": 6,
+    "pfloor": 1e-05,
+    "damping": 1.0,
+    "unsatisfiable_marginals": 82,
+    "n_nodes": 82
+   },
+   "models": {
+    "dem": {
+     "shots": 10000,
+     "nontrivial": 9793,
+     "certified": 9793,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 9793,
+      "logical_errors": 759,
+      "logical_errors_opposite_cut": 931,
+      "declared_wrong_only": 54,
+      "opposite_wrong_only": 226,
+      "delta_S_certified_zero": 9793,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.07750433983457572,
+      "logical_error_rate_opposite_cut": 0.09506790564689063,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 203,
+     "seconds": 71.6
+    },
+    "uniform": {
+     "shots": 10000,
+     "nontrivial": 9793,
+     "certified": 9793,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 9793,
+      "logical_errors": 751,
+      "logical_errors_opposite_cut": 935,
+      "declared_wrong_only": 48,
+      "opposite_wrong_only": 232,
+      "delta_S_certified_zero": 9793,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.07668742979679363,
+      "logical_error_rate_opposite_cut": 0.09547636066578168,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 203,
+     "seconds": 40.4
+    },
+    "measured": {
+     "shots": 10000,
+     "nontrivial": 9793,
+     "certified": 9778,
+     "certified_rate": 0.9984682936791586,
+     "observable": {
+      "observed_shots": 9793,
+      "logical_errors": 9,
+      "logical_errors_opposite_cut": 271,
+      "declared_wrong_only": 9,
+      "opposite_wrong_only": 271,
+      "delta_S_certified_zero": 9778,
+      "delta_S_unknown": 15,
+      "logical_error_rate": 0.0009190237925048504,
+      "logical_error_rate_opposite_cut": 0.027672827529868275,
+      "delta_S": null,
+      "delta_S_note": "15 shot(s) were refused, so E is unknown there and delta_S is not determined",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 573,
+     "seconds": 1012.4
+    }
+   },
+   "score_measured_errors": 9,
+   "verdicts": {
+    "A1_certified": {
+     "certified_rate": 0.9984682936791586,
+     "nontrivial": 9793,
+     "met": true
+    },
+    "A2_beats_dem": {
+     "measured": 9,
+     "dem": 759,
+     "uniform": 751,
+     "met": true
+    },
+    "A3_agrees_with_score": {
+     "certified_lane": 9,
+     "score": 9,
+     "met": true
+    },
+    "A4_cut_discriminates": {
+     "declared": 9,
+     "opposite": 271,
+     "met": true
+    }
+   }
+  },
+  {
+   "record": "evidence/rep_d5_r13_fez.json",
+   "backend": "ibm_fez",
+   "distance": 5,
+   "rounds": 13,
+   "held_out_shots": 20000,
+   "fitted_on_shots": 20000,
+   "measured_graph_stats": {
+    "pairs_measured": 294,
+    "code_edges": 94,
+    "floored": 0,
+    "multi_round_added": 200,
+    "max_span": 6,
+    "pfloor": 1e-05,
+    "damping": 1.0,
+    "unsatisfiable_marginals": 56,
+    "n_nodes": 56
+   },
+   "models": {
+    "dem": {
+     "shots": 20000,
+     "nontrivial": 11397,
+     "certified": 11397,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 11397,
+      "logical_errors": 52,
+      "logical_errors_opposite_cut": 167,
+      "declared_wrong_only": 3,
+      "opposite_wrong_only": 118,
+      "delta_S_certified_zero": 11397,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.004562604194086163,
+      "logical_error_rate_opposite_cut": 0.014652978854084408,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 122,
+     "seconds": 44.4
+    },
+    "uniform": {
+     "shots": 20000,
+     "nontrivial": 11397,
+     "certified": 11396,
+     "certified_rate": 0.9999122576116521,
+     "observable": {
+      "observed_shots": 11397,
+      "logical_errors": 43,
+      "logical_errors_opposite_cut": 160,
+      "declared_wrong_only": 2,
+      "opposite_wrong_only": 119,
+      "delta_S_certified_zero": 11396,
+      "delta_S_unknown": 1,
+      "logical_error_rate": 0.0037729226989558656,
+      "logical_error_rate_opposite_cut": 0.014038782135649732,
+      "delta_S": null,
+      "delta_S_note": "1 shot(s) were refused, so E is unknown there and delta_S is not determined",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 122,
+     "seconds": 39.5
+    },
+    "measured": {
+     "shots": 20000,
+     "nontrivial": 11397,
+     "certified": 11397,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 11397,
+      "logical_errors": 1,
+      "logical_errors_opposite_cut": 121,
+      "declared_wrong_only": 0,
+      "opposite_wrong_only": 120,
+      "delta_S_certified_zero": 11397,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 8.774238834781083e-05,
+      "logical_error_rate_opposite_cut": 0.01061682899008511,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 350,
+     "seconds": 64.4
+    }
+   },
+   "score_measured_errors": 1,
+   "verdicts": {
+    "A1_certified": {
+     "certified_rate": 1.0,
+     "nontrivial": 11397,
+     "met": true
+    },
+    "A2_beats_dem": {
+     "measured": 1,
+     "dem": 52,
+     "uniform": 43,
+     "met": true
+    },
+    "A3_agrees_with_score": {
+     "certified_lane": 1,
+     "score": 1,
+     "met": true
+    },
+    "A4_cut_discriminates": {
+     "declared": 1,
+     "opposite": 121,
+     "met": true
+    }
+   }
+  },
+  {
+   "record": "evidence/rep_d3_r13_fez_nested.json",
+   "backend": "ibm_fez",
+   "distance": 3,
+   "rounds": 13,
+   "held_out_shots": 10000,
+   "fitted_on_shots": 10000,
+   "measured_graph_stats": {
+    "pairs_measured": 140,
+    "code_edges": 40,
+    "floored": 1,
+    "multi_round_added": 100,
+    "max_span": 6,
+    "pfloor": 1e-05,
+    "damping": 1.0,
+    "unsatisfiable_marginals": 28,
+    "n_nodes": 28
+   },
+   "models": {
+    "dem": {
+     "shots": 10000,
+     "nontrivial": 3184,
+     "certified": 3184,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 3184,
+      "logical_errors": 41,
+      "logical_errors_opposite_cut": 110,
+      "declared_wrong_only": 3,
+      "opposite_wrong_only": 72,
+      "delta_S_certified_zero": 3184,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.012876884422110553,
+      "logical_error_rate_opposite_cut": 0.034547738693467334,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 68,
+     "seconds": 9.0
+    },
+    "uniform": {
+     "shots": 10000,
+     "nontrivial": 3184,
+     "certified": 3184,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 3184,
+      "logical_errors": 53,
+      "logical_errors_opposite_cut": 120,
+      "declared_wrong_only": 4,
+      "opposite_wrong_only": 71,
+      "delta_S_certified_zero": 3184,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.01664572864321608,
+      "logical_error_rate_opposite_cut": 0.03768844221105527,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 68,
+     "seconds": 8.4
+    },
+    "measured": {
+     "shots": 10000,
+     "nontrivial": 3184,
+     "certified": 3184,
+     "certified_rate": 1.0,
+     "observable": {
+      "observed_shots": 3184,
+      "logical_errors": 1,
+      "logical_errors_opposite_cut": 74,
+      "declared_wrong_only": 1,
+      "opposite_wrong_only": 74,
+      "delta_S_certified_zero": 3184,
+      "delta_S_unknown": 0,
+      "logical_error_rate": 0.000314070351758794,
+      "logical_error_rate_opposite_cut": 0.023241206030150754,
+      "delta_S": 0.0,
+      "delta_S_note": "0 by THEOREM, not by estimate: every scored shot's correction was certified minimum weight, so E == A and L_A - L_E = 0 on each of them. A refused shot leaves E unknown to this tier and delta_S with it",
+      "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
+     },
+     "edges": 168,
+     "seconds": 11.6
+    }
+   },
+   "score_measured_errors": 1,
+   "verdicts": {
+    "A1_certified": {
+     "certified_rate": 1.0,
+     "nontrivial": 3184,
+     "met": true
+    },
+    "A2_beats_dem": {
+     "measured": 1,
+     "dem": 41,
+     "uniform": 53,
+     "met": true
+    },
+    "A3_agrees_with_score": {
+     "certified_lane": 1,
+     "score": 1,
+     "met": true
+    },
+    "A4_cut_discriminates": {
+     "declared": 1,
+     "opposite": 74,
+     "met": true
+    }
+   }
+  }
+ ],
+ "totals": {
+  "records": 6,
+  "devices": [
+   "ibm_fez",
+   "ibm_kingston"
+  ],
+  "distances": [
+   3,
+   5
+  ],
+  "rounds": [
+   13,
+   40
+  ],
+  "held_out_shots": 70000,
+  "nontrivial": 40979,
+  "certified_under_measured": 40963,
+  "measured_graph_edges_min": 168,
+  "measured_graph_edges_max": 573,
+  "logical_errors": {
+   "dem": 1517,
+   "uniform": 1648,
+   "measured": 17
+  },
+  "rounds_with_refusals": [
+   40
+  ],
+  "refused_under_measured": 16,
+  "dem_over_measured_errors": 89.23529411764706,
+  "note": "sums over the records above, written here so every number a document types exists in an artifact; the ratio is against OUR declared baselines on short chains and is not comparable to the estimated-DEM or neural-decoder literature"
+ }
+}

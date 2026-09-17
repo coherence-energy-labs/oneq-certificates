@@ -172,6 +172,18 @@ _SOURCES = (
             # refusals, which is the shape a decorative
             # check takes.
             "distance_portfolio",
+            # THE LATENT MODELS OF 2026-09-16, and they arrive WITH their
+            # mutants because this file records the same omission twice
+            # already (ga11_hardware_iq, hardware_lambda). Both are pure
+            # functions fitted from detectors, and both have a specific way
+            # to be silently wrong: `latent_burst`'s leave-one-out posterior
+            # is the whole reason its lowering is not circular, and its chain
+            # decay is what makes a long-span edge cost more than a short
+            # one; `latent_data`'s entire content is that ONE qubit is seen
+            # by TWO detector positions, which is the only thing that can
+            # produce the cross-position memory it claims to explain.
+            "latent_burst",
+            "latent_data",
             "latent_parity",
             "branch_certificate",
             "matching_cert_strict",
@@ -5145,6 +5157,65 @@ MUTANTS: tuple[Mutant, ...] = (
         "test_a_SOLVER_THAT_CANNOT_BE_STOPPED_is_REFUSED_not_humoured",
         target="distance_portfolio",
     ),
+    # ---- the latent models of 2026-09-16, arriving WITH their mutants ----
+    Mutant(
+        # THE CIRCULARITY THE LOWERING EXISTS TO AVOID.
+        "M519-the-leave-one-out-posterior-reads-the-node-it-prices",
+        "the emission of the masked round is restored for the healthy state, so the "
+        "'leave-one-out' burst posterior is once again computed from the very detector "
+        "it is about to price -- the circularity that made the per-shot lowering decode "
+        "WORSE than the model it was correcting (139 -> 193 held out, ledger R65)",
+        "        e0[:, mask_round] = 1.0",
+        "        pass",
+        # The killer drives a single fired round in an otherwise quiet shot and demands
+        # the leave-one-out posterior there equal the ALL-QUIET posterior; restore the
+        # node's own emission on either state and the two separate.
+        "test_leave_one_out_posterior_ignores_the_nodes_own_firing",
+        target="latent_burst",
+    ),
+    Mutant(
+        # A MEMORY THAT NEVER FADES.
+        "M520-the-chain-lowering-loses-its-decay",
+        "the transition matrix stops being advanced with the span, so every "
+        "same-position pair edge is priced at separation one: a burst forty rounds "
+        "apart costs exactly what an adjacent one costs, and the decoding graph asserts "
+        "a memory that never fades",
+        "        As = As @ A",
+        "        pass",
+        # The killer recomputes the two-state closed form at spans 1, 3 and 7 and
+        # compares to 1e-12; with As frozen at the identity all three collapse.
+        "test_chain_edges_k_reduce_to_the_two_state_formula",
+        target="latent_burst",
+    ),
+    Mutant(
+        # THE ONE CLAIM THE DATA-QUBIT MODEL MAKES.
+        "M521-a-data-qubit-is-seen-by-only-one-detector-position",
+        "the emission stops summing over BOTH detector positions adjacent to a data "
+        "qubit, so the model degenerates into a per-position model wearing a "
+        "data-qubit name -- and the cross-position correlation it was built to explain "
+        "becomes unreachable while the fit still returns numbers",
+        "        for j in (q, q + 1):",
+        "        for j in (q,):",
+        # The killer plants three per-qubit chains and demands all three (a, b) come
+        # back; with the far qubit invisible to every emission its chain is unidentified.
+        "test_joint_em_recovers_planted_per_qubit_chains",
+        target="latent_data",
+    ),
+    Mutant(
+        # THE SAMPLER THAT CANNOT PRODUCE WHAT THE MODEL PREDICTS.
+        "M522-the-data-qubit-overlay-flips-only-one-side",
+        "a loud data qubit flips only the detector on one side of it, so the overlay "
+        "generates no cross-position memory at all -- and a NULL built from it would "
+        "read 'beyond the model' for a record the model actually explains, which is the "
+        "direction that manufactures a finding",
+        "            for q in (j - 1, j):",
+        "            for q in (j,):",
+        # The killer measures the cross-position covariance of the overlay at span 3 and
+        # requires it to exceed the ancilla overlay's by an order of magnitude.
+        "test_overlay_has_cross_position_memory_and_the_ancilla_overlay_has_none",
+        target="latent_data",
+    ),
+
     # ---- latent_parity + branch_certificate: declared, now mutated ----
     Mutant(
         # A RATE OUTSIDE [0,1] IS NOT A PROBABILITY.
@@ -7040,6 +7111,21 @@ def run_tests(only: str | None = None,
                 "test_the_live_readme_hyphenated_total_matches_the_artifact"]
         print("baseline deselects the README-vs-artifact mutant total: "
               "same reason again (declared, not silent)")
+
+    # *** THE SANDBOX HAS NO `.git`, BY DESIGN (see `skip` above), AND SOME TESTS READ GIT
+    # HISTORY. *** Those tests pass in the working tree and cannot pass here, so leaving them in
+    # the baseline makes the gate unrunnable for a reason that has nothing to do with any mutant --
+    # which is exactly what happened on 2026-09-16, when four newly declared mutants could not be
+    # scored and the registry-vs-artifact tests went red because the artifact could not be
+    # regenerated. A sterile sandbox is the right design; a baseline that demands git inside it is
+    # not. Declared here rather than skipped inside the tests, so the exclusion is visible in the
+    # gate's own output and costs no mutant coverage: no mutant names these as its killer.
+    # The whole module, not two node ids: its producer reads git blobs and several of its tests
+    # are parametrised over them, so naming them individually would rot the moment one is added.
+    cmd += ["--ignore", "tests/test_google_generation_history.py"]
+    print("baseline ignores tests/test_google_generation_history.py: it reads GIT HISTORY and the "
+          "sandbox has no .git by design; it passes in the working tree and on the wall "
+          "(declared, not silent)")
     env_path = str(root / "src")
     try:
         proc = subprocess.run(

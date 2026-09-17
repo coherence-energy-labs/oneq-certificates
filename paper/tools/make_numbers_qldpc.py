@@ -138,6 +138,20 @@ def build() -> dict[str, str]:
     # zero observed disagreements in N: one-sided 95% UPPER bound, ceilinged
     if agreed == of:
         M["HoRefschedObsUpperPct"] = f"{math.ceil(100 * (1 - 0.05 ** (1 / of)) * 100) / 100:.2f}"
+    # BP-OSD's OWN outcome on the same shots (audit F-18), derived from the records by
+    # tools/bposd_circuit_outcome.py; it must describe these records and this summary
+    bo = J("bposd_circuit_outcome.json")
+    bc = bo["counts"]
+    if bc["shots"] != rs["nontrivial"] or bc["certified_match"] != agreed:
+        raise SystemExit("bposd_circuit_outcome.json does not describe the held-out circuit rung")
+    if bc["by_tier"].get("tier2", 0) != rs["tier2"] or bc["by_tier"].get("tier1", 0) != rs["tier1"]:
+        raise SystemExit("bposd_circuit_outcome.json tier counts disagree with the campaign summary")
+    if bc["identical"] + bc["differing"] != bc["shots"]:
+        raise SystemExit("bposd_circuit_outcome.json counts do not partition the shots")
+    M["HoRefschedBposdObsAgree"] = I(bc["bposd_match"])
+    M["HoRefschedReplaced"] = I(bc["differing"])
+    M["HoRefschedReplacedSameObs"] = I(bc["differing_same_observable"])
+    M["HoRefschedReplacedOtherObs"] = I(bc["differing_other_observable"])
 
     add = J("qldpc_heldout_addendum.json")
     t = add["stress_paired_2x2"]
