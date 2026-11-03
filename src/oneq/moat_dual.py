@@ -149,6 +149,25 @@ def moat_dual(edges, syndrome, *, max_radii_per_center: int = 24):
     return z, float(sum(z.values()))
 
 
+def _candidate_components(crossings):
+    """Connected candidate blocks, for a matrix with no unused columns.
+
+    Walk the bipartite incidence graph instead of projecting C @ C.T.
+    A shared edge can turn k candidates into a k-by-k dense clique;
+    incidence stores only two entries per actual crossing. Connectivity
+    is identical: each candidate/edge/candidate path corresponds to a
+    nonzero of C @ C.T. Candidate vertices come first, retaining the
+    first-candidate label order. Each column has an incident candidate,
+    so there are no column-only components.
+    """
+    from scipy.sparse import bmat
+    from scipy.sparse.csgraph import connected_components
+
+    incidence = bmat([[None, crossings], [crossings.T, None]], format="csr")
+    count, labels = connected_components(incidence, directed=False)
+    return count, labels[:crossings.shape[0]]
+
+
 class MoatEngine:
     """The same cut packing, restructured so the loops run in C.
 
@@ -162,7 +181,6 @@ class MoatEngine:
 
     def __init__(self, edges, *, max_radii_per_center: int = 24):
         import numpy as np
-        from scipy.sparse import csr_matrix
 
         E = [(int(u), int(v), float(w)) for u, v, w in edges]
         nodes = sorted({u for u, _v, _w in E} | {v for _u, v, _w in E})
@@ -183,14 +201,53 @@ class MoatEngine:
         self.eu, self.ev, self.ew = eu[sel], ev[sel], ew[sel]
         self.n = n
         self.max_radii = max_radii_per_center
-        # undirected weighted graph for multi-source shortest paths
-        r = np.concatenate([self.eu, self.ev])
-        c = np.concatenate([self.ev, self.eu])
-        d = np.concatenate([self.ew, self.ew])
-        self.csr = csr_matrix((d, (r, c)), shape=(n, n))
+        self._csr = None
+
+    @property
+    def csr(self):
+        """Build the native graph only when shortest paths are needed.
+
+        Empty syndromes need neither shortest paths nor a solver. Importing
+        scipy during graph setup made those shots pay for both anyway.
+        """
+        if self._csr is None:
+            import numpy as np
+            from scipy.sparse import csr_matrix
+
+            r = np.concatenate([self.eu, self.ev])
+            c = np.concatenate([self.ev, self.eu])
+            d = np.concatenate([self.ew, self.ew])
+            self._csr = csr_matrix((d, (r, c)), shape=(self.n, self.n))
+        return self._csr
+
+    def shot(self, syndrome):
+        """A call-local workspace; no syndrome data survives on this engine."""
+        return _MoatShot(self, syndrome)
+
+    def distance_fields(self, sources):
+        """Native shortest-path fields on this engine's owned graph.
+
+        These are proposer inputs, never verification evidence. Missing source
+        vertices retain the reference Dijkstra's isolated-source behaviour.
+        No field is retained across shots or exposed as shared cached state.
+        """
+        import numpy as np
+
+        sources = sorted({int(t) for t in sources})
+        known = [t for t in sources if t in self.index]
+        out = {t: {t: 0.0} for t in sources if t not in self.index}
+        if known:
+            from scipy.sparse.csgraph import dijkstra as sp_dijkstra
+
+            fields = sp_dijkstra(self.csr, directed=False,
+                                 indices=[self.index[t] for t in known])
+            for t, row in zip(known, fields):
+                out[t] = {int(self.nodes[i]): float(row[i])
+                          for i in np.flatnonzero(np.isfinite(row))}
+        return out
 
     def dual(self, syndrome, *, max_radii: int | None = None, extra_sets=(),
-             radii_by_node=None):
+             radii_by_node=None, _shot=None):
         """(z, objective) -- a feasible packing and its value.
 
         ``max_radii`` caps how many nested balls each T-vertex contributes and
@@ -203,10 +260,6 @@ class MoatEngine:
         in an inadmissible dual variable no matter what the caller passes.
         """
         import numpy as np
-        from scipy.optimize import linprog
-        from scipy.sparse import csr_matrix
-        from scipy.sparse.csgraph import connected_components
-        from scipy.sparse.csgraph import dijkstra as sp_dijkstra
 
         cap = self.max_radii if max_radii is None else max_radii
         T = {int(s) for s in syndrome}
@@ -220,7 +273,13 @@ class MoatEngine:
         blocks = []
         if cap > 0 or radii_by_node:
             # ONE scipy call replaces |T| Python Dijkstras.
-            dist = sp_dijkstra(self.csr, directed=False, indices=t_idx)
+            if _shot is None:
+                from scipy.sparse.csgraph import dijkstra as sp_dijkstra
+                dist = sp_dijkstra(self.csr, directed=False, indices=t_idx)
+            else:
+                if _shot.engine is not self or tuple(t_idx) != _shot.indices:
+                    raise ValueError("shortest-path workspace belongs to another graph or syndrome")
+                dist = _shot.distances()
             # ENUMERATE AGAINST t_idx, NOT AGAINST len(blocks). A row with no
             # finite positive distance is skipped, so the two indices drift
             # apart and every primal radius after the first skip would be
@@ -269,7 +328,12 @@ class MoatEngine:
         hit = cross.any(axis=0)
         if not hit.any():
             return {}, 0.0
-        C = csr_matrix(cross[:, hit].astype(np.float64))  # (ncand, nhit)
+        from scipy.optimize import linprog
+        from scipy.sparse import csr_matrix
+
+        # Convert only the nonzero entries to floats. Densifying first costs
+        # eight bytes for EVERY candidate/edge pair, including every zero.
+        C = csr_matrix(cross[:, hit], dtype=np.float64)  # (ncand, nhit)
         rhs = self.ew[hit]
 
         # THE LP IS BLOCK DIAGONAL AND SOLVING IT WHOLE IS WASTE.
@@ -283,7 +347,7 @@ class MoatEngine:
         # of the shared-edge graph changes NOTHING about what is computed --
         # the union of per-block optima IS the global optimum for a separable
         # program -- and turns one large solve into many small ones.
-        n_blocks, label = connected_components(C @ C.T, directed=False)
+        n_blocks, label = _candidate_components(C)
         z: dict = {}
         for blk in range(n_blocks):
             rows = np.flatnonzero(label == blk)
@@ -303,3 +367,48 @@ class MoatEngine:
                 if val > 1e-12:
                     z[frozenset(self.nodes[memb[j]].tolist())] = float(val)
         return z, float(sum(z.values()))
+
+
+class _MoatShot:
+    """Reuse one shortest-path matrix across a shot's solves and translation.
+
+    Radius caps, extra candidates and LP results remain independent per solve.
+    Only distances on the fixed graph are shared. The workspace is owned by
+    the caller, so interleaved shots cannot evict or mutate one another's data.
+    """
+
+    def __init__(self, engine, syndrome):
+        self.engine = engine
+        self.syndrome = tuple(syndrome)
+        terminals = {int(t) for t in self.syndrome}
+        if len(terminals) % 2:
+            terminals.add(BOUNDARY)
+        self.indices = tuple(sorted(engine.index[t] for t in terminals if t in engine.index))
+        self._distances = None
+
+    def distances(self):
+        if self._distances is None:
+            import numpy as np
+            from scipy.sparse.csgraph import dijkstra as sp_dijkstra
+
+            self._distances = sp_dijkstra(self.engine.csr, directed=False,
+                indices=np.asarray(self.indices, dtype=np.int32))
+            self._distances.flags.writeable = False
+        return self._distances
+
+    def dual(self, **kwargs):
+        return self.engine.dual(self.syndrome, _shot=self, **kwargs)
+
+    def distance_fields(self, sources):
+        """Blossom translation reads the same fields without another walk."""
+        import numpy as np
+
+        sources = sorted({int(t) for t in sources})
+        positions = {int(self.engine.nodes[i]): j for j, i in enumerate(self.indices)}
+        out = self.engine.distance_fields([t for t in sources if t not in positions])
+        for t in sources:
+            if t in positions:
+                row = self.distances()[positions[t]]
+                out[t] = {int(self.engine.nodes[i]): float(row[i])
+                          for i in np.flatnonzero(np.isfinite(row))}
+        return out

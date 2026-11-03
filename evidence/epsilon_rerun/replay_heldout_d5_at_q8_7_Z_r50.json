@@ -1,0 +1,22 @@
+{
+ "kind": "COMPLETE",
+ "battery_per_chunk": 1,
+ "results": [
+  {
+   "config": "heldout_d5_at_q8_7_Z_r50",
+   "chunks": 20,
+   "complete_plan": true,
+   "nontrivial": 5000,
+   "receipts_rechecked": 5000,
+   "full": true,
+   "instance_sha256": "5fc46eafd64d6e283b3bebc274bdd6acec8921709afaa87ebb5ab78e711cc9d7",
+   "battery": {
+    "boundary_attempts": 20,
+    "boundary_just_outside_refused": 20,
+    "boundary_just_inside_accepted": 20,
+    "substituted_graph_refused": 20,
+    "boundary_excess_over_eps_max_max": 1.3133322763033281e-15
+   }
+  }
+ ]
+}

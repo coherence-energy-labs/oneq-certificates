@@ -19,10 +19,11 @@ new code arrives tested or this goes red.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import pathlib
+import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -295,8 +296,11 @@ def _explain_exit(name, cmd, code: int, output: str | None = None) -> None:
 #: incident. 3 GB remaining is three times the freeze margin.
 FREE_FLOOR_GB = 3.0
 
-#: Measured cost of one xdist worker running this suite.
-WORKER_GB = 0.7
+#: On 2026-10-21, five workers admitted at 7.0 GiB free grew to roughly
+#: 0.6--1.8 GB RSS each and left less than 1 GiB available. The earlier
+#: 0.7 GiB estimate measured collection, not the suite's resident peak.
+#: Budget 2 GiB per worker in both launchers, keeping the existing reserve.
+WORKER_GB = 2.0
 
 
 def _auto_jobs() -> int:
@@ -499,21 +503,165 @@ def _own_process_family() -> set[int]:
     return family
 
 
-def _is_heavy_command(command: str) -> bool:
-    """Whether *command* can contend with, or observe, the full wall.
+def _find_estate_tool(*parts: str):
+    """An estate tool that lives OUTSIDE this repository, or None.
 
-    Paths are normalised before matching because the same invocation is
-    rendered with ``/`` by POSIX tools and ``\\`` by Windows process APIs.
-    A mutation gate is included even when it uses its normal sandbox: it is
-    deliberately CPU-heavy, and an explicitly requested in-place run can
-    transiently replace files the wall imports.
+    Searched relative to the MAIN worktree rather than to this checkout, because
+    a git worktree sits somewhere unrelated to the estate. `git rev-parse
+    --git-common-dir` names the main repository's .git for any worktree, so its
+    parent is the canonical checkout and its grandparent is the estate root.
+
+    Returns None only when the tool is genuinely absent from every candidate,
+    which is a real answer -- "this machine does not have the estate" -- and is
+    a different thing from "I looked in one wrong place".
+    """
+    candidates = []
+    try:
+        common = subprocess.run(
+            ["git", "rev-parse", "--git-common-dir"], cwd=ROOT,
+            capture_output=True, text=True, timeout=30,
+            stdin=subprocess.DEVNULL)
+        if common.returncode == 0 and common.stdout.strip():
+            main_git = pathlib.Path(common.stdout.strip())
+            if not main_git.is_absolute():
+                main_git = (ROOT / main_git).resolve()
+            candidates.append(main_git.parent.parent)
+    except (OSError, subprocess.SubprocessError):
+        pass
+    candidates.append(ROOT.parent)          # the original assumption, kept
+    seen = set()
+    for base in candidates:
+        if base in seen:
+            continue
+        seen.add(base)
+        candidate = base.joinpath("Coherence", *parts)
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _is_heavy_command(command: str) -> bool:
+    """Whether *command* is heavy enough to matter. SHAPE ONLY -- not identity.
+
+    *** THIS PREDICATE USED TO DECIDE THE VERDICT BY ITSELF, AND IT CANNOT. ***
+    It matched `pytest` plus a `tests/` argument and called the result "another
+    heavy ONE_Q job". Command text says what a process is DOING; it says nothing
+    about WHICH TREE it is doing it in. That was wrong in both directions:
+
+      TOO BROAD ACROSS REPOS. On 2026-09-20 this refused the ONE_Q wall three
+      times in forty minutes because of `pytest tests/` running in
+      Projects/Coherence/idem -- a different repository entirely. The refusal
+      said "another heavy ONE_Q job is already running" when there was no ONE_Q
+      job at all, so the message sent the reader looking for something that did
+      not exist.
+
+      TOO NARROW WITHIN ONE REPO, which is the half that actually matters. A
+      genuine second job in THIS tree spelled `pytest ./tests`, or
+      `pytest tests/test_foo.py`, or a single parametrised case, or anything
+      wrapped, matches neither ` tests/` nor a trailing ` tests`. It sails
+      through, and two jobs writing the same evidence artifacts look like a
+      flaky gate rather than a missing lock.
+
+    The fix is in two parts. `_process_tree` supplies the identity this
+    predicate never had, and the shape test itself now looks for a `tests` PATH
+    COMPONENT however it is spelled rather than for the literal substring
+    " tests/". Measured, the substring missed three ordinary invocations:
+
+        pytest ./tests -q                                    (dot-slash)
+        pytest D:/checkouts/one_q/tests/test_x.py            (absolute, Windows)
+        pytest /repo/one_q/tests/test_x.py                   (absolute, POSIX)
+
+    An absolute path is not an exotic spelling; any editor or task runner
+    produces one, and the guard could not see it.
+
+    WIDENING TO "ANY PYTEST" WAS TRIED FIRST AND IS WRONG. This repository's own
+    test requires `pytest package_checks/test_api.py` to stay light, and it is
+    right: a run against a different directory is not this wall's business, and
+    cwd cannot rescue a predicate that has already said yes to everything.
     """
     normal = command.lower().replace("\\", "/")
     if "gate_all.py" in normal or "mutation_gate.py" in normal:
         return True
-    return "pytest" in normal and (
-        " tests/" in normal or normal.rstrip().endswith(" tests")
-    )
+    if "pytest" not in normal:
+        return False
+    # `tests` as a whole path component, so `contests/` and `package_checks/`
+    # do not match while every spelling of the real directory does.
+    return bool(re.search(r"(^|[\s/])tests($|[\s/])", normal))
+
+
+def _process_working_set_gb(pid: int):
+    """Resident size of *pid* AND ITS DESCENDANTS in GB, or None if unreadable.
+
+    *** THE PARENT IS NOT THE JOB. *** The first version of this reported one
+    process's RSS, and a parallel test run keeps almost nothing in its parent:
+    measured on this box on 2026-09-20, a peer's `pytest tests/ -q` parent held
+    101 MB while a single pytest-xdist worker beneath it held 835 MB, with the
+    whole tree around 1.1 GB. Reporting 0.1 GB for a 1.1 GB job is worse than
+    reporting nothing, because the number exists precisely so a human can decide
+    whether the box has room -- and it argued confidently for the wrong answer.
+
+    Worth recording why that worker is invisible to every command-text matcher,
+    including the widened one above: execnet bootstraps an xdist worker as
+
+        python -u -c "import sys;exec(eval(sys.stdin.readline()))"
+
+    which names neither pytest, nor tests, nor the repository. Detection still
+    works because the PARENT is matchable and is what gets classified; but any
+    scheme that tried to identify the workers themselves by their command line
+    would see nothing at all. cwd and the process tree are the only things that
+    identify them.
+
+    Advisory only. None means unknown and must print as nothing rather than as
+    zero: an unreadable process is not a small one.
+    """
+    try:
+        import psutil
+        proc = psutil.Process(int(pid))
+        total = proc.memory_info().rss
+        for child in proc.children(recursive=True):
+            try:
+                total += child.memory_info().rss
+            except Exception:               # noqa: BLE001 - skip what we cannot read
+                continue
+        return total / (1024 ** 3)
+    except Exception:                       # noqa: BLE001 - advisory only
+        return None
+
+
+def _process_tree(pid: int):
+    """('same', path) | ('other', path) | ('unknown', reason) for *pid*.
+
+    Identity is the working directory, because that is what actually decides
+    whether two jobs write the same files.
+
+    "UNKNOWN" IS A THIRD VALUE AND MUST STAY ONE. psutil raises AccessDenied on
+    Windows for a process owned by another user or running at higher integrity,
+    and it may not be installed at all. Measured on this workstation on
+    2026-09-20: eleven python processes, all the same user, cwd readable for
+    every one, AccessDenied zero -- so the fallback is rare HERE and must still
+    be correct, because "could not look" and "nothing running" being the same
+    value is the failure this file already warns about two functions up.
+    """
+    try:
+        import psutil
+    except ImportError:
+        return ("unknown", "psutil is not installed")
+    try:
+        cwd = psutil.Process(int(pid)).cwd()
+    except psutil.AccessDenied:
+        return ("unknown", "access denied reading its working directory")
+    except (psutil.NoSuchProcess, psutil.ZombieProcess):
+        return ("other", "exited while being inspected")
+    except Exception as exc:                       # noqa: BLE001 - report, never guess
+        return ("unknown", f"{type(exc).__name__} reading its working directory")
+    try:
+        resolved = pathlib.Path(cwd).resolve()
+    except OSError:
+        return ("unknown", "its working directory could not be resolved")
+    here = ROOT.resolve()
+    if resolved == here or here in resolved.parents:
+        return ("same", str(resolved))
+    return ("other", str(resolved))
 
 
 def _process_lines():
@@ -599,7 +747,7 @@ def _process_lines():
     for cmd in commands:
         try:
             result = subprocess.run(cmd, capture_output=True, text=True,
-                                    timeout=30)
+                                    timeout=30, stdin=subprocess.DEVNULL)
         except (OSError, subprocess.SubprocessError):
             continue
         if result.returncode == 0 and result.stdout.strip():
@@ -610,7 +758,8 @@ def _process_lines():
     # not look like a second gate merely because its argv contains ours.
     try:
         result = subprocess.run(["ps", "-eo", "pid=,comm=,args="],
-                                capture_output=True, text=True, timeout=30)
+                                capture_output=True, text=True, timeout=30,
+                                stdin=subprocess.DEVNULL)
     except (OSError, subprocess.SubprocessError):
         result = None
     if result is not None and result.returncode == 0:
@@ -784,12 +933,11 @@ def _same_tree(pid) -> bool | None:
     with load: it clobbers `.coverage` and `coverage.json`, and a long gate
     cannot finish in a tree another process is editing.
     """
-    try:
-        import psutil
-        cwd = pathlib.Path(psutil.Process(int(pid)).cwd()).resolve()
-    except Exception:                                       # noqa: BLE001
-        return None
-    return cwd == ROOT or ROOT in cwd.parents
+    # Built on `_process_tree` (the two branches that merged on 2026-09-22 had each
+    # written this identity test; one carried the three-valued reason, the other the
+    # memory floors). One classifier, so "unknown" keeps its reason for the message.
+    kind, _detail = _process_tree(pid)
+    return True if kind == "same" else False if kind == "other" else None
 
 
 def _partition_busy(busy, same_tree=_same_tree):
@@ -826,12 +974,22 @@ def _interlock_verdict(busy, force: bool, headroom=None,
         # clobbers `.coverage` and `coverage.json`, and a long gate cannot
         # finish in a tree another process edits. No amount of free memory
         # makes that safe, so this refusal has no headroom escape.
+        # NAME EVERY PID, AND FOR AN UNREADABLE ONE, THE REASON. "Go and look at
+        # pid 1234" is actionable; "something, somewhere" is not.
+        named = []
+        for pid, cmd in here:
+            if same_tree(pid) is None:
+                named.append(f"pid {pid}: could not tell which tree "
+                             f"({_process_tree(pid)[1]}) -- {cmd[:60]}")
+            else:
+                named.append(f"pid {pid}: in this tree -- {cmd[:60]}")
         return True, ("REFUSING: another heavy job is running IN THIS TREE. "
-                      "It would clobber .coverage and coverage.json, and a "
-                      "long gate cannot finish in a tree another process is "
-                      "editing. A pid whose working directory could not be "
-                      "read is counted here, because 'could not look' must "
-                      "not read as 'somewhere else'.")
+                      "It would clobber this tree's artifacts (.coverage, "
+                      "coverage.json), and a long gate cannot finish in a tree "
+                      "another process is editing. A pid whose working "
+                      "directory could not be read is counted here, because "
+                      "'could not look' must not read as 'somewhere else'.\n  "
+                      + "\n  ".join(named))
     # NOT NECESSARILY A ONE_Q JOB, AND SAYING SO SENT AN OPERATOR TO THE
     # WRONG REPOSITORY. MEASURED 2026-09-03: the wall refused against
     # `pytest tests/test_idem_authority_charge.py` -- an Idem run whose
@@ -857,7 +1015,12 @@ def _interlock_verdict(busy, force: bool, headroom=None,
 def run(name, cmd, *, env=None):
     print(f"\n=== {name} ===", flush=True)
     t0 = time.perf_counter()
-    r = subprocess.run(cmd, cwd=ROOT, env=env)
+    # stdin=DEVNULL: a gate never reads stdin, and inheriting a handle that is
+    # invalid in a non-interactive context makes Windows fail inside
+    # DuplicateHandle BEFORE the gate launches -- observed under load as
+    # OSError [WinError 6], which reads as a broken gate rather than a
+    # missing one.
+    r = subprocess.run(cmd, cwd=ROOT, env=env, stdin=subprocess.DEVNULL)
     dt = time.perf_counter() - t0
     if r.returncode != 0:
         _explain_exit(name, cmd, r.returncode)
@@ -958,7 +1121,7 @@ def _publish_staged() -> None:
                 os.replace(publish_tmp, real)
             finally:
                 publish_tmp.unlink(missing_ok=True)
-            print(f"  published {real.relative_to(ROOT)}", flush=True)
+            print(f"  published {(real.relative_to(ROOT) if real.is_relative_to(ROOT) else real)}", flush=True)
         finally:
             # The directory was created solely for this registration.  Its
             # output is no longer useful after publish/refusal.
@@ -996,7 +1159,8 @@ def _start_deferred():
             mode="w+", encoding="utf-8", errors="replace",
             suffix=".gatelog", delete=False)
         p = subprocess.Popen(cmd, cwd=ROOT, env=env,
-                             stdout=log, stderr=subprocess.STDOUT)
+                             stdout=log, stderr=subprocess.STDOUT,
+                             stdin=subprocess.DEVNULL)
         started.append((name, cmd, p, t0, log))
     if started:
         print(f"\n=== {len(started)} independent gates started in "
@@ -1156,6 +1320,67 @@ def _read_junit(path: pathlib.Path) -> dict:
             "suite_report": "from the suite's junit xml"}
 
 
+def _git(*args) -> str:
+    return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True,
+                          stdin=subprocess.DEVNULL).stdout.strip()
+
+
+def _live_suite_nodes():
+    from suite_manifest import collect_selected
+    return collect_selected(ROOT)
+
+
+def _suite_pass_verdict(junit: pathlib.Path, head: str, git=_git) -> tuple[bool, str]:
+    """(ok, why) for a suite that ran in its OWN pass (--suite-junit). Red unless the report exists, parses, ran
+    tests and failed or errored none -- and unless it describes THIS code: the pass's commit is HEAD, no tracked
+    file under src/ tests/ tools/ experiments/ differs from HEAD (wall outputs under evidence/ may), and the report
+    was written after HEAD was committed. A stale or foreign junit is a red, never a pass."""
+    here = git("rev-parse", "HEAD")
+    if not head or head.strip() != here:
+        return False, f"the suite pass ran on {head!r}, but HEAD is {here[:12]}: its junit describes other code"
+    edited = git("diff", "--name-only", "HEAD", "--", "src", "tests", "tools", "experiments")
+    if edited:
+        return False, f"code differs from HEAD since the suite pass: {edited.splitlines()[:5]}"
+    untracked = git("ls-files", "--others", "--exclude-standard", "--", "src", "tests", "tools", "experiments")
+    if untracked:
+        return False, f"untracked code is outside the suite's commit: {untracked.splitlines()[:5]}"
+    if not junit.is_file():
+        return False, f"no junit at {junit}: the suite's verdict is unknown, which is not a pass"
+    committed = int(git("log", "-1", "--format=%ct", "HEAD") or 0)
+    if junit.stat().st_mtime < committed:
+        return False, f"{junit.name} predates HEAD's commit: it is another run's report"
+    try:
+        c = _read_junit(junit)
+    except (OSError, ValueError) as exc:
+        return False, f"the junit is unreadable: {exc}"
+    if "tests_ran" not in c:
+        return False, f"the junit is unreadable: {c.get('suite_report')}"
+    ok = (c["tests_ran"] > 0 and c["tests_failed"] == 0
+          and c["tests_errored"] == 0 and c["tests_skipped"] == 0)
+    if ok:
+        try:
+            from suite_manifest import verify_cases
+            verify_cases(junit, _live_suite_nodes())
+        except (ValueError, OSError, subprocess.SubprocessError) as exc:
+            return False, f"suite manifest refusal: {exc}"
+    return ok, (f"{c['tests_ran']} ran, {c['tests_failed']} failed, {c['tests_errored']} errored, "
+                f"{c['tests_skipped']} skipped -- read from the separate suite pass at {here[:12]}")
+
+
+def _census_roster_digest() -> str:
+    """The census's receipt for WHICH wall it describes. One implementation, shared.
+
+    `tools/doc_claims_gate.py` re-computes this to decide whether the census may be
+    believed, so the two must agree by construction rather than by coincidence. They did
+    not: both inlined `sha256(read_bytes())` over the raw working copy, which on a Windows
+    checkout is CRLF while `.gitattributes` and the index are LF, so the digest described
+    the checkout instead of the source and matched on exactly one machine.
+    """
+    sys.path.insert(0, str(ROOT / "tools"))
+    from roster_digest import roster_digest
+    return roster_digest(ROOT / "tools" / "gate_all.py")
+
+
 def _roster_reconciliation(rows, *, fast: bool):
     r"""DID THIS WALL RUN THE GATES IT DECLARES? Returns extra result rows.
 
@@ -1234,8 +1459,24 @@ def _roster_reconciliation(rows, *, fast: bool):
         "fast_mode": bool(fast),
         "suite": dict(_SUITE_CENSUS) or {
             "suite_report": "NOT RUN (--fast)"},
-        "roster_source_sha256": hashlib.sha256(
-            (ROOT / "tools" / "gate_all.py").read_bytes()).hexdigest(),
+        # *** NEWLINE-NORMALISED, BECAUSE A CLEAN CLONE IS NOT THIS CHECKOUT. ***
+        # This digest is the receipt that the census describes THIS roster, and
+        # doc_claims_gate refuses README's gate and skip counts as UNCHECKABLE
+        # when it does not match. Hashing the raw working copy made it a property
+        # of the CHECKOUT: `.gitattributes` says `*.py text eol=lf` and the index
+        # agrees, but a Windows checkout materialises CRLF, so the wall stamped a
+        # digest no clean clone could ever reproduce. MEASURED: the census
+        # committed beside this file matches gate_all.py at 773bbd63 in its CRLF
+        # form, and a detached worktree at origin/main -- LF, nothing modified --
+        # failed doc_claims_gate with five UNCHECKABLE findings. Because the
+        # pre-push hook runs that gate, a fresh clone of this repository could not
+        # push AT ALL: not on Linux, not in CI, not for an outside contributor.
+        # Normalising makes the digest a property of the SOURCE. Same defect class
+        # and the same words as test_published_bytes: a clean clone receives
+        # different bytes than the ones our hashes cover. The function lives in
+        # tools/roster_digest.py so this and doc_claims_gate cannot drift apart --
+        # they already did, and the disagreement was invisible on this machine.
+        "roster_source_sha256": _census_roster_digest(),
         "means": ("gates_ran is the number of VERDICT ROWS this wall "
                   "produced, which is what a reader means by 'N gates'. "
                   "It is not gates_declared: branch guards (node, "
@@ -1262,10 +1503,29 @@ def main() -> int:
                          "value that leaves the workstation usable")
     ap.add_argument("--fast", action="store_true",
                     help="skip the test suite + coverage (pre-edit loop)")
+    # *** THE FULL WALL IN TWO PASSES, SO A SHARED BOX NEVER WAITS FOR 10 GB. ***
+    # The 10 GB floor exists because a full run spawns the suite's workers AND
+    # overlaps them with the deferred gates; that overlap is what froze the
+    # editor. Run the suite on its own first (pytest under this file's worker
+    # rule, writing a junit and evidence/coverage.json), then run every OTHER
+    # full-mode gate here with --suite-junit: no suite is spawned in this
+    # process, so the single-gate floor applies, and the suite's verdict, its
+    # census counts and the coverage floors are read from that pass's output.
+    # A full census, not a --fast one -- every gate the full wall declares runs.
+    ap.add_argument("--suite-junit", default=None,
+                    help="the junit xml of a suite pass just run on THIS head "
+                         "(with --suite-head); the suite is not re-run here")
+    ap.add_argument("--suite-head", default=None,
+                    help="the commit the --suite-junit pass ran on; refused "
+                         "unless it is HEAD and the tracked tree is clean")
     a = ap.parse_args()
+    if a.suite_junit and (a.fast or not a.suite_head):
+        print("REFUSING: --suite-junit needs --suite-head, and is a FULL run "
+              "(it cannot combine with --fast)")
+        return 2
     busy = _already_running()
-    refuse, explanation = _interlock_verdict(busy, a.force,
-                                             runs_suite=not a.fast)
+    refuse, explanation = _interlock_verdict(
+        busy, a.force, runs_suite=not (a.fast or a.suite_junit))
     if refuse:
         print(explanation)
         if busy is None:
@@ -1350,7 +1610,8 @@ def main() -> int:
         # worker count deliberately leaves headroom -- this wall running
         # beside another job is what froze the editor, and taking all 24
         # cores would reproduce that on its own.
-        workers = a.jobs if a.jobs > 0 else _wait_for_workers()
+        workers = (None if a.suite_junit
+                   else a.jobs if a.jobs > 0 else _wait_for_workers())
         if workers == 0:
             # *** REFUSED, RED, AND ON THE RECORD -- NOT SKIPPED. *** The
             # suite is the one stage on this wall that can deadlock the
@@ -1376,9 +1637,24 @@ def main() -> int:
         # artifact under evidence/ would be rewritten by every run and
         # could never be byte-stable, which is how I once built a
         # permanently red gate out of a timing table.
-        junit = pathlib.Path(tempfile.gettempdir()) / "oneq_suite_junit.xml"
-        junit.unlink(missing_ok=True)
-        if workers == 0:
+        # PER-PROCESS, NOT PER-MACHINE. MEASURED 2026-09-22: two walls in two worktrees of
+        # this repository ran within the same hour, and the second overwrote the first's
+        # junit at the shared temp name between the suite finishing and the census reading
+        # it -- 3,081 tests where 5,094 had run. The census then names another tree's skips
+        # and failures as this one's. The pid makes the path this run's own.
+        junit = pathlib.Path(tempfile.gettempdir()) / f"oneq_suite_junit_{os.getpid()}.xml"
+        if not a.suite_junit:
+            junit.unlink(missing_ok=True)
+        if a.suite_junit:
+            # The suite ran in its own pass; its verdict is read, never assumed.
+            # A distinct gate name (the roster counts one declaration per name).
+            junit = pathlib.Path(a.suite_junit)
+            suite_ok, why = _suite_pass_verdict(junit, a.suite_head)
+            print(f"\n=== test suite + coverage (suite_junit: a separate "
+                  f"bounded pass) ===\n  {why}", flush=True)
+            results.append(("test suite + coverage (suite_junit: a separate "
+                            "bounded pass)", suite_ok, None))
+        elif workers == 0:
             # A DISTINCT name, deliberately: the roster reads gate names
             # from this file's AST, including literal tuples, and a
             # refusal record carrying the suite's own name registered as
@@ -2457,6 +2733,87 @@ def main() -> int:
     # labelled READY TO SEAL, both now written up and counted exactly.
     results.append(run("hash pins verify from a clean clone",
                        [PY, "tools/hash_pin_audit.py"], env=env))
+    # NEXUS GATES, FULL-TREE FORMS. The pre-push hook runs the scoped, sub-second
+    # versions of the first and third of these; this is where the whole tree and
+    # the whole evidence set get checked. They are here rather than only in the
+    # `gates` workflow because that workflow cannot currently allocate a runner
+    # -- the organization's Actions spending limit was reached -- and a gate that
+    # exists only in an unrunnable workflow is not a gate. gate_all.py is the
+    # documented wall, so it runs on a developer machine with no Actions minutes.
+    results.append(run("source integrity (NUL bytes, collapsed escapes, parse)",
+                       [PY, "tools/check_source_integrity.py"], env=env))
+    results.append(run("source integrity can fail (self-test)",
+                       [PY, "tools/check_source_integrity.py", "--self-test"],
+                       env=env))
+    results.append(run("nexus evidence regenerated from its drivers",
+                       [PY, "tools/check_nexus_evidence.py"], env=env))
+    results.append(run("nexus CV vectors are what their generator emits",
+                       [PY, "tools/make_nexus_cv_vectors.py", "--check"], env=env))
+    # The R2 artifact cannot be regenerated here -- its producer needs about
+    # 1.5 GB of GWOSC strain that no gate should download -- so this checks
+    # the other half: every number DERIVED from the artifact's own recorded
+    # inputs is recomputed, and the synthetic-Gaussian control arm must still
+    # be Gaussian or the whole artifact is refused.
+    results.append(run("nexus R2 real-quadrature evidence is self-consistent",
+                       [PY, "tools/check_nexus_r2_evidence.py"], env=env))
+    # Re-derives the R0.1 feed-forward collision from the committed hardware
+    # evidence and REFUSES if it is not there: if the deficit falls below the
+    # preregistered floor, if it stops reproducing across both jobs, if a
+    # control triplet starts showing it, or if the shape and timing controls
+    # stop being healthy on the suspect.
+    results.append(run("nexus R0.1 feed-forward collision holds in the evidence",
+                       [PY, "tools/analyze_nexus_feedforward_collision.py"],
+                       env=env))
+    # Offline re-verification of the committed structural artifact. Producing it
+    # needs network and IBM credentials; checking it must not, so --check reads
+    # the recorded signatures and recomputes every fingerprint rather than
+    # trusting the stored ones.
+    results.append(run("nexus R0.1 arms are structurally indistinguishable",
+                       [PY, "tools/check_structural_indistinguishability.py",
+                        "--check"], env=env))
+    # P2's safe dual bound is proved in Lean (lean/OneqCert). Proving needs a Lean
+    # toolchain and mathlib; checking must not, so the wall reads the committed
+    # receipt and refuses it if any proved source byte has changed since, if any
+    # theorem rests on sorryAx or a non-standard axiom, or if the checker cites a
+    # theorem the receipt does not certify.
+    results.append(run("P2 safe dual bound -- Lean kernel receipt is current",
+                       [PY, "tools/check_lean_certificate.py", "--check"], env=env))
+    results.append(run("nexus CV certificate -- python verifier",
+                       [PY, "tools/verify_nexus_cv.py",
+                        "conformance/nexus_cv_vectors.json"], env=env))
+    results.append(run("nexus CV forgeries -- python verifier refuses all 12",
+                       [PY, "tools/verify_nexus_cv.py", "--forgeries",
+                        "conformance/nexus_cv_forgeries.json"], env=env))
+    results.append(run("nexus phase-0 certificate -- stranger verifier",
+                       [PY, "tools/verify_nexus_certificate.py",
+                        "evidence/nexus_phase0/adaptive_bundle_certificate.json"],
+                       env=env))
+    results.append(run("nexus phase-1 covariance certificate -- python",
+                       [PY, "tools/verify_nexus_cv.py",
+                        "evidence/nexus_phase1/covariance_certificate.json"],
+                       env=env))
+    # The second language is the whole point of the CV certificate, so its
+    # absence is a FAILED gate here rather than a skipped one. The hook warns and
+    # continues because a push should not be blocked by a missing toolchain; the
+    # wall refuses, because the wall is where the claim is made.
+    node = shutil.which("node")
+    if node:
+        results.append(run("nexus CV certificate -- javascript verifier",
+                           [node, "verifier-js/verify-nexus-cv.mjs",
+                            "conformance/nexus_cv_vectors.json"], env=env))
+        results.append(run("nexus CV forgeries -- javascript refuses all 12",
+                           [node, "verifier-js/verify-nexus-cv.mjs", "--forgeries",
+                            "conformance/nexus_cv_forgeries.json"], env=env))
+        results.append(run("nexus phase-1 certificate -- javascript verifier",
+                           [node, "verifier-js/verify-nexus-cv.mjs",
+                            "evidence/nexus_phase1/covariance_certificate.json"],
+                           env=env))
+    else:
+        print("\n=== nexus cross-language verifiers ===")
+        print("  node is NOT installed, so the second-language checks could not "
+              "run. This is a RED gate, not a skip: a one-language "
+              "'independent' verifier is what this format's first version had.")
+        results.append(("nexus cross-language verifiers (node missing)", False))
     results.append(run("checker equivalence vs frozen bytes",
                        [PY, "tools/checker_equivalence_gate.py",
                         "--cases", "400" if a.fast else "1500"], env=env))
@@ -2480,22 +2837,61 @@ def main() -> int:
     # estate vacuity audit (ATLAS LAW: reuse, don't rebuild). 3 known
     # EMPTY_PARAMS remain: the TINY parametrize is guarded by a module-level
     # `assert TINY` the static tool cannot see -- threshold 3, may only fall.
-    vac = ROOT.parent / "Coherence" / "coherence_lang" / "scripts" / \
-        "gate_vacuity_audit.py"
-    if vac.exists():
+    # WHERE THE TOOL IS, NOT WHERE THIS FILE HAPPENS TO SIT. Resolving it as
+    # ROOT.parent/... assumes the checkout sits directly under Projects/, which
+    # is false for every git worktree: from a worktree the path lands in the
+    # worktree's parent directory, the tool is never found, and this gate
+    # records RED forever for a reason that has nothing to do with the code.
+    #
+    # That is a dark gate arriving by the opposite route. The usual kind cannot
+    # fail; this kind CANNOT STOP FAILING, and a check that is red for an
+    # irrelevant reason trains its readers to look past it -- so the day it goes
+    # red for a real reason it looks identical. Recording RED rather than
+    # skipping (below) is right and stays. What was wrong is looking in exactly
+    # one place and then calling absence a verdict.
+    #
+    # The main worktree is asked for by name via git, so a worktree run finds
+    # the same estate a canonical checkout would.
+    vac = _find_estate_tool("coherence_lang", "scripts", "gate_vacuity_audit.py")
+    if vac is not None and vac.exists():
         print("\n=== test vacuity (estate tool) ===", flush=True)
         r = subprocess.run([PY, str(vac), "tests/"], cwd=ROOT, env=env,
                            capture_output=True, encoding="utf-8",
-                           errors="replace")
+                           errors="replace", stdin=subprocess.DEVNULL)
         tail = (r.stdout or "").strip().splitlines()
         n_find = 0
+        summary = ""
         for ln in reversed(tail):
             if "finding(s)" in ln:
                 n_find = int(ln.split()[0])
+                summary = ln
                 break
-        print(f"  {n_find} finding(s); threshold 3 (module-level-assert "
-              f"guards the static tool cannot see)")
-        results.append(("test vacuity (estate tool)", n_find <= 3))
+        # *** A BARE COUNT LETS A REGRESSION HIDE INSIDE THE ALLOWANCE. *** The
+        # threshold is 3 because tests/test_cross_engine.py guards its parametrize
+        # list with a module-level `assert TINY`, which a static tool cannot see --
+        # three EMPTY_PARAMS false by construction. It was never an allowance for
+        # three of ANYTHING: the wall sat at 11 for as long as anyone had looked,
+        # 8 of them real LOOP_ONLY tests whose assertions were all inside a loop
+        # over an iterable nothing checked was non-empty. Those are fixed (R111),
+        # so LOOP_ONLY is held at zero and only the known-guarded family keeps an
+        # allowance. `EMPTY_PARAMS=2, LOOP_ONLY=1` scored GREEN under the old rule.
+        n_loop = 0
+        for part in summary.replace(":", ",").split(","):
+            if "LOOP_ONLY" in part:
+                n_loop = int(part.split("=")[1])
+        # *** AND IT FAILED OPEN. *** `n_find` defaulted to 0, so a tool that
+        # crashed, printed a traceback, or merely reworded its summary line scored
+        # the same as a clean tree: GREEN, on no evidence. An instrument that
+        # cannot be read is not a pass.
+        if not summary:
+            print("  REFUSING: the vacuity tool printed no 'finding(s)' summary, "
+                  "so there is nothing to judge -- this is not a pass")
+            print((r.stdout or "")[-400:] or "(no stdout)")
+        print(f"  {n_find} finding(s); threshold 3 EMPTY_PARAMS (module-level-"
+              f"assert guards the static tool cannot see), LOOP_ONLY must be 0, "
+              f"saw {n_loop}")
+        results.append(("test vacuity (estate tool)",
+                        bool(summary) and n_find <= 3 and n_loop == 0))
     else:
         # A GATE THAT EXISTS ON ONE WORKSTATION IS NOT A GATE. This
         # tool lives OUTSIDE the repository, so on every other machine
@@ -2521,6 +2917,14 @@ def main() -> int:
 
     results.extend(_collect_deferred(_started))
     _publish_staged()
+    # *** A LATE WRITER IS INVISIBLE TO THE SUITE. *** The line-ending test runs inside the suite, BEFORE the gates
+    # that regenerate evidence. On 2026-10-15 a gate rewrote experiments/g4_hardware/ceiling_bracket.json with CRLF,
+    # on a path .gitattributes pins to LF, after the suite had passed: the wall that introduced the drift stayed GREEN
+    # and the NEXT wall would have gone RED on it, one run late and one commit removed from the cause. The same check,
+    # run LAST, over the bytes this wall leaves behind.
+    results.append(run("working-copy line endings after every gate wrote",
+                       [PY, "-m", "pytest", "-q", "-p", "no:cacheprovider",
+                        "tests/test_working_copy_line_endings.py"], env=env))
 
     print("\n" + "=" * 46)
     # Results are (name, ok) from the inline gates and (name, ok, seconds)

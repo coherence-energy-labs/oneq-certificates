@@ -41,7 +41,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 68,
-     "seconds": 11.0
+     "seconds": 16.1
     },
     "uniform": {
      "shots": 10000,
@@ -63,7 +63,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 68,
-     "seconds": 7.3
+     "seconds": 8.3
     },
     "measured": {
      "shots": 10000,
@@ -85,7 +85,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 168,
-     "seconds": 11.3
+     "seconds": 11.5
     }
    },
    "score_measured_errors": 2,
@@ -152,7 +152,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 203,
-     "seconds": 28.7
+     "seconds": 29.9
     },
     "uniform": {
      "shots": 10000,
@@ -174,7 +174,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 203,
-     "seconds": 20.2
+     "seconds": 19.6
     },
     "measured": {
      "shots": 10000,
@@ -196,7 +196,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 573,
-     "seconds": 52.0
+     "seconds": 34.2
     }
    },
    "score_measured_errors": 2,
@@ -263,7 +263,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 68,
-     "seconds": 26.0
+     "seconds": 25.9
     },
     "uniform": {
      "shots": 10000,
@@ -285,7 +285,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 68,
-     "seconds": 26.3
+     "seconds": 28.9
     },
     "measured": {
      "shots": 10000,
@@ -307,7 +307,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 168,
-     "seconds": 37.1
+     "seconds": 30.5
     }
    },
    "score_measured_errors": 2,
@@ -374,7 +374,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 203,
-     "seconds": 71.6
+     "seconds": 68.5
     },
     "uniform": {
      "shots": 10000,
@@ -396,7 +396,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 203,
-     "seconds": 40.4
+     "seconds": 39.6
     },
     "measured": {
      "shots": 10000,
@@ -418,7 +418,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 573,
-     "seconds": 1012.4
+     "seconds": 902.6
     }
    },
    "score_measured_errors": 9,
@@ -485,7 +485,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 122,
-     "seconds": 44.4
+     "seconds": 45.1
     },
     "uniform": {
      "shots": 20000,
@@ -507,7 +507,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 122,
-     "seconds": 39.5
+     "seconds": 40.0
     },
     "measured": {
      "shots": 20000,
@@ -529,7 +529,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 350,
-     "seconds": 64.4
+     "seconds": 52.8
     }
    },
    "score_measured_errors": 1,
@@ -596,7 +596,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 68,
-     "seconds": 9.0
+     "seconds": 9.5
     },
     "uniform": {
      "shots": 10000,
@@ -618,7 +618,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 68,
-     "seconds": 8.4
+     "seconds": 10.2
     },
     "measured": {
      "shots": 10000,
@@ -640,7 +640,7 @@
       "does_not_claim": "the other three budget terms. delta_O, R_I and delta_M all need the model's P(Y=1|s), which is a ratio of exact COSET MASSES -- and `bayes_coset` refuses above kernel dimension 22 while this graph's kernel is far larger. Search is the only term this lane can settle, and it settles it exactly"
      },
      "edges": 168,
-     "seconds": 11.6
+     "seconds": 10.3
     }
    },
    "score_measured_errors": 1,
@@ -699,5 +699,15 @@
   "refused_under_measured": 16,
   "dem_over_measured_errors": 89.23529411764706,
   "note": "sums over the records above, written here so every number a document types exists in an artifact; the ratio is against OUR declared baselines on short chains and is not comparable to the estimated-DEM or neural-decoder literature"
+ },
+ "head": {
+  "commit": "624d41f2015b1f08c140c24a3ce172cffe0aa115",
+  "uncommitted_changes_in_src_oneq": false,
+  "sha256": {
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "experiments/ibm_live/rep_code_cert.py": "a91bb988019566fa5e8d894fb305d950eb9f90e189c3d98f25ab31cb96be845d"
+  }
  }
 }

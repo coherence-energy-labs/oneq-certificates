@@ -1,0 +1,47 @@
+{
+ "schema": "oneq-epsilon-rerun/1",
+ "config": "fresh_sim_d5_r25",
+ "spec": {
+  "kind": "sim",
+  "d": 5,
+  "rounds": 25,
+  "p": 0.005,
+  "chunk": 250,
+  "seeds": [
+   20261102001,
+   20261102040
+  ],
+  "method": "certify",
+  "reproduces": "post hoc, fresh seeds (paper 1 second referee, minor 9); not preregistered"
+ },
+ "eps_max": "1/1000000",
+ "chunks": 40,
+ "shots": 10000,
+ "nontrivial": 10000,
+ "status": {
+  "EPSILON_OPTIMAL": 9890,
+  "EXACT_OPTIMAL": 91,
+  "NOT_PROVEN": 19
+ },
+ "accepted": 9981,
+ "accepted_rate": 0.9981,
+ "largest_accepted_epsilon": "83392499274509835/330666693216553378769973280768",
+ "largest_accepted_epsilon_float": 2.521950380406053e-13,
+ "forgeries_attempted": 80000,
+ "forgeries_accepted": 0,
+ "forgeries_by_class": {
+  "E_dropped_edge": 10000,
+  "F_duplicated_edge": 10000,
+  "I_mismatched_pair": 10000,
+  "D_spurious_cycle": 10000,
+  "G_dual_inflated_to_meet_a_worse_primal": 10000,
+  "H_negative_dual_hides_inflation": 10000,
+  "N_nan_dual": 10000,
+  "N_inf_dual": 10000
+ },
+ "forgeries_accepted_by_class": {},
+ "battery_attacks_not_false": 0,
+ "chunk_failures_retried": 0,
+ "instance": "evidence/instances/matching_fresh_sim_d5_r25.json",
+ "receipts": "data/epsilon_receipts/fresh_sim_d5_r25/ (per-chunk sha256 in chunks.jsonl)"
+}

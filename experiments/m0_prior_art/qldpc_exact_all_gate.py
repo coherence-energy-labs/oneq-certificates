@@ -281,15 +281,20 @@ def run_rung(*, name, checks, wint, wspec, sample_syndrome, decoder,
 
     pdir = ROOT / "evidence" / "per_shot"
     pdir.mkdir(exist_ok=True)
+    # newline="\n" on EVERY write: text mode on Windows turns "\n" into CRLF, so
+    # the same run produced different bytes -- and different pinned hashes --
+    # on different operating systems. The release bundle normalises .json to
+    # LF, so a CRLF MANIFEST.json here made the worktree equivocate against the
+    # signed archive (verify_release, 2026-09-23).
     with open(pdir / f"{record_prefix}{name}.jsonl", "w",
-              encoding="utf-8") as f:
+              encoding="utf-8", newline="\n") as f:
         for r in recs:
             f.write(json.dumps(r) + "\n")
     wdir = ROOT / "evidence" / "weights"
     wdir.mkdir(exist_ok=True)
     (wdir / f"{record_prefix}{name}_weights.json").write_text(json.dumps(
         {"spec": wspec, "vector": [int(wint[i]) for i in range(n)]}),
-        encoding="utf-8")
+        encoding="utf-8", newline="\n")
     print(f"{name}: nontrivial {c['nontrivial']}, t1 {c['tier1']}, "
           f"t2 {c['tier2']}, EXACT {c['exact_certified']}, "
           f"ref {c['ref_agreed']}/{c['ref_checked']}, "
@@ -429,7 +434,8 @@ def main() -> int:
         assert r["residue_unsolved"] == 0, tag
 
     dest = ROOT / "evidence" / "qldpc_exact_all.json"
-    dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8",
+                    newline="\n")
 
     # per-shot MANIFEST: bind every record file, weight vector, and the
     # checker hashes -- so "the records exist" is itself checkable
@@ -451,7 +457,7 @@ def main() -> int:
             "ref_checked": run["ref_checked"],
             "tier3A": run["tier3A"], "tier3B": run["tier3B"]}
     (pdir / "MANIFEST.json").write_text(json.dumps(man, indent=2) + "\n",
-                                        encoding="utf-8")
+                                        encoding="utf-8", newline="\n")
     print(f"evidence -> {dest} + per_shot/MANIFEST.json + weights/")
     return 0
 

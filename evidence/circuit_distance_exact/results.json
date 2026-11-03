@@ -1,0 +1,1937 @@
+{
+ "lane": "R198 circuit_distance_exact",
+ "ibm_gross": {
+  "claim": "IBM depth-8 gross cycle: d_circ = 10 for every T >= 2, memory-Z and memory-X",
+  "lower_bound": "MACHINE-CHECKED for T = 1..11: 22/22 proofs VERIFIED (weight <= 9 impossible); every T by WINDOW_PROOF.md Theorem 1, which gives the window preconditions for EVERY consecutive pair from finite hypotheses window_uniform.py machine-checks",
+  "upper_bound": "verified full-DEM weight-10 witnesses (end-boundary type, identical window for T >= 2)",
+  "proofs": [
+   {
+    "basis": "Z",
+    "T": 1,
+    "dem_sha256": "f156b43fa2a5a76019ae378d3dd3edf53546f9499d8ad1b2488c56a9f90718de",
+    "proof_sha256": "8c2d2a79e9b0f18162f1dcdf4b36cd0131b12133ed74cf3095e975ce2fc69d3d",
+    "proof_bytes": 10821912,
+    "checker_s": 7.3
+   },
+   {
+    "basis": "Z",
+    "T": 2,
+    "dem_sha256": "5f29c8ddcf2db55fb83fed3a5e59924ddc9684471bed2a5dc548352250ef2fa3",
+    "proof_sha256": "2473a8bce99dcf65f7f5fa47fe08e82b36784c85c33d6469892bca6d52434836",
+    "proof_bytes": 54046792,
+    "checker_s": 78.9
+   },
+   {
+    "basis": "Z",
+    "T": 3,
+    "dem_sha256": "ad438d116486e3bfe90734c82d6cfc66a1dd81e5610bfc5fdb5d2a59f32ecba4",
+    "proof_sha256": "9297c7d53c4747e5373ff101a40391d3dba6ad79454f293db457b478c9b602e6",
+    "proof_bytes": 92749952,
+    "checker_s": 111.2
+   },
+   {
+    "basis": "Z",
+    "T": 4,
+    "dem_sha256": "7bd48ff37ba9b8d005f0fd4ed21e6b053a1b04b2adbf36ddaff455837208a5f2",
+    "proof_sha256": "f8fa94812f7a8f613dbf40bdb10f6ca06796721574ae22f84aeb648b11691354",
+    "proof_bytes": 131798916,
+    "checker_s": 138.3
+   },
+   {
+    "basis": "Z",
+    "T": 5,
+    "dem_sha256": "cb3fd1806aef42d7626f791d7d633f9c6bdcc18c047573e45ce3cb2fddffa50a",
+    "proof_sha256": "b76c05df4900d4cc42ec0cf5fa634232dc8289a31e4a857ee6f248bdd02c2aa5",
+    "proof_bytes": 170829160,
+    "checker_s": 156.0
+   },
+   {
+    "basis": "Z",
+    "T": 6,
+    "dem_sha256": "0d004a9fc0a3efbba949a73a1e0a78cd7cd1b5e127bee7dae4d45128b4d02845",
+    "proof_sha256": "1aa3afb6232655e31405cac2b97a44bab1ff7b7219b56f312bf5f45e106e68be",
+    "proof_bytes": 209859404,
+    "checker_s": 176.8
+   },
+   {
+    "basis": "Z",
+    "T": 7,
+    "dem_sha256": "6842fc5b1aef33d8534e770037830c4439bc7e835c6e99457cbe201d6359d861",
+    "proof_sha256": "74ae01afbdb3c4cc6bb19725788fb764afa3577c6c0264e0cb5dfb5a72cc3c7f",
+    "proof_bytes": 248889648,
+    "checker_s": 199.5
+   },
+   {
+    "basis": "Z",
+    "T": 8,
+    "dem_sha256": "00a270903308623632890efb393ebbf938ae622b379fd03ae0c05f059a44de18",
+    "proof_sha256": "cd062c8be59cdaedb1b45e10cc0cb55d15b1a6519ad03114767544c808aab826",
+    "proof_bytes": 287919892,
+    "checker_s": 267.3
+   },
+   {
+    "basis": "Z",
+    "T": 9,
+    "dem_sha256": "1921dd58e1f51f458e2452612c7f49902913251f8cc4cb7447ba93b9f4683d91",
+    "proof_sha256": "7477ed2386c49e19a17d5d0056f427bf39cbbbdeb54bb269aa11fa761e491397",
+    "proof_bytes": 326950136,
+    "checker_s": 263.1
+   },
+   {
+    "basis": "Z",
+    "T": 10,
+    "dem_sha256": "66c6e586ddc87db7a9c0a519ec5bb7553c0da4e6c82d7ae4c30479649ed7accf",
+    "proof_sha256": "6d45539829393e8288a4c6af6c216e488018bfea7c4d84011714cf2c439103bc",
+    "proof_bytes": 365980380,
+    "checker_s": 321.8
+   },
+   {
+    "basis": "Z",
+    "T": 11,
+    "dem_sha256": "655c253a5523b4f33937572e54a5f002b2e5f8d844ae6d211c7c2d099e1ac285",
+    "proof_sha256": "62f23f596b7c10ebe1e43589233d2286757799a1f87bf3c3646569301c192d11",
+    "proof_bytes": 405010624,
+    "checker_s": 334.5
+   },
+   {
+    "basis": "X",
+    "T": 1,
+    "dem_sha256": "82eb9b6cc6eba1ca837bad76250c01082302da0261b6c196bba75e8dd263a24b",
+    "proof_sha256": "580c30b34f94bc05844f8d9b4f1ecec14ff3eeabf8b2f8add3eca128937f1608",
+    "proof_bytes": 28901520,
+    "checker_s": 42.4
+   },
+   {
+    "basis": "X",
+    "T": 2,
+    "dem_sha256": "fc058d51b4ef9e2d2e7b33239815719afc76a81bb3110c0a5b091bed578c3ab7",
+    "proof_sha256": "ab8197c312387d7c182ad0dfd5a089d60f35bbb298742acc52d43ebb31b5c4a3",
+    "proof_bytes": 100474656,
+    "checker_s": 169.7
+   },
+   {
+    "basis": "X",
+    "T": 3,
+    "dem_sha256": "dab4d9b0bfca3869761b09fbba8526552d0f7fd0af32853ed3615d48315f9c43",
+    "proof_sha256": "eb41f01e2fb6e8e59ec1653ce43ef337489ece421044b337a5a47458e5f42065",
+    "proof_bytes": 179558124,
+    "checker_s": 228.8
+   },
+   {
+    "basis": "X",
+    "T": 4,
+    "dem_sha256": "0ae4acc128b442a1f4748e082319c9e99c1a537bf8553d49f4ff2c060803ca3b",
+    "proof_sha256": "becfcbab9fab52a43100870fbe775e31a7c6e823ceefc5efe7f1c66b59a0938f",
+    "proof_bytes": 259609840,
+    "checker_s": 269.3
+   },
+   {
+    "basis": "X",
+    "T": 5,
+    "dem_sha256": "be8709469abd92a5540d3ee81c936b56bdc61f4fbb8e0ee3a1c089475e852d43",
+    "proof_sha256": "7a50fa267f3685759777201fc92d40290b6b1a48e183b7cec1a918e8eeac59ef",
+    "proof_bytes": 339658436,
+    "checker_s": 341.2
+   },
+   {
+    "basis": "X",
+    "T": 6,
+    "dem_sha256": "5f4e45dde210867ac5581338e41b6877e3d8bda9df572f3ffcfae2bf35038939",
+    "proof_sha256": "745a558724a98ba2d8c39c48c216af2a45c0f8096b7447944921abfbb2eaa97b",
+    "proof_bytes": 419707032,
+    "checker_s": 363.0
+   },
+   {
+    "basis": "X",
+    "T": 7,
+    "dem_sha256": "7a23f3a86c3e4315a2f33840623b917b0b517ecdd03c3d7e1e5cc2cf50ce6449",
+    "proof_sha256": "6b0fdf19929c8ba3f79c3ec693010c985acd081cb7a081c4af968bc4baab2ec7",
+    "proof_bytes": 499755628,
+    "checker_s": 443.1
+   },
+   {
+    "basis": "X",
+    "T": 8,
+    "dem_sha256": "fe19467230715d3bf286bfcb32617896dbff979e74cbe916849d287ef1072574",
+    "proof_sha256": "b2a2616193b8cb0eee1a4088eeebff614520ce1f9754e6adee915b4a418de762",
+    "proof_bytes": 579804224,
+    "checker_s": 493.7
+   },
+   {
+    "basis": "X",
+    "T": 9,
+    "dem_sha256": "82147541aa841eb1ee12e16e3710b8028fd0362d57b30210fa2e26c6a64a516e",
+    "proof_sha256": "4077a17491128eed015b183be00fae14612552c0683a8579a7f8247612bef820",
+    "proof_bytes": 659852820,
+    "checker_s": 573.8
+   },
+   {
+    "basis": "X",
+    "T": 10,
+    "dem_sha256": "848598b2ab482a556e0e0506406c41c3007434585389f68e4797473ca1770f32",
+    "proof_sha256": "ffe17351bbc0c1f9ba3e4f1c28b5ac4611a766f73db86928da683ff765ceceed",
+    "proof_bytes": 739901416,
+    "checker_s": 598.9
+   },
+   {
+    "basis": "X",
+    "T": 11,
+    "dem_sha256": "000cb07ffa37c5b2a88aa6237fe9e78aa549c2c279498a563d6bf3416b1a8a13",
+    "proof_sha256": "b1218e7cb8549257fc0233505f73b9cf59dfae4d0bc218d64ba3cf3851bb0c42",
+    "proof_bytes": 819950012,
+    "checker_s": 728.4
+   }
+  ],
+  "windows": [
+   {
+    "circuit": "ibm",
+    "basis": "Z",
+    "T": 10,
+    "P1": true,
+    "P2": true,
+    "P3": true,
+    "interior_shapes": 720,
+    "holds": true
+   },
+   {
+    "circuit": "ibm",
+    "basis": "X",
+    "T": 10,
+    "P1": true,
+    "P2": true,
+    "P3": true,
+    "interior_shapes": 720,
+    "holds": true
+   }
+  ],
+  "witnesses": [
+   {
+    "projected": [
+     702,
+     1513,
+     1512,
+     1207,
+     1527,
+     1552,
+     1080,
+     1560,
+     1562,
+     1579
+    ],
+    "full": [
+     8409,
+     8353,
+     8352,
+     8365,
+     8423,
+     8476,
+     8501,
+     8502,
+     8506,
+     8551
+    ],
+    "weight": 10,
+    "verified": true,
+    "minus_one_fails": true,
+    "basis": "Z",
+    "circuit": "ibm",
+    "rounds": 2
+   },
+   {
+    "projected": [
+     720,
+     722,
+     746,
+     962,
+     1045,
+     1260,
+     1269,
+     1335,
+     1399,
+     765
+    ],
+    "full": [
+     3673,
+     3696,
+     3839,
+     4866,
+     5347,
+     6703,
+     6753,
+     7169,
+     7704,
+     3876
+    ],
+    "weight": 10,
+    "verified": true,
+    "minus_one_fails": true,
+    "basis": "X",
+    "circuit": "ibm",
+    "rounds": 2
+   }
+  ],
+  "window_theorem": {
+   "Z": {
+    "controls_failing": 14,
+    "audit_stim_T": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     20,
+     27
+    ]
+   },
+   "X": {
+    "controls_failing": 14,
+    "audit_stim_T": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     20,
+     27
+    ]
+   }
+  },
+  "evidence_class": "PROVEN for every T >= 2 from MACHINE-CHECKED premises: 22 VERIFIED certificates (T = 1..11) + WINDOW_PROOF.md Theorem 1 (a hand proof that survived an independent audit 2026-10-22; its hypotheses machine-checked) (trusted base: the circuit's instruction list -- its fault set derived twice, by stim and by dem_independent.py, equal on every model (trusted_base) --, the projection, ccheck.c (its calculus PROVEN in Lean))"
+ },
+ "three_colour": {
+  "claim": "3-colour cycle of 2603.05481: d_circ >= 11 at T = 2, both bases (= 11 with the upper bound below)",
+  "upper_bound": "our own lifted full-DEM weight-11 witnesses: Z, X",
+  "witnesses": [
+   {
+    "projected": [
+     1,
+     4,
+     58,
+     320,
+     482,
+     500,
+     608,
+     611,
+     1070,
+     1071,
+     1088
+    ],
+    "full": [
+     1,
+     4,
+     58,
+     320,
+     482,
+     500,
+     1074,
+     1098,
+     3915,
+     3921,
+     4013
+    ],
+    "weight": 11,
+    "verified": true,
+    "minus_one_fails": true,
+    "basis": "Z",
+    "circuit": "3c",
+    "rounds": 2,
+    "search": "cdist w=11 T=2 projected, 61.6 s, 7.7e7 nodes"
+   },
+   {
+    "projected": [
+     0,
+     2,
+     70,
+     62,
+     95,
+     129,
+     148,
+     188,
+     39,
+     51,
+     559
+    ],
+    "full": [
+     0,
+     13,
+     387,
+     343,
+     528,
+     733,
+     851,
+     1083,
+     212,
+     284,
+     3359
+    ],
+    "weight": 11,
+    "verified": true,
+    "minus_one_fails": true,
+    "basis": "X",
+    "circuit": "3c",
+    "rounds": 2,
+    "search": "cdist w=11 T=2 projected, 2467.8 s, 4.6e9 nodes"
+   }
+  ],
+  "bases": {
+   "Z": {
+    "search_seconds": 2919.1,
+    "search_nodes": 2344576998,
+    "certified": true,
+    "certificate": {
+     "model_sha256": "02077f59e234bb2e1252eb93f2cfd5abb451004842ba5e09270c9e27c3a726cd",
+     "proof_sha256": "73d8d089287e839f895ffcde9e324fb503662e37f7ab28ea1462ac8e7f2f5813",
+     "proof_bytes": 478745582,
+     "prover_s": 1395.7,
+     "checker_s": 3979.4
+    }
+   },
+   "X": {
+    "search_seconds": 1791.6,
+    "search_nodes": 2488628964,
+    "certified": true,
+    "certificate": {
+     "model_sha256": "28875332778f11e52fd6d38756617fe237e94a696f8b9419fe922129220485db",
+     "proof_sha256": "e416266de69b6a5a256660bcf4c6f2d48ed4d80d6916c5b949b261f6c149e650",
+     "proof_bytes": 535833731,
+     "prover_s": 1188.7,
+     "checker_s": 4601.4
+    }
+   }
+  },
+  "evidence_class": "MACHINE-CHECKED",
+  "scope": "T = 2 only; every-T needs weight 10 for T = 1..12 (see RESULTS.md)"
+ },
+ "three_colour_every_T": {
+  "claim": "3-colour cycle of 2603.05481: d_circ = 11 for every T >= 2, memory-Z and memory-X",
+  "lower_bound": "no solution of weight <= 10 starting in round 0 or 1 for T = 1..12 (time-shift sweep, both bases) + the time-shift lemma, whose preconditions hold for EVERY consecutive pair by WINDOW_PROOF.md Theorem 1",
+  "upper_bound": "the T = 2 weight-11 witnesses embed into every T = 2..12 and lift to verified full DEMs (and into every T, by the theorem's closed form)",
+  "sweep_seconds": {
+   "Z": 13464,
+   "X": 26442
+  },
+  "window_theorem": {
+   "Z": {
+    "controls_failing": 16,
+    "audit_stim_T": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     20,
+     27
+    ]
+   },
+   "X": {
+    "controls_failing": 16,
+    "audit_stim_T": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     20,
+     27
+    ]
+   }
+  },
+  "evidence_class": "PROVEN for every T >= 2 from MACHINE-CHECKED premises: 24 VERIFIED time-shift certificates (T = 1..12) + WINDOW_PROOF.md Theorem 1 (audited 2026-10-22)"
+ },
+ "bb72": {
+  "claim": "[[72,12,6]] IBM-style cycle: d_circ = 6 at T = 2 (memory-Z)",
+  "record": {
+   "cmd": "search",
+   "circuit": "ibm",
+   "basis": "Z",
+   "rounds": 2,
+   "l": 6,
+   "projected": true,
+   "full_mechanisms": 4284,
+   "mechanisms": 792,
+   "detectors": 108,
+   "orbits": 22,
+   "group": 36,
+   "model_sha256": "5c557c40f29df23a8f19bcc5675339faf1fd55ca835041a33f6322affe3474a9",
+   "none_up_to": 5,
+   "found_weight": 6,
+   "witness": [
+    4,
+    6,
+    89,
+    47,
+    51,
+    236
+   ],
+   "seconds": 1.2,
+   "lift": {
+    "projected": [
+     4,
+     6,
+     89,
+     47,
+     51,
+     236
+    ],
+    "full": [
+     5,
+     11,
+     303,
+     153,
+     165,
+     870
+    ],
+    "weight": 6,
+    "verified": true,
+    "minus_one_fails": true
+   }
+  },
+  "evidence_class": "MEASURED + MACHINE-CHECKED lower bound (tests/test_r198_circuit_distance_exact.py)"
+ },
+ "morph72": {
+  "claim": "morphing circuit of 2407.16336 with the [[72,12,6]] end-cycle code (mid-cycle [[144,12,12]], homomorphism x): d_circ = 6 for every T >= 1, memory-Z and memory-X -- the authors' BP-OSD bound (<= 6) is exact",
+  "lower_bound": "14/14 time-shift certificates VERIFIED (no solution of weight <= 5 starting in round 0 or 1, T = 1..7, both bases) + the space-time window lemma (drift x, affine observables), machine-checked on every consecutive pair",
+  "upper_bound": "weight-6 witnesses (both bases) lift to verified full DEMs, survive the 6 redundancy meta-checks, and embed unchanged into every T = 2..7",
+  "second_route": {
+   "Z": "fold lemma holds for T = 1..13 + VERIFIED 1-round certificate: d_circ >= 6 for T <= 13",
+   "X": "fold lemma holds for T = 1..13 + VERIFIED 1-round certificate: d_circ >= 6 for T <= 13"
+  },
+  "fold_theorem": {
+   "Z": {
+    "hypotheses": [
+     "BND",
+     "H1",
+     "H2",
+     "H3",
+     "PAL",
+     "PURE"
+    ],
+    "controls_failing": 20,
+    "template_T": [
+     1,
+     2,
+     3,
+     4,
+     14,
+     15,
+     16,
+     17,
+     31,
+     32
+    ],
+    "stim_corollary2_T": [
+     5,
+     6,
+     9,
+     10,
+     20,
+     33
+    ]
+   },
+   "X": {
+    "hypotheses": [
+     "BND",
+     "H1",
+     "H2",
+     "H3",
+     "PAL",
+     "PURE"
+    ],
+    "controls_failing": 20,
+    "template_T": [
+     1,
+     2,
+     3,
+     4,
+     14,
+     15,
+     16,
+     17,
+     31,
+     32
+    ],
+    "stim_corollary2_T": [
+     5,
+     8,
+     11
+    ]
+   }
+  },
+  "evidence_class": "MACHINE-CHECKED for T <= 7 (time-shift certificates + window lemma); PROVEN for every T >= 1 from MACHINE-CHECKED premises (the T = 1 certificates + FOLD_PROOF.md Theorem 1, a hand proof audited 2026-10-22, its hypotheses checked by fold_uniform.py)"
+ },
+ "morph144": {
+  "claim": "morphing circuit of 2407.16336 with the [[144,12,12]] end-cycle code (mid-cycle [[288,12,18]]): memory-X: d_circ = 12 at T = 2, = 12 for every T >= 1; memory-Z: d_circ = 12 at T = 2, = 12 for every T >= 1 -- equal to the end-cycle code's distance (12, the authors' integer program), so the circuit loses none (their BP-OSD circuit bound: <= 12)",
+  "bases": {
+   "X": {
+    "none_up_to": 11,
+    "certified": true,
+    "model_sha256": [
+     "bf6bbb3f726e2e8ef2a51fc9cc6b61d0dde5e1fbda6bc3745049baec5295e8c6"
+    ],
+    "search_seconds": 0,
+    "certificate": {
+     "proof_sha256": "1fd482b7bd07289bd0d47c9322fd33f08863827e023fa60e61aa5e97e47ea9d8",
+     "proof_bytes": 480836502,
+     "prover_s": 696.0,
+     "checker_s": 2517.3
+    },
+    "witness": {
+     "circuit": "morph144",
+     "basis": "X",
+     "rounds": 2,
+     "found_in": "T=1 projected model, cdist w=12, 1367.9 s",
+     "t1_projected": [
+      1,
+      6,
+      121,
+      153,
+      248,
+      139,
+      134,
+      206,
+      383,
+      443,
+      452,
+      534
+     ],
+     "full": [
+      2,
+      17,
+      466,
+      606,
+      1056,
+      541,
+      527,
+      847,
+      1743,
+      2043,
+      2088,
+      2514
+     ],
+     "weight": 12,
+     "verified": true,
+     "minus_one_fails": true,
+     "metacheck_gap": 6,
+     "survives_metachecks": true
+    }
+   },
+   "Z": {
+    "none_up_to": 11,
+    "certified": true,
+    "model_sha256": [
+     "4ed97e51448d529e6f78556ee6ddcda6efa4235513915eb862a0d897d9b2f7ec"
+    ],
+    "search_seconds": 1115.9,
+    "certificate": {
+     "proof_sha256": "cde6bec95575690cfa669fe93b644a7e5477f7b40bd44041ba25b5ba1a2a52e6",
+     "proof_bytes": 516460560,
+     "prover_s": 762.5,
+     "checker_s": 2924.5
+    },
+    "witness": {
+     "circuit": "morph144",
+     "basis": "Z",
+     "rounds": 2,
+     "found_in": "T=1 projected model, cdist w=12, 544.6 s",
+     "t1_projected": [
+      0,
+      12,
+      121,
+      241,
+      246,
+      135,
+      142,
+      210,
+      327,
+      395,
+      408,
+      430
+     ],
+     "full": [
+      0,
+      38,
+      469,
+      1005,
+      1036,
+      529,
+      555,
+      863,
+      1435,
+      1767,
+      1829,
+      1935
+     ],
+     "weight": 12,
+     "verified": true,
+     "minus_one_fails": true,
+     "metacheck_gap": 6,
+     "survives_metachecks": true
+    }
+   }
+  },
+  "every_T": {
+   "X": {
+    "d": 12,
+    "tmax": 13,
+    "certified": true,
+    "lower": "1-round CERTIFICATE VERIFIED, NONE <= 11 (prove 210 s, check 812 s); fold lemma holds for T = 1..13",
+    "upper": "weight-12 witness verified in every T = 1..13",
+    "model_sha256_T1": "f3e9e6af70424b16e3e20851677f3e0c5c2e79a89fce1efb78094d4dbdd46a36"
+   },
+   "Z": {
+    "d": 12,
+    "tmax": 13,
+    "certified": true,
+    "lower": "1-round CERTIFICATE VERIFIED, NONE <= 11 (prove 230 s, check 801 s); fold lemma holds for T = 1..13",
+    "upper": "weight-12 witness verified in every T = 1..13",
+    "model_sha256_T1": "4c21e750dead11380efefea09e297fa394e9fd29d3bbedbfa5391c866b57fd7a"
+   }
+  },
+  "fold_theorem": {
+   "Z": {
+    "hypotheses": [
+     "BND",
+     "H1",
+     "H2",
+     "H3",
+     "PAL",
+     "PURE"
+    ],
+    "controls_failing": 20,
+    "template_T": [
+     1,
+     2,
+     3,
+     4,
+     14,
+     15,
+     16,
+     17,
+     31,
+     32
+    ],
+    "stim_corollary2_T": [
+     5,
+     6,
+     7
+    ]
+   },
+   "X": {
+    "hypotheses": [
+     "BND",
+     "H1",
+     "H2",
+     "H3",
+     "PAL",
+     "PURE"
+    ],
+    "controls_failing": 20,
+    "template_T": [
+     1,
+     2,
+     3,
+     4,
+     14,
+     15,
+     16,
+     17,
+     31,
+     32
+    ],
+    "stim_corollary2_T": [
+     5,
+     8
+    ]
+   }
+  },
+  "evidence_class": "PROVEN for every T >= 1 from MACHINE-CHECKED premises: weight-11 certificates VERIFIED at T = 1 (and T = 2) in both bases, weight-12 witnesses, and FOLD_PROOF.md Theorem 1 (d_circ(T) = d_circ(1); a hand proof that survived an independent adversarial audit 2026-10-22) whose six T-independent hypotheses fold_uniform.py machine-checks with every negative control failing; the per-T fold check (T = 1..13) is a second route"
+ },
+ "morph2026": {
+  "claim": "circuit-level distance of 2604.09797's Abelian-2BGA morphing circuits (the paper reports end-cycle parameters and did not check it): c42a [[42,6,6]] degree 4: d_circ = 6/6 (Z/X); c42a2 [[42,6,6]] degree 4: d_circ = 4/4 (Z/X); c42b [[42,6,6]] degree 4: d_circ = 5/5 (Z/X); c42b2 [[42,6,6]] degree 4: d_circ = 4/4 (Z/X); c48a [[48,4,8]] degree 4: d_circ = 7/7 (Z/X); c48a2 [[48,4,8]] degree 4: d_circ = 6/6 (Z/X); c48b [[48,4,8]] degree 4: d_circ = 6/6 (Z/X); c48b2 [[48,4,8]] degree 4: d_circ = 6/6 (Z/X); c48c [[48,4,8]] degree 4: d_circ = 6/6 (Z/X); c48c2 [[48,4,8]] degree 4: d_circ = 7/7 (Z/X); t30a [[30,8,5]] degree 5: d_circ = 5/5 (Z/X); t30a2 [[30,8,5]] degree 5: d_circ = 5/5 (Z/X); t30b [[30,8,5]] degree 5: d_circ = 5/5 (Z/X); t30b2 [[30,8,5]] degree 5: d_circ = 5/5 (Z/X)",
+  "targets": {
+   "c42a": {
+    "schedule": "standard",
+    "n_end": 42,
+    "k": 6,
+    "end_cycle_d": 6,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 6,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": "CertR198.Kernel.C42aZ1.distance"
+     },
+     "X": {
+      "d_circ": 6,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": "CertR198.Kernel.C42aX1.distance"
+     }
+    }
+   },
+   "c42a2": {
+    "schedule": "standard",
+    "n_end": 42,
+    "k": 6,
+    "end_cycle_d": 6,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 4,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 4,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c42b": {
+    "schedule": "standard",
+    "n_end": 42,
+    "k": 6,
+    "end_cycle_d": 6,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 5,
+      "loses": 1,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 5,
+      "loses": 1,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c42b2": {
+    "schedule": "standard",
+    "n_end": 42,
+    "k": 6,
+    "end_cycle_d": 6,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 4,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 4,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c48a": {
+    "schedule": "standard",
+    "n_end": 48,
+    "k": 4,
+    "end_cycle_d": 8,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 7,
+      "loses": 1,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 7,
+      "loses": 1,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c48a2": {
+    "schedule": "standard",
+    "n_end": 48,
+    "k": 4,
+    "end_cycle_d": 8,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c48b": {
+    "schedule": "standard",
+    "n_end": 48,
+    "k": 4,
+    "end_cycle_d": 8,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c48b2": {
+    "schedule": "standard",
+    "n_end": 48,
+    "k": 4,
+    "end_cycle_d": 8,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c48c": {
+    "schedule": "standard",
+    "n_end": 48,
+    "k": 4,
+    "end_cycle_d": 8,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 6,
+      "loses": 2,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "c48c2": {
+    "schedule": "standard",
+    "n_end": 48,
+    "k": 4,
+    "end_cycle_d": 8,
+    "degree": 4,
+    "layers": 3,
+    "matches_authors_builder": true,
+    "bases": {
+     "Z": {
+      "d_circ": 7,
+      "loses": 1,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 7,
+      "loses": 1,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "every_T": "PROVEN for every T >= 1 (FOLD_PROOF.md Theorem 1, hypotheses checked by fold_uniform.py)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "t30a": {
+    "schedule": "tree",
+    "n_end": 30,
+    "k": 8,
+    "end_cycle_d": 5,
+    "degree": 5,
+    "layers": 3,
+    "matches_authors_builder": null,
+    "bases": {
+     "Z": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": "CertR198.Kernel.T30aZ1.distance"
+     },
+     "X": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": "CertR198.Kernel.T30aX1.distance"
+     }
+    }
+   },
+   "t30a2": {
+    "schedule": "tree",
+    "n_end": 30,
+    "k": 8,
+    "end_cycle_d": 5,
+    "degree": 5,
+    "layers": 3,
+    "matches_authors_builder": null,
+    "bases": {
+     "Z": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "t30b": {
+    "schedule": "tree",
+    "n_end": 30,
+    "k": 8,
+    "end_cycle_d": 5,
+    "degree": 5,
+    "layers": 3,
+    "matches_authors_builder": null,
+    "bases": {
+     "Z": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": null
+     }
+    }
+   },
+   "t30b2": {
+    "schedule": "tree",
+    "n_end": 30,
+    "k": 8,
+    "end_cycle_d": 5,
+    "degree": 5,
+    "layers": 3,
+    "matches_authors_builder": null,
+    "bases": {
+     "Z": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": null
+     },
+     "X": {
+      "d_circ": 5,
+      "loses": 0,
+      "exact_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "certified_T": [
+       1,
+       2
+      ],
+      "time_shift_certified_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "window_T": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "every_T": "MACHINE-CHECKED for T <= 6, DERIVED beyond (window lemma)",
+      "kernel_checked_T1": null
+     }
+    }
+   }
+  },
+  "evidence_class": "per target and basis as `every_T` says: PROVEN for every T where FOLD_PROOF.md's hypotheses hold (every standard schedule), MACHINE-CHECKED to w + 2 and DERIVED beyond for the tree circuits; the distance itself is MACHINE-CHECKED (certificates + verified minimal witnesses) at every T recorded; where `kernel_checked_T1` names a theorem, the 1-round distance is moreover a Lean theorem checked by the kernel (lean/CertR198 Exec + Kernel: no C code and no compiler trusted)"
+ },
+ "trusted_base": {
+  "claim": "every model's fault set derived twice -- stim's error analysis (export_model.mechanisms) and dem_independent.py's backward Pauli pass -- is the same set, with the same detector coordinates and observable count",
+  "models": 66,
+  "mechanisms_min": 432,
+  "mechanisms_max": 66912,
+  "scope": "[[72,12,6]] T = 2, the IBM gross cycle T = 1..11, the 3-colour cycle T = 1..12, the morphing circuits (72: T = 1..7, 144: T = 1..2); both bases",
+  "evidence_class": "MEASURED (exact set equality on every model); stim still parses the instruction list"
+ }
+}

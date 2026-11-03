@@ -1,0 +1,12 @@
+{"circuit": "morph72", "basis": "Z", "t0": 2, "T": 2, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [0, 34, 126, 575, 997, 1086], "full_verified": true}
+{"circuit": "morph72", "basis": "Z", "t0": 2, "T": 3, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [0, 34, 126, 575, 997, 1086], "full_verified": true}
+{"circuit": "morph72", "basis": "Z", "t0": 2, "T": 4, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [0, 34, 126, 575, 997, 1086], "full_verified": true}
+{"circuit": "morph72", "basis": "Z", "t0": 2, "T": 5, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [0, 34, 126, 575, 997, 1086], "full_verified": true}
+{"circuit": "morph72", "basis": "Z", "t0": 2, "T": 6, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [0, 34, 126, 575, 997, 1086], "full_verified": true}
+{"circuit": "morph72", "basis": "Z", "t0": 2, "T": 7, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [0, 34, 126, 575, 997, 1086], "full_verified": true}
+{"circuit": "morph72", "basis": "X", "t0": 2, "T": 2, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [2, 31, 111, 586, 996, 1098], "full_verified": true}
+{"circuit": "morph72", "basis": "X", "t0": 2, "T": 3, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [2, 31, 111, 586, 996, 1098], "full_verified": true}
+{"circuit": "morph72", "basis": "X", "t0": 2, "T": 4, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [2, 31, 111, 586, 996, 1098], "full_verified": true}
+{"circuit": "morph72", "basis": "X", "t0": 2, "T": 5, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [2, 31, 111, 586, 996, 1098], "full_verified": true}
+{"circuit": "morph72", "basis": "X", "t0": 2, "T": 6, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [2, 31, 111, 586, 996, 1098], "full_verified": true}
+{"circuit": "morph72", "basis": "X", "t0": 2, "T": 7, "weight": 6, "embedded": true, "projected_undetectable_logical": true, "full_lift": [2, 31, 111, 586, 996, 1098], "full_verified": true}

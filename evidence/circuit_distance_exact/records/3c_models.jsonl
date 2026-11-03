@@ -1,0 +1,2 @@
+{"circuit": "3c", "basis": "Z", "rounds": 2, "model_sha256": "02077f59e234bb2e1252eb93f2cfd5abb451004842ba5e09270c9e27c3a726cd", "searched_file": "dem3c_z2_proj.txt"}
+{"circuit": "3c", "basis": "X", "rounds": 2, "model_sha256": "28875332778f11e52fd6d38756617fe237e94a696f8b9419fe922129220485db", "searched_file": "dem3c_x2_proj.txt"}

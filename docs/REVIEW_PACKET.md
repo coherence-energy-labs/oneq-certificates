@@ -9,7 +9,7 @@ Two manuscripts, one repository, one public release
 
 | | Paper 1 | Paper 2 |
 |---|---|---|
-| Title | Certifying quantum error-correction decoders: independently checkable optimality receipts at scale | Exact, independently checkable optimality receipts for BP-OSD on the [[144,12,12]] bivariate-bicycle code |
+| Title | Certifying quantum error-correction decoders: independently checkable near-optimality receipts at scale | Exact, independently checkable optimality receipts for BP-OSD on the [[144,12,12]] bivariate-bicycle code |
 | Source | `paper/certifying-decoders/main.tex` | `paper/qldpc-certificates/main.tex` |
 | Long-form record | `docs/PAPER_DRAFT.md` (the typeset manuscript governs where they differ) | `docs/PAPER2_QLDPC_DRAFT.md` (same rule) |
 | Numbers | `paper/certifying-decoders/generated/*.tex`, from `paper/tools/make_numbers.py` | `paper/qldpc-certificates/generated/*.tex`, from `paper/tools/make_numbers_qldpc.py` |
@@ -90,7 +90,7 @@ not exact optimality at scale; optimality for the given weights only; blind to t
 | Strong baseline: pipeline errors change with the BP-OSD configuration; the advantage is over the stated configuration, not BP-OSD as such | MEASURED, every proof retained | `evidence/qldpc_strong_baseline_v3.json`, Table II; the 955 proofs under `evidence/strong_baseline_v3/`; `python tools/replay_strong_baseline.py` rebuilds every number from records and proofs alone (`evidence/strong_baseline_v3_replay.json`) |
 | The instrument, two ways: tier-1 (the flat route proves BP-OSD's answer) and optimum-hit (BP-OSD's answer feasible at the certified optimum) at all five levels; at p=0.07 under C, 146 vs 196 of 200 | MEASURED | Table III, same artifact and replay |
 | The frozen held-out campaign re-runs from the public source snapshot alone, no git history | MEASURED | `python tools/reproduce_heldout_public.py --work <dir>`; `evidence/heldout_public_reproduction.json` (8 rungs, 14 fields, all record files byte-identical, 155 s) |
-| Mutation score of the checker's tests: 313 of 321 killed, 8 equivalent with reasons | MEASURED | `evidence/mutation_score/qldpc_check.json` |
+| Mutation score of the checker's tests: 315 of 323 killed, 8 equivalent with reasons | MEASURED | `evidence/mutation_score/qldpc_check.json` |
 | 58 of 2,002 regenerated flat certificates differ from the run of record while remaining exact; cause open | OBSERVED | Sec. VII; ledger R56b |
 | "Under a logged search protocol we did not find a prior report of exact, independently re-checkable, minimum-weight receipt coverage for BP-OSD on this code" | OBSERVED (search of 2026-09-15) | `docs/PAPER2_LITERATURE_SEARCH.md`; nearest: arXiv:2608.25545, cited and distinguished in Sec. VIII |
 

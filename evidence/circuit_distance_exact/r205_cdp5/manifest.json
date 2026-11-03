@@ -1,0 +1,54 @@
+{
+  "schema": "oneq.r205.cdp5.v1",
+  "status": "BUILT / GATED, verified on the declared projected models only",
+  "base_commit": "cc1a10f413390651067bbe7355dff0d94ee227d9",
+  "prover": "experiments/circuit_distance_exact/cdist_prove.c",
+  "stranger_checker": "experiments/circuit_distance_exact/ccheck.c",
+  "proof_format": "CDP5",
+  "scope": "Certificates establish no undetectable nonzero logical in the exported same-type projected DEM up to the stated fault weight. NOT a general quantum hardware performance claim.",
+  "environment": {
+    "operating_system": "Windows",
+    "compiler": "MSYS2 GCC 16.1.0 -O3 -fopenmp",
+    "python": "3.14.3",
+    "stim": "1.16.0",
+    "omp_num_threads": 6
+  },
+  "observations": [
+    {
+      "name": "IBM BB (144 physical code qubits), Z basis, 2 rounds, w<=9",
+      "model_file": "ibm_l12_Z2_model.txt",
+      "model_sha256": "5f29c8ddcf2db55fb83fed3a5e59924ddc9684471bed2a5dc548352250ef2fa3",
+      "proof_file": "ibm_Z2_w9.cdp5",
+      "proof_sha256": "58ce6e482444c1f00ef4251b22441c5de761b145ba9da5e7bb1ceecb5cd9f0fe",
+      "group": "full",
+      "fault_weight_bound": 9,
+      "baseline_proof_bytes": 1690546,
+      "baseline_trace_bits": 13511629,
+      "cdp5_proof_bytes": 92370,
+      "cdp5_trace_bits": 726208,
+      "checker_exit_code": 0
+    },
+    {
+      "name": "Three-colour projected QEC model, X basis, 2 rounds, w<=8",
+      "model_file": "threecolour_l12_X2_model.txt",
+      "model_sha256": "28875332778f11e52fd6d38756617fe237e94a696f8b9419fe922129220485db",
+      "proof_file": "threecolour_X2_w8.cdp5",
+      "proof_sha256": "9b51371e52c6c889950d8ce2925192f400642c40d6dd9f35acc0e0c97e2954ca",
+      "group": "c3",
+      "fault_weight_bound": 8,
+      "baseline_proof_bytes": 919225,
+      "baseline_trace_bits": 7305549,
+      "cdp5_proof_bytes": 43084,
+      "cdp5_trace_bits": 296777,
+      "checker_exit_code": 0
+    }
+  ],
+  "caveats": [
+    "Exact model and declared symmetry are required; projected results must not be promoted to full circuit distance without the separate projection argument and full-model cross-check.",
+    "Proof byte reductions are not provable runtime gains and do not reduce hardware physical-error probabilities.",
+    "Standalone synthetic exhaustive-oracle testing and R198 regression testing each have separate test sources."
+  ],
+  "reproduction_tests": [
+    "python -m pytest -q tests/test_r198_circuit_distance_exact.py tests/test_r205_distance_dual.py"
+  ]
+}

@@ -273,13 +273,31 @@ def certify_shots(det_all: np.ndarray, d: int, r: int, *, hard: bool,
     return out
 
 
-def build_qiskit_circuit(d: int, r: int):
+def build_qiskit_circuit(d: int, r: int, prep: int = 0):
+    r"""The repetition-code memory. ``prep`` selects the logical Z state, 0 or 1.
+
+    *** WHY prep EXISTS, AND WHY ITS DEFAULT MUST NEVER MOVE. *** A memory prepared only in |0> makes
+    the scoring rule one-sided: the true logical class is 0 in every shot, so any decoder bias AWAY
+    from announcing a flip scores as an improvement with nothing to pay for it. Ledger R75 measured a
+    13.6% "improvement" from an anti-herald under exactly that bias, and `|1...1>` is the arm that
+    tells the two apart. For a repetition code both logical Z states have every ZZ parity equal to 0,
+    so the syndrome extraction and every detector are distributed identically and only the noiseless
+    value of the observable moves.
+
+    ``prep=0`` emits byte-identical QASM to every version of this function before the parameter
+    existed, so the circuit hashes minted by earlier preregistrations still verify.
+    """
     from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+    if prep not in (0, 1):
+        raise ValueError(f"prep must be 0 or 1, not {prep!r}")
     data = QuantumRegister(d, "d")
     anc = QuantumRegister(d - 1, "a")
     cregs = [ClassicalRegister(d - 1, f"m{t}") for t in range(r)]
     cfin = ClassicalRegister(d, "fin")
     qc = QuantumCircuit(data, anc, *cregs, cfin)
+    if prep:
+        qc.x(data)
+        qc.barrier()
     for t in range(r):
         for i in range(d - 1):
             qc.cx(data[i], anc[i])
@@ -456,7 +474,7 @@ def mode_submit(a) -> int:
     from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2
     from qiskit.transpiler.preset_passmanagers import (
         generate_preset_pass_manager)
-    qc = build_qiskit_circuit(a.distance, a.rounds)
+    qc = build_qiskit_circuit(a.distance, a.rounds, prep=getattr(a, "prep", 0))
 
     # RESOLVE THE BACKEND AND LAYOUT *BEFORE* THE CONFIG LITERAL.
     # config named `layout` nineteen lines before it was assigned, so
@@ -511,6 +529,7 @@ def mode_submit(a) -> int:
     config = {"distance": a.distance, "rounds": a.rounds, "shots": a.shots,
               "layout": layout,
               "code": "repetition(bit-flip)", "weights": "uniform, declared",
+              "prep": int(getattr(a, "prep", 0)),
               "analysis": "detectors from round diffs; pymatching decode; "
                           "certify_hard per shot; artifact schema "
                           "oneq-ibm-live/1"}
@@ -629,6 +648,13 @@ def main() -> int:
                          "a preregistration should not leave open.")
     ap.add_argument("--backend",
                     help="pin the device instead of least_busy")
+    ap.add_argument("--prep", type=int, choices=(0, 1), default=0,
+                    help="logical Z state to prepare. 0 is the historical default and emits "
+                         "byte-identical QASM to every preregistration minted before this flag "
+                         "existed. 1 is the |1...1> arm that build_qiskit_circuit was written for "
+                         "and which has NEVER BEEN RUN: without it the true logical class is 0 in "
+                         "every shot, so any decoder bias away from announcing a flip scores as "
+                         "free improvement (ledger R75 measured 13.6 percent of exactly that).")
     ap.add_argument("--model", choices=("uniform", "calibrated"),
                     default="uniform",
                     help="decoding model. 'uniform' is what the 2026-08-10 "

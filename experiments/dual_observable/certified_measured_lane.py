@@ -147,6 +147,18 @@ def main(argv=None) -> int:
                    "exists in an artifact; the ratio is against OUR declared baselines on short "
                    "chains and is not comparable to the estimated-DEM or neural-decoder literature")
     out["totals"] = tot
+    # WHICH CHECKER DECIDED "CERTIFIED" (2026-11-02): the exact checkers were fixed on 2026-10-18 (T'-oddness), after
+    # this artifact was first written; the record names its commit and the bytes of the modules that decided it.
+    import subprocess
+
+    def _git(*args: str) -> str:
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    judged = ["src/oneq/matching_cert.py", "src/oneq/matching_cert_strict.py", "src/oneq/certifying_decoder.py",
+              "experiments/ibm_live/rep_code_cert.py"]
+    out["head"] = {"commit": _git("rev-parse", "HEAD"),
+                   "uncommitted_changes_in_src_oneq": bool(_git("status", "--porcelain", "--", "src/oneq")),
+                   "sha256": {p: __import__("hashlib").sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n"))
+                              .hexdigest() for p in judged}}
     print(f"TOTALS: certified {tot['certified_under_measured']}/{tot['nontrivial']} nontrivial over "
           f"{tot['records']} records on {len(tot['devices'])} devices; logical errors "
           f"DEM {tot['logical_errors']['dem']}, uniform {tot['logical_errors']['uniform']}, "

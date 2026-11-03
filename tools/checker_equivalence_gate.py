@@ -89,12 +89,53 @@ FROZEN_SHA256 = {
     # that forced this is pinned in tests/test_exact_dual_repair.py:
     # a genuinely feasible dual with bound 1.0 certified a 1.0000005
     # correction while {1,2} weighed 1.0, and the receipt said gap 0.0.
+    #
+    # RE-FROZEN 2026-09-20 (protocol option 2; behaviour commit fe2d610,
+    # "checkers refuse non-binary syndromes", which came out of the
+    # external audit of paper 2). This gate had been RED since that
+    # commit because the re-freeze was never performed, so a genuine
+    # soundness fix sat indistinguishable from an unreviewed regression.
+    #
+    # *** THE CLASS OF INPUTS WHOSE VERDICT MOVED: a SYNDROME THAT IS
+    # NOT A GF(2) VECTOR. *** The frozen checker read each entry as
+    # `int(b) & 1`, so a malformed instance was silently mapped onto a
+    # DIFFERENT, well-formed one and then certified against it. Measured
+    # against the control fixture of tests/test_qldpc_syndrome_domain.py,
+    # whose well-formed case both versions accept identically:
+    #
+    #     syndrome   frozen                      live
+    #     [1]        ACCEPT (control, unchanged) ACCEPT
+    #     ["1"]      ACCEPT "OPTIMAL"            REFUSE syndrome[0] is not an integer
+    #     [1.0]      ACCEPT "OPTIMAL"            REFUSE syndrome[0] is not an integer
+    #     [3]        ACCEPT "OPTIMAL"            REFUSE syndrome[0] = 3 is not 0 or 1
+    #     [-1]       ACCEPT "OPTIMAL"            REFUSE syndrome[0] = -1 is not 0 or 1
+    #
+    # Four malformed instances accepted as OPTIMAL by the baseline. The
+    # move is strictly toward refusing, on inputs outside the declared
+    # domain, and it is pinned by tests/test_qldpc_syndrome_domain.py,
+    # whose BAD list is chosen so each entry reads as [1] under the old
+    # masking -- the control proves the certificate is otherwise good, so
+    # a refusal can only come from the domain check.
     "qldpc_check.py":
-        "1de3881e541a2b2031e938f11482b9aaf2109398f27083fcda80d8ae0b081b82",
+        "2580ac1f14a97f54a2436b411dbe15609cc69b3bab4848d38a08d7dc7a22eee0",
     "tjoin_exact.py":
         "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+    # RE-FROZEN 2026-10-18 (protocol option 2; behaviour landed in the merge of the cloud campaign, 5f6b39ba,
+    # C177 "matching_cert.check never tests T-oddness", with this gate RED on the bounded wall at ce39500a).
+    #
+    # *** THE CLASS OF INPUTS THAT DECIDE DIFFERENTLY: a dual packing that puts a value on a set S with
+    # |S n T'| EVEN (T' = T u {BOUNDARY} when |T| is odd). *** Such a set is not a T-join cut constraint, so it
+    # cannot carry a dual; the frozen checker never tested it and its forgeries PE1 (a weight-5 correction whose
+    # optimum is 4) and 275 of 2,025 LP-searched forgeries were ACCEPTED. Measured on this gate's own corpus (400
+    # cases, seed 20260804): 36 divergences, ALL in matching_cert.check, ALL on forged or malformed axes
+    # (blossom-even-set 16, slack-dual 5, none 5, even_blossom 4, bad_cut 3, huge_blossom 3), and in EVERY one both
+    # versions REFUSE -- the live checker refuses earlier, at the T'-odd test, so the reason moves and (huge_blossom)
+    # the dual bound is no longer computed. ZERO verdicts flip in either direction; all 156 accepting matching
+    # certificates of the corpus agree exactly, so the fix costs no completeness here. Pinned by
+    # tests/test_matching_forgery_challenge.py and dual_forgery.parity_forgeries_refused (3/3, read from the
+    # checkers' structured t_odd answers, not their reasons).
     "matching_cert.py":
-        "8743421b7e1eb1def0ad63eba66d95bf14d33c67a31a43216624b9a1b1009fcd",
+        "658b2f6af5b5d6438d90a0dfa9b2c7747dc7213fdfee465a556436c3b69ee3da",
 }
 
 
@@ -593,48 +634,16 @@ def _forced_tree_cases(rng: random.Random):
 # allowed to improve only when it is named here, with its justification,
 # and only when the accepted flag and every numeric field are unchanged.
 # A reason change that is not on this list is still a hard failure.
-_REASON_ALIASES = [
-    (r"^OPTIMAL: feasible dual attains the primal weight, so weak duality "
-     r"makes both optimal -- verified without invoking any solver$",
-     r"^OPTIMAL: .* so weak duality makes both optimal -- proven in exact "
-     r"dyadic-rational arithmetic, with no tolerance in the acceptance "
-     r"decision, and without invoking any solver$",
-     "external audit 2026-08-04 finding 4: acceptance moved from a 1e-6 "
-     "tolerance to an exact dyadic-lattice proof. On these cases the "
-     "VERDICT and both numeric fields are unchanged -- the dual attained "
-     "the primal exactly all along -- and only the sentence describing "
-     "WHY changed, from 'verified' to 'proven'. The cases whose verdict "
-     "genuinely moved are the suboptimal-by-tolerance and NaN ones, which "
-     "this alias cannot excuse: it requires accepted and every number to "
-     "match, so a verdict change still fails here."),
-    (r"^decoder claimed weight [0-9.e-]+ but its own edges sum to "
-     r"[0-9.e-]+$",
-     r"^decoder claimed weight [0-9.e-]+ but its own edges sum to "
-     r"[0-9.e-]+$",
-     "2026-08-10: the recomputed sum in this message moved by at most one "
-     "ulp because `matching_cert` now sums the correction's edge weights "
-     "in exact rational arithmetic and rounds ONCE, instead of a running "
-     "float sum whose value depended on edge ORDER. On the surface-d3-5 "
-     "conformance vector the running sum was the value that was NOT "
-     "correctly rounded -- the published receipt held the right one -- so "
-     "the canonical sum is the fix, and the message repr shifts on the "
-     "~0.5% of cases where association error reached an ulp. The VERDICT "
-     "is decided by |claimed - primal| > 1e-6, nine orders above an ulp, "
-     "and this alias still requires the accepted flag and both numeric "
-     "fields (compared at 9 dp) to be identical, so a real verdict or "
-     "value change cannot hide behind it."),
-    (r"^TREE REFUSED: facet \(.*\) has RIGHT parity$",
-     r"^TREE REFUSED: facet \(.*\) has the RIGHT parity -- "
-     r"not a face of the relaxation$",
-     "the tree leaf now states WHY the parity is wrong, in the same "
-     "words the flat checker already used"),
-    (r"^TREE REFUSED: duplicate facet$",
-     r"^TREE REFUSED: facet \(.*\) listed twice$",
-     "names WHICH facet was duplicated instead of only that one was"),
-    (r"^TREE REFUSED: redundant check \(.*\) invalid$",
-     r"^TREE REFUSED: redundant check \(.*\) is not >=2 valid rows$",
-     "states the rule that was violated rather than the word 'invalid'"),
-]
+# EMPTIED 2026-10-18, at the re-freeze of matching_cert.py. Six aliases stood here: two for matching_cert
+# reason rewordings since its 2026-08 freeze ("OPTIMAL: ... proven in exact dyadic-rational arithmetic", the
+# one-ulp "decoder claimed weight" sum) -- 163 uses on the wall's corpus -- and four for qldpc_check tree-leaf
+# and non-binary-syndrome rewordings that had matched NOTHING since their modules were re-frozen (2026-08-14,
+# 2026-09-20), hidden because the unused-alias rule asked only whether ANY alias was used. With matching_cert
+# re-frozen to the live bytes the frozen and live reasons are identical: measured 0 uses of every alias at 400
+# and 1,500 cases. A standing permission nothing reaches is where a real divergence would hide, so all six are
+# deleted, and every alias added later must be reached on its own (see _ALIAS_HITS). Their text is in git
+# history at the commit before this one.
+_REASON_ALIASES: list = []
 
 
 def _agree(a, b):
@@ -652,10 +661,15 @@ def _agree(a, b):
         return False, False
     if a[2:] != b[2:]:              # primal weight / dual bound moved
         return False, False
-    for old, new, _why in _REASON_ALIASES:
+    for i, (old, new, _why) in enumerate(_REASON_ALIASES):
         if re.match(old, str(a[1])) and re.match(new, str(b[1])):
+            _ALIAS_HITS[i] = _ALIAS_HITS.get(i, 0) + 1
             return True, True
     return False, False
+
+
+#: uses per declared alias, by index: EVERY alias must be reached, not just one of them
+_ALIAS_HITS: dict = {}
 
 
 BOUNDARY = -1
@@ -1474,14 +1488,18 @@ def main() -> int:
     print(f"  reason improved via a DECLARED alias: {stats['aliased']} "
           f"(verdict and every number identical in all of them)")
 
-    # The declared aliases must actually be USED. An alias nobody reaches
-    # is a permission granted for a case the corpus cannot produce, which
-    # would let a later real divergence hide behind it unnoticed.
-    if stats["aliased"] == 0 and _REASON_ALIASES:
-        print("DECLARED ALIASES UNUSED: the corpus never reaches the "
-              "reason changes this gate was told to permit -- either the "
-              "permission is stale and should be deleted, or the corpus "
-              "no longer covers the leaf facet rule")
+    # The declared aliases must actually be USED -- EACH of them. An alias
+    # nobody reaches is a permission granted for a case the corpus cannot
+    # produce, which would let a later real divergence hide behind it
+    # unnoticed. The first version asked only whether ANY alias was used:
+    # 2026-10-18, two matching_cert aliases carried 163 uses while the four
+    # qldpc ones had matched nothing since their modules were re-frozen.
+    unused = [i for i in range(len(_REASON_ALIASES)) if not _ALIAS_HITS.get(i)]
+    if unused:
+        print(f"DECLARED ALIASES UNUSED: {len(unused)} of {len(_REASON_ALIASES)} "
+              f"permitted reason changes are never reached by the corpus "
+              f"(indices {unused}) -- either the permission is stale and "
+              f"should be deleted, or the corpus no longer covers its case")
         return 1
 
     # A corpus that never accepts, or never rejects, proves nothing about

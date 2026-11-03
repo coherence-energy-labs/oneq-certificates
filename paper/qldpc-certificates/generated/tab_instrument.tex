@@ -1,12 +1,13 @@
-\begin{tabular}{@{}lcccccc@{}}
+\begin{tabular}{@{}lcccccccccc@{}}
 \toprule
- & \multicolumn{3}{c}{tier 1: BP-OSD's answer certified by the flat route} & \multicolumn{3}{c}{optimum hit: BP-OSD's answer feasible at the certified optimum} \\
-$p$ & A & B & C & A & B & C \\
+ & \multicolumn{5}{c}{tier 1 (flat route)} & \multicolumn{5}{c}{optimum hit} \\
+\cmidrule(lr){2-6}\cmidrule(l){7-11}
+$p$ & A$^\dagger$ & B$^\dagger$ & C & A$_s$ & B$_s$ & A$^\dagger$ & B$^\dagger$ & C & A$_s$ & B$_s$ \\
 \midrule
-0.01 & 199 & 200 & 200 & 199 & 200 & 200 \\
-0.02 & 190 & 200 & 197 & 190 & 200 & 197 \\
-0.03 & 165 & 199 & 200 & 165 & 199 & 200 \\
-0.05 & 84 & 86 & 187 & 84 & 87 & 198 \\
-0.07 & 24 & 143 & 146 & 24 & 171 & 196 \\
+0.01 & 199 & 200 & 200 & 199 & 199 & 199\,[199--200] & 200\,[198--200] & 200 & 199 & 199 \\
+0.02 & 190 & 200 & 197 & 196 & 197 & 190\,[183--190] & 200\,[182--200] & 197 & 196 & 197 \\
+0.03 & 165 & 199 & 200 & 199 & 198 & 165\,[162--165] & 199\,[165--200] & 200 & 199 & 198 \\
+0.05 & 84 & 86 & 187 & 185 & 185 & 84\,[84--88] & 87\,[87--197] & 198 & 197 & 197 \\
+0.07 & 24 & 143 & 146 & 145 & 145 & 24\,[21--24] & 171\,[20--178] & 196 & 196 & 196 \\
 \bottomrule
 \end{tabular}

@@ -1,0 +1,200 @@
+{"shot": 0, "support": [110], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "a46f746429a3c0bd", "logical_error": false}
+{"shot": 1, "support": [12, 125], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "35e3e18d9a267757", "logical_error": false}
+{"shot": 2, "support": [48, 90, 98], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "34778e925e6008be", "logical_error": false}
+{"shot": 3, "support": [29, 128], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "6676c973a84850a4", "logical_error": false}
+{"shot": 4, "support": [16], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "5f921437302c8569", "logical_error": false}
+{"shot": 5, "support": [23], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "5c89156a6e10405c", "logical_error": false}
+{"shot": 6, "support": [113], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "3c6148c882121e22", "logical_error": false}
+{"shot": 7, "support": [9, 10, 136], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "7b0969a17da97f98", "logical_error": false}
+{"shot": 8, "support": [89, 93, 103], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "cdddc02ed9b41891", "logical_error": false}
+{"shot": 9, "support": [18, 30], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "f07408cef15ae928", "logical_error": false}
+{"shot": 10, "support": [75, 78], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "a0597c7d78f812da", "logical_error": false}
+{"shot": 11, "support": [110, 141], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "22c563cf75fa815c", "logical_error": false}
+{"shot": 12, "support": [24, 70], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "da67b2170129f496", "logical_error": false}
+{"shot": 13, "support": [104, 128, 136], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "e646580f8c7b9e9c", "logical_error": false}
+{"shot": 14, "support": [85, 119, 132], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "e7367e39a2e368c7", "logical_error": false}
+{"shot": 15, "support": [41, 42, 74], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "f5733134489916bd", "logical_error": false}
+{"shot": 16, "support": [104, 122], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "d95017549c1d103d", "logical_error": false}
+{"shot": 17, "support": [18], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "3c69b1a9b63f8172", "logical_error": false}
+{"shot": 18, "support": [37, 60, 128], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "4dfe734d0ef8f0b0", "logical_error": false}
+{"shot": 19, "support": [32], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "f05ff38901444929", "logical_error": false}
+{"shot": 20, "support": [64, 100, 138], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "96560c29d1e52e8d", "logical_error": false}
+{"shot": 21, "support": [75], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "cec5aa6341e3bbd1", "logical_error": false}
+{"shot": 22, "support": [40, 48, 54, 135], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "e920f0afbc0985a4", "logical_error": false}
+{"shot": 23, "support": [35], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "ebfed35356d9b011", "logical_error": false}
+{"shot": 24, "support": [0, 79, 121, 124], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "9784031e6dfa4ae8", "logical_error": false}
+{"shot": 25, "support": [82], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "128c12aa50b5cfa0", "logical_error": false}
+{"shot": 26, "support": [134], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "c6024b0a28073d5e", "logical_error": false}
+{"shot": 27, "support": [3, 45, 82, 128], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "e167593d2372c7be", "logical_error": false}
+{"shot": 28, "support": [10], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "cbaf0965efb08220", "logical_error": false}
+{"shot": 29, "support": [53], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "2d3f2225a815732f", "logical_error": false}
+{"shot": 30, "support": [111], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "6fcfbc5049bf2b3e", "logical_error": false}
+{"shot": 31, "support": [106], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "83ff3ab63c16a4f4", "logical_error": false}
+{"shot": 32, "support": [9], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "ffa33b1b16d112be", "logical_error": false}
+{"shot": 33, "support": [26, 107], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "c784223865015898", "logical_error": false}
+{"shot": 34, "support": [10, 37], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "580ef705c6def483", "logical_error": false}
+{"shot": 35, "support": [3, 100, 123, 125], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "7098e256b4c25417", "logical_error": false}
+{"shot": 36, "support": [5, 20, 50, 85], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "98e10ef456d06729", "logical_error": false}
+{"shot": 37, "support": [21, 25], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "337d74d6c1b6c3ba", "logical_error": false}
+{"shot": 38, "support": [7, 17, 22, 23, 25, 26, 32, 39, 42, 90, 102], "syndrome_valid": true, "weight": 11, "optimum_hit": false, "tier1": false, "tier1_proof": null, "logical_error": false}
+{"shot": 39, "support": [57, 58], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "72d3622fe286a309", "logical_error": false}
+{"shot": 40, "support": [16, 81, 84, 137], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "539f0f2b287277fd", "logical_error": false}
+{"shot": 41, "support": [73], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "e9df6116fd55a222", "logical_error": false}
+{"shot": 42, "support": [16, 43], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "01459171cdea3cb2", "logical_error": false}
+{"shot": 43, "support": [71, 82, 111], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "b9addb385f8ebf50", "logical_error": false}
+{"shot": 44, "support": [39], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "52c3f9f63aa0bd99", "logical_error": false}
+{"shot": 45, "support": [28, 86, 90], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "82e9e6e376922d26", "logical_error": false}
+{"shot": 46, "support": [8, 114, 124], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "d4ea94cda1c7757c", "logical_error": false}
+{"shot": 47, "support": [82], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "128c12aa50b5cfa0", "logical_error": false}
+{"shot": 48, "support": [73], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "e9df6116fd55a222", "logical_error": false}
+{"shot": 49, "support": [65, 95, 129], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "e09f453e2c96dc9d", "logical_error": false}
+{"shot": 50, "support": [49], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "10b1d09e0a213c0b", "logical_error": false}
+{"shot": 51, "support": [14], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "7626238e0b15f50f", "logical_error": false}
+{"shot": 52, "support": [75, 85], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "f1db4df23f4c994c", "logical_error": false}
+{"shot": 53, "support": [60], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "0fc62bc770658b5c", "logical_error": false}
+{"shot": 54, "support": [45, 87], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "289d040b208e11c8", "logical_error": false}
+{"shot": 55, "support": [12, 122], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "959ed5332f2f276f", "logical_error": false}
+{"shot": 56, "support": [2, 26, 71], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "1c9ff3b974f251c7", "logical_error": false}
+{"shot": 57, "support": [23, 54], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "ea861445a8a8348d", "logical_error": false}
+{"shot": 58, "support": [66, 91], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "fcccc933471a1d82", "logical_error": false}
+{"shot": 59, "support": [107], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "32cb85f600b5f4d9", "logical_error": false}
+{"shot": 60, "support": [28, 68], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "a2ddaa4f644c0bd6", "logical_error": false}
+{"shot": 61, "support": [70, 119], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "50638defa94b5814", "logical_error": false}
+{"shot": 62, "support": [46, 62], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "22fc7aa7ff20395a", "logical_error": false}
+{"shot": 63, "support": [50], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "72ca85e78a7b7c50", "logical_error": false}
+{"shot": 64, "support": [112], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "4295673490d62add", "logical_error": false}
+{"shot": 65, "support": [14], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "7626238e0b15f50f", "logical_error": false}
+{"shot": 66, "support": [25, 76], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "7cf91277c1202123", "logical_error": false}
+{"shot": 67, "support": [12, 117], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "00bf32f38208dbb0", "logical_error": false}
+{"shot": 68, "support": [18, 42, 134, 135], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "1cf9d9c71df741c5", "logical_error": false}
+{"shot": 69, "support": [68], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "0878e1768d987afe", "logical_error": false}
+{"shot": 70, "support": [90], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "e33a7d752182d17a", "logical_error": false}
+{"shot": 71, "support": [8, 88, 128], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "bcf6af158c86e832", "logical_error": false}
+{"shot": 72, "support": [31, 104, 135], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "262647427d1f36e0", "logical_error": false}
+{"shot": 73, "support": [88, 97], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "0ffd601a7414dcac", "logical_error": false}
+{"shot": 74, "support": [31, 37, 53], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "e2b6cc81993eb70d", "logical_error": false}
+{"shot": 75, "support": [75, 76, 143], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "4b5caa9334bb5c77", "logical_error": false}
+{"shot": 76, "support": [8, 39, 51], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "0dee6d369c6020c2", "logical_error": false}
+{"shot": 77, "support": [64], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "03b24a37885eec4f", "logical_error": false}
+{"shot": 78, "support": [90], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "e33a7d752182d17a", "logical_error": false}
+{"shot": 79, "support": [43], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "b57ed0882a5dd10d", "logical_error": false}
+{"shot": 80, "support": [51], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "78587ea49ae1cce1", "logical_error": false}
+{"shot": 81, "support": [91], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "f8349edc7615a525", "logical_error": false}
+{"shot": 82, "support": [127], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "a7a179c8acde197f", "logical_error": false}
+{"shot": 83, "support": [21, 100], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "8c586d1708bb1bc1", "logical_error": false}
+{"shot": 84, "support": [3, 20, 25, 59], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "28adce9ebdce106d", "logical_error": false}
+{"shot": 85, "support": [43, 112], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "a258729fadcde7c5", "logical_error": false}
+{"shot": 86, "support": [112, 118], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "054739ba87444dc8", "logical_error": false}
+{"shot": 87, "support": [33, 68], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "3d8213ecc5b7cd67", "logical_error": false}
+{"shot": 88, "support": [17, 49, 69, 125, 132], "syndrome_valid": true, "weight": 5, "optimum_hit": true, "tier1": true, "tier1_proof": "699895f195336b8c", "logical_error": false}
+{"shot": 89, "support": [0, 25], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "8f7e4639b138009a", "logical_error": false}
+{"shot": 90, "support": [7, 55], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "728f07452a1f705d", "logical_error": false}
+{"shot": 91, "support": [56], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "18d6271cb04dbb4e", "logical_error": false}
+{"shot": 92, "support": [47], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "fcbc25a90ba30f34", "logical_error": false}
+{"shot": 93, "support": [16, 32, 84, 143], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "62ac13b98b46d156", "logical_error": false}
+{"shot": 94, "support": [14, 74], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "4ffc24e8bcc634f2", "logical_error": false}
+{"shot": 95, "support": [61, 66], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "385e9592576190e3", "logical_error": false}
+{"shot": 96, "support": [52], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "472e10d1a2590564", "logical_error": false}
+{"shot": 97, "support": [1, 88, 131], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "b0881315b75edbfc", "logical_error": false}
+{"shot": 98, "support": [4, 121], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "637778d98662b560", "logical_error": false}
+{"shot": 99, "support": [34], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "7c71dd681c66f491", "logical_error": false}
+{"shot": 100, "support": [35, 69], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "b453ee47670dc328", "logical_error": false}
+{"shot": 101, "support": [31], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "6f70a77bf561e2ee", "logical_error": false}
+{"shot": 102, "support": [75], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "cec5aa6341e3bbd1", "logical_error": false}
+{"shot": 103, "support": [4], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "ef3a2b4cd64e32d7", "logical_error": false}
+{"shot": 104, "support": [13], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "a4e8f6d78a10083f", "logical_error": false}
+{"shot": 105, "support": [63], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "e667edf7369b3b2c", "logical_error": false}
+{"shot": 106, "support": [91, 98, 100], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "d4dd51ee2b172c25", "logical_error": false}
+{"shot": 107, "support": [5, 133, 143], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "9722f107575ba825", "logical_error": false}
+{"shot": 108, "support": [53, 118, 138], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "dad4de594c420f02", "logical_error": false}
+{"shot": 109, "support": [12, 40], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "0861184ede13945f", "logical_error": false}
+{"shot": 110, "support": [106], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "83ff3ab63c16a4f4", "logical_error": false}
+{"shot": 111, "support": [142], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "946e0364fbfd964d", "logical_error": false}
+{"shot": 112, "support": [133, 141], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "c60aee33006200ef", "logical_error": false}
+{"shot": 113, "support": [113, 124], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "71f48434504b4209", "logical_error": false}
+{"shot": 114, "support": [39], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "52c3f9f63aa0bd99", "logical_error": false}
+{"shot": 115, "support": [18, 23, 90, 113], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "1c3727c172e96acc", "logical_error": false}
+{"shot": 116, "support": [114], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "8b0fa42fb057d087", "logical_error": false}
+{"shot": 117, "support": [106], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "83ff3ab63c16a4f4", "logical_error": false}
+{"shot": 118, "support": [11, 95], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "cb0b61a7ac4f83fa", "logical_error": false}
+{"shot": 119, "support": [10, 52, 72], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "f3614d2abc04c251", "logical_error": false}
+{"shot": 120, "support": [38, 127], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "34516a0177ef6ef1", "logical_error": false}
+{"shot": 121, "support": [41], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "22c0b1338da16fb1", "logical_error": false}
+{"shot": 122, "support": [47, 95, 98, 135], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "75ffceac0e4c1f8a", "logical_error": false}
+{"shot": 123, "support": [29, 48, 88], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "5e63ee810c093b86", "logical_error": false}
+{"shot": 124, "support": [101, 125], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "7ecc2b6d8152abbb", "logical_error": false}
+{"shot": 125, "support": [30, 60, 88, 115], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "697a286fa1742d1b", "logical_error": false}
+{"shot": 126, "support": [91], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "f8349edc7615a525", "logical_error": false}
+{"shot": 127, "support": [19, 24, 40], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "4c78527b40ce96b0", "logical_error": false}
+{"shot": 128, "support": [50, 66, 73, 81], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "07a95e19f776a22d", "logical_error": false}
+{"shot": 129, "support": [13, 17], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "5f5eae2413897b44", "logical_error": false}
+{"shot": 130, "support": [32, 64, 102], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "623cc978616b74e7", "logical_error": false}
+{"shot": 131, "support": [125], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "7bbb9cafdb745f2f", "logical_error": false}
+{"shot": 132, "support": [17, 139], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "0a632d6e792dc4e0", "logical_error": false}
+{"shot": 133, "support": [77], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "4110406a7b225c1a", "logical_error": false}
+{"shot": 134, "support": [5, 30, 42, 101, 137], "syndrome_valid": true, "weight": 5, "optimum_hit": true, "tier1": true, "tier1_proof": "007b4f5186451b8e", "logical_error": false}
+{"shot": 135, "support": [23, 68, 124], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "9e2881658a14c98c", "logical_error": false}
+{"shot": 136, "support": [0, 62, 94, 108], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "eaaee807ab39d161", "logical_error": false}
+{"shot": 137, "support": [72], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "da5e945f2a8068ff", "logical_error": false}
+{"shot": 138, "support": [98], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "9823690ce4afc8cf", "logical_error": false}
+{"shot": 139, "support": [124], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "df85c94b605c6244", "logical_error": false}
+{"shot": 140, "support": [112, 134], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "1cb54a38014e472d", "logical_error": false}
+{"shot": 141, "support": [5, 54], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "b5d44730dc660ce3", "logical_error": false}
+{"shot": 142, "support": [65, 79, 140], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "45698257b1859e60", "logical_error": false}
+{"shot": 143, "support": [14, 40], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "9c5b51ba5db09db0", "logical_error": false}
+{"shot": 144, "support": [34, 49], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "b7b01d76b74ebe9a", "logical_error": false}
+{"shot": 145, "support": [6], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "aa9ad9dcb7d4534d", "logical_error": false}
+{"shot": 146, "support": [1, 100, 132], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "5be99c698127e7ea", "logical_error": false}
+{"shot": 147, "support": [33, 136], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "67be08e1fe4007fc", "logical_error": false}
+{"shot": 148, "support": [27], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "12b7a442b17b42c0", "logical_error": false}
+{"shot": 149, "support": [43, 53, 82, 101], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "374cba132c65cb3b", "logical_error": false}
+{"shot": 150, "support": [130], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "9a4bfc46a1c5d1d9", "logical_error": false}
+{"shot": 151, "support": [120], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "b3d2a29d3b1d8d53", "logical_error": false}
+{"shot": 152, "support": [5, 20, 54, 63, 69, 118], "syndrome_valid": true, "weight": 6, "optimum_hit": true, "tier1": true, "tier1_proof": "e4b2019ffa7d9fa0", "logical_error": false}
+{"shot": 153, "support": [143], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "fe17c67d19f257f1", "logical_error": false}
+{"shot": 154, "support": [62, 134], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "60a97daa7aeece5c", "logical_error": false}
+{"shot": 155, "support": [133], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "4f71b73f952e87d8", "logical_error": false}
+{"shot": 156, "support": [0, 42, 48], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "19a9d34c37c3046e", "logical_error": false}
+{"shot": 157, "support": [131], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "574b69bf445558a6", "logical_error": false}
+{"shot": 158, "support": [85, 135], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "3b53e28539608f3f", "logical_error": false}
+{"shot": 159, "support": [61, 75], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "c0e3b70ce8b7c3fc", "logical_error": false}
+{"shot": 160, "support": [12], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "05e4b0e26a642005", "logical_error": false}
+{"shot": 161, "support": [18], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "3c69b1a9b63f8172", "logical_error": false}
+{"shot": 162, "support": [82], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "128c12aa50b5cfa0", "logical_error": false}
+{"shot": 163, "support": [106], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "83ff3ab63c16a4f4", "logical_error": false}
+{"shot": 164, "support": [116], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "beb02650990510d7", "logical_error": false}
+{"shot": 165, "support": [9, 97], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "830119a91ad6c3f1", "logical_error": false}
+{"shot": 166, "support": [9, 94, 104], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "5aed053ae8275cea", "logical_error": false}
+{"shot": 167, "support": [19, 20, 65, 142], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "6176220ae588b69b", "logical_error": false}
+{"shot": 168, "support": [35, 39], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "66e7fb0e66b7f9f6", "logical_error": false}
+{"shot": 169, "support": [64], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "03b24a37885eec4f", "logical_error": false}
+{"shot": 170, "support": [82], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "128c12aa50b5cfa0", "logical_error": false}
+{"shot": 171, "support": [1], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "b1b13e6167ad107f", "logical_error": false}
+{"shot": 172, "support": [33, 43, 117], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "a39b2efe99bed46d", "logical_error": false}
+{"shot": 173, "support": [36, 120], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "b9ceae0abca9673d", "logical_error": false}
+{"shot": 174, "support": [25, 27], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "388316753b9b8006", "logical_error": false}
+{"shot": 175, "support": [87, 140], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "947a0c42582442e6", "logical_error": false}
+{"shot": 176, "support": [27, 90, 110], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "651572641323c992", "logical_error": false}
+{"shot": 177, "support": [40, 77], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "008f5df476c790b3", "logical_error": false}
+{"shot": 178, "support": [43, 69], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "ea4c6be5c358bc3d", "logical_error": false}
+{"shot": 179, "support": [42, 67], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "e597f91aae41883d", "logical_error": false}
+{"shot": 180, "support": [0], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "b1ee0959b3da75e6", "logical_error": false}
+{"shot": 181, "support": [129], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "57e60c9e03e6ad29", "logical_error": false}
+{"shot": 182, "support": [127], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "a7a179c8acde197f", "logical_error": false}
+{"shot": 183, "support": [8, 86, 141], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "e1f767b988398493", "logical_error": false}
+{"shot": 184, "support": [5, 101, 119, 134], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "8de6917d51d01fda", "logical_error": false}
+{"shot": 185, "support": [3, 85], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "f4fb8d69d6eed8cc", "logical_error": false}
+{"shot": 186, "support": [73], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "e9df6116fd55a222", "logical_error": false}
+{"shot": 187, "support": [35], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "ebfed35356d9b011", "logical_error": false}
+{"shot": 188, "support": [45, 113, 125], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "82bbef075d8b74ae", "logical_error": false}
+{"shot": 189, "support": [10, 16, 61, 140], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "919bde47cda4ebf3", "logical_error": false}
+{"shot": 190, "support": [23], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "5c89156a6e10405c", "logical_error": false}
+{"shot": 191, "support": [27], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "12b7a442b17b42c0", "logical_error": false}
+{"shot": 192, "support": [19, 71, 73, 115], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "b3f2184ec0edd6d6", "logical_error": false}
+{"shot": 193, "support": [28, 37, 121], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "980d18fcdae2c498", "logical_error": false}
+{"shot": 194, "support": [37, 110], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "27c5591a5483a930", "logical_error": false}
+{"shot": 195, "support": [135, 140], "syndrome_valid": true, "weight": 2, "optimum_hit": true, "tier1": true, "tier1_proof": "273490c0461cfb2d", "logical_error": false}
+{"shot": 196, "support": [49, 80, 122, 141], "syndrome_valid": true, "weight": 4, "optimum_hit": true, "tier1": true, "tier1_proof": "c84ddcdef00131dc", "logical_error": false}
+{"shot": 197, "support": [139], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "5b87821f7be59ae5", "logical_error": false}
+{"shot": 198, "support": [1, 23, 131], "syndrome_valid": true, "weight": 3, "optimum_hit": true, "tier1": true, "tier1_proof": "97f4fdc14991525b", "logical_error": false}
+{"shot": 199, "support": [5], "syndrome_valid": true, "weight": 1, "optimum_hit": true, "tier1": true, "tier1_proof": "092ee8445da3e399", "logical_error": false}

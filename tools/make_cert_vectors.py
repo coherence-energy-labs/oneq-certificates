@@ -142,6 +142,24 @@ def main() -> int:
         wrong["expected_reason"] = "GRAPH MISMATCH"
         vectors.append(wrong)
 
+    # THE PARITY FORGERIES (2026-11-02, paper 1's second referee, M1). Until 2026-10-18 the Python exact checker
+    # accepted PE1 and the strict checker PB1/PB2: duals on sets that are not T'-odd, so not T-join constraints, each
+    # "proving" a correction heavier than the optimum. The JavaScript checker refused them all along, so the two
+    # implementations DISAGREED on exactly these inputs -- and no vector contained one. Each is a refusal vector now.
+    from oneq.dual_forgery import PARITY_FORGERIES
+    from oneq.matching_cert import MatchingCertificate
+    for name, pedges, T, F, Z, wF, _opt in PARITY_FORGERIES:
+        forged = MatchingCertificate(tuple(tuple(e) for e in F), {}, {S: float(v) for S, v in Z.items()})
+        v = check(edges=pedges, syndrome=list(T), cert=forged)
+        if v.accepted or v.checks.get("dual_sets_t_odd") is not False:
+            raise SystemExit(f"the Python checker does not refuse {name} as T-even -- fix that before publishing")
+        fdoc = to_document(edges=pedges, syndrome=list(T), cert=forged, proven_optimal=True,
+                           primal=float(wF), bound=float(sum(Z.values())),
+                           reason=f"forged: {name} (dual sets that are not T'-odd)",
+                           graph_sha256=graph_fingerprint(pedges))
+        vectors.append({"name": f"parity-{name}", "graph": [[int(u), int(w_), f2h(c)] for u, w_, c in pedges],
+                        "document": fdoc, "expected_accepted": False, "expected_reason": v.reason})
+
     n_acc = sum(1 for v in vectors if v["expected_accepted"])
     doc = {
         "schema": "oneq-certificate-conformance/1",
@@ -157,7 +175,7 @@ def main() -> int:
                    "expected_refuse": len(vectors) - n_acc},
         "vectors": vectors,
     }
-    dest = ROOT / "conformance" / "cert_vectors.json"
+    dest = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "conformance" / "cert_vectors.json"
     dest.parent.mkdir(exist_ok=True)
     dest.write_text(json.dumps(doc, indent=1), encoding="utf-8")
     print(f"{len(vectors)} vectors ({n_acc} accept, {len(vectors)-n_acc} refuse) "

@@ -152,6 +152,7 @@ def moat_growth(edges, syndrome, *, adj=None, max_events: int = 100_000):
         touch(t)
 
     z: dict[frozenset, float] = {}
+    members_snapshot: dict[int, frozenset] = {}
     active_roots = {dsu.find(t) for t in T if dsu.active(dsu.find(t))}
 
     events = 0
@@ -177,7 +178,9 @@ def moat_growth(edges, syndrome, *, adj=None, max_events: int = 100_000):
             rate = (ru in active_roots) + (rv in active_roots)
             if rate == 0:
                 continue                      # dormant, but may wake on a merge
-            slack = w - dsu.y(u) - dsu.y(v)
+            # Roots were just found above. Looking them up again for each
+            # endpoint repeats two union-find walks for every frontier edge.
+            slack = w - (dsu.base[u] + dsu.A[ru]) - (dsu.base[v] + dsu.A[rv])
             if slack < 0.0:
                 slack = 0.0                   # numerical floor: never negative
             tt = slack / rate
@@ -191,13 +194,19 @@ def moat_growth(edges, syndrome, *, adj=None, max_events: int = 100_000):
 
         if best_t > 0.0:
             for r in active_roots:
-                S = frozenset(dsu.members[r])
+                # Other moats' events do not change this component's members.
+                # Keep its immutable key until a union changes its membership.
+                S = members_snapshot.get(r)
+                if S is None:
+                    S = members_snapshot[r] = frozenset(dsu.members[r])
                 z[S] = z.get(S, 0.0) + best_t
                 dsu.grow(r, best_t)
 
         u, v, _w = best_e
         ra, rb = dsu.find(u), dsu.find(v)
         merged = dsu.union(u, v)
+        members_snapshot.pop(ra, None)
+        members_snapshot.pop(rb, None)
         touch(u)
         touch(v)                              # one side may be newly enclosed
         active_roots.discard(ra)              # both old identities are gone
@@ -561,7 +570,8 @@ def cs_family(edges, correction, syndrome, *, adj=None,
 
 
 def matching_dual_candidates(edges, syndrome, *, adj=None,
-                             max_rounds: int = 12, levels_per_set: int = 6):
+                             max_rounds: int = 12, levels_per_set: int = 6,
+                             distance_source=None):
     r"""Blossom-SHAPED candidates from a cutting-plane matching dual.
 
     THE IDEA, stated once. The optimal cut packing is laminar, cut-once, and
@@ -593,13 +603,13 @@ def matching_dual_candidates(edges, syndrome, *, adj=None,
     may consult any oracle it likes; the checker cannot be talked into
     anything by it.
     """
+    T = sorted({int(s) for s in syndrome})
+    if not T:
+        return []
     import numpy as np
     from scipy.optimize import linprog
     if adj is None:
         adj = build_adj(edges)
-    T = sorted({int(s) for s in syndrome})
-    if not T:
-        return []
 
     # shortest-path fields from every terminal (reused for the translation)
     import heapq
@@ -618,7 +628,11 @@ def matching_dual_candidates(edges, syndrome, *, adj=None,
                     heapq.heappush(pq, (nd, v))
         return dist
 
-    dists = {t: dij(t) for t in T}
+    # The decoder already owns a normalized sparse graph. Its native kernel
+    # avoids repeating the Python heap walk for every terminal. Standalone
+    # callers retain the reference path; neither path is trusted by a checker.
+    dists = (distance_source(T) if distance_source is not None
+             else {t: dij(t) for t in T})
     BIG = 1e9
 
     # closure nodes: ('t', t) and one boundary copy ('b', t) per terminal

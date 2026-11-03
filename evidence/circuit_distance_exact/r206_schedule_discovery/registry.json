@@ -1,0 +1,1154 @@
+{
+  "schema": "oneq.r206.proof_gated_schedule_search.v1",
+  "scope": "seeded sample, fixed hardware depth, same-type projected distance, full-model upper witness",
+  "sample_seed": 20662,
+  "sample_size": 240,
+  "side_matched_proposals": 240,
+  "valid_two_basis_schedules": 12,
+  "candidate_count_including_baseline": 13,
+  "input_model": "[[72,12,6]] IBM-style BB, two memory rounds, seven CNOT slots",
+  "source_hashes": {
+    "bb_circuits.py": "93869cbab5787769b30eaba5ececaface9556b18188ba7f32b9a83a70665f1e4",
+    "export_model.py": "7610331cdca87aad889374a4227cb7a1beb67709be3e7ce810b851de54419fb3",
+    "dem_independent.py": "0560075b6a18cb6fe4ec8f5a334017ef35b288f7d1750d61fa4bc4a096895bc2",
+    "cdist.c": "16606333dfc85985200c855bf6521b2ed13ea80e0a5668c8e4b0b196c5a1e1c8",
+    "cdist_prove.c": "e0e8f38dc5334c5d387bdce4d54859c51cb896ad38bb7b4a0fab6f04758ec203",
+    "ccheck.c": "14565d21c19df2b8e149314e355dd4d1fa0b32187a4743e97d0f445c650541a5",
+    "r206_schedule_discovery.py": "ec83ee621b48c00132ba2ffe82376951e54e2516129f5f5441a589ba7cc03e66"
+  },
+  "not_claimed": [
+    "globally optimal scheduling",
+    "physical-hardware improvement",
+    "logical-error-rate superiority",
+    "novel schedule synthesis theorem"
+  ],
+  "prior_art": "AlphaSyndrome, ASPLOS 2026, arXiv:2601.12509; R198 circuit-distance work",
+  "records": [
+    {
+      "name": "baseline",
+      "sx": [
+        "idle",
+        1,
+        4,
+        3,
+        5,
+        0,
+        2
+      ],
+      "sz": [
+        3,
+        5,
+        0,
+        1,
+        2,
+        4,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/baseline/X_model.txt",
+          "model_sha256": "31bd10cd6f764752e26594e610cd87e9c65336ef1fe2befb0eaed9dabd5d60b2",
+          "proof_path": "cases/baseline/X_lower_5.cdp5",
+          "proof_sha256": "429fb24955622e69ce5ad451762dc0c4006ffd0caf5e288a7d747ab4763dfad3",
+          "proof_bytes": 1842,
+          "projected_witness": [
+            0,
+            17,
+            39,
+            63,
+            49,
+            87
+          ],
+          "full_witness": [
+            0,
+            72,
+            172,
+            286,
+            229,
+            400
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/baseline/Z_model.txt",
+          "model_sha256": "5c557c40f29df23a8f19bcc5675339faf1fd55ca835041a33f6322affe3474a9",
+          "proof_path": "cases/baseline/Z_lower_5.cdp5",
+          "proof_sha256": "e76b62b28e456614feddcc4828042587b6fee84b4b281d2236d05ce7b7c64344",
+          "proof_bytes": 1658,
+          "projected_witness": [
+            0,
+            2,
+            16,
+            30,
+            50,
+            76
+          ],
+          "full_witness": [
+            0,
+            2,
+            51,
+            100,
+            163,
+            259
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32724 (table 2^16, 1 MB)"
+        }
+      ],
+      "verdict": "BASELINE"
+    },
+    {
+      "name": "proposal_009",
+      "sx": [
+        "idle",
+        0,
+        3,
+        5,
+        4,
+        2,
+        1
+      ],
+      "sz": [
+        5,
+        4,
+        2,
+        0,
+        1,
+        3,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_009/X_model.txt",
+          "model_sha256": "6506efb86f096f070d3388f05f5b4dad40458ff86d7c68f5936d84ade5c7832c",
+          "proof_path": "cases/proposal_009/X_lower_5.cdp5",
+          "proof_sha256": "f5008480336ac1149fa7acd20eb85193133c8b163a829fea318ac54775a0e66f",
+          "proof_bytes": 1818,
+          "projected_witness": [
+            0,
+            4,
+            59,
+            61,
+            141,
+            168
+          ],
+          "full_witness": [
+            0,
+            16,
+            278,
+            283,
+            663,
+            792
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_009/Z_model.txt",
+          "model_sha256": "f3b921ba68e9f0de3d65a3ae28b7410e3b49c1b21e59b25e3eb6b93e82dad46d",
+          "proof_path": "cases/proposal_009/Z_lower_5.cdp5",
+          "proof_sha256": "c6510980c20a714a0127d9df6401abcc0e5fb3836ee7e3b4c68fc818a53e861b",
+          "proof_bytes": 1890,
+          "projected_witness": [
+            0,
+            1,
+            16,
+            31,
+            52,
+            80
+          ],
+          "full_witness": [
+            0,
+            1,
+            51,
+            101,
+            165,
+            263
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32724 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 9,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_027",
+      "sx": [
+        "idle",
+        4,
+        2,
+        1,
+        0,
+        5,
+        3
+      ],
+      "sz": [
+        0,
+        2,
+        4,
+        5,
+        3,
+        1,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_027/X_model.txt",
+          "model_sha256": "ea2d8e7970c410dceb7a171b4f5c74f79d36c6afaa16fbceb325fcd2c66861c8",
+          "proof_path": "cases/proposal_027/X_lower_5.cdp5",
+          "proof_sha256": "33762886e179bd0af0deefe2e96592b7f4349d305cff9528f5cfdc432db2ae07",
+          "proof_bytes": 1770,
+          "projected_witness": [
+            0,
+            3,
+            25,
+            47,
+            75,
+            113
+          ],
+          "full_witness": [
+            3,
+            17,
+            118,
+            219,
+            340,
+            522
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_027/Z_model.txt",
+          "model_sha256": "b46770406138219f2a9695e139f3341315c5a782cb2f87a7e9943d093e33a58b",
+          "proof_path": "cases/proposal_027/Z_lower_5.cdp5",
+          "proof_sha256": "60499e4a8a31af23a4d60cf2f6beea4f3eb3551d0ff01b3f94ffcfc0a43c026f",
+          "proof_bytes": 1650,
+          "projected_witness": [
+            0,
+            1,
+            16,
+            31,
+            52,
+            79
+          ],
+          "full_witness": [
+            0,
+            2,
+            52,
+            101,
+            162,
+            250
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32724 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 27,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_065",
+      "sx": [
+        "idle",
+        2,
+        5,
+        4,
+        3,
+        1,
+        0
+      ],
+      "sz": [
+        4,
+        3,
+        1,
+        2,
+        0,
+        5,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_065/X_model.txt",
+          "model_sha256": "db75e1f672d5d6232aa821a3992b273432949de8bdb7169ee8da1bc3b6b24e97",
+          "proof_path": "cases/proposal_065/X_lower_5.cdp5",
+          "proof_sha256": "e8c2ca79bd609b313846cf1c8045bee9f05adbc61cd66c1d543b6bed606c2b26",
+          "proof_bytes": 1810,
+          "projected_witness": [
+            0,
+            17,
+            39,
+            63,
+            49,
+            87
+          ],
+          "full_witness": [
+            0,
+            72,
+            172,
+            286,
+            229,
+            400
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_065/Z_model.txt",
+          "model_sha256": "8b8da129f46ebcf1d1cf122e62331b3ce80e0a47f0dacaf9554c530b9da23e26",
+          "proof_path": "cases/proposal_065/Z_lower_5.cdp5",
+          "proof_sha256": "1da87a8c4415e9fdce2cfb014c5d6f40bcd97a4c5057e7c84bb1c5520fb6f985",
+          "proof_bytes": 1554,
+          "projected_witness": [
+            0,
+            1,
+            16,
+            31,
+            52,
+            80
+          ],
+          "full_witness": [
+            0,
+            1,
+            51,
+            101,
+            165,
+            263
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32724 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 65,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_072",
+      "sx": [
+        "idle",
+        5,
+        1,
+        2,
+        0,
+        3,
+        4
+      ],
+      "sz": [
+        1,
+        0,
+        4,
+        5,
+        3,
+        2,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_072/X_model.txt",
+          "model_sha256": "7adefc2ae7b781867f25e4ce62fda4ae0eb1047cc0fc41ede5b0a55863385786",
+          "proof_path": "cases/proposal_072/X_lower_5.cdp5",
+          "proof_sha256": "00e9b802bb1b6c247f3427561311fddcbe6ed98c57791f2002e062d00ca1e328",
+          "proof_bytes": 1778,
+          "projected_witness": [
+            0,
+            8,
+            29,
+            51,
+            47,
+            72
+          ],
+          "full_witness": [
+            3,
+            36,
+            133,
+            234,
+            219,
+            334
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_072/Z_model.txt",
+          "model_sha256": "e2c69e02894c8e829607e388965c18fc28e3262b8cce388963603336a70908dd",
+          "proof_path": "cases/proposal_072/Z_lower_5.cdp5",
+          "proof_sha256": "16ecfd0570663fe282550e29c8e2e2fdd6297e09931ac8460139ea2d95e817a3",
+          "proof_bytes": 1650,
+          "projected_witness": [
+            0,
+            5,
+            20,
+            31,
+            37,
+            52
+          ],
+          "full_witness": [
+            0,
+            7,
+            56,
+            101,
+            113,
+            162
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 72,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_095",
+      "sx": [
+        "idle",
+        1,
+        4,
+        5,
+        3,
+        2,
+        0
+      ],
+      "sz": [
+        3,
+        5,
+        0,
+        1,
+        2,
+        4,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_095/X_model.txt",
+          "model_sha256": "78720640d671403bbccf459055807fa8d02f65c1da3f661cdcce6647fcdb0771",
+          "proof_path": "cases/proposal_095/X_lower_5.cdp5",
+          "proof_sha256": "11996fb29dfa0da76ab0e142c61e7e094849bd7f8fa2ba488a34c218918a46c3",
+          "proof_bytes": 1850,
+          "projected_witness": [
+            0,
+            1,
+            25,
+            49,
+            87,
+            136
+          ],
+          "full_witness": [
+            0,
+            1,
+            115,
+            229,
+            400,
+            641
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_095/Z_model.txt",
+          "model_sha256": "ee608af3a494ec1cc2dd07e6a20ce05559fa444c283eea1f15b1006fec292d2d",
+          "proof_path": "cases/proposal_095/Z_lower_5.cdp5",
+          "proof_sha256": "e76b62b28e456614feddcc4828042587b6fee84b4b281d2236d05ce7b7c64344",
+          "proof_bytes": 1658,
+          "projected_witness": [
+            0,
+            8,
+            22,
+            30,
+            36,
+            50
+          ],
+          "full_witness": [
+            0,
+            16,
+            65,
+            100,
+            114,
+            163
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        }
+      ],
+      "sample_index": 95,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_110",
+      "sx": [
+        "idle",
+        1,
+        5,
+        4,
+        3,
+        0,
+        2
+      ],
+      "sz": [
+        3,
+        5,
+        0,
+        2,
+        1,
+        4,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_110/X_model.txt",
+          "model_sha256": "5c6036f23c6e0e939f39b0d94f2a4ba3a2138777eb7310c623408b73a720aad3",
+          "proof_path": "cases/proposal_110/X_lower_5.cdp5",
+          "proof_sha256": "ae9288638b95903f697cc011400892b16c823073f37e56afcf6d45afe78bb2bc",
+          "proof_bytes": 1970,
+          "projected_witness": [
+            0,
+            17,
+            39,
+            63,
+            49,
+            87
+          ],
+          "full_witness": [
+            0,
+            72,
+            172,
+            286,
+            229,
+            400
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_110/Z_model.txt",
+          "model_sha256": "9786a30038723d5622bf8fc10153b17095b6df793c136741110704eb31196df7",
+          "proof_path": "cases/proposal_110/Z_lower_5.cdp5",
+          "proof_sha256": "7c0ab7649d959d4dcdf4ed905fc622bb8cec39d02f1ef60322b7c2496d63bf9d",
+          "proof_bytes": 1666,
+          "projected_witness": [
+            0,
+            8,
+            22,
+            30,
+            36,
+            50
+          ],
+          "full_witness": [
+            0,
+            16,
+            65,
+            100,
+            114,
+            163
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        }
+      ],
+      "sample_index": 110,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_116",
+      "sx": [
+        "idle",
+        3,
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "sz": [
+        2,
+        1,
+        4,
+        3,
+        5,
+        0,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_116/X_model.txt",
+          "model_sha256": "e76cecd6fab26ac7fec23152734e6381b3968d9e3b7319f0cb6c01bb90ff5a59",
+          "proof_path": "cases/proposal_116/X_lower_5.cdp5",
+          "proof_sha256": "d081808677dae07ebce1785f0ce37514916fd1e56cd891982e241de08f5d4889",
+          "proof_bytes": 1946,
+          "projected_witness": [
+            0,
+            10,
+            30,
+            51,
+            46,
+            73
+          ],
+          "full_witness": [
+            3,
+            41,
+            134,
+            231,
+            215,
+            332
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_116/Z_model.txt",
+          "model_sha256": "79c4cee49a52da80ae3364f25e3f80319e3a472dd9498afb76311cde77a21207",
+          "proof_path": "cases/proposal_116/Z_lower_5.cdp5",
+          "proof_sha256": "546a3ef150a28041479e01f5d4991d66284c2e13fd935f94874bd229483b96f2",
+          "proof_bytes": 1842,
+          "projected_witness": [
+            0,
+            7,
+            21,
+            30,
+            36,
+            50
+          ],
+          "full_witness": [
+            0,
+            15,
+            60,
+            97,
+            109,
+            154
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32724 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 116,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_143",
+      "sx": [
+        "idle",
+        3,
+        1,
+        2,
+        0,
+        4,
+        5
+      ],
+      "sz": [
+        2,
+        1,
+        4,
+        5,
+        3,
+        0,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_143/X_model.txt",
+          "model_sha256": "104b2d7f584dbc65cf49510113d7b397abf6c52c9e0cd24e77d7f2b2e3458a8b",
+          "proof_path": "cases/proposal_143/X_lower_5.cdp5",
+          "proof_sha256": "ab20447caf58e21cab9d2fb1382c79817d4f369b1813115a6337b54c8a9e4319",
+          "proof_bytes": 1946,
+          "projected_witness": [
+            0,
+            8,
+            29,
+            51,
+            47,
+            74
+          ],
+          "full_witness": [
+            3,
+            33,
+            130,
+            231,
+            219,
+            336
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_143/Z_model.txt",
+          "model_sha256": "9e88dad74f67962563c5dccbaa9d344b863e0729b96bca0986d72fe485ae3132",
+          "proof_path": "cases/proposal_143/Z_lower_5.cdp5",
+          "proof_sha256": "f4b81a93209dd07c051de931bc7afaf42c9ca4b62e12748e80df2b5a17e335fc",
+          "proof_bytes": 1738,
+          "projected_witness": [
+            0,
+            5,
+            20,
+            31,
+            37,
+            52
+          ],
+          "full_witness": [
+            0,
+            7,
+            56,
+            101,
+            113,
+            162
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 143,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_146",
+      "sx": [
+        "idle",
+        5,
+        2,
+        1,
+        0,
+        3,
+        4
+      ],
+      "sz": [
+        1,
+        0,
+        3,
+        4,
+        5,
+        2,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 5,
+          "model_path": "cases/proposal_146/X_model.txt",
+          "model_sha256": "5b6f11b5fc81b2864d6492205cc49b76b1fdd6737d4bd416233460bee5ba3677",
+          "proof_path": "cases/proposal_146/X_lower_4.cdp5",
+          "proof_sha256": "bfe87bafd71e76d1a5b75fe970b8d2d3744f1306f459592cb68bcddc7a338e19",
+          "proof_bytes": 1738,
+          "projected_witness": [
+            13,
+            23,
+            171,
+            334,
+            481
+          ],
+          "full_witness": [
+            60,
+            114,
+            813,
+            1691,
+            3125
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32760 (table 2^16, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 5,
+          "model_path": "cases/proposal_146/Z_model.txt",
+          "model_sha256": "976b75187bb20859ea4e6ae245f5b8fe7f196c05aaf1f1e788ec50e352061ead",
+          "proof_path": "cases/proposal_146/Z_lower_4.cdp5",
+          "proof_sha256": "a7a3a76b8b7d3864119dae608152b026e6000417dea79f9ad9ad2a6414fab2b1",
+          "proof_bytes": 1738,
+          "projected_witness": [
+            1,
+            5,
+            25,
+            128,
+            199
+          ],
+          "full_witness": [
+            4,
+            13,
+            71,
+            422,
+            695
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32760 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 146,
+      "verdict": "REJECTED_DISTANCE_REGRESSION"
+    },
+    {
+      "name": "proposal_158",
+      "sx": [
+        "idle",
+        0,
+        4,
+        5,
+        3,
+        1,
+        2
+      ],
+      "sz": [
+        4,
+        5,
+        2,
+        1,
+        0,
+        3,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_158/X_model.txt",
+          "model_sha256": "a4a16583dab78cadd19380f92f52359f941c6dee89532e66aad8cf050457f450",
+          "proof_path": "cases/proposal_158/X_lower_5.cdp5",
+          "proof_sha256": "81cb9aa404ef188a9bb15799ea73930cf04523090cd8452f236440268c6cc5cc",
+          "proof_bytes": 1826,
+          "projected_witness": [
+            0,
+            4,
+            59,
+            61,
+            144,
+            174
+          ],
+          "full_witness": [
+            0,
+            16,
+            278,
+            283,
+            675,
+            816
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32796 (table 2^17, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_158/Z_model.txt",
+          "model_sha256": "899266f0bb28f66202142ad8a090b4911cf4e08c1917914cc5bec452be126305",
+          "proof_path": "cases/proposal_158/Z_lower_5.cdp5",
+          "proof_sha256": "7655cad8db19dbea0062795dd6ecd474800b58d58ceabb9ecf2d86678b9b4ee7",
+          "proof_bytes": 1866,
+          "projected_witness": [
+            0,
+            6,
+            21,
+            31,
+            37,
+            52
+          ],
+          "full_witness": [
+            0,
+            14,
+            64,
+            101,
+            115,
+            165
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32724 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 158,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_219",
+      "sx": [
+        "idle",
+        3,
+        0,
+        2,
+        1,
+        4,
+        5
+      ],
+      "sz": [
+        2,
+        1,
+        3,
+        5,
+        4,
+        0,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_219/X_model.txt",
+          "model_sha256": "3ba0f0d4a335b31ae151cd6d2e01ed667b14b89cf5cfc663f5f0b564af5eb5d6",
+          "proof_path": "cases/proposal_219/X_lower_5.cdp5",
+          "proof_sha256": "00b5b4859131a321f9bc206bf1c6c743a3a7be218ce84d1615c2b7ff8283a570",
+          "proof_bytes": 1866,
+          "projected_witness": [
+            0,
+            13,
+            32,
+            51,
+            44,
+            71
+          ],
+          "full_witness": [
+            3,
+            53,
+            142,
+            231,
+            207,
+            324
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_219/Z_model.txt",
+          "model_sha256": "bf0f058db9dc904db0e47dc77597f469928dbd90f76a60ffea6241b2401e9310",
+          "proof_path": "cases/proposal_219/Z_lower_5.cdp5",
+          "proof_sha256": "105577118b8634dab307629dd41911ab7e7adf38aa85ffefdde2240ba0a8f93c",
+          "proof_bytes": 1858,
+          "projected_witness": [
+            0,
+            9,
+            22,
+            29,
+            35,
+            48
+          ],
+          "full_witness": [
+            0,
+            23,
+            64,
+            93,
+            105,
+            146
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 219,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    },
+    {
+      "name": "proposal_228",
+      "sx": [
+        "idle",
+        4,
+        0,
+        2,
+        1,
+        3,
+        5
+      ],
+      "sz": [
+        2,
+        0,
+        3,
+        5,
+        4,
+        1,
+        "idle"
+      ],
+      "basis": [
+        {
+          "basis": "X",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_228/X_model.txt",
+          "model_sha256": "e92bafd1d3c4fe512e144eac2ba53f12ea82e3e1f0fb3bfa493429baff48cde5",
+          "proof_path": "cases/proposal_228/X_lower_5.cdp5",
+          "proof_sha256": "b77dd9574afc4b21df898bab1e8cb5309147389a87b84e34b9fabeb301f28b03",
+          "proof_bytes": 1794,
+          "projected_witness": [
+            0,
+            13,
+            32,
+            44,
+            51,
+            71
+          ],
+          "full_witness": [
+            3,
+            56,
+            145,
+            207,
+            234,
+            324
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        },
+        {
+          "basis": "Z",
+          "status": "PROJECTED_EXACT_AND_FULL_UPPER_WITNESS",
+          "fault_weight": 6,
+          "model_path": "cases/proposal_228/Z_model.txt",
+          "model_sha256": "9f6a5743eb41269c76fab166327bce938bbcfa038c2d4aff8a523a581d72eb22",
+          "proof_path": "cases/proposal_228/Z_lower_5.cdp5",
+          "proof_sha256": "a460b18820ab259c32f4bccccc72724ea084e10ef3d23ee6af1f22be66bd5ca9",
+          "proof_bytes": 1586,
+          "projected_witness": [
+            0,
+            9,
+            22,
+            29,
+            35,
+            48
+          ],
+          "full_witness": [
+            0,
+            23,
+            64,
+            93,
+            105,
+            146
+          ],
+          "full_witness_verified": true,
+          "dem_independent_equal": true,
+          "detectors": 108,
+          "mechanisms": 792,
+          "search_provenance": "ND 108 NM 792 orbits 22 threads 4 tt 2^20/thread; overlapping pairs 32652 (table 2^16, 1 MB)"
+        }
+      ],
+      "sample_index": 228,
+      "verdict": "SAME_PROJECTED_DISTANCE__LER_NOT_MEASURED"
+    }
+  ]
+}

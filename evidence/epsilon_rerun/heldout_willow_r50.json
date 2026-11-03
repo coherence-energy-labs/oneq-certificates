@@ -1,0 +1,68 @@
+{
+ "schema": "oneq-heldout-willow/1",
+ "preregistration": "docs/PREREG_heldout_willow_2026-11-02.md",
+ "configurations": {
+  "heldout_d3_at_q4_5_X_r50": {
+   "shots": 5000,
+   "nontrivial": 5000,
+   "accepted": 5000,
+   "accepted_rate": 1.0,
+   "largest_accepted_epsilon": "571244953167247791/7085430525682070537885550903296",
+   "largest_accepted_epsilon_float": 8.062247609325865e-14,
+   "forgeries_attempted": 44999,
+   "forgeries_accepted": 0,
+   "chunk_failures_retried": 0,
+   "exact_optimal": 3960,
+   "not_proven": 0
+  },
+  "heldout_d3_at_q4_5_Z_r50": {
+   "shots": 5000,
+   "nontrivial": 5000,
+   "accepted": 5000,
+   "accepted_rate": 1.0,
+   "largest_accepted_epsilon": "11182293710836829615/92462483525624265634166578610176",
+   "largest_accepted_epsilon_float": 1.2093871248589017e-13,
+   "forgeries_attempted": 45000,
+   "forgeries_accepted": 0,
+   "chunk_failures_retried": 0,
+   "exact_optimal": 3818,
+   "not_proven": 0
+  },
+  "heldout_d5_at_q8_7_X_r50": {
+   "shots": 5000,
+   "nontrivial": 5000,
+   "accepted": 4956,
+   "accepted_rate": 0.9912,
+   "largest_accepted_epsilon": "178947824183439637435/214890428260619024325367262347264",
+   "largest_accepted_epsilon_float": 8.327398555249366e-13,
+   "forgeries_attempted": 40000,
+   "forgeries_accepted": 0,
+   "chunk_failures_retried": 0,
+   "exact_optimal": 125,
+   "not_proven": 44
+  },
+  "heldout_d5_at_q8_7_Z_r50": {
+   "shots": 5000,
+   "nontrivial": 5000,
+   "accepted": 4953,
+   "accepted_rate": 0.9906,
+   "largest_accepted_epsilon": "25712871716028382629/13025533686462559952638482317312",
+   "largest_accepted_epsilon_float": 1.9740359462393296e-12,
+   "forgeries_attempted": 40000,
+   "forgeries_accepted": 0,
+   "chunk_failures_retried": 0,
+   "exact_optimal": 81,
+   "not_proven": 47
+  }
+ },
+ "pooled": {
+  "nontrivial": 20000,
+  "accepted": 19909,
+  "rate": 0.99545,
+  "cp95_two_sided": [
+   0.9944165052915924,
+   0.9963350891660744
+  ]
+ },
+ "forgeries_accepted_total": 0
+}

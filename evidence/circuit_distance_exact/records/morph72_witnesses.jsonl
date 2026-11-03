@@ -1,0 +1,2 @@
+{"circuit": "morph72", "basis": "Z", "rounds": 2, "projected": [0, 11, 34, 135, 218, 234], "full": [0, 34, 126, 575, 997, 1086], "weight": 6, "verified": true, "minus_one_fails": true, "metacheck_gap": 6, "survives_metachecks": true}
+{"circuit": "morph72", "basis": "X", "rounds": 2, "projected": [1, 11, 30, 136, 216, 236], "full": [2, 31, 111, 586, 996, 1098], "weight": 6, "verified": true, "minus_one_fails": true, "metacheck_gap": 6, "survives_metachecks": true}

@@ -44,7 +44,7 @@ def sha_json(obj) -> str:
 
 
 def rel(p: pathlib.Path) -> str:
-    return p.relative_to(ROOT).as_posix()
+    return (p.relative_to(ROOT).as_posix() if p.is_relative_to(ROOT) else str(p))
 
 
 def _records(path: pathlib.Path) -> dict[int, dict]:

@@ -148,7 +148,7 @@ def checker_scaling() -> pathlib.Path:
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     for f in (generation_ladder, gap_tails, checker_scaling):
-        print("wrote", f().relative_to(ROOT))
+        print("wrote", (f().relative_to(ROOT) if f().is_relative_to(ROOT) else f()))
     return 0
 
 

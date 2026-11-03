@@ -1,0 +1,47 @@
+{"step": "stabilization", "kind": "ibm", "basis": "Z", "projected": true, "U": 1, "j_s": 1, "i": 2, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": null, "rss_mb": 35}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": true, "U": 1, "j_s": 1, "u": 1, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 36}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": true, "U": 1, "j_s": 1, "u": 2, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 36}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": true, "U": 1, "j_s": 1, "u": 3, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 36}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": true, "U": 1, "j_s": 1, "u": 6, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 36}
+{"step": "boundary", "kind": "ibm", "basis": "Z", "projected": true, "U": 1, "j_s": 1, "i_boundary": 0, "differing_vs_i_eq_js": {"1": 0, "2": 0, "4": 0}, "covariant_at_boundary": true, "rss_mb": 36}
+{"step": "stabilization", "kind": "ibm", "basis": "Z", "projected": false, "U": 1, "j_s": 1, "i": 2, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": null, "rss_mb": 36}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": false, "U": 1, "j_s": 1, "u": 1, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": false, "U": 1, "j_s": 1, "u": 2, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 36}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": false, "U": 1, "j_s": 1, "u": 3, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "Z", "projected": false, "U": 1, "j_s": 1, "u": 6, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 36}
+{"step": "boundary", "kind": "ibm", "basis": "Z", "projected": false, "U": 1, "j_s": 1, "i_boundary": 0, "differing_vs_i_eq_js": {"1": 144, "2": 144, "4": 144}, "covariant_at_boundary": false, "rss_mb": 37}
+{"step": "stabilization", "kind": "ibm", "basis": "X", "projected": true, "U": 1, "j_s": 1, "i": 2, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": null, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": true, "U": 1, "j_s": 1, "u": 1, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": true, "U": 1, "j_s": 1, "u": 2, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": true, "U": 1, "j_s": 1, "u": 3, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": true, "U": 1, "j_s": 1, "u": 6, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "boundary", "kind": "ibm", "basis": "X", "projected": true, "U": 1, "j_s": 1, "i_boundary": 0, "differing_vs_i_eq_js": {"1": 0, "2": 0, "4": 0}, "covariant_at_boundary": true, "rss_mb": 37}
+{"step": "stabilization", "kind": "ibm", "basis": "X", "projected": false, "U": 1, "j_s": 1, "i": 2, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": null, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": false, "U": 1, "j_s": 1, "u": 1, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": false, "U": 1, "j_s": 1, "u": 2, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": false, "U": 1, "j_s": 1, "u": 3, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "covariance", "kind": "ibm", "basis": "X", "projected": false, "U": 1, "j_s": 1, "u": 6, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 37}
+{"step": "boundary", "kind": "ibm", "basis": "X", "projected": false, "U": 1, "j_s": 1, "i_boundary": 0, "differing_vs_i_eq_js": {"1": 144, "2": 144, "4": 144}, "covariant_at_boundary": false, "rss_mb": 37}
+{"step": "stabilization", "kind": "3c", "basis": "Z", "projected": true, "U": 2, "j_s": 1, "i": 2, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": 0, "rss_mb": 38}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": true, "U": 2, "j_s": 1, "u": 1, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 38}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": true, "U": 2, "j_s": 1, "u": 2, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 38}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": true, "U": 2, "j_s": 1, "u": 3, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 38}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": true, "U": 2, "j_s": 1, "u": 6, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 38}
+{"step": "stabilization", "kind": "3c", "basis": "Z", "projected": false, "U": 2, "j_s": 2, "i": 3, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": 0, "rss_mb": 38}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": false, "U": 2, "j_s": 2, "u": 1, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": false, "U": 2, "j_s": 2, "u": 2, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": false, "U": 2, "j_s": 2, "u": 3, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "Z", "projected": false, "U": 2, "j_s": 2, "u": 6, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "boundary", "kind": "3c", "basis": "Z", "projected": false, "U": 2, "j_s": 2, "i_boundary": 1, "differing_vs_i_eq_js": {"1": 168, "2": 168, "4": 168}, "covariant_at_boundary": false, "rss_mb": 38}
+{"step": "stabilization", "kind": "3c", "basis": "X", "projected": true, "U": 2, "j_s": 1, "i": 2, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": 0, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": true, "U": 2, "j_s": 1, "u": 1, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": true, "U": 2, "j_s": 1, "u": 2, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": true, "U": 2, "j_s": 1, "u": 3, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": true, "U": 2, "j_s": 1, "u": 6, "differing_vs_i_eq_js": {"1": 0, "2": 0, "3": 0, "6": 0}, "holds": true, "rss_mb": 38}
+{"step": "stabilization", "kind": "3c", "basis": "X", "projected": false, "U": 2, "j_s": 2, "i": 3, "basis_vectors_differing_from_u_eq_U": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0}, "holds_for_u_ge_U": true, "fails_at_U_minus_1": 0, "rss_mb": 38}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": false, "U": 2, "j_s": 2, "u": 1, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": false, "U": 2, "j_s": 2, "u": 2, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": false, "U": 2, "j_s": 2, "u": 3, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "covariance", "kind": "3c", "basis": "X", "projected": false, "U": 2, "j_s": 2, "u": 6, "differing_vs_i_eq_js": {"2": 0, "3": 0, "4": 0, "7": 0}, "holds": true, "rss_mb": 39}
+{"step": "boundary", "kind": "3c", "basis": "X", "projected": false, "U": 2, "j_s": 2, "i_boundary": 1, "differing_vs_i_eq_js": {"1": 24, "2": 24, "4": 24}, "covariant_at_boundary": false, "rss_mb": 38}
+{"step": "done", "seconds": 122.0, "rss_mb": 38}

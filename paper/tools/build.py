@@ -134,6 +134,11 @@ def build(name: str, release: bool) -> int:
               f"name and affiliation are the owner's to set; a release build "
               f"will not produce a finished-looking file without them.")
         return 2
+    rel = PAPER / "release.tex"
+    if release and "\\ReleaseTag" in tex and (not rel.is_file() or "{UNSET}" in rel.read_text(encoding="utf-8")):
+        print("REFUSED: the manuscript cites \\ReleaseTag and paper/release.tex does not name a minted release; "
+              "set it when the release exists.")
+        return 2
     numbers = (src / "generated" / "numbers.tex").read_text(encoding="utf-8")
     if release and "[pending]" in numbers:
         pending = sorted(set(re.findall(r"\\newcommand\{\\(\w+)\}\{\\textbf\{\[pending\]\}\}", numbers)))

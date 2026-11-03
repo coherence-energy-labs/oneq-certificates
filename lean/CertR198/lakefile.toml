@@ -1,0 +1,20 @@
+name = "CertR198"
+version = "0.1.0"
+defaultTargets = ["CertR198"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+autoImplicit = false
+maxSynthPendingDepth = 3
+
+# Same pin as ONE_Q/lean/OneqCert (mathlib v4.34.0, rev 5ed2965). `.lake/packages` is a
+# directory junction to the already-built C:/Users/Josh/lq/OneqCert/.lake/packages, so a
+# build here downloads and rebuilds nothing of mathlib (see SPEC.md, "Building").
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.0"
+
+[[lean_lib]]
+name = "CertR198"

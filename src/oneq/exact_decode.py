@@ -123,6 +123,12 @@ def exact_min_tjoin(edges, syndrome):
 
     import networkx as nx
     G = nx.Graph()
+    # EVERY fired detector and its boundary copy is a NODE, added here and not only through its edges: a detector
+    # that reaches neither another fired detector nor the boundary used to have no node at all, so the
+    # perfect-matching test below passed on a graph that did not contain it and an UNSATISFIABLE syndrome returned
+    # ((), 0, ok) -- e.g. [(5,6,1),(0,-1,1)] with syndrome [5] (found 2026-10-18 covering feral_proposer).
+    G.add_nodes_from(("t", u) for u in T)
+    G.add_nodes_from(("b", u) for u in T)
     for i, u in enumerate(T):
         du, _ = sp[u]
         for v in T[i + 1:]:

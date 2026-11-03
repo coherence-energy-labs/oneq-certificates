@@ -1,0 +1,2 @@
+{"projected": [1, 4, 58, 320, 482, 500, 608, 611, 1070, 1071, 1088], "full": [1, 4, 58, 320, 482, 500, 1074, 1098, 3915, 3921, 4013], "weight": 11, "verified": true, "minus_one_fails": true, "basis": "Z", "circuit": "3c", "rounds": 2, "search": "cdist w=11 T=2 projected, 61.6 s, 7.7e7 nodes"}
+{"projected": [0, 2, 70, 62, 95, 129, 148, 188, 39, 51, 559], "full": [0, 13, 387, 343, 528, 733, 851, 1083, 212, 284, 3359], "weight": 11, "verified": true, "minus_one_fails": true, "basis": "X", "circuit": "3c", "rounds": 2, "search": "cdist w=11 T=2 projected, 2467.8 s, 4.6e9 nodes"}

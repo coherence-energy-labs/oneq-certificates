@@ -188,7 +188,7 @@ def _run_chunk(name, seed):
     return {"seed": seed, "shots": cfg["chunk"], "status": dict(status),
             "epsilon_max_accepted": str(eps_max_seen),
             "forgeries": dict(forg), "forgeries_accepted": dict(forg_acc), "battery_not_false": bogus,
-            "receipts_file": rp.relative_to(ROOT).as_posix(),
+            "receipts_file": (rp.relative_to(ROOT).as_posix() if rp.is_relative_to(ROOT) else str(rp)),
             "receipts_sha256": hashlib.sha256(body).hexdigest(),
             "seconds": round(time.perf_counter() - t0, 2)}
 

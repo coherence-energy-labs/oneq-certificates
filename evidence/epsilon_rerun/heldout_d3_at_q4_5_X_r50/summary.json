@@ -1,0 +1,45 @@
+{
+ "schema": "oneq-epsilon-rerun/1",
+ "config": "heldout_d3_at_q4_5_X_r50",
+ "spec": {
+  "kind": "willow",
+  "corpus_config": "d3_at_q4_5_X_r50",
+  "chunk": 250,
+  "seeds": [
+   1,
+   20
+  ],
+  "method": "certify",
+  "reproduces": "held out, preregistered in docs/PREREG_heldout_willow_2026-11-02.md"
+ },
+ "eps_max": "1/1000000",
+ "chunks": 20,
+ "shots": 5000,
+ "nontrivial": 5000,
+ "status": {
+  "EPSILON_OPTIMAL": 1040,
+  "EXACT_OPTIMAL": 3960
+ },
+ "accepted": 5000,
+ "accepted_rate": 1.0,
+ "largest_accepted_epsilon": "571244953167247791/7085430525682070537885550903296",
+ "largest_accepted_epsilon_float": 8.062247609325865e-14,
+ "forgeries_attempted": 44999,
+ "forgeries_accepted": 0,
+ "forgeries_by_class": {
+  "E_dropped_edge": 5000,
+  "F_duplicated_edge": 5000,
+  "I_mismatched_pair": 5000,
+  "A_suboptimal": 4999,
+  "D_spurious_cycle": 5000,
+  "G_dual_inflated_to_meet_a_worse_primal": 5000,
+  "H_negative_dual_hides_inflation": 5000,
+  "N_nan_dual": 5000,
+  "N_inf_dual": 5000
+ },
+ "forgeries_accepted_by_class": {},
+ "battery_attacks_not_false": 0,
+ "chunk_failures_retried": 0,
+ "instance": "evidence/instances/matching_heldout_d3_at_q4_5_X_r50.json",
+ "receipts": "data/epsilon_receipts/heldout_d3_at_q4_5_X_r50/ (per-chunk sha256 in chunks.jsonl)"
+}

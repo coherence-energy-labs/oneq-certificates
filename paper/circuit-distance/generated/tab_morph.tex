@@ -1,0 +1,20 @@
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+circuit & end-cycle code & degree & schedule & $A$ & $B$ & $d_{\mathrm{circ}}$ (Z / X) & loses & rounds & kernel \\
+\midrule
+\texttt{c42a} & $[[42,6,6]]$ & 4 & standard & $(x, 1, x^{10})$ & $(1, x^{7})$ & 6 / 6 & 0 & every $T$ & Z, X \\
+\texttt{c42a2} & $[[42,6,6]]$ & 4 & standard & $(x, x^{10}, 1)$ & $(1, x^{7})$ & 4 / 4 & 2 & every $T$ & -- \\
+\texttt{c42b} & $[[42,6,6]]$ & 4 & standard & $(1, x^{3}, x^{9})$ & $(1, x^{7})$ & 5 / 5 & 1 & every $T$ & -- \\
+\texttt{c42b2} & $[[42,6,6]]$ & 4 & standard & $(1, x^{9}, x^{3})$ & $(1, x^{7})$ & 4 / 4 & 2 & every $T$ & -- \\
+\texttt{c48a} & $[[48,4,8]]$ & 4 & standard & $(1, x, x^{5})$ & $(1, x^{15})$ & 7 / 7 & 1 & every $T$ & -- \\
+\texttt{c48a2} & $[[48,4,8]]$ & 4 & standard & $(1, x^{5}, x)$ & $(1, x^{15})$ & 6 / 6 & 2 & every $T$ & -- \\
+\texttt{c48b} & $[[48,4,8]]$ & 4 & standard & $(1, x, x^{5})$ & $(1, x^{21})$ & 6 / 6 & 2 & every $T$ & -- \\
+\texttt{c48b2} & $[[48,4,8]]$ & 4 & standard & $(1, x^{5}, x)$ & $(1, x^{21})$ & 6 / 6 & 2 & every $T$ & -- \\
+\texttt{c48c} & $[[48,4,8]]$ & 4 & standard & $(1, x, x^{11})$ & $(1, x^{15})$ & 6 / 6 & 2 & every $T$ & -- \\
+\texttt{c48c2} & $[[48,4,8]]$ & 4 & standard & $(1, x^{11}, x)$ & $(1, x^{15})$ & 7 / 7 & 1 & every $T$ & -- \\
+\texttt{t30a} & $[[30,8,5]]$ & 5 & tree & $(1, x, x^{4})$ & $(1, x^{6}, x^{13})$ & 5 / 5 & 0 & MC, $T\le 6$ & Z, X \\
+\texttt{t30a2} & $[[30,8,5]]$ & 5 & tree & $(1, x, x^{4})$ & $(1, x^{6}, x^{13})$ & 5 / 5 & 0 & MC, $T\le 6$ & -- \\
+\texttt{t30b} & $[[30,8,5]]$ & 5 & tree & $(1, x, x^{4})$ & $(1, x^{6}, x^{13})$ & 5 / 5 & 0 & MC, $T\le 6$ & -- \\
+\texttt{t30b2} & $[[30,8,5]]$ & 5 & tree & $(1, x, x^{4})$ & $(1, x^{6}, x^{13})$ & 5 / 5 & 0 & MC, $T\le 6$ & -- \\
+\bottomrule
+\end{tabular}

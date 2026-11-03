@@ -1,0 +1,82 @@
+{
+ "schema": "oneq-certify-cost/1",
+ "config": "sim_d5_r25",
+ "distance": 5,
+ "rounds": 25,
+ "p": 0.005,
+ "detectors": 600,
+ "edges": 2742,
+ "seeds": [
+  1,
+  8
+ ],
+ "shots": 2000,
+ "nontrivial": 2000,
+ "same_shots_as": "data/epsilon_receipts/sim_d5_r25 (verdicts matched shot by shot)",
+ "producer": "CertifyingDecoder(epsilon_max=1e-6).certify (the base ladder, as in the epsilon rerun)",
+ "checker": "matching_cert_epsilon.check_epsilon",
+ "decode_batch_us_per_shot": 16.35155000258237,
+ "decode_per_shot_us": {
+  "n": 2000,
+  "median": 129.2000524699688,
+  "mean": 131.63684855680913,
+  "p90": 159.29993242025375,
+  "p99": 193.099956959486,
+  "max": 2834.5000464469194
+ },
+ "certify_ms": {
+  "n": 2000,
+  "median": 30.02339997328818,
+  "mean": 52.59952349739615,
+  "p90": 112.80110012739897,
+  "p99": 275.4127001389861,
+  "max": 536.3553001079708
+ },
+ "certify_ms_accepted": {
+  "n": 1996,
+  "median": 30.00194998458028,
+  "mean": 51.91208301336021,
+  "p90": 111.98549997061491,
+  "p99": 263.90010002069175,
+  "max": 450.9462998248637
+ },
+ "certify_ms_refused": {
+  "n": 4,
+  "median": 404.75420001894236,
+  "mean": 395.63232503132895,
+  "p90": 536.3553001079708,
+  "p99": 536.3553001079708,
+  "max": 536.3553001079708
+ },
+ "refused_share_of_certify_time": 0.015043190459735402,
+ "check_ms": {
+  "n": 2000,
+  "median": 7.068299921229482,
+  "mean": 7.447938997647725,
+  "p90": 9.459299966692924,
+  "p99": 16.557600116357207,
+  "max": 25.518500013276935
+ },
+ "ratio_mean_certify_over_mean_batch_decode": 3216.7912821163254,
+ "ratio_mean_certify_over_mean_per_shot_decode": 399.5805435489161,
+ "ratio_median_check_over_median_certify": 0.2354263650192233,
+ "machine": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+  "logical_cpus": 24,
+  "python": "3.14.3",
+  "pymatching": "2.4.0",
+  "stim": "1.16.0",
+  "numpy": "2.3.5",
+  "threads_used": 1,
+  "cpu_percent_before": 69.5,
+  "cpu_percent_after": 73.6,
+  "note": "shared workstation: other jobs ran during the measurement (cpu_percent above)"
+ },
+ "commit": "0d26863abbe2e22aa8fec204caff6f54c6009a57",
+ "source_sha256": {
+  "experiments/m0_prior_art/certify_cost.py": "505ed77b097fc4765b020191ca7c5c64bdbaa69c7112055095264a3f9aa7e422",
+  "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+  "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24"
+ }
+}

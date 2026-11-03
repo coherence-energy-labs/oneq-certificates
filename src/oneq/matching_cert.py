@@ -92,8 +92,11 @@ reference's bugs).
 
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import dataclass, field
 from fractions import Fraction
+from functools import lru_cache
+from types import MappingProxyType
 from typing import Iterable, Mapping, Sequence
 
 BOUNDARY = -1
@@ -247,7 +250,7 @@ def _collapse_graph(edges, tol):
     if hit is not None:
         built, err = hit
         if built is None:
-            return None, err
+            return None, deepcopy(err)
         W, incident = built
         return (dict(W), {n: set(s) for n, s in incident.items()}), None
     built, err = _collapse_graph_uncached(edges, tol)
@@ -255,7 +258,10 @@ def _collapse_graph(edges, tol):
         _COLLAPSE_CACHE.pop(next(iter(_COLLAPSE_CACHE)))
     _COLLAPSE_CACHE[key] = (built, err)
     if built is None:
-        return None, err
+        # CheckResult is mutable public data. Returning the cached refusal
+        # itself lets a consumer change accepted=True and poison the next
+        # check of this malformed graph. No cache-owned object may escape.
+        return None, deepcopy(err)
     W, incident = built
     return (dict(W), {n: set(s) for n, s in incident.items()}), None
 
@@ -530,9 +536,10 @@ def _exact_optimality(W, cert, y, z, fired):
     # is refused exactly like any other bad dual. Each attempt gets FRESH
     # copies, since the repair mutates in place.
     outcome = (False, "no spend ordering produced a feasible attaining dual")
+    structure = _repair_structure(W, Y, Z)
     for order in range(_REPAIR_ORDERS):
         ok, why = _repair_and_verify(W, dict(Y), dict(Z), fired_set, primal,
-                                     order)
+                                     order, _structure=structure)
         if ok:
             return True, why
         outcome = (ok, why)
@@ -618,28 +625,120 @@ def _to_common_scale(W, Y, Z, primal):
         d = fr.denominator
         return None if (d & (d - 1)) else d.bit_length() - 1
 
-    Wf = {e: F(W[e]) for e in W}
+    # *** W IS THE SAME ON EVERY CALL AND WAS RECONVERTED ON EVERY CALL. *** `_repair_and_verify`
+    # runs once per spend order and only ever READS W, while Y and Z are what change. Rebuilding a
+    # Fraction per edge each time was the largest term left in the repair after the cut fix --
+    # MEASURED at 30 ms per call on a 2,742-edge graph. Cached on the weights' exact contents, so a
+    # mutated or different W is a different key and can never hit a stale entry.
+    Wf, w_bits = _w_exact(tuple(W.items()))
     Yf = {int(n): F(v) for n, v in Y.items()}
     Zf = {S: F(v) for S, v in Z.items()}
     pf = F(primal)
-    vals = (*Wf.values(), *Yf.values(), *Zf.values(), pf)
-    bits = [_dyadic_bits(v) for v in vals]
+    rest = (*Yf.values(), *Zf.values(), pf)
+    bits = [_dyadic_bits(v) for v in rest]
 
     scale = None
-    if bits and all(b is not None for b in bits):
-        k = max(bits)
+    if w_bits is not None and all(b is not None for b in bits):
+        k = max((*bits, w_bits)) if bits else w_bits
         if k <= _MAX_SCALE_BITS:
             scale = 1 << k
 
-    if scale is not None and all((v * scale).denominator == 1 for v in vals):
-        return ({e: int(v * scale) for e, v in Wf.items()},
+    # THE VERIFICATION IS KEPT, ONLY MADE CHEAP. If every value is p/2^k with k <= K then v * 2^K is
+    # an integer by construction, so the old `(v * scale).denominator == 1` was a full pass of
+    # Fraction MULTIPLICATIONS establishing something the dyadic test had already proved. An integer
+    # divisibility test settles it without constructing a single product. The check still fires if
+    # `_dyadic_bits` is ever wrong, which is why it is narrowed rather than deleted.
+    if scale is not None and all(scale % v.denominator == 0 for v in rest):
+        # W scaled is also a pure function of (weights, scale), and `scale` is stable across the
+        # spend orders of one check, so this hits on every repair after the first. Without it each
+        # call multiplied and int()-ed a Fraction for all 2,742 edges. Read-only downstream: the
+        # repair only ever indexes W.
+        return (_w_scaled(tuple(W.items()), scale),
                 {n: int(v * scale) for n, v in Yf.items()},
                 {S: int(v * scale) for S, v in Zf.items()},
                 int(pf * scale), 0)
-    return Wf, Yf, Zf, pf, F(0)
+    return dict(Wf), Yf, Zf, pf, F(0)
 
 
-def _load_tracker(edges, variables, in_cut, val, Y, Z, ZERO):
+@lru_cache(maxsize=16)
+def _w_scaled(w_items, scale):
+    """``edge -> int(weight * scale)`` for a dyadic scale. PURE, so cacheable, and exact.
+
+    Returned READ-ONLY, and that is enforced rather than documented. A cached mapping handed out
+    mutable is shared state inside the checker: one caller writing into it would poison every
+    later verdict on the same graph. No caller does today -- the repair only indexes W -- but
+    "no caller does today" is a convention, and this is the function whose soundness the whole
+    module rests on. `tests/test_scale_cache_soundness.py` pins that a write RAISES.
+    """
+    Wf, _bits = _w_exact(w_items)
+    return MappingProxyType({e: int(v * scale) for e, v in Wf.items()})
+
+
+@lru_cache(maxsize=16)
+def _w_exact(w_items):
+    """``(edge -> exact Fraction, max dyadic bits or None)`` for a weight map. PURE, so cacheable.
+
+    Keyed on the weights themselves rather than on identity, so two different dicts with the same
+    contents share correctly and a mutation cannot be served a stale conversion. The returned mapping
+    is READ-ONLY by contract -- `_repair_and_verify` only indexes W -- and the one caller that hands
+    it onward in the Fraction branch copies it first.
+    """
+    from fractions import Fraction as F
+
+    def _bits(fr):
+        d = fr.denominator
+        return None if (d & (d - 1)) else d.bit_length() - 1
+
+    Wf = {e: F(w) for e, w in w_items}
+    bs = [_bits(v) for v in Wf.values()]
+    return MappingProxyType(Wf), (max(bs) if bs and all(b is not None for b in bs) else None)
+
+
+def _variable_cuts(edges, variables, in_cut):
+    """Ordered cuts from incidence parity, without scanning internal edges.
+
+    Each non-loop edge appears once in each endpoint's incidence list.
+    Symmetric difference keeps exactly the edges with ONE endpoint in a
+    z-set, and cancels interior edges inside the set operation. Sorting the
+    surviving positions preserves the original deterministic repair order.
+    """
+    incidence: dict = {}
+    for i, (u, v) in enumerate(edges):
+        incidence.setdefault(u, []).append(i)
+        if v != u:
+            incidence.setdefault(v, []).append(i)
+    cuts = {}
+    for vk in variables:
+        kind, key = vk
+        if kind == "y":
+            cuts[vk] = [edges[i] for i in incidence.get(key, ())]
+        else:
+            hit = set()
+            for node in key:
+                hit.symmetric_difference_update(incidence.get(node, ()))
+            # A loop occurs only once in incidence but never crosses a cut.
+            cuts[vk] = [edges[i] for i in sorted(hit) if in_cut(kind, key, edges[i])]
+    return cuts
+
+
+def _repair_structure(W, Y, Z):
+    """Call-local graph structure shared by the deterministic spend attempts.
+
+    The repair changes values, never endpoints or variable membership. Loads
+    and numeric units are still rebuilt for EVERY attempt, including exact
+    verification; no mutable state is retained between certificates.
+    """
+    edges = sorted(W)
+    variables = ([('y', n) for n in sorted(Y)]
+                 + [('z', S) for S in sorted(Z, key=sorted)])
+
+    def in_cut(kind, key, edge):
+        return key in edge if kind == 'y' else ((edge[0] in key) != (edge[1] in key))
+
+    return edges, variables, _variable_cuts(edges, variables, in_cut)
+
+
+def _load_tracker(edges, variables, in_cut, val, Y, Z, ZERO, *, cuts=None):
     """(load, put) -- each variable's cut computed ONCE, load kept by delta.
 
     `load(e)` used to sum over every dual variable for every edge, and the
@@ -661,8 +760,20 @@ def _load_tracker(edges, variables, in_cut, val, Y, Z, ZERO):
     review limit, burying the shed/absorb/verify argument a reviewer is
     there to read.
     """
-    cut = {vk: [e for e in edges if in_cut(vk[0], vk[1], e)]
-           for vk in variables}
+    # *** THE CUTS ARE STRUCTURAL, SO THEY DO NOT NEED A SCAN PER VARIABLE. ***
+    # Building them as `[e for e in edges if in_cut(...)]` costs |vars| x |E| calls to `in_cut`, and
+    # MEASURED on a d=5 r=25 graph that was 8.4 MILLION calls over 12 shots -- about 700k per shot,
+    # and the single largest term in certification. But a cut is not an arbitrary predicate:
+    #     y_n  loads exactly the edges INCIDENT to n
+    #     z_S  loads exactly the edges with ONE endpoint in S, all of which are incident to S
+    # so both are readable off an incidence index in time proportional to DEGREE rather than to |E|.
+    #
+    # `in_cut` is still the definition and is still used below; this only avoids asking it about
+    # edges that provably cannot be in the cut. Order is preserved exactly -- the incidence lists are
+    # built in `edges` order and the z-sets are re-sorted by position -- because `put` iterates the
+    # cut and the caller's determinism argument depends on that order being stable.
+    # `tests/test_load_tracker_cuts.py` pins the equality against the naive construction.
+    cut = _variable_cuts(edges, variables, in_cut) if cuts is None else cuts
     load_of = {e: ZERO for e in edges}
     for vk in variables:
         v = val(*vk)
@@ -681,10 +792,46 @@ def _load_tracker(edges, variables, in_cut, val, Y, Z, ZERO):
             for e in cut[vk]:
                 load_of[e] += delta
 
-    return load, put
+    # The cuts are RETURNED as well as used. They were already being rebuilt from scratch by the
+    # absorb phase -- `[e for e in edges if in_cut(kd, k, e)]`, a full scan of every edge for every
+    # variable, duplicating exactly the work this function exists to do once. Handing them back costs
+    # nothing and lets both loops index instead of rescan.
+    return load, put, cut
 
 
-def _repair_and_verify(W, Y, Z, fired_set, primal, order=0):
+def _violated_edges(edges, weights, load):
+    """Yield the current maximum (overload, edge), while loads only decrease.
+
+    SHED only subtracts non-negative amounts from variables. An old overload
+    is therefore an upper bound on its current value, and an initially
+    feasible edge stays feasible. Recheck a heap leader and lower its key
+    until it is current: no remaining upper bound can beat that leader.
+    Negative endpoint keys retain max(..., key=(overload, edge))'s exact
+    tie-break, including boundary -1. All arithmetic stays in the existing
+    integer/Fraction domain. The caller must clear each yielded edge before
+    resuming; at most len(edges) edges can then be yielded.
+    """
+    from heapq import heapify, heappop, heappush
+
+    pending = []
+    for e in edges:
+        over = load(e) - weights[e]
+        if over > 0:
+            pending.append((-over, -e[0], -e[1]))
+    heapify(pending)
+    while pending:
+        neg_over, neg_u, neg_v = heappop(pending)
+        e = (-neg_u, -neg_v)
+        over = load(e) - weights[e]
+        if over <= 0:
+            continue
+        if over != -neg_over:
+            heappush(pending, (-over, neg_u, neg_v))
+            continue
+        yield e, over
+
+
+def _repair_and_verify(W, Y, Z, fired_set, primal, order=0, *, _structure=None):
     """SHED infeasibility, ABSORB the shortfall, VERIFY from scratch.
 
     Split out of `_exact_optimality` because the standards gate was right:
@@ -712,18 +859,15 @@ def _repair_and_verify(W, Y, Z, fired_set, primal, order=0):
     def zkey(s):
         return sorted(s)
 
-    variables = ([("y", n) for n in sorted(Y)]
-                 + [("z", S) for S in sorted(Z, key=zkey)])
+    edges, variables, cuts = (_repair_structure(W, Y, Z) if _structure is None else _structure)
 
     def val(kind, k):
         return Y[k] if kind == "y" else Z[k]
 
-    edges = sorted(W)
-
     # O-1 lives in `_load_tracker`: cuts computed once, load kept by
     # delta. `put` mutates the Y/Z handed in, exactly as before.
-    load, put = _load_tracker(edges, variables, in_cut, val,
-                              Y, Z, ZERO)
+    load, put, cut_of = _load_tracker(edges, variables, in_cut, val,
+                                      Y, Z, ZERO, cuts=cuts)
 
     def objective():
         return (sum((Y[n] for n in sorted(Y) if n in fired_set), ZERO)
@@ -731,22 +875,24 @@ def _repair_and_verify(W, Y, Z, fired_set, primal, order=0):
     # Deterministic spend order: free variables first, then a total order on
     # the key. Both checkers must make the SAME repair or conformance is a lie.
     spend = _spend_order(variables, pays, val, order)
+    # Per edge, the spend-ordered variables whose cut contains it. The shed loop used to walk
+    # EVERY variable and ask `in_cut` about each, which was 4.1M calls over 12 shots. This is the
+    # same subsequence of `spend` by construction -- built by walking `spend` in order -- so the
+    # repair visits identical variables in identical order and makes the identical repair.
+    covers: dict = {e: [] for e in edges}
+    for _vk in spend:
+        for _e in cut_of[_vk]:
+            covers[_e].append(_vk)
 
     # --- 1. SHED infeasibility -----------------------------------------
     # Reducing a variable lowers the load on every edge of its cut and raises
     # it nowhere, so a feasible edge can never become violated. Each pass
     # clears at least the worst violated edge and none regress, so this
     # terminates within len(edges) passes: the bound is a proof, not a guess.
-    for _ in range(len(edges) + 1):
-        bad = [(e, load(e) - W[e]) for e in edges if load(e) > W[e]]
-        if not bad:
-            break
-        e, over = max(bad, key=lambda t: (t[1], t[0]))
-        for kd, k in spend:
+    for e, over in _violated_edges(edges, W, load):
+        for kd, k in covers[e]:
             if over == 0:
                 break
-            if not in_cut(kd, k, e):
-                continue
             cur = val(kd, k)
             # odd-set duals must stay >= 0; node potentials may go negative
             take = min(cur, over) if kd == "z" else over
@@ -777,10 +923,10 @@ def _repair_and_verify(W, Y, Z, fired_set, primal, order=0):
                 break
             if not pays(kd, k):
                 continue
-            cut = [e for e in edges if in_cut(kd, k, e)]
-            if not cut:
+            vcut = cut_of[(kd, k)]
+            if not vcut:
                 continue
-            room = min(W[e] - load(e) for e in cut)
+            room = min(W[e] - load(e) for e in vcut)
             take = room if room < short else short
             if take <= 0:
                 continue
@@ -808,7 +954,24 @@ def _repair_and_verify(W, Y, Z, fired_set, primal, order=0):
                   "after exact repair of the float rounding in the shipped dual")
 
 
-def _parse_duals(cert, primal, tol):
+def _t_even_dual_set(z, fired):
+    """The first dual set that is NOT T'-odd, or None when every one is.
+
+    EVERY DUAL SET MUST BE T'-ODD (R177/R177b, 2026-10-18). `check` never
+    tested it, so a packing over sets that are not primal constraints was
+    accepted: forgery PE1 certified a weight-5 correction whose optimum is
+    4. With |T| odd the boundary counts as a syndrome member
+    (T' = T u {BOUNDARY}). Refused at ANY value, zero included, because the
+    exact repair may raise any z it is handed. Same rule as verifier-js and
+    matching_cert_strict.check_exact_cut."""
+    Tp = fired | {BOUNDARY} if len(fired) % 2 == 1 else fired
+    for S in z:
+        if len(S & Tp) % 2 != 1:
+            return S
+    return None
+
+
+def _parse_duals(cert, primal, tol, fired, checks):
     """((y, z), error) -- every dual value read, checked FINITE, z >= 0.
 
     Split out of `check` when the C-3 refusal pushed it past the 90-line
@@ -844,6 +1007,15 @@ def _parse_duals(cert, primal, tol):
             return None, CheckResult(False,
                                      f"negative blossom dual z={zz}",
                                      primal_weight=primal)
+    # only a T'-odd set is a T-join cut constraint, so only it may carry a dual
+    bad_set = _t_even_dual_set(z, fired)
+    checks["dual_sets_t_odd"] = bad_set is None     # the structured answer: no consumer reads `reason`
+    if bad_set is not None:
+        return None, CheckResult(
+            False,
+            f"dual set {sorted(bad_set)[:8]} is T-even (|S n T'| even); it is "
+            f"not a T-join cut constraint, so it cannot carry a dual",
+            primal_weight=primal, checks=checks)
     return (y, z), None
 
 
@@ -923,7 +1095,7 @@ def check(
             primal_weight=primal)
 
     # --- 3. dual feasibility on EVERY edge (this is the O(nnz) core)
-    got, err = _parse_duals(cert, primal, tol)
+    got, err = _parse_duals(cert, primal, tol, fired, checks)
     if err is not None:
         return err
     y, z = got

@@ -2,23 +2,40 @@
 
 Everything here can be checked without trusting the people who made it.
 
-This release accompanies two manuscripts by Josh Philbrick (Coherence Energy
+This release accompanies three manuscripts by Josh Philbrick (Coherence Energy
 Labs), whose LaTeX sources are in `paper/`:
 
 * *Certifying quantum error-correction decoders: independently checkable
-  optimality receipts at scale* — `paper/certifying-decoders/`
+  near-optimality receipts at scale* — `paper/certifying-decoders/`
 * *Exact, independently checkable optimality receipts for BP-OSD on the
   [[144,12,12]] bivariate-bicycle code* — `paper/qldpc-certificates/`
+* *Machine-checkable lower-bound certificates for the circuit-level distances
+  of bivariate-bicycle syndrome-extraction circuits* — `paper/circuit-distance/`,
+  with its lane in `experiments/circuit_distance_exact/`, its records and
+  certificates in `evidence/circuit_distance_exact/`, and the Lean development
+  of its checker's calculus in `lean/CertR198/`
 
-Every number in both papers is a macro generated from the evidence in this
+Every number in all three papers is a macro generated from the evidence in this
 tree. Regenerate them and rebuild the PDFs (needs Python and a TeX
-distribution with REVTeX 4.2):
+distribution with REVTeX 4.2; paper 3's generator also needs Stim and NumPy):
 
     python paper/tools/make_numbers.py
     python paper/tools/make_numbers_qldpc.py
+    python paper/tools/make_numbers_distance.py
     python paper/tools/make_figures.py
     python paper/tools/build.py certifying-decoders
     python paper/tools/build.py qldpc-certificates
+    python paper/tools/build.py circuit-distance
+
+Paper 3's certificates re-check with its own checker (a C compiler is needed):
+`python -m pytest tests/test_r198_ibm_recert.py tests/test_r198_paper3_review.py`
+re-verifies shipped proofs and refuses a corrupted one. Every certificate of the
+three-colour and large morphing circuits regenerates bit for bit from the
+committed prover (`experiments/circuit_distance_exact/recert_campaign.py`) under
+the hash in `evidence/circuit_distance_exact/recert_20261102/manifest.json`,
+which then pins the proof the checker decides. Where that proof differs from the
+original record, the prover of the record's day, compiled from git, reproduces
+the recorded proof (`recert_old_prover.py`, `records/recert_old_prover.jsonl`).
 
 ## What runs from this tree, checked from a clean copy
 
@@ -76,6 +93,7 @@ is not evidence.
 | `willow_residual_shots.json` | the two Willow shots generation 6 left open: PyMatching's correction is exactly optimal and the exact tier stopped at its round cap | two shots, not a rate |
 | `gap_distribution.json` | BP-OSD's per-shot optimality gap against a checkable bound | a gap is **not** a defect: BP-OSD maximises likelihood over the hypergraph, not matching weight |
 | `seeded_fault_corpus_d*.json` | the faults themselves | released so you can score *your* detector; the two numbers are only comparable if the corpus is shared |
+| `lean_safe_bound.json` | a checker PROVED sound in Lean 4 (`Cert.accept_sound`, standard axioms only) accepted all 1,851 P2 exact certificates in `p2_certificates.jsonl.gz` and refused all 11,106 forgeries of them | the JSON reader and the Lean compiler are trusted, not proved; see `lean/OneqCert/README.md` |
 
 ## The claim in one paragraph
 

@@ -125,7 +125,10 @@ def main() -> int:
                       "holding the full archive can confirm these are the same "
                       "bytes"),
         "configurations": manifest,
-    }, indent=2), encoding="utf-8")
+    }, indent=2), encoding="utf-8", newline="\n")
+    # newline="\n": the released bundle pins this file's sha256, and write_text in text mode on Windows writes
+    # every newline as CRLF -- the 2026-10-15 re-fetch got byte-identical data (all 48 digests) and a manifest
+    # that could not match its own pin (90fae3e5 vs 7e2eb266) for no other reason
     print(f"\n{len(manifest)} configurations, {total/1e6:.1f} MB -> {DEST}")
     return 0
 

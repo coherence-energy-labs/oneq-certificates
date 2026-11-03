@@ -209,6 +209,25 @@ def main() -> int:
             dvc["certify_over_decode_batch"]))
         out["cost_ratio_per_shot"] = int(round(
             dvc["certify_over_decode_per_shot"]))
+    # PAPER 1's COST, re-measured with its conditions recorded (2026-11-02, referee finding 1): the ratios as typeset,
+    # rounded to two significant figures because they are timings on a shared machine, not exact counts
+    cc = _j("certify_cost_d5_r25.json")
+    if cc:
+        def two_sig(x):
+            return int(round(x, -max(0, len(str(int(x))) - 2)))
+        out["certify_cost_ratio_batch_2sf"] = two_sig(cc["ratio_mean_certify_over_mean_batch_decode"])
+        out["certify_cost_ratio_per_shot_2sf"] = two_sig(cc["ratio_mean_certify_over_mean_per_shot_decode"])
+        out["certify_cost_refused_over_accepted_median_2sf"] = two_sig(
+            cc["certify_ms_refused"]["median"] / cc["certify_ms_accepted"]["median"]) if cc["certify_ms_refused"] else None
+        # the development shots re-run for the producer-identity comparison (paper 1, second referee, M2)
+        pid = _j("producer_identity_willow.json")
+        out["producer_identity_development_nontrivial"] = sum(
+            c["nontrivial"] for c in pid["configs"].values() if c["sample"] == "development")
+        # checking alone against a batched decode (paper 1, second referee, m7): median check over batch mean
+        out["certify_cost_check_median_over_batch_2sf"] = two_sig(
+            cc["check_ms"]["median"] * 1000 / cc["decode_batch_us_per_shot"])
+        out["certify_cost_refused_median_ms_2sf"] = two_sig(cc["certify_ms_refused"]["median"]) \
+            if cc["certify_ms_refused"] else None
 
     # one-sided 95% lower bounds for PAPER2's headline all-success rows:
     # EXACT Clopper-Pearson, 0.05**(1/n) -- the external audit's upgrade
@@ -367,6 +386,38 @@ def main() -> int:
         out["detection_defect_mutant_corrections"] = sum(
             t["n"] for doc in det for name, t in doc["seeded_faults"]["per_mutant"].items()
             if not name.startswith("M5"))
+    # PAPER 1's SOUND-CHECKER RERUN, SUMMED (2026-10-26): the hardware aggregates and the replay battery
+    # paper/tools/make_numbers.py typesets once every configuration's rerun and two-checker replay is complete.
+    # Each is a sum over evidence/epsilon_rerun/*, so it traces only through here; emitted only when the set is
+    # complete, as make_numbers.py requires
+    er = EVID / "epsilon_rerun"
+    hw = {p.parent.name: json.loads(p.read_text(encoding="utf-8")) for p in sorted(er.glob("willow_*/summary.json"))}
+    sim_eps = _j("epsilon_rerun/sim_d5_r25/summary.json")
+    names = ["sim_d5_r25", *hw]
+    reps = {n: er / f"replay_{n}.json" for n in names}
+    if hw and sim_eps and all(p.is_file() for p in reps.values()):
+        out["eps_hw_nontrivial"] = sum(s["nontrivial"] for s in hw.values())
+        out["eps_hw_accepted"] = sum(s["accepted"] for s in hw.values())
+        out["eps_hw_exact_optimal"] = sum(s["status"].get("EXACT_OPTIMAL", 0) for s in hw.values())
+        out["eps_hw_not_proven"] = sum(s["status"].get("NOT_PROVEN", 0) for s in hw.values())
+        out["eps_hw_forgeries_attempted"] = sum(s["forgeries_attempted"] for s in hw.values())
+        out["eps_forgeries_attempted_total"] = out["eps_hw_forgeries_attempted"] + sim_eps["forgeries_attempted"]
+        bat = [json.loads(p.read_text(encoding="utf-8"))["results"][0]["battery"] for p in reps.values()]
+        out["eps_replay_boundary_just_outside_refused"] = sum(b["boundary_just_outside_refused"] for b in bat)
+        out["eps_replay_boundary_just_inside_accepted"] = sum(b.get("boundary_just_inside_accepted", 0)
+                                                              for b in bat)
+        out["eps_replay_substituted_graph_refused"] = sum(b.get("substituted_graph_refused", 0) for b in bat)
+    # PAPER 3's INDEPENDENT DEMs OF THE 2026 CIRCUITS (R228, 2026-10-29): the model count and the mechanism range
+    # paper/tools/make_numbers_distance.py typesets, read from the JSON-lines record the lane driver writes. A .jsonl
+    # record is not one of the evidence JSONs this gate reads, so these trace only through here; emitted only when
+    # every row is equal, as the generator requires
+    d26 = EVID / "circuit_distance_exact" / "records" / "dem_independent_morph2026.jsonl"
+    if d26.is_file():
+        rows = [json.loads(x) for x in d26.read_text(encoding="utf-8").splitlines() if x.strip()]
+        if rows and all(r["equal"] for r in rows):
+            out["dem_morph2026_models"] = len(rows)
+            out["dem_morph2026_mechanisms_min"] = min(r["mechanisms"] for r in rows)
+            out["dem_morph2026_mechanisms_max"] = max(r["mechanisms"] for r in rows)
     dest = EVID / "derived_claims.json"
     dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
 

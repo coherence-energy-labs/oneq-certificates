@@ -29,7 +29,6 @@ prose would be unfalsifiable and would be switched off within a week.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import pathlib
 import re
@@ -174,7 +173,6 @@ def _roadmap_position() -> dict:
     # its counts missing is UNCHECKABLE whichever ledger wrote it, and
     # running this first reported "predates the stamp" for a malformed
     # file. The existing test said so within the minute.
-    import hashlib
     # THE TOOL IS FOUND BESIDE THIS MODULE, not under ROOT. A test that
     # patches ROOT is redirecting where EVIDENCE is read from; the tools
     # do not move with it, and resolving them under the patched root made
@@ -182,7 +180,11 @@ def _roadmap_position() -> dict:
     tool = pathlib.Path(__file__).resolve().parent / "roadmap_gate.py"
     if not tool.is_file():
         return {}
-    live = hashlib.sha256(tool.read_bytes()).hexdigest()
+    # Shared digest, same reason as the census: the raw working copy is CRLF on a
+    # Windows checkout and LF everywhere else, so this comparison used to decide
+    # `roadmap_closed` / `roadmap_gates` by which machine was asking.
+    from roster_digest import roster_digest
+    live = roster_digest(tool)
     stamped = d.get("source_sha256")
     if stamped != live:
         return {"roadmap_note":
@@ -217,11 +219,22 @@ def _suite_size() -> dict:
     than a number some earlier run wrote down. It costs ~4 s against a
     ~200 s wall.
     """
+    # stdin=DEVNULL IS LOAD-BEARING ON WINDOWS, NOT TIDINESS.
+    # Without it the child inherits this process's stdin, and in any
+    # non-interactive context -- a redirected run, a background job, a CI step
+    # that closes stdin -- that handle can be invalid. Windows then fails inside
+    # DuplicateHandle before pytest is even launched:
+    #   OSError: [WinError 6] The handle is invalid
+    # which surfaced as two of this repository's own doc-claims gates failing on
+    # a developer machine while every other test passed. The gate whose job is to
+    # stop prose drifting from the artifacts could not run at all, and because it
+    # crashed rather than reported, it looked like a broken checker rather than an
+    # unchecked claim. The child needs no stdin; saying so makes it portable.
     r = subprocess.run(
         [sys.executable, "-W", "ignore", "-m", "pytest", "tests/", "-q",
          "--collect-only", "--strict-markers", "-m", "not slow_exhaustive"],
         cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
-        errors="replace", timeout=900)
+        errors="replace", timeout=900, stdin=subprocess.DEVNULL)
     m = re.search(r"(\d+)\s*/\s*(\d+)\s+tests collected(?:\s*\((\d+)\s+"
                   r"deselected\))?", r.stdout)
     if not m:                      # no deselection: "N tests collected"
@@ -271,8 +284,21 @@ def _tree_size() -> dict:
     (`git_pin.py`), and it is fixed the same way: count only what a fresh
     clone holds.
     """
-    mods = [p for p in (ROOT / "src" / "oneq").glob("*.py")
-            if p.name != "__init__.py"]
+    # *** AND THE GLOB WAS NOT RECURSIVE, SO A WHOLE SUBPACKAGE WAS DARK. ***
+    # `glob("*.py")` counts the top directory only. The README's claim is
+    # "modules in `src/oneq`", which plainly includes subpackages, so the
+    # prose and its checker shared a definition NARROWER THAN THE WORDS and
+    # therefore agreed with each other while both were wrong. Measured on
+    # 2026-09-21: 144 counted, 158 present, and the 14 missing ones were the
+    # entire `src/oneq/nexus/` package -- the newest code in the tree, which
+    # is exactly the code a stale counter is least able to notice. A count
+    # that cannot move when modules are added is not a measurement.
+    #
+    # `rglob` with the same __init__ and __pycache__ exclusions restores the
+    # claim the prose actually makes.
+    mods = [p for p in (ROOT / "src" / "oneq").rglob("*.py")
+            if p.name != "__init__.py"
+            and "__pycache__" not in p.parts]
     tools = list((ROOT / "tools").glob("*.py"))
     # *** AND EXCLUDING `__pycache__` DID NOT FINISH THE JOB. *** The
     # rule above is right -- count only what a fresh clone holds -- and
@@ -348,8 +374,11 @@ def _wall_size() -> dict:
         return unavailable("no evidence/wall_census.json -- run "
                            "`python tools/gate_all.py` once")
     d = json.loads(cen.read_text(encoding="utf-8"))
-    live = hashlib.sha256(
-        (ROOT / "tools" / "gate_all.py").read_bytes()).hexdigest()
+    # THE SHARED DIGEST, not a second copy of it. gate_all stamps the census with
+    # `roster_digest` and this gate re-computes it the same way; when the two were
+    # inlined separately they agreed on only one machine. See tools/roster_digest.py.
+    from roster_digest import roster_digest
+    live = roster_digest(ROOT / "tools" / "gate_all.py")
     if d.get("roster_source_sha256") != live:
         # EXPECTED EXACTLY ONCE after the wall itself is edited, and the
         # message has to say so or it reads as a defect. The census is

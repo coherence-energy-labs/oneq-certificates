@@ -227,7 +227,7 @@ def main() -> int:
             if C["paired_on_resolved"] != {"bp_wrong_pipe_ok": n10, "bp_ok_pipe_wrong": n01} or abs(C["mcnemar_two_sided_p"] - pmc) > 1e-12:
                 mism.append(f"{lvl} {label}: paired cells or McNemar disagree")
     verdict = {"schema": "oneq-strong-baseline-replay/1", "passed": not mism,
-               "summary": str(SUMMARY.relative_to(ROOT)).replace("\\", "/"),
+               "summary": str(SUMMARY.relative_to(ROOT) if SUMMARY.is_relative_to(ROOT) else SUMMARY).replace("\\", "/"),
                "summary_sha256": _sha(SUMMARY), "manifest_sha256": _sha(pathlib.Path(a.manifest)),
                "decisions": n_decisions, "proof_checks": len(checked), "proofs": len(proofs),
                "note": ("proof_checks counts distinct (proof, candidate) pairs decided by the production checker; "
@@ -243,7 +243,7 @@ def main() -> int:
         return 1
     print(f"STRONG-BASELINE REPLAY PASSED: {n_decisions} decisions, {len(checked)} distinct proof checks over "
           f"{len(proofs)} stored proofs ({man['proofs_by_kind']}), every summary number in "
-          f"{SUMMARY.relative_to(ROOT)} recomputed from records and proofs alone")
+          f"{(SUMMARY.relative_to(ROOT) if SUMMARY.is_relative_to(ROOT) else SUMMARY)} recomputed from records and proofs alone")
     return 0
 
 

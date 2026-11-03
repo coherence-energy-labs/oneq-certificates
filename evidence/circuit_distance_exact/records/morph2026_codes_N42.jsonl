@@ -1,0 +1,5 @@
+{"N": 42, "A": [1, 0, 10], "B": [0, 7], "k": 6, "d_end_rounds": [[6, 6], [6, 6]], "d_end_exactly_target": true, "d_mid_xz": [6, 6], "degree": 4, "layers": 3}
+{"N": 42, "A": [1, 10, 0], "B": [0, 7], "k": 6, "d_end_rounds": [[6, 6], [6, 6]], "d_end_exactly_target": true, "d_mid_xz": [6, 6], "degree": 4, "layers": 3}
+{"N": 42, "A": [0, 3, 9], "B": [0, 7], "k": 6, "d_end_rounds": [[6, 6], [6, 6]], "d_end_exactly_target": true, "d_mid_xz": [6, 6], "degree": 4, "layers": 3}
+{"N": 42, "A": [0, 9, 3], "B": [0, 7], "k": 6, "d_end_rounds": [[6, 6], [6, 6]], "d_end_exactly_target": true, "d_mid_xz": [6, 6], "degree": 4, "layers": 3}
+{"summary": true, "N": 42, "w": 5, "k": 6, "d": 6, "raw": 33620, "classes_valid": 221, "classes_with_k": 8, "circuits_hit": 4, "circuits_exact": 4, "seconds": 1.8}

@@ -194,9 +194,9 @@ def main(argv=None) -> int:
            "what": ("BP-OSD's own answer scored against the sampled logical observable on the held-out "
                     "circuit-level shots, derived from the records (candidate, certified answer, the "
                     "certified answer's match) and the pinned DEM's observable row; nothing re-sampled"),
-           "records": {"file": RECORDS.relative_to(ROOT).as_posix(), "sha256": rung["records_sha256"]},
-           "summary": {"file": SUMMARY.relative_to(ROOT).as_posix(), "sha256": sha256_file(SUMMARY)},
-           "weights": {"file": WEIGHTS.relative_to(ROOT).as_posix(), "sha256": sha256_file(WEIGHTS)},
+           "records": {"file": (RECORDS.relative_to(ROOT).as_posix() if RECORDS.is_relative_to(ROOT) else str(RECORDS)), "sha256": rung["records_sha256"]},
+           "summary": {"file": (SUMMARY.relative_to(ROOT).as_posix() if SUMMARY.is_relative_to(ROOT) else str(SUMMARY)), "sha256": sha256_file(SUMMARY)},
+           "weights": {"file": (WEIGHTS.relative_to(ROOT).as_posix() if WEIGHTS.is_relative_to(ROOT) else str(WEIGHTS)), "sha256": sha256_file(WEIGHTS)},
            "binding_rebuilt_and_matched": sorted(got),
            "observable_row_size": len(obs_row),
            "observable_row_sha256": hashlib.sha256(json.dumps(sorted(obs_row)).encode()).hexdigest(),

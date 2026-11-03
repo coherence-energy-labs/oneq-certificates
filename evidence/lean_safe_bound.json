@@ -1,0 +1,99 @@
+{
+  "build_exit": 0,
+  "claim": "OneqCert.Cert.accept_sound: an accepted certificate proves its candidate is a minimum-weight correction; every P2 exact certificate was run through that proved `accept`",
+  "corpus": {
+    "accepted": 1851,
+    "certificates_sha256": "a2c1461da17a2e7f7cb18c27bd99c5142ef7aaea2ca81d55c83f6bfac7d31834",
+    "exe_exit": 0,
+    "forgeries": {
+      "accepted": 0,
+      "accepted_ids": [],
+      "malformed": 0,
+      "per_kind": {
+        "all_duals_zero": 1851,
+        "duplicate_in_candidate": 1851,
+        "negative_dual": 1851,
+        "right_parity_facet": 1851,
+        "row_out_of_range": 1851,
+        "syndrome_flip": 1851
+      },
+      "refused": 11106,
+      "total": 11106
+    },
+    "malformed": 0,
+    "refused": 0,
+    "refused_ids": []
+  },
+  "lean_version": "Lean (version 4.34.0, x86_64-w64-windows-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)",
+  "mathlib_rev": "5ed2965256430c3649e86755f9576b54eca72435",
+  "schema": "oneq.lean.safe-bound.v1",
+  "sources": {
+    "Main.lean": "b720547f409de831d728ed9e72034ae93bab6523d365fed3c458972f352bd552",
+    "OneqCert.lean": "6bace7a2b06bf62b4c40f9b3c5f8e6c9408f8d65e6ad9dc685d8f0c55a15ecd2",
+    "OneqCert/AxiomCheck.lean": "7bd9edae5208c0c680aae9cc0b0d274e8358ff0756e20bd618a718d61dc77c82",
+    "OneqCert/Checker.lean": "afca861709a936907ce5429614638965468a2c39b2496196509e66b7d275fb9b",
+    "OneqCert/SafeBound.lean": "7cbc05eae241b83a3112eeecee2e35e62d8fc2fad5abf3ba418b0ec77a4da755",
+    "OneqCert/Statements.lean": "d9e4448398dc1330d33224f4c0286a8035813e6a3eb34e80701909334f922102",
+    "OneqCert/WeakDuality.lean": "f708786e7b8bd3a3a67489611347f05ba239311de4710d669dfed6949263bc79",
+    "lake-manifest.json": "5aadf57279d2c8b2819930c62757231755ba341a3b46cbf98bb1c8cea053a25e",
+    "lakefile.toml": "5d6efe6757790b8a6383b474e96bcb265c2b2a61a23b51ebdf989ac14dd588e2",
+    "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632"
+  },
+  "theorems": {
+    "OneqCert.Cert.accept_sound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.Statements.accept_sound_pinned": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.facet_inequality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.facet_sum_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.facet_violation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.lattice_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.safe_bound_le_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.sum_coef": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.sum_on_lattice": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.xor_list_parity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OneqCert.xor_parity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

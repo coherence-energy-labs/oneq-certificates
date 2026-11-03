@@ -147,6 +147,15 @@ def check_exact_cut(*, edges: Iterable[tuple[int, int, float]],
 
     # Dual: exact values and, critically, only constraints that actually exist
     # in the primal are allowed to contribute to the objective.
+    #
+    # T-ODDNESS IS JUDGED AGAINST T' (R177/R177b, 2026-10-18). The boundary
+    # has free degree, so when |T| is odd it is the odd-degree vertex that
+    # makes the T-join well posed: x(delta(S)) >= 1 is a constraint iff the
+    # side of S WITHOUT the boundary meets T oddly, i.e. |S n T'| is odd with
+    # T' = T u {BOUNDARY}. Testing |S n T| admitted non-constraints (forgery
+    # PB1 certified a weight-6 correction whose optimum is 4) and refused
+    # genuine certificates. Same rule as verifier-js, check_epsilon, MoatEngine.
+    Tp = T | {BOUNDARY} if len(T) % 2 == 1 else T
     Z: dict[frozenset, Fraction] = {}
     try:
         for S0, value in cert.cut_duals.items():
@@ -156,11 +165,12 @@ def check_exact_cut(*, edges: Iterable[tuple[int, int, float]],
                 return StrictCheckResult(False, "negative cut dual", primal=primal)
             if z == 0:
                 continue
-            if len(S & T) % 2 != 1:
+            if len(S & Tp) % 2 != 1:
+                # the structured answer, so no consumer reads this from `reason`
                 return StrictCheckResult(
                     False,
                     f"dual set {sorted(S)} is T-even; it is not a primal cut constraint",
-                    primal=primal)
+                    primal=primal, checks={"t_odd": False})
             Z[S] = Z.get(S, Fraction(0)) + z
     except (TypeError, ValueError) as exc:
         return StrictCheckResult(False, f"malformed exact dual: {exc}", primal=primal)

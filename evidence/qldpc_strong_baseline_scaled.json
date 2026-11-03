@@ -1,0 +1,212 @@
+{
+ "schema": "oneq-qldpc-strong-baseline-scaled/1",
+ "post_hoc": "the scaling factor was chosen after the v3 results were known; nothing here was preregistered",
+ "shots": "the v3 shots (evidence/strong_baseline_v3/p*_shots.jsonl), 200 nontrivial per level",
+ "configs": {
+  "A_s": {
+   "bp_method": "ms",
+   "schedule": "parallel",
+   "max_iter": 30,
+   "osd_method": "osd_cs",
+   "osd_order": 5,
+   "ms_scaling_factor": 0.625
+  },
+  "B_s": {
+   "bp_method": "ms",
+   "schedule": "parallel",
+   "max_iter": 100,
+   "osd_method": "osd_cs",
+   "osd_order": 10,
+   "ms_scaling_factor": 0.625
+  }
+ },
+ "ldpc": "2.4.1",
+ "classification": "optimum hit = syndrome-valid with the certified optimum's weight; tier 1 = the shot's stored v3 flat proof accepts THIS candidate under check_qldpc_exact; the same rule reproduces v3's published tier-1 counts for A/B/C",
+ "published_rule_check": {
+  "p=0.01 baseline_30_osdcs5": {
+   "published": 199,
+   "this_rule": 199
+  },
+  "p=0.01 strong_100_osdcs10": {
+   "published": 200,
+   "this_rule": 200
+  },
+  "p=0.01 strongest_ps_100_osdcs10": {
+   "published": 200,
+   "this_rule": 200
+  },
+  "p=0.02 baseline_30_osdcs5": {
+   "published": 190,
+   "this_rule": 190
+  },
+  "p=0.02 strong_100_osdcs10": {
+   "published": 200,
+   "this_rule": 200
+  },
+  "p=0.02 strongest_ps_100_osdcs10": {
+   "published": 197,
+   "this_rule": 197
+  },
+  "p=0.03 baseline_30_osdcs5": {
+   "published": 165,
+   "this_rule": 165
+  },
+  "p=0.03 strong_100_osdcs10": {
+   "published": 199,
+   "this_rule": 199
+  },
+  "p=0.03 strongest_ps_100_osdcs10": {
+   "published": 200,
+   "this_rule": 200
+  },
+  "p=0.05 baseline_30_osdcs5": {
+   "published": 84,
+   "this_rule": 84
+  },
+  "p=0.05 strong_100_osdcs10": {
+   "published": 86,
+   "this_rule": 86
+  },
+  "p=0.05 strongest_ps_100_osdcs10": {
+   "published": 187,
+   "this_rule": 187
+  },
+  "p=0.07 baseline_30_osdcs5": {
+   "published": 24,
+   "this_rule": 24
+  },
+  "p=0.07 strong_100_osdcs10": {
+   "published": 143,
+   "this_rule": 143
+  },
+  "p=0.07 strongest_ps_100_osdcs10": {
+   "published": 146,
+   "this_rule": 146
+  }
+ },
+ "levels": {
+  "p=0.01": {
+   "A_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 0,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 199,
+    "tier1_rate": 99.5,
+    "optimum_hit": 199,
+    "optimum_hit_rate": 99.5,
+    "optimum_hit_not_tier1": 0
+   },
+   "B_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 0,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 199,
+    "tier1_rate": 99.5,
+    "optimum_hit": 199,
+    "optimum_hit_rate": 99.5,
+    "optimum_hit_not_tier1": 0
+   }
+  },
+  "p=0.02": {
+   "A_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 1,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 196,
+    "tier1_rate": 98.0,
+    "optimum_hit": 196,
+    "optimum_hit_rate": 98.0,
+    "optimum_hit_not_tier1": 0
+   },
+   "B_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 1,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 197,
+    "tier1_rate": 98.5,
+    "optimum_hit": 197,
+    "optimum_hit_rate": 98.5,
+    "optimum_hit_not_tier1": 0
+   }
+  },
+  "p=0.03": {
+   "A_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 0,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 199,
+    "tier1_rate": 99.5,
+    "optimum_hit": 199,
+    "optimum_hit_rate": 99.5,
+    "optimum_hit_not_tier1": 0
+   },
+   "B_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 0,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 198,
+    "tier1_rate": 99.0,
+    "optimum_hit": 198,
+    "optimum_hit_rate": 99.0,
+    "optimum_hit_not_tier1": 0
+   }
+  },
+  "p=0.05": {
+   "A_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 7,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 185,
+    "tier1_rate": 92.5,
+    "optimum_hit": 197,
+    "optimum_hit_rate": 98.5,
+    "optimum_hit_not_tier1": 12
+   },
+   "B_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 9,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 185,
+    "tier1_rate": 92.5,
+    "optimum_hit": 197,
+    "optimum_hit_rate": 98.5,
+    "optimum_hit_not_tier1": 12
+   }
+  },
+  "p=0.07": {
+   "A_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 35,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 145,
+    "tier1_rate": 72.5,
+    "optimum_hit": 196,
+    "optimum_hit_rate": 98.0,
+    "optimum_hit_not_tier1": 51
+   },
+   "B_s": {
+    "shots": 200,
+    "bp_osd_logical_errors": 36,
+    "bp_osd_syndrome_invalid": 0,
+    "tier1": 145,
+    "tier1_rate": 72.5,
+    "optimum_hit": 196,
+    "optimum_hit_rate": 98.0,
+    "optimum_hit_not_tier1": 51
+   }
+  }
+ },
+ "files": {
+  "evidence/strong_baseline_scaled/p0.01_A_s.jsonl": "d4651f41a719dbfdd98747d0c85cdcd893375371a2187d3bbf03f94eb09dabed",
+  "evidence/strong_baseline_scaled/p0.01_B_s.jsonl": "df8416959da03009760d86eb908e0f2bf0945b591a4ff85373b07a1d23c3e681",
+  "evidence/strong_baseline_scaled/p0.02_A_s.jsonl": "040133d26e374d7e30de2cde94d30e0e4d085df14389ec9fc6d63b8e464abf89",
+  "evidence/strong_baseline_scaled/p0.02_B_s.jsonl": "cf5f01b782533f343243049fc945341921f2858a5d4223a1e9ab340973b87550",
+  "evidence/strong_baseline_scaled/p0.03_A_s.jsonl": "05d4f016eccb02954e4445e1d4a50880ba7de5ad7245a3ccb06d4e8c84364f91",
+  "evidence/strong_baseline_scaled/p0.03_B_s.jsonl": "caee60d64302212b0bbd06ddaeef72b53696a026600245aa4d2d0158038c614c",
+  "evidence/strong_baseline_scaled/p0.05_A_s.jsonl": "925271f6230eb65057c31155ea11bf1542ff9b8b801ee7a434ede29c096941d2",
+  "evidence/strong_baseline_scaled/p0.05_B_s.jsonl": "4fdb075f896f6923fb6011bd355fc5fe502c6ef2e3c3adcdbb09827a1f84125a",
+  "evidence/strong_baseline_scaled/p0.07_A_s.jsonl": "0493d7b6de84baf8f66bb797cde1ea0f126dced49acd94b2d29b8fc6a1655042",
+  "evidence/strong_baseline_scaled/p0.07_B_s.jsonl": "c0cfbf5e21b5e7230d037da67aa51413290e69980b97ec25b9cadc15eb656763"
+ },
+ "replay": "python experiments/m0_prior_art/qldpc_strong_baseline_scaled.py --replay"
+}

@@ -1,0 +1,10 @@
+ND 216 NM 1584 orbits 66 threads 22 tt 2^20/thread; overlapping pairs 87336 (table 2^18, 2 MB)
+w<=10: NONE  => d_circ >= 11   (2919.1s wall, 2344576998 nodes)
+   depth: nodes / bound-pruned / tt-pruned
+    1: 66 / 0 / 0
+    2: 627 / 0 / 0
+    3: 10811 / 0 / 602
+    4: 231737 / 0 / 33142
+    5: 4937070 / 0 / 724251
+    6: 110761471 / 21571201 / 8257872
+    7: 2228635216 / 0 / 0

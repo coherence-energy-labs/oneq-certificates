@@ -2965,7 +2965,7 @@ MUTANTS: tuple[Mutant, ...] = (
         # the check it is a permanent claim about a device that changes.
         "M113-capability-manifest-never-expires",
         "a capability measured in March admitted in September",
-        'if now > manifest["probe_expiry"]:',
+        'if current > _instant(manifest["probe_expiry"]):',
         'if False:',
         "test_an_expired_manifest_is_refused_like_a_stale_calibration",
         "capability",

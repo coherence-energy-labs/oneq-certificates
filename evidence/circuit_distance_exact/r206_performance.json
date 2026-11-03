@@ -1,0 +1,182 @@
+{
+  "schema": "oneq.r206.performance.v1",
+  "description": "Proof-preserving terminal packing (R206) versus CDP5 R205",
+  "environment": {
+    "os": "Windows",
+    "gcc": "MSYS2 GCC 16.1.0 -O3 -fopenmp",
+    "omp_num_threads": 6,
+    "python": "3.14.3",
+    "stim": "1.16.0"
+  },
+  "producer_source_hashes": {
+    "r205_cdist_prove.c": "819ce3e896d0eed10655559b3a8ef145e04e5768ead339f35c6166dec4536dfe",
+    "r206_cdist_prove.c": "e0e8f38dc5334c5d387bdce4d54859c51cb896ad38bb7b4a0fab6f04758ec203",
+    "r205_ccheck.c": "f66ac18265a7ca9e307994f8bd712548d4cda9392638c42cbab58eb5732edb04",
+    "r206_ccheck.c": "14565d21c19df2b8e149314e355dd4d1fa0b32187a4743e97d0f445c650541a5"
+  },
+  "eval_design": "R206 policy selected on IBM Z and 3-colour X. IBM X and 3-colour Z held out.",
+  "caveats": [
+    "Small sample size, not a confidence-bounded speed guarantee.",
+    "Machine had other active processes; prefer clean-host rerun for publishable timing.",
+    "Proof bytes are unchanged and each accepted proof has been independently verified.",
+    "The schedule-search experiment is a separate research outcome."
+  ],
+  "cases": [
+    {
+      "name": "ibm_Z_weight9",
+      "evaluation_split": "tuning",
+      "weight_limit": 9,
+      "model_sha256": "5f29c8ddcf2db55fb83fed3a5e59924ddc9684471bed2a5dc548352250ef2fa3",
+      "proof_sha256_identical_for_all_versions": "58ce6e482444c1f00ef4251b22441c5de761b145ba9da5e7bb1ceecb5cd9f0fe",
+      "proof_bytes": 92370,
+      "prover": {
+        "baseline_median_s": 3.739,
+        "r206_median_s": 2.757,
+        "median_reduction_pct": 26.26,
+        "baseline_runs_s": [
+          5.736,
+          3.49,
+          3.739
+        ],
+        "r206_runs_s": [
+          4.395,
+          2.682,
+          2.757
+        ]
+      },
+      "checker": {
+        "baseline_median_s": 3.229,
+        "r206_median_s": 2.676,
+        "median_reduction_pct": 17.13,
+        "baseline_runs_s": [
+          4.901,
+          3.248,
+          3.21,
+          3.003
+        ],
+        "r206_runs_s": [
+          4.405,
+          2.662,
+          2.69,
+          2.464
+        ]
+      }
+    },
+    {
+      "name": "threecolour_X_weight8",
+      "evaluation_split": "tuning",
+      "weight_limit": 8,
+      "model_sha256": "28875332778f11e52fd6d38756617fe237e94a696f8b9419fe922129220485db",
+      "proof_sha256_identical_for_all_versions": "9b51371e52c6c889950d8ce2925192f400642c40d6dd9f35acc0e0c97e2954ca",
+      "proof_bytes": 43084,
+      "prover": {
+        "baseline_median_s": 2.745,
+        "r206_median_s": 2.401,
+        "median_reduction_pct": 12.53,
+        "baseline_runs_s": [
+          2.771,
+          2.637,
+          2.745
+        ],
+        "r206_runs_s": [
+          2.383,
+          2.401,
+          2.423
+        ]
+      },
+      "checker": {
+        "baseline_median_s": 2.9985,
+        "r206_median_s": 2.665,
+        "median_reduction_pct": 11.12,
+        "baseline_runs_s": [
+          3.05,
+          3.154,
+          2.947,
+          2.816
+        ],
+        "r206_runs_s": [
+          2.605,
+          2.725,
+          2.775,
+          2.551
+        ]
+      }
+    },
+    {
+      "name": "ibm_X_weight9",
+      "evaluation_split": "held_out",
+      "weight_limit": 9,
+      "model_sha256": "fc058d51b4ef9e2d2e7b33239815719afc76a81bb3110c0a5b091bed578c3ab7",
+      "proof_sha256_identical_for_all_versions": "558d159b06fb664414af562f39f2d7a4def7e3c1db340c4a4122d93cd850dfb5",
+      "proof_bytes": 167781,
+      "prover": {
+        "baseline_median_s": 6.16,
+        "r206_median_s": 4.583,
+        "median_reduction_pct": 25.6,
+        "baseline_runs_s": [
+          7.307,
+          6.117,
+          6.16
+        ],
+        "r206_runs_s": [
+          5.704,
+          4.527,
+          4.583
+        ]
+      },
+      "checker": {
+        "baseline_median_s": 5.597,
+        "r206_median_s": 4.484,
+        "median_reduction_pct": 19.89,
+        "baseline_runs_s": [
+          8.137,
+          5.597,
+          5.433
+        ],
+        "r206_runs_s": [
+          5.251,
+          4.484,
+          4.337
+        ]
+      }
+    },
+    {
+      "name": "threecolour_Z_weight8",
+      "evaluation_split": "held_out",
+      "weight_limit": 8,
+      "model_sha256": "02077f59e234bb2e1252eb93f2cfd5abb451004842ba5e09270c9e27c3a726cd",
+      "proof_sha256_identical_for_all_versions": "36471ca7e303b85f0400f99880459d01e35cc0f48bf8a4dc9d62984b2822b7a5",
+      "proof_bytes": 37496,
+      "prover": {
+        "baseline_median_s": 2.344,
+        "r206_median_s": 2.068,
+        "median_reduction_pct": 11.77,
+        "baseline_runs_s": [
+          2.306,
+          2.344,
+          2.372
+        ],
+        "r206_runs_s": [
+          2.071,
+          2.068,
+          2.053
+        ]
+      },
+      "checker": {
+        "baseline_median_s": 2.44,
+        "r206_median_s": 2.197,
+        "median_reduction_pct": 9.96,
+        "baseline_runs_s": [
+          2.435,
+          2.455,
+          2.44
+        ],
+        "r206_runs_s": [
+          2.195,
+          2.197,
+          2.219
+        ]
+      }
+    }
+  ]
+}

@@ -87,6 +87,31 @@ def family(name: str) -> str:
     return words[-1] if words else ""
 
 
+_INITIAL = re.compile(r"[A-Z]\.(-?[A-Z]\.)*")
+_PARTICLES = {"de", "van", "von", "der", "den", "da", "di", "la", "le", "du", "del"}
+
+
+def ambiguous_names(field: str) -> list[str]:
+    """Names BibTeX would split by guessing: 'Given Family' form with two or more FULL-WORD given tokens.
+
+    BibTeX takes the last word as the family name, so 'Laleh Aghababaie Beni' typeset as 'L. A. Beni' while the
+    author's own recent records give the family name 'Aghababaie Beni' (2026-11-02, paper 3's referee). The
+    sources cannot settle it either: arXiv's metadata splits on the last word too. Such a name must be written
+    'Family, Given', so that a person has decided the split and BibTeX no longer guesses."""
+    raw = field.strip()
+    if raw.startswith("{") and raw.endswith("}"):
+        return []
+    out = []
+    for name in (p.strip() for p in raw.split(" and ")):
+        if name == "others" or "," in name or name.startswith("{"):
+            continue
+        given = name.split()[:-1]
+        full = [g for g in given if not _INITIAL.fullmatch(g) and g.lower() not in _PARTICLES]
+        if len(full) >= 2:
+            out.append(name)
+    return out
+
+
 def bib_authors(field: str) -> tuple[list[str], bool, str | None]:
     """(family names, open-ended with 'others', collaboration or None)."""
     raw = field.strip()
@@ -132,6 +157,20 @@ def fetch_doi(doi: str) -> dict:
             "authors": authors, "year": int(dp[0]),
             "volume": m.get("volume"), "issue": m.get("issue"),
             "page": m.get("page") or m.get("article-number")}
+
+
+GITHUB_RELEASE = re.compile(r"https://github\.com/([\w.-]+)/([\w.-]+)/releases/tag/([\w.\-]+)")
+
+
+def fetch_github(url: str) -> dict:
+    """The release's publication year and the README's words (the authors' own statement of authorship)."""
+    owner, repo, tag = GITHUB_RELEASE.fullmatch(url).groups()
+    rel = json.loads(_get(f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{tag}"))
+    readme = json.loads(_get(f"https://api.github.com/repos/{owner}/{repo}/readme"))
+    import base64
+    text = base64.b64decode(readme["content"]).decode("utf-8", "replace")
+    return {"source": "github", "year": int(rel["published_at"][:4]), "release": rel.get("name", tag),
+            "readme_words": " ".join(sorted(set(norm_text(text).split())))}
 
 
 def fetch_arxiv(eprint: str) -> dict:
@@ -205,8 +244,22 @@ def compare(key: str, e: dict, snap: dict) -> list[str]:
                 errs.append(f"{key}: title {e.get('title')!r} != arXiv {s['title']!r}")
             if int(e["year"]) != s["year"]:
                 errs.append(f"{key}: year {e['year']} != arXiv {s['year']}")
+    if "doi" not in e and "eprint" not in e and GITHUB_RELEASE.fullmatch(e.get("url", "")):
+        # A work released only as a GitHub repository (no DOI, no arXiv id yet). The release must exist with the
+        # entry's year, and the repository's own README must name every cited author: GitHub accounts need not carry
+        # a person's name, so the README -- the authors' statement of authorship -- is the source checked.
+        s = snap.get("github")
+        if not s:
+            return errs + [f"{key}: no fetched record for {e['url']}"]
+        if int(e["year"]) != s["year"]:
+            errs.append(f"{key}: year {e['year']} != GitHub release {s['year']}")
+        words = set(s["readme_words"].split())
+        missing = [f for f in fams if f not in words]
+        if collab is not None or missing or not fams:
+            errs.append(f"{key}: author(s) {missing or fams} not named in the repository README")
+        return errs
     if "doi" not in e and "eprint" not in e:
-        errs.append(f"{key}: no doi or eprint -- nothing to verify it against")
+        errs.append(f"{key}: no doi, eprint or GitHub release -- nothing to verify it against")
     return errs
 
 
@@ -223,6 +276,8 @@ def main() -> int:
                 rec["doi"] = fetch_doi(e["doi"])
             if "eprint" in e:
                 rec["arxiv"] = fetch_arxiv(e["eprint"])
+            if "doi" not in e and "eprint" not in e and GITHUB_RELEASE.fullmatch(e.get("url", "")):
+                rec["github"] = fetch_github(e["url"])
             snapshot["entries"][key] = rec
             print(f"  fetched {key}", flush=True)
         # newline="\n": the repository pins *.json to LF, and Windows text
@@ -236,6 +291,8 @@ def main() -> int:
             errs.append(f"{key}: not in the snapshot -- run with --fetch")
             continue
         errs += compare(key, e, snapshot["entries"][key])
+        errs += [f"{key}: author {n!r} has several full given names, so BibTeX guesses the family name; "
+                 f"write it 'Family, Given'" for n in ambiguous_names(e.get("author", ""))]
     stale = set(snapshot["entries"]) - set(entries)
     errs += [f"{k}: in the snapshot but not in refs.bib" for k in sorted(stale)]
     print(f"REFERENCES -- {len(entries)} entries checked against sources fetched "

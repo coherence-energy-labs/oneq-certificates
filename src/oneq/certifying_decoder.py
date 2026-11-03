@@ -102,6 +102,7 @@ offers today.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import cached_property
 
 from .matching_cert import BOUNDARY, MatchingCertificate, check
 from .matching_cert_epsilon import check_epsilon
@@ -245,7 +246,6 @@ class CertifyingDecoder:
         self.max_candidates = int(max_candidates)
         self.blossom_rounds = int(blossom_rounds)
         self.blossom_levels = int(blossom_levels)
-        self.engine = MoatEngine(self.edges)
         self.adj = build_adj(self.edges)
         self.W: dict[tuple[int, int], float] = {}
         for u, v, w in self.edges:
@@ -253,6 +253,11 @@ class CertifyingDecoder:
             if k not in self.W or w < self.W[k]:
                 self.W[k] = w
         self._escalated: CertifyingDecoder | None = None
+
+    @cached_property
+    def engine(self):
+        """Numerical graph setup is paid only by shots that need a packing."""
+        return MoatEngine(self.edges)
 
     def escalated(self) -> "CertifyingDecoder":
         """The refusal-tier decoder: same graph, budget dam removed.
@@ -289,6 +294,9 @@ class CertifyingDecoder:
         from . import tjoin_exact as _tj
         from .tjoin_exact import exact_tjoin_sets
         corr = tuple(self.key(e) for e in correction)
+        refused = self._foreign_refusal(corr)
+        if refused is not None:
+            return refused
         primal = self.weight(corr)
         _tj.LAST_EXIT.update(reason="not_run", rounds=0)
         sets, _lp = exact_tjoin_sets(self.edges, syndrome,
@@ -590,9 +598,27 @@ class CertifyingDecoder:
     def weight(self, correction) -> float:
         return sum(self.W[self.key(e)] for e in correction)
 
+    def _foreign_refusal(self, corr) -> Certified | None:
+        """A REFUSAL for a correction naming an edge this decoding graph does not have, else None.
+
+        A proposal may name anything -- the feral lane's whole premise is an untrusted proposer. `weight` looked the
+        edges up before any check ran, so such a proposal crashed `certify` with a KeyError instead of being refused
+        (found 2026-10-18 covering feral_proposer: `adjudicate` already treated off-graph edges as not optimal, it
+        just never got that far). Nothing was ever accepted; a run died. An edge the graph lacks has no weight, so the
+        correction's weight is +inf and the refusal says which edges."""
+        foreign = [e for e in corr if e not in self.W]
+        if not foreign:
+            return None
+        return Certified(False, f"NOT A CORRECTION ON THIS GRAPH: {len(foreign)} edge(s) the decoding graph does "
+                                f"not have, e.g. {foreign[:3]}", -1, float("inf"), 0.0, float("inf"), None, {},
+                         {"rungs_tried": 0, "foreign_edges": len(foreign)})
+
     def certify(self, syndrome, correction) -> Certified:
         """Try to prove `correction` optimal for `syndrome`, cheapest rung first."""
         corr = tuple(self.key(e) for e in correction)
+        refused = self._foreign_refusal(corr)
+        if refused is not None:
+            return refused
         primal = self.weight(corr)
         best_bound = 0.0
         best_reason = "no dual produced"
@@ -603,6 +629,12 @@ class CertifyingDecoder:
         # syndrome nothing looked at.
         best_consistent: bool | None = None
         tried = 0
+        # These producers depend on this shot's graph, syndrome and correction,
+        # not the rung's radius/refinement settings. Keep their original results
+        # local to this call; every rung still constructs and budgets its own
+        # candidate set in the same order and runs the independent checker.
+        families: dict = {}
+        shot = self.engine.shot(syndrome) if len(syndrome) else None
         for rung, spec in enumerate(self.ladder):
             cap, use_growth = spec[0], spec[1]
             refine_rounds = spec[2] if len(spec) > 2 else 0
@@ -615,17 +647,23 @@ class CertifyingDecoder:
                 # closure -- consulted, translated, then re-optimized and
                 # CHECKED like any other candidate. A producer may use any
                 # oracle it likes; the checker cannot be talked into anything.
-                extra |= set(matching_dual_candidates(
-                    self.edges, syndrome, adj=self.adj,
-                    max_rounds=self.blossom_rounds,
-                    levels_per_set=self.blossom_levels))
+                if "blossom" not in families:
+                    families["blossom"] = matching_dual_candidates(
+                        self.edges, syndrome, adj=self.adj,
+                        max_rounds=self.blossom_rounds,
+                        levels_per_set=self.blossom_levels,
+                        distance_source=None if shot is None else shot.distance_fields)
+                extra |= set(families["blossom"])
             if use_cs:
                 # sets that cut the CORRECTION exactly once -- the only shape
                 # complementary slackness allows in an optimal dual's support
-                extra |= set(cs_family(self.edges, corr, syndrome,
-                                       adj=self.adj))
+                if "cs" not in families:
+                    families["cs"] = cs_family(self.edges, corr, syndrome, adj=self.adj)
+                extra |= set(families["cs"])
             if use_growth:
-                zg, _og = moat_growth(self.edges, syndrome, adj=self.adj)
+                if "growth" not in families:
+                    families["growth"] = moat_growth(self.edges, syndrome, adj=self.adj)
+                zg, _og = families["growth"]
                 # |= AND NOT =. The first wiring ASSIGNED here, silently
                 # discarding the CS sets added two lines up -- so the new rung
                 # behaved identically to the old one and the sanity run showed
@@ -660,8 +698,8 @@ class CertifyingDecoder:
             extra_t = tuple(extra)
             if eff_cap * nT + len(extra_t) > self.max_candidates:
                 extra_t = extra_t[:max(0, self.max_candidates - eff_cap * nT)]
-            z, obj = self.engine.dual(syndrome, max_radii=eff_cap,
-                                      extra_sets=extra_t)
+            z, obj = (({}, 0.0) if shot is None else
+                      shot.dual(max_radii=eff_cap, extra_sets=extra_t))
             cap = eff_cap
             # ITERATIVE REFINEMENT. Each pass reads the components the current
             # packing has saturated and offers them back as candidates. The
@@ -695,8 +733,8 @@ class CertifyingDecoder:
                 extra_r = tuple(extra)
                 if cap * nT + len(extra_r) > self.max_candidates:
                     extra_r = extra_r[:max(0, self.max_candidates - cap * nT)]
-                z2, obj2 = self.engine.dual(syndrome, max_radii=cap,
-                                            extra_sets=extra_r)
+                z2, obj2 = (({}, 0.0) if shot is None else
+                            shot.dual(max_radii=cap, extra_sets=extra_r))
                 if obj2 <= obj + 1e-12:
                     break
                 z, obj = z2, obj2

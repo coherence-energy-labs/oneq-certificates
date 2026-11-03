@@ -1,5 +1,14 @@
 {
-  "schema": "oneq-gap-distribution/2",
+  "schema": "oneq-gap-distribution/3",
+  "head": {
+    "commit": "624d41f2015b1f08c140c24a3ce172cffe0aa115",
+    "uncommitted_changes_in_src_oneq": false,
+    "sha256": {
+      "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+      "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+      "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f"
+    }
+  },
   "rows": [
     {
       "distance": 3,
@@ -8,7 +17,7 @@
       "shots": 400,
       "nontrivial": 230,
       "mwpm_certified_exact": 227,
-      "seconds": 0.8014531999942847,
+      "seconds": 1.2294173000846058,
       "decoders": {
         "belief_matching": {
           "n": 230,
@@ -778,7 +787,7 @@
       "shots": 400,
       "nontrivial": 395,
       "mwpm_certified_exact": 383,
-      "seconds": 7.690266599995084,
+      "seconds": 8.209519000025466,
       "decoders": {
         "belief_matching": {
           "n": 395,
@@ -2016,7 +2025,7 @@
       "shots": 400,
       "nontrivial": 400,
       "mwpm_certified_exact": 253,
-      "seconds": 131.77408269999432,
+      "seconds": 129.29157799994573,
       "decoders": {
         "belief_matching": {
           "n": 400,

@@ -1,0 +1,226 @@
+{
+ "project": "lean/CertR198",
+ "build_exit": 0,
+ "sources": {
+  "CertR198/Anchor.lean": "d5706ca8d708661ffbfc475f4c07de713b475871691d3d0233786c2fbdece9ef",
+  "CertR198/AxiomCheck.lean": "e45f6f39819f1ecd722464e5f6327ab2c432803b6d2949859a8c3ad0038affca",
+  "CertR198/Bounds.lean": "67c0f5a0759c231c33fb3e5fc9900fb071756ecf3e1a16da272cf6213af6a657",
+  "CertR198/Example.lean": "92ba427146ca191cc24effadc24147d0b0fe2141d6b3c1185e2f7cd73a66f95c",
+  "CertR198/ExampleDual.lean": "c0f536a720deaaabfeede5cabe853663bee7b8eaf973831eb8875bec06dc6c8f",
+  "CertR198/Exec.lean": "24072064bcd571cea0cb22d2dc9a562b3d1a3392454eea7c3028dbc49f52dd47",
+  "CertR198/Kernel/C42aX1.lean": "61e36adcc8a15f6fd1db882f6187cf57ae3711c382d948f94def864ad87c1e7b",
+  "CertR198/Kernel/C42aZ1.lean": "bed1789f2d12492d92cf52297bbf4e6deed6d1498c560b0a6fcf2b8ff0377a0a",
+  "CertR198/Kernel/T30aX1.lean": "8abc7b4314ef24c9a5870fd41c0e6af4a181b7d156d12216f8e4544e035f4706",
+  "CertR198/Kernel/T30aZ1.lean": "b391b2aae7b417674d3ad216f47772c8b456a37b97008a124395af2713610b1c",
+  "CertR198/Main.lean": "28abaea0f0a346445d4dc3b0d78eb678fa839e0c0cfeb2327489d4d6f2ae0908",
+  "CertR198/Model.lean": "fd38ae543575555025ba1a4bdcdeddfc3dd3fdf7a3a19d531c2c6a90a7462dc6",
+  "CertR198/Tree.lean": "4c896df2de7f462ecb9ea4fd885ae74a1b1689adaf469b240340ea9d5ae12dee",
+  "CertR198.lean": "c8c3594615a6bc47d07b8f2afcd00a6985eda4e562e35ab26d23016aaa94ef62",
+  "lake-manifest.json": "ee293bd0d52604a51e7b2fa3e94a6b7f96301b335242b5efb5b39d73243406b7",
+  "lakefile.toml": "fc11010234ea5421f29653b83709062f507a6d7a9da9ae10a3bce2da18b53e02",
+  "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632"
+ },
+ "theorems": {
+  "CertR198.DEM.branch_odd": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.branch_complete": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.greedy_le_card": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.fracNum_le": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.bound_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.greedy_le_card_of": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.Feasible.raise1": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.Feasible.raiseList": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.feasible_init": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.sum_le_of_feasible": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.bound5_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.DEM.leaf_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Valid.sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Valid.obs_eq_zero_of_syn_zero": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.root_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Valid.terminal3": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.obs_kernel_of_affine": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Symmetry.isSol_image": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Symmetry.anchoring": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.no_covered_irreducible_solution": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.cert_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.cert_sound_scoped": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Example.symmetry": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Example.example_distance": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Example.scoped_claim_needs_irreducibility": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.ExampleDual.raise_prunes": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.ExampleDual.plain_does_not_prune": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.ExampleDual.completion_heavier": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.ExampleDual.all_six_complete": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.leafOK_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.search_valid": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.cert_sound_exec": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.incOK_complete": [
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.leafOK2_sound": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.search2_valid": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Exec.cert2_sound_exec": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Kernel.C42aZ1.distance": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Kernel.C42aX1.distance": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Kernel.T30aZ1.distance": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "CertR198.Kernel.T30aX1.distance": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ]
+ },
+ "lean": "leanprover/lean4:v4.34.0",
+ "axiom_check_lines": 40
+}

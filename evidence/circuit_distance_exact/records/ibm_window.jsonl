@@ -1,0 +1,2 @@
+{"circuit": "ibm", "basis": "Z", "T": 10, "P1": true, "P2": true, "P3": true, "interior_shapes": 720, "holds": true}
+{"circuit": "ibm", "basis": "X", "T": 10, "P1": true, "P2": true, "P3": true, "interior_shapes": 720, "holds": true}

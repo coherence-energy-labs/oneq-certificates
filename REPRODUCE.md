@@ -11,16 +11,33 @@ versions should work; version differences that change results are
 themselves worth reporting.
 
 ```
-pip install -e ".[dev,sat,science]"
+pip install -e ".[dev,qpu,sat,science]"
 ```
 
 That is the same line CI runs, plus the two optional-solver extras. The
+Qiskit SDK is needed for offline frozen-circuit and fake-backend tests;
+installing it does not authorize or execute a provider job. The
 previous instruction here named five packages by hand and omitted
 `pymatching`, `sinter` and `networkx` — so a stranger following it got
 an installation whose exact tier raised `ImportError` on first use, and
 seven SAT tests that failed rather than skipped. A reproduction
 instruction that disagrees with CI is a reproduction instruction nobody
 has run.
+
+Post-quantum receipt tests require both the declared `liboqs-python` wrapper
+and the native liboqs shared library with ML-DSA-65 enabled. Follow the
+[upstream installation instructions](https://github.com/open-quantum-safe/liboqs-python#installation)
+for the native library; the wrapper can build it automatically when absent.
+Check it before collecting tests: `python -c "import oqs; assert 'ML-DSA-65' in oqs.get_enabled_sig_mechanisms()"`.
+An environment missing this backend can silently omit the receipt-sealing test
+modules during collection, so a smaller green suite is insufficient evidence.
+
+## Magic-state end-to-end evidence gate (no QPU credits)
+
+The magic-state research pipeline is not part of this release bundle. Its commands, and the guards that
+keep IBM provider submission separately authorized, are in the repository at
+[docs/MAGIC_E2E_INTEGRATION.md](docs/MAGIC_E2E_INTEGRATION.md). (This file ships in the bundle, and the
+bundle builder refuses a shipped document that names a script the bundle does not carry.)
 
 ## 0. Verify you have what we shipped (30 seconds)
 
@@ -116,7 +133,7 @@ See `docs/HELD_OUT_RESULTS.md` finding F4.
 python tools/gate_all.py                # every gate, incl. provenance, registry,
                                         # both equivalence arbiters and their
                                         # self-proofs, and the overhead gates
-python -m pytest tests/ -q              # 4,490 tests
+python -m pytest tests/ -q -m "not slow_exhaustive"  # 11,015 selected tests; 4 deselected
 python tools/mutation_gate.py           # 504 mutants, all must be killed
 ```
 

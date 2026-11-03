@@ -1,6 +1,17 @@
 {
- "schema": "oneq-certification-semantics-audit/1",
+ "schema": "oneq-certification-semantics-audit/2",
  "how_produced": "experiments/m0_prior_art/certification_semantics_audit.py",
+ "head": {
+  "commit": "0052b9975a582c75c8e0e37a0d7a588cc6be4722",
+  "uncommitted_changes_in_src_oneq": false,
+  "sha256": {
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+   "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "src/oneq/exact_decode.py": "0c6640696b4f42c297cb439190b27938613500b28a1e67a0ee5a77de0c8ad7b4"
+  }
+ },
  "rows": [
   {
    "config": {
@@ -37,7 +48,7 @@
     "largest_dual_mass_in_sample": 189.09903660343107,
     "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 6.75e-08"
    },
-   "judge_seconds": 901.3840694999963,
+   "judge_seconds": 502.49835379980505,
    "supplementary_oracle_not_exact": {
     "n": 399,
     "exactly_equal": 370,
@@ -45,7 +56,7 @@
     "min_primal_minus_oracle": 0.0,
     "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
    },
-   "export_seconds": 24.394126800005324
+   "export_seconds": 28.384383500088006
   },
   {
    "config": {
@@ -82,7 +93,7 @@
     "largest_dual_mass_in_sample": 19.863228174576683,
     "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 6.75e-09"
    },
-   "judge_seconds": 1.1949503000068944,
+   "judge_seconds": 1.1548456000164151,
    "supplementary_oracle_not_exact": {
     "n": 230,
     "exactly_equal": 230,
@@ -90,7 +101,7 @@
     "min_primal_minus_oracle": 0.0,
     "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
    },
-   "export_seconds": 3.335214399994584
+   "export_seconds": 3.909585200017318
   },
   {
    "config": {
@@ -127,7 +138,7 @@
     "largest_dual_mass_in_sample": 53.615004800666284,
     "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 1.91e-08"
    },
-   "judge_seconds": 13.647319900017465,
+   "judge_seconds": 12.471850899979472,
    "supplementary_oracle_not_exact": {
     "n": 392,
     "exactly_equal": 390,
@@ -135,7 +146,7 @@
     "min_primal_minus_oracle": 0.0,
     "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
    },
-   "export_seconds": 2.5267059999750927
+   "export_seconds": 3.7802602001465857
   },
   {
    "config": {
@@ -172,7 +183,7 @@
     "largest_dual_mass_in_sample": 103.94416788484207,
     "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 3.71e-08"
    },
-   "judge_seconds": 208.00026850000722,
+   "judge_seconds": 124.9695518000517,
    "supplementary_oracle_not_exact": {
     "n": 378,
     "exactly_equal": 362,
@@ -180,7 +191,7 @@
     "min_primal_minus_oracle": 0.0,
     "why_supplementary": "exact_min_tjoin scores in Fractions but networkx chooses the matching with float tie-breaking, so it is not an exact oracle"
    },
-   "export_seconds": 6.91181950000464
+   "export_seconds": 8.273343699984252
   },
   {
    "config": {
@@ -215,8 +226,8 @@
     "largest_dual_mass_in_sample": 132.51127890508812,
     "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 3.44e-08"
    },
-   "judge_seconds": 24.4792027999938,
-   "export_seconds": 4.428963399986969
+   "judge_seconds": 8.793635499896482,
+   "export_seconds": 6.185271200025454
   },
   {
    "config": {
@@ -251,8 +262,8 @@
     "largest_dual_mass_in_sample": 523.4654485053227,
     "note": "for runs whose certificates were not stored, the pinned rule implies w(J) - OPT <= 1e-6 + 1e-9 * dual_mass / min_edge_weight, plus floating-point summation error; with the graph's minimum weight and the largest dual mass seen here that term is 1.36e-07"
    },
-   "judge_seconds": 570.4713792999974,
-   "export_seconds": 28.489893500023754
+   "judge_seconds": 136.09935880010016,
+   "export_seconds": 32.99238419998437
   }
  ],
  "claim_classes": {

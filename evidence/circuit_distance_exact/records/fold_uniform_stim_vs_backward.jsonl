@@ -1,0 +1,4 @@
+{"circuit": "morph144", "basis": "Z", "T": 17, "seconds": 35.6, "mechanisms": 95616, "stim_mechanisms": 95616, "equal": true, "only_independent": 0, "only_stim": 0}
+{"circuit": "morph144", "basis": "X", "T": 16, "seconds": 31.9, "mechanisms": 89856, "stim_mechanisms": 89856, "equal": true, "only_independent": 0, "only_stim": 0}
+{"circuit": "morph72", "basis": "Z", "T": 32, "seconds": 32.2, "mechanisms": 91008, "stim_mechanisms": 91008, "equal": true, "only_independent": 0, "only_stim": 0}
+{"circuit": "morph72", "basis": "X", "T": 31, "seconds": 29.7, "mechanisms": 88128, "stim_mechanisms": 88128, "equal": true, "only_independent": 0, "only_stim": 0}

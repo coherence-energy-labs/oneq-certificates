@@ -83,6 +83,82 @@ def _issuers():
     return set(), set()
 
 
+#: The OpenTimestamps proof header, which is stable and documented: a 31-byte magic, a version
+#: varint, a one-byte hash-op, then the digest. sha256 is op 0x08 and 32 bytes.
+_OTS_MAGIC = (b"\x00OpenTimestamps\x00\x00Proof\x00\xbf\x89\xe2\xe8\x84\xe8\x92\x94")
+_OTS_SHA256_OP = 0x08
+
+
+def ots_covered_sha256(proof: bytes) -> str | None:
+    """The sha256 an OpenTimestamps proof is ABOUT, or None if this is not a sha256 proof.
+
+    *** WHY THIS IS HERE: LEDGER R70. *** The v2026.09.16 archive's proofs were upgraded to a
+    Bitcoin attestation, then v2026.09.17 was minted -- new bundle, new archive -- and the anchored
+    proofs were attached to it unchanged. A reader running `ots verify` would have found a proof
+    covering different bytes. It was caught by eye, on a downloaded asset, fourteen minutes after
+    publishing. A timestamp is a binding to specific bytes and a re-mint makes new bytes, exactly as
+    a signature is a binding to a commit (R61, which HAS a guard -- which is why the signature could
+    not drift and the timestamp could).
+
+    Parsed here rather than shelled out to `ots`, so the check runs for a reader who has the proof
+    but not the client.
+    """
+    if not proof.startswith(_OTS_MAGIC):
+        return None
+    i = len(_OTS_MAGIC)
+    if i >= len(proof):
+        return None
+    i += 1                                  # the version varint (1 for every proof written so far)
+    if i >= len(proof) or proof[i] != _OTS_SHA256_OP:
+        return None
+    i += 1
+    digest = proof[i:i + 32]
+    return digest.hex() if len(digest) == 32 else None
+
+
+def check_timestamps(release_dir: pathlib.Path, ok: list[str], fails: list[str]) -> None:
+    """Every `<file>.ots` beside a release file must cover THAT file's bytes (R70).
+
+    A proof for another version is worse than no proof: it invites a reader to run `ots verify`,
+    fail, and conclude the release is forged. Proofs named `<file>.<tag>.ots` are superseded ones
+    kept on purpose and are checked only for being parseable and for NOT covering this file.
+    """
+    proofs = sorted(release_dir.glob("*.ots"))
+    if not proofs:
+        return
+    for proof in proofs:
+        raw = proof.read_bytes()
+        covered = ots_covered_sha256(raw)
+        stem = proof.name[: -len(".ots")]
+        # A SUPERSEDED PROOF IS NAMED `<file>.<tag>.ots`, AND THE TAG CONTAINS DOTS. Splitting on
+        # the last dot gave `16` for `...tar.gz.v2026.09.16.ots` and the check then looked for a
+        # release file that never existed -- the guard's own first run said so.
+        m = re.match(r"^(?P<base>.+?)\.(?P<tag>v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?)$", stem)
+        superseded = m is not None
+        target = release_dir / (m.group("base") if superseded else stem)
+        if covered is None:
+            fails.append(f"{proof.name} is not a parseable sha256 OpenTimestamps proof")
+            continue
+        if not target.exists():
+            fails.append(f"{proof.name} times-stamps {target.name}, which is not in the release")
+            continue
+        actual = sha(target)
+        if superseded:
+            if covered == actual:
+                fails.append(f"{proof.name} is named as superseded but DOES cover the current "
+                             f"{target.name}; rename it, a reader will think it is stale")
+            else:
+                ok.append(f"{proof.name}: superseded proof, covers {covered[:12]}..., "
+                          f"not this {target.name} ({actual[:12]}...) -- kept on purpose")
+            continue
+        if covered != actual:
+            fails.append(f"{proof.name} covers {covered[:16]}... but {target.name} hashes to "
+                         f"{actual[:16]}... -- a timestamp is over BYTES and this release's bytes "
+                         f"are not the ones it was made for (re-stamp at mint; see ledger R70)")
+        else:
+            ok.append(f"{proof.name} covers {target.name} exactly ({actual[:12]}...)")
+
+
 def sha(p: pathlib.Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
@@ -466,6 +542,10 @@ def main() -> int:
     else:
         fails.append("evidence verification not run: release authenticity "
                      "was not established")
+
+    # THE TIMESTAMP BINDING (R70), checked last because it is about the published bytes rather
+    # than about the certificates inside them.
+    check_timestamps(ROOT / "release", ok, fails)
 
     for line in ok:
         print(f"  OK  {line}")

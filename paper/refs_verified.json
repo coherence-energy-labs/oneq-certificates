@@ -1,5 +1,5 @@
 {
- "fetched": "2026-09-14",
+ "fetched": "2026-11-02",
  "entries": {
   "edmonds1965paths": {
    "doi": {
@@ -169,6 +169,20 @@
    }
   },
   "javed2023low": {
+   "doi": {
+    "source": "crossref",
+    "title": "Low-Complexity Linear Programming Based Decoding of Quantum LDPC Codes",
+    "authors": [
+     "Javed",
+     "Garcia-Herrero",
+     "Vasić",
+     "Flanagan"
+    ],
+    "year": 2024,
+    "volume": null,
+    "issue": null,
+    "page": "1782-1787"
+   },
    "arxiv": {
     "source": "arxiv",
     "title": "Low-Complexity Linear Programming Based Decoding of Quantum LDPC codes",
@@ -182,6 +196,18 @@
    }
   },
   "gu2025power": {
+   "doi": {
+    "source": "crossref",
+    "title": "Power and Limitations of Linear Programming Decoder for Quantum LDPC Codes",
+    "authors": [
+     "Gu",
+     "Soleimanifar"
+    ],
+    "year": 2026,
+    "volume": "72",
+    "issue": "10",
+    "page": "7604-7618"
+   },
    "arxiv": {
     "source": "arxiv",
     "title": "Power and Limitations of Linear Programming Decoder for Quantum LDPC Codes",
@@ -333,6 +359,17 @@
     "year": 2020
    }
   },
+  "poulin2008iterative": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "On the iterative decoding of sparse quantum codes",
+    "authors": [
+     "Poulin",
+     "Chung"
+    ],
+    "year": 2008
+   }
+  },
   "panteleev2021degenerate": {
    "doi": {
     "source": "crossref",
@@ -412,6 +449,19 @@
    }
   },
   "shutty2024efficient": {
+   "doi": {
+    "source": "crossref",
+    "title": "Efficient Near-Optimal Decoding of the Surface Code through Ensembling",
+    "authors": [
+     "Shutty",
+     "Newman",
+     "Villalonga"
+    ],
+    "year": 2026,
+    "volume": "136",
+    "issue": "7",
+    "page": "070603"
+   },
    "arxiv": {
     "source": "arxiv",
     "title": "Efficient near-optimal decoding of the surface code through ensembling",
@@ -1622,6 +1672,7 @@
     "authors": [
      "Cao",
      "Feng",
+     "Lu",
      "Ye",
      "Pan"
     ],
@@ -1723,6 +1774,297 @@
      "Brown"
     ],
     "year": 2026
+   }
+  },
+  "strikis2026high": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "High-performance syndrome extraction circuits for quantum codes",
+    "authors": [
+     "Strikis",
+     "Browne",
+     "Beverland"
+    ],
+    "year": 2026
+   }
+  },
+  "shaw2024lowering": {
+   "doi": {
+    "source": "crossref",
+    "title": "Lowering Connectivity Requirements for Bivariate Bicycle Codes Using Morphing Circuits",
+    "authors": [
+     "Shaw",
+     "Terhal"
+    ],
+    "year": 2025,
+    "volume": "134",
+    "issue": "9",
+    "page": "090602"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Lowering Connectivity Requirements For Bivariate Bicycle Codes Using Morphing Circuits",
+    "authors": [
+     "Shaw",
+     "Terhal"
+    ],
+    "year": 2024
+   }
+  },
+  "shaw2026optimising": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Optimising Quantum Error Correction Using Morphing Circuits",
+    "authors": [
+     "Shaw",
+     "Terhal"
+    ],
+    "year": 2026
+   }
+  },
+  "webster2026distance": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Distance-Finding Algorithms for Quantum Codes and Circuits",
+    "authors": [
+     "Webster",
+     "Jacob",
+     "Higgott"
+    ],
+    "year": 2026
+   }
+  },
+  "liu2026alphasyndrome": {
+   "doi": {
+    "source": "crossref",
+    "title": "AlphaSyndrome: Tackling the Syndrome Measurement Circuit Scheduling Problem for QEC Codes",
+    "authors": [
+     "Liu",
+     "Ping",
+     "Zhou",
+     "Decker",
+     "Kalloor",
+     "Weiden",
+     "Chen",
+     "Shi",
+     "Javadi-Abhari",
+     "Iancu",
+     "Li"
+    ],
+    "year": 2026,
+    "volume": null,
+    "issue": null,
+    "page": "77-93"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "AlphaSyndrome: Tackling the Syndrome Measurement Circuit Scheduling Problem for QEC Codes",
+    "authors": [
+     "Liu",
+     "Ping",
+     "Zhou",
+     "Decker",
+     "Kalloor",
+     "Weiden",
+     "Chen",
+     "Shi",
+     "Javadi-Abhari",
+     "Iancu",
+     "Li"
+    ],
+    "year": 2026
+   }
+  },
+  "beni2025tesseract": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Tesseract: A Search-Based Decoder for Quantum Error Correction",
+    "authors": [
+     "Beni",
+     "Higgott",
+     "Shutty"
+    ],
+    "year": 2025
+   }
+  },
+  "jacoby2026stairway": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Stairway Codes: Floquetifying Bivariate Bicycle Codes and Beyond",
+    "authors": [
+     "Jacoby",
+     "Retzker",
+     "Pastawski"
+    ],
+    "year": 2026
+   }
+  },
+  "chen2026satqldpc": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "SAT, MaxSAT, and SMT for QLDPC Distance Computation: A Large-Scale Empirical Study",
+    "authors": [
+     "Chen",
+     "Jafari",
+     "Lai"
+    ],
+    "year": 2026
+   }
+  },
+  "demoura2021lean4": {
+   "doi": {
+    "source": "crossref",
+    "title": "The Lean 4 Theorem Prover and Programming Language",
+    "authors": [
+     "Moura",
+     "Ullrich"
+    ],
+    "year": 2021,
+    "volume": null,
+    "issue": null,
+    "page": "625-635"
+   }
+  },
+  "mathlib2020": {
+   "doi": {
+    "source": "crossref",
+    "title": "The lean mathematical library",
+    "authors": [
+     "The mathlib Community"
+    ],
+    "year": 2020,
+    "volume": null,
+    "issue": null,
+    "page": "367-381"
+   }
+  },
+  "crocker2026gross": {
+   "doi": {
+    "source": "datacite",
+    "title": "The gross code's syndrome circuit has circuit-level distance 10: an exhaustive lower bound",
+    "authors": [
+     "Crocker, Carson"
+    ],
+    "year": 2026
+   }
+  },
+  "pan2026interleaving": {
+   "github": {
+    "source": "github",
+    "year": 2026,
+    "release": "v2.0 — Period-11 circuits reaching the full distance of the gross and [[90,8,10]] codes",
+    "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
+   }
+  },
+  "huang2025veriqec": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Efficient Formal Verification of Quantum Error Correcting Programs",
+    "authors": [
+     "Huang",
+     "Zhou",
+     "Fang",
+     "Zhao",
+     "Ying"
+    ],
+    "year": 2025
+   }
+  },
+  "an2026certificate": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Quantum error-correcting code parameters, checkable by a certificate of provable size",
+    "authors": [
+     "An",
+     "Yang"
+    ],
+    "year": 2026
+   }
+  },
+  "wetzler2014drattrim": {
+   "doi": {
+    "source": "crossref",
+    "title": "DRAT-trim: Efficient Checking and Trimming Using Expressive Clausal Proofs",
+    "authors": [
+     "Wetzler",
+     "Heule",
+     "Hunt"
+    ],
+    "year": 2014,
+    "volume": null,
+    "issue": null,
+    "page": "422-429"
+   }
+  },
+  "tan2023cakelpr": {
+   "doi": {
+    "source": "crossref",
+    "title": "Verified Propagation Redundancy and Compositional UNSAT Checking in CakeML",
+    "authors": [
+     "Tan",
+     "Heule",
+     "Myreen"
+    ],
+    "year": 2023,
+    "volume": "25",
+    "issue": "2",
+    "page": "167-184"
+   }
+  },
+  "gocht2021veripb": {
+   "doi": {
+    "source": "crossref",
+    "title": "Certifying Parity Reasoning Efficiently Using Pseudo-Boolean Proofs",
+    "authors": [
+     "Gocht",
+     "Nordström"
+    ],
+    "year": 2021,
+    "volume": "35",
+    "issue": "5",
+    "page": "3768-3777"
+   }
+  },
+  "gidney2021honeycomb": {
+   "doi": {
+    "source": "crossref",
+    "title": "A Fault-Tolerant Honeycomb Memory",
+    "authors": [
+     "Gidney",
+     "Newman",
+     "Fowler",
+     "Broughton"
+    ],
+    "year": 2021,
+    "volume": "5",
+    "issue": null,
+    "page": "605"
+   }
+  },
+  "ott2025decision": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Decision-tree decoders for general quantum LDPC codes",
+    "authors": [
+     "Ott",
+     "Hetényi",
+     "Beverland"
+    ],
+    "year": 2025
+   }
+  },
+  "goemans1995general": {
+   "doi": {
+    "source": "crossref",
+    "title": "A General Approximation Technique for Constrained Forest Problems",
+    "authors": [
+     "Goemans",
+     "Williamson"
+    ],
+    "year": 1995,
+    "volume": "24",
+    "issue": "2",
+    "page": "296-317"
    }
   }
  }

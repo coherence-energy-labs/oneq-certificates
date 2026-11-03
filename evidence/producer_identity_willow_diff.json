@@ -1,0 +1,332 @@
+{
+ "schema": "oneq-producer-identity-diff/1",
+ "identity_head": "79530578b96a394eb9d10e8879a7d19d4b257ae0",
+ "chunks": {
+  "willow_d5_at_q8_7_X_r30:10": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 87,
+     "fields": [
+      "status",
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "NOT_PROVEN",
+     "epsilon_then": "3097566375120636169/26051067372924970160589354565632",
+     "epsilon_now": "19742299324620816003980794502975/96393382532401540662258978258944"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 225,
+    "EXACT_OPTIMAL": 21,
+    "NOT_PROVEN": 4
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 226,
+    "EXACT_OPTIMAL": 21,
+    "NOT_PROVEN": 3
+   }
+  },
+  "willow_d5_at_q8_7_X_r30:24": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 100,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "293635500328334983/3836611054955238440392066072576",
+     "epsilon_now": "5290676590352024931/52102134745849938069378895446016"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 228,
+    "EXACT_OPTIMAL": 20,
+    "NOT_PROVEN": 2
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 228,
+    "EXACT_OPTIMAL": 20,
+    "NOT_PROVEN": 2
+   }
+  },
+  "willow_d5_at_q8_7_X_r30:40": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 63,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "36647101783119137949/1091202762331658612945528251482112",
+     "epsilon_now": "93664139561443126281/1813870214574608760662008348540928"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 222,
+    "EXACT_OPTIMAL": 27,
+    "NOT_PROVEN": 1
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 222,
+    "EXACT_OPTIMAL": 27,
+    "NOT_PROVEN": 1
+   }
+  },
+  "willow_d5_at_q8_7_Z_r13:7": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 158,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "17451399249869719/2180132469440635269818781532160",
+     "epsilon_now": "162720161180461641/13430651766288658058088015724544"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 168,
+    "EXACT_OPTIMAL": 80,
+    "NOT_PROVEN": 2
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 168,
+    "EXACT_OPTIMAL": 80,
+    "NOT_PROVEN": 2
+   }
+  },
+  "willow_d5_at_q8_7_Z_r30:2": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 36,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "NOT_PROVEN",
+     "status_now": "NOT_PROVEN",
+     "epsilon_then": "2230090101320476132970785265191/4016390938850064944860728655872",
+     "epsilon_now": "28929568043405682537472013756563/52102134745849921180880292806656"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 233,
+    "EXACT_OPTIMAL": 16,
+    "NOT_PROVEN": 1
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 233,
+    "EXACT_OPTIMAL": 16,
+    "NOT_PROVEN": 1
+   }
+  },
+  "willow_d5_at_q8_7_Z_r30:12": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 164,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "9744827231281584937/266545799561549743253794026684416",
+     "epsilon_now": "3432977228040105063/97356613803068122218580783661056"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 229,
+    "EXACT_OPTIMAL": 18,
+    "NOT_PROVEN": 3
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 229,
+    "EXACT_OPTIMAL": 18,
+    "NOT_PROVEN": 3
+   }
+  },
+  "willow_d5_at_q8_7_Z_r30:17": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 223,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "96868371405838169/9403558054755274606713990283264",
+     "epsilon_now": "3240042826683144761/52102134745849944824778336501760"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 230,
+    "EXACT_OPTIMAL": 20
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 230,
+    "EXACT_OPTIMAL": 20
+   }
+  },
+  "willow_d5_at_q8_7_Z_r30:19": {
+   "shots_differing": 2,
+   "diffs": [
+    {
+     "shot": 110,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "839306229435951749/12049172816550195960482092810240",
+     "epsilon_now": "815227145076432923/12049172816550195960482092810240"
+    },
+    {
+     "shot": 125,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "3713681363160015533/48196691266200797352727253352448",
+     "epsilon_now": "17657291680117917219/453467553643652190165502087135232"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 224,
+    "EXACT_OPTIMAL": 25,
+    "NOT_PROVEN": 1
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 224,
+    "EXACT_OPTIMAL": 25,
+    "NOT_PROVEN": 1
+   }
+  },
+  "willow_d5_at_q8_7_Z_r30:23": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 34,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "930750493899981753/24098345633100391920964185620480",
+     "epsilon_now": "3957369905404764363/133272899780774871626897013342208"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 227,
+    "EXACT_OPTIMAL": 21,
+    "NOT_PROVEN": 2
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 227,
+    "EXACT_OPTIMAL": 21,
+    "NOT_PROVEN": 2
+   }
+  },
+  "willow_d5_at_q8_7_Z_r30:27": {
+   "shots_differing": 1,
+   "diffs": [
+    {
+     "shot": 202,
+     "fields": [
+      "epsilon",
+      "lower_bound",
+      "duals"
+     ],
+     "status_then": "EPSILON_OPTIMAL",
+     "status_now": "EPSILON_OPTIMAL",
+     "epsilon_then": "137283555087201070753/1667268311867197838076139559452672",
+     "epsilon_now": "762311175509354377/13430651766288661998737689673728"
+    }
+   ],
+   "status_now": {
+    "EPSILON_OPTIMAL": 238,
+    "EXACT_OPTIMAL": 9,
+    "NOT_PROVEN": 3
+   },
+   "status_then": {
+    "EPSILON_OPTIMAL": 238,
+    "EXACT_OPTIMAL": 9,
+    "NOT_PROVEN": 3
+   }
+  }
+ },
+ "development_status_today": {
+  "willow_d3_at_q4_5_X_r13": {
+   "EPSILON_OPTIMAL": 1414,
+   "EXACT_OPTIMAL": 8427,
+   "TRIVIAL": 159
+  },
+  "willow_d3_at_q4_5_X_r30": {
+   "EPSILON_OPTIMAL": 1634,
+   "EXACT_OPTIMAL": 8359,
+   "TRIVIAL": 6,
+   "NOT_PROVEN": 1
+  },
+  "willow_d3_at_q4_5_Z_r13": {
+   "EXACT_OPTIMAL": 7977,
+   "EPSILON_OPTIMAL": 1582,
+   "TRIVIAL": 440,
+   "NOT_PROVEN": 1
+  },
+  "willow_d3_at_q4_5_Z_r30": {
+   "EXACT_OPTIMAL": 8119,
+   "EPSILON_OPTIMAL": 1872,
+   "TRIVIAL": 9
+  },
+  "willow_d5_at_q8_7_X_r13": {
+   "EPSILON_OPTIMAL": 6237,
+   "EXACT_OPTIMAL": 3738,
+   "NOT_PROVEN": 25
+  },
+  "willow_d5_at_q8_7_X_r30": {
+   "EXACT_OPTIMAL": 898,
+   "EPSILON_OPTIMAL": 9029,
+   "NOT_PROVEN": 73
+  },
+  "willow_d5_at_q8_7_Z_r13": {
+   "EXACT_OPTIMAL": 3705,
+   "EPSILON_OPTIMAL": 6272,
+   "NOT_PROVEN": 21,
+   "TRIVIAL": 2
+  },
+  "willow_d5_at_q8_7_Z_r30": {
+   "EPSILON_OPTIMAL": 9120,
+   "EXACT_OPTIMAL": 801,
+   "NOT_PROVEN": 79
+  }
+ }
+}

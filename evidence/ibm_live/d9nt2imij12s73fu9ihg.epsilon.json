@@ -1,0 +1,53 @@
+{
+ "schema": "oneq-ibm-epsilon-rerun/1",
+ "job_id": "d9nt2imij12s73fu9ihg",
+ "backend": "ibm_fez",
+ "distance": 9,
+ "rounds": 5,
+ "shots": 4000,
+ "nontrivial": 2296,
+ "accepted": 2296,
+ "status": {
+  "EXACT_OPTIMAL": 2257,
+  "EPSILON_OPTIMAL": 39
+ },
+ "eps_max": "1/1000000",
+ "largest_accepted_epsilon": "8/9007199254740993",
+ "largest_accepted_epsilon_float": 8.881784197001251e-16,
+ "verifiers_agree_on": 2296,
+ "forgeries_attempted": 15819,
+ "forgeries_accepted": 0,
+ "forgeries_by_class": {
+  "F_duplicated_edge": 2296,
+  "I_mismatched_pair": 2296,
+  "D_spurious_cycle": 2296,
+  "G_dual_inflated_to_meet_a_worse_primal": 2296,
+  "N_nan_dual": 2296,
+  "N_inf_dual": 2296,
+  "E_dropped_edge": 1129,
+  "H_negative_dual_hides_inflation": 758,
+  "A_suboptimal": 156
+ },
+ "battery_attacks_not_false": 0,
+ "original": {
+  "certified": 2296,
+  "nontrivial": 2296,
+  "checker": "the production exact checker of 2026-08-02, which did not test T'-oddness"
+ },
+ "producer": "CertifyingDecoder(uniform declared graph).certify_hard, the full ladder, as the original",
+ "receipts": "evidence/ibm_live/d9nt2imij12s73fu9ihg.epsilon_receipts.jsonl.gz",
+ "receipts_sha256": "fcccb33e488f2501009baf2f8b00549654a989e8aac6cc72544b69a31fb36d25",
+ "head": {
+  "commit": "d33e6fffab33dcbd8c4ccabb13fe183fb1e134c3",
+  "uncommitted_changes_in_src_oneq": false,
+  "sha256": {
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+   "src/oneq/forgeries.py": "d80a675d4314e2763ca841667461079dd23d94c48827c3967b9bd643b033c6c7",
+   "experiments/ibm_live/rep_code_cert.py": "a91bb988019566fa5e8d894fb305d950eb9f90e189c3d98f25ab31cb96be845d",
+   "tools/replay_epsilon_receipts.py": "98f894ff2ee568bd9f0e669f45020700e2b6c3b91182a3a4bb3bec708153d7b8",
+   "experiments/ibm_live/ibm_epsilon_rerun.py": "a43cb33fc5f4b36ee83c7673888393e7cb799f0ab1adf207cfb0ec7026f59ce7"
+  }
+ }
+}

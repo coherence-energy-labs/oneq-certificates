@@ -452,12 +452,17 @@ def exact_milp(checks, weights, syndrome, *, time_limit: float = 30.0,
     res = milp(c, constraints=LinearConstraint(A.tocsr(), syn, syn),
                integrality=np.ones(n + m), bounds=Bounds(lb, ub),
                options={"time_limit": float(time_limit)})
-    gap = float(getattr(res, "mip_gap", float("nan")))
+    # an INFEASIBLE model comes back with mip_gap = mip_dual_bound = None: float(None) raised TypeError, so every
+    # caller's "no correction in this coset" answer (coset_cert's "infeasible") was a crash instead (found 2026-10-19
+    # by the first test of that path). None is read as nan: unknown, never 0, so it can never pass as tier 3A
+    def _num(name):
+        v = getattr(res, name, None)
+        return float("nan") if v is None else float(v)
+    gap = _num("mip_gap")
     status = {"status_code": int(getattr(res, "status", -1)),
               "message": str(getattr(res, "message", "")),
               "mip_gap": gap,
-              "mip_dual_bound": float(getattr(res, "mip_dual_bound",
-                                              float("nan"))),
+              "mip_dual_bound": _num("mip_dual_bound"),
               # tier 3A only on a clean optimal status with zero gap;
               # everything else -- time limit, nonzero gap, interruption
               # -- is tier 3B and may never be called optimal

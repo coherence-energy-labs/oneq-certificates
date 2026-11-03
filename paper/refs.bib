@@ -143,18 +143,26 @@
   archivePrefix = {arXiv},
 }
 
-@misc{javed2023low,
-  author = {Sana Javed and Francisco Garcia-Herrero and Bane Vasic and Mark F. Flanagan},
-  title = {Low-Complexity Linear Programming Based Decoding of Quantum {LDPC} codes},
-  year = {2023},
+@inproceedings{javed2023low,
+  author = {Sana Javed and Francisco Garcia-Herrero and Bane Vasi{\'c} and Mark F. Flanagan},
+  title = {Low-Complexity Linear Programming Based Decoding of Quantum {LDPC} Codes},
+  booktitle = {{ICC} 2024 -- {IEEE} International Conference on Communications},
+  pages = {1782--1787},
+  year = {2024},
+  doi = {10.1109/ICC51166.2024.10622622},
   eprint = {2311.18488},
   archivePrefix = {arXiv},
 }
 
-@misc{gu2025power,
+@article{gu2025power,
   author = {Shouzhen Gu and Mehdi Soleimanifar},
   title = {Power and Limitations of Linear Programming Decoder for Quantum {LDPC} Codes},
-  year = {2025},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {72},
+  number = {10},
+  pages = {7604--7618},
+  year = {2026},
+  doi = {10.1109/TIT.2026.3715538},
   eprint = {2508.04769},
   archivePrefix = {arXiv},
 }
@@ -246,6 +254,18 @@
   archivePrefix = {arXiv},
 }
 
+@article{poulin2008iterative,
+  author = {David Poulin and Yeojin Chung},
+  title = {On the iterative decoding of sparse quantum codes},
+  journal = {Quantum Information and Computation},
+  volume = {8},
+  number = {10},
+  pages = {987},
+  year = {2008},
+  eprint = {0801.1241},
+  archivePrefix = {arXiv},
+}
+
 @article{panteleev2021degenerate,
   author = {Pavel Panteleev and Gleb Kalachev},
   title = {Degenerate Quantum {LDPC} Codes With Good Finite Length Performance},
@@ -290,10 +310,15 @@
   archivePrefix = {arXiv},
 }
 
-@misc{shutty2024efficient,
+@article{shutty2024efficient,
   author = {Noah Shutty and Michael Newman and Benjamin Villalonga},
-  title = {Efficient near-optimal decoding of the surface code through ensembling},
-  year = {2024},
+  title = {Efficient Near-Optimal Decoding of the Surface Code through Ensembling},
+  journal = {Physical Review Letters},
+  volume = {136},
+  number = {7},
+  pages = {070603},
+  year = {2026},
+  doi = {10.1103/77j6-32xx},
   eprint = {2401.12434},
   archivePrefix = {arXiv},
 }
@@ -320,7 +345,7 @@
 % ------------------------------------------- concurrent work (2026 refresh)
 
 @misc{krishnamoorthy2026certified,
-  author = {Ragavi Krishnamoorthy and Florian Gerhardt and Johannes Knaute and Thomas Klir and Stefan Raimund Maschek and Erik Schulze and Tomislav Maras and Alexander Dotterweich and Loong Kuan Lee and Christian Bauckhage and Nico Piatkowski},
+  author = {Ragavi Krishnamoorthy and Florian Gerhardt and Johannes Knaute and Thomas Klir and Maschek, Stefan Raimund and Erik Schulze and Tomislav Maras and Alexander Dotterweich and Lee, Loong Kuan and Christian Bauckhage and Nico Piatkowski},
   title = {Certified decoding of quantum {LDPC} codes},
   year = {2026},
   eprint = {2608.25545},
@@ -379,7 +404,7 @@
 
 @misc{google2024data,
   author = {{Google Quantum AI}},
-  title = {Data for "Quantum error correction below the surface code threshold"},
+  title = {Data for ``{Q}uantum error correction below the surface code threshold''},
   publisher = {Zenodo},
   version = {1.0.0},
   year = {2024},
@@ -454,7 +479,7 @@
 }
 
 @misc{cao2026differentiable,
-  author = {Hanyan Cao and Dongyang Feng and Cheng Ye and Feng Pan},
+  author = {Hanyan Cao and Dongyang Feng and Zixuan Lu and Cheng Ye and Feng Pan},
   title = {Differentiable Maximum Likelihood Noise Estimation for Quantum Error Correction},
   year = {2026},
   eprint = {2602.19722},
@@ -515,4 +540,192 @@
   year = {2026},
   eprint = {2602.22770},
   archivePrefix = {arXiv},
+}
+
+% Paper 3 (circuit distance), added 2026-10-26 from the arXiv abstract pages' citation metadata.
+@misc{strikis2026high,
+  author = {Armands Strikis and Dan E. Browne and Michael E. Beverland},
+  title = {High-performance syndrome extraction circuits for quantum codes},
+  year = {2026},
+  eprint = {2603.05481},
+  archivePrefix = {arXiv},
+}
+
+@article{shaw2024lowering,
+  author = {Mackenzie H. Shaw and Barbara M. Terhal},
+  title = {Lowering Connectivity Requirements for Bivariate Bicycle Codes Using Morphing Circuits},
+  journal = {Physical Review Letters},
+  volume = {134},
+  number = {9},
+  pages = {090602},
+  year = {2025},
+  doi = {10.1103/PhysRevLett.134.090602},
+  eprint = {2407.16336},
+  archivePrefix = {arXiv},
+}
+
+@misc{shaw2026optimising,
+  author = {Mackenzie H. Shaw and Barbara M. Terhal},
+  title = {Optimising Quantum Error Correction Using Morphing Circuits},
+  year = {2026},
+  eprint = {2604.09797},
+  archivePrefix = {arXiv},
+}
+
+@misc{webster2026distance,
+  author = {Mark Webster and Abraham Jacob and Oscar Higgott},
+  title = {{Distance-Finding} Algorithms for Quantum Codes and Circuits},
+  year = {2026},
+  eprint = {2603.22532},
+  archivePrefix = {arXiv},
+}
+
+@inproceedings{liu2026alphasyndrome,
+  author = {Yuhao Liu and Shuohao Ping and Junyu Zhou and Ethan Decker and Justin Kalloor and Mathias Weiden and Kean Chen and Yunong Shi and Ali Javadi-Abhari and Costin Iancu and Gushu Li},
+  title = {{AlphaSyndrome:} Tackling the Syndrome Measurement Circuit Scheduling Problem for {QEC} Codes},
+  booktitle = {Proceedings of the 31st {ACM} International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2 ({ASPLOS} '26)},
+  pages = {77--93},
+  year = {2026},
+  doi = {10.1145/3779212.3790123},
+  eprint = {2601.12509},
+  archivePrefix = {arXiv},
+}
+
+@misc{beni2025tesseract,
+  author = {Aghababaie Beni, Laleh and Oscar Higgott and Noah Shutty},
+  title = {{Tesseract}: A Search-Based Decoder for Quantum Error Correction},
+  year = {2025},
+  eprint = {2503.10988},
+  archivePrefix = {arXiv},
+}
+
+@misc{jacoby2026stairway,
+  author = {Shoham Jacoby and Alex Retzker and Fernando Pastawski},
+  title = {Stairway Codes: Floquetifying Bivariate Bicycle Codes and Beyond},
+  year = {2026},
+  eprint = {2603.00228},
+  archivePrefix = {arXiv},
+}
+
+@misc{chen2026satqldpc,
+  author = {Yu-Fang Chen and Jafari, Seyed Mohammad Reza and Ching-Yi Lai},
+  title = {{SAT}, {MaxSAT}, and {SMT} for {QLDPC} Distance Computation: A Large-Scale Empirical Study},
+  year = {2026},
+  eprint = {2606.12445},
+  archivePrefix = {arXiv},
+}
+
+@inproceedings{demoura2021lean4,
+  author = {Leonardo de Moura and Sebastian Ullrich},
+  title = {The {Lean 4} Theorem Prover and Programming Language},
+  booktitle = {Automated Deduction -- {CADE} 28},
+  series = {Lecture Notes in Computer Science},
+  volume = {12699},
+  pages = {625--635},
+  year = {2021},
+  doi = {10.1007/978-3-030-79876-5_37},
+}
+
+@inproceedings{mathlib2020,
+  author = {{The mathlib Community}},
+  title = {The {Lean} Mathematical Library},
+  booktitle = {Proceedings of the 9th {ACM SIGPLAN} International Conference on Certified Programs and Proofs},
+  pages = {367--381},
+  year = {2020},
+  doi = {10.1145/3372885.3373824},
+}
+
+@misc{crocker2026gross,
+  author = {Carson Crocker},
+  title = {The gross code's syndrome circuit has circuit-level distance 10: an exhaustive lower bound},
+  publisher = {Zenodo},
+  year = {2026},
+  doi = {10.5281/zenodo.23452754},
+  note = {doi:10.5281/zenodo.23452754},
+}
+
+@misc{pan2026interleaving,
+  author = {Guancheng Pan},
+  title = {gross-code-distance-12: code, data and manuscript (release v2.0)},
+  howpublished = {GitHub repository \url{https://github.com/GavinNull/gross-code-distance-12}; first release v1.0 on 2026-10-20},
+  year = {2026},
+  url = {https://github.com/GavinNull/gross-code-distance-12/releases/tag/v2.0},
+}
+
+@misc{huang2025veriqec,
+  author = {Qifan Huang and Li Zhou and Wang Fang and Mengyu Zhao and Mingsheng Ying},
+  title = {Efficient Formal Verification of Quantum Error Correcting Programs},
+  year = {2025},
+  eprint = {2504.07732},
+  archivePrefix = {arXiv},
+}
+
+@misc{an2026certificate,
+  author = {Shuoming An and Fusheng Yang},
+  title = {Quantum error-correcting code parameters, checkable by a certificate of provable size},
+  year = {2026},
+  eprint = {2610.03214},
+  archivePrefix = {arXiv},
+}
+
+@inproceedings{wetzler2014drattrim,
+  author = {Nathan Wetzler and Marijn J. H. Heule and Warren A. Hunt},
+  title = {{DRAT-trim}: Efficient Checking and Trimming Using Expressive Clausal Proofs},
+  booktitle = {Theory and Applications of Satisfiability Testing -- {SAT} 2014},
+  series = {Lecture Notes in Computer Science},
+  volume = {8561},
+  pages = {422--429},
+  year = {2014},
+  doi = {10.1007/978-3-319-09284-3_31},
+}
+
+@article{tan2023cakelpr,
+  author = {Tan, Yong Kiam and Marijn J. H. Heule and Magnus O. Myreen},
+  title = {Verified Propagation Redundancy and Compositional {UNSAT} Checking in {CakeML}},
+  journal = {International Journal on Software Tools for Technology Transfer},
+  volume = {25},
+  number = {2},
+  pages = {167--184},
+  year = {2023},
+  doi = {10.1007/s10009-022-00690-y},
+}
+
+@article{gocht2021veripb,
+  author = {Stephan Gocht and Jakob Nordstr{\"o}m},
+  title = {Certifying Parity Reasoning Efficiently Using Pseudo-{Boolean} Proofs},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {35},
+  number = {5},
+  pages = {3768--3777},
+  year = {2021},
+  doi = {10.1609/aaai.v35i5.16494},
+}
+
+@article{gidney2021honeycomb,
+  author = {Craig Gidney and Michael Newman and Austin Fowler and Michael Broughton},
+  title = {A Fault-Tolerant Honeycomb Memory},
+  journal = {Quantum},
+  volume = {5},
+  pages = {605},
+  year = {2021},
+  doi = {10.22331/q-2021-12-20-605},
+}
+
+@misc{ott2025decision,
+  author = {Kai R. Ott and Bence Het{\'e}nyi and Michael E. Beverland},
+  title = {Decision-tree decoders for general quantum {LDPC} codes},
+  year = {2025},
+  eprint = {2502.16408},
+  archivePrefix = {arXiv},
+}
+
+@article{goemans1995general,
+  author = {Michel X. Goemans and David P. Williamson},
+  title = {A General Approximation Technique for Constrained Forest Problems},
+  journal = {SIAM Journal on Computing},
+  volume = {24},
+  number = {2},
+  pages = {296--317},
+  year = {1995},
+  doi = {10.1137/S0097539793242618},
 }

@@ -1,0 +1,313 @@
+\documentclass[aps,pra,twocolumn,superscriptaddress,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\input{../owner.tex}
+\input{../release.tex}
+\input{generated/numbers.tex}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newcommand{\GF}{\mathrm{GF}(2)}
+\newcommand{\dc}{d_{\mathrm{circ}}}
+\newcommand{\dproj}{d_{\mathrm{proj}}}
+\newcommand{\arxiv}[1]{arXiv:#1}
+% Every number in this file is a macro from paper/tools/make_numbers_distance.py, which reads it from
+% committed evidence and refuses on a missing or inconsistent input. The constants that appear bare are
+% definitions of the search rules (leaf budget, terminal budget) and of the rounds a rule anchors in.
+%
+% References. Every entry is in the shared refs.bib and agrees with its source (arXiv citation metadata or
+% Crossref), checked by paper/tools/verify_refs.py --fetch on 2026-10-29. The prior exact values for smaller BB
+% circuits (Tesseract, App. D; Webster et al., Sec. 5.5.3) were read in the authors' own LaTeX source.
+% The first referee report and how each finding was handled: docs/reviews/PAPER3_REFEREE_2026-10-29.md.
+
+\begin{document}
+
+\title{Machine-checkable lower-bound certificates for the circuit-level distances of bivariate-bicycle syndrome-extraction circuits}
+
+\OwnerAuthor
+\OwnerAffiliation
+
+\date{\today}
+
+\begin{abstract}
+The circuit-level distance of a syndrome-extraction circuit is the smallest number of fault mechanisms that flip a logical observable without firing a detector. For two circuits of the \GrossCode\ gross code it was recently settled, concurrently with this work: for IBM's cycle at fixed numbers of rounds, by searches that record no certificate (Crocker; Pan), and for the three-colour cycle at every number of rounds, from a reduction and exhaustive searches (Pan). We give machine-checkable certificates for these values, written by a branch-and-bound search on the same-type projection of the detector error model, anchored on translation orbits, and re-derived by a separately written checker whose proof calculus is proven sound in \LeanName. Our fault placement gives the same mechanism set as the standard SD6 noise model on every circuit and round count compared. IBM's depth-\IbmDepth\ cycle has circuit distance \IbmD\ for every number of rounds from \IbmTmin\ up, and the three-colour cycle of Strikis, Browne and Beverland, as we rebuilt it from their figures, \TcD\ in both memory bases, agreeing with the earlier results. New here, Shaw and Terhal's ancilla-free morphing circuits have circuit distance \MorphSmallD\ and \MorphBigD\ for every number of rounds, and for \MtwoTargets\ circuits with the code parameters of their \STbYear\ follow-up the CNOT order alone changes the distance by up to \MtwoOrderMax. Every certificate the results rest on was re-checked by the committed checker; small proofs ship and the rest regenerate from their models. The formalization exposed inputs on which the checker accepted a false claim; they are now refused, and no certified model contains one. For \LeanKernel\ small models the Lean kernel checks the distance of the exported model itself. Every-round statements rest on two hand proofs, given in full in the supplement, whose finite hypotheses are machine-checked. Distances are properties of the stated fault placement, not error rates.
+\end{abstract}
+
+\maketitle
+
+% ======================================================================
+\section{Introduction}
+\label{sec:intro}
+
+A syndrome-extraction circuit can have a smaller distance than the code it measures. A fault on an ancilla can spread through the CNOTs onto several data qubits, and faults in different rounds can combine. The quantity that bounds a memory experiment is the circuit-level distance $\dc$: the smallest number of fault mechanisms whose combined effect fires no detector and flips a logical observable. It limits every decoder. Split a minimum-weight undetectable logical fault set into two halves; they have the same syndrome and differ by a logical operator, so any decoder fails on one of them, and the logical error rate is at least of order $p^{\lceil \dc/2\rceil}$ for independent faults of probability $p$.
+
+For bivariate-bicycle (BB) codes~\cite{bravyi2024high}, several extraction circuits have been proposed: IBM's depth-\IbmDepth\ cycle for the \GrossCode\ gross code~\cite{bravyi2024high}; the three-colour cycle of Strikis, Browne and Beverland~\cite{strikis2026high}; and the ancilla-free morphing circuits of Shaw and Terhal~\cite{shaw2024lowering}, with a \STbYear\ follow-up~\cite{shaw2026optimising}.
+In the papers that introduced them, the circuit distances are upper bounds found by heuristic search, or are not reported: $\dc\le\LitIbmUpper$ for IBM's cycle, from a BP-OSD search~\cite{bravyi2024high,panteleev2021degenerate,roffe2020decoding}; \LitTcConj, conjectured from a heuristic search, for the three-colour cycle; $\le\LitMorphSmall$ and $\le\LitMorphBig$ for the two morphing circuits, from BP-OSD searches; and, for the \STbYear\ circuits, end-cycle code parameters only, with the statement that the circuit-level distance was not checked (their App.~\STbAppendix). An upper bound needs one fault set. A lower bound needs an argument about every lighter fault set.
+
+For smaller BB circuits exact solvers have supplied that argument: Aghababaie Beni, Higgott and Shutty~\cite{beni2025tesseract} verified with Stim's SAT export~\cite{gidney2021stim} and a MaxSAT Evaluation \PriorMaxSatYear\ solver that IBM-style circuits for the \SmallCode\ and \PriorMidCode\ codes have circuit distances \PriorSmallD\ and \PriorMidD\ (their App.~\PriorTessApp), and Webster, Jacob and Higgott~\cite{webster2026distance} report that integer programming finished within \PriorMipHours\ hours only on the smallest circuit of a BB circuit family (their Sec.~\PriorWebsterSec). For the gross-code circuits, two works appeared while ours was in progress. Crocker~\cite{crocker2026gross} showed by an exhaustive branch-and-bound search, built on the same three reductions we use (same-type projection, anchoring by translations, anchoring by time shifts), that IBM's cycle has $\dc=\IbmD$ in both bases for twelve noisy rounds followed by two noiseless ones, without a machine-checkable certificate. Under SD6 noise, Pan~\cite{pan2026interleaving} proved that the three-colour cycle has $\dc=\TcD$ for every number of rounds, from the reduction of Strikis, Browne and Beverland (their Prop.~3 and Cor.~1) and an extended-code distance of 11 found by two independent exhaustive searches, of which a bound of 9 is certified; and constructed an interleaved gross-code circuit with $\dc=\GrossD$, whose infeasibility claims are backed by proofs checked with DRAT and VeriPB tools; for IBM's cycle Pan reports $\dc=\IbmD$ for up to three rounds, found by exact enumeration on the detector error model, which produces no certificate. We make no priority claim for those values.
+
+This paper contributes certificates for those values, checked by a separately written checker, and new values (Table~\ref{tab:summary}):
+\begin{enumerate}
+\item \emph{Certificates checked under a verified calculus.} A branch-and-bound search on the same-type projection of the detector error model, anchored on translation orbits with an affine map of the observables, writes a certificate of about one bit per node, and a separately written checker re-derives everything else from the model (Sec.~\ref{sec:search}). The checker's calculus is proven sound in \LeanName~\cite{demoura2021lean4} with Mathlib~\cite{mathlib2020}; the formalization found inputs on which the C checker accepted a false claim; and for \LeanKernel\ small models the Lean kernel checks the distance of the exported model itself (Sec.~\ref{sec:lean}). Every certificate the results rest on was re-checked by the committed checker.
+\item \emph{Independent confirmation.} Under a fault placement whose mechanism sets equal SD6's on every circuit and number of rounds compared (Sec.~\ref{sec:circuits}), IBM's cycle has $\dc=\IbmD$ for every $T\ge\IbmTmin$, \IbmLoss\ below the code distance, and the three-colour cycle $\dc=\TcD$ for every $T\ge\TcTmin$, in both bases: the values of Refs.~\cite{crocker2026gross,pan2026interleaving}, reached by another method.
+\item \emph{New values.} Both morphing circuits of Shaw and Terhal keep their end-cycle code's distance, \MorphSmallD\ and \MorphBigD, for every $T\ge\MorphTmin$. For \MtwoTargets\ circuits with the code parameters of their \STbYear\ follow-up we give exact values, and the CNOT order alone moves the distance by up to \MtwoOrderMax\ (Table~\ref{tab:morph}).
+\item \emph{Every number of rounds.} Two theorems reduce every $T$ to finitely many models: a window formula for the IBM and three-colour cycles, and a fold lemma for the morphing circuits (Sec.~\ref{sec:everyT}).
+\end{enumerate}
+
+\begin{table*}[tbp]
+\caption{Exact circuit-level distances, memory-Z / memory-X, for the fault placement of Sec.~\ref{sec:circuits}. \emph{Prior value} is the value reported in the circuit's source, or, for the last row, the exact value of Ref.~\cite{beni2025tesseract}, in each source's own noise model; Ref.~\cite{crocker2026gross} gives \IbmD\ for IBM's cycle at twelve noisy rounds and Ref.~\cite{pan2026interleaving} gives it for up to three, and Ref.~\cite{pan2026interleaving} gives \TcD\ for the three-colour cycle at every number of rounds. \emph{Lower bound certified}: the rounds $T$ at which a certificate excludes every lighter undetectable logical set (for the three-colour cycle and the \SmallCode\ morphing circuit, time-shift certificates, Sec.~\ref{sec:windows}). \emph{Witness verified}: the rounds at which a fault set of weight $\dc$ was verified on the full detector error model. \emph{Holds for}: the range covered by the theorems of Sec.~\ref{sec:everyT}; every entry there is proven from machine-checked premises. The last row is a smaller instance of IBM's schedule, memory-Z only; its certificate is regenerated and checked by the test suite and is not stored.}
+\label{tab:summary}
+\input{generated/tab_summary.tex}
+\end{table*}
+
+\begin{table*}[tbp]
+\caption{Circuit-level distances of morphing circuits with the code parameters reported in Ref.~\cite{shaw2026optimising}. \emph{Degree}: the largest number of distinct CNOT partners of any qubit over the cycle. For the standard schedules, $A$ and $B$ list the polynomial terms in schedule order, so circuits that differ only in that order are different CNOT orders on the same code. The tree circuits share $A$, $B$ (listed in index order) and the code, and differ only in the contraction tree of their Def.~\STbDef; each layer lists parent${\to}$child pairs on the support vertices $0,\dots,\MtwoTreeSupport$ ($A$'s terms $0,\dots,\MtwoTreeALast$, then $B$'s): \MtwoTreeSchedules. \emph{Loses}: end-cycle distance minus $\dc$. \emph{Rounds}: \emph{every $T$} is proven from machine-checked premises (Theorem~\ref{thm:fold}); MC is machine-checked for the rounds shown. \emph{Kernel}: the distance of the one-round projected model is also a theorem checked by the Lean kernel; the witness's lift to the full model is checked outside Lean (Sec.~\ref{sec:lean}).}
+\label{tab:morph}
+\small\setlength{\tabcolsep}{3.5pt}
+\input{generated/tab_morph.tex}
+\end{table*}
+
+\paragraph*{Evidence classes.} We label each statement. \emph{Proven}: a hand proof, given in full in the supplementary material and audited once by a reviewer that did not write it (an AI agent; Sec.~\ref{sec:repro}). \emph{Machine-checked}: a certificate accepted by the checker, or a finite hypothesis checked by a script whose negative controls must and do fail. \emph{Kernel-checked}: a theorem accepted by the Lean kernel on the standard axioms. \emph{Measured}: an uncertified computation. A result \emph{proven from machine-checked premises} is a hand proof whose hypotheses and finite inputs are machine-checked; every every-$T$ claim in Table~\ref{tab:summary} has this class.
+
+% ======================================================================
+\section{Circuits, faults and the distance}
+\label{sec:setting}
+
+\subsection{Detector error models}
+
+A stabilizer circuit carries Pauli channels at declared locations. A \emph{fault} is one non-identity component of one channel. Its \emph{symptom} is the pair (detectors flipped, observables flipped), computed by propagating the Pauli through the circuit. A \emph{mechanism} is a distinct nonzero symptom; Stim's detector error model (DEM) lists them~\cite{gidney2021stim}. Write $D_m$ and $L_m$ for the detector and observable vectors of mechanism $m$ over $\GF$.
+
+\begin{definition}
+For $X\subseteq\mathcal M$ write $D(X)=\sum_{m\in X}D_m$ and $L(X)=\sum_{m\in X}L_m$. A set with $D(X)=0$ and $L(X)\ne0$ is \emph{undetectable and logical}; we call it a \emph{solution}. The circuit-level distance of a circuit with mechanism set $\mathcal M$ is
+\[
+\dc=\min\{|X| : X\subseteq\mathcal M,\ D(X)=0,\ L(X)\neq0\}.
+\]
+\end{definition}
+
+\paragraph*{Mechanisms and faults.} The minimum over mechanisms equals the minimum over faults for every circuit here. A fault set produces at most as many mechanisms as it has members, because equal symptoms cancel in pairs. Conversely, a mechanism set is realized by one fault per mechanism; two components at one location combine into their product, which the same channel contains, because every channel here is a single Pauli flip or a depolarizing channel whose component set is closed under products.
+
+\paragraph*{Rates do not matter.} $\dc$ depends on which Paulis can occur where, not on their probabilities. Every statement below is about the fault set of the stated circuit and noise placement.
+
+\subsection{Memory experiments}
+
+A memory-$b$ experiment, $b\in\{X,Z\}$, prepares the data in the $b$ basis, runs $T$ rounds of extraction and reads the data out in the $b$ basis. Detectors compare consecutive outcomes of each check; the $b$-type checks also have a first-round detector and a final detector that closes against the data readout. The observables are all $k$ logical operators of type $b$, and a set is logical if it flips any of them, so $\dc$ is a distance for the whole logical block. We add no redundancy meta-checks. For the two morphing circuits of Ref.~\cite{shaw2024lowering} the detectors and observables span every deterministic parity of the circuit except exactly \MetaChecks\ meta-checks of the other type's first-round outcomes, one per redundant check of that type (rows of its check matrix minus its rank; measured against Stim's tableau), and their recorded witnesses survive those meta-checks; for the other circuits we did not test them. Extra detectors can only remove solutions, so every lower bound here holds with meta-checks added.
+
+\subsection{The circuits}
+\label{sec:circuits}
+
+\paragraph*{IBM's depth-\IbmDepth\ cycle.} The schedule of Ref.~\cite{bravyi2024high}, with one ancilla per check. The tests re-derive its term maps from the matrix construction in IBM's public code (\texttt{decoder\_setup.py} in \url{https://github.com/sbravyi/BivariateBicycleCodes}).
+
+\paragraph*{The three-colour cycle.} The cycle of Fig.~\SBBFigCycle\ of Ref.~\cite{strikis2026high}, rebuilt from their Figs.~\SBBFigLo--\SBBFigHi: the geometry is derived algebraically and matched to the long-edge directions of their Fig.~\SBBFigGeom; Stim accepts every detector in both bases; and the hook residuals reproduce all \SBBResiduals\ patterns of their~Fig.~\SBBFigResid. The cycle is pipelined: a round's X checks finish during the next round's Z checks.
+
+\paragraph*{Morphing circuits.} A morphing circuit has no ancillas. The $2n$ qubits of a mid-cycle BB code alternate between two contraction circuits, and each round ends in an $n$-qubit end-cycle code. We use the \SmallCode\ circuit (mid-cycle \GrossCode) and the \GrossCode\ circuit (mid-cycle \BigMidCode) of Ref.~\cite{shaw2024lowering}. The schedule is ported from the authors' builder (\texttt{\MorphRepo} at commit \texttt{\MorphCommit}) and compared with it gate by gate: gates, measurement lists and every stabilizer's contraction round are identical for both codes and all \MorphHoms\ homomorphisms, and a schedule with two layers swapped is caught. The detectors are derived by stabilizer flow and declared wherever a value is determined.
+
+\paragraph*{Noise placement.} IBM's cycle: noiseless data initialization; a flip after each ancilla reset; single-qubit depolarizing noise after each Hadamard; after each CNOT layer, two-qubit depolarizing noise on its pairs and single-qubit depolarizing noise on every idle qubit; a flip before each measurement and before the data readout. Three-colour cycle: a flip after data preparation and after each ancilla preparation; two-qubit depolarizing noise after each CNOT; a flip before each measurement; single-qubit depolarizing noise on idle data qubits in each time step (idle ancillas are not faulted). Morphing circuits: a flip after data preparation; after each reset of the right qubits a flip, and single-qubit depolarizing noise on the left qubits; after each CNOT layer, two-qubit depolarizing noise on its pairs (every layer covers every qubit, so there are no idle locations); flips before the measurements and single-qubit depolarizing noise on the left qubits after them; a flip before the readout.
+
+\paragraph*{Equivalence with SD6.} These placements are not written as the standard depolarizing model SD6 of Gidney \textit{et al.}~\cite{gidney2021honeycomb}, which faults every idle qubit in every time step and every preparation. We rebuilt each circuit with SD6 noise instead (two-qubit depolarizing after each two-qubit gate, single-qubit depolarizing after each single-qubit gate and on each qubit a time step leaves idle, a flip after each reset and before each measurement) and compared the sets of distinct (detector, observable) symptoms. For IBM's cycle, the three-colour cycle and both morphing circuits of Ref.~\cite{shaw2024lowering}, in both bases and at every $T=1,\dots,\SdSixTmax$, the full and the projected mechanism sets are identical (\SdSixRows\ comparisons, each with a control, one two-qubit noise line removed, that must and does change the set): every fault SD6 adds produces a symptom some fault of ours already produces. The distances here are therefore SD6 distances at those $T$, the quantity Ref.~\cite{pan2026interleaving} computes, for the circuits as each work transcribed them (we did not exchange circuit files). We expect equality for every $T$, because the repeated block is the same, but we have not proved it, and we did not run the comparison for the circuits of Table~\ref{tab:morph}.
+
+% ======================================================================
+\section{Certified lower bounds}
+\label{sec:search}
+
+\subsection{Same-type projection}
+
+\begin{lemma}[projection]
+In a memory-$b$ experiment, keep only the $b$-type detectors and let $\dproj$ be the distance of the projected model. Then $\dproj\le\dc$.
+\end{lemma}
+\begin{proof}
+Project the members of a full solution, drop those that become zero, and cancel equal pairs. The observable parts are untouched, so the result is a projected solution with no more members.
+\end{proof}
+
+The projection is the representation change that makes the search feasible. For IBM's cycle at $T=\GenericRounds$ in memory-Z it takes \IbmFullMechZ\ mechanisms to \IbmProjMech\ over \IbmProjDet\ detectors (\IbmFullMechX\ to \IbmProjMech\ in memory-X, and \TcFullMech\ to \IbmProjMech\ for the three-colour cycle). Each projected detector is touched by \ProjDetDegLo\ to \ProjDetDegHi\ mechanisms, against about \FullDetDeg\ in the full model, and each projected mechanism touches at most \ProjMechDegHi\ detectors. For these CSS circuits with depolarizing noise the projection is also exact: every projected mechanism has a pure-type fault component, which flips no other-type detector, so a projected solution lifts at the same weight (tested on a two-round model of each circuit family; proved for the morphing circuits as part of Theorem~\ref{thm:fold}). No claim below needs exactness, because every upper bound is a witness verified on the full model.
+
+\subsection{Anchoring on translation orbits}
+
+A BB code lives on $\mathbb Z_l\times\mathbb Z_m$ (for the gross code $l=\GrossL$, $m=\GrossM$). Translations act on qubits, and each circuit here is invariant under a group of translations, which therefore permutes its mechanisms and detectors. Observables are not invariant: a translated logical operator is another representative, so a mechanism's observable vector changes by stabilizer terms, and per-mechanism linearity fails.
+
+\begin{lemma}[affine observables]
+Let $G$ be a group of translations with matrices $M_g,K_g$ such that $L_{gm}=M_gL_m+K_gD_m$ for every mechanism $m$ and every $g\in G$. Then a set $X$ is a solution if and only if $gX$ is.
+\end{lemma}
+The map is linear in the pair $(L_m,D_m)$; we call the observables \emph{affine} because, for a fixed syndrome, $L_{gm}$ is an affine function of $L_m$.
+\begin{proof}
+For an undetectable $X$, $\sum_{m\in X}L_{gm}=M_g\sum L_m$, and $g$ permutes detectors, so $gX$ is undetectable. Applying the same identity with $g^{-1}\in G$ to $gX$ returns $X$, so $\sum L_m\ne0$ if and only if $\sum L_{gm}\ne0$.
+\end{proof}
+
+Number the orbits of $G$ on mechanisms. Every solution has a translate that contains the representative of its smallest orbit $o$ and uses only orbits $\ge o$. The search therefore starts once per orbit, from its representative, and allows only mechanisms of orbits $\ge o$. The groups are all \IbmGroup\ translations for IBM's cycle, the \TcGroup\ colour-preserving ones for the three-colour cycle, and for the morphing circuits the kernel of the homomorphism (\MorphSmallGroup\ and \MorphBigGroup\ translations), because round $r+1$ is round $r$ translated. Freeness of the action is not needed for soundness; the checker tests it anyway.
+
+\subsection{The search}
+
+A search state is a residual syndrome $s$, a logical flip $\ell$, a remaining budget $r$ and an orbit floor $o$.
+\begin{description}
+\item[Branching] If $s\ne0$, pick any firing detector $d$. A completion contains an odd, hence positive, number of mechanisms touching $d$, so branching over the allowed mechanisms touching $d$ loses nothing; a firing detector with none makes the state infeasible. At $s=0$ the branch ends: it is a solution if $\ell\ne0$.
+\item[Packing bound] If no allowed mechanism touches two detectors of a set $U$ of firing detectors, a completion needs at least $|U|$ mechanisms.
+\item[Cover bound] Let $c_d$ be the largest overlap $|\mathrm{supp}\,D_m\cap s|$ over allowed $m$ touching $d$. With $Q=\CoverScale$, the integers $y_d=\lfloor Q/c_d\rfloor$ satisfy $\sum_{d\in s\cap m}y_d\le Q$ for every allowed $m$, so every completion has at least $\lceil\sum_d y_d/Q\rceil$ members. A later version raises each $y_d$ by the least slack of an allowed mechanism, an exact-integer dual ascent that keeps feasibility.
+\item[Leaves] Completions with at most two members are decided exactly by lookup, and in the latest format completions with at most three members are decided without a trace bit.
+\end{description}
+The search engine also keeps a transposition table keyed on the full state, which is sound because successors depend only on the state; the proof-producing prover omits it.
+
+\subsection{Certificates and the checker}
+
+The prover writes one bit for each node with nonzero syndrome and remaining budget at least three (four in the latest format): expanded, or pruned by a bound. The checker, a separate C program, re-derives everything else from the model: the symmetry (invariance of the mechanism set, the affine observable map by Gaussian elimination over $\GF$, the orbits and their representatives), the branching detector by a fixed rule (any firing detector is sound; a prover that branched elsewhere desynchronizes and is rejected), the child lists, every bound in exact integers, and every leaf with its own lookup. Tests make these rejections fire: a raised weight claim, a flipped bit, truncation, trailing bytes, a fake prune, a prover that ignores solutions, a model that is not invariant, wrong orbit labels, and a model that lists a detector twice in one mechanism. The checker does not read a model hash; each run record binds a certificate to the SHA-256 of the exported model it was checked against, and the claims refuse a record whose model is not the one its search ran on. In the latest format, \CdpFiveName, the memory-Z proof for IBM's cycle at $T=\GenericRounds$ and weight $\le\IbmW$ is \CdpIbmZKB~KB, \CdpIbmRatio\ times smaller than the \CdpIbmBaseKB~KB of the one-bit-per-node format (\CdpTcRatio\ times for a three-colour model at weight $\le\CdpTcW$), and checks in seconds (Table~\ref{tab:costs}).
+
+\begin{table*}[tbp]
+\caption{Certificate sizes and times for representative models. \emph{Mechanisms} are those of the projected model; $w$ is the certified weight bound. The first two rows are certificates of the original IBM campaign, in its trace format of \IbmBytesPerEntry\ bytes per node, whose checker version was not preserved (nothing in the results rests on them; Sec.~\ref{sec:trusted}); the \CdpFiveName\ rows are later benchmark runs on the same two models with the prover and checker of their day (median of repeated runs). Shift rows summarize the \TcShiftCerts\ three-colour time-shift certificates; they, the three-colour $T=2$ rows and the morphing rows give the re-certification campaign's \CdpFiveName\ proofs, written and checked by the committed prover and checker (Sec.~\ref{sec:trusted}). Times are wall-clock on one workstation with several threads, and are not controlled benchmarks; the re-certification ran several processes at once beside other jobs, so its times are those of a loaded machine.}
+\label{tab:costs}
+\small\setlength{\tabcolsep}{8pt}
+\input{generated/tab_costs.tex}
+\end{table*}
+
+\subsection{Upper bounds}
+
+Witnesses come from the same engine run at weight $\dc$. Each is lifted from the projected to the full DEM by choosing one fault component per mechanism, and verified there: it fires no detector, flips a logical, and every proper subset obtained by deleting one member fails.
+
+\subsection{What is trusted}
+\label{sec:trusted}
+
+Stim parses the instruction lists. Its error analysis is not trusted: an independent backward Pauli-sensitivity pass derives every model's fault set a second time, and the two sets are equal on all models the claims rest on: the \DemModels\ models of the IBM, three-colour and Ref.~\cite{shaw2024lowering} circuits (\DemMechLo\ to \DemMechHi\ mechanisms) and the \DemTwentySixModels\ models of the circuits of Table~\ref{tab:morph} (\DemTwentySixMechLo\ to \DemTwentySixMechHi), every round count their searches, certificates and window checks used. A copy of the circuit with one noise line dropped, or one CNOT reversed, breaks the equality (tested). The trusted base is the instruction lists, the projection (a few lines), the exporter's assignment of detectors to rounds and its time ordering, on which the anchoring by time shifts depends (cross-checked where the window checks bind the exported models), the arguments of this section, and the checker, whose calculus is proven sound in Sec.~\ref{sec:lean}.
+
+The certificates were first checked by the checker version current when each was produced, several of them before the fixes of Sec.~\ref{sec:findings}. Every certificate the results rest on was therefore produced and checked again by the committed prover and checker, the version the Lean model follows: the \IbmRecertCerts\ of IBM's cycle (Sec.~\ref{sec:results}) and, separately, \RecertCells\ others, all verified. For those \RecertCells\ every re-exported model is byte-identical to the model its original search ran on. The prover's output does not depend on scheduling: each search task writes its own buffer, and the buffers are written in task order. In line with that, \RecertProofEqual\ of the regenerated proofs are byte-identical to the recorded ones, \RecertProofEqualBits\ of them carrying trace bits (up to \RecertProofEqualMaxMB~MB), and \RecertDetCells\ proofs with trace bits (up to \RecertDetMaxMB~MB), regenerated at \RecertDetThreads\ threads instead of \RecertCampaignThreads, came back bit for bit; each of the \RecertRegen\ proofs that do not ship has thus been produced twice, identically. The remaining \RecertProofFormat\ differ for a reason we checked: each was written by an earlier prover, before the proof language became \CdpFiveName, which omits trace bits for subtrees the checker decides itself. Compiling the prover at an earlier commit (\RecertOldCommits) and running it on the same model reproduces every one of those recorded proofs bit for bit, in the earlier format (\RecertOldMagic). The proof hashes of the re-certification, \CdpFiveName\ throughout, bind proofs that the committed prover regenerates from the shipped models. \RecertMorphZeroBits\ of the \RecertMorphCells\ morphing-circuit proofs carry no trace bits at all: there the checker's verified terminal procedure repeats the whole search, and the proof adds little beyond its header. The campaign's original \IbmCerts\ certificates for IBM's cycle used an earlier trace format still, \IbmBytesPerEntry\ bytes per node, and the checker version that verified them is not preserved in version control; nothing below rests on them.
+
+% ======================================================================
+\section{Every number of rounds}
+\label{sec:everyT}
+
+A certificate covers one model. A claim for every $T$ needs an argument that a long experiment has no lighter solution than a short one.
+
+\subsection{Time windows}
+\label{sec:windows}
+
+In the IBM and three-colour models every mechanism touches detectors in at most two consecutive rounds. A minimum-weight solution therefore occupies a contiguous block of rounds: if no member started in some round strictly between the first and the last, the members before and after it would form two undetectable sets, one of them logical and lighter. The members of a solution of weight $\le w$ start in at most $w$ consecutive rounds. If interior rounds are time translates of each other and the boundary rounds do not depend on $T$, a solution in a long model translates into a short one. Two rules use this.
+
+\emph{Rule W.} No solution of weight $\le w$ for $T=1,\dots,w+2$ implies none for any $T$.
+
+\emph{Rule S (time shift).} With orbits numbered in round order, a solution whose first round is $r_0\ge2$ is a time translate of one that starts in round $1$ of the model with $T-r_0+1$ rounds. So it suffices to certify, for $T=1,\dots,w+2$, that no \emph{irreducible} solution of weight $\le w$ (no proper subset undetectable) starts in round $0$ or $1$; a minimum-weight solution is irreducible. Each such certificate anchors only in two rounds.
+
+Both rules need three window preconditions on the consecutive pairs $(T,T+1)$ they span, rule W on every pair from its starting $T$ on and rule S on every pair except that the first may satisfy only a weaker time-shift form of P3 (Theorem~\ref{thm:window}): (P1) each mechanism spans at most two consecutive rounds; (P2) the mechanism shapes that start in interior rounds form one set; (P3) the shapes that start in the first round and in the last two rounds do not depend on $T$. These can be checked on finitely many models. For every $T$ they need a theorem.
+
+\begin{theorem}[window formula]
+\label{thm:window}
+Write the circuit as $C_T=P\cdot F\cdot B^{T-1}\cdot E\cdot R$: preparation, a first block, $T-1$ copies of a body block, a tail and the readout (the three-colour cycle is pipelined, so $F$ lacks the previous round's X-check tails and $E$ finishes the last round's; for IBM's cycle $F=B$ and $E$ is empty). All maps below are linear over $\GF$ on Pauli frames. Let $A$ be the map that carries a frame through $B$, and $\mu$ the map from a frame entering $B$ to the flips of $B$'s measurements. Let $N$ and $N_{\mathrm{obs}}$ list the terminal detectors and observables that a frame entering the last body block flips. Assume that the builder emits $C_T$ with closed-form detectors for every $T$, that each block measures each ancilla as stated, and that there are integers $h,e\ge0$ with $\mu(A+I)A^{h}=0$ and $NA^{e}=0=N_{\mathrm{obs}}(A+I)A^{e}$; take the smallest such $h$ and $e$. Then, with $U=\max(h,e)+1$, $T_0=1+U$ and finite sets $S$, $I$, $\mathrm{End}$ independent of $T$, for every $T\ge T_0$ the projected model is
+\[
+\mathcal M_T=S\;\cup\;\bigcup_{i=1}^{T-1-U}\tau_i(I)\;\cup\;\tau_T(\mathrm{End}),
+\]
+where $\tau_i$ shifts detector rounds by $i$. Reading the windows off this formula gives P1--P3 for every pair $(T,T+1)$ beyond a threshold; the pairs below it are checked on the exact models. For memory-Z the pair $(1,2)$ satisfies only the weaker time-shift form, which is all rule S needs there.
+\end{theorem}
+
+The proof composes frames block by block: a fault in body copy $i$ sees the same suffix $B^{T-i}\cdot E\cdot R$ in every $C_T$, and after $U$ blocks its detector response stops changing. For IBM's cycle the identities hold with $h=e=\IbmFir$: every block resets all ancillas first, so data Paulis pass a round unchanged and the readout closes the last round exactly. For the pipelined three-colour cycle they hold with $h=e=\TcFir$ and fail at $\IbmFir$. The same composition applied to the full detector error model, rather than its projection, gives a formula of the same shape whose interior copies start at a later block and whose threshold is correspondingly larger; the supplement states it with its start index and threshold (\texttt{WINDOW\_PROOF.md}, Theorem~1), and Sec.~\ref{sec:results} uses it to place witnesses, which live in the full model.
+
+\paragraph*{Status.} Theorem~\ref{thm:window} is a hand proof. A script checks its hypotheses for both circuits and both bases, each against a negative control that must fail (\WinControls\ controls, all fail), confirms the builder's instruction stream against the template at \WinTplCount\ values of $T$ up to \WinTplTmax, and compares the closed form with Stim's DEM alone at $T=\WinStimTa$, \WinStimTb\ and \WinStimTc, beyond every $T$ searched: equal in every comparison. An independent review rebuilt $S$, $I$ and $\mathrm{End}$ from Stim at another reference round and compared the formula with Stim's DEM at $T$ up to \WinAuditTmax: \WinAuditCmp\ comparisons, no difference, every control failing. It refuted nothing. That the builder emits $C_T$ for every $T$ is a proof by reading the code, confirmed mechanically at the values above.
+
+\subsection{The fold lemma for morphing circuits}
+\label{sec:fold}
+
+A two-round morphing circuit is a palindrome around each measurement: contract with $F_r$, measure the right qubits, reset them in the same bases, expand with $F_r^{-1}$. Every fault therefore has the symptom of a Pauli $P$ at a mid-cycle point $t$. Write $\sigma_S(P)$ for its syndrome against the memory-type generators, $\sigma_L(P)$ for its flips of the memory logicals, and $\iota_t$ for the map that places generator $g$'s bit on the one detector of $g$ whose time window contains $t$.
+
+\begin{theorem}[fold]
+\label{thm:fold}
+For a two-round morphing memory experiment, assume: each CNOT layer uses each qubit at most once; every right qubit is measured and reset each round; carried checks and logicals touch only right qubits measured in their own basis (trackability); the noise of each expansion layer equals that of its mirrored contraction layer, and reset noise equals measurement noise (palindrome); preparation and readout noise lie among the reset and measurement noise; and the part of each fault that flips memory-type measurements (its X part in memory-Z) is itself a fault. Then a fault whose mid-cycle image is $P$ at $t$ has projected symptom $(\iota_t(\sigma_S(P)),\sigma_L(P))$, the projected model is
+\[
+\mathrm{Proj}_T=\bigcup_{t=0}^{T-1}\iota_t(\mathrm{Proj}_1),
+\]
+and for every $T\ge1$, $\dc(T)=\dproj(T)=\dproj(1)=\dc(1)$.
+\end{theorem}
+
+The map that sums each generator's detectors undoes every $\iota_t$ at once and is linear, so a solution of the $T$-round model folds onto one of the one-round model with no more members; $\iota_0$ is injective, so a one-round solution embeds back; and that part of each fault lifts projected solutions to full ones at the same weight. The hypotheses are statements about two rounds and the boundaries, so none depends on $T$. Shaw and Terhal prove $\dc(T)=\dc(1)$ for two-round morphing circuits by time-reversal folding in their convention (ideal preparation and readout, with meta-check detectors; \cite{shaw2026optimising}, Prop.~\STbProp). The proof here covers our convention (noisy boundaries, no meta-checks) with one explicit linear map, and also holds with meta-checks added.
+
+\paragraph*{Status.} Theorem~\ref{thm:fold} is a hand proof. A script checks all six hypotheses for both circuits and both bases with \FoldControls\ negative controls per run (\FoldRuns\ runs, all controls fail), and for the other homomorphisms with \FoldOtherControls\ controls per run. It identifies the builder's circuit with the template at \FoldTplCount\ values of $T$ up to \FoldTplTmax, where every component's projected symptom equals the formula above (\FoldComponents\ components, no mismatch). An independent review checked the union formula against Stim's DEM alone at \FoldAuditPoints\ fresh points (circuit, basis, homomorphism, $T$), with both of its controls disagreeing at the \FoldAuditCtlPoints\ points where they were run, and ran \FoldAuditCodes\ small BB morphing codes the proof never saw: their distances are constant in $T$, and breaking one hypothesis makes them drop. It refuted nothing. The weight-\MorphBigD\ witnesses, sent through $\iota_0$, are solutions at $T=\FoldTwinT$, with a one-mechanism-deleted control that fails. As for Theorem~\ref{thm:window}, that the builder emits the template for every $T$ is a proof by reading the code, confirmed at the values above.
+
+% ======================================================================
+\section{Lean}
+\label{sec:lean}
+
+\subsection{The calculus}
+
+The certificate calculus is formalized in \LeanName\ (\LeanVersion) with Mathlib (\MathlibVersion). A DEM is a pair of maps from mechanisms to vectors over $\mathbb Z/2$; a solution is a finite set of mechanisms whose syndromes sum to zero and whose observables do not. A valid tree has the constructors of Sec.~\ref{sec:search}: done, spent, leaf, prune (under each bound) and expand at any firing detector; the three-member terminal is proved to be a valid tree. The main theorem reads:
+
+\begin{theorem}[\texttt{cert\_sound}]
+If the incidence tables contain the true incidence, the translations form a group that preserves the mechanism set and maps observables affinely, every mechanism's orbit label is below the number of anchors, and for every orbit the tree rooted at its representative is valid with budget $w-1$, then every solution has more than $w$ members.
+\end{theorem}
+
+A scoped form, \texttt{cert\_sound\_scoped}, gives rule S on a single model: no irreducible solution of weight $\le w$ touches a round $\le$ the declared bound. The theorems also cover the packing and cover bounds in the checker's exact integers, the dual ascent (every raise keeps the dual feasible), the terminal and the leaves, and anchoring with affine observables. Concrete models run the chain end to end: one with a non-trivial group and observables that map only affinely, and another on which only the dual ascent prunes, where the C checker agrees. The receipt lists \LeanTheorems\ theorems, each on the standard axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), pins every source by hash, and a Lean-free gate refuses a stale source, a \texttt{sorry} or a non-standard axiom.
+
+\subsection{What the formalization found}
+\label{sec:findings}
+
+Formalizing the rules exposed defects in the C programs and an overstated verdict. A model in which one mechanism lists a detector twice XORs that detector away while its degree still counts it. On such inputs, with crafted proofs, the checker printed VERIFIED for false claims: an anchor whose syndrome cancelled to zero received no task, and, in a faster leaf procedure under development, a filter that assumed degree equals syndrome weight misjudged a completion. The same input crashed a development version of the prover. Every program now refuses a repeated detector at load. Separately, the time-shift verdict claimed ``no solution'' where the scoped proof establishes ``no irreducible solution''; the verdict now says so, and a Lean example shows on a concrete model that the stronger reading is false. None of this touched a recorded result, and not only because the \ExposureModels\ model files then in the campaign directories were found to have none. No certified model can contain a repeated detector: the independent derivation of Sec.~\ref{sec:trusted} writes each symptom as a set, and its mechanism list equals the exporter's on every model the claims rest on, so no mechanism lists a detector twice; the projection maps distinct detectors to distinct detectors. Rule S needs only the irreducible form.
+
+\subsection{Distances checked by the kernel}
+
+The step from ``the C checker printed VERIFIED'' to ``the Lean hypotheses hold'' is argued line by line, not proved. For small models we remove it. A Lean program performs an exhaustive anchored search over the exported projected model, through an incidence table that is supplied as data and checked for completeness, and a theorem (\texttt{Exec.cert\_sound\_exec} and its table form) states that the program's acceptance implies the distance bound, through the same \texttt{cert\_sound}. A generated module per model runs the program in the kernel, one \texttt{decide +kernel} declaration per anchor, combined by rewriting so that no single declaration grows, and adds a witness at the next weight. The result is a theorem that the exported model's distance is exactly $d$, on the standard axioms, with no C code and no compiler trusted in the check; the model itself still comes from Stim and the exporter, whose output the independent derivation of Sec.~\ref{sec:trusted} confirms. The \LeanKernel\ theorems are the one-round projected models of \texttt{\KernelA} (\KernelMechA\ mechanisms, $\dc=\KernelDA$) and \texttt{\KernelB} (\KernelMechB\ mechanisms, $\dc=\KernelDB$) in both bases (Table~\ref{tab:morph}). Each module's model literal is regenerated from a fresh export whose hash must equal the certified one. The kernel needs \KernelSLo--\KernelSHi~s per model at up to \KernelGB~GB. For \texttt{\KernelA}, Theorem~\ref{thm:fold} then carries the kernel-checked one-round distance to every $T$. Gross-code models, with \IbmProjMech\ projected mechanisms at $T=\GenericRounds$ and weights of \IbmW\ or more, would need the bounds and the symmetry inside the kernel program; that is future work.
+
+\subsection{What is not proved}
+
+The correspondence between the C checker and the Lean predicate, including the trace decoding, the leaf index, the elimination, parsing, arithmetic and the compiler, is argued, not proved. Its executable cross-check holds the C checker's own bound, terminal and leaf procedures against breadth-first brute force: on \OracleQueries\ queries over \OracleModels\ random models no prune cut a completion and no terminal missed one, and each of the \OracleMutants\ one-token mutants of those rules produces violations (\OracleViolLo\ to \OracleViolHi). Rule S across models, and everything upstream of the DEM (the circuits, the DEM derivation, the projection, Theorems~\ref{thm:window} and~\ref{thm:fold}, witness lifting), is outside the formalization.
+
+% ======================================================================
+\section{Results}
+\label{sec:results}
+
+\subsection{IBM's depth-\IbmDepth\ cycle}
+
+\IbmRecertCerts\ time-shift certificates, written by the committed prover in \CdpFiveName\ and verified by the committed checker (the version the Lean model follows), state that no irreducible undetectable logical set of weight $\le\IbmW$ starts in round $0$ or $1$, for $T=\IbmCertTlo,\dots,\IbmCertThi$ in both bases. With rule S and Theorem~\ref{thm:window} (for memory-Z the pair $(1,2)$ satisfies the weaker time-shift form, which is all rule S needs) they give $\dc\ge\IbmD$ for every $T$. The proofs are \IbmRecertKBLo\ to \IbmRecertKBHi~KB, check in \IbmRecertCheckSLo\ to \IbmRecertCheckSHi~s, and all ship with their models; each shipped model is byte-identical to a fresh export of the cycle. Rule S needs the mechanisms listed in round order, so \IbmRecertSame\ of these models are byte-identical to the campaign's and the rest list the same mechanisms in another order, with the orbits numbered accordingly. The campaign's earlier certificates (Sec.~\ref{sec:trusted}) state the stronger ``no undetectable logical error of weight $\le\IbmW$'' at the same $T$, through rule W, and agree; proofs in their format ranged from \IbmProofMBLo\ to \IbmProofMBHi~MB, and checks from \IbmCheckSLo\ to \IbmCheckSHi~s.
+
+A weight-\IbmD\ witness of end-boundary type in each basis, verified on the full DEM at $T=\GenericRounds$, lies in $\tau_T(\mathrm{End})$ of the full formula and so occurs in every model with $T\ge\IbmTmin$; it was also checked directly at $T=\IbmWitDirectLo,\dots,\IbmWitDirectHi$. Hence $\dc=\IbmD$ for every $T\ge\IbmTmin$, memory-Z and memory-X, \IbmLoss\ below the code distance \GrossD. In our fault placement the bound $\dc\le\LitIbmUpper$ of Ref.~\cite{bravyi2024high} is attained. At $T=\IbmCertTlo$ the certificates give only $\dc\ge\IbmD$. The value agrees with Crocker's exhaustive search for twelve noisy rounds~\cite{crocker2026gross} and with Pan's exact enumeration under SD6 for up to three rounds~\cite{pan2026interleaving}, at which SD6 gives our fault set (Sec.~\ref{sec:circuits}); neither records a certificate for IBM's cycle.
+
+\subsection{The three-colour cycle}
+
+At $T=\GenericRounds$ the search found no solution of weight $\le\TcW$ in either basis (\TcSearchNodesZ\ and \TcSearchNodesX\ nodes, in \TcSearchSZ\ and \TcSearchSX~s), and weight-\TcD\ witnesses in both bases were verified on the full DEM. For every $T$ we used rule S: \TcShiftCerts\ time-shift certificates, $T=\TcShiftTlo,\dots,\TcShiftThi$ in both bases, each on exactly the model the time-shift search ran on (\TcShiftMechLo\ to \TcShiftMechHi\ mechanisms, \TcAnchorsLo\ to \TcAnchorsHi\ anchors, proofs of \TcShiftMBLo\ to \TcShiftMBHi~MB), all verified by the committed checker in the re-certification campaign (\RecertTcHours~h of proving and checking). Theorem~\ref{thm:window} supplies the window preconditions for every pair. The witnesses are of start type: they lie in the start part and an interior translate of the full formula, so they occur in every model with $T\ge\TcWitEveryFrom$, and they were checked directly for $T=\TcTmin,\dots,\TcWitDirectHi$ and on the full DEM for $T=\TcTmin,\dots,\TcEmbedThi$. Hence $\dc=\TcD$ for every $T\ge\TcTmin$ in both bases: the conjectured value of Ref.~\cite{strikis2026high} holds for the circuit as rebuilt from their figures, under the noise placement of Sec.~\ref{sec:circuits}, as Pan also found under SD6, from the reduction of Ref.~\cite{strikis2026high} and exhaustive searches~\cite{pan2026interleaving}. The cycle loses \TcLoss\ against the code distance.
+
+The size of a time-shift certificate stops growing with $T$ once $T$ exceeds the window: the memory-X proofs have identical trace length for every $T$ from \TcPlateauFrom\ to \TcShiftThi. In the original campaign the longest cell (memory-\TcLongestB, $T=\TcLongestT$) took \TcLongestH~h.
+
+\subsection{Morphing circuits}
+
+For the \SmallCode\ circuit, \MorphSmallCerts\ time-shift certificates of weight $\le\MorphSmallW$, $T=\MorphSmallTlo,\dots,\MorphSmallThi$ in both bases, with the space-time window preconditions checked on every pair (round $r+1$ is round $r$ translated, and observables are required to map affinely between paired windows), give the bound for $T\le\MorphSmallThi$; Theorem~\ref{thm:fold} with the one-round certificates gives it for every $T$. All were re-checked by the committed checker, and their proofs ship. Weight-\MorphSmallD\ witnesses lift, survive the meta-checks and embed into every $T=\MorphSmallEmbLo,\dots,\MorphSmallEmbHi$. So $\dc=\MorphSmallD$ for every $T\ge\MorphTmin$: in our fault placement the BP-OSD bound of Ref.~\cite{shaw2024lowering} is attained.
+
+For the \GrossCode\ circuit, certificates of weight $\le\MorphBigW$ were verified at $T=\MorphBigCertTa$ and $T=\MorphBigCertTb$ in both bases by the committed checker (Table~\ref{tab:costs}). Weight-\MorphBigD\ witnesses, found in the one-round model in \MorphWitSZ\ and \MorphWitSX~s, were verified in every $T=\MorphBigCertTa,\dots,\MorphBigTmax$ and survive the meta-checks. With Theorem~\ref{thm:fold}, $\dc=\MorphBigD$ for every $T\ge\MorphTmin$, in both bases. A second route, the fold map checked separately at each $T=\MorphBigCertTa,\dots,\FoldRowsThi$ (\FoldRows\ rows over both circuits and bases), agrees. The circuit has no ancillas and keeps the end-cycle code's distance \GrossD; IBM's cycle on the same code loses \IbmLoss\ and the three-colour cycle \TcLoss. Distance is not logical error rate, and we make no claim about the latter.
+
+\subsection{The \STbYear\ morphing circuits}
+\label{sec:morph2026}
+
+Ref.~\cite{shaw2026optimising} searches two-round morphing circuits over Abelian two-block group-algebra codes and reports end-cycle parameters only; it names neither the groups nor the polynomials. We re-found codes with its stated parameters by search. Among the codes we searched on $\mathbb Z_{\MtwoGroupFortyTwo}$, \MtwoFortyTwoCircuits\ standard-schedule circuits have end-cycle code \MtwoCodeFortyTwo\ of degree \MtwoFortyTwoDegree. No standard-schedule circuit we searched on $\mathbb Z_{\MtwoGroupThirty}$ reaches \MtwoCodeThirty; we obtained it from the tree circuits of their Def.~\STbDef. For the \MtwoCodeFortyEight\ family (their Fig.~\STbFig) we ran \MtwoFortyEightCount\ standard-schedule circuits on $\mathbb Z_{\MtwoGroupFortyEight}$. Whether the paper's own circuits are among ours cannot be decided from the paper. Each circuit is built in our convention by a generalized builder, which reproduces the morphing builder of Sec.~\ref{sec:circuits} byte for byte on the circuits of Ref.~\cite{shaw2024lowering}; the standard schedules equal the authors' builder gate by gate, with a swapped-layer control that fails.
+
+Table~\ref{tab:morph} gives the results. For each circuit and basis, the one-round search finds weight $d$ with a minimal witness verified on the full DEM, the same weight appears at every $T$ up to $d+1$, certificates of weight $\le d-1$ are verified at one and two rounds, and time-shift certificates and window preconditions hold at every $T$ up to $d+1$; every certificate was re-checked by the committed checker, and every proof ships. For the standard schedules Theorem~\ref{thm:fold}'s hypotheses hold (checked with their controls), so the value holds for every $T$; for the tree circuits the class is machine-checked to $T=\MtwoTreeTmax$. The CNOT order is not a detail: circuit \texttt{\MtwoKeeper} keeps $\dc=\MtwoKeeperD$, while the other \MtwoCodeFortyTwo\ circuits lose up to \MtwoFortyTwoMaxLoss. The degree-\MtwoTreeDegree\ tree circuits for \MtwoCodeThirty\ keep their distance. No standard-schedule circuit we ran for the \MtwoCodeFortyEight\ family reaches \MtwoEndDFortyEight; the best, \MtwoFortyEightBestCount\ of \MtwoFortyEightCount, reach \MtwoBestFortyEight\ (cyclic groups only; deeper trees not searched).
+
+% ======================================================================
+\section{Scope and limitations}
+\label{sec:scope}
+
+\paragraph*{Noise placement.} Every distance is a property of the fault set of Sec.~\ref{sec:circuits}, which equals SD6's on the circuits and rounds compared there. We did not compare it with the noise models under which the papers that introduced the circuits reported their bounds, so ``attained'' and ``the value they conjectured'' compare numbers, each in its own convention. A different placement can change $\dc$: more fault locations can only lower it, and extra detectors can only raise it, so our lower bounds carry over to a convention whose fault set is contained in ours and whose detectors contain ours. For the morphing circuits the fold theorem also holds with meta-checks, which their convention uses; that ideal preparation and readout leave the model unchanged is predicted by the theorem's boundary hypothesis but was not run. On the smaller \SmallCode\ instance of IBM's cycle ($T=\BbRounds$, memory-Z), deleting every single-qubit channel and flip leaves the mechanism set unchanged (tested): two-qubit noise after the CNOTs already produces every symptom.
+
+\paragraph*{Transcription.} The three-colour cycle is rebuilt from figures. The cross-checks of Sec.~\ref{sec:circuits} constrain the transcription; they do not prove it equals the authors' circuit. The \STbYear\ circuits are re-found, not copied (Sec.~\ref{sec:morph2026}).
+
+\paragraph*{Hand proofs.} Theorems~\ref{thm:window} and~\ref{thm:fold} are hand proofs, given in full in the supplementary files \texttt{WINDOW\_PROOF.md} and \texttt{FOLD\_PROOF.md}, each audited once by an AI agent that did not write it. Their hypotheses are machine-checked, and the claim that the builders emit the template for every $T$ rests on reading the code. Neither theorem is formalized.
+
+\paragraph*{The checker.} The calculus is proven sound; that the C program implements it is argued and cross-checked, not proved. Every certificate the results rest on was re-checked by the committed version (Sec.~\ref{sec:trusted}). The tree circuits of Table~\ref{tab:morph} are machine-checked only to $T=\MtwoTreeTmax$; beyond that their every-$T$ status rests on the window lemma's preconditions holding by periodicity, which we have not proved for them.
+
+\paragraph*{Distance is not performance.} We report no logical error rates. Two circuits with the same $\dc$ can differ in the number of minimum-weight solutions and in their behaviour at realistic noise.
+
+% ======================================================================
+\section{Related work}
+\label{sec:related}
+
+\paragraph*{Circuit distances of these circuits.} Crocker~\cite{crocker2026gross} and Pan~\cite{pan2026interleaving} settled the gross-code values concurrently with this work (Sec.~\ref{sec:intro}); Crocker's search uses the same three reductions as ours and records no certificate. Pan certifies the infeasibility claims for the new interleaved circuits with SAT and pseudo-Boolean proofs, checked with drat-trim (with LRAT cores checked by cake\_lpr) and VeriPB~\cite{wetzler2014drattrim,tan2023cakelpr,gocht2021veripb}, a proof system independent of ours; Pan's three-colour value rests on the reduction of Ref.~\cite{strikis2026high} and two independent exhaustive searches, with a bound of 9 certified, and for IBM's cycle Pan reports exact enumeration without certificates. On both cycles, then, independent methods give the same value where our fault set equals SD6's (Sec.~\ref{sec:circuits}); we did not exchange circuits with either author, so the agreement rests on each work's own transcription. Exact circuit distances of smaller BB circuits were obtained with a MaxSAT solver on Stim's SAT export by Aghababaie Beni, Higgott and Shutty~\cite{beni2025tesseract}. Webster, Jacob and Higgott benchmark exact and heuristic distance-finding algorithms for quantum codes and extraction circuits, including BB extraction circuits~\cite{webster2026distance}. Jacoby, Retzker and Pastawski compute circuit-level distances of their stairway codes with an integer-programming decoder, reporting an upper bound where it does not finish~\cite{jacoby2026stairway}. Chen, Jafari and Lai compare SAT, MaxSAT and SMT formulations of the exact code distance, not the circuit distance, of QLDPC codes~\cite{chen2026satqldpc}.
+
+\paragraph*{Certificates and formal verification.} Branch-and-bound with linear-programming lower bounds and independently checkable branch-and-bound certificates are established in exact integer programming~\cite{cheung2017verifying,eifler2023computational}, and certifying algorithms and program checking are classical~\cite{mcconnell2011certifying,blumkannan1995}; the method here specializes them to the fault hypergraph of a detector error model, with translation anchoring under affine observables and time-window reductions particular to periodic extraction circuits. Its certificates are about one bit per search node, and their checker's calculus, not only its output, is proven sound. An and Yang~\cite{an2026certificate} certify code parameters, including the gross code's distance, by certificates a proof assistant's kernel decides by computation; that is the code distance, not the circuit distance. Formal verification of quantum error correction in a proof assistant is also the subject of Ehatamm \textit{et al.}~\cite{ehatamm2026end} and of Huang \textit{et al.}~\cite{huang2025veriqec}, who verify QEC programs in a program logic formalized in Coq; our formalization covers a certificate checker for circuit distance, not a code, a decoder or a program. The circuits are those of Refs.~\cite{bravyi2024high,strikis2026high,shaw2024lowering,shaw2026optimising}. Our literature search was not systematic, and we make no priority claim beyond the values stated as new.
+
+% ======================================================================
+\section{Reproducibility}
+\label{sec:repro}
+
+{\sloppy The code, the evidence and the Lean development are released under the Apache License 2.0 at \url{https://github.com/coherence-energy-labs/oneq-certificates} (release \ReleaseTag); paths below are relative to that repository. The code is in \texttt{experiments/\allowbreak circuit\_distance\_exact/}. The claims file \texttt{evidence/\allowbreak circuit\_distance\_exact/\allowbreak results.json} is assembled from the run records beside it by \texttt{collect\_results.py}, which refuses a claim whose records are missing or disagree; the test suite checks that the committed file equals a fresh assembly. The Lean development is \texttt{\LeanProject}, with a receipt gate that needs no Lean. The \IbmRecertCerts\ \CdpFiveName\ proofs for IBM's cycle ship with their models in \texttt{evidence/\allowbreak circuit\_distance\_exact/\allowbreak ibm\_recert\_20261026/}, and the \RecertShipped\ re-certified proofs of the \SmallCode\ morphing circuit and of Table~\ref{tab:morph} with theirs in \texttt{evidence/\allowbreak circuit\_distance\_exact/\allowbreak recert\_20261102/}; each re-checks in seconds with \texttt{ccheck}. The \RecertRegen\ proofs of the three-colour cycle and the \GrossCode\ morphing circuit, \RecertRegenGB~GB together, ship as their models and the hashes in that directory's manifest: the committed prover regenerates each from its model, the manifest's hash confirms that it is the proof that was checked, and the checker then decides it again. Where a re-certified proof differs from its original record, \texttt{recert\_old\_prover.py} compiles the earlier prover, shipped in \texttt{old\_provers/}, and reproduces the recorded proof. The supplementary files \texttt{WINDOW\_PROOF.md} and \texttt{FOLD\_PROOF.md} are the hand proofs of Theorems~\ref{thm:window} and~\ref{thm:fold}, as they stand in the same directory as the code. Models were exported with Stim \StimVersion; the C programs were compiled with GCC \GccVersion. Every number in this paper is a macro written by \texttt{paper/\allowbreak tools/\allowbreak make\_numbers\_distance.py} from those committed files; it refuses to run when the claims file differs from a fresh assembly of its records, when the Lean receipt does not certify the current sources, or when a certificate is bound to a model other than the one its search ran on.\par}
+
+\paragraph*{Use of AI tools.} AI tools assisted with software development, the proofs and manuscript preparation. The independent reviews in Sec.~\ref{sec:everyT}, and four reviews of this manuscript before it was posted, were carried out by AI agents that had not written the artifact under review; they are not third-party peer review. The author is responsible for all content.
+
+\bibliography{refs}
+
+\end{document}

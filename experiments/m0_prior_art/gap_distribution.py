@@ -395,8 +395,18 @@ def main() -> int:
                   + (f"  INCONSISTENT {r2['syndrome_inconsistent']}"
                      if r2["syndrome_inconsistent"] else ""))
 
+    # WHICH CHECKER DECIDED "PROVEN" (2026-11-02): the exact checkers were fixed on 2026-10-18 (T'-oddness), after
+    # this artifact was first written, so the record names its commit and the bytes of the modules that decided it.
+    def _git(*args: str) -> str:
+        import subprocess
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    judged = ["src/oneq/matching_cert.py", "src/oneq/matching_cert_strict.py", "src/oneq/certifying_decoder.py"]
+    head = {"commit": _git("rev-parse", "HEAD"),
+            "uncommitted_changes_in_src_oneq": bool(_git("status", "--porcelain", "--", "src/oneq")),
+            "sha256": {p: __import__("hashlib").sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+                       for p in judged}}
     out = {
-        "schema": "oneq-gap-distribution/2", "rows": rows,
+        "schema": "oneq-gap-distribution/3", "head": head, "rows": rows,
         "lower_bound_source": ("a certified cut packing on the SAME shot -- "
                                "checkable edge by edge, not another decoder's "
                                "opinion"),

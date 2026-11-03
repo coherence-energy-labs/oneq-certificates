@@ -1,0 +1,2 @@
+{"projected": [702, 1513, 1512, 1207, 1527, 1552, 1080, 1560, 1562, 1579], "full": [8409, 8353, 8352, 8365, 8423, 8476, 8501, 8502, 8506, 8551], "weight": 10, "verified": true, "minus_one_fails": true, "basis": "Z", "circuit": "ibm", "rounds": 2}
+{"projected": [720, 722, 746, 962, 1045, 1260, 1269, 1335, 1399, 765], "full": [3673, 3696, 3839, 4866, 5347, 6703, 6753, 7169, 7704, 3876], "weight": 10, "verified": true, "minus_one_fails": true, "basis": "X", "circuit": "ibm", "rounds": 2}

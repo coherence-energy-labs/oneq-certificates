@@ -477,9 +477,23 @@ def _exact_facet_scan(supports, syn, w, facet_duals):
         for i in sup:
             load[i] = load.get(i, Fraction(0)) + (-y if i in Fs else y)
         by += y * (1 - len(Fs))
+    # THE SLACK SUM RUNS OVER EVERY WEIGHTED VARIABLE, NOT ONLY THE LOADED
+    # ONES. An unloaded variable has t_i = 0, so its slack is max(0, -w_i):
+    # zero for any w_i >= 0, which is why summing over `load` alone looked
+    # equivalent -- and was, for every caller that refused negative weights.
+    # check_qldpc does not: _validate_instance admits w_i >= -tol, and
+    # _exact_optimality widens that weight to an exact negative rational.
+    # Witness (2026-09-22): checks {0,1}, syndrome 1, w = {0: 1, 1: 1,
+    # 2: -1e-10}, error {0}, y = 1 on the empty facet. The loaded-only sum
+    # gave L = 1 = weight, and check_qldpc returned OPTIMAL with
+    # exact_gap_zero -- but {0, 2} is a correction of weight 1 - 1e-10.
+    # Summed over every variable, L <= weight(e) holds for ANY real w; that
+    # is the statement proved in Lean (OneqCert.safe_bound_le_weight), so
+    # this bound's soundness no longer rests on a precondition enforced by
+    # somebody else.
     z_total = Fraction(0)
-    for i, t in load.items():
-        slack = t - w.get(i, Fraction(0))
+    for i in load.keys() | w.keys():
+        slack = load.get(i, Fraction(0)) - w.get(i, Fraction(0))
         if slack > 0:
             z_total += slack
     return by - z_total, len(seen), None

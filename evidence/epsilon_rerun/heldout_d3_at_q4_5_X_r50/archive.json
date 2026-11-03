@@ -1,0 +1,11 @@
+{
+ "schema": "oneq-epsilon-receipt-archive/1",
+ "config": "heldout_d3_at_q4_5_X_r50",
+ "archive": "heldout_d3_at_q4_5_X_r50.tar",
+ "sha256": "625b462e8a340e5d022f62fda0f384ba7ca544ed338125b4af537b0c9d4c4ab1",
+ "bytes": 1423360,
+ "members": 20,
+ "chunks_index_sha256": "71354e659654c57a3fb22a320b8fd5009595c86b328455784eb508d2ccb9c9e8",
+ "extract_to": "the repository root (members are data/epsilon_receipts/<config>/chunk_*.jsonl.gz)",
+ "then": "python tools/replay_epsilon_receipts.py --config heldout_d3_at_q4_5_X_r50 --jobs 8"
+}

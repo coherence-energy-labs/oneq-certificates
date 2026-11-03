@@ -176,6 +176,7 @@ def build_core(
     claimed_level: L = L.ASSERTED,
     expires_after_calibration_change: bool = True,
     soundness: Mapping[str, Any] | None = None,
+    model_audit: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """The deterministic core. Two honest parties re-running the same computation
     build a byte-identical core and therefore an identical digest -- with different
@@ -211,6 +212,20 @@ def build_core(
                 f"Understating is free; overstating is the forgery this "
                 f"repository was audited for")
         core["soundness"] = _freeze(soundness)
+    if model_audit is not None:
+        # IS THE MODEL THIS CERTIFICATE BINDS TO STRUCTURALLY MISSPECIFIED? Built by
+        # `model_audit.passport_block`. A certificate proves minimum weight UNDER A DECLARED
+        # MODEL, and until now nothing in the core could distinguish a sound proof about a sound
+        # model from a sound proof about a broken one -- R78 measured that costing 268 logical
+        # errors where always-predict-0 made 97, with the arithmetic correct throughout.
+        #
+        # Re-checked here for the same reason the soundness block is: a caller can hand-build it,
+        # and the signed core is the last place a claim can be inflated. The check re-derives the
+        # verdict from the block's OWN reading and null, so a block asserting NO_DEFECT_DETECTED
+        # over numbers that say MISSPECIFIED is refused rather than signed.
+        from .model_audit import check_block
+        check_block(dict(model_audit))
+        core["model_audit"] = _freeze(model_audit)
     if prereg_hash is not None:
         core["prereg_hash"] = prereg_hash
     if inputs:

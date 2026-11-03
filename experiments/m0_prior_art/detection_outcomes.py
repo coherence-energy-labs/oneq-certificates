@@ -272,7 +272,7 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     dest = OUT / f"d{a.distance}.json"
     dest.write_text(json.dumps(out, indent=1), encoding="utf-8", newline="\n")
-    print(f"wrote {dest.relative_to(ROOT)} in {out['wall_seconds']} s")
+    print(f"wrote {(dest.relative_to(ROOT) if dest.is_relative_to(ROOT) else dest)} in {out['wall_seconds']} s")
     sf = out["seeded_faults"]
     print("clean base ladder:", sf["clean_output_base_ladder"])
     print("clean full ladder:", sf["clean_output_full_ladder"])

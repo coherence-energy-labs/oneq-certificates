@@ -40,14 +40,18 @@ def _run_all(syndrome, tree):
 
 def test_control_binary_syndrome_is_accepted_by_all_three():
     tree = _tree()
-    for r in _run_all([1], tree):
+    rs = _run_all([1], tree)
+    assert len(rs) == 3, "the name says all three; a dropped checker must not pass quietly"
+    for r in rs:
         assert r.accepted, r.reason
 
 
 @pytest.mark.parametrize("syndrome", BAD, ids=repr)
 def test_non_binary_syndrome_is_refused_by_all_three(syndrome):
     tree = _tree()
-    for r in _run_all(syndrome, tree):
+    rs = _run_all(syndrome, tree)
+    assert len(rs) == 3, "the name says all three; a dropped checker must not pass quietly"
+    for r in rs:
         assert not r.accepted
         assert "syndrome[0]" in r.reason, r.reason
 
@@ -55,6 +59,10 @@ def test_non_binary_syndrome_is_refused_by_all_three(syndrome):
 def test_numpy_and_bool_entries_are_still_binary():
     np = pytest.importorskip("numpy")
     tree = _tree()
-    for syn in ([np.uint8(1)], [np.int64(1)], [True]):
-        for r in _run_all(syn, tree):
+    syns = ([np.uint8(1)], [np.int64(1)], [True])
+    assert len(syns) == 3, "numpy uint8, numpy int64 and a bare bool are all three meant here"
+    for syn in syns:
+        rs = _run_all(syn, tree)
+        assert len(rs) == 3, "the name says all three; a dropped checker must not pass quietly"
+        for r in rs:
             assert r.accepted, r.reason

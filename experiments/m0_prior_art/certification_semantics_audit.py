@@ -406,8 +406,20 @@ def main() -> int:
                   f"{row['head_producer_with_escalation_certifies']}", flush=True)
     order = {c["name"]: i for i, c in enumerate(CONFIGS)}
     rows.sort(key=lambda r: order[r["config"]["name"]])
-    doc = {"schema": "oneq-certification-semantics-audit/1",
+    # WHICH "HEAD" judged (2026-11-02): the exact checkers were fixed after this audit first ran (2026-10-18:
+    # matching_cert.check never tested T'-oddness; matching_cert_strict tested T, not T'). The columns read
+    # "HEAD checker" and "HEAD producer", so the record names that HEAD and the bytes of every module it judged with.
+    def _git(*args: str) -> str:
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    judged = ["src/oneq/matching_cert.py", "src/oneq/matching_cert_strict.py", "src/oneq/matching_cert_epsilon.py",
+              "src/oneq/certifying_decoder.py", "src/oneq/exact_decode.py"]
+    head = {"commit": _git("rev-parse", "HEAD"),
+            "uncommitted_changes_in_src_oneq": bool(_git("status", "--porcelain", "--", "src/oneq")),
+            "sha256": {p: __import__("hashlib").sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+                       for p in judged}}
+    doc = {"schema": "oneq-certification-semantics-audit/2",
            "how_produced": "experiments/m0_prior_art/certification_semantics_audit.py",
+           "head": head,
            "rows": rows,
            "claim_classes": {
                "exact": "w(J) = OPT over the IEEE-double weights, exactly",
