@@ -91,7 +91,7 @@ def _reference(document, tmp_path):
     path.write_text(json.dumps(document), encoding="utf-8")
     return subprocess.run(
         [sys.executable, str(ROOT / "tools/external/tree_checker_b.py"), str(path)],
-        capture_output=True, text=True, check=False, timeout=10,
+        stdin=subprocess.DEVNULL, capture_output=True, text=True, check=False, timeout=10,
     )
 
 

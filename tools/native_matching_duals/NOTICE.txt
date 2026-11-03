@@ -1,0 +1,17 @@
+Native Sparse Blossom witness export research prototype
+
+The native library is compiled from unmodified PyMatching source:
+https://github.com/oscarhiggott/PyMatching
+Commit: 6f63b2b9474ba0fa7e511fe52bffdce858a06984 (2026-05-21)
+Copyright 2022 PyMatching Contributors
+Licensed under Apache License 2.0; see UPSTREAM_LICENSE.
+
+The bridge and independently implemented standard-library verifier accompany
+ONE_Q research. This is not an upstream PyMatching feature or a claim of a new
+matching algorithm. Sparse Blossom already maintains the dual variables.
+
+Primary algorithm source:
+Oscar Higgott and Craig Gidney, Sparse Blossom: correcting a million errors per
+core second with minimum-weight matching, Quantum 9, 1600 (2025).
+https://arxiv.org/abs/2303.15933
+https://doi.org/10.22331/q-2025-01-20-1600

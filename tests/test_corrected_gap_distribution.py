@@ -97,7 +97,7 @@ def measured(tmp_path_factory):
     result = subprocess.run([sys.executable, str(ROOT / "experiments/m0_prior_art/gap_distribution.py"),
                              "--shots", "8", "--train-shots", "8", "--distances", "3",
                              "--no-belief-matching", "--out", str(output)],
-                            capture_output=True, text=True, timeout=90)
+                            stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=90)
     assert result.returncode == 0, result.stdout + result.stderr
     assert replay.verify(output)["accepted"]
     return output

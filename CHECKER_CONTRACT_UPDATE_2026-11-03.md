@@ -55,6 +55,31 @@ objective. Regression tests mutate these transition checks themselves.
 The structured differential report is version 2 and no longer claims
 blanket byte-for-byte result equivalence across the API correction.
 
+## Matching receipt endpoint contract
+
+`matching_cert_epsilon.check_epsilon` now requires each correction edge to
+contain exactly two integral, nonboolean endpoint values before canonicalizing
+it. Fractional floats, integral-valued floats, strings, booleans and malformed
+edge shapes return `INVALID_INPUT`; they are never silently truncated into a
+different edge. Python and NumPy integer endpoints retain exact semantics.
+Fourteen focused regression cases cover the malformed values and shapes and
+the two supported integer representations.
+
+The measured corrected-gap packet predates this endpoint-only hardening and
+pins the previous checker bytes. Its source-pinned replay must still refuse
+an edited checkout. A separately named compatibility command rechecks every
+retained witness under the current checker and reports every source difference:
+
+```bash
+python tools/recheck_corrected_gaps_current.py evidence/corrected_gap_20261103/summary.json
+```
+
+The historical summary, source hashes, timings and original replay result stay
+unchanged. The new result is a current-checker replay of this finite packet,
+not a new measurement or qualification of the earlier large Willow or mutation
+campaigns. Those campaigns retain their historical source pins until their
+full qualification runs are repeated.
+
 ## Exact byte format for circuit models
 
 Both circuit model exporters now specify `encoding="ascii"` and

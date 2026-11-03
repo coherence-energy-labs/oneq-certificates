@@ -2,6 +2,61 @@
 
 Everything here can be checked without trusting the people who made it.
 
+## Corrections and new replayable evidence (2026-11-03)
+
+The historical decoder-gap comparisons in `evidence/gap_distribution.json`
+and `evidence/gap_distribution_exact_rule.json` overcount repeated DEM
+components that map to the same graph edge. Their numerical comparisons are
+**superseded**, including the corresponding tables and figure in the historical
+matching manuscript. The retained historical files are unchanged. The corrected
+comparison projects selected components modulo two, sums canonical graph-edge
+costs as exact rationals, and reports a TRAIN-selected BP-OSD baseline first.
+It uses an independent graphlike-component approximation; it does not implement
+maximum likelihood on the full correlated hypergraph. See
+[the corrected protocol](docs/CORRECTED_GAP_BENCHMARK.md) and
+[the measured evidence](evidence/corrected_gap_20261103/README.md).
+
+New native Sparse Blossom tooling exports the dual from the same matching solve,
+with a separate standard-library checker. All 256 retained integer-graph proofs
+verify. Original IEEE-weight claims require additional exact reconciliation and
+can miss the requested epsilon. The measured native production costs differ
+substantially from the historical post-hoc Python ladder; an absent Python
+dual-export API does not establish an inherent cost of certification. Build,
+license, objective and exploratory timing details are in
+[the native package](tools/native_matching_duals/README.md).
+
+Replay both new evidence sets from this checkout:
+
+```bash
+python tools/recheck_corrected_gaps_current.py evidence/corrected_gap_20261103/summary.json
+python -I -S tools/native_matching_duals/replay_native.py
+```
+
+The corrected-gap command explicitly rechecks the unchanged packet under the
+current stricter matching-endpoint contract and reports its source difference.
+The original source-pinned replay remains available at the measured revision
+and still refuses changed checker bytes.
+
+The native replay requires only the Python standard library. It rejects missing
+or duplicated shots, recomputes every proof and original-weight bound, and checks
+retained summary arithmetic; it cannot reproduce or attest observed machine
+timings. [The checker contract update](CHECKER_CONTRACT_UPDATE_2026-11-03.md)
+separately documents stricter malformed-input refusals and the distinction
+between a threshold lower bound and a primal optimality claim. These additions
+are a new reviewable revision, outside the historical signed release. They do
+not establish logical-error improvement, physical model adequacy, real-time
+deployment, or outside human reproduction.
+
+The circuit-distance proof inventory also exposes an existing evidence gap:
+274 of 304 manifested proof blobs are present and 30 are missing. The complete
+replay checks every available blob and returns an explicit incomplete-set
+status. Of the shipped proofs, 218 establish prefix irreducible exclusions
+(including all 22 IBM receipts), and 56 establish global bounds for their
+specific finite models. See [proof availability and replay](DISTANCE_PROOF_REPLAY.md)
+for the single command, exact missing hashes and statement scopes.
+
+## Historical release
+
 This release accompanies three manuscripts by Josh Philbrick (Coherence Energy
 Labs), whose LaTeX sources are in `paper/`:
 
@@ -30,12 +85,14 @@ distribution with REVTeX 4.2; paper 3's generator also needs Stim and NumPy):
 Paper 3's certificates re-check with its own checker (a C compiler is needed):
 `python -m pytest tests/test_r198_ibm_recert.py tests/test_r198_paper3_review.py`
 re-verifies shipped proofs and refuses a corrupted one. Every certificate of the
-three-colour and large morphing circuits regenerates bit for bit from the
+three-colour and large morphing circuits was reported as regenerated from the
 committed prover (`experiments/circuit_distance_exact/recert_campaign.py`) under
 the hash in `evidence/circuit_distance_exact/recert_20261102/manifest.json`,
 which then pins the proof the checker decides. Where that proof differs from the
-original record, the prover of the record's day, compiled from git, reproduces
+original record, the prover of the record's day, compiled from git, reproduced
 the recorded proof (`recert_old_prover.py`, `records/recert_old_prover.jsonl`).
+These are historical generation records; missing proof bytes remain
+unverified in the new availability/replay report above.
 
 ## What runs from this tree, checked from a clean copy
 
@@ -68,7 +125,7 @@ checks a signed release against the issuer pinned in `ISSUERS.json`: put the thr
 
     node verifier-js/verify-certificate.mjs --conformance conformance/cert_vectors.json
 
-56 vectors must agree. **48 of them are refusals** — documents that a sound
+59 vectors must agree. **51 of them are refusals** — documents that a sound
 checker must reject. A suite where everything verifies would not notice a
 checker that accepts everything, which is the failure that matters, because
 such a checker is worthless and looks perfect.
@@ -84,14 +141,16 @@ is not evidence.
 | `million_shot_gate_d5_merged.json` | 10⁶ shots merged from four disjoint-seed runs, 99.76% accepted under the pre-audit tolerance rule, 6,000,002 forgeries, 0 accepted | nothing about hardware noise; and "certified" here means the pre-audit acceptance rule (float gap ≤ 1e-6) — see the next row |
 | `certification_semantics_audit.json` | what that rule proved: the producing code of each headline artifact, re-run on seeded samples, every accepted certificate analysed in exact rational arithmetic — all admissible, largest proven slack far below 1e-6 | not the per-shot slack of the full runs, whose certificates were not stored; and not EXACT optimality, which today's stricter checker measures separately |
 | `google_generation_history.json` | the Willow certified rate by producer generation, read from the objects each generation wrote | generations 2 and 3 ran partial coverage; their aggregates weight configurations unequally |
-| `gap_distribution_exact_rule.json` | the gap experiment re-run under the exact checker, with per-shot gaps | a different certified subset from `gap_distribution.json`; both are shipped so the difference is visible |
-| `cert_conformance.json` | two independent checkers agree 56/56 | agreement is not correctness — it is the absence of a *shared* misunderstanding |
+| `gap_distribution_exact_rule.json` | historical exact-reference rerun, retained unchanged | its graph-cost comparisons share the duplicate-component scoring error and are superseded by `corrected_gap_20261103/` |
+| `cert_conformance.json` | historical conformance run; the current vector set independently replays 59/59 | agreement is not correctness — it is the absence of a *shared* misunderstanding |
 | `decoder_mutation_gate_d*.json` | syndrome consistency catches 0 of the syndrome-consistent fault class; the certificate catches all of it | output mutation models wrong answers, not crashes, hangs or memory errors |
 | `epsilon_rerun/<config>/summary.json` | the scale runs repeated under the epsilon checker (exact rationals, eps_max = 1e-6) with every receipt kept: proven-within-epsilon, exact and not-proven counts, largest proven slack, forgeries | the receipts are a separate archive; `replay_<config>.json` records a complete two-verifier replay of them |
 | `detection_outcomes/d*.json` | seeded faults and a stale calibration judged against the exact optimum: outcome states, false-alarm base rates, discordant logical cells | the stale-calibration result is objective mismatch against a supplied reference model; it cannot say which model describes a device |
 | `mutation_score/*.json` | operator mutation scores of both checkers' tests, every surviving mutant declared equivalent with its reason | a score measures the tests against mechanical defects, not the absence of defects |
 | `willow_residual_shots.json` | the two Willow shots generation 6 left open: PyMatching's correction is exactly optimal and the exact tier stopped at its round cap | two shots, not a rate |
-| `gap_distribution.json` | BP-OSD's per-shot optimality gap against a checkable bound | a gap is **not** a defect: BP-OSD maximises likelihood over the hypergraph, not matching weight |
+| `gap_distribution.json` | historical tolerance-rule comparison, retained unchanged | its graph-cost comparisons are superseded; the implemented BP-OSD input treats graphlike components independently, and a graph-weight gap is not a logical error |
+| `corrected_gap_20261103/summary.json` | exact XOR graph costs, a TRAIN-selected primary BP-OSD arm, common held-out draws and complete retained denominators | exact-optimum gaps use only 877 checked exact references; the other 170 nontrivial references provide lower-bound comparisons only |
+| `tools/native_matching_duals/benchmark_final.json` | 256 checked integer-graph native witnesses, separate original-IEEE bounds, and 12 nontrivial same-shot timing comparisons per cell | integer exactness is not original-weight exactness; small local timings do not establish a general speed or live-control guarantee |
 | `seeded_fault_corpus_d*.json` | the faults themselves | released so you can score *your* detector; the two numbers are only comparable if the corpus is shared |
 | `lean_safe_bound.json` | a checker PROVED sound in Lean 4 (`Cert.accept_sound`, standard axioms only) accepted all 1,851 P2 exact certificates in `p2_certificates.jsonl.gz` and refused all 11,106 forgeries of them | the JSON reader and the Lean compiler are trusted, not proved; see `lean/OneqCert/README.md` |
 

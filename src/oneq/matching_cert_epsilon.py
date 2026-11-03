@@ -40,6 +40,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 from fractions import Fraction
+from numbers import Integral
 from typing import Iterable, Sequence
 
 BOUNDARY = -1
@@ -118,6 +119,10 @@ def _correction(W, syndrome: Sequence[int], matched_edges) -> tuple[Fraction, se
     primal = Fraction(0)
     seen = set()
     for e in matched_edges:
+        if len(e) != 2:
+            raise ValueError("correction edge must have exactly two endpoints")
+        if any(isinstance(x, bool) or not isinstance(x, Integral) for x in e):
+            raise ValueError("correction endpoints must be integers")
         u, v = int(e[0]), int(e[1])
         k = _key(u, v)
         if k not in W:
@@ -178,7 +183,7 @@ def check_epsilon(*, edges, syndrome: Sequence[int], cert, eps_max) -> EpsilonVe
                 raise ValueError("nonzero node potentials are not a T-join dual")
         primal, T = _correction(W, syndrome, cert.matched_edges)
         lb = _scaled_bound(W, adj, T, dict(cert.blossom_duals))
-    except ValueError as exc:
+    except (ValueError, TypeError, IndexError, AttributeError) as exc:
         return EpsilonVerdict(INVALID_INPUT, str(exc), emax)
     eps = primal - lb
     if eps < 0:

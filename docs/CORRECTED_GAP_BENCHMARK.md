@@ -71,8 +71,15 @@ new experiment and its sampling protocol in the manuscript.
 ## Retained measured run
 
 The [measured results](../evidence/corrected_gap_20261103/README.md) record
-400 HELDOUT and 128 TRAIN draws at each distance. Replay the archived run with
-`python tools/replay_corrected_gaps.py evidence/corrected_gap_20261103/summary.json`.
+400 HELDOUT and 128 TRAIN draws at each distance. The original source-pinned
+replay is
+`python tools/replay_corrected_gaps.py evidence/corrected_gap_20261103/summary.json`
+at the measured source revision. The later matching-endpoint contract hardening
+changes one pinned checker file, so that command deliberately refuses the new
+checkout. Recheck the unchanged packet against the current checker with
+`python tools/recheck_corrected_gaps_current.py evidence/corrected_gap_20261103/summary.json`.
+It reports both source identities and every difference; it does not regenerate
+or relabel the measurement, nor requalify unrelated historical scale campaigns.
 Use a new output directory to regenerate it; the producer refuses to overwrite
 existing evidence. The cost analyzer reports retrospective availability curves
 and accepted/refused timing separately; it does not implement timeouts.
