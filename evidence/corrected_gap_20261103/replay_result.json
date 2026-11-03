@@ -1,0 +1,6 @@
+{
+  "accepted": true,
+  "families": 3,
+  "reference_witnesses_rechecked": 1047,
+  "scope": "graph costs, proof verdicts, TRAIN selection, denominators and timing aggregation"
+}

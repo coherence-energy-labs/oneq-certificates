@@ -1,0 +1,206 @@
+{
+  "schema": "oneq-corrected-gap-operating-cost/1",
+  "verified_input": "summary.json",
+  "input_trace_sha256": "d907c5814755b59d37aeb2e1b590669c15a9f45deda61aad770aa7b2f1b47b25",
+  "input_replay": {
+    "accepted": true,
+    "families": 3,
+    "reference_witnesses_rechecked": 1047,
+    "scope": "graph costs, proof verdicts, TRAIN selection, denominators and timing aggregation"
+  },
+  "primary_bp_baseline": "bp_osd_train_selected",
+  "strong_graph_baseline": "mwpm",
+  "pipeline_cost": "MWPM decode + exact projection + certification including internal checks + retained-witness recheck",
+  "exclusions": [
+    "model construction",
+    "TRAIN tuning (reported separately)",
+    "syndrome sampling",
+    "artifact serialization"
+  ],
+  "claim_limit": "Retrospective local wall times; no hard interruption, live QPU, or deadline guarantee.",
+  "rows": [
+    {
+      "distance": 3,
+      "nontrivial": 250,
+      "accepted": {
+        "n": 249,
+        "mean_ms": 6.335648333333333,
+        "p95_ms": 11.708093,
+        "max_ms": 246.62585
+      },
+      "refused": {
+        "n": 1,
+        "mean_ms": 17.297502,
+        "p95_ms": 17.297502,
+        "max_ms": 17.297502
+      },
+      "training_seconds": 0.165433433,
+      "retrospective_availability": [
+        {
+          "budget_ms": 1,
+          "exact_reference_within_observed_budget": 0,
+          "nontrivial_attempts": 250,
+          "fraction": 0.0
+        },
+        {
+          "budget_ms": 5,
+          "exact_reference_within_observed_budget": 156,
+          "nontrivial_attempts": 250,
+          "fraction": 0.624
+        },
+        {
+          "budget_ms": 10,
+          "exact_reference_within_observed_budget": 228,
+          "nontrivial_attempts": 250,
+          "fraction": 0.912
+        },
+        {
+          "budget_ms": 25,
+          "exact_reference_within_observed_budget": 248,
+          "nontrivial_attempts": 250,
+          "fraction": 0.992
+        },
+        {
+          "budget_ms": 50,
+          "exact_reference_within_observed_budget": 248,
+          "nontrivial_attempts": 250,
+          "fraction": 0.992
+        },
+        {
+          "budget_ms": 100,
+          "exact_reference_within_observed_budget": 248,
+          "nontrivial_attempts": 250,
+          "fraction": 0.992
+        },
+        {
+          "budget_ms": 250,
+          "exact_reference_within_observed_budget": 249,
+          "nontrivial_attempts": 250,
+          "fraction": 0.996
+        }
+      ]
+    },
+    {
+      "distance": 5,
+      "nontrivial": 397,
+      "accepted": {
+        "n": 386,
+        "mean_ms": 13.840879163212435,
+        "p95_ms": 31.6560095,
+        "max_ms": 90.36545
+      },
+      "refused": {
+        "n": 11,
+        "mean_ms": 55.606176363636365,
+        "p95_ms": 81.144454,
+        "max_ms": 82.694364
+      },
+      "training_seconds": 12.220841963,
+      "retrospective_availability": [
+        {
+          "budget_ms": 1,
+          "exact_reference_within_observed_budget": 0,
+          "nontrivial_attempts": 397,
+          "fraction": 0.0
+        },
+        {
+          "budget_ms": 5,
+          "exact_reference_within_observed_budget": 0,
+          "nontrivial_attempts": 397,
+          "fraction": 0.0
+        },
+        {
+          "budget_ms": 10,
+          "exact_reference_within_observed_budget": 132,
+          "nontrivial_attempts": 397,
+          "fraction": 0.33249370277078083
+        },
+        {
+          "budget_ms": 25,
+          "exact_reference_within_observed_budget": 356,
+          "nontrivial_attempts": 397,
+          "fraction": 0.8967254408060453
+        },
+        {
+          "budget_ms": 50,
+          "exact_reference_within_observed_budget": 379,
+          "nontrivial_attempts": 397,
+          "fraction": 0.9546599496221663
+        },
+        {
+          "budget_ms": 100,
+          "exact_reference_within_observed_budget": 386,
+          "nontrivial_attempts": 397,
+          "fraction": 0.9722921914357683
+        },
+        {
+          "budget_ms": 250,
+          "exact_reference_within_observed_budget": 386,
+          "nontrivial_attempts": 397,
+          "fraction": 0.9722921914357683
+        }
+      ]
+    },
+    {
+      "distance": 7,
+      "nontrivial": 400,
+      "accepted": {
+        "n": 242,
+        "mean_ms": 63.625084793388424,
+        "p95_ms": 169.6074111,
+        "max_ms": 247.209252
+      },
+      "refused": {
+        "n": 158,
+        "mean_ms": 174.52912751265825,
+        "p95_ms": 296.7093024,
+        "max_ms": 403.388155
+      },
+      "training_seconds": 145.9825856,
+      "retrospective_availability": [
+        {
+          "budget_ms": 1,
+          "exact_reference_within_observed_budget": 0,
+          "nontrivial_attempts": 400,
+          "fraction": 0.0
+        },
+        {
+          "budget_ms": 5,
+          "exact_reference_within_observed_budget": 0,
+          "nontrivial_attempts": 400,
+          "fraction": 0.0
+        },
+        {
+          "budget_ms": 10,
+          "exact_reference_within_observed_budget": 0,
+          "nontrivial_attempts": 400,
+          "fraction": 0.0
+        },
+        {
+          "budget_ms": 25,
+          "exact_reference_within_observed_budget": 52,
+          "nontrivial_attempts": 400,
+          "fraction": 0.13
+        },
+        {
+          "budget_ms": 50,
+          "exact_reference_within_observed_budget": 131,
+          "nontrivial_attempts": 400,
+          "fraction": 0.3275
+        },
+        {
+          "budget_ms": 100,
+          "exact_reference_within_observed_budget": 189,
+          "nontrivial_attempts": 400,
+          "fraction": 0.4725
+        },
+        {
+          "budget_ms": 250,
+          "exact_reference_within_observed_budget": 242,
+          "nontrivial_attempts": 400,
+          "fraction": 0.605
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,858 @@
+{
+  "schema": "oneq-gap-distribution/4",
+  "rows": [
+    {
+      "distance": 3,
+      "rounds": 3,
+      "p": 0.005,
+      "shots": 400,
+      "nontrivial": 250,
+      "trivial_excluded": 150,
+      "mwpm_certified_exact": 249,
+      "exact_reference_coverage_nontrivial": 0.996,
+      "training": {
+        "seed": 131337,
+        "shots": 128,
+        "nontrivial": 69,
+        "selection_objective": "lexicographic (failures, exact total graph cost, scale)",
+        "selected_scale": 0.5,
+        "candidates": {
+          "0.5": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "559426767420453477",
+              "den": "1125899906842624"
+            }
+          },
+          "0.625": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "559426767420453477",
+              "den": "1125899906842624"
+            }
+          },
+          "0.75": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "559426767420453477",
+              "den": "1125899906842624"
+            }
+          },
+          "1": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "585019091213740073",
+              "den": "1125899906842624"
+            }
+          }
+        },
+        "elapsed_ns": 165433433
+      },
+      "decoder_availability": {
+        "bp_osd_unscaled": {
+          "available": true
+        },
+        "bp_osd_train_selected": {
+          "available": true
+        },
+        "belief_matching": {
+          "available": false,
+          "reason": "explicitly disabled"
+        }
+      },
+      "certification_including_internal_checks": {
+        "count": 250,
+        "total_ns": 1422165727,
+        "mean_ms": 5.6886629079999995,
+        "p50_ms": 3.919836,
+        "p95_ms": 11.064244799999999,
+        "max_ms": 245.553638
+      },
+      "retained_witness_recheck": {
+        "count": 250,
+        "total_ns": 156425163,
+        "mean_ms": 0.625700652,
+        "p50_ms": 0.582556,
+        "p95_ms": 1.049619299999999,
+        "max_ms": 3.456911
+      },
+      "decoders": {
+        "mwpm": {
+          "n": 250,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 250,
+            "mean": 3.552713678800501e-18,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 8.881784197001252e-16,
+            "zero_count_exact": 249,
+            "negative_count_exact": 0,
+            "frac_zero": 0.996,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "1",
+              "den": "1125899906842624"
+            },
+            "max_exact": {
+              "num": "1",
+              "den": "1125899906842624"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 249,
+            "mean": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 0.0,
+            "zero_count_exact": 249,
+            "negative_count_exact": 0,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "0",
+              "den": "1"
+            },
+            "max_exact": {
+              "num": "0",
+              "den": "1"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 250,
+            "total_ns": 12567333,
+            "mean_ms": 0.050269332,
+            "p50_ms": 0.0310465,
+            "p95_ms": 0.14163564999999997,
+            "max_ms": 0.900093
+          },
+          "projection_latency": {
+            "count": 250,
+            "total_ns": 3715714,
+            "mean_ms": 0.014862855999999999,
+            "p50_ms": 0.011061,
+            "p95_ms": 0.03428879999999994,
+            "max_ms": 0.139295
+          }
+        },
+        "bp_osd_unscaled": {
+          "n": 250,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 250,
+            "mean": 0.11960834907825603,
+            "median": 0.0,
+            "p90": 0.03019049298749228,
+            "p99": 2.634550427948117,
+            "max": 2.6345504279481173,
+            "zero_count_exact": 223,
+            "negative_count_exact": 0,
+            "frac_zero": 0.892,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "67333514542404257",
+              "den": "2251799813685248"
+            },
+            "max_exact": {
+              "num": "5932480162797961",
+              "den": "2251799813685248"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 249,
+            "mean": 0.12008870389383135,
+            "median": 0.0,
+            "p90": 0.03715890587336336,
+            "p99": 2.634550427948117,
+            "max": 2.6345504279481173,
+            "zero_count_exact": 223,
+            "negative_count_exact": 0,
+            "frac_zero": 0.8955823293172691,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "67333514542404255",
+              "den": "2251799813685248"
+            },
+            "max_exact": {
+              "num": "5932480162797961",
+              "den": "2251799813685248"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 250,
+            "total_ns": 39861436,
+            "mean_ms": 0.159445744,
+            "p50_ms": 0.060799,
+            "p95_ms": 0.9795645499999992,
+            "max_ms": 1.509358
+          },
+          "projection_latency": {
+            "count": 250,
+            "total_ns": 16376535,
+            "mean_ms": 0.06550614,
+            "p50_ms": 0.048271,
+            "p95_ms": 0.15472219999999995,
+            "max_ms": 0.446947
+          }
+        },
+        "bp_osd_train_selected": {
+          "n": 250,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 250,
+            "mean": 0.02389697761556999,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.855141926304972,
+            "max": 1.223048645881808,
+            "zero_count_exact": 239,
+            "negative_count_exact": 0,
+            "frac_zero": 0.956,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "6726401217797631",
+              "den": "1125899906842624"
+            },
+            "max_exact": {
+              "num": "1377030356462325",
+              "den": "1125899906842624"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 249,
+            "mean": 0.02399294941322288,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.8563931996116685,
+            "max": 1.223048645881808,
+            "zero_count_exact": 239,
+            "negative_count_exact": 0,
+            "frac_zero": 0.9598393574297188,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "3363200608898815",
+              "den": "562949953421312"
+            },
+            "max_exact": {
+              "num": "1377030356462325",
+              "den": "1125899906842624"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 250,
+            "total_ns": 239936143,
+            "mean_ms": 0.9597445720000001,
+            "p50_ms": 0.952405,
+            "p95_ms": 1.5270940999999998,
+            "max_ms": 3.037635
+          },
+          "projection_latency": {
+            "count": 250,
+            "total_ns": 16486293,
+            "mean_ms": 0.06594517200000001,
+            "p50_ms": 0.0486715,
+            "p95_ms": 0.16988259999999997,
+            "max_ms": 0.647652
+          }
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "rounds": 5,
+      "p": 0.005,
+      "shots": 400,
+      "nontrivial": 397,
+      "trivial_excluded": 3,
+      "mwpm_certified_exact": 386,
+      "exact_reference_coverage_nontrivial": 0.9722921914357683,
+      "training": {
+        "seed": 131337,
+        "shots": 128,
+        "nontrivial": 127,
+        "selection_objective": "lexicographic (failures, exact total graph cost, scale)",
+        "selected_scale": 0.5,
+        "candidates": {
+          "0.5": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "5798959760233870975",
+              "den": "2251799813685248"
+            }
+          },
+          "0.625": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "5799882272826019631",
+              "den": "2251799813685248"
+            }
+          },
+          "0.75": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "724880017271518903",
+              "den": "281474976710656"
+            }
+          },
+          "1": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "1460049497451022453",
+              "den": "562949953421312"
+            }
+          }
+        },
+        "elapsed_ns": 12220841963
+      },
+      "decoder_availability": {
+        "bp_osd_unscaled": {
+          "available": true
+        },
+        "bp_osd_train_selected": {
+          "available": true
+        },
+        "belief_matching": {
+          "available": false,
+          "reason": "explicitly disabled"
+        }
+      },
+      "certification_including_internal_checks": {
+        "count": 397,
+        "total_ns": 4608991928,
+        "mean_ms": 11.609551455919396,
+        "p50_ms": 7.931574,
+        "p95_ms": 32.009615999999994,
+        "max_ms": 80.034654
+      },
+      "retained_witness_recheck": {
+        "count": 397,
+        "total_ns": 1295567335,
+        "mean_ms": 3.26339379093199,
+        "p50_ms": 2.840626,
+        "p95_ms": 5.073341199999999,
+        "max_ms": 79.990469
+      },
+      "decoders": {
+        "mwpm": {
+          "n": 397,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 397,
+            "mean": 1.5299425408817143e-16,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 5.153201962251048e-15,
+            "max": 2.353169203567922e-14,
+            "zero_count_exact": 386,
+            "negative_count_exact": 0,
+            "frac_zero": 0.9722921914357683,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "8568921293228030531476336864838009361796774808648177568077463590265025204234937615",
+              "den": "141078400272887133922002737302801194620682388506779651806069331686899842253706262029647973711872"
+            },
+            "max_exact": {
+              "num": "9761247958273883579",
+              "den": "414812838085492734042926210875392"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 386,
+            "mean": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 0.0,
+            "zero_count_exact": 386,
+            "negative_count_exact": 0,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "0",
+              "den": "1"
+            },
+            "max_exact": {
+              "num": "0",
+              "den": "1"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 397,
+            "total_ns": 36394450,
+            "mean_ms": 0.09167367758186397,
+            "p50_ms": 0.073142,
+            "p95_ms": 0.18377479999999993,
+            "max_ms": 0.801671
+          },
+          "projection_latency": {
+            "count": 397,
+            "total_ns": 13293584,
+            "mean_ms": 0.03348509823677582,
+            "p50_ms": 0.026901,
+            "p95_ms": 0.087573,
+            "max_ms": 0.242194
+          }
+        },
+        "bp_osd_unscaled": {
+          "n": 397,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 397,
+            "mean": 0.13162033000737167,
+            "median": 0.0,
+            "p90": 0.20919871781538368,
+            "p99": 1.8283114448726503,
+            "max": 2.5152761038944593,
+            "zero_count_exact": 336,
+            "negative_count_exact": 0,
+            "frac_zero": 0.8463476070528967,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "7371807883529302947944087986779371813461286066761313696255936011565391468375638139929935979663087",
+              "den": "141078400272887133922002737302801194620682388506779651806069331686899842253706262029647973711872"
+            },
+            "max_exact": {
+              "num": "1415974565529125",
+              "den": "562949953421312"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 386,
+            "mean": 0.13210026141615047,
+            "median": 0.0,
+            "p90": 0.21302059326881118,
+            "p99": 1.8307694588760095,
+            "max": 2.5152761038944593,
+            "zero_count_exact": 336,
+            "negative_count_exact": 0,
+            "frac_zero": 0.8704663212435233,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "57410425400619419",
+              "den": "1125899906842624"
+            },
+            "max_exact": {
+              "num": "1415974565529125",
+              "den": "562949953421312"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 397,
+            "total_ns": 4922840191,
+            "mean_ms": 12.40010123677582,
+            "p50_ms": 0.913269,
+            "p95_ms": 33.409306,
+            "max_ms": 58.330349
+          },
+          "projection_latency": {
+            "count": 397,
+            "total_ns": 72901999,
+            "mean_ms": 0.18363223929471034,
+            "p50_ms": 0.148614,
+            "p95_ms": 0.36851079999999997,
+            "max_ms": 1.937908
+          }
+        },
+        "bp_osd_train_selected": {
+          "n": 397,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 397,
+            "mean": 0.07766229618774939,
+            "median": 0.0,
+            "p90": 2.5370833201000354e-15,
+            "p99": 1.7644649538261814,
+            "max": 2.692646284457791,
+            "zero_count_exact": 352,
+            "negative_count_exact": 0,
+            "frac_zero": 0.8866498740554156,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "4349719585551669426618543992587617377397945047691884264621704490373665781127737951447338349847427",
+              "den": "141078400272887133922002737302801194620682388506779651806069331686899842253706262029647973711872"
+            },
+            "max_exact": {
+              "num": "1116944247216293255203690652247983",
+              "den": "414812838085492734042926210875392"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 386,
+            "mean": 0.06913205358020243,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 1.5891149144629941,
+            "max": 2.1842147369024834,
+            "zero_count_exact": 352,
+            "negative_count_exact": 0,
+            "frac_zero": 0.9119170984455959,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "30044608256714633",
+              "den": "1125899906842624"
+            },
+            "max_exact": {
+              "num": "4918414337605585",
+              "den": "2251799813685248"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 397,
+            "total_ns": 11281168234,
+            "mean_ms": 28.416040891687658,
+            "p50_ms": 28.8856,
+            "p95_ms": 38.5837108,
+            "max_ms": 57.132611
+          },
+          "projection_latency": {
+            "count": 397,
+            "total_ns": 105911309,
+            "mean_ms": 0.2667791158690176,
+            "p50_ms": 0.221246,
+            "p95_ms": 0.45069239999999955,
+            "max_ms": 2.353938
+          }
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "rounds": 7,
+      "p": 0.005,
+      "shots": 400,
+      "nontrivial": 400,
+      "trivial_excluded": 0,
+      "mwpm_certified_exact": 242,
+      "exact_reference_coverage_nontrivial": 0.605,
+      "training": {
+        "seed": 131337,
+        "shots": 128,
+        "nontrivial": 128,
+        "selection_objective": "lexicographic (failures, exact total graph cost, scale)",
+        "selected_scale": 0.75,
+        "candidates": {
+          "0.5": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "17709825939699489959",
+              "den": "2251799813685248"
+            }
+          },
+          "0.625": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "17650805138974756271",
+              "den": "2251799813685248"
+            }
+          },
+          "0.75": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "4412620702116711101",
+              "den": "562949953421312"
+            }
+          },
+          "1": {
+            "failures": 0,
+            "sum_weight_exact": {
+              "num": "17665413760781117685",
+              "den": "2251799813685248"
+            }
+          }
+        },
+        "elapsed_ns": 145982585600
+      },
+      "decoder_availability": {
+        "bp_osd_unscaled": {
+          "available": true
+        },
+        "bp_osd_train_selected": {
+          "available": true
+        },
+        "belief_matching": {
+          "available": false,
+          "reason": "explicitly disabled"
+        }
+      },
+      "certification_including_internal_checks": {
+        "count": 400,
+        "total_ns": 39077197442,
+        "mean_ms": 97.692993605,
+        "p50_ms": 91.8742255,
+        "p95_ms": 234.36549349999996,
+        "max_ms": 396.219648
+      },
+      "retained_witness_recheck": {
+        "count": 400,
+        "total_ns": 3803739079,
+        "mean_ms": 9.509347697499999,
+        "p50_ms": 8.221533,
+        "p95_ms": 16.1389503,
+        "max_ms": 111.266895
+      },
+      "decoders": {
+        "mwpm": {
+          "n": 400,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 400,
+            "mean": 5.988919211426738e-15,
+            "median": 0.0,
+            "p90": 1.934079020145123e-14,
+            "p99": 3.5157005277072665e-14,
+            "max": 6.302114892985211e-14,
+            "zero_count_exact": 242,
+            "negative_count_exact": 0,
+            "frac_zero": 0.605,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "145820668995786720647538728982111483045196782641768835673430120049133470050056174710685107242996695015611852204948335980619366773920415464346754374183758953513371593392877637673173668506379711816765641120543285271142227237485933885850523251705279499300684865340705648407063997171364585286596885080867881961519044932523504530043877957670275059006814438450740156864498009601566048628458868417744082544976750843064376620988489463086606209470999314401569515675580213539308172019660648142758168526773873562313044661092144341510258126368705956194033497227182071358282017235971695364725449703654938788413890479516728316191701355103593986009665905728422741366229149178308732162843593794951399174110484153094161711147544432331780044529804006594070004677944328321370759376796024641158605538656926250974428829199432491287317264935685790953851406268753455125379323478466208224669",
+              "den": "60871028581235404842130558719536747832409627437404188038559258835511705051588159283936692598068707373595369499140953567126465014529686994018319010971239511798842469269579824298574217524872965327050448147897422606149593733732973875815658502012243760357462107746241873595244385699617019362075084938125542184845278740571013250695539999491726328901264925343206972408615372378865507344097297238885789662547776887023747279660629138760896411926156700468491439050247787029413602137112848867681881384316685542250866196572970191273787592848041282533543743265714046013099900110561654077593741549767950239366560828972157292931211078446547521954582283727277266786560583795135164401558909054600101251490631913166550607780921449747901957240951058783490090367355146119363184714444963259326571366514806238366286535796957954982074745834111676520546300183620671491664801387584906479169699001139200"
+            },
+            "max_exact": {
+              "num": "889130449891930241",
+              "den": "14108445577239600506769713922048"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 242,
+            "mean": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "p99": 0.0,
+            "max": 0.0,
+            "zero_count_exact": 242,
+            "negative_count_exact": 0,
+            "frac_zero": 1.0,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "0",
+              "den": "1"
+            },
+            "max_exact": {
+              "num": "0",
+              "den": "1"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 400,
+            "total_ns": 57154851,
+            "mean_ms": 0.1428871275,
+            "p50_ms": 0.11946,
+            "p95_ms": 0.25149144999999956,
+            "max_ms": 1.58508
+          },
+          "projection_latency": {
+            "count": 400,
+            "total_ns": 34781295,
+            "mean_ms": 0.0869532375,
+            "p50_ms": 0.071708,
+            "p95_ms": 0.17063984999999987,
+            "max_ms": 0.832624
+          }
+        },
+        "bp_osd_unscaled": {
+          "n": 400,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 400,
+            "mean": 0.2316177239351812,
+            "median": 8.881784197001252e-16,
+            "p90": 0.7189617745128267,
+            "p99": 5.835228062148652,
+            "max": 8.189042119303043,
+            "zero_count_exact": 198,
+            "negative_count_exact": 0,
+            "frac_zero": 0.495,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "5639523637431642630682204414059053284012727782014951479689878541568941752967379898654888857379577422857940964952137537856061926838796362221776553944534474912549955987715559809974348878468935016730541506763512777571161379981405570323639842966243123341053131193278776829112048113809168642029746113512758350045894686072863244112019155680118059513483532637910560495003629070183266294141569736172362391395986618590825437022550245517065181876977496202339211122622365842365008761126628115770440834502842063104673699160911980344518208905764872097069182835028899212782195364950420145814740321469034301153289364685057755924967055299808763644129677342528394504870506109135440680178375256245758868243138764346443993699918986901316243788520511875893250591417677020908181304173576197965359934679186181909729827205887052609611150244390508466361010326886706469546417344762583036702893441161594269",
+              "den": "60871028581235404842130558719536747832409627437404188038559258835511705051588159283936692598068707373595369499140953567126465014529686994018319010971239511798842469269579824298574217524872965327050448147897422606149593733732973875815658502012243760357462107746241873595244385699617019362075084938125542184845278740571013250695539999491726328901264925343206972408615372378865507344097297238885789662547776887023747279660629138760896411926156700468491439050247787029413602137112848867681881384316685542250866196572970191273787592848041282533543743265714046013099900110561654077593741549767950239366560828972157292931211078446547521954582283727277266786560583795135164401558909054600101251490631913166550607780921449747901957240951058783490090367355146119363184714444963259326571366514806238366286535796957954982074745834111676520546300183620671491664801387584906479169699001139200"
+            },
+            "max_exact": {
+              "num": "289175095497212178412287632332711",
+              "den": "35312444518458945552311631478784"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 242,
+            "mean": 0.10948800387898748,
+            "median": 0.0,
+            "p90": 0.3025781298223757,
+            "p99": 1.6899536731295766,
+            "max": 1.7882378740859934,
+            "zero_count_exact": 198,
+            "negative_count_exact": 0,
+            "frac_zero": 0.8181818181818182,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "29831953074992321",
+              "den": "1125899906842624"
+            },
+            "max_exact": {
+              "num": "125836053490367",
+              "den": "70368744177664"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 400,
+            "total_ns": 102930633413,
+            "mean_ms": 257.3265835325,
+            "p50_ms": 269.36451,
+            "p95_ms": 344.2995357,
+            "max_ms": 383.040902
+          },
+          "projection_latency": {
+            "count": 400,
+            "total_ns": 151248988,
+            "mean_ms": 0.37812247,
+            "p50_ms": 0.339813,
+            "p95_ms": 0.6416005999999999,
+            "max_ms": 2.449215
+          }
+        },
+        "bp_osd_train_selected": {
+          "n": 400,
+          "errors": 0,
+          "syndrome_inconsistent": 0,
+          "gap_vs_certified_bound": {
+            "n": 400,
+            "mean": 0.156636988467148,
+            "median": 0.0,
+            "p90": 0.36181296822429776,
+            "p99": 2.6675418213726583,
+            "max": 7.562304494605154,
+            "zero_count_exact": 207,
+            "negative_count_exact": 0,
+            "frac_zero": 0.5175,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "3813861840744962148845197222004388392579058348208347028982773787779835539103265885098249357549917686426353197677412154816763012249563086681720027608787252501958091829273155586217390989703846847611491590475690235474477486319197289647411829549311468093430503219618230138507086460370532881126600865434354615602673242304360370737861350069415389423738986556612198650323294807318332488087255153494684856224882545333222319877875305189547363359803440118322547335549538470741210540796967668100675024180880413116129872266857800030994364456533071435498294874913254122423496352698592063182395787177237436187733275046296271360735338841386357797724583043796333645400539448022354677441090333348822084822785530819236322199009591680532070168764416279190977938900107667655739996109519052233921616132441760552218016433526874065006028693242409019989966781529393610519516596497789720928762178211603869",
+              "den": "60871028581235404842130558719536747832409627437404188038559258835511705051588159283936692598068707373595369499140953567126465014529686994018319010971239511798842469269579824298574217524872965327050448147897422606149593733732973875815658502012243760357462107746241873595244385699617019362075084938125542184845278740571013250695539999491726328901264925343206972408615372378865507344097297238885789662547776887023747279660629138760896411926156700468491439050247787029413602137112848867681881384316685542250866196572970191273787592848041282533543743265714046013099900110561654077593741549767950239366560828972157292931211078446547521954582283727277266786560583795135164401558909054600101251490631913166550607780921449747901957240951058783490090367355146119363184714444963259326571366514806238366286535796957954982074745834111676520546300183620671491664801387584906479169699001139200"
+            },
+            "max_exact": {
+              "num": "75577545582883535837609745513131",
+              "den": "9993983399742701978738325716992"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "gap_vs_proven_optimum": {
+            "n": 242,
+            "mean": 0.07476298137564891,
+            "median": 0.0,
+            "p90": 0.19070791446690097,
+            "p99": 1.4491297468169275,
+            "max": 1.764464953826181,
+            "zero_count_exact": 207,
+            "negative_count_exact": 0,
+            "frac_zero": 0.8553719008264463,
+            "frac_below_zero": 0.0,
+            "sum_exact": {
+              "num": "40741006742802051",
+              "den": "2251799813685248"
+            },
+            "max_exact": {
+              "num": "496652731784993",
+              "den": "281474976710656"
+            },
+            "quantile_arithmetic": "approximate float display; classifications are rational"
+          },
+          "decode_latency": {
+            "count": 400,
+            "total_ns": 110599687967,
+            "mean_ms": 276.4992199175,
+            "p50_ms": 271.9530555,
+            "p95_ms": 351.64189059999995,
+            "max_ms": 385.828949
+          },
+          "projection_latency": {
+            "count": 400,
+            "total_ns": 150577276,
+            "mean_ms": 0.37644319,
+            "p50_ms": 0.330843,
+            "p95_ms": 0.6411144499999996,
+            "max_ms": 1.57834
+          }
+        }
+      }
+    }
+  ],
+  "head": {
+    "commit": "282ad3b38f724428582d1102fcfcaf4d2c0966d4",
+    "uncommitted_source_changes": false,
+    "sha256": {
+      "experiments/m0_prior_art/gap_distribution.py": "4b1ea8af65292a5f6c32f78a044e170004742ef8d6c0873901d81451b6162585",
+      "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+      "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+      "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+      "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+      "tools/replay_corrected_gaps.py": "b2b2c5ef06c5a0a9dd41e12f30d31d4bc7d29e7bb48b2d3b8214975cdd1bed72"
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "stim": "1.16.0",
+    "pymatching": "2.4.0",
+    "ldpc": "2.4.1"
+  },
+  "trace": {
+    "path": "summary_shots.jsonl.gz",
+    "sha256": "d907c5814755b59d37aeb2e1b590669c15a9f45deda61aad770aa7b2f1b47b25",
+    "records": 1527
+  },
+  "protocol": {
+    "heldout_seed": 31337,
+    "train_seed": 131337,
+    "train_shots": 128,
+    "heldout_shots": 400,
+    "bp_scales": [
+      0.5,
+      0.625,
+      0.75,
+      1.0
+    ],
+    "bp_max_iter": 30,
+    "bp_schedule": "parallel",
+    "osd_method": "osd_cs",
+    "osd_order": 5,
+    "training_labels": "syndrome only; no logical labels or heldout observations",
+    "model": "independent graphlike DEM components; original event correlations discarded",
+    "projection": "XOR canonical graph edges before exact Fraction scoring",
+    "exact_zero_rule": "rational gap equals zero; no floating tolerance",
+    "coverage_denominator": "nontrivial HELDOUT syndromes; trivial shots retained separately"
+  },
+  "scope": {
+    "objective": "minimum graph correction weight, not logical-coset ML or logical error rate",
+    "timing": "local wall-clock observations; certificate production includes internal checks",
+    "historical_comparison": "new sampled run, not corrected values for the original paper's samples",
+    "prior_art": "no novelty or universal decoder-superiority claim"
+  }
+}
