@@ -1,94 +1,32 @@
-r"""Milestone 0.3: the per-shot optimality gap, per decoder, per distance.
+"""Exact graph-objective comparisons with XOR-projected decoder corrections.
 
-WHAT DOES NOT EXIST IN THE LITERATURE. Decoders are compared by logical error
-rate: run many shots, count the failures, plot. That number is an average over
-a distribution and it hides the thing an assurance argument needs. Two decoders
-with the same logical error rate can fail completely differently -- one
-consistently a little suboptimal, the other usually exact with a heavy tail --
-and a benchmark cannot tell them apart because it never asks how far from
-optimal any individual answer was.
+A BP-OSD column in this experiment is a graphlike DEM component. Components
+of a decomposed event are treated independently; this is NOT the original
+correlated-event hypergraph model or an exact maximum-likelihood decoder.
+Selected columns are projected onto canonical graph edges modulo two BEFORE
+scoring. All costs and zero/negative-gap decisions use exact rational values
+of the graph's IEEE-754 weights. Float quantiles are display summaries only.
 
-It never asks because there has been no cheap way to know. Establishing that a
-particular correction was minimum-weight means solving the instance exactly,
-which is the decoder's whole job; comparing decoder A to decoder B tells you
-they disagree, not which is right.
+The MWPM reference is an exact optimum only on shots accepted by the existing
+exact checker. Other shots retain an independently checked rational lower
+bound; failure to certify is not evidence that the correction is suboptimal.
+BP scaling is chosen on a separate seeded TRAIN sample, frozen, and compared
+with explicitly unscaled BP and MWPM on the same HELDOUT syndromes. This
+compares graph cost, not logical error probability or logical-coset ML.
 
-A CERTIFIED LOWER BOUND CHANGES THAT. The cut packing gives a bound that is
-checkable edge by edge, on the SAME shot, without trusting any decoder. So for
-every decoder, on every shot:
-
-    gap = weight(that decoder's correction) - certified lower bound
-
-is measurable, and its DISTRIBUTION can be published. A gap of zero means that
-decoder achieved the certified optimum on that shot. It does not mean the
-decoder is optimal in general, and the tail is the interesting part.
-
-TWO ARTIFACTS, TWO ACCEPTANCE RULES. `evidence/gap_distribution.json` was
-produced 2026-07-31 (cce1e91), when "proven optimal" meant a floating-point
-gap of at most 1e-6 -- an epsilon-certificate; the certification semantics
-audit shows every such certificate there proves slack below 1e-14 in exact
-arithmetic. Run today, this script writes
-`evidence/gap_distribution_exact_rule.json`: the "proven" subset is the one
-the exact checker accepts, and the per-shot gaps are stored so a figure is
-drawn from the measurement itself.
-
-HONEST SCOPE, TWICE OVER.
-
-  The bound is a bound, not the optimum. Where the ladder leaves a gap on
-  PyMatching's own answer, part of the measured gap is our slack rather than
-  the decoder's suboptimality. Shots where MWPM certified exactly are reported
-  separately for that reason: on those, the bound IS the optimum and every
-  other decoder's gap is exactly its excess weight, with nothing to argue about.
-
-  Suboptimal is not the same as wrong. A heavier correction in the same
-  homology class is harmless; a lighter-looking one in the wrong class is a
-  logical error. Gap measures weight, not class, so the observable flip is
-  recorded alongside it and neither number is allowed to stand in for the other.
-
-DECODERS, AND WHAT THE NUMBER DOES NOT SAY ABOUT THEM. BP-OSD works in the
-DEM's mechanism space, so its output is converted into the matching graph's
-currency -- which detectors it makes odd, and what the correction weighs under
-the SAME weights the bound uses -- before anything is compared. Scoring two
-decoders under different weights and calling the difference a gap would be
-meaningless in the way that looks like a result.
-
-Even converted, **a large gap is not a defect**. BP-OSD is not trying to
-minimise matching weight; it maximises likelihood over the full hypergraph,
-where decomposed components are correlated and the min-weight T-join is not
-the maximum-likelihood answer. So the honest reading of "BP-OSD, median gap 0,
-p99 far from it" is: *usually it lands on the certified minimum-weight
-correction, and when it departs it departs a long way* -- which is a
-distributional fact about where it sits relative to a well-defined optimum,
-not a scoreboard. Publishing it as "BP-OSD is worse than MWPM" would be
-exactly the substitution this file exists to avoid.
-
-BELIEF-MATCHING: A "FINDING" THAT WAS JUST ME STOPPING TOO EARLY. An earlier
-version of this file recorded, as a result, that belief-matching returns only
-predicted OBSERVABLES and therefore can be given no gap and no degraded
-receipt. That was not a finding. `decode()` runs BP and, when BP does not
-converge, builds a REWEIGHTED matching graph and decodes it -- a correction
-exists in both branches, and reproducing the pipeline recovers it. Declaring a
-limitation is a claim, an unverified negative is still a claim, and this one
-cost nothing to check and was false.
-
-Its gap does mean something different, though, and flattening that would be its
-own error: belief-matching optimises under weights informed by BP posteriors,
-so its correction is not attempting to be minimum-weight under the ORIGINAL
-weights. A positive gap there is the price of a better-informed objective, not
-evidence of a defect.
-
-A SELF-CONSISTENCY CHECK THAT MUST HOLD. No decoder's syndrome-consistent
-correction can weigh LESS than the certified lower bound -- a T-join cannot
-undercut the minimum T-join. `frac_below_zero` is reported for every decoder
-and any nonzero value means the harness or the bound is broken, not that a
-decoder found something clever.
+Historical evidence/gap_distribution*.json files are immutable historical
+measurements. This corrected protocol writes to its own new evidence folder.
 """
-
 from __future__ import annotations
 
 import argparse
+from fractions import Fraction
+import gzip
+import hashlib
+import importlib.metadata
 import json
 import pathlib
+import subprocess
 import sys
 import time
 
@@ -97,71 +35,206 @@ import numpy as np
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from oneq.certifying_decoder import CertifyingDecoder     # noqa: E402
-from oneq.matching_cert import BOUNDARY                   # noqa: E402
+from oneq.certifying_decoder import CertifyingDecoder  # noqa: E402
+from oneq.matching_cert import BOUNDARY, MatchingCertificate, check  # noqa: E402
+from oneq.matching_cert_epsilon import check_epsilon  # noqa: E402
+
+
+def fraction_json(value):
+    value = Fraction(value)
+    return {"num": str(value.numerator), "den": str(value.denominator)}
+
+
+def _exact_weight(value):
+    value = value if isinstance(value, Fraction) else Fraction.from_float(float(value))
+    if value < 0:
+        raise ValueError("negative graph weight")
+    return value
+
+
+def graph_projection(keys, weights):
+    """Return (canonical XOR edge set, odd detectors, exact graph cost).
+
+    Unknown edges are refused even if they would cancel. Duplicate columns
+    are not parallel selected edges: they represent the same binary variable
+    in the comparison graph and must cancel modulo two.
+    """
+    selected = set()
+    for edge in keys:
+        key = CertifyingDecoder.key(edge)
+        if key not in weights:
+            raise ValueError(f"edge {key} is absent from the comparison graph")
+        selected.symmetric_difference_update((key,))
+    odd = set()
+    cost = Fraction(0)
+    for edge in sorted(selected):
+        cost += _exact_weight(weights[edge])
+        for vertex in edge:
+            if vertex != BOUNDARY:
+                odd.symmetric_difference_update((vertex,))
+    return tuple(sorted(selected)), odd, cost
+
+
+def component_projection(mechs, selection, weights=None):
+    """Project a binary component vector without rounding malformed entries."""
+    selected = np.asarray(selection)
+    if selected.ndim != 1 or len(selected) != len(mechs):
+        raise ValueError("component selection must have one entry per column")
+    if not np.all((selected == 0) | (selected == 1)):
+        raise ValueError("component selection must be binary")
+    if weights is None:
+        weights = {}
+        for edge, weight, _probability in mechs:
+            key = CertifyingDecoder.key(edge)
+            exact = _exact_weight(weight)
+            if key in weights and weights[key] != exact:
+                raise ValueError("duplicate columns disagree on canonical graph weight")
+            weights[key] = exact
+    keys = [mechs[int(j)][0] for j in np.flatnonzero(selected)]
+    return graph_projection(keys, weights)
+
+
+def odd_and_weight(mechs, sel):
+    """Compatibility helper: syndrome and EXACT cost of the XOR correction."""
+    _keys, odd, weight = component_projection(mechs, sel)
+    return odd, weight
 
 
 def dem_mechanisms(dem, W, key):
-    """[(detectors, weight, p)] -- one entry per GRAPHLIKE COMPONENT.
+    """One independent decoder variable per graphlike DEM component.
 
-    A DECOMPOSED ERROR IS NOT ONE MECHANISM. stim writes `error(p) D1 D5 ^ D4`
-    for an error that decomposes into two graphlike pieces, and the `^` is a
-    SEPARATOR target. Reading all the detectors of that instruction as a single
-    mechanism produces a phantom object flipping three detectors: it is not an
-    edge of the matching graph, its weight is wrong, and the odd-degree set it
-    implies is wrong too. That bug made BP-OSD look like it was missing the
-    optimum by a mean of 2.6 on shots where the optimum was PROVEN -- an
-    implausible result that was measuring the harness, not the decoder.
-
-    WEIGHTS COME FROM THE MATCHING GRAPH, not recomputed from p. The bound is
-    stated in the matching graph's currency, so scoring a decoder in any other
-    currency compares two different quantities and calls the difference a gap.
-    PyMatching also MERGES parallel mechanisms when it builds the graph, which
-    shifts a weight away from log((1-p)/p) for the individual error -- so
-    recomputing would disagree with the bound for a reason that has nothing to
-    do with the decoder.
+    The comparison graph's merged edge weights define the objective. The
+    original event's probability is assigned separately to each component;
+    original correlations and pure logical events are not modeled here.
     """
     out = []
     for inst in dem.flattened():
         if inst.type != "error":
             continue
-        p = float(inst.args_copy()[0])
-        comps, cur = [], []
-        for t in inst.targets_copy():
-            if t.is_separator():
-                comps.append(cur)
-                cur = []
-            elif t.is_relative_detector_id():
-                cur.append(t.val)
-        comps.append(cur)
-        for dets in comps:
-            if not dets or len(dets) > 2:
-                # zero detectors: a pure observable flip, invisible to any
-                # matching decoder. More than two after splitting: not
-                # graphlike, so it has no edge and cannot be scored here.
+        probability = float(inst.args_copy()[0])
+        components, current = [], []
+        for target in inst.targets_copy():
+            if target.is_separator():
+                components.append(current)
+                current = []
+            elif target.is_relative_detector_id():
+                current.append(target.val)
+        components.append(current)
+        for detectors in components:
+            if not detectors:
                 continue
-            u = int(dets[0])
-            v = int(dets[1]) if len(dets) == 2 else BOUNDARY
-            k = key((u, v))
-            if k not in W:
-                continue
-            out.append((k, W[k], min(max(p, 1e-15), 0.5 - 1e-15)))
+            if len(detectors) > 2:
+                raise ValueError("DEM component is not graphlike")
+            edge = key((int(detectors[0]), int(detectors[1])
+                        if len(detectors) == 2 else BOUNDARY))
+            if edge not in W:
+                raise ValueError("DEM component is missing from the comparison graph")
+            out.append((edge, W[edge], min(max(probability, 1e-15), 0.5 - 1e-15)))
     return out
 
 
-def odd_and_weight(mechs, sel):
-    """(detectors made odd, total weight) for a chosen set of mechanisms."""
-    deg: dict[int, int] = {}
-    w = 0.0
-    for j in np.flatnonzero(sel):
-        (u, v), wt, _p = mechs[j]
-        w += wt
-        for x in (u, v):
-            if x != BOUNDARY:
-                deg[x] = deg.get(x, 0) + 1
-    return {d for d, c in deg.items() if c % 2 == 1}, w
+def summarise(values):
+    """Exact classifications; explicitly approximate display quantiles."""
+    values = list(values)
+    if not values:
+        return None
+    floats = np.asarray([float(v) for v in values])
+    zeros = sum(v == 0 for v in values)
+    negatives = sum(v < 0 for v in values)
+    return {"n": len(values), "mean": float(sum(values, Fraction()) / len(values)),
+            "median": float(np.median(floats)), "p90": float(np.percentile(floats, 90)),
+            "p99": float(np.percentile(floats, 99)), "max": float(max(values)),
+            "zero_count_exact": zeros, "negative_count_exact": negatives,
+            "frac_zero": zeros / len(values), "frac_below_zero": negatives / len(values),
+            "sum_exact": fraction_json(sum(values, Fraction())),
+            "max_exact": fraction_json(max(values)),
+            "quantile_arithmetic": "approximate float display; classifications are rational"}
 
 
+def _certificate_json(cert):
+    return {"matched_edges": [list(edge) for edge in cert.matched_edges],
+            "node_potentials": [{"vertex": int(v), "value_hex": float(z).hex()}
+                                for v, z in sorted(cert.node_potentials.items())],
+            "cut_duals": [{"set": sorted(map(int, members)), "value_hex": float(z).hex()}
+                          for members, z in sorted(cert.blossom_duals.items(),
+                                                   key=lambda item: tuple(sorted(item[0])))]}
+
+
+def _timing(values):
+    if not values:
+        return None
+    return {"count": len(values), "total_ns": sum(values),
+            "mean_ms": sum(values) / len(values) / 1e6,
+            "p50_ms": float(np.percentile(values, 50)) / 1e6,
+            "p95_ms": float(np.percentile(values, 95)) / 1e6,
+            "max_ms": max(values) / 1e6}
+
+
+def _bp_decoder(H, probabilities, scaling):
+    from ldpc import BpOsdDecoder
+    return BpOsdDecoder(H, error_channel=list(probabilities), max_iter=30,
+                        bp_method="ms", ms_scaling_factor=scaling,
+                        schedule="parallel", osd_method="osd_cs", osd_order=5)
+
+
+def _decode_record(decoder, syndrome, mechs, weights):
+    started = time.perf_counter_ns()
+    selected_indices = None
+    try:
+        if getattr(decoder, "returns_keys", False):
+            raw_keys = decoder.decode_keys(syndrome)
+            decoded = time.perf_counter_ns()
+            keys, odd, weight = graph_projection(raw_keys, weights)
+        else:
+            selection = np.asarray(decoder.decode(syndrome.astype(np.uint8)))
+            decoded = time.perf_counter_ns()
+            keys, odd, weight = component_projection(mechs, selection, weights)
+            selected_indices = list(map(int, np.flatnonzero(selection)))
+        projected = time.perf_counter_ns()
+        consistent = odd == set(map(int, np.flatnonzero(syndrome)))
+        record = {"status": "VALID" if consistent else "SYNDROME_INCONSISTENT",
+                  "selected_component_indices": selected_indices,
+                  "projected_edges": [list(edge) for edge in keys],
+                  "weight_exact": fraction_json(weight),
+                  "decode_ns": decoded - started, "projection_ns": projected - decoded}
+        return record, weight if consistent else None
+    except Exception as exc:  # decoder failures are reported, never silently dropped
+        return {"status": "ERROR", "error_type": type(exc).__name__,
+                "error": str(exc)[:200], "decode_ns": time.perf_counter_ns() - started,
+                "projection_ns": 0}, None
+
+
+def _train_scaling(circuit, H, mechs, weights, scales, shots, seed):
+    syndromes = circuit.compile_detector_sampler(seed=seed).sample(shots)
+    decoders = {format(scale, ".17g"): _bp_decoder(H, [m[2] for m in mechs], scale)
+                for scale in scales}
+    totals = {name: {"failures": 0, "cost": Fraction(0)} for name in decoders}
+    records = []
+    for index, syndrome in enumerate(syndromes):
+        if not np.any(syndrome):
+            continue
+        candidates = {}
+        for name, decoder in decoders.items():
+            record, cost = _decode_record(decoder, syndrome, mechs, weights)
+            candidates[name] = record
+            if cost is None:
+                totals[name]["failures"] += 1
+            else:
+                totals[name]["cost"] += cost
+        records.append({"phase": "TRAIN", "index": index,
+                        "syndrome": list(map(int, np.flatnonzero(syndrome))),
+                        "candidates": candidates})
+    # Fewer failures, then exact total graph cost, then numeric scale; no
+    # HELDOUT observation or logical outcome can influence this decision.
+    selected = min(totals, key=lambda name: (totals[name]["failures"],
+                                           totals[name]["cost"], float(name)))
+    return float(selected), records, {
+        "seed": seed, "shots": shots, "nontrivial": len(records),
+        "selection_objective": "lexicographic (failures, exact total graph cost, scale)",
+        "selected_scale": float(selected),
+        "candidates": {name: {"failures": value["failures"],
+                               "sum_weight_exact": fraction_json(value["cost"])}
+                       for name, value in totals.items()}}
 class _BeliefMatchingCorrection:
     """Recovers the EDGE SET belief-matching actually applies.
 
@@ -223,243 +296,229 @@ class _BeliefMatchingCorrection:
         return [self.cols[j] for j in np.flatnonzero(sel) if self.cols[j] is not None]
 
 
-def main() -> int:
+
+def _git(*args):
+    return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True,
+                          check=True).stdout.strip()
+
+
+def main(argv=None):
     import pymatching
     import stim
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--shots", type=int, default=400)
-    ap.add_argument("--distances", type=int, nargs="+", default=[3, 5, 7])
-    ap.add_argument("--rounds", type=int, default=None, help="default = distance")
-    ap.add_argument("--p", type=float, default=5e-3)
-    ap.add_argument("--out", type=str, default=None)
-    a = ap.parse_args()
+    from scipy.sparse import csc_matrix
 
-    rows = []
-    for d in a.distances:
-        rounds = a.rounds or d
-        circ = stim.Circuit.generated(
-            "surface_code:rotated_memory_z", distance=d, rounds=rounds,
-            after_clifford_depolarization=a.p,
-            before_measure_flip_probability=a.p,
-            after_reset_flip_probability=a.p,
-            before_round_data_depolarization=a.p)
-        dem = circ.detector_error_model(decompose_errors=True)
-        m = pymatching.Matching.from_detector_error_model(dem)
-        edges = [(int(e[0]), BOUNDARY if e[1] is None else int(e[1]),
-                  float(e[2].get("weight", 1.0))) for e in m.edges()]
-        cd = CertifyingDecoder(edges)
-        mechs = dem_mechanisms(dem, cd.W, cd.key)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--shots", type=int, default=400)
+    parser.add_argument("--distances", type=int, nargs="+", default=[3, 5, 7])
+    parser.add_argument("--rounds", type=int)
+    parser.add_argument("--p", type=float, default=5e-3)
+    parser.add_argument("--seed", type=int, default=31337)
+    parser.add_argument("--train-seed", type=int, default=131337)
+    parser.add_argument("--train-shots", type=int, default=128)
+    parser.add_argument("--bp-scales", type=float, nargs="+", default=[0.5, 0.625, 0.75, 1.0])
+    parser.add_argument("--no-belief-matching", action="store_true")
+    parser.add_argument("--out", type=pathlib.Path,
+                        default=ROOT / "evidence" / "corrected_gap_20261103" / "summary.json")
+    args = parser.parse_args(argv)
+    if args.shots <= 0 or args.train_shots <= 0 or args.seed == args.train_seed:
+        parser.error("positive shot counts and distinct TRAIN/HELDOUT seeds are required")
+    if not 0 < args.p < 0.5 or any(not 0 < x <= 1 for x in args.bp_scales):
+        parser.error("p must be in (0, .5); BP scales must be in (0, 1]")
+    if len(set(args.bp_scales)) != len(args.bp_scales) or len(set(args.distances)) != len(args.distances):
+        parser.error("duplicate scales or distances are not allowed")
+    if args.rounds is not None and args.rounds <= 0:
+        parser.error("rounds must be positive")
+    if any(d < 3 or d % 2 == 0 for d in args.distances):
+        parser.error("rotated surface-code distances must be odd and at least three")
+    protected = {ROOT / "evidence" / "gap_distribution.json",
+                 ROOT / "evidence" / "gap_distribution_exact_rule.json"}
+    if args.out.resolve() in {p.resolve() for p in protected}:
+        parser.error("historical gap artifacts must not be overwritten")
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    if args.out.exists():
+        parser.error("output already exists; use a new path to retain earlier evidence")
 
-        # H: detectors x mechanisms, over GF(2). The same matrix every
-        # mechanism-space decoder consumes, so they are all scored alike.
-        from scipy.sparse import csc_matrix
+    rows, trace = [], []
+    for distance in args.distances:
+        rounds = args.rounds or distance
+        circuit = stim.Circuit.generated(
+            "surface_code:rotated_memory_z", distance=distance, rounds=rounds,
+            after_clifford_depolarization=args.p,
+            before_measure_flip_probability=args.p,
+            after_reset_flip_probability=args.p,
+            before_round_data_depolarization=args.p)
+        dem = circuit.detector_error_model(decompose_errors=True)
+        matching = pymatching.Matching.from_detector_error_model(dem)
+        edges = [(int(u), BOUNDARY if v is None else int(v), float(data["weight"]))
+                 for u, v, data in matching.edges()]
+        certifier = CertifyingDecoder(edges)
+        weights = {key: _exact_weight(weight) for key, weight in certifier.W.items()}
+        mechs = dem_mechanisms(dem, certifier.W, certifier.key)
         rr, cc = [], []
-        for j, ((u, v), _w, _p) in enumerate(mechs):
-            for dd in (u, v):
-                if dd != BOUNDARY:
-                    rr.append(dd)
+        for j, (edge, _weight, _probability) in enumerate(mechs):
+            for detector in edge:
+                if detector != BOUNDARY:
+                    rr.append(detector)
                     cc.append(j)
-        H = csc_matrix((np.ones(len(rr), np.uint8), (rr, cc)),
+        H = csc_matrix((np.ones(len(rr), dtype=np.uint8), (rr, cc)),
                        shape=(dem.num_detectors, len(mechs)))
-        probs = np.array([mm[2] for mm in mechs])
+        started = time.perf_counter_ns()
+        selected_scale, training, training_summary = _train_scaling(
+            circuit, H, mechs, weights, args.bp_scales, args.train_shots, args.train_seed)
+        training_summary["elapsed_ns"] = time.perf_counter_ns() - started
+        for record in training:
+            record["distance"] = distance
+        trace.extend(training)
+        decoders = {"bp_osd_unscaled": _bp_decoder(H, [m[2] for m in mechs], 1.0),
+                    "bp_osd_train_selected": _bp_decoder(H, [m[2] for m in mechs], selected_scale)}
+        availability = {name: {"available": True} for name in decoders}
+        if not args.no_belief_matching:
+            try:
+                from beliefmatching import BeliefMatching
+                decoders["belief_matching"] = _BeliefMatchingCorrection(
+                    BeliefMatching(dem, max_bp_iters=20), certifier.key)
+                availability["belief_matching"] = {"available": True}
+            except Exception as exc:
+                availability["belief_matching"] = {"available": False,
+                    "reason": f"{type(exc).__name__}: {exc}"[:240]}
+        else:
+            availability["belief_matching"] = {"available": False, "reason": "explicitly disabled"}
 
-        decoders = {}
-        try:
-            from ldpc import BpOsdDecoder
-            decoders["bp_osd"] = BpOsdDecoder(
-                H, error_channel=list(probs), max_iter=30, bp_method="ms",
-                schedule="parallel", osd_method="osd_cs", osd_order=5)
-        except Exception as e:                       # noqa: BLE001
-            print(f"  BP-OSD unavailable: {e}", file=sys.stderr)
-        # BELIEF-MATCHING: I CALLED THIS UNCERTIFIABLE AND I WAS WRONG.
-        #
-        # An earlier version of this file recorded, as a FINDING, that
-        # belief-matching "returns predicted observables, not a correction, so
-        # it can be given no gap and no degraded receipt". That was not a
-        # finding. It was stopping at the public method. `decode()` runs BP
-        # and, when BP fails to converge, builds a REWEIGHTED pymatching graph
-        # and decodes it -- so a correction exists in both branches and is
-        # recoverable by reproducing the pipeline.
-        #
-        # Declaring a limitation is a claim, and an unverified negative claim
-        # is still a claim. This one cost nothing to check and was false.
-        #
-        # THE GAP MEANS SOMETHING DIFFERENT HERE, and the difference must not
-        # be flattened. Belief-matching deliberately optimises under REWEIGHTED
-        # edge weights informed by BP posteriors. Its correction is therefore
-        # not trying to be minimum-weight under the ORIGINAL weights, and a
-        # positive gap is the expected consequence of a better-informed
-        # objective rather than evidence of a defect.
-        try:
-            from beliefmatching import BeliefMatching
-            bm = BeliefMatching(dem, max_bp_iters=20)
-            decoders["belief_matching"] = _BeliefMatchingCorrection(bm, cd.key)
-        except Exception as e:                       # noqa: BLE001
-            print(f"  belief-matching unavailable: {e}", file=sys.stderr)
-
-        det, obs = circ.compile_detector_sampler(seed=31337).sample(
-            a.shots, separate_observables=True)
-
-        stats: dict[str, dict] = {}
-        n = 0
-        n_exact = 0
-        t0 = time.perf_counter()
-        for s in range(a.shots):
-            fired = [int(i) for i in np.flatnonzero(det[s])]
+        graph = {"distance": distance, "rounds": rounds,
+                 "detector_count": dem.num_detectors,
+                 "edges": [{"edge": list(edge), "weight_hex": float(weight).hex()}
+                           for edge, weight in sorted(certifier.W.items())],
+                 "component_columns": [{"edge": list(edge), "probability_hex": float(p).hex()}
+                                       for edge, _weight, p in mechs],
+                 "stim_circuit": str(circuit), "dem": str(dem)}
+        graph_bytes = json.dumps(graph, sort_keys=True, separators=(",", ":")).encode()
+        graph_hash = hashlib.sha256(graph_bytes).hexdigest()
+        trace.append({"phase": "MODEL", "distance": distance, "graph_sha256": graph_hash,
+                      "model": graph})
+        detectors, observables = circuit.compile_detector_sampler(seed=args.seed).sample(
+            args.shots, separate_observables=True)
+        stats = {name: {"n": 0, "errors": 0, "inconsistent": 0, "gaps": [],
+                        "exact_gaps": [], "decode_ns": [], "projection_ns": []}
+                 for name in ["mwpm", *decoders]}
+        certify_times, replay_times = [], []
+        nontrivial = exact_count = 0
+        for index, syndrome in enumerate(detectors):
+            fired = list(map(int, np.flatnonzero(syndrome)))
+            shot = {"phase": "HELDOUT", "distance": distance, "index": index,
+                    "graph_sha256": graph_hash, "syndrome": fired,
+                    "observables": list(map(int, observables[index]))}
             if not fired:
+                shot["status"] = "TRIVIAL_EXCLUDED_FROM_GAP_COMPARISON"
+                trace.append(shot)
                 continue
-            n += 1
-            mw = tuple(cd.key((u, v if v >= 0 else BOUNDARY))
-                       for u, v in m.decode_to_edges_array(det[s]))
-            r = cd.certify(fired, mw)
-            bound = r.bound
-            if r.accepted:
-                n_exact += 1
+            nontrivial += 1
+            started = time.perf_counter_ns()
+            raw = matching.decode_to_edges_array(syndrome)
+            decoded = time.perf_counter_ns()
+            mw_keys, mw_odd, mw_weight = graph_projection(raw, weights)
+            projected = time.perf_counter_ns()
+            if mw_odd != set(fired):
+                raise RuntimeError("MWPM reference correction does not explain the syndrome")
+            result = certifier.certify(fired, mw_keys)
+            certified = time.perf_counter_ns()
+            witness = result.cert if result.accepted else MatchingCertificate(
+                matched_edges=mw_keys, node_potentials={}, blossom_duals=result.best_dual)
+            if witness is None:
+                raise RuntimeError("accepted reference omitted its witness")
+            epsilon = check_epsilon(edges=edges, syndrome=fired, cert=witness, eps_max=Fraction(0))
+            if epsilon.lower_bound is None or epsilon.primal != mw_weight:
+                raise RuntimeError("reference packing failed exact lower-bound validation")
+            if result.accepted and not check(edges=edges, syndrome=fired, cert=witness).accepted:
+                raise RuntimeError("retained reference witness failed exact replay")
+            replayed = time.perf_counter_ns()
+            bound = mw_weight if result.accepted else epsilon.lower_bound
+            exact_count += bool(result.accepted)
+            certify_times.append(certified - projected)
+            replay_times.append(replayed - certified)
+            shot["reference"] = {"accepted_exact": bool(result.accepted), "reason": result.reason,
+                "witness": _certificate_json(witness), "weight_exact": fraction_json(mw_weight),
+                "lower_bound_exact": fraction_json(bound),
+                "scaled_packing_bound_exact": fraction_json(epsilon.lower_bound),
+                "certify_including_internal_checks_ns": certified - projected,
+                "retained_witness_recheck_ns": replayed - certified}
+            candidates = {"mwpm": ({"status": "VALID", "selected_component_indices": None,
+                "projected_edges": [list(edge) for edge in mw_keys],
+                "weight_exact": fraction_json(mw_weight), "decode_ns": decoded - started,
+                "projection_ns": projected - decoded}, mw_weight)}
+            for name, decoder in decoders.items():
+                candidates[name] = _decode_record(decoder, syndrome, mechs, weights)
+            shot["candidates"] = {}
+            for name, (record, cost) in candidates.items():
+                stat = stats[name]
+                stat["n"] += 1
+                stat["decode_ns"].append(record["decode_ns"])
+                stat["projection_ns"].append(record["projection_ns"])
+                if cost is None:
+                    stat["errors" if record["status"] == "ERROR" else "inconsistent"] += 1
+                else:
+                    gap = cost - bound
+                    if gap < 0:
+                        raise RuntimeError(f"{name} correction undercuts a checked exact bound")
+                    record["gap_vs_certified_bound_exact"] = fraction_json(gap)
+                    stat["gaps"].append(gap)
+                    if result.accepted:
+                        record["gap_vs_proven_optimum_exact"] = fraction_json(cost - mw_weight)
+                        stat["exact_gaps"].append(cost - mw_weight)
+                shot["candidates"][name] = record
+            trace.append(shot)
+        rows.append({"distance": distance, "rounds": rounds, "p": args.p,
+            "shots": args.shots, "nontrivial": nontrivial,
+            "trivial_excluded": args.shots - nontrivial,
+            "mwpm_certified_exact": exact_count,
+            "exact_reference_coverage_nontrivial": exact_count / nontrivial if nontrivial else None,
+            "training": training_summary, "decoder_availability": availability,
+            "certification_including_internal_checks": _timing(certify_times),
+            "retained_witness_recheck": _timing(replay_times),
+            "decoders": {name: {"n": stat["n"], "errors": stat["errors"],
+                "syndrome_inconsistent": stat["inconsistent"],
+                "gap_vs_certified_bound": summarise(stat["gaps"]),
+                "gap_vs_proven_optimum": summarise(stat["exact_gaps"]),
+                "decode_latency": _timing(stat["decode_ns"]),
+                "projection_latency": _timing(stat["projection_ns"])}
+                         for name, stat in stats.items()}})
+        print(f"d={distance}: {nontrivial} nontrivial, {exact_count} exact references; "
+              f"TRAIN selected BP scale {selected_scale}", flush=True)
+        for name, stat in rows[-1]["decoders"].items():
+            gap = stat["gap_vs_proven_optimum"]
+            print(f"  {name}: {gap}", flush=True)
 
-            entries = {"mwpm": (r.primal, True)}
-            for name, dec in decoders.items():
-                try:
-                    if getattr(dec, "returns_keys", False):
-                        keys = dec.decode_keys(det[s])
-                        deg: dict[int, int] = {}
-                        w = 0.0
-                        for k in keys:
-                            if k not in cd.W:
-                                continue
-                            w += cd.W[k]
-                            for x in k:
-                                if x != BOUNDARY:
-                                    deg[x] = deg.get(x, 0) + 1
-                        odd = {n for n, c in deg.items() if c % 2 == 1}
-                    else:
-                        sel = np.asarray(dec.decode(
-                            det[s].astype(np.uint8))).astype(bool).ravel()
-                        odd, w = odd_and_weight(mechs, sel)
-                except Exception:                     # noqa: BLE001
-                    continue
-                entries[name] = (w, odd == set(fired))
-
-            for name, (w, consistent) in entries.items():
-                st = stats.setdefault(name, {"n": 0, "gaps": [],
-                                             "gaps_on_exact": [],
-                                             "inconsistent": 0})
-                st["n"] += 1
-                if not consistent:
-                    # A correction that does not explain the syndrome has no
-                    # meaningful gap; counting it as one would flatter or
-                    # slander the decoder depending on sign.
-                    st["inconsistent"] += 1
-                    continue
-                st["gaps"].append(w - bound)
-                if r.accepted:
-                    st["gaps_on_exact"].append(w - r.primal)
-        secs = time.perf_counter() - t0
-
-        def summarise(v):
-            if not v:
-                return None
-            arr = np.array(v)
-            return {"n": int(arr.size), "mean": float(arr.mean()),
-                    "median": float(np.median(arr)),
-                    "p90": float(np.percentile(arr, 90)),
-                    "p99": float(np.percentile(arr, 99)),
-                    "max": float(arr.max()),
-                    "frac_zero": float((np.abs(arr) < 1e-9).mean()),
-                    "frac_below_zero": float((arr < -1e-9).mean())}
-
-        row = {"distance": d, "rounds": rounds, "p": a.p, "shots": a.shots,
-               "nontrivial": n, "mwpm_certified_exact": n_exact,
-               "seconds": secs, "decoders": {}}
-        for name, st in sorted(stats.items()):
-            row["decoders"][name] = {
-                "n": st["n"], "syndrome_inconsistent": st["inconsistent"],
-                "gap_vs_certified_bound": summarise(st["gaps"]),
-                "gap_vs_proven_optimum": summarise(st["gaps_on_exact"]),
-                # The per-shot values the summary is computed from, so a
-                # figure is drawn from the measurement rather than
-                # reconstructed from five quantiles.
-                "per_shot_gap_vs_proven_optimum": [float(x) for x in
-                                                   st["gaps_on_exact"]]}
-        rows.append(row)
-
-        print(f"d={d} rounds={rounds}  {n} nontrivial, "
-              f"{n_exact} with a PROVEN optimum ({100*n_exact/max(n,1):.1f}%)")
-        for name, r2 in row["decoders"].items():
-            g = r2["gap_vs_proven_optimum"]
-            if not g:
-                print(f"   {name:16s} no comparable shots")
-                continue
-            print(f"   {name:16s} on proven-optimal shots: mean {g['mean']:7.4f}  "
-                  f"median {g['median']:7.4f}  p99 {g['p99']:7.4f}  "
-                  f"max {g['max']:7.4f}  exact {100*g['frac_zero']:5.1f}%"
-                  + (f"  INCONSISTENT {r2['syndrome_inconsistent']}"
-                     if r2["syndrome_inconsistent"] else ""))
-
-    # WHICH CHECKER DECIDED "PROVEN" (2026-11-02): the exact checkers were fixed on 2026-10-18 (T'-oddness), after
-    # this artifact was first written, so the record names its commit and the bytes of the modules that decided it.
-    def _git(*args: str) -> str:
-        import subprocess
-        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
-    judged = ["src/oneq/matching_cert.py", "src/oneq/matching_cert_strict.py", "src/oneq/certifying_decoder.py"]
-    head = {"commit": _git("rev-parse", "HEAD"),
-            "uncommitted_changes_in_src_oneq": bool(_git("status", "--porcelain", "--", "src/oneq")),
-            "sha256": {p: __import__("hashlib").sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
-                       for p in judged}}
-    out = {
-        "schema": "oneq-gap-distribution/3", "head": head, "rows": rows,
-        "lower_bound_source": ("a certified cut packing on the SAME shot -- "
-                               "checkable edge by edge, not another decoder's "
-                               "opinion"),
-        "two_columns_on_purpose": {
-            "gap_vs_certified_bound": ("weight minus the bound. Includes OUR "
-                                       "slack wherever the bound did not close, "
-                                       "so it overstates the decoder's fault."),
-            "gap_vs_proven_optimum": ("restricted to shots where MWPM was "
-                                      "PROVEN optimal. There the bound IS the "
-                                      "optimum, so this is exactly the "
-                                      "decoder's excess weight -- the number "
-                                      "worth quoting.")},
-        "what_gap_is_not": ("weight, not homology class. A heavier correction "
-                            "in the right class is harmless; a lighter one in "
-                            "the wrong class is a logical error. Neither number "
-                            "substitutes for the other."),
-        "a_gap_is_not_a_defect": (
-            "BP-OSD does not minimise matching weight -- it maximises "
-            "likelihood over the full hypergraph, where decomposed components "
-            "are correlated and the min-weight T-join is not the "
-            "maximum-likelihood answer. A large gap says it departed from the "
-            "certified minimum-weight correction, not that it was wrong. "
-            "Reading this table as a decoder scoreboard is a misuse."),
-        "belief_matching_is_certifiable": (
-            "an earlier version of this artifact said belief-matching could "
-            "not be measured because its API returns predicted observables. "
-            "That was wrong: decode() runs BP and, on non-convergence, builds "
-            "a reweighted matching graph and decodes it, so a correction "
-            "exists in both branches and _BeliefMatchingCorrection recovers "
-            "it. Its gap is different in kind -- it optimises under "
-            "BP-informed weights, not the original ones."),
-        "self_consistency": (
-            "no syndrome-consistent correction can weigh LESS than the "
-            "certified bound; frac_below_zero must be 0 for every decoder, and "
-            "a nonzero value means the harness or the bound is broken"),
-        "why_it_is_new": ("logical error rate averages this away. Two decoders "
-                          "with the same error rate can fail completely "
-                          "differently -- consistently a little suboptimal "
-                          "versus usually exact with a heavy tail -- and no "
-                          "benchmark distinguishes them, because none asks how "
-                          "far from optimal an individual answer was."),
-    }
-    # NOT gap_distribution.json. That artifact is the 2026-07-31 measurement
-    # under the pre-audit acceptance rule (float gap <= 1e-6), and it is what
-    # paper 1 section 7 quotes; certification_semantics_audit.py re-runs the
-    # pinned code and reproduces it exactly. Run from HEAD, this script
-    # certifies under the EXACT rule, selects a different "proven optimal"
-    # subset (d=7: 253 of 400 against 378), and is a second measurement --
-    # so it gets its own artifact and can never silently replace the first.
-    dest = (pathlib.Path(a.out) if a.out
-            else ROOT / "evidence" / "gap_distribution_exact_rule.json")
-    dest.write_text(json.dumps(out, indent=2), encoding="utf-8")
-    print(f"\nevidence -> {dest}")
+    source_paths = ["experiments/m0_prior_art/gap_distribution.py", "src/oneq/matching_cert.py",
+                    "src/oneq/matching_cert_epsilon.py", "src/oneq/matching_cert_strict.py",
+                    "src/oneq/certifying_decoder.py", "tools/replay_corrected_gaps.py"]
+    trace_path = args.out.with_name(args.out.stem + "_shots.jsonl.gz")
+    payload = "".join(json.dumps(record, sort_keys=True, separators=(",", ":")) + "\n"
+                      for record in trace).encode()
+    trace_path.write_bytes(gzip.compress(payload, mtime=0))
+    artifact = {"schema": "oneq-gap-distribution/4", "rows": rows,
+        "head": {"commit": _git("rev-parse", "HEAD"),
+                 "uncommitted_source_changes": bool(_git("status", "--porcelain", "--", *source_paths)),
+                 "sha256": {path: hashlib.sha256((ROOT / path).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+                            for path in source_paths}},
+        "environment": {"python": sys.version.split()[0],
+                        **{name: importlib.metadata.version(name)
+                           for name in ["numpy", "scipy", "stim", "pymatching", "ldpc"]}},
+        "trace": {"path": trace_path.name, "sha256": hashlib.sha256(trace_path.read_bytes()).hexdigest(),
+                  "records": len(trace)},
+        "protocol": {"heldout_seed": args.seed, "train_seed": args.train_seed,
+                     "train_shots": args.train_shots, "heldout_shots": args.shots,
+                     "bp_scales": args.bp_scales, "bp_max_iter": 30, "bp_schedule": "parallel",
+                     "osd_method": "osd_cs", "osd_order": 5,
+                     "training_labels": "syndrome only; no logical labels or heldout observations",
+                     "model": "independent graphlike DEM components; original event correlations discarded",
+                     "projection": "XOR canonical graph edges before exact Fraction scoring",
+                     "exact_zero_rule": "rational gap equals zero; no floating tolerance",
+                     "coverage_denominator": "nontrivial HELDOUT syndromes; trivial shots retained separately"},
+        "scope": {"objective": "minimum graph correction weight, not logical-coset ML or logical error rate",
+                  "timing": "local wall-clock observations; certificate production includes internal checks",
+                  "historical_comparison": "new sampled run, not corrected values for the original paper's samples",
+                  "prior_art": "no novelty or universal decoder-superiority claim"}}
+    args.out.write_text(json.dumps(artifact, indent=2) + "\n", encoding="utf-8", newline="\n")
+    print(f"evidence -> {args.out}")
     return 0
 
 
