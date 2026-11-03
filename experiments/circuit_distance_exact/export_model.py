@@ -141,7 +141,8 @@ def export(circuit_kind: str, basis: str, rounds: int, out: pathlib.Path, *, l: 
     shifts = bc.translations(bc.group_kind(circuit_kind), l, m)
     orb, reps = orbits(mech, coords, shifts, l, m)
     assert observables_affine(mech, coords, shifts, l, m), "observables are not affine under a declared translation"
-    with open(out, "w") as f:
+    # The released, hash-bound model format uses ASCII with CRLF lines.
+    with open(out, "w", encoding="ascii", newline="\r\n") as f:
         f.write(f"{len(coords)} {len(mech)} {dem.num_observables} {len(reps)} {l} {m}\n")
         for (dets, obs), o in zip(mech, orb):
             mask = sum(1 << x for x in obs)

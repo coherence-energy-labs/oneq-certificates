@@ -53,18 +53,11 @@ def _exact_int(v, what: str) -> int:
     independent checker has, and therefore the one place it cannot afford
     to be relaxed.
     """
-    if isinstance(v, bool):
-        refuse(f"{what} is a boolean, not an integer: {v!r}")
-    if isinstance(v, int):
+    if type(v) is int:
         return v
-    if isinstance(v, float):
-        if v != v or v in (float("inf"), float("-inf")):
-            refuse(f"{what} is not finite: {v!r}")
-        if v != int(v):
-            refuse(f"{what} is not an integer: {v!r} -- refusing rather "
-                   f"than truncating to {int(v)}")
-        return int(v)
-    refuse(f"{what} is not a number: {v!r}")
+    # JSON booleans and floating-point numbers (including 1.0) are not
+    # integer fields. Match the declared schema without lossy coercion.
+    refuse(f"{what} is not an integer: {v!r}")
 
 
 def _index(v, n: int, what: str) -> int:
@@ -90,8 +83,10 @@ def main(path: str) -> int:
          enumerate(doc["weights"])]
     if any(v < 0 for v in w):
         refuse("negative weight")
-    syn = [_exact_int(b, f"syndrome[{i}]") & 1 for i, b in
+    syn = [_exact_int(b, f"syndrome[{i}]") for i, b in
            enumerate(doc["syndrome"])]
+    if any(b not in (0, 1) for b in syn):
+        refuse("syndrome entries must be 0 or 1")
     if len(syn) != len(checks):
         refuse("syndrome length mismatch")
     cand = sorted(_index(i, nvar, "candidate index")
@@ -119,16 +114,18 @@ def main(path: str) -> int:
             if not (isinstance(entry, list) and len(entry) == 4):
                 refuse("malformed dual entry")
             rows, F, num, den = entry
-            if not isinstance(num, int) or not isinstance(den, int) \
-                    or den <= 0:
+            num = _exact_int(num, "dual numerator")
+            den = _exact_int(den, "dual denominator")
+            if den <= 0:
                 refuse("non-integer rational")
             y = Fraction(num, den)
             if y < 0:
                 refuse("negative multiplier")
             if y == 0:
                 continue
-            rlist = ([int(r) for r in rows] if isinstance(rows, list)
-                     else [int(rows)])
+            rlist = ([_index(r, len(checks), "dual row") for r in rows]
+                     if isinstance(rows, list)
+                     else [_index(rows, len(checks), "dual row")])
             if len(set(rlist)) != len(rlist):
                 refuse("duplicate row in combination")
             if any(not (0 <= r < len(checks)) for r in rlist):
@@ -139,7 +136,7 @@ def main(path: str) -> int:
                 s2, p2 = reduced(r, fix)
                 sup ^= set(s2)
                 par ^= p2
-            Fs = set(int(i) for i in F)
+            Fs = set(_index(i, nvar, "facet variable") for i in F)
             if len(Fs) != len(F):
                 refuse("duplicate F index")
             if not Fs <= sup:
@@ -173,15 +170,20 @@ def main(path: str) -> int:
         if kind == "branch":
             if len(node) != 4:
                 refuse("malformed branch")
-            k = int(node[1])
+            k = _index(node[1], nvar, "branch variable")
             if k in fix or not (0 <= k < len(w)):
                 refuse(f"bad branch variable {k}")
             walk(node[2], {**fix, k: 0})
             walk(node[3], {**fix, k: 1})
             return
         if kind == "infeasible":
-            rlist = ([int(r) for r in node[1]]
-                     if isinstance(node[1], list) else [int(node[1])])
+            if len(node) != 2:
+                refuse("malformed infeasible leaf")
+            rlist = ([_index(r, len(checks), "infeasible row")
+                      for r in node[1]] if isinstance(node[1], list)
+                     else [_index(node[1], len(checks), "infeasible row")])
+            if len(set(rlist)) != len(rlist):
+                refuse("duplicate infeasible row")
             sup: set = set()
             par = 0
             for r in rlist:

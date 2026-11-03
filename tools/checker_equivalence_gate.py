@@ -21,8 +21,10 @@ So: tools/frozen/ holds byte-identical snapshots of the trust modules as
 they stood before the refactor (sha256 re-verified here on every run).
 This gate runs both the frozen and the live checker over a shape-varied
 corpus and requires the FULL result to agree -- accepted, reason string,
-primal weight, dual bound -- on every single case. Not "both rejected":
-rejected FOR THE SAME STATED REASON.
+primal weight, dual bound -- on every single unchanged-contract case.
+The November 2026 input/API corrections have three narrow, explicitly
+checked transitions below. These are counted separately, not represented
+as equality or concealed by changing the frozen source hashes.
 
 CORPUS SHAPE, deliberately non-uniform. A corpus that is uniform in
 shape hides defects even at high coverage (this estate has a scar from
@@ -668,6 +670,71 @@ def _agree(a, b):
     return False, False
 
 
+def _duplicate_candidate_transition(candidate, result):
+    """Only the newly forbidden duplicate-support input may change here."""
+    return (isinstance(candidate, (tuple, list))
+            and all(type(i) is int for i in candidate)
+            and len(set(candidate)) != len(candidate)
+            and result == (False, "REJECTED MALFORMED INPUT: candidate "
+                                  "contains duplicate indices", None, None))
+
+
+def _malformed_input_transition(kind, checks, weights, syndrome, candidate, result):
+    """Pin each intentional exception/coercion -> refusal transition.
+
+    This allowlist does not permit ACCEPT, arbitrary reason changes, or a
+    transition on a valid input. The raw specimen must contain the named
+    malformed field, independently of the production checker.
+    """
+    if len(result) != 4 or result[0] is not False or result[2:] != (None, None):
+        return False
+    reason = result[1]
+    if kind == "str_weight":
+        return ("heavy" in weights.values()
+                and reason == "REJECTED MALFORMED INPUT: could not convert string to float: 'heavy'")
+    if kind == "none_weight":
+        return (None in weights.values()
+                and reason.startswith("REJECTED MALFORMED INPUT: float() argument"))
+    if kind == "none_cert_support":
+        return (None in candidate
+                and reason == "REJECTED MALFORMED INPUT: candidate is not an integer")
+    if kind == "nested_ragged":
+        return (any(isinstance(i, (tuple, list)) for row in checks for i in row)
+                and reason == "check 0 index is not an integer")
+    if kind == "bool_syndrome":
+        return (bool(syndrome) and type(syndrome[0]) is bool
+                and reason == "syndrome[0] is not an integer")
+    if kind == "str_check_index":
+        return (bool(checks) and bool(checks[0]) and type(checks[0][0]) is str
+                and reason == "check 0 index is not an integer")
+    return False
+
+
+def _bound_only_transition(frozen_result, live_result, threshold, weights):
+    """Preserve the decision while verifying the new threshold-only payload."""
+    from math import lcm
+
+    if (len(frozen_result) != 4 or type(frozen_result[0]) is not bool
+            or live_result.accepted is not frozen_result[0]
+            or live_result.primal_weight is not None
+            or live_result.dual_bound is not None or live_result.gap is not None):
+        return False
+    if not live_result.accepted:
+        return (live_result.reason == frozen_result[1]
+                and live_result.reason.startswith("TREE REFUSED:")
+                and live_result.checks == {})
+    D = lcm(*(Fraction(v).denominator for v in weights.values())) if weights else 1
+    T = Fraction(threshold)
+    return (frozen_result[1].startswith("EXACT-OPTIMAL BY BRANCH DUALS:")
+            and live_result.reason == "LOWER_BOUND_PROVEN: every feasible solution has "
+                                      "weight strictly above the threshold; feasibility "
+                                      "and an attaining optimum are not claimed"
+            and live_result.checks == {
+                "exact": True, "bnb": True, "claim": "lower_bound", "relation": ">",
+                "lattice_denominator": D,
+                "threshold": {"num": T.numerator, "den": T.denominator}})
+
+
 #: uses per declared alias, by index: EVERY alias must be reached, not just one of them
 _ALIAS_HITS: dict = {}
 
@@ -965,7 +1032,10 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
     diffs, stats = [], {"exercised": 0, "accepted": 0, "rejected": 0,
                         "raised": 0, "bnb": 0, "abuse": 0, "exact": 0,
                         "bnb_accepted": 0, "forced": 0, "aliased": 0, "matching": 0,
-                        "matching_accepted": 0}
+                        "matching_accepted": 0,
+                        "contract_transitions": {"duplicate_candidate": 0,
+                                                 "malformed_input": 0,
+                                                 "bound_only_payload": 0}}
 
     for c in range(cases):
         exact = (c % 3 == 0)
@@ -1026,6 +1096,9 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
             else:
                 stats["rejected"] += 1
             ok, aliased = _agree(a, b)
+            if not ok and _duplicate_candidate_transition(pc.error_support, b):
+                ok = True
+                stats["contract_transitions"]["duplicate_candidate"] += 1
             stats['aliased'] += int(aliased)
             if not ok:
                 diffs.append({"case": c, "fn": "check_qldpc", "axis": axis,
@@ -1048,6 +1121,9 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
             stats["exercised"] += 1
             stats["exact"] += 1
             ok, aliased = _agree(a, b)
+            if not ok and _duplicate_candidate_transition(pc.error_support, b):
+                ok = True
+                stats["contract_transitions"]["duplicate_candidate"] += 1
             stats['aliased'] += int(aliased)
             if not ok:
                 diffs.append({"case": c, "fn": "check_qldpc_exact",
@@ -1108,6 +1184,10 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
                 stats["exercised"] += 1
                 stats["bnb"] += 1
                 ok, aliased = _agree(a, b)
+                if not ok and _bound_only_transition(
+                        a, live.check_qldpc_bnb(**ka), U - 1, wi):
+                    ok = True
+                    stats["contract_transitions"]["bound_only_payload"] += 1
                 stats['aliased'] += int(aliased)
                 if not ok:
                     diffs.append({"case": c, "fn": "check_qldpc_bnb",
@@ -1188,6 +1268,9 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
         stats["exercised"] += 1
         stats["abuse"] += 1
         ok, aliased = _agree(a, b)
+        if not ok and _malformed_input_transition(kind, ck, wt, sy, sp, b):
+            ok = True
+            stats["contract_transitions"]["malformed_input"] += 1
         stats['aliased'] += int(aliased)
         if not ok:
             diffs.append({"case": c, "fn": "check_qldpc/abuse",
@@ -1487,6 +1570,7 @@ def main() -> int:
 
     print(f"  reason improved via a DECLARED alias: {stats['aliased']} "
           f"(verdict and every number identical in all of them)")
+    print(f"  separately verified contract transitions: {stats['contract_transitions']}")
 
     # The declared aliases must actually be USED -- EACH of them. An alias
     # nobody reaches is a permission granted for a case the corpus cannot
@@ -1522,7 +1606,7 @@ def main() -> int:
                   f"FAILURE, not a pass")
             return 1
 
-    out = {"schema": "oneq-checker-equivalence/1",
+    out = {"schema": "oneq-checker-equivalence/2",
            "cases": args.cases, "seed": args.seed,
            "calls_compared": stats["exercised"],
            "accepted": stats["accepted"], "rejected": stats["rejected"],
@@ -1532,13 +1616,15 @@ def main() -> int:
            "matching_calls": stats["matching"],
            "matching_accepting": stats["matching_accepted"],
            "divergences": len(diffs),
+           "contract_transitions": stats["contract_transitions"],
            "declared_reason_aliases_used": stats["aliased"],
            "declared_reason_aliases": [{"frozen": a, "live": b, "why": c}
                                        for a, b, c in _REASON_ALIASES],
            "frozen_sha256": FROZEN_SHA256,
-           "claim": ("the refactored trust modules return the identical "
-                     "verdict, reason string, primal weight and dual "
-                     "bound as the pre-refactor bytes, on every case")}
+           "claim": ("the trust modules match the pinned historical outputs "
+                     "except for the separately counted, independently checked "
+                     "strict-input and threshold-only API transitions; frozen "
+                     "source hashes are unchanged")}
     if args.json:
         d = pathlib.Path(args.json)
         d.parent.mkdir(parents=True, exist_ok=True)
@@ -1556,7 +1642,8 @@ def main() -> int:
             print(f"    frozen: {d['frozen']}")
             print(f"    live  : {d['live']}")
         return 1
-    print("\nEQUIVALENT: every verdict, reason, weight and bound agrees")
+    print("\nCONSISTENT: unchanged-contract outputs agree; declared input/API "
+          "transitions pass their separate checks")
     return 0
 
 

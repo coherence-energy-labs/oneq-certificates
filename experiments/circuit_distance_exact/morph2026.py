@@ -434,7 +434,8 @@ def export_circuit(circuit, basis: str, dims, shifts, out: pathlib.Path, *, proj
     l, m = dims
     orb, reps = em.orbits(mech, coords, shifts, l, m)
     assert em.observables_affine(mech, coords, shifts, l, m), "observables are not affine under a declared translation"
-    with open(out, "w") as f:
+    # Match the released byte format independently of the host OS.
+    with open(out, "w", encoding="ascii", newline="\r\n") as f:
         f.write(f"{len(coords)} {len(mech)} {dem.num_observables} {len(reps)} {l} {m}\n")
         for (dets, obs), o in zip(mech, orb):
             mask = sum(1 << x for x in obs)

@@ -20,7 +20,7 @@ W_EXACT = {0: Fraction(1), 1: Fraction(1)}
 CERT = QldpcCertificate(error_support=(0,), facet_duals=((0, (), Fraction(1)),))
 
 # every entry here reads as [1] under `& 1` (or as 1 under int())
-BAD = [[3], [-1], [True + 2], [1.0], ["1"]]
+BAD = [[3], [-1], [True + 2], [1.0], ["1"], [True]]
 
 
 def _tree():
@@ -56,13 +56,21 @@ def test_non_binary_syndrome_is_refused_by_all_three(syndrome):
         assert "syndrome[0]" in r.reason, r.reason
 
 
-def test_numpy_and_bool_entries_are_still_binary():
+def test_numpy_integer_entries_are_still_binary():
     np = pytest.importorskip("numpy")
     tree = _tree()
-    syns = ([np.uint8(1)], [np.int64(1)], [True])
-    assert len(syns) == 3, "numpy uint8, numpy int64 and a bare bool are all three meant here"
+    syns = ([np.uint8(1)], [np.int64(1)])
+    assert len(syns) == 2, "both NumPy integer dtypes remain supported"
     for syn in syns:
         rs = _run_all(syn, tree)
         assert len(rs) == 3, "the name says all three; a dropped checker must not pass quietly"
         for r in rs:
             assert r.accepted, r.reason
+
+
+def test_numpy_boolean_syndrome_is_refused():
+    import numpy as np
+
+    for result in _run_all([np.bool_(True)], _tree()):
+        assert not result.accepted
+        assert "syndrome[0]" in result.reason

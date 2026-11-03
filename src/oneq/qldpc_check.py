@@ -20,6 +20,7 @@ import operator
 from dataclasses import dataclass, field
 from fractions import Fraction
 from math import lcm
+from numbers import Integral
 
 
 @dataclass(frozen=True)
@@ -47,6 +48,27 @@ class QldpcCheckResult:
     checks: dict = field(default_factory=dict)
 
 
+def _integer(v, name: str) -> int:
+    """Accept actual integers only; never reinterpret bool/float/string data.
+
+    Integral NumPy scalars remain supported by the Python API. Serialized
+    JSON checkers independently enforce the same contract on plain ints.
+    """
+    if isinstance(v, bool) or not isinstance(v, Integral):
+        raise TypeError(f"{name} is not an integer")
+    return operator.index(v)
+
+
+def _indices(values, name: str) -> frozenset[int]:
+    """Validate a support before giving it set semantics."""
+    items = tuple(_integer(v, name) for v in values)
+    if len(set(items)) != len(items):
+        raise ValueError(f"{name} contains duplicate indices")
+    if any(v < 0 for v in items):
+        raise ValueError(f"{name} contains a negative index")
+    return frozenset(items)
+
+
 def _validate_instance(checks, weights, syndrome, tol):
     """Step 0: is the PROBLEM well posed? Returns (parts, error).
 
@@ -63,7 +85,7 @@ def _validate_instance(checks, weights, syndrome, tol):
     if len(syn) != m:
         return None, QldpcCheckResult(False,
                                       "syndrome length != number of checks")
-    w = {int(i): float(v) for i, v in weights.items()}
+    w = {_integer(i, "weight index"): float(v) for i, v in weights.items()}
     # NO TOLERANCE ON THE SIGN (mutation score, 2026-09-14). `v < -tol` let a
     # weight of -1e-10 through, and the exact gate behind this screen never
     # re-checks signs: a free variable at -1e-10 made a correction 1e-10 above
@@ -77,7 +99,7 @@ def _validate_correction(error_support, supports, syn, w, m):
     """Step 1: IS IT A CORRECTION? He = s, recomputed -- the only test
     production systems run today, and the baseline this certificate
     exceeds. Returns (e, primal, error)."""
-    e = frozenset(int(i) for i in error_support)
+    e = _indices(error_support, "candidate")
     for i in e:
         if i not in w:
             return None, None, QldpcCheckResult(
@@ -107,7 +129,7 @@ def _resolve_facet_check(j, supports, syn, m, primal):
     redundant path quotes whatever the certificate passed.
     """
     if isinstance(j, (tuple, list, frozenset)):
-        rows = tuple(sorted({int(r) for r in j}))
+        rows = tuple(sorted(_indices(j, "redundant check")))
         if len(rows) < 2 or any(not (0 <= r < m) for r in rows):
             return None, QldpcCheckResult(
                 False, f"redundant check {rows} is not >=2 valid rows",
@@ -118,7 +140,7 @@ def _resolve_facet_check(j, supports, syn, m, primal):
             sup = sup ^ supports[r]
             par ^= syn[r]
         return (sup, par, rows, j), None
-    j = int(j)
+    j = _integer(j, "facet check index")
     if not (0 <= j < m):
         return None, QldpcCheckResult(False, f"facet names check {j} of {m}",
                                       primal_weight=primal)
@@ -140,7 +162,7 @@ def _accumulate_facet_duals(facet_duals, supports, syn, m, primal, tol):
     seen: set[tuple] = set()
     for (j, F, y) in facet_duals:
         y = float(y)
-        Fs = frozenset(int(i) for i in F)
+        Fs = _indices(F, "facet support")
         if y < -tol:
             return None, QldpcCheckResult(False, f"negative facet dual y={y}",
                                           primal_weight=primal)
@@ -186,7 +208,7 @@ def _accumulate_box_duals(box_duals, primal, tol):
     """The 0 <= x <= 1 box multipliers. Returns (mu, error)."""
     mu: dict[int, float] = {}
     for (i, v) in box_duals:
-        i = int(i)
+        i = _integer(i, "box dual index")
         v = float(v)
         if v < -tol:
             return None, QldpcCheckResult(False, f"negative box dual mu={v}",
@@ -308,6 +330,16 @@ def _exact_optimality(cert, supports, syn, w, e):
 
 def check_qldpc(*, checks, weights, syndrome, cert: QldpcCertificate,
                 tol: float = 1e-9) -> QldpcCheckResult:
+    """Check a float-input receipt, refusing malformed input explicitly."""
+    try:
+        return _check_qldpc(checks=checks, weights=weights, syndrome=syndrome,
+                            cert=cert, tol=tol)
+    except (TypeError, ValueError, OverflowError) as exc:
+        return QldpcCheckResult(False, f"REJECTED MALFORMED INPUT: {exc}")
+
+
+def _check_qldpc(*, checks, weights, syndrome, cert: QldpcCertificate,
+                 tol: float = 1e-9) -> QldpcCheckResult:
     """Accept only if the certificate PROVES the error is minimum-weight.
 
     `checks` is a list of variable-index tuples (the support of each row of
@@ -448,9 +480,9 @@ def _exact_facet_scan(supports, syn, w, facet_duals):
             return None, 0, "negative facet dual"
         if y == 0:
             continue
-        Fs = frozenset(int(i) for i in F)
+        Fs = _indices(F, "facet support")
         if isinstance(j, (tuple, list, frozenset)):
-            rows = tuple(sorted({int(r) for r in j}))
+            rows = tuple(sorted(_indices(j, "redundant check")))
             if len(rows) < 2 or any(not (0 <= r < m) for r in rows):
                 return None, 0, (f"redundant check {rows} is not >=2 "
                                  f"valid rows")
@@ -461,7 +493,7 @@ def _exact_facet_scan(supports, syn, w, facet_duals):
                 par ^= syn[r]
             jname: object = rows
         else:
-            j = int(j)
+            j = _integer(j, "facet check index")
             if not (0 <= j < m):
                 return None, 0, f"facet names check {j} of {m}"
             sup, par, jname = supports[j], syn[j], j
@@ -525,7 +557,7 @@ def _bnb_target(w, error_support, supports, syn, m, step,
     if bound_only_threshold is not None:
         T = _exact_rational(bound_only_threshold, "threshold")
         return T + step, None
-    e = frozenset(int(i) for i in error_support)
+    e = _indices(error_support, "candidate")
     for i in e:
         if i not in w:
             return None, QldpcCheckResult(False, f"unknown variable {i}")
@@ -547,9 +579,9 @@ def _bnb_infeasible_leaf(node, red_sup, red_syn, m):
     """
     if len(node) != 2:
         return "malformed infeasible leaf"
-    rows = (tuple(sorted({int(r) for r in node[1]}))
+    rows = (tuple(sorted(_indices(node[1], "infeasible rows")))
             if isinstance(node[1], (tuple, list, frozenset))
-            else (int(node[1]),))
+            else (_integer(node[1], "infeasible row"),))
     if any(not (0 <= r < m) for r in rows):
         return f"infeasible leaf names bad rows {rows}"
     acc: frozenset = frozenset()
@@ -608,7 +640,7 @@ def _bnb_walk(node, S0: frozenset, S1: frozenset, ctx):
     if kind == "branch":
         if len(node) != 4:
             return "malformed branch"
-        i = int(node[1])
+        i = _integer(node[1], "branch variable")
         if i not in w or i in S0 or i in S1:
             return f"branch on invalid/refixed variable {i}"
         r0 = _bnb_walk(node[2], S0 | {i}, S1, ctx)
@@ -649,9 +681,11 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
     The checker re-derives every reduced instance from the branch path
     (fixing = integer parity flips), validates every leaf bound in
     exact arithmetic with the lattice rule, and verifies the split
-    structure by construction of the recursion. Accept => the verified
-    feasible candidate is minimum-weight. Every failure is a refusal,
-    never a fallback.
+    structure by construction of the recursion. In candidate mode, accept
+    proves that the verified feasible candidate is minimum-weight. With
+    bound_only_threshold=T, accept proves only that every feasible solution
+    has weight > T (also true for an infeasible instance); no feasible
+    candidate or optimum is claimed. Every failure is a refusal.
 
     The two leaf rules live in _bnb_infeasible_leaf and _bnb_bound_leaf,
     so the recursion below is only the tree walk: branching is disjoint
@@ -668,7 +702,7 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
     if len(syn) != m:
         return QldpcCheckResult(False, "syndrome length != checks")
     try:
-        w = {int(i): _exact_rational(v, f"w[{i}]")
+        w = {_integer(i, "weight index"): _exact_rational(v, f"w[{i}]")
              for i, v in weights.items()}
         if any(v < 0 for v in w.values()):
             return QldpcCheckResult(False, "negative weight")
@@ -679,14 +713,27 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
         if err is not None:
             return err
 
-        ctx = (w, supports, syn, m, U, step, [int(max_nodes)])
+        ctx = (w, supports, syn, m, U, step,
+               [_integer(max_nodes, "max_nodes")])
         try:
             fail = _bnb_walk(tree, frozenset(), frozenset(), ctx)
         except RecursionError:
             fail = "tree deeper than the recursion limit: refused"
         if fail is not None:
             return QldpcCheckResult(False, f"TREE REFUSED: {fail}",
-                                    primal_weight=float(U))
+                                    primal_weight=(float(U) if
+                                        bound_only_threshold is None else None))
+        if bound_only_threshold is not None:
+            threshold = U - step
+            return QldpcCheckResult(
+                True, "LOWER_BOUND_PROVEN: every feasible solution has "
+                      "weight strictly above the threshold; feasibility "
+                      "and an attaining optimum are not claimed",
+                checks={"exact": True, "bnb": True,
+                        "claim": "lower_bound", "relation": ">",
+                        "lattice_denominator": D,
+                        "threshold": {"num": threshold.numerator,
+                                      "den": threshold.denominator}})
         return QldpcCheckResult(
             True, "EXACT-OPTIMAL BY BRANCH DUALS: every leaf of the "
                   "branch tree crosses the lattice level below the "
@@ -708,7 +755,7 @@ def _binary_syndrome(syndrome):
     syn = []
     for j, b in enumerate(syndrome):
         try:
-            v = operator.index(b)
+            v = _integer(b, f"syndrome[{j}]")
         except TypeError:
             return None, f"syndrome[{j}] is not an integer"
         if v not in (0, 1):
@@ -718,7 +765,7 @@ def _binary_syndrome(syndrome):
 
 
 def _canonical_supports(checks):
-    """Refuse duplicate indices inside any check support.
+    """Refuse noninteger or duplicate indices inside any check support.
 
     The adversarial audit's one genuine hole: a duplicated index means
     'member once' under set semantics but CANCELS under GF(2) matrix
@@ -728,7 +775,12 @@ def _canonical_supports(checks):
     """
     sups = []
     for j, c in enumerate(checks):
-        t = [int(i) for i in c]
+        try:
+            t = [_integer(i, f"check {j} index") for i in c]
+        except TypeError as exc:
+            return None, str(exc)
+        if any(i < 0 for i in t):
+            return None, f"check {j} contains a negative variable index"
         fs = frozenset(t)
         if len(fs) != len(t):
             return None, (f"check {j} contains duplicate variable "
@@ -791,12 +843,12 @@ def check_qldpc_exact(*, checks, weights, syndrome, cert: QldpcCertificate,
     if len(syn) != m:
         return QldpcCheckResult(False, "syndrome length != number of checks")
     try:
-        w = {int(i): _exact_rational(v, f"w[{i}]")
+        w = {_integer(i, "weight index"): _exact_rational(v, f"w[{i}]")
              for i, v in weights.items()}
         if any(v < 0 for v in w.values()):
             return QldpcCheckResult(False, "negative variable weight")
 
-        e = frozenset(int(i) for i in cert.error_support)
+        e = _indices(cert.error_support, "candidate")
         for i in e:
             if i not in w:
                 return QldpcCheckResult(
