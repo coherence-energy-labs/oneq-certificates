@@ -41,8 +41,10 @@ python experiments/m0_prior_art/gap_distribution.py \
   --distances 3 5 7 --shots 400 --train-shots 128 \
   --seed 31337 --train-seed 131337 --bp-scales 0.5 0.625 0.75 1.0 \
   --no-belief-matching \
-  --out evidence/corrected_gap_20261103/summary.json
-python tools/replay_corrected_gaps.py evidence/corrected_gap_20261103/summary.json
+  --out .build/corrected_gap_rerun/summary.json
+python tools/replay_corrected_gaps.py .build/corrected_gap_rerun/summary.json
+python tools/analyze_corrected_gap_cost.py .build/corrected_gap_rerun/summary.json \
+  --out .build/corrected_gap_rerun/operating_cost.json
 python -m pytest tests/test_corrected_gap_distribution.py -q
 ```
 
@@ -65,3 +67,12 @@ relying on a checksum mismatch.
 New samples, library versions and tuning choices do not retroactively correct
 the historical paper tables. Replacing those tables requires documenting the
 new experiment and its sampling protocol in the manuscript.
+
+## Retained measured run
+
+The [measured results](../evidence/corrected_gap_20261103/README.md) record
+400 HELDOUT and 128 TRAIN draws at each distance. Replay the archived run with
+`python tools/replay_corrected_gaps.py evidence/corrected_gap_20261103/summary.json`.
+Use a new output directory to regenerate it; the producer refuses to overwrite
+existing evidence. The cost analyzer reports retrospective availability curves
+and accepted/refused timing separately; it does not implement timeouts.
