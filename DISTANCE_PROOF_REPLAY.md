@@ -2,16 +2,28 @@
 
 The two archived receipt manifests name **304 proof/model pairs**: 22 IBM
 receipts and 282 other circuit-distance receipts. This checkout supplies 274
-proof blobs. The other 30 blobs, totaling **732,193,669 bytes**, are not included.
-A recorded hash or a historical `VERIFIED` line does not make a missing proof
-independently replayable.
+proof blobs. The other 30 blobs, totaling **732,193,669 bytes**, are not tracked
+in Git or included in the published release.
 
-The complete missing-proof inventory, including every expected hash, size,
+**Recovery and replay update, November 4, 2026.** All 30 omitted payloads have been recovered
+and matched to their exact manifest hashes. The
+[recovery record](evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/copy_manifest.json)
+and [archive record](evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/proof_archive.json)
+bind those bytes and a separate delivery ZIP. The
+[completed full-catalog replay](evidence/final_integration_validation_20261104/distance_complete_replay_20261104/run/distance_receipt_replay_20261104_recovered.json)
+verified all 304 unique receipts with checker exit status 0: 62 global
+finite-model bounds and 242 prefix irreducible exclusions. Its
+[qualification binding](evidence/final_integration_validation_20261104/distance_complete_replay_20261104/run/distance_receipt_replay_20261104_recovered.binding.json)
+records the exact sources and inputs and their stability throughout the run.
+This project-run replay does not establish outside human reproduction or
+replay the window and fold arguments.
+
+The dated November 3 missing-proof inventory, including every expected hash, size,
 model, weight and prefix, is
 [`missing_proofs_20261103.json`](evidence/circuit_distance_exact/missing_proofs_20261103.json).
 It is an availability snapshot, not a new mathematical verdict.
 
-| Receipt family | Manifested | Proofs shipped | Proofs missing | Missing bytes |
+| Receipt family | Manifested | Proofs tracked in Git | Proofs not tracked in Git | Untracked proof bytes |
 | --- | ---: | ---: | ---: | ---: |
 | IBM recertification | 22 | 22 | 0 | 0 |
 | morph72 | 14 | 14 | 0 | 0 |
@@ -21,9 +33,9 @@ It is an availability snapshot, not a new mathematical verdict.
 | morph144 | 4 | 0 | 4 | 147,986,874 |
 | **Total** | **304** | **274** | **30** | **732,193,669** |
 
-## Replay everything available with one command
+## Replay the proofs shipped in Git
 
-From the repository checkout:
+From the repository checkout, without a received-proof directory:
 
 ```sh
 python -I -S tools/distance_receipt_inventory.py --output output/distance_receipt_replay.json
@@ -36,8 +48,8 @@ the compiler supports it, with four threads by default; compilation falls back
 to a serial checker when OpenMP is unavailable. `--threads 8` selects eight
 threads. Compilation and per-receipt check times are recorded separately.
 
-The checkout's expected result is **274 fresh checks, 30 missing proofs, exit
-status 2**. It must not report 304 verified receipts. The report keeps an entry
+Without `--received`, the expected result is **274 fresh checks, 30 missing
+proofs, exit status 2**. It must not report 304 verified receipts. The report keeps an entry
 for every manifested cell, including missing, refused and timed-out cells.
 There is no option that turns a partial replay into a complete success.
 
@@ -62,7 +74,7 @@ freshly verified receipts. It cannot produce a mathematical success status.
 Place received raw `.bin` proofs in a directory and run:
 
 ```sh
-python -I -S tools/distance_receipt_inventory.py --received /path/to/proofs --timeout-seconds 14400 --output output/distance_receipt_replay.json
+python -I -S tools/distance_receipt_inventory.py --received /path/to/proofs --timeout-seconds 14400 --threads 8 --output output/distance_receipt_replay.json
 ```
 
 `--received` can be supplied more than once. Files are matched by SHA-256,
@@ -73,12 +85,13 @@ receipts. Supplied files whose hashes do not occur in the catalog are listed
 separately. A damaged shipped file is reported as damaged, even when a good
 received copy exists, so receipt corruption cannot disappear from the report.
 
-The default timeout is 600 seconds **per proof**. The larger missing proofs can
+The default timeout is 600 seconds **per proof**. The larger recovered proofs can
 take substantially longer; the example above allows four hours per check.
 Timeouts remain explicit unverified failures. This command does not search for
 proofs outside the requested directories, regenerate proofs, or contact anyone.
-The earlier campaign records include long prover and checker runs; obtaining
-the missing files and replaying them remains separate work.
+The earlier campaign records include long prover and checker runs. The
+completed November 4 project replay is linked above; this command lets an
+outside reviewer perform a separate replay of the same manifested inputs.
 
 ## What the checked statements actually say
 

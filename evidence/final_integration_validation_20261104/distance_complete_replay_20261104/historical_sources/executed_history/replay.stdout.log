@@ -1,0 +1,16 @@
+{
+  "verdict": "ALL_MANIFESTED_RECEIPTS_VERIFIED",
+  "manifested_receipts": 304,
+  "verified_receipts": 304,
+  "available_proofs": 304,
+  "missing_proofs": 0,
+  "missing_proof_bytes": 0,
+  "failed_receipts": 0,
+  "all_manifested_verified": true,
+  "replay_requested": true,
+  "status_counts": {
+    "VERIFIED": 304
+  },
+  "verified_global_bounds": 62,
+  "verified_prefix_exclusions": 242
+}

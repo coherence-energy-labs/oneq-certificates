@@ -1,0 +1,358 @@
+{
+  "schema": "oneq-distance-proof-recovery-plan/1",
+  "scope": "Byte-exact recovery plan only; this inventory does not establish a new mathematical replay.",
+  "expected_execution_head": "15c34c552d427e47bec8aad5b847140bc01b88f6",
+  "expected_execution_root_name": "p1_final_qualification_20261104",
+  "received_directory": "data/received_distance_proofs_20261104",
+  "files": [
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:1:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X1_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/1fb1ac1cfc47756e55df56b5b8b5299ce4e920a127273b0e88e068029fea29c1.bin",
+      "sha256": "1fb1ac1cfc47756e55df56b5b8b5299ce4e920a127273b0e88e068029fea29c1",
+      "bytes": 6639337,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X1.txt",
+      "model_sha256": "dbb3b04d2c2d9a12a8c72c6c555a8f956dcdffa3bd3355b58dc551ee809bfe44",
+      "historical_prover_seconds": 205.6,
+      "historical_checker_seconds": 191.0
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:10:10:1",
+      "source": "C:\\lq\\recert_x\\3c\\shift_cert\\proof_3c_X10_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/8d233ba6060e2caa5033a30d8b634b9c73abc7a7680ef1abbc14bfc1098acca0.bin",
+      "sha256": "8d233ba6060e2caa5033a30d8b634b9c73abc7a7680ef1abbc14bfc1098acca0",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X10.txt",
+      "model_sha256": "7d47dc8a79c1711e93d941733fe73c081de2f71225c1a73af5c88613fba49dbc",
+      "historical_prover_seconds": 3875.9,
+      "historical_checker_seconds": 3190.9
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:11:10:1",
+      "source": "C:\\lq\\recert_x\\3c\\shift_cert\\proof_3c_X11_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/8cf6072df52d1221dcd39cbb2a135883a21641c319f910db30210f8222502fa1.bin",
+      "sha256": "8cf6072df52d1221dcd39cbb2a135883a21641c319f910db30210f8222502fa1",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X11.txt",
+      "model_sha256": "80a0716da09baf3cd906f13dd99b8bfe8ac038961a102c0492119e92d49d8d79",
+      "historical_prover_seconds": 4251.1,
+      "historical_checker_seconds": 3181.4
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:12:10:1",
+      "source": "C:\\lq\\recert_x\\3c\\shift_cert\\proof_3c_X12_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/83bcde22ef9048f43af624d0df6138a9909c8139473665212f125ced35524e75.bin",
+      "sha256": "83bcde22ef9048f43af624d0df6138a9909c8139473665212f125ced35524e75",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X12.txt",
+      "model_sha256": "d926ad6a08f5900e2dd320181470ecb458c98cb2cc1ee0b6a69ffa24aa18f670",
+      "historical_prover_seconds": 5111.1,
+      "historical_checker_seconds": 3930.5
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:2:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X2_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/7ac39a7c700b4a1531c4e9e3ccbcb51a451f3a8ba0a42b1d81c3cf6432007b66.bin",
+      "sha256": "7ac39a7c700b4a1531c4e9e3ccbcb51a451f3a8ba0a42b1d81c3cf6432007b66",
+      "bytes": 23542582,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X2.txt",
+      "model_sha256": "28875332778f11e52fd6d38756617fe237e94a696f8b9419fe922129220485db",
+      "historical_prover_seconds": 945.0,
+      "historical_checker_seconds": 867.7
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:3:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X3_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/ef11d909137d47bf55f2bdf090856a1e09c18faddb38f842c80b5ff96cda0f1d.bin",
+      "sha256": "ef11d909137d47bf55f2bdf090856a1e09c18faddb38f842c80b5ff96cda0f1d",
+      "bytes": 33308383,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X3.txt",
+      "model_sha256": "9a19ecaf0de7f0f55d4c1fa5ff9361f637376337b689206af081753f37b6a584",
+      "historical_prover_seconds": 1551.0,
+      "historical_checker_seconds": 1646.1
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:4:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X4_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/8a776f2a3ef2d7e61f477e67063ecadbe870b6e803ae4514c6294110354f7ea4.bin",
+      "sha256": "8a776f2a3ef2d7e61f477e67063ecadbe870b6e803ae4514c6294110354f7ea4",
+      "bytes": 33994034,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X4.txt",
+      "model_sha256": "2711dad468abc2ec739d36b69229afa5091d71a84ab2e968009dc060be02ec11",
+      "historical_prover_seconds": 1932.1,
+      "historical_checker_seconds": 1755.2
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:5:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X5_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/59ec0359e4dd3917db63588c2eae41fb96fdaaf18d8fe05d37a9ef1062d404d2.bin",
+      "sha256": "59ec0359e4dd3917db63588c2eae41fb96fdaaf18d8fe05d37a9ef1062d404d2",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X5.txt",
+      "model_sha256": "d95975f6ea01d785a60c4623e8898eff1bd62da6451e4251230d10f15c38de29",
+      "historical_prover_seconds": 2922.5,
+      "historical_checker_seconds": 4106.8
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:6:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X6_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/ecd6a83e045b2d5220396bc34c95fa2d3de08960b706d7779048de008ad10a68.bin",
+      "sha256": "ecd6a83e045b2d5220396bc34c95fa2d3de08960b706d7779048de008ad10a68",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X6.txt",
+      "model_sha256": "9ecc9ecfa7af5c220c518bff4bdab50825caae4ff1bd811d94f2ac24d9a0c52a",
+      "historical_prover_seconds": 3534.6,
+      "historical_checker_seconds": 2999.8
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:7:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X7_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/524839a45555de701e1340fa3c747abc289aa9b7d5f406d21e281d1e782af44f.bin",
+      "sha256": "524839a45555de701e1340fa3c747abc289aa9b7d5f406d21e281d1e782af44f",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X7.txt",
+      "model_sha256": "6ca0f46712dd8b2d47089b6c2abe2f6aeabaa50c9c90e431f62f1948cbda8f4f",
+      "historical_prover_seconds": 3157.9,
+      "historical_checker_seconds": 3349.0
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:8:10:1",
+      "source": "C:\\lq\\recert\\3c\\shift_cert\\proof_3c_X8_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/87b85fef757b2ce805f6109c8b4805aecb4bbd9b4e98131a05c958b7d435769a.bin",
+      "sha256": "87b85fef757b2ce805f6109c8b4805aecb4bbd9b4e98131a05c958b7d435769a",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X8.txt",
+      "model_sha256": "b0234ca6fd35deecc2c7cd3a89ba7807f574bbd115eea636332dd18da46b2b56",
+      "historical_prover_seconds": 11936.5,
+      "historical_checker_seconds": 4252.3
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:X:9:10:1",
+      "source": "C:\\lq\\recert_x\\3c\\shift_cert\\proof_3c_X9_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/fdb3ebb97d77a074c020cf9722b531f745feead47795d69d8821f69d802c6edd.bin",
+      "sha256": "fdb3ebb97d77a074c020cf9722b531f745feead47795d69d8821f69d802c6edd",
+      "bytes": 33994175,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_X9.txt",
+      "model_sha256": "e193ed0783fa12a5da9f94ebe9279ca01bd3800d2f4057c525049817a7d1b697",
+      "historical_prover_seconds": 4067.8,
+      "historical_checker_seconds": 3003.9
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:1:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z1_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/01cb9268085d70676e4d51c25e56d495e5bdfa0b30a7990faf259bdc5473afa7.bin",
+      "sha256": "01cb9268085d70676e4d51c25e56d495e5bdfa0b30a7990faf259bdc5473afa7",
+      "bytes": 5224347,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z1.txt",
+      "model_sha256": "d758d31b39baf03ad0b1ed234392064bfc57acc2b4aaa9ba3a90afe644cf6005",
+      "historical_prover_seconds": 337.5,
+      "historical_checker_seconds": 298.9
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:10:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z10_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/c0be34a7bd0d946b050f9046aff1c83eb02d8364fabe3245a9fbe15cf8582c21.bin",
+      "sha256": "c0be34a7bd0d946b050f9046aff1c83eb02d8364fabe3245a9fbe15cf8582c21",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z10.txt",
+      "model_sha256": "a347e0aafe2ae80024ffa71a146e5eb193a6929e47bead6123ff45744db5c4be",
+      "historical_prover_seconds": 1056.1,
+      "historical_checker_seconds": 946.6
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:11:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z11_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/aa48ebebcf2b83cb4fe3bce3f6d6d9e493c062ef1c6f9f27463815042b02c0ee.bin",
+      "sha256": "aa48ebebcf2b83cb4fe3bce3f6d6d9e493c062ef1c6f9f27463815042b02c0ee",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z11.txt",
+      "model_sha256": "4f124c77ff5556faccaeb093de5da47e8df7e63dfd312232c66100255689e7b7",
+      "historical_prover_seconds": 1209.2,
+      "historical_checker_seconds": 941.6
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:12:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z12_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/b66c205d9f4bd2db67669ef2c105895c259bc81122ca13c40d9816536adf8ca1.bin",
+      "sha256": "b66c205d9f4bd2db67669ef2c105895c259bc81122ca13c40d9816536adf8ca1",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z12.txt",
+      "model_sha256": "bc447cba8d487bd145be5fd7cccec42d388a20319237584c00057a9439e31254",
+      "historical_prover_seconds": 1126.9,
+      "historical_checker_seconds": 958.2
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:2:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z2_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/f2e8949adb76549fe4f331478451d73f7325f82f9c9abed629a7854a3bb5e58b.bin",
+      "sha256": "f2e8949adb76549fe4f331478451d73f7325f82f9c9abed629a7854a3bb5e58b",
+      "bytes": 13821734,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z2.txt",
+      "model_sha256": "02077f59e234bb2e1252eb93f2cfd5abb451004842ba5e09270c9e27c3a726cd",
+      "historical_prover_seconds": 1116.8,
+      "historical_checker_seconds": 1027.1
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:3:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z3_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/d7ff93f5eed64682ae8124e48fbf98b28fc10542c2552e876e0858df5cf44097.bin",
+      "sha256": "d7ff93f5eed64682ae8124e48fbf98b28fc10542c2552e876e0858df5cf44097",
+      "bytes": 15099013,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z3.txt",
+      "model_sha256": "a19c258cd7c179666819f1f5cb7679c005e4bafcecc48acbee796ea8b995a1e4",
+      "historical_prover_seconds": 1718.0,
+      "historical_checker_seconds": 1720.9
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:4:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z4_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/67c14849e2ea321926b92b40a72e2375f60e910dff5b2123b854917e7015e2f3.bin",
+      "sha256": "67c14849e2ea321926b92b40a72e2375f60e910dff5b2123b854917e7015e2f3",
+      "bytes": 15157939,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z4.txt",
+      "model_sha256": "6c0c0ddffe8bdeffefb0089955f96b8af1a01c6eb10f9f99dcd4506ec28bc714",
+      "historical_prover_seconds": 1858.8,
+      "historical_checker_seconds": 1662.6
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:5:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z5_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/924de1063dda5c2f559c1fb23443884f1cccd8c44f3519183a3643ccd5f3b5f7.bin",
+      "sha256": "924de1063dda5c2f559c1fb23443884f1cccd8c44f3519183a3643ccd5f3b5f7",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z5.txt",
+      "model_sha256": "5db37953a5e488c731fcb3014d0d8092c8584f4c805245fa346ba527e573dbfe",
+      "historical_prover_seconds": 1807.7,
+      "historical_checker_seconds": 1673.7
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:6:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z6_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/7e1973119b06416264abf1b84d784f93f3ec13a62e0ae0cfd137160f7332afa5.bin",
+      "sha256": "7e1973119b06416264abf1b84d784f93f3ec13a62e0ae0cfd137160f7332afa5",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z6.txt",
+      "model_sha256": "6bc59357b626232e5259d6f7cf61327a3b44015febe87340278f45d9a7aa3e4d",
+      "historical_prover_seconds": 2001.0,
+      "historical_checker_seconds": 1652.6
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:7:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z7_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/e6edbcacda5e0db7bd064b8bc374795fb235d447e6fcd624bba5812cec55c424.bin",
+      "sha256": "e6edbcacda5e0db7bd064b8bc374795fb235d447e6fcd624bba5812cec55c424",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z7.txt",
+      "model_sha256": "331f76d854cd4a3d845a9957a4e90c5b058c2ff4894acf467641e9a0a4c60d48",
+      "historical_prover_seconds": 1984.0,
+      "historical_checker_seconds": 1577.3
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:8:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z8_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/225fede8c91936d258bf8b6801bf64439af892be7462a7eb2d5c3ae31ae7049b.bin",
+      "sha256": "225fede8c91936d258bf8b6801bf64439af892be7462a7eb2d5c3ae31ae7049b",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z8.txt",
+      "model_sha256": "6e32940b8cbfe6258545af6457e22efbe02bfedc381f66dee317e42c3b160dfb",
+      "historical_prover_seconds": 6947.8,
+      "historical_checker_seconds": 2381.2
+    },
+    {
+      "id": "recert_20261102:3c:shift_cert:3c:Z:9:10:1",
+      "source": "C:\\lq\\recert_z\\3c\\shift_cert\\proof_3c_Z9_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/b9b3eb1a710c38c49bb01f6f5a6fb003872b08845f640bc9f1621d32bbb5292d.bin",
+      "sha256": "b9b3eb1a710c38c49bb01f6f5a6fb003872b08845f640bc9f1621d32bbb5292d",
+      "bytes": 15157966,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c/shift_cert/3c_Z9.txt",
+      "model_sha256": "ea089aa9c03e7b5da32606cac601af99a1d36090bc30bba36abaad42afcccc6d",
+      "historical_prover_seconds": 1870.7,
+      "historical_checker_seconds": 2017.6
+    },
+    {
+      "id": "recert_20261102:3c_t2:cert:3c:X:2:10:-1",
+      "source": "C:\\lq\\recert_t2x\\3c_t2\\cert\\proof_3c_X2_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/c221f0982883f94e26ed7b35493b585fecd7017a04e757962d5287b98f202a0d.bin",
+      "sha256": "c221f0982883f94e26ed7b35493b585fecd7017a04e757962d5287b98f202a0d",
+      "bytes": 23544241,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c_t2/cert/3c_X2.txt",
+      "model_sha256": "28875332778f11e52fd6d38756617fe237e94a696f8b9419fe922129220485db",
+      "historical_prover_seconds": 1503.3,
+      "historical_checker_seconds": 1391.6
+    },
+    {
+      "id": "recert_20261102:3c_t2:cert:3c:Z:2:10:-1",
+      "source": "C:\\lq\\recert_t2z\\3c_t2\\cert\\proof_3c_Z2_w10.bin",
+      "destination": "data/received_distance_proofs_20261104/41ad0eafe0702bab3d92b4cbf6d08574e5e852cb33c94159ae3dbf890450bd8c.bin",
+      "sha256": "41ad0eafe0702bab3d92b4cbf6d08574e5e852cb33c94159ae3dbf890450bd8c",
+      "bytes": 20658057,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/3c_t2/cert/3c_Z2.txt",
+      "model_sha256": "02077f59e234bb2e1252eb93f2cfd5abb451004842ba5e09270c9e27c3a726cd",
+      "historical_prover_seconds": 1389.8,
+      "historical_checker_seconds": 1336.7
+    },
+    {
+      "id": "recert_20261102:morph144:cert:morph144:X:1:11:-1",
+      "source": "C:\\lq\\recert\\morph144\\cert\\proof_morph144_X1_w11.bin",
+      "destination": "data/received_distance_proofs_20261104/1fbeb0ff91053bcf00987f038f83dd2fbc41b1e35e1d40d9d1e586d9edcc8689.bin",
+      "sha256": "1fbeb0ff91053bcf00987f038f83dd2fbc41b1e35e1d40d9d1e586d9edcc8689",
+      "bytes": 21042077,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/morph144/cert/morph144_X1.txt",
+      "model_sha256": "f3e9e6af70424b16e3e20851677f3e0c5c2e79a89fce1efb78094d4dbdd46a36",
+      "historical_prover_seconds": 114.3,
+      "historical_checker_seconds": 93.2
+    },
+    {
+      "id": "recert_20261102:morph144:cert:morph144:X:2:11:-1",
+      "source": "C:\\lq\\recert\\morph144\\cert\\proof_morph144_X2_w11.bin",
+      "destination": "data/received_distance_proofs_20261104/2d033a545da54e948dc9f37a0aee2634e9720883dbb50ef21385ac61db10c63e.bin",
+      "sha256": "2d033a545da54e948dc9f37a0aee2634e9720883dbb50ef21385ac61db10c63e",
+      "bytes": 49854917,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/morph144/cert/morph144_X2.txt",
+      "model_sha256": "bf6bbb3f726e2e8ef2a51fc9cc6b61d0dde5e1fbda6bc3745049baec5295e8c6",
+      "historical_prover_seconds": 374.2,
+      "historical_checker_seconds": 296.1
+    },
+    {
+      "id": "recert_20261102:morph144:cert:morph144:Z:1:11:-1",
+      "source": "C:\\lq\\recert\\morph144\\cert\\proof_morph144_Z1_w11.bin",
+      "destination": "data/received_distance_proofs_20261104/d4f7e462bb4196bb0b2640f97fd4d77d6746296f4eaa98c777f2d3366df4d0bc.bin",
+      "sha256": "d4f7e462bb4196bb0b2640f97fd4d77d6746296f4eaa98c777f2d3366df4d0bc",
+      "bytes": 23632455,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/morph144/cert/morph144_Z1.txt",
+      "model_sha256": "4c21e750dead11380efefea09e297fa394e9fd29d3bbedbfa5391c866b57fd7a",
+      "historical_prover_seconds": 120.7,
+      "historical_checker_seconds": 97.0
+    },
+    {
+      "id": "recert_20261102:morph144:cert:morph144:Z:2:11:-1",
+      "source": "C:\\lq\\recert\\morph144\\cert\\proof_morph144_Z2_w11.bin",
+      "destination": "data/received_distance_proofs_20261104/8e513d9a0ad292f8578b7ef2af7bbc4308fc3a4c385aac593dd295d920403079.bin",
+      "sha256": "8e513d9a0ad292f8578b7ef2af7bbc4308fc3a4c385aac593dd295d920403079",
+      "bytes": 53457425,
+      "model": "evidence/circuit_distance_exact/recert_20261102/models/morph144/cert/morph144_Z2.txt",
+      "model_sha256": "4ed97e51448d529e6f78556ee6ddcda6efa4235513915eb862a0d897d9b2f7ec",
+      "historical_prover_seconds": 385.5,
+      "historical_checker_seconds": 311.1
+    }
+  ],
+  "total_files": 30,
+  "total_bytes": 732193669,
+  "historical_timing": {
+    "source": "evidence/circuit_distance_exact/recert_20261102/manifest.json",
+    "threads": 8,
+    "checker_seconds_sum": 52858.6,
+    "checker_seconds_max": 4252.3,
+    "prover_seconds_sum": 70413.4,
+    "forecast_only": true
+  },
+  "source_sha256_lf": {
+    "experiments/circuit_distance_exact/cdist_prove.c": "2339dad4478e32dd5350424bb9bfaed7ce5bf9839030b647dae43ffb9b2fceab",
+    "experiments/circuit_distance_exact/ccheck.c": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+    "tools/distance_receipt_inventory.py": "3dc0f4690ec497a1676efd27af18cca81a034deec99cf7f64cf2ff72c21576b7"
+  },
+  "manifest_sha256_lf": {
+    "evidence/circuit_distance_exact/recert_20261102/manifest.json": "8108de5d5955224eeadba40b84366dbb5ba423a24314c765375d501d76fff7f0",
+    "evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json": "11570b0437b458987dc43ab2765a9d9fa33e69e3103026f4bd213108bc80bace"
+  }
+}
