@@ -1,0 +1,6 @@
+{
+  "valid": 16,
+  "refused": 64,
+  "epsilon_refusals": 1,
+  "status": "PASS"
+}

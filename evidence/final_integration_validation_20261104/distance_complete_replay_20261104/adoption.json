@@ -1,0 +1,45 @@
+{
+  "document_after_sha256": "7848cfa47c6f5dd6553a00f7eed1f53911ac8beef1c14217a28e775e35d5fc9e",
+  "error": null,
+  "finished_utc": "2026-11-04T16:48:29.784339+00:00",
+  "helper_sha256": "eeb16b0e0ade1c2578c049f19ea53ca3442b091c8efb5316030909343032eb8b",
+  "manuscript_replaced": false,
+  "new_original_payloads": {
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/copy_manifest.json": "4bf966d66d8e9739d43c1443c82118697658b8b007d4c16c48ec2ca30277f688",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/copy_started.json": "a0f0c401eac4d3e53c27474db1067d05e2ece99e901db01b8ed6dd41232c6e34",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/proof_archive.json": "df646b30eb1b88ad492c557d0349802dbee33275be427b093fafc763d5d91866",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/recovery_plan.json": "7cae8f6b95f7a914ca5320320a8a8b6c947d44bb80ff8abe174a700c33112c4b",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/replay.stderr.log": "e742d7fc6e3e54cbf67927478c9643bb1d557ab38dcabf262c63948ec95b7c24",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/replay.stdout.log": "2845630f2119728adf2d0fa69014808ca801aea1a296506aef7b8014c0da52bb",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/replay_started.json": "c424d7fcc933bb9bbc483623d647de0bd66ceeaff421f60a235bb301fbc267df",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/run_distance_recovery.py": "6d640337f456080cbdba9a564cbc9e537e0d72bfe30ea0799baeae1fa3f9bba5",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json": "11570b0437b458987dc43ab2765a9d9fa33e69e3103026f4bd213108bc80bace",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/evidence/circuit_distance_exact/recert_20261102/manifest.json": "8108de5d5955224eeadba40b84366dbb5ba423a24314c765375d501d76fff7f0",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/experiments/circuit_distance_exact/ccheck.c": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/experiments/circuit_distance_exact/cdist_prove.c": "2339dad4478e32dd5350424bb9bfaed7ce5bf9839030b647dae43ffb9b2fceab",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/tools/distance_receipt_inventory.py": "3dc0f4690ec497a1676efd27af18cca81a034deec99cf7f64cf2ff72c21576b7",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/run/distance_receipt_replay_20261104_recovered.binding.json": "b50a8781b3aecb08b2b8a5e411992ebbdd463b84b86d8282ddca091cbd8a4c51",
+    "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/run/distance_receipt_replay_20261104_recovered.json": "873bfcc3a468bc7800c2b29ba56576effdf7f339a26d33e5cdef9a256b631224"
+  },
+  "original_execution_head_preserved": "15c34c552d427e47bec8aad5b847140bc01b88f6",
+  "plan_sha256": "f1de987a743e3c250a919352d50e85922ec19db5a717cf5a0ed0bc47991e50f0",
+  "private_identity_before": {
+    "HEAD_sha256": "e3fb54ed30afcc7a64f164d5a614e188241a767c7f53ca378fba30b20e86ab3a",
+    "commit": "40fd68350368666ca7428033031add0b60928a16",
+    "git_dir": "C:\\Users\\Josh\\Projects\\ONE_Q\\.git\\worktrees\\certified_model_runtime_20261103",
+    "index_sha256": "c0a89b74fd602a0adda53399dac67c9215d8dae8ff0fbc9356d40a81ad88445b"
+  },
+  "private_review_packet_copied": false,
+  "public_identity_before": {
+    "HEAD_sha256": "40dbc21d4f2b719d6c785f00ca131b6cc87c1c4104a6d5bd67d4f77f922c5b76",
+    "commit": "11bafa23cd46a60f9901eb1d71613c13dca95de5",
+    "git_dir": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\public_certificates_review_20261103\\.git",
+    "index_sha256": "652926c8552d3645f8ad89d868285babe6619cd524700441964d015030ba1ef0"
+  },
+  "publication": false,
+  "schema": "oneq-public-distance-completion-adoption/1",
+  "started_utc": "2026-11-04T16:48:29.370976+00:00",
+  "status": "APPLIED",
+  "wall_original_status": "REFUSED_INCOMPLETE_OR_MOVED_EXECUTION",
+  "wall_terminal_sha256": "a985e7d988c3dd96c873d673ba46e5a114f5fe17be9dfc77b8af96bb7f060882"
+}

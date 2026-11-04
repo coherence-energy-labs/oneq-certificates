@@ -13,7 +13,7 @@ instance the result is about. So this command:
   4. re-derives each receipt's syndrome, candidate and proof hash, and its
      agreement with the per-shot record the manifest binds it to;
   5. checks every flat receipt with the production exact checker AND the
-     pinned independently written reference checker, and every tree with the
+     pinned, separately written reference checker, and every tree with the
      production tree checker AND the separately written tree checker B;
   6. reports COMPLETE only when every expected cohort count is met exactly.
 
@@ -225,7 +225,7 @@ def main() -> int:
     label = f"SUBSET ({a.subset})" if a.subset else "COMPLETE"
     if ok:
         total = sum(passed.values())
-        print(f"{label} REPLAY PASSED: {total} receipts, each checked by two independently "
+        print(f"{label} REPLAY PASSED: {total} receipts, each checked by two separately "
               f"written checkers against the pinned instance -- {passed}")
         return 0
     print(f"{label} REPLAY FAILED ({len(fails)} problem(s))")

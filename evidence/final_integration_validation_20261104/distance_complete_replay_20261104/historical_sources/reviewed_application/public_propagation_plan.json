@@ -1,0 +1,172 @@
+{
+  "application_requirements": [
+    "Preserve actual old public guide before replacement.",
+    "Require all new evidence destinations absent and all exact source/public preimage pins.",
+    "Copy original bytes exclusively, verify all hashes again and retain original execution metadata.",
+    "Change only the public guide and the explicitly enumerated new evidence paths.",
+    "Keep the dated missing-proof inventory unchanged and do not invent an absent historical replay record.",
+    "Do not change release bundles/tags, public manuscript scientific text, private REVIEW_PACKET, Git index or HEAD in the copier."
+  ],
+  "copy_private_review_packet": false,
+  "document_mutation": {
+    "after_raw_sha256": "7848cfa47c6f5dd6553a00f7eed1f53911ac8beef1c14217a28e775e35d5fc9e",
+    "before_raw_sha256": "f861afce0a3034e82563aa1b97719e667669ccc581bad4745d2cb94fe2692d1c",
+    "path": "DISTANCE_PROOF_REPLAY.md"
+  },
+  "execution_head_preserved": "15c34c552d427e47bec8aad5b847140bc01b88f6",
+  "expected_public_head": "11bafa23cd46a60f9901eb1d71613c13dca95de5",
+  "new_exact_original_payloads": [
+    {
+      "bytes": 204109,
+      "destination": "historical_sources/executed_history/copy_manifest.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/copy_manifest.json",
+      "sha256": "4bf966d66d8e9739d43c1443c82118697658b8b007d4c16c48ec2ca30277f688",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/copy_manifest.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\copy_manifest.json"
+    },
+    {
+      "bytes": 101037,
+      "destination": "historical_sources/executed_history/copy_started.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/copy_started.json",
+      "sha256": "a0f0c401eac4d3e53c27474db1067d05e2ece99e901db01b8ed6dd41232c6e34",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/copy_started.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\copy_started.json"
+    },
+    {
+      "bytes": 8690,
+      "destination": "historical_sources/executed_history/proof_archive.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/proof_archive.json",
+      "sha256": "df646b30eb1b88ad492c557d0349802dbee33275be427b093fafc763d5d91866",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/proof_archive.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\proof_archive.json"
+    },
+    {
+      "bytes": 21131,
+      "destination": "historical_sources/executed_history/recovery_plan.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/recovery_plan.json",
+      "sha256": "7cae8f6b95f7a914ca5320320a8a8b6c947d44bb80ff8abe174a700c33112c4b",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/recovery_plan.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\recovery_plan.json"
+    },
+    {
+      "bytes": 2344,
+      "destination": "historical_sources/executed_history/replay.stderr.log",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/replay.stderr.log",
+      "sha256": "e742d7fc6e3e54cbf67927478c9643bb1d557ab38dcabf262c63948ec95b7c24",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/replay.stderr.log",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\replay.stderr.log"
+    },
+    {
+      "bytes": 406,
+      "destination": "historical_sources/executed_history/replay.stdout.log",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/replay.stdout.log",
+      "sha256": "2845630f2119728adf2d0fa69014808ca801aea1a296506aef7b8014c0da52bb",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/replay.stdout.log",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\replay.stdout.log"
+    },
+    {
+      "bytes": 105639,
+      "destination": "historical_sources/executed_history/replay_started.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/replay_started.json",
+      "sha256": "c424d7fcc933bb9bbc483623d647de0bd66ceeaff421f60a235bb301fbc267df",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/replay_started.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\replay_started.json"
+    },
+    {
+      "bytes": 17793,
+      "destination": "historical_sources/executed_history/run_distance_recovery.py",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/run_distance_recovery.py",
+      "sha256": "6d640337f456080cbdba9a564cbc9e537e0d72bfe30ea0799baeae1fa3f9bba5",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/run_distance_recovery.py",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\run_distance_recovery.py"
+    },
+    {
+      "bytes": 17359,
+      "destination": "historical_sources/executed_history/sources/evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json",
+      "sha256": "11570b0437b458987dc43ab2765a9d9fa33e69e3103026f4bd213108bc80bace",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/sources/evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\sources\\evidence\\circuit_distance_exact\\ibm_recert_20261026\\manifest.json"
+    },
+    {
+      "bytes": 297181,
+      "destination": "historical_sources/executed_history/sources/evidence/circuit_distance_exact/recert_20261102/manifest.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/evidence/circuit_distance_exact/recert_20261102/manifest.json",
+      "sha256": "8108de5d5955224eeadba40b84366dbb5ba423a24314c765375d501d76fff7f0",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/sources/evidence/circuit_distance_exact/recert_20261102/manifest.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\sources\\evidence\\circuit_distance_exact\\recert_20261102\\manifest.json"
+    },
+    {
+      "bytes": 30181,
+      "destination": "historical_sources/executed_history/sources/experiments/circuit_distance_exact/ccheck.c",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/experiments/circuit_distance_exact/ccheck.c",
+      "sha256": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/sources/experiments/circuit_distance_exact/ccheck.c",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\sources\\experiments\\circuit_distance_exact\\ccheck.c"
+    },
+    {
+      "bytes": 22890,
+      "destination": "historical_sources/executed_history/sources/experiments/circuit_distance_exact/cdist_prove.c",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/experiments/circuit_distance_exact/cdist_prove.c",
+      "sha256": "2339dad4478e32dd5350424bb9bfaed7ce5bf9839030b647dae43ffb9b2fceab",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/sources/experiments/circuit_distance_exact/cdist_prove.c",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\sources\\experiments\\circuit_distance_exact\\cdist_prove.c"
+    },
+    {
+      "bytes": 15946,
+      "destination": "historical_sources/executed_history/sources/tools/distance_receipt_inventory.py",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/sources/tools/distance_receipt_inventory.py",
+      "sha256": "3dc0f4690ec497a1676efd27af18cca81a034deec99cf7f64cf2ff72c21576b7",
+      "source": "evidence/continuation_20261104/distance_recovery_20261104_history/sources/tools/distance_receipt_inventory.py",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\continuation_20261104\\distance_recovery_20261104_history\\sources\\tools\\distance_receipt_inventory.py"
+    },
+    {
+      "bytes": 666052,
+      "destination": "run/distance_receipt_replay_20261104_recovered.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/run/distance_receipt_replay_20261104_recovered.json",
+      "sha256": "873bfcc3a468bc7800c2b29ba56576effdf7f339a26d33e5cdef9a256b631224",
+      "source": "evidence/distance_receipt_replay_20261104_recovered.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\distance_receipt_replay_20261104_recovered.json"
+    },
+    {
+      "bytes": 106443,
+      "destination": "run/distance_receipt_replay_20261104_recovered.binding.json",
+      "public_destination": "evidence/final_integration_validation_20261104/distance_complete_replay_20261104/run/distance_receipt_replay_20261104_recovered.binding.json",
+      "sha256": "b50a8781b3aecb08b2b8a5e411992ebbdd463b84b86d8282ddca091cbd8a4c51",
+      "source": "evidence/distance_receipt_replay_20261104_recovered.binding.json",
+      "source_absolute": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104\\evidence\\distance_receipt_replay_20261104_recovered.binding.json"
+    }
+  ],
+  "new_payload_bytes": 1617201,
+  "new_payload_count": 15,
+  "public_prior_record_observation": {
+    "evidence/circuit_distance_exact/missing_proofs_20261103.json": {
+      "bytes": 25694,
+      "sha256": "2c8f34ef1983bbb04c55b9101fc81fe5de708ed5d638d99ed5f64ec6b63ced74",
+      "state": "PRESENT"
+    },
+    "evidence/distance_receipt_replay_20261103.json": {
+      "state": "ABSENT"
+    }
+  },
+  "public_root": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\public_certificates_review_20261103",
+  "publish_signed_release": false,
+  "regenerate_proofs_or_reports": false,
+  "replace_public_manuscript": false,
+  "requires_root_review_and_separate_guarded_application": true,
+  "schema": "oneq-public-distance-completion-propagation-proposal/1",
+  "source_distance_preservation_plan_sha256": "37204b209145e2b8cbd6640fddea6c0237d7e30771c95cfd8648a11b62256d7a",
+  "state": "STAGED_NOT_APPLIED",
+  "unchanged_public_absent_paths": [
+    "evidence/distance_receipt_replay_20261103.json"
+  ],
+  "unchanged_public_files": {
+    "evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json": "11570b0437b458987dc43ab2765a9d9fa33e69e3103026f4bd213108bc80bace",
+    "evidence/circuit_distance_exact/missing_proofs_20261103.json": "2c8f34ef1983bbb04c55b9101fc81fe5de708ed5d638d99ed5f64ec6b63ced74",
+    "evidence/circuit_distance_exact/recert_20261102/manifest.json": "8108de5d5955224eeadba40b84366dbb5ba423a24314c765375d501d76fff7f0",
+    "experiments/circuit_distance_exact/ccheck.c": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+    "experiments/circuit_distance_exact/cdist_prove.c": "2339dad4478e32dd5350424bb9bfaed7ce5bf9839030b647dae43ffb9b2fceab",
+    "paper/circuit-distance/main.tex": "0213fdb1d7eb1653dd78f7684d4c8aedaf68ab5fd93217da609f65293dcfca9f",
+    "tools/distance_receipt_inventory.py": "3dc0f4690ec497a1676efd27af18cca81a034deec99cf7f64cf2ff72c21576b7"
+  }
+}

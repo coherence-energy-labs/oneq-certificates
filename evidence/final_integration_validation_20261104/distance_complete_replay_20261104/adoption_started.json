@@ -1,0 +1,25 @@
+{
+  "helper_sha256": "eeb16b0e0ade1c2578c049f19ea53ca3442b091c8efb5316030909343032eb8b",
+  "manuscript_replaced": false,
+  "original_execution_head_preserved": "15c34c552d427e47bec8aad5b847140bc01b88f6",
+  "plan_sha256": "f1de987a743e3c250a919352d50e85922ec19db5a717cf5a0ed0bc47991e50f0",
+  "private_identity_before": {
+    "HEAD_sha256": "e3fb54ed30afcc7a64f164d5a614e188241a767c7f53ca378fba30b20e86ab3a",
+    "commit": "40fd68350368666ca7428033031add0b60928a16",
+    "git_dir": "C:\\Users\\Josh\\Projects\\ONE_Q\\.git\\worktrees\\certified_model_runtime_20261103",
+    "index_sha256": "c0a89b74fd602a0adda53399dac67c9215d8dae8ff0fbc9356d40a81ad88445b"
+  },
+  "private_review_packet_copied": false,
+  "public_identity_before": {
+    "HEAD_sha256": "40dbc21d4f2b719d6c785f00ca131b6cc87c1c4104a6d5bd67d4f77f922c5b76",
+    "commit": "11bafa23cd46a60f9901eb1d71613c13dca95de5",
+    "git_dir": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\public_certificates_review_20261103\\.git",
+    "index_sha256": "652926c8552d3645f8ad89d868285babe6619cd524700441964d015030ba1ef0"
+  },
+  "publication": false,
+  "schema": "oneq-public-distance-completion-adoption/1",
+  "started_utc": "2026-11-04T16:48:29.370976+00:00",
+  "status": "STARTED",
+  "wall_original_status": "REFUSED_INCOMPLETE_OR_MOVED_EXECUTION",
+  "wall_terminal_sha256": "a985e7d988c3dd96c873d673ba46e5a114f5fe17be9dfc77b8af96bb7f060882"
+}

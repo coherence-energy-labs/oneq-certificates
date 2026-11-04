@@ -1,0 +1,153 @@
+{
+  "schema": "oneq-distance-proof-archive/1",
+  "status": "HASH_VERIFIED",
+  "completed_utc": "2026-11-04T06:11:03.647207+00:00",
+  "execution_root": "C:\\Users\\Josh\\Projects\\ONE_Q_wt\\p1_final_qualification_20261104",
+  "execution_head": "15c34c552d427e47bec8aad5b847140bc01b88f6",
+  "archive_path": ".build/continuation_20261104/distance_proof_archive_20261104/oneq-distance-proofs-20261104.zip",
+  "archive_sha256": "3d08b51b1325777d987f6a7c5ac82ed29d0c2d5ba547658bf4cfe43ad2579f52",
+  "archive_bytes": 370620735,
+  "member_count": 32,
+  "raw_proof_bytes": 732193669,
+  "all_members_read_back_and_sha256_verified": true,
+  "public_commit": "11bafa23cd46a60f9901eb1d71613c13dca95de5",
+  "public_input_comparison_sha256": "344c283b2b7e926a8fbe9834b0ccbe8ebeeaf32064203c604658ac02b2a3b511",
+  "plan_sha256": "7cae8f6b95f7a914ca5320320a8a8b6c947d44bb80ff8abe174a700c33112c4b",
+  "copy_manifest_sha256": "4bf966d66d8e9739d43c1443c82118697658b8b007d4c16c48ec2ca30277f688",
+  "helper_sha256": "bc48a298f171bad036f6879f15b03266c3d7d9344555b9f786ce78e419fa4e17",
+  "recovery_helper_sha256": "6d640337f456080cbdba9a564cbc9e537e0d72bfe30ea0799baeae1fa3f9bba5",
+  "source_input_head_index_stable": true,
+  "members": {
+    "oneq-distance-proofs-20261104/SHA256SUMS.json": {
+      "sha256": "65b349c4d4dc627dbefb226bb369afdd85db33571541011f73a3f03657768eaa",
+      "bytes": 15054
+    },
+    "oneq-distance-proofs-20261104/README.md": {
+      "sha256": "f8cce0bb4a07afdc615a16d2ff432e4f8815973ee3390b505abd6a25fcebaea9",
+      "bytes": 3504
+    },
+    "oneq-distance-proofs-20261104/proofs/1fb1ac1cfc47756e55df56b5b8b5299ce4e920a127273b0e88e068029fea29c1.bin": {
+      "sha256": "1fb1ac1cfc47756e55df56b5b8b5299ce4e920a127273b0e88e068029fea29c1",
+      "bytes": 6639337
+    },
+    "oneq-distance-proofs-20261104/proofs/8d233ba6060e2caa5033a30d8b634b9c73abc7a7680ef1abbc14bfc1098acca0.bin": {
+      "sha256": "8d233ba6060e2caa5033a30d8b634b9c73abc7a7680ef1abbc14bfc1098acca0",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/8cf6072df52d1221dcd39cbb2a135883a21641c319f910db30210f8222502fa1.bin": {
+      "sha256": "8cf6072df52d1221dcd39cbb2a135883a21641c319f910db30210f8222502fa1",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/83bcde22ef9048f43af624d0df6138a9909c8139473665212f125ced35524e75.bin": {
+      "sha256": "83bcde22ef9048f43af624d0df6138a9909c8139473665212f125ced35524e75",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/7ac39a7c700b4a1531c4e9e3ccbcb51a451f3a8ba0a42b1d81c3cf6432007b66.bin": {
+      "sha256": "7ac39a7c700b4a1531c4e9e3ccbcb51a451f3a8ba0a42b1d81c3cf6432007b66",
+      "bytes": 23542582
+    },
+    "oneq-distance-proofs-20261104/proofs/ef11d909137d47bf55f2bdf090856a1e09c18faddb38f842c80b5ff96cda0f1d.bin": {
+      "sha256": "ef11d909137d47bf55f2bdf090856a1e09c18faddb38f842c80b5ff96cda0f1d",
+      "bytes": 33308383
+    },
+    "oneq-distance-proofs-20261104/proofs/8a776f2a3ef2d7e61f477e67063ecadbe870b6e803ae4514c6294110354f7ea4.bin": {
+      "sha256": "8a776f2a3ef2d7e61f477e67063ecadbe870b6e803ae4514c6294110354f7ea4",
+      "bytes": 33994034
+    },
+    "oneq-distance-proofs-20261104/proofs/59ec0359e4dd3917db63588c2eae41fb96fdaaf18d8fe05d37a9ef1062d404d2.bin": {
+      "sha256": "59ec0359e4dd3917db63588c2eae41fb96fdaaf18d8fe05d37a9ef1062d404d2",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/ecd6a83e045b2d5220396bc34c95fa2d3de08960b706d7779048de008ad10a68.bin": {
+      "sha256": "ecd6a83e045b2d5220396bc34c95fa2d3de08960b706d7779048de008ad10a68",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/524839a45555de701e1340fa3c747abc289aa9b7d5f406d21e281d1e782af44f.bin": {
+      "sha256": "524839a45555de701e1340fa3c747abc289aa9b7d5f406d21e281d1e782af44f",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/87b85fef757b2ce805f6109c8b4805aecb4bbd9b4e98131a05c958b7d435769a.bin": {
+      "sha256": "87b85fef757b2ce805f6109c8b4805aecb4bbd9b4e98131a05c958b7d435769a",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/fdb3ebb97d77a074c020cf9722b531f745feead47795d69d8821f69d802c6edd.bin": {
+      "sha256": "fdb3ebb97d77a074c020cf9722b531f745feead47795d69d8821f69d802c6edd",
+      "bytes": 33994175
+    },
+    "oneq-distance-proofs-20261104/proofs/01cb9268085d70676e4d51c25e56d495e5bdfa0b30a7990faf259bdc5473afa7.bin": {
+      "sha256": "01cb9268085d70676e4d51c25e56d495e5bdfa0b30a7990faf259bdc5473afa7",
+      "bytes": 5224347
+    },
+    "oneq-distance-proofs-20261104/proofs/c0be34a7bd0d946b050f9046aff1c83eb02d8364fabe3245a9fbe15cf8582c21.bin": {
+      "sha256": "c0be34a7bd0d946b050f9046aff1c83eb02d8364fabe3245a9fbe15cf8582c21",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/aa48ebebcf2b83cb4fe3bce3f6d6d9e493c062ef1c6f9f27463815042b02c0ee.bin": {
+      "sha256": "aa48ebebcf2b83cb4fe3bce3f6d6d9e493c062ef1c6f9f27463815042b02c0ee",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/b66c205d9f4bd2db67669ef2c105895c259bc81122ca13c40d9816536adf8ca1.bin": {
+      "sha256": "b66c205d9f4bd2db67669ef2c105895c259bc81122ca13c40d9816536adf8ca1",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/f2e8949adb76549fe4f331478451d73f7325f82f9c9abed629a7854a3bb5e58b.bin": {
+      "sha256": "f2e8949adb76549fe4f331478451d73f7325f82f9c9abed629a7854a3bb5e58b",
+      "bytes": 13821734
+    },
+    "oneq-distance-proofs-20261104/proofs/d7ff93f5eed64682ae8124e48fbf98b28fc10542c2552e876e0858df5cf44097.bin": {
+      "sha256": "d7ff93f5eed64682ae8124e48fbf98b28fc10542c2552e876e0858df5cf44097",
+      "bytes": 15099013
+    },
+    "oneq-distance-proofs-20261104/proofs/67c14849e2ea321926b92b40a72e2375f60e910dff5b2123b854917e7015e2f3.bin": {
+      "sha256": "67c14849e2ea321926b92b40a72e2375f60e910dff5b2123b854917e7015e2f3",
+      "bytes": 15157939
+    },
+    "oneq-distance-proofs-20261104/proofs/924de1063dda5c2f559c1fb23443884f1cccd8c44f3519183a3643ccd5f3b5f7.bin": {
+      "sha256": "924de1063dda5c2f559c1fb23443884f1cccd8c44f3519183a3643ccd5f3b5f7",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/7e1973119b06416264abf1b84d784f93f3ec13a62e0ae0cfd137160f7332afa5.bin": {
+      "sha256": "7e1973119b06416264abf1b84d784f93f3ec13a62e0ae0cfd137160f7332afa5",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/e6edbcacda5e0db7bd064b8bc374795fb235d447e6fcd624bba5812cec55c424.bin": {
+      "sha256": "e6edbcacda5e0db7bd064b8bc374795fb235d447e6fcd624bba5812cec55c424",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/225fede8c91936d258bf8b6801bf64439af892be7462a7eb2d5c3ae31ae7049b.bin": {
+      "sha256": "225fede8c91936d258bf8b6801bf64439af892be7462a7eb2d5c3ae31ae7049b",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/b9b3eb1a710c38c49bb01f6f5a6fb003872b08845f640bc9f1621d32bbb5292d.bin": {
+      "sha256": "b9b3eb1a710c38c49bb01f6f5a6fb003872b08845f640bc9f1621d32bbb5292d",
+      "bytes": 15157966
+    },
+    "oneq-distance-proofs-20261104/proofs/c221f0982883f94e26ed7b35493b585fecd7017a04e757962d5287b98f202a0d.bin": {
+      "sha256": "c221f0982883f94e26ed7b35493b585fecd7017a04e757962d5287b98f202a0d",
+      "bytes": 23544241
+    },
+    "oneq-distance-proofs-20261104/proofs/41ad0eafe0702bab3d92b4cbf6d08574e5e852cb33c94159ae3dbf890450bd8c.bin": {
+      "sha256": "41ad0eafe0702bab3d92b4cbf6d08574e5e852cb33c94159ae3dbf890450bd8c",
+      "bytes": 20658057
+    },
+    "oneq-distance-proofs-20261104/proofs/1fbeb0ff91053bcf00987f038f83dd2fbc41b1e35e1d40d9d1e586d9edcc8689.bin": {
+      "sha256": "1fbeb0ff91053bcf00987f038f83dd2fbc41b1e35e1d40d9d1e586d9edcc8689",
+      "bytes": 21042077
+    },
+    "oneq-distance-proofs-20261104/proofs/2d033a545da54e948dc9f37a0aee2634e9720883dbb50ef21385ac61db10c63e.bin": {
+      "sha256": "2d033a545da54e948dc9f37a0aee2634e9720883dbb50ef21385ac61db10c63e",
+      "bytes": 49854917
+    },
+    "oneq-distance-proofs-20261104/proofs/d4f7e462bb4196bb0b2640f97fd4d77d6746296f4eaa98c777f2d3366df4d0bc.bin": {
+      "sha256": "d4f7e462bb4196bb0b2640f97fd4d77d6746296f4eaa98c777f2d3366df4d0bc",
+      "bytes": 23632455
+    },
+    "oneq-distance-proofs-20261104/proofs/8e513d9a0ad292f8578b7ef2af7bbc4308fc3a4c385aac593dd295d920403079.bin": {
+      "sha256": "8e513d9a0ad292f8578b7ef2af7bbc4308fc3a4c385aac593dd295d920403079",
+      "bytes": 53457425
+    }
+  },
+  "fresh_replay_status_at_packaging": "RUNNING_OR_INTERRUPTED; consult the separate execution record",
+  "fresh_replay_result_included": false,
+  "scope": "Delivery of exact retained payloads only; no additional mathematical or hardware claim."
+}

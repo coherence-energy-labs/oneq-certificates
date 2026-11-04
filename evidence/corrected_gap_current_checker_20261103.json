@@ -1,0 +1,27 @@
+{
+  "accepted": true,
+  "families": 3,
+  "reference_witnesses_rechecked": 1047,
+  "scope": "graph costs, proof verdicts, TRAIN selection, denominators and timing aggregation",
+  "qualification": "retained-evidence replay under explicitly identified current sources",
+  "summary_sha256": "144afe41d783eb730b1c467f238c23a1f87977ee88265228b801cfe53e7699c0",
+  "trace_sha256": "d907c5814755b59d37aeb2e1b590669c15a9f45deda61aad770aa7b2f1b47b25",
+  "measured_source_commit": "282ad3b38f724428582d1102fcfcaf4d2c0966d4",
+  "measured_sources_identical": false,
+  "source_changes": {
+    "src/oneq/matching_cert_epsilon.py": {
+      "measured_sha256": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+      "current_sha256": "ac8ef04df05a6eb5cf40d6effc7f18f60f8348e5c84d90b37e2d87f13e401fec"
+    }
+  },
+  "current_source_sha256": {
+    "experiments/m0_prior_art/gap_distribution.py": "4b1ea8af65292a5f6c32f78a044e170004742ef8d6c0873901d81451b6162585",
+    "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+    "src/oneq/matching_cert_epsilon.py": "ac8ef04df05a6eb5cf40d6effc7f18f60f8348e5c84d90b37e2d87f13e401fec",
+    "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+    "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+    "tools/replay_corrected_gaps.py": "b2b2c5ef06c5a0a9dd41e12f30d31d4bc7d29e7bb48b2d3b8214975cdd1bed72"
+  },
+  "new_measurement": false,
+  "historical_scale_campaigns_requalified": false
+}

@@ -1,0 +1,9 @@
+{
+  "seed": 20261103,
+  "graphs": 160,
+  "feasible_checked": 1930,
+  "infeasible_refused": 498,
+  "blossom_certificates": 615,
+  "forgeries_refused": 5541,
+  "status": "PASS"
+}

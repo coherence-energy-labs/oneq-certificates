@@ -219,3 +219,26 @@ def test_verifier_b_agrees_with_check_epsilon_and_is_sound_on_random_instances()
             assert w - opt <= b[1]
         seen.add(a.status)
     assert {"EXACT_OPTIMAL", "NOT_PROVEN"} <= seen
+
+
+def test_the_substitution_attack_replays_against_a_different_graph(monkeypatch):
+    """2026-11-03: the attack took the first OTHER configuration in sorted order. Once fresh_sim_d5_r25 (which
+    re-samples sim_d5_r25's circuit, so it is the same graph) was merged, it came first, and the strict replay of
+    sim_d5_r25 "accepted" 4,000 substituted graphs that were its own graph -- a check that could not fail."""
+    shas = {"fresh_sim": "g1", "sim": "g1", "willow": "g2", "solo": "g3"}
+    monkeypatch.setattr(R, "_instance", lambda name: ([], shas[name]))
+    merged = sorted(shas)                                            # fresh_sim, sim, solo, willow
+    assert R.substitute_for("sim", merged) == "solo"                 # not fresh_sim: that is the same graph
+    assert R.substitute_for("fresh_sim", merged) == "solo"           # not sim, for the same reason
+    assert R.substitute_for("willow", merged) == "fresh_sim"
+    assert R.substitute_for("sim", ["fresh_sim", "sim"]) is None     # no other graph: no attack, not a fake one
+
+
+def test_the_real_simulation_configurations_share_a_graph_and_are_never_each_others_substitute():
+    real = sorted(p.parent.name for p in R.INDEX.glob("*/summary.json"))
+    if not {"sim_d5_r25", "fresh_sim_d5_r25"} <= set(real):
+        pytest.skip("the simulation reruns are not merged here")
+    assert R._instance("sim_d5_r25")[1] == R._instance("fresh_sim_d5_r25")[1]
+    for n in real:
+        other = R.substitute_for(n, real)
+        assert other is not None and R._instance(other)[1] != R._instance(n)[1], n
