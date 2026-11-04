@@ -1,0 +1,5 @@
+# Local verification outputs and Python caches
+.build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
