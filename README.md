@@ -49,13 +49,13 @@ are a new reviewable revision, outside the historical signed release. They do
 not establish logical-error improvement, physical model adequacy, real-time
 deployment, or outside human reproduction.
 
-The circuit-distance proof inventory also exposes an existing evidence gap:
-274 of 304 manifested proof blobs are present and 30 are missing. The complete
-replay checks every available blob and returns an explicit incomplete-set
-status. Of the shipped proofs, 218 establish prefix irreducible exclusions
-(including all 22 IBM receipts), and 56 establish global bounds for their
-specific finite models. See [proof availability and replay](DISTANCE_PROOF_REPLAY.md)
-for the single command, exact missing hashes and statement scopes.
+The November 4 circuit-distance replay verified all 304 manifested receipts:
+62 global finite-model bounds and 242 prefix irreducible exclusions. This was
+a project-run replay, not outside human reproduction. The checkout contains
+274 proof blobs; the other 30 were recovered into a separate ZIP that is not
+included in Git or the historical release. See
+[proof availability and replay](DISTANCE_PROOF_REPLAY.md) for the commands,
+required archive, current access limitation and statement scopes.
 
 ## Current checker input contracts
 
@@ -105,8 +105,9 @@ the hash in `evidence/circuit_distance_exact/recert_20261102/manifest.json`,
 which then pins the proof the checker decides. Where that proof differs from the
 original record, the prover of the record's day, compiled from git, reproduced
 the recorded proof (`recert_old_prover.py`, `records/recert_old_prover.jsonl`).
-These are historical generation records; missing proof bytes remain
-unverified in the new availability/replay report above.
+These historical generation records remain unchanged. The November 4 review
+update linked above separately records the completed 304-receipt replay;
+the historical release still omits the 30 recovered payloads.
 
 ## What runs from this tree, checked from a clean copy
 

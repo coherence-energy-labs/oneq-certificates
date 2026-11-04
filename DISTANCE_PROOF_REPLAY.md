@@ -5,6 +5,10 @@ receipts and 282 other circuit-distance receipts. This checkout supplies 274
 proof blobs. The other 30 blobs, totaling **732,193,669 bytes**, are not tracked
 in Git or included in the published release.
 
+The completed November 4 replay report is recorded at review revision
+`15a0c5fd2fc991d7a96583d90acd5ff1c9377fde`, after the historical
+`v2026.11.03` release. Use this review checkout for the commands below.
+
 **Recovery and replay update, November 4, 2026.** All 30 omitted payloads have been recovered
 and matched to their exact manifest hashes. The
 [recovery record](evidence/final_integration_validation_20261104/distance_complete_replay_20261104/historical_sources/executed_history/copy_manifest.json)
@@ -71,11 +75,24 @@ freshly verified receipts. It cannot produce a mathematical success status.
 
 ## Replay a received proof set
 
-Place received raw `.bin` proofs in a directory and run:
+The recovered proofs are packaged as `oneq-distance-proofs-20261104.zip`
+(370,620,735 bytes), with SHA-256
+`3d08b51b1325777d987f6a7c5ac82ed29d0c2d5ba547658bf4cfe43ad2579f52`.
+**This guide does not supply a public download URL for that ZIP.**
+Obtain it from the author before attempting the complete replay. The linked
+archive record identifies the bytes; its local `.build/` path is not a download.
+
+Keep the repository checkout alongside the ZIP: the archive contains the
+30 recovered proofs and their inventory/README, while the checkout supplies
+the other 274 proofs, model files, receipt manifests, CLI and C checker.
+After verifying the ZIP hash, extract it and run:
 
 ```sh
-python -I -S tools/distance_receipt_inventory.py --received /path/to/proofs --timeout-seconds 14400 --threads 8 --output output/distance_receipt_replay.json
+python -m zipfile -e oneq-distance-proofs-20261104.zip received-proofs
+python -I -S tools/distance_receipt_inventory.py --received received-proofs/oneq-distance-proofs-20261104/proofs --timeout-seconds 14400 --threads 8 --output output/distance_receipt_replay.json
 ```
+
+For separately supplied raw `.bin` files, point `--received` at their directory.
 
 `--received` can be supplied more than once. Files are matched by SHA-256,
 regardless of their filenames. The expected hashes are the manifests'
