@@ -1,6 +1,8 @@
 # Certifying QEC decoders — re-runnable bundle
 
-Everything here can be checked without trusting the people who made it.
+The shipped certificates can be replayed against their stated models. The checker
+implementations and execution environment remain part of the trust boundary;
+missing proof files are reported explicitly below.
 
 ## Corrections and new replayable evidence (2026-11-03)
 
@@ -154,7 +156,7 @@ is not evidence.
 | `certification_semantics_audit.json` | what that rule proved: the producing code of each headline artifact, re-run on seeded samples, every accepted certificate analysed in exact rational arithmetic — all admissible, largest proven slack far below 1e-6 | not the per-shot slack of the full runs, whose certificates were not stored; and not EXACT optimality, which today's stricter checker measures separately |
 | `google_generation_history.json` | the Willow certified rate by producer generation, read from the objects each generation wrote | generations 2 and 3 ran partial coverage; their aggregates weight configurations unequally |
 | `gap_distribution_exact_rule.json` | historical exact-reference rerun, retained unchanged | its graph-cost comparisons share the duplicate-component scoring error and are superseded by `corrected_gap_20261103/` |
-| `cert_conformance.json` | historical conformance run; the current vector set independently replays 59/59 | agreement is not correctness — it is the absence of a *shared* misunderstanding |
+| `cert_conformance.json` | historical conformance run; the current vector set independently replays 59/59 | agreement on the exercised cases does not establish correctness or rule out a shared misunderstanding |
 | `decoder_mutation_gate_d*.json` | syndrome consistency catches 0 of the syndrome-consistent fault class; the certificate catches all of it | output mutation models wrong answers, not crashes, hangs or memory errors |
 | `epsilon_rerun/<config>/summary.json` | the scale runs repeated under the epsilon checker (exact rationals, eps_max = 1e-6) with every receipt kept: proven-within-epsilon, exact and not-proven counts, largest proven slack, forgeries | the receipts are a separate archive; `replay_<config>.json` records a complete two-verifier replay of them |
 | `detection_outcomes/d*.json` | seeded faults and a stale calibration judged against the exact optimum: outcome states, false-alarm base rates, discordant logical cells | the stale-calibration result is objective mismatch against a supplied reference model; it cannot say which model describes a device |
