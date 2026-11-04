@@ -28,6 +28,10 @@
 // that repeats a variable are refused rather than read as sets, because a
 // repeated element means one thing under set semantics and another over GF(2).
 //
+// Input domain: docs/QLDPC_RECEIPT_INPUT_DOMAIN.md, the contract all seven qLDPC checkers implement, with the shared
+// vectors conformance/qldpc_input_domain_vectors.json. Every integer slot holds a JSON integer literal (`1.0` is
+// refused); a multiplier is num/den in lowest terms with den >= 1.
+//
 //   node verify-qldpc-flat.mjs batch.json
 //
 // batch.json
@@ -67,11 +71,49 @@ const cmp = (x, y) => {
 };
 const show = (x) => (x[1] === 1n ? `${x[0]}` : `${x[0]}/${x[1]}`);
 
+// ---------------------------------------------------------------- the input domain
+// docs/QLDPC_RECEIPT_INPUT_DOMAIN.md (2026-11-03), the contract all seven qLDPC checkers implement. Every number in
+// a batch sits in an integer slot, and an integer slot holds a JSON integer LITERAL: `1.0`, `1e0` are refused, as the
+// Python checkers refuse the float json.loads makes of them. A JavaScript Number cannot tell 1.0 from 1, so the
+// token itself is read, through JSON.parse source-text access (Node >= 21); without it this file will not guess.
+// Literals beyond the safe-integer range become exact BigInts: legal as weights and multipliers, out of range as
+// indices.
+const INTEGER_LEXEME = /^-?(0|[1-9][0-9]*)$/;
+class NonInteger {
+  constructor(source) { this.source = source; }
+}
+function strictNumbers(key, value, context) {
+  if (typeof value !== "number") return value;
+  if (!context || typeof context.source !== "string") {
+    throw new Error("this JavaScript engine has no JSON.parse source-text access (Node >= 21 needed); "
+      + "refusing to read numbers whose token it cannot see");
+  }
+  if (!INTEGER_LEXEME.test(context.source)) return new NonInteger(context.source);
+  return Number.isSafeInteger(value) ? value : BigInt(context.source);
+}
+const shown = (v) => (v instanceof NonInteger ? v.source : typeof v === "bigint" ? `${v}` : JSON.stringify(v));
+
 function int(v, what) {
   if (typeof v !== "number" || !Number.isSafeInteger(v)) {
-    throw new Error(`${what} is not an integer: ${JSON.stringify(v)}`);
+    throw new Error(`${what} is not an integer: ${shown(v)}`);
   }
   return v;
+}
+
+// an exact integer of any size, for weights and multipliers
+function big(v, what) {
+  if (typeof v === "bigint") return v;
+  return BigInt(int(v, what));
+}
+
+// a multiplier num/den: integers, den >= 1, in lowest terms -- never normalised into something else
+function multiplier(num, den) {
+  const p = big(num, "multiplier numerator");
+  const q = big(den, "multiplier denominator");
+  if (q === 0n) throw new Error("zero denominator");
+  if (q < 1n) throw new Error(`multiplier denominator ${q} is not >= 1`);
+  if (gcd(p, q) !== 1n) throw new Error(`multiplier ${p}/${q} is not in lowest terms`);
+  return [p, q];
 }
 
 // ---------------------------------------------------------------- instance and weights
@@ -93,9 +135,9 @@ function validateInstance(name, inst) {
 function validateWeights(key, w, n) {
   if (!Array.isArray(w) || w.length !== n) throw new Error(`weights ${key}: expected ${n} entries`);
   return w.map((v, i) => {
-    const x = int(v, `weights ${key}[${i}]`);
-    if (x < 0) throw new Error(`weights ${key}[${i}] is negative`);
-    return BigInt(x);
+    const x = big(v, `weights ${key}[${i}]`);
+    if (x < 0n) throw new Error(`weights ${key}[${i}] is negative`);
+    return x;
   });
 }
 
@@ -135,9 +177,10 @@ function decide(rec, inst, w) {
   for (const f of rec.facet_duals) {
     if (!Array.isArray(f) || f.length !== 4) return REFUSE("malformed facet entry");
     const [rowSpec, Fraw, num, den] = f;
-    const y = Q(BigInt(int(num, "multiplier numerator")), BigInt(int(den, "multiplier denominator")));
+    const y = multiplier(num, den);
     if (y[0] < 0n) return REFUSE("negative multiplier");
-    if (y[0] === 0n) continue; // contributes nothing to the bound
+    // a zero multiplier is skipped only AFTER its facet is validated (final referee, 2026-11-03): every listed
+    // facet is a claim, and a malformed one is refused whatever its multiplier
 
     let rows;
     if (Array.isArray(rowSpec)) {
@@ -167,6 +210,7 @@ function decide(rec, inst, w) {
     const key = JSON.stringify([[...rows].sort((a, b) => a - b), [...F].sort((a, b) => a - b)]);
     if (seen.has(key)) return REFUSE("facet listed twice");
     seen.add(key);
+    if (y[0] === 0n) continue; // validated above; contributes nothing to the bound
 
     for (const i of S) {
       const t = load.get(i) || Q(0n);
@@ -197,9 +241,23 @@ function main() {
     console.error("usage: node verify-qldpc-flat.mjs batch.json");
     process.exit(2);
   }
-  const batch = JSON.parse(readFileSync(path, "utf8"));
+  const batch = JSON.parse(readFileSync(path, "utf8"), strictNumbers);
+  // instances are validated lazily, once each: a malformed instance refuses every receipt that names it, and only
+  // those, instead of ending the whole batch with an uncaught error
   const instances = new Map();
-  for (const [name, inst] of Object.entries(batch.instances)) instances.set(name, validateInstance(name, inst));
+  const instance = (name) => {
+    if (!instances.has(name)) {
+      if (!Object.prototype.hasOwnProperty.call(batch.instances, name)) throw new Error(`unknown instance ${name}`);
+      try {
+        instances.set(name, { ok: validateInstance(name, batch.instances[name]) });
+      } catch (err) {
+        instances.set(name, { err });
+      }
+    }
+    const v = instances.get(name);
+    if (v.err) throw v.err;
+    return v.ok;
+  };
   const weights = new Map();
 
   let accepted = 0;
@@ -209,8 +267,7 @@ function main() {
   for (const rec of batch.receipts) {
     let result;
     try {
-      const inst = instances.get(rec.instance);
-      if (!inst) throw new Error(`unknown instance ${rec.instance}`);
+      const inst = instance(rec.instance);
       if (!weights.has(rec.weights)) weights.set(rec.weights, validateWeights(rec.weights, batch.weights[rec.weights], inst.n));
       result = decide(rec, inst, weights.get(rec.weights));
     } catch (err) {

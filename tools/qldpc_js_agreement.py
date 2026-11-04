@@ -63,6 +63,11 @@ REASON = {
     "combined_check_with_one_row": "at least two rows",
     "combined_check_parity_is_xor": "wrong parity",
     "lattice_boundary_refuse": "not proven",
+    # a malformed facet appended at multiplier 0 (final referee, 2026-11-03): read and refused, never skipped
+    "zero_multiplier_row_out_of_range": "out of range",
+    "zero_multiplier_facet_variable_outside_check": "outside its check",
+    "zero_multiplier_facet_wrong_parity": "wrong parity",
+    "zero_multiplier_facet_listed_twice": "listed twice",
 }
 
 
@@ -210,6 +215,19 @@ def planted(batch: dict) -> list[dict]:
             variant("row_out_of_range", lambda r: set_facet(r, 0, m))
             if not isinstance(f0[0], list):
                 variant("combined_check_with_one_row", lambda r: set_facet(r, 0, [f0[0]]))
+            # ZERO MULTIPLIERS (final referee, 2026-11-03): every checker used to skip a facet whose multiplier is 0
+            # BEFORE validating it. Each defect below is a malformed facet APPENDED at multiplier 0 to a receipt the
+            # checker accepts, so it changes no number and is refused only by a checker that reads it.
+            row0 = copy.deepcopy(f0[0])
+            variant("zero_multiplier_row_out_of_range", lambda r: r["facet_duals"].append([m, [], 0, 1]))
+            variant("zero_multiplier_facet_variable_outside_check",
+                    lambda r: r["facet_duals"].append([copy.deepcopy(row0), sorted(f0[1] + [outside]), 0, 1]))
+            if f0[1] or inside is not None:
+                variant("zero_multiplier_facet_wrong_parity",
+                        lambda r: r["facet_duals"].append([copy.deepcopy(row0), f0[1][:-1] if f0[1] else [inside],
+                                                           0, 1]))
+            variant("zero_multiplier_facet_listed_twice",
+                    lambda r: r["facet_duals"].append([copy.deepcopy(row0), list(f0[1]), 0, 1]))
         # two fired checks combine to parity 0 over GF(2) (1 under OR): an empty F is then the
         # wrong parity, so this input is refused only by a checker that folds parities by XOR
         fired2 = next((r for r in rs if len(r["syndrome_support"]) >= 2), None)

@@ -1,67 +1,35 @@
 #!/usr/bin/env python3
-r"""DIFFERENTIAL EQUIVALENCE: the refactored checker decides exactly what
-the frozen checker decided, on every input, for the same stated reason.
+r"""Compare current checkers with pinned snapshots on a varied corpus.
 
-WHY THIS EXISTS. Eight functions across the trust modules carried a
-standards waiver for being long -- 1,339 lines, the longest 247. Length
-in a CHECKER is not a style complaint: the entire claim of a certifying
-algorithm is that a third party can READ the checker and believe it, so
-an unreadable checker weakens the result it is supposed to establish.
-But refactoring a checker is the most dangerous edit in this repository.
-A checker's value is its verdicts, and a verdict that moves silently
-turns every downstream receipt into a lie.
+Every exercised case must agree in its complete result: acceptance, reason,
+primal weight, dual bound, gap and diagnostic metadata. This finite regression
+gate is evidence of agreement on the tested inputs, not a universal proof.
+Binary64 results are compared by their exact bits, without decimal rounding.
+No historical transition allowance applies to the current comparison.
+The frozen files are versioned contract snapshots, not independent proofs.
+Initial equality with the reviewed production source is expected at a freeze.
 
-"The test suite still passes" is NOT evidence the refactor was safe. The
-suite covers the inputs somebody thought of. What is needed is evidence
-over inputs nobody thought of, including the malformed ones -- because a
-checker's rejection path is exactly as load-bearing as its acceptance
-path, and it is the path least likely to be covered.
+Previous qLDPC input contracts are preserved under tools/frozen/historical/.
+tests/test_checker_contract_migration.py demonstrates the deliberately changed
+inputs and result fields separately. The current qLDPC baseline includes the
+input-domain and zero-multiplier-facet corrections.
+Deterministic cases also cover strict node budgets and malformed screen inputs.
 
-So: tools/frozen/ holds byte-identical snapshots of the trust modules as
-they stood before the refactor (sha256 re-verified here on every run).
-This gate runs both the frozen and the live checker over a shape-varied
-corpus and requires the FULL result to agree -- accepted, reason string,
-primal weight, dual bound -- on every single unchanged-contract case.
-The November 2026 input/API corrections have three narrow, explicitly
-checked transitions below. These are counted separately, not represented
-as equality or concealed by changing the frozen source hashes.
+The corpus varies instance shape, weights, syndrome, certificate facets, type
+abuse and branch-and-bound trees. --prove-sensitive injects behavioral changes
+into temporary checker copies and requires the gate to detect each change.
 
-CORPUS SHAPE, deliberately non-uniform. A corpus that is uniform in
-shape hides defects even at high coverage (this estate has a scar from
-exactly that: a false merge by address collision survived 382 tests, 90%
-coverage and 97% mutation because every case had the same shape). So the
-generator varies, independently and adversarially:
+    python tools/checker_equivalence_gate.py --cases 400
+    python tools/checker_equivalence_gate.py --cases 400 --prove-sensitive
 
-  * instance    -- m and n, check degree (including degree-0 and
-                   degree-1 rows), overlapping vs disjoint supports
-  * weights     -- uniform 1.0, random floats, ints, Fractions,
-                   zero weights, and NEGATIVE weights (must reject)
-  * syndrome    -- all-zero, random, all-ones, wrong length
-  * certificate -- genuine (from the real producers), and then PERTURBED
-                   along each axis independently: negated dual, dual on a
-                   non-facet (even-parity F), facet naming a nonexistent
-                   check, F not a subset of N(j), support with an unknown
-                   variable, support with a duplicate, empty support
-  * type abuse  -- strings, None, floats where exact demands rationals,
-                   numpy scalars, ragged nesting  (the REJECT path)
-  * tier BD     -- valid trees, trees with an unproven leaf, trees whose
-                   branch variable repeats, bound_only thresholds
-
-SENSITIVITY IS PROVEN, NOT ASSUMED. An equivalence gate that compares a
-module against itself passes trivially and forever. `--prove-sensitive`
-injects behavioural mutations into a COPY of the live checker (flip an
-inequality, widen a tolerance, drop a validation, soften a reason
-string) and requires this gate to catch each one. A mutation this
-corpus cannot see is a hole in the corpus, and the gate says so.
-
-    python tools/checker_equivalence_gate.py
-    python tools/checker_equivalence_gate.py --prove-sensitive
-    python tools/checker_equivalence_gate.py --cases 4000 --json evidence/...
+See CHECKER_CONTRACT_SYNC_2026-11-03.md for the input migration and the procedure
+for deliberately changing a frozen baseline.
 """
 
 from __future__ import annotations
 
 import argparse
+from dataclasses import fields, is_dataclass
 import hashlib
 import importlib
 import importlib.util
@@ -70,6 +38,7 @@ import pathlib
 import random
 import re
 import sys
+import struct
 import tempfile
 from fractions import Fraction
 
@@ -82,60 +51,11 @@ sys.path.insert(0, str(ROOT))
 # cannot quietly make the comparison vacuous -- the classic way a
 # differential gate rots into a no-op.
 FROZEN_SHA256 = {
-    # RE-FROZEN 2026-08-14 (protocol option 2; behaviour commit 8cf6863).
-    # The class of inputs whose verdict moved: certificates whose float
-    # dual gap is under the 1e-6 screen but whose EXACT safe bound falls
-    # short of the exact primal (ulp-scale shortfalls, observed 1-5 *
-    # 2^-55 on 3 of 1500 corpus cases) -- previously ACCEPTED on the
-    # tolerance alone, now REFUSED as NOT PROVEN (exact). The witness
-    # that forced this is pinned in tests/test_exact_dual_repair.py:
-    # a genuinely feasible dual with bound 1.0 certified a 1.0000005
-    # correction while {1,2} weighed 1.0, and the receipt said gap 0.0.
-    #
-    # RE-FROZEN 2026-09-20 (protocol option 2; behaviour commit fe2d610,
-    # "checkers refuse non-binary syndromes", which came out of the
-    # external audit of paper 2). This gate had been RED since that
-    # commit because the re-freeze was never performed, so a genuine
-    # soundness fix sat indistinguishable from an unreviewed regression.
-    #
-    # *** THE CLASS OF INPUTS WHOSE VERDICT MOVED: a SYNDROME THAT IS
-    # NOT A GF(2) VECTOR. *** The frozen checker read each entry as
-    # `int(b) & 1`, so a malformed instance was silently mapped onto a
-    # DIFFERENT, well-formed one and then certified against it. Measured
-    # against the control fixture of tests/test_qldpc_syndrome_domain.py,
-    # whose well-formed case both versions accept identically:
-    #
-    #     syndrome   frozen                      live
-    #     [1]        ACCEPT (control, unchanged) ACCEPT
-    #     ["1"]      ACCEPT "OPTIMAL"            REFUSE syndrome[0] is not an integer
-    #     [1.0]      ACCEPT "OPTIMAL"            REFUSE syndrome[0] is not an integer
-    #     [3]        ACCEPT "OPTIMAL"            REFUSE syndrome[0] = 3 is not 0 or 1
-    #     [-1]       ACCEPT "OPTIMAL"            REFUSE syndrome[0] = -1 is not 0 or 1
-    #
-    # Four malformed instances accepted as OPTIMAL by the baseline. The
-    # move is strictly toward refusing, on inputs outside the declared
-    # domain, and it is pinned by tests/test_qldpc_syndrome_domain.py,
-    # whose BAD list is chosen so each entry reads as [1] under the old
-    # masking -- the control proves the certificate is otherwise good, so
-    # a refusal can only come from the domain check.
+    # Current reviewed snapshots. Earlier qLDPC contracts remain in historical/.
     "qldpc_check.py":
-        "2580ac1f14a97f54a2436b411dbe15609cc69b3bab4848d38a08d7dc7a22eee0",
+        "c923c984c60a0888233cd00ccfea40995877cace05c572744f24dbf25a50b273",
     "tjoin_exact.py":
         "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
-    # RE-FROZEN 2026-10-18 (protocol option 2; behaviour landed in the merge of the cloud campaign, 5f6b39ba,
-    # C177 "matching_cert.check never tests T-oddness", with this gate RED on the bounded wall at ce39500a).
-    #
-    # *** THE CLASS OF INPUTS THAT DECIDE DIFFERENTLY: a dual packing that puts a value on a set S with
-    # |S n T'| EVEN (T' = T u {BOUNDARY} when |T| is odd). *** Such a set is not a T-join cut constraint, so it
-    # cannot carry a dual; the frozen checker never tested it and its forgeries PE1 (a weight-5 correction whose
-    # optimum is 4) and 275 of 2,025 LP-searched forgeries were ACCEPTED. Measured on this gate's own corpus (400
-    # cases, seed 20260804): 36 divergences, ALL in matching_cert.check, ALL on forged or malformed axes
-    # (blossom-even-set 16, slack-dual 5, none 5, even_blossom 4, bad_cut 3, huge_blossom 3), and in EVERY one both
-    # versions REFUSE -- the live checker refuses earlier, at the T'-odd test, so the reason moves and (huge_blossom)
-    # the dual bound is no longer computed. ZERO verdicts flip in either direction; all 156 accepting matching
-    # certificates of the corpus agree exactly, so the fix costs no completeness here. Pinned by
-    # tests/test_matching_forgery_challenge.py and dual_forgery.parity_forgeries_refused (3/3, read from the
-    # checkers' structured t_odd answers, not their reasons).
     "matching_cert.py":
         "658b2f6af5b5d6438d90a0dfa9b2c7747dc7213fdfee465a556436c3b69ee3da",
 }
@@ -171,7 +91,7 @@ def _verify_freeze() -> None:
                 f"  found    {got}\nThe reference is the whole point; it "
                 f"is not editable. Restore it from git history -- "
                 f"regenerating it from live source makes this gate pass "
-                f"by definition. See docs/REFREEZE_PROTOCOL.md.")
+                f"by definition. See CHECKER_CONTRACT_SYNC_2026-11-03.md.")
 
 
 # ---------------------------------------------------------------- corpus
@@ -584,15 +504,15 @@ def _forced_tree_cases(rng: random.Random):
            ("branch", i, ("branch", i, good, good), good),
            "rebranch-on-fixed-var")
     yield (checks, w, syn, e, U,
-           ("branch", j, ("infeasible", (1,)), good),
+           ("branch", j, ("infeasible", 1), good),
            "infeasible-xor-nonempty")
     yield (checks, w, syn, e, U,
-           ("branch", j, ("infeasible", (2,)), good),
+           ("branch", j, ("infeasible", 2), good),
            "infeasible-even-parity")
     yield (checks, w, syn, e, U,
            ("branch", len(w) + 40, good, good), "branch-unknown-var")
     yield (checks, w, syn, e, U,
-           ("branch", j, ("infeasible", (99,)), good),
+           ("branch", j, ("infeasible", 99), good),
            "infeasible-bad-row-index")
     yield (checks, w, syn, e, U, ("bound", ()), "bound-leaf-uncrossed")
 
@@ -623,6 +543,39 @@ def _forced_tree_cases(rng: random.Random):
                        (("nonsense", 1), "unknown-node-kind"),
                        ((), "empty-node")):
         yield (checks, w, syn, e, U, bad, label)
+
+
+def _forced_contract_cases(cert_cls):
+    """Deterministic API boundaries omitted by random valid-tree generation.
+
+    The accepted one-node and three-node controls reach the budget check.
+    Malformed budgets must not be coerced; valid budgets still impose their
+    exact limits. Float-screen exception inputs exercise the refusal wrapper.
+    """
+    import numpy as np
+
+    base = dict(checks=[(0,)], weights={0: 1}, syndrome=[1],
+                error_support=(0,), tree=("bound", ((0, (), 1),)))
+    for label, budget in (
+            ("python-int", 1), ("numpy-int", np.int64(1)),
+            ("zero", 0), ("negative", -1),
+            ("bool-true", True), ("bool-false", False),
+            ("float-integral", 1.0), ("float-fractional", 1.9),
+            ("string", "1"), ("fraction", Fraction(1)),
+            ("none", None), ("numpy-bool", np.bool_(True)),
+            ("infinite", float("inf")), ("nan", float("nan"))):
+        yield "check_qldpc_bnb", dict(base, max_nodes=budget), "budget/" + label
+    branched = ("branch", 0, ("infeasible", 0), ("bound", ()))
+    for label, budget in (("branch-sufficient", 3), ("branch-exhausted", 2)):
+        yield ("check_qldpc_bnb", dict(base, tree=branched, max_nodes=budget),
+               "budget/" + label)
+
+    cert = cert_cls(error_support=(0,), facet_duals=((0, (), 1),))
+    for label, tolerance in (("none", None), ("string", "1"),
+                              ("list", []), ("mapping", {}),
+                              ("complex", complex(1)), ("overflow", 10 ** 1000)):
+        yield ("check_qldpc", dict(checks=[(0,)], weights={0: 1}, syndrome=[1],
+                                   cert=cert, tol=tolerance), "screen-refusal/" + label)
 
 
 # DECLARED REASON CHANGES. Consolidating the duplicated exact facet rule
@@ -668,71 +621,6 @@ def _agree(a, b):
             _ALIAS_HITS[i] = _ALIAS_HITS.get(i, 0) + 1
             return True, True
     return False, False
-
-
-def _duplicate_candidate_transition(candidate, result):
-    """Only the newly forbidden duplicate-support input may change here."""
-    return (isinstance(candidate, (tuple, list))
-            and all(type(i) is int for i in candidate)
-            and len(set(candidate)) != len(candidate)
-            and result == (False, "REJECTED MALFORMED INPUT: candidate "
-                                  "contains duplicate indices", None, None))
-
-
-def _malformed_input_transition(kind, checks, weights, syndrome, candidate, result):
-    """Pin each intentional exception/coercion -> refusal transition.
-
-    This allowlist does not permit ACCEPT, arbitrary reason changes, or a
-    transition on a valid input. The raw specimen must contain the named
-    malformed field, independently of the production checker.
-    """
-    if len(result) != 4 or result[0] is not False or result[2:] != (None, None):
-        return False
-    reason = result[1]
-    if kind == "str_weight":
-        return ("heavy" in weights.values()
-                and reason == "REJECTED MALFORMED INPUT: could not convert string to float: 'heavy'")
-    if kind == "none_weight":
-        return (None in weights.values()
-                and reason.startswith("REJECTED MALFORMED INPUT: float() argument"))
-    if kind == "none_cert_support":
-        return (None in candidate
-                and reason == "REJECTED MALFORMED INPUT: candidate is not an integer")
-    if kind == "nested_ragged":
-        return (any(isinstance(i, (tuple, list)) for row in checks for i in row)
-                and reason == "check 0 index is not an integer")
-    if kind == "bool_syndrome":
-        return (bool(syndrome) and type(syndrome[0]) is bool
-                and reason == "syndrome[0] is not an integer")
-    if kind == "str_check_index":
-        return (bool(checks) and bool(checks[0]) and type(checks[0][0]) is str
-                and reason == "check 0 index is not an integer")
-    return False
-
-
-def _bound_only_transition(frozen_result, live_result, threshold, weights):
-    """Preserve the decision while verifying the new threshold-only payload."""
-    from math import lcm
-
-    if (len(frozen_result) != 4 or type(frozen_result[0]) is not bool
-            or live_result.accepted is not frozen_result[0]
-            or live_result.primal_weight is not None
-            or live_result.dual_bound is not None or live_result.gap is not None):
-        return False
-    if not live_result.accepted:
-        return (live_result.reason == frozen_result[1]
-                and live_result.reason.startswith("TREE REFUSED:")
-                and live_result.checks == {})
-    D = lcm(*(Fraction(v).denominator for v in weights.values())) if weights else 1
-    T = Fraction(threshold)
-    return (frozen_result[1].startswith("EXACT-OPTIMAL BY BRANCH DUALS:")
-            and live_result.reason == "LOWER_BOUND_PROVEN: every feasible solution has "
-                                      "weight strictly above the threshold; feasibility "
-                                      "and an attaining optimum are not claimed"
-            and live_result.checks == {
-                "exact": True, "bnb": True, "claim": "lower_bound", "relation": ">",
-                "lattice_denominator": D,
-                "threshold": {"num": T.numerator, "den": T.denominator}})
 
 
 #: uses per declared alias, by index: EVERY alias must be reached, not just one of them
@@ -980,42 +868,54 @@ def _matching_cases(rng: random.Random, cert_cls):
     return edges, fired, cert, flaw
 
 
+def _result_value(value):
+    """Preserve complete result values, including exact float bits and types."""
+    if value is None:
+        return ("none",)
+    if isinstance(value, bool):
+        return ("bool", value)
+    if isinstance(value, int):
+        return ("int", value)
+    if isinstance(value, float):
+        return ("float64", struct.pack("!d", value).hex())
+    if isinstance(value, Fraction):
+        return ("rational", value.numerator, value.denominator)
+    if isinstance(value, str):
+        return ("str", value)
+    if isinstance(value, dict):
+        items = ((_result_value(k), _result_value(v)) for k, v in value.items())
+        return ("dict", tuple(sorted(items, key=repr)))
+    if isinstance(value, (tuple, list)):
+        return (type(value).__name__, tuple(_result_value(v) for v in value))
+    if isinstance(value, (set, frozenset)):
+        return (type(value).__name__, tuple(sorted((_result_value(v) for v in value), key=repr)))
+    raise TypeError(f"unsupported checker result value: {type(value).__name__}")
+
+
 def _norm(res):
-    """Compare the WHOLE verdict, not just the boolean. A refactor that
-    accepts the same things for different reasons has changed what the
-    certificate MEANS, and that must show up as a failure."""
+    """Compare every declared result field without rounding or metadata loss."""
     if res is None:
         return ("<none>",)
-    def q(v):
-        if v is None:
-            return None
-        try:
-            return round(float(v), 9)
-        except (TypeError, ValueError):
-            return str(v)
-    # The qLDPC result names its bound `dual_bound`; the MWPM result names
-    # the same quantity `dual_objective`. Reading only the first made
-    # _norm raise AttributeError on EVERY matching call -- identically on
-    # both sides, so nothing looked wrong: the leg silently compared
-    # exception names instead of verdicts. Caught only because the
-    # dark-leg guard demands the matching checker ACCEPT something.
-    bound = getattr(res, "dual_bound", None)
-    if bound is None:
-        bound = getattr(res, "dual_objective", None)
-    return (bool(res.accepted), str(res.reason), q(res.primal_weight),
-            q(bound))
+    if not is_dataclass(res) or isinstance(res, type):
+        raise TypeError("checker result must be a dataclass instance")
+    if type(res.accepted) is not bool or type(res.reason) is not str:
+        raise TypeError("checker result requires a boolean verdict and string reason")
+    other = tuple((field.name, _result_value(getattr(res, field.name)))
+                  for field in fields(res) if field.name not in ("accepted", "reason"))
+    return (res.accepted, res.reason, other)
 
 
 def _call(mod, fn, **kw):
-    """Run one checker call, turning any escape into a comparable value.
-    A checker that RAISES where the other returns False is a behaviour
-    change -- one of them fails open under a malformed input."""
+    """Compare checker exceptions; an invalid comparator result fails loudly."""
     try:
-        return _norm(getattr(mod, fn)(**kw))
-    except RecursionError:
-        return ("<recursion>",)
+        result = getattr(mod, fn)(**kw)
+    except RecursionError as exc:
+        return ("<recursion>", str(exc))
     except Exception as exc:                     # noqa: BLE001 -- deliberate
-        return ("<raised>", type(exc).__name__)
+        return ("<raised>", type(exc).__name__, str(exc))
+    # Normalization is outside the checker exception boundary. Otherwise two
+    # unsupported result shapes could appear to agree as the same TypeError.
+    return _norm(result)
 
 
 # ------------------------------------------------------------------ run
@@ -1032,10 +932,26 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
     diffs, stats = [], {"exercised": 0, "accepted": 0, "rejected": 0,
                         "raised": 0, "bnb": 0, "abuse": 0, "exact": 0,
                         "bnb_accepted": 0, "forced": 0, "aliased": 0, "matching": 0,
-                        "matching_accepted": 0,
-                        "contract_transitions": {"duplicate_candidate": 0,
-                                                 "malformed_input": 0,
-                                                 "bound_only_payload": 0}}
+                        "matching_accepted": 0, "api_contract": 0,
+                        "budget_contract": 0, "screen_refusal_contract": 0}
+
+    for fn, kwargs, label in _forced_contract_cases(live.QldpcCertificate):
+        a = _call(frozen, fn, **kwargs)
+        b = _call(live, fn, **kwargs)
+        stats["exercised"] += 1
+        stats["api_contract"] += 1
+        if fn == "check_qldpc_bnb":
+            stats["bnb"] += 1
+            stats["budget_contract"] += 1
+            stats["bnb_accepted"] += int(a[0] is True)
+        else:
+            stats["screen_refusal_contract"] += 1
+        ok, aliased = _agree(a, b)
+        stats["aliased"] += int(aliased)
+        if not ok:
+            diffs.append({"case": "api-contract", "fn": fn,
+                          "axis": label, "frozen": list(map(str, a)),
+                          "live": list(map(str, b))})
 
     for c in range(cases):
         exact = (c % 3 == 0)
@@ -1096,9 +1012,6 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
             else:
                 stats["rejected"] += 1
             ok, aliased = _agree(a, b)
-            if not ok and _duplicate_candidate_transition(pc.error_support, b):
-                ok = True
-                stats["contract_transitions"]["duplicate_candidate"] += 1
             stats['aliased'] += int(aliased)
             if not ok:
                 diffs.append({"case": c, "fn": "check_qldpc", "axis": axis,
@@ -1121,9 +1034,6 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
             stats["exercised"] += 1
             stats["exact"] += 1
             ok, aliased = _agree(a, b)
-            if not ok and _duplicate_candidate_transition(pc.error_support, b):
-                ok = True
-                stats["contract_transitions"]["duplicate_candidate"] += 1
             stats['aliased'] += int(aliased)
             if not ok:
                 diffs.append({"case": c, "fn": "check_qldpc_exact",
@@ -1176,18 +1086,17 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
                                       "live": list(map(str, b))})
                 # bound-only mode: leaves must prove min > T, the shape
                 # frame determinacy and the distance certificate rely on.
+                # No candidate: those callers pass none, and since the
+                # input-domain contract (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md,
+                # 2026-11-03) a candidate here is refused, not ignored.
                 ka = dict(checks=checks, weights=wi, syndrome=syn_b,
-                          error_support=e_sup, tree=tree,
+                          error_support=(), tree=tree,
                           bound_only_threshold=U - 1)
                 a = _call(frozen, "check_qldpc_bnb", **ka)
                 b = _call(live, "check_qldpc_bnb", **ka)
                 stats["exercised"] += 1
                 stats["bnb"] += 1
                 ok, aliased = _agree(a, b)
-                if not ok and _bound_only_transition(
-                        a, live.check_qldpc_bnb(**ka), U - 1, wi):
-                    ok = True
-                    stats["contract_transitions"]["bound_only_payload"] += 1
                 stats['aliased'] += int(aliased)
                 if not ok:
                     diffs.append({"case": c, "fn": "check_qldpc_bnb",
@@ -1268,9 +1177,6 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
         stats["exercised"] += 1
         stats["abuse"] += 1
         ok, aliased = _agree(a, b)
-        if not ok and _malformed_input_transition(kind, ck, wt, sy, sp, b):
-            ok = True
-            stats["contract_transitions"]["malformed_input"] += 1
         stats['aliased'] += int(aliased)
         if not ok:
             diffs.append({"case": c, "fn": "check_qldpc/abuse",
@@ -1308,6 +1214,10 @@ def _load(path: pathlib.Path, name: str):
 MIN_MARGIN = 5
 
 _MUTATIONS = [
+    ("bd-coerce-node-budget", '_domain_int(max_nodes, "max_nodes")', 'int(max_nodes)'),
+    ("float-propagate-malformed-types",
+     "except (TypeError, ValueError, OverflowError) as exc:",
+     "except (OverflowError,) as exc:"),
     ("accept-nonzero-gap", "if gap > 1e-6:", "if False:"),
     ("widen-tolerance", "tol: float = 1e-9", "tol: float = 1e9"),
     ("drop-parity-check", "if len(Fs) % 2 == par:", "if False:"),
@@ -1570,7 +1480,6 @@ def main() -> int:
 
     print(f"  reason improved via a DECLARED alias: {stats['aliased']} "
           f"(verdict and every number identical in all of them)")
-    print(f"  separately verified contract transitions: {stats['contract_transitions']}")
 
     # The declared aliases must actually be USED -- EACH of them. An alias
     # nobody reaches is a permission granted for a case the corpus cannot
@@ -1599,14 +1508,16 @@ def main() -> int:
     # the refusal path and silently skip the proof path.
     for leg, need in (("exact", 1), ("bnb", 1), ("abuse", 1),
                       ("bnb_accepted", 1), ("forced", 1),
-                      ("matching", 1), ("matching_accepted", 1)):
+                      ("matching", 1), ("matching_accepted", 1),
+                      ("budget_contract", 1), ("screen_refusal_contract", 1)):
         if stats[leg] < need:
             print(f"DARK LEG: '{leg}' was exercised {stats[leg]} times -- "
                   f"the equivalence claim does not cover it, so this is a "
                   f"FAILURE, not a pass")
             return 1
 
-    out = {"schema": "oneq-checker-equivalence/2",
+    out = {"schema": "oneq-checker-equivalence/1",
+           "comparison_contract": "complete-dataclass-exact-values/1",
            "cases": args.cases, "seed": args.seed,
            "calls_compared": stats["exercised"],
            "accepted": stats["accepted"], "rejected": stats["rejected"],
@@ -1615,16 +1526,18 @@ def main() -> int:
            "bnb_accepting": stats["bnb_accepted"], "malformed_calls": stats["abuse"],
            "matching_calls": stats["matching"],
            "matching_accepting": stats["matching_accepted"],
+           "api_contract_calls": stats["api_contract"],
+           "budget_contract_calls": stats["budget_contract"],
+           "screen_refusal_contract_calls": stats["screen_refusal_contract"],
            "divergences": len(diffs),
-           "contract_transitions": stats["contract_transitions"],
            "declared_reason_aliases_used": stats["aliased"],
            "declared_reason_aliases": [{"frozen": a, "live": b, "why": c}
                                        for a, b, c in _REASON_ALIASES],
            "frozen_sha256": FROZEN_SHA256,
-           "claim": ("the trust modules match the pinned historical outputs "
-                     "except for the separately counted, independently checked "
-                     "strict-input and threshold-only API transitions; frozen "
-                     "source hashes are unchanged")}
+           "claim": ("the refactored trust modules return the identical "
+                     "verdict, reason string, primal weight and dual "
+                     "bound as the versioned snapshot, on every exercised case; "
+                     "finite regression evidence, not a proof for all inputs")}
     if args.json:
         d = pathlib.Path(args.json)
         d.parent.mkdir(parents=True, exist_ok=True)
@@ -1635,15 +1548,14 @@ def main() -> int:
         print(f"\nDIVERGENCE: {len(diffs)} case(s) decide differently")
         print("  If this was NOT intentional, it is the defect this "
               "gate exists for. If it WAS, see "
-              "docs/REFREEZE_PROTOCOL.md -- a verdict may move, but it "
+              "CHECKER_CONTRACT_SYNC_2026-11-03.md -- a verdict may move, but it "
               "moves as a reviewed act.")
         for d in diffs[:8]:
             print(f"  case {d['case']} {d['fn']} [{d['axis']}]")
             print(f"    frozen: {d['frozen']}")
             print(f"    live  : {d['live']}")
         return 1
-    print("\nCONSISTENT: unchanged-contract outputs agree; declared input/API "
-          "transitions pass their separate checks")
+    print("\nEQUIVALENT: every verdict, reason, weight and bound agrees")
     return 0
 
 

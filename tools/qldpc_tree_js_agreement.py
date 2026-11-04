@@ -67,6 +67,11 @@ REASON = {
     "infeasible_leaf_even_parity": "even parity",
     "lattice_boundary_leaf": "leaf not proven",
     "overloaded_multiplier": "leaf not proven",
+    # a malformed facet appended to a bound leaf at multiplier 0 (final referee, 2026-11-03): read and refused
+    "zero_multiplier_row_out_of_range": "out of range",
+    "zero_multiplier_facet_on_fixed_variable": "outside its reduced check",
+    "zero_multiplier_facet_wrong_parity": "wrong parity",
+    "zero_multiplier_facet_listed_twice": "listed twice",
 }
 
 
@@ -224,6 +229,22 @@ def planted(batch: dict) -> list[dict]:
                     variant("facet_wrong_parity", lambda r: set_facet(r, 1, f0[1][:-1] if f0[1] else [inside]))
                 variant("negative_multiplier", lambda r: set_facet(r, 2, -f0[2]))
                 variant("row_out_of_range", lambda r: set_facet(r, 0, m))
+                # ZERO MULTIPLIERS (final referee, 2026-11-03): a malformed facet APPENDED to the leaf at multiplier
+                # 0 changes no number, so only a checker that reads it before skipping it can refuse it
+                row0 = copy.deepcopy(f0[0])
+
+                def append_facet(r, facet):
+                    _at(r["tree"], path)[1].append(facet)
+
+                variant("zero_multiplier_row_out_of_range", lambda r: append_facet(r, [m, [], 0, 1]))
+                if fixed:
+                    variant("zero_multiplier_facet_on_fixed_variable",
+                            lambda r: append_facet(r, [copy.deepcopy(row0), sorted(set(f0[1]) | {min(fixed)}), 0, 1]))
+                if f0[1] or inside is not None:
+                    variant("zero_multiplier_facet_wrong_parity",
+                            lambda r: append_facet(r, [copy.deepcopy(row0), f0[1][:-1] if f0[1] else [inside], 0, 1]))
+                variant("zero_multiplier_facet_listed_twice",
+                        lambda r: append_facet(r, [copy.deepcopy(row0), list(f0[1]), 0, 1]))
 
         ipath = next((p for r in rs if (p := _find_infeasible(r["tree"])) is not None), None)
         if ipath is not None:

@@ -1,0 +1,11748 @@
+{
+ "schema": "oneq-epsilon-conformance-vectors/1",
+ "generated_by": "tools/fuzz_epsilon_checkers.py --write-vectors (seed 20261103, 3 per class)",
+ "contract": "vertices are integers (boundary -1), never bools or floats; the graph is simple (no self-loop, no edge twice in either orientation); weights and packing values are exact binary64 hex literals, finite and non-negative; every set member and endpoint is a vertex of the graph; a set or a correction edge listed twice is refused; anything else is INVALID_INPUT, never coerced",
+ "classes": [
+  "base",
+  "graph:boundary_first_edge",
+  "graph:parallel_edge_heavier",
+  "graph:parallel_edge_lighter",
+  "graph:self_loop",
+  "hex:decimal_not_hex",
+  "hex:json_number_not_string",
+  "hex:non_canonical_spelling",
+  "hex:not_binary64_extra_digits",
+  "hex:overflow",
+  "hex:subnormal_weight",
+  "id:boolean_in_correction",
+  "id:boolean_in_set",
+  "id:boolean_in_syndrome",
+  "id:fractional_in_correction",
+  "id:fractional_in_set",
+  "id:fractional_in_syndrome",
+  "id:integral_float_in_correction",
+  "id:string_in_correction",
+  "id:unknown_fired_detector",
+  "id:unknown_vertex_in_set",
+  "negative:dual",
+  "negative:weight",
+  "nonfinite:dual_-inf",
+  "nonfinite:dual_inf",
+  "nonfinite:dual_nan",
+  "nonfinite:weight_-inf",
+  "nonfinite:weight_inf",
+  "nonfinite:weight_nan",
+  "repeat:correction_edge_twice",
+  "repeat:correction_edge_twice_reversed",
+  "repeat:set_listed_twice_other_value",
+  "repeat:set_listed_twice_permuted",
+  "repeat:set_listed_twice_same_value",
+  "syndrome:boundary_in_syndrome",
+  "syndrome:detector_fired_twice",
+  "syndrome:entry_2_not_fired",
+  "trap:boundary_side_parity_{B,t}",
+  "trap:empty_set",
+  "trap:pair_of_fired",
+  "trap:set_with_no_T_vertex",
+  "valid:empty_packing",
+  "valid:eps_max_equals_epsilon",
+  "valid:eps_max_one_unit_above",
+  "valid:eps_max_one_unit_below",
+  "valid:negative_zero_value",
+  "valid:packing_scaled_down",
+  "valid:packing_scaled_up_overload",
+  "valid:packing_tiny_shortfall",
+  "valid:reversed_edge_orientation_in_correction",
+  "valid:zero_valued_set"
+ ],
+ "vectors": [
+  {
+   "name": "base#0",
+   "class": "base",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "valid:packing_scaled_up_overload#0",
+   "class": "valid:packing_scaled_up_overload",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.d2fa6994790a5p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.2da0b2cd70debp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "valid:packing_scaled_down#0",
+   "class": "valid:packing_scaled_down",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-3"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp-1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "9/8",
+    "lower_bound": "9/8"
+   }
+  },
+  {
+   "name": "valid:packing_tiny_shortfall#0",
+   "class": "valid:packing_tiny_shortfall",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.759521439292bp-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af191b5p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "36865/18014398509481984",
+    "lower_bound": "40532396646297599/18014398509481984"
+   }
+  },
+  {
+   "name": "valid:negative_zero_value#0",
+   "class": "valid:negative_zero_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "-0x0.0p+0"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "1643033381457953/4503599627370496",
+    "lower_bound": "8490065780125663/4503599627370496"
+   }
+  },
+  {
+   "name": "valid:reversed_edge_orientation_in_correction#0",
+   "class": "valid:reversed_edge_orientation_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      -1,
+      0
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "valid:empty_packing#0",
+   "class": "valid:empty_packing",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "9/4",
+    "lower_bound": "0"
+   }
+  },
+  {
+   "name": "trap:set_with_no_T_vertex#0",
+   "class": "trap:set_with_no_T_vertex",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      [
+       1
+      ],
+      "0x1.0p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:boundary_side_parity_{B,t}#0",
+   "class": "trap:boundary_side_parity_{B,t}",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:empty_set#0",
+   "class": "trap:empty_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      [],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_same_value#0",
+   "class": "repeat:set_listed_twice_same_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_other_value#0",
+   "class": "repeat:set_listed_twice_other_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      [
+       0
+      ],
+      "0x1.0p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_permuted#0",
+   "class": "repeat:set_listed_twice_permuted",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:correction_edge_twice#0",
+   "class": "repeat:correction_edge_twice",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ],
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:correction_edge_twice_reversed#0",
+   "class": "repeat:correction_edge_twice_reversed",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ],
+     [
+      -1,
+      0
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:detector_fired_twice#0",
+   "class": "syndrome:detector_fired_twice",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0,
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:boundary_in_syndrome#0",
+   "class": "syndrome:boundary_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0,
+     -1
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_inf#0",
+   "class": "nonfinite:dual_inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "inf"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_inf#0",
+   "class": "nonfinite:weight_inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "inf"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_-inf#0",
+   "class": "nonfinite:dual_-inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "-inf"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_-inf#0",
+   "class": "nonfinite:weight_-inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "-inf"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_nan#0",
+   "class": "nonfinite:dual_nan",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "nan"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_nan#0",
+   "class": "nonfinite:weight_nan",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "nan"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "negative:dual#0",
+   "class": "negative:dual",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "-0x1.0p-3"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "negative:weight#0",
+   "class": "negative:weight",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "-0x1.0p+0"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:parallel_edge_heavier#0",
+   "class": "graph:parallel_edge_heavier",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      0,
+      -1,
+      "0x1.a000000000000p+1"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:parallel_edge_lighter#0",
+   "class": "graph:parallel_edge_lighter",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      -1,
+      0,
+      "0x1.2000000000000p+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:self_loop#0",
+   "class": "graph:self_loop",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ],
+     [
+      -1,
+      -1,
+      "0x1.0p+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:boundary_first_edge#0",
+   "class": "graph:boundary_first_edge",
+   "case": {
+    "edges": [
+     [
+      -1,
+      0,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      -1,
+      1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "id:fractional_in_correction#0",
+   "class": "id:fractional_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0.9,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:integral_float_in_correction#0",
+   "class": "id:integral_float_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0.0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_correction#0",
+   "class": "id:boolean_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      true,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:string_in_correction#0",
+   "class": "id:string_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      "0",
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:fractional_in_set#0",
+   "class": "id:fractional_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0.9
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_set#0",
+   "class": "id:boolean_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "id:unknown_vertex_in_set#0",
+   "class": "id:unknown_vertex_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0,
+       8
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:fractional_in_syndrome#0",
+   "class": "id:fractional_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0.5
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_syndrome#0",
+   "class": "id:boolean_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "id:unknown_fired_detector#0",
+   "class": "id:unknown_fired_detector",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0,
+     8
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:non_canonical_spelling#0",
+   "class": "hex:non_canonical_spelling",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x5d654850e5021p-52"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "9/4"
+   }
+  },
+  {
+   "name": "hex:not_binary64_extra_digits#0",
+   "class": "hex:not_binary64_extra_digits",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.75952143940841p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:decimal_not_hex#0",
+   "class": "hex:decimal_not_hex",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0.36482669806446943"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:overflow#0",
+   "class": "hex:overflow",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.0p+2000"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:json_number_not_string#0",
+   "class": "hex:json_number_not_string",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.2000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      0.36482669806446943
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:subnormal_weight#0",
+   "class": "hex:subnormal_weight",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x0.0000000000001p-1022"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "fired": [
+     0
+    ],
+    "correction": [
+     [
+      0,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.7595214394084p-2"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.e29ab7af1afdfp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "1/202402253307310618352495346718917307049556649764142118356901358027430339567995346891960383701437124495187077864316811911389808737385793476867013399940738509921517424276566361364466907742093216341239767678472745068562007483424692698618103355649159556340810056512358769552333414615230502532186327508646006263307707741093494784"
+   }
+  },
+  {
+   "name": "base#1",
+   "class": "base",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "valid:packing_scaled_up_overload#1",
+   "class": "valid:packing_scaled_up_overload",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.265002b578d4bp+3"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.edab54d1accd5p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.8b5d00b1b162fp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.a54ab2e5332b4p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "9316181455903671/101102344203778039302170796359680",
+    "lower_bound": "35466603382832216401234694204367/3159448256368063728192837386240"
+   }
+  },
+  {
+   "name": "valid:packing_scaled_down#1",
+   "class": "valid:packing_scaled_down",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+1"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+0"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-2"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-4"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "25277733455054993/4503599627370496",
+    "lower_bound": "25277733455054995/4503599627370496"
+   }
+  },
+  {
+   "name": "valid:packing_tiny_shortfall#1",
+   "class": "valid:packing_tiny_shortfall",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf2b0ap+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e224c8p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48cac7p-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc137fp-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "367813/36028797018963968",
+    "lower_bound": "404443735280512091/36028797018963968"
+   }
+  },
+  {
+   "name": "valid:negative_zero_value#1",
+   "class": "valid:negative_zero_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "-0x0.0p+0"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "16568323143536879/2251799813685248",
+    "lower_bound": "8709410311518115/2251799813685248"
+   }
+  },
+  {
+   "name": "valid:reversed_edge_orientation_in_correction#1",
+   "class": "valid:reversed_edge_orientation_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      4,
+      1
+     ],
+     [
+      -1,
+      2
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "valid:empty_packing#1",
+   "class": "valid:empty_packing",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "12638866727527497/1125899906842624",
+    "lower_bound": "0"
+   }
+  },
+  {
+   "name": "trap:set_with_no_T_vertex#1",
+   "class": "trap:set_with_no_T_vertex",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [
+       0
+      ],
+      "0x1.0p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:boundary_side_parity_{B,t}#1",
+   "class": "trap:boundary_side_parity_{B,t}",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [
+       -1,
+       1
+      ],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:pair_of_fired#0",
+   "class": "trap:pair_of_fired",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [
+       1,
+       2
+      ],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:empty_set#1",
+   "class": "trap:empty_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_same_value#1",
+   "class": "repeat:set_listed_twice_same_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_other_value#1",
+   "class": "repeat:set_listed_twice_other_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [
+       2
+      ],
+      "0x1.0p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_permuted#1",
+   "class": "repeat:set_listed_twice_permuted",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ],
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:correction_edge_twice#1",
+   "class": "repeat:correction_edge_twice",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ],
+     [
+      1,
+      4
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:correction_edge_twice_reversed#1",
+   "class": "repeat:correction_edge_twice_reversed",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ],
+     [
+      4,
+      1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:detector_fired_twice#1",
+   "class": "syndrome:detector_fired_twice",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4,
+     1
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:boundary_in_syndrome#1",
+   "class": "syndrome:boundary_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4,
+     -1
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_inf#1",
+   "class": "nonfinite:dual_inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "inf"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_inf#1",
+   "class": "nonfinite:weight_inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "inf"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_-inf#1",
+   "class": "nonfinite:dual_-inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "-inf"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_-inf#1",
+   "class": "nonfinite:weight_-inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "-inf"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_nan#1",
+   "class": "nonfinite:dual_nan",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "nan"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_nan#1",
+   "class": "nonfinite:weight_nan",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "nan"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "negative:dual#1",
+   "class": "negative:dual",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "-0x1.0p-3"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "negative:weight#1",
+   "class": "negative:weight",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "-0x1.0p+0"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:parallel_edge_heavier#1",
+   "class": "graph:parallel_edge_heavier",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ],
+     [
+      0,
+      -1,
+      "0x1.9d3cc3efdf29ap+2"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:parallel_edge_lighter#1",
+   "class": "graph:parallel_edge_lighter",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ],
+     [
+      -1,
+      0,
+      "0x1.5d3cc3efdf29ap+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:self_loop#1",
+   "class": "graph:self_loop",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ],
+     [
+      -1,
+      -1,
+      "0x1.0p+0"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:boundary_first_edge#1",
+   "class": "graph:boundary_first_edge",
+   "case": {
+    "edges": [
+     [
+      -1,
+      0,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      -1,
+      2,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      -1,
+      4,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "id:fractional_in_correction#1",
+   "class": "id:fractional_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1.9,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:integral_float_in_correction#1",
+   "class": "id:integral_float_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1.0,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_correction#1",
+   "class": "id:boolean_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      true,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:string_in_correction#1",
+   "class": "id:string_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      "1",
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:fractional_in_set#1",
+   "class": "id:fractional_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2.9
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_set#1",
+   "class": "id:boolean_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "id:unknown_vertex_in_set#1",
+   "class": "id:unknown_vertex_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2,
+       11
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:fractional_in_syndrome#1",
+   "class": "id:fractional_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1.5,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_syndrome#1",
+   "class": "id:boolean_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     true,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:unknown_fired_detector#1",
+   "class": "id:unknown_fired_detector",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4,
+     11
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:non_canonical_spelling#1",
+   "class": "hex:non_canonical_spelling",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x3adccd577e90fp-47"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "hex:not_binary64_extra_digits#1",
+   "class": "hex:not_binary64_extra_digits",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf48781p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:decimal_not_hex#1",
+   "class": "hex:decimal_not_hex",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "7.357813533353799"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:overflow#1",
+   "class": "hex:overflow",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.0p+2000"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:json_number_not_string#1",
+   "class": "hex:json_number_not_string",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      7.357813533353799
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:subnormal_weight#1",
+   "class": "hex:subnormal_weight",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x0.0000000000001p-1022"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "3160602237653267828318667143509370362141574553204302160806542655792072779169506500976467991253145218275710428167895717430590690947306791746599255551852542090679944389594707498471479171057566784389714402207720587125639206895198654121154572047123751520627621758778467388724243175043729458231990532726246724798344627830149655286695900212049773/281553864096844225687804072923985156832458863374503115362539647613798572172325253411585832227429982012515405515134832186005414066952248213651569241539534160456806408724506048174380246131134235788106981513438221535691506441023702791044837944222657728402359243958700931916801537943453002689480683962508477322202059754658666609107314730336256",
+    "lower_bound": "25277733455054995/281553864096844225687804072923985156832458863374503115362539647613798572172325253411585832227429982012515405515134832186005414066952248213651569241539534160456806408724506048174380246131134235788106981513438221535691506441023702791044837944222657728402359243958700931916801537943453002689480683962508477322202059754658666609107314730336256"
+   }
+  },
+  {
+   "name": "base#2",
+   "class": "base",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "25765098885324307/2251799813685248"
+   }
+  },
+  {
+   "name": "valid:packing_scaled_up_overload#2",
+   "class": "valid:packing_scaled_up_overload",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.49e74410c1416p+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.ff1b5ae23b542p+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "1217925210304267/6534409697635056917821440131072",
+    "lower_bound": "37383365740060035918537172274403/3267204848817528458910720065536"
+   }
+  },
+  {
+   "name": "valid:packing_scaled_down#2",
+   "class": "valid:packing_scaled_down",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+2"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "25765098885324307/4503599627370496",
+    "lower_bound": "25765098885324307/4503599627370496"
+   }
+  },
+  {
+   "name": "valid:packing_tiny_shortfall#2",
+   "class": "valid:packing_tiny_shortfall",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673ccc5fp+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b6110dp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "11717/1125899906842624",
+    "lower_bound": "25765098885300873/2251799813685248"
+   }
+  },
+  {
+   "name": "valid:zero_valued_set#0",
+   "class": "valid:zero_valued_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x0.0p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "25765098885324307/2251799813685248"
+   }
+  },
+  {
+   "name": "valid:negative_zero_value#2",
+   "class": "valid:negative_zero_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "-0x0.0p+0"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "2321488671567471/281474976710656",
+    "lower_bound": "7193189512784539/2251799813685248"
+   }
+  },
+  {
+   "name": "valid:reversed_edge_orientation_in_correction#2",
+   "class": "valid:reversed_edge_orientation_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      1,
+      0
+     ],
+     [
+      -1,
+      3
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "25765098885324307/2251799813685248"
+   }
+  },
+  {
+   "name": "valid:empty_packing#2",
+   "class": "valid:empty_packing",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "25765098885324307/2251799813685248",
+    "lower_bound": "0"
+   }
+  },
+  {
+   "name": "trap:set_with_no_T_vertex#2",
+   "class": "trap:set_with_no_T_vertex",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       2
+      ],
+      "0x1.0p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:boundary_side_parity_{B,t}#2",
+   "class": "trap:boundary_side_parity_{B,t}",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:pair_of_fired#1",
+   "class": "trap:pair_of_fired",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       0,
+       1
+      ],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "trap:empty_set#2",
+   "class": "trap:empty_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_same_value#2",
+   "class": "repeat:set_listed_twice_same_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_other_value#2",
+   "class": "repeat:set_listed_twice_other_value",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       1
+      ],
+      "0x1.0p-3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:set_listed_twice_permuted#2",
+   "class": "repeat:set_listed_twice_permuted",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:correction_edge_twice#2",
+   "class": "repeat:correction_edge_twice",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "repeat:correction_edge_twice_reversed#2",
+   "class": "repeat:correction_edge_twice_reversed",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:detector_fired_twice#2",
+   "class": "syndrome:detector_fired_twice",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3,
+     0
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:boundary_in_syndrome#2",
+   "class": "syndrome:boundary_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3,
+     -1
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "syndrome:entry_2_not_fired#0",
+   "class": "syndrome:entry_2_not_fired",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_inf#2",
+   "class": "nonfinite:dual_inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "inf"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_inf#2",
+   "class": "nonfinite:weight_inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "inf"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_-inf#2",
+   "class": "nonfinite:dual_-inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "-inf"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_-inf#2",
+   "class": "nonfinite:weight_-inf",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "-inf"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:dual_nan#2",
+   "class": "nonfinite:dual_nan",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "nan"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "nonfinite:weight_nan#2",
+   "class": "nonfinite:weight_nan",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "nan"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "negative:dual#2",
+   "class": "negative:dual",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "-0x1.0p-3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "negative:weight#2",
+   "class": "negative:weight",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "-0x1.0p+0"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:parallel_edge_heavier#2",
+   "class": "graph:parallel_edge_heavier",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      0,
+      -1,
+      "0x1.760e835a7625bp+2"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:parallel_edge_lighter#2",
+   "class": "graph:parallel_edge_lighter",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      -1,
+      0,
+      "0x1.360e835a7625bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:self_loop#2",
+   "class": "graph:self_loop",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ],
+     [
+      -1,
+      -1,
+      "0x1.0p+0"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "graph:boundary_first_edge#2",
+   "class": "graph:boundary_first_edge",
+   "case": {
+    "edges": [
+     [
+      -1,
+      0,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      -1,
+      2,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      -1,
+      3,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "25765098885324307/2251799813685248"
+   }
+  },
+  {
+   "name": "id:fractional_in_correction#2",
+   "class": "id:fractional_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0.9,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:integral_float_in_correction#2",
+   "class": "id:integral_float_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0.0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_correction#2",
+   "class": "id:boolean_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      true,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:string_in_correction#2",
+   "class": "id:string_in_correction",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      "0",
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:fractional_in_set#2",
+   "class": "id:fractional_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1.9
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_set#2",
+   "class": "id:boolean_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       true
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:unknown_vertex_in_set#2",
+   "class": "id:unknown_vertex_in_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1,
+       10
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:fractional_in_syndrome#2",
+   "class": "id:fractional_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0.5,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:boolean_in_syndrome#2",
+   "class": "id:boolean_in_syndrome",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     true,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "id:unknown_fired_detector#2",
+   "class": "id:unknown_fired_detector",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3,
+     10
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:non_canonical_spelling#2",
+   "class": "hex:non_canonical_spelling",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x83f61b39e6e6fp-48"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "25765098885324307/2251799813685248"
+   }
+  },
+  {
+   "name": "hex:not_binary64_extra_digits#2",
+   "class": "hex:not_binary64_extra_digits",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcde1p+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:decimal_not_hex#2",
+   "class": "hex:decimal_not_hex",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "8.247584558658158"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:overflow#2",
+   "class": "hex:overflow",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.0p+2000"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:json_number_not_string#2",
+   "class": "hex:json_number_not_string",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.360e835a7625bp+2"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      8.247584558658158
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "hex:subnormal_weight#2",
+   "class": "hex:subnormal_weight",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x0.0000000000001p-1022"
+     ],
+     [
+      0,
+      1,
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19a2c5c644a3p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x0.0p+0"
+     ],
+     [
+      2,
+      3,
+      "0x1.e1ad97a163f9bp+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     3
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      3,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.07ec3673cdcdep+3"
+     ],
+     [
+      [
+       3
+      ],
+      "0x1.98e2af1b62a9bp+1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "25765098885324307/2251799813685248"
+   }
+  },
+  {
+   "name": "trap:pair_of_fired#2",
+   "class": "trap:pair_of_fired",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8b9dbdcbf4b70p+1"
+     ],
+     [
+      0,
+      2,
+      "0x1.88b7ff25bb75ap+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.8a7f6a25d1c61p+2"
+     ],
+     [
+      1,
+      2,
+      "0x1.0e7a165dae5d2p+3"
+     ],
+     [
+      2,
+      -1,
+      "0x1.0000000000000p+2"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     2
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0
+      ],
+      "0x1.58b7ff25bb75ap+1"
+     ],
+     [
+      [
+       1
+      ],
+      "0x1.972df531ca0b0p-2"
+     ],
+     [
+      [
+       2
+      ],
+      "0x1.b8b7ff25bb75ap+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.1d20036912298p-1"
+     ],
+     [
+      [
+       0,
+       1
+      ],
+      "0x1.0p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "valid:zero_valued_set#1",
+   "class": "valid:zero_valued_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.4ba540eb736f8p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p-1"
+     ],
+     [
+      1,
+      2,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      2,
+      -1,
+      "0x1.4000000000000p+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.8000000000000p-1"
+     ],
+     [
+      [
+       0
+      ],
+      "0x0.0p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "3/4"
+   }
+  },
+  {
+   "name": "syndrome:entry_2_not_fired#1",
+   "class": "syndrome:entry_2_not_fired",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.4ba540eb736f8p+1"
+     ],
+     [
+      0,
+      1,
+      "0x1.8000000000000p-1"
+     ],
+     [
+      1,
+      2,
+      "0x1.8000000000000p+0"
+     ],
+     [
+      2,
+      -1,
+      "0x1.4000000000000p+1"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     2
+    ],
+    "correction": [
+     [
+      0,
+      1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.8000000000000p-1"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "valid:zero_valued_set#2",
+   "class": "valid:zero_valued_set",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.f93105ff5411fp+2"
+     ],
+     [
+      0,
+      2,
+      "0x1.2bbfc3fa72c5fp+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.01236ad1673b2p+1"
+     ],
+     [
+      2,
+      3,
+      "0x1.455ccb4eab3f6p+2"
+     ],
+     [
+      3,
+      -1,
+      "0x1.8000000000000p+0"
+     ]
+    ],
+    "fired": [
+     2,
+     3
+    ],
+    "correction": [
+     [
+      2,
+      3
+     ]
+    ],
+    "duals": [
+     [
+      [
+       0,
+       2
+      ],
+      "0x1.89962bcbef43ap+1"
+     ],
+     [
+      [
+       -1,
+       2
+      ],
+      "0x1.8000000000000p+0"
+     ],
+     [
+      [
+       -1,
+       3
+      ],
+      "0x1.048dab459cec8p-1"
+     ],
+     [
+      [
+       2
+      ],
+      "0x0.0p+0"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "EXACT_OPTIMAL",
+    "epsilon": "0",
+    "lower_bound": "2861918615591419/562949953421312"
+   }
+  },
+  {
+   "name": "syndrome:entry_2_not_fired#2",
+   "class": "syndrome:entry_2_not_fired",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.8c35d1d482fc5p+0"
+     ],
+     [
+      0,
+      3,
+      "0x1.dc6f85a486dcap+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e000000000000p+1"
+     ],
+     [
+      1,
+      2,
+      "0x1.d1148c559aff9p-2"
+     ],
+     [
+      2,
+      -1,
+      "0x1.6d63f03328012p+2"
+     ],
+     [
+      2,
+      4,
+      "0x0.0p+0"
+     ],
+     [
+      3,
+      4,
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "fired": [
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      -1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "duals": [
+     [
+      [
+       -1
+      ],
+      "0x1.3407a8a071e1cp+1"
+     ],
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.57f0aebf1c3c7p+0"
+     ],
+     [
+      [
+       -1,
+       1
+      ],
+      "0x1.a22918ab35ff2p-3"
+     ],
+     [
+      [
+       2,
+       4
+      ],
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "eps_max": "1/1000000"
+   },
+   "expected": {
+    "status": "INVALID_INPUT",
+    "epsilon": null,
+    "lower_bound": null
+   }
+  },
+  {
+   "name": "valid:eps_max_equals_epsilon#0",
+   "class": "valid:eps_max_equals_epsilon",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "13/71837536242311756"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "valid:eps_max_one_unit_below#0",
+   "class": "valid:eps_max_one_unit_below",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "44144702194105040101513921421676170304613550025281697866826889266153925514512860083417524270424571924970379354600003996293875858015513522406255532114102043346128731373070768578294308468535212374992220771710225323666594916259422358798404679604660011237521219130040646701558373013224627400023480595170846890019261734065609912357959533/243942049521160008678815007698391509440936627376533776051473266784432607060726551263098770323285054467988139577508263237167601498362068648160918866880852693679503206695066882257842711513816965851737478294228968829983883509809554749144530478443978249127568325843206410272878640851474611405634144295868551066155368111027463149950467975000716753240064"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "valid:eps_max_one_unit_above#0",
+   "class": "valid:eps_max_one_unit_above",
+   "case": {
+    "edges": [
+     [
+      0,
+      -1,
+      "0x1.5d3cc3efdf29ap+2"
+     ],
+     [
+      0,
+      1,
+      "0x0.0p+0"
+     ],
+     [
+      0,
+      2,
+      "0x1.e19fa3c5bcab3p+2"
+     ],
+     [
+      0,
+      3,
+      "0x1.1b98e25464754p+3"
+     ],
+     [
+      1,
+      4,
+      "0x1.a000000000000p+1"
+     ],
+     [
+      2,
+      -1,
+      "0x1.fe6fb79a86449p+2"
+     ],
+     [
+      3,
+      4,
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      4,
+      -1,
+      "0x1.ef1299bd237a3p+1"
+     ]
+    ],
+    "fired": [
+     1,
+     2,
+     4
+    ],
+    "correction": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       2
+      ],
+      "0x1.d6e66abbf4878p+2"
+     ],
+     [
+      [
+       4
+      ],
+      "0x1.8aef770e23d77p+1"
+     ],
+     [
+      [
+       -1
+      ],
+      "0x1.3c4a66f48de8cp-1"
+     ],
+     [
+      [
+       3,
+       4
+      ],
+      "0x1.51088f1dc2890p-3"
+     ]
+    ],
+    "eps_max": "44144702194105040101513921421676170304613550025281697866826889266153925514512860083417524270424571924970379354600003996293875858015513522406255532114102043346128731373070768578294308468535212374992220771710225323666594916259422358798404679604660011237521219130040646701558373013224627400023480595170846890019261734101528680479115411/243942049521160008678815007698391509440936627376533776051473266784432607060726551263098770323285054467988139577508263237167601498362068648160918866880852693679503206695066882257842711513816965851737478294228968829983883509809554749144530478443978249127568325843206410272878640851474611405634144295868551066155368111027463149950467975000716753240064"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "13/71837536242311756",
+    "lower_bound": "226986261650126183171963636850155/20220468840755607860434159271936"
+   }
+  },
+  {
+   "name": "valid:eps_max_equals_epsilon#1",
+   "class": "valid:eps_max_equals_epsilon",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.8c35d1d482fc5p+0"
+     ],
+     [
+      0,
+      3,
+      "0x1.dc6f85a486dcap+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e000000000000p+1"
+     ],
+     [
+      1,
+      2,
+      "0x1.d1148c559aff9p-2"
+     ],
+     [
+      2,
+      -1,
+      "0x1.6d63f03328012p+2"
+     ],
+     [
+      2,
+      4,
+      "0x0.0p+0"
+     ],
+     [
+      3,
+      4,
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "fired": [
+     4
+    ],
+    "correction": [
+     [
+      1,
+      -1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "duals": [
+     [
+      [
+       -1
+      ],
+      "0x1.3407a8a071e1cp+1"
+     ],
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.57f0aebf1c3c7p+0"
+     ],
+     [
+      [
+       -1,
+       1
+      ],
+      "0x1.a22918ab35ff2p-3"
+     ],
+     [
+      [
+       2,
+       4
+      ],
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "eps_max": "187259039088684105/502256139683575387019615357894656"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "187259039088684105/502256139683575387019615357894656",
+    "lower_bound": "527893797753009480255213984703113/125564034920893846754903839473664"
+   }
+  },
+  {
+   "name": "valid:eps_max_one_unit_below#1",
+   "class": "valid:eps_max_one_unit_below",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.8c35d1d482fc5p+0"
+     ],
+     [
+      0,
+      3,
+      "0x1.dc6f85a486dcap+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e000000000000p+1"
+     ],
+     [
+      1,
+      2,
+      "0x1.d1148c559aff9p-2"
+     ],
+     [
+      2,
+      -1,
+      "0x1.6d63f03328012p+2"
+     ],
+     [
+      2,
+      4,
+      "0x0.0p+0"
+     ],
+     [
+      3,
+      4,
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "fired": [
+     4
+    ],
+    "correction": [
+     [
+      1,
+      -1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "duals": [
+     [
+      [
+       -1
+      ],
+      "0x1.3407a8a071e1cp+1"
+     ],
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.57f0aebf1c3c7p+0"
+     ],
+     [
+      [
+       -1,
+       1
+      ],
+      "0x1.a22918ab35ff2p-3"
+     ],
+     [
+      [
+       2,
+       4
+      ],
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "eps_max": "141194654493448960601263396531879463713615281714472740419466093857949258897057581431768433232905034631157781652060826860490652320428235652770194389983321121763239674580128789181669660366327919273468713022203335971400863664431503617332741131106458874684903237671858853274547958169454925523735265225080748917148013190062280160657228011/378704720770519265106372283269963237538379131254599297790156900875673576738691801122800662351249075523624006915551401163350138886957667623382330882954763981447044002739093478085223305851074568078176076862663555086371089758377962382472660724851091879964062877094450469506212884225829793294719876308161572876841148415445251652909735381060520020803584"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "187259039088684105/502256139683575387019615357894656",
+    "lower_bound": "527893797753009480255213984703113/125564034920893846754903839473664"
+   }
+  },
+  {
+   "name": "valid:eps_max_one_unit_above#1",
+   "class": "valid:eps_max_one_unit_above",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.8c35d1d482fc5p+0"
+     ],
+     [
+      0,
+      3,
+      "0x1.dc6f85a486dcap+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.e000000000000p+1"
+     ],
+     [
+      1,
+      2,
+      "0x1.d1148c559aff9p-2"
+     ],
+     [
+      2,
+      -1,
+      "0x1.6d63f03328012p+2"
+     ],
+     [
+      2,
+      4,
+      "0x0.0p+0"
+     ],
+     [
+      3,
+      4,
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "fired": [
+     4
+    ],
+    "correction": [
+     [
+      1,
+      -1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "duals": [
+     [
+      [
+       -1
+      ],
+      "0x1.3407a8a071e1cp+1"
+     ],
+     [
+      [
+       -1,
+       0
+      ],
+      "0x1.57f0aebf1c3c7p+0"
+     ],
+     [
+      [
+       -1,
+       1
+      ],
+      "0x1.a22918ab35ff2p-3"
+     ],
+     [
+      [
+       2,
+       4
+      ],
+      "0x1.0000000000000p-2"
+     ]
+    ],
+    "eps_max": "141194654493448960601263396531879463713615281714472740419466093857949258897057581431768433232905034631157781652060826860490652320428235652770194389983321121763239674580128789181669660366327919273468713022203335971400863664431503617332741131106458874684903237671858853274547958169454925523735265225080748917148013190118041793710833429/378704720770519265106372283269963237538379131254599297790156900875673576738691801122800662351249075523624006915551401163350138886957667623382330882954763981447044002739093478085223305851074568078176076862663555086371089758377962382472660724851091879964062877094450469506212884225829793294719876308161572876841148415445251652909735381060520020803584"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "187259039088684105/502256139683575387019615357894656",
+    "lower_bound": "527893797753009480255213984703113/125564034920893846754903839473664"
+   }
+  },
+  {
+   "name": "valid:eps_max_equals_epsilon#2",
+   "class": "valid:eps_max_equals_epsilon",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.4c9903b87e88ep-2"
+     ],
+     [
+      0,
+      2,
+      "0x1.6000000000000p+1"
+     ],
+     [
+      0,
+      4,
+      "0x1.9b633157cf37fp+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.156d7acca284dp+1"
+     ],
+     [
+      2,
+      3,
+      "0x1.4358eb65a98b8p+2"
+     ],
+     [
+      4,
+      5,
+      "0x1.18fba1d4ad026p-1"
+     ],
+     [
+      5,
+      -1,
+      "0x1.36b09264e9d29p+0"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     2,
+     5
+    ],
+    "correction": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      -1
+     ],
+     [
+      5,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.4c9903b87e88ep-2"
+     ],
+     [
+      [
+       2,
+       3
+      ],
+      "0x1.6000000000000p+1"
+     ],
+     [
+      [
+       -1,
+       5
+      ],
+      "0x1.18fba1d4ad026p-1"
+     ],
+     [
+      [
+       3,
+       4,
+       5
+      ],
+      "0x1.36b09264e9d29p+0"
+     ],
+     [
+      [
+       -1,
+       4,
+       5
+      ],
+      "0x1.4b36e3c0cee63p+0"
+     ]
+    ],
+    "eps_max": "1/9007199254740992"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "1/9007199254740992",
+    "lower_bound": "55223456832543621/9007199254740992"
+   }
+  },
+  {
+   "name": "valid:eps_max_one_unit_below#2",
+   "class": "valid:eps_max_one_unit_below",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.4c9903b87e88ep-2"
+     ],
+     [
+      0,
+      2,
+      "0x1.6000000000000p+1"
+     ],
+     [
+      0,
+      4,
+      "0x1.9b633157cf37fp+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.156d7acca284dp+1"
+     ],
+     [
+      2,
+      3,
+      "0x1.4358eb65a98b8p+2"
+     ],
+     [
+      4,
+      5,
+      "0x1.18fba1d4ad026p-1"
+     ],
+     [
+      5,
+      -1,
+      "0x1.36b09264e9d29p+0"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     2,
+     5
+    ],
+    "correction": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      -1
+     ],
+     [
+      5,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.4c9903b87e88ep-2"
+     ],
+     [
+      [
+       2,
+       3
+      ],
+      "0x1.6000000000000p+1"
+     ],
+     [
+      [
+       -1,
+       5
+      ],
+      "0x1.18fba1d4ad026p-1"
+     ],
+     [
+      [
+       3,
+       4,
+       5
+      ],
+      "0x1.36b09264e9d29p+0"
+     ],
+     [
+      [
+       -1,
+       4,
+       5
+      ],
+      "0x1.4b36e3c0cee63p+0"
+     ]
+    ],
+    "eps_max": "1508014301265110212210531135789433919262563062937126445449153766240405586123431823342743394534566435927056356253600209291203385124994765794776479899441737755548338772926974008712671009764769795099197087276523896072521861519103442867235119310387667688286379400732806098106007386857498456032472308789536403591243235327/13582985290493858492773514283592667786034938469317445497485196697278130927542418487205392083207560592298578262953847383475038725543234929971155548342800628721885763499406390331782864144164680730766837160526223176512798435772129956553355286032203080380775759732320198985094884004069116123084147875437183658467465148948790552744165376"
+   },
+   "expected": {
+    "status": "NOT_PROVEN",
+    "epsilon": "1/9007199254740992",
+    "lower_bound": "55223456832543621/9007199254740992"
+   }
+  },
+  {
+   "name": "valid:eps_max_one_unit_above#2",
+   "class": "valid:eps_max_one_unit_above",
+   "case": {
+    "edges": [
+     [
+      0,
+      1,
+      "0x1.4c9903b87e88ep-2"
+     ],
+     [
+      0,
+      2,
+      "0x1.6000000000000p+1"
+     ],
+     [
+      0,
+      4,
+      "0x1.9b633157cf37fp+2"
+     ],
+     [
+      1,
+      -1,
+      "0x1.156d7acca284dp+1"
+     ],
+     [
+      2,
+      3,
+      "0x1.4358eb65a98b8p+2"
+     ],
+     [
+      4,
+      5,
+      "0x1.18fba1d4ad026p-1"
+     ],
+     [
+      5,
+      -1,
+      "0x1.36b09264e9d29p+0"
+     ]
+    ],
+    "fired": [
+     0,
+     1,
+     2,
+     5
+    ],
+    "correction": [
+     [
+      0,
+      2
+     ],
+     [
+      1,
+      -1
+     ],
+     [
+      5,
+      -1
+     ]
+    ],
+    "duals": [
+     [
+      [
+       1
+      ],
+      "0x1.4c9903b87e88ep-2"
+     ],
+     [
+      [
+       2,
+       3
+      ],
+      "0x1.6000000000000p+1"
+     ],
+     [
+      [
+       -1,
+       5
+      ],
+      "0x1.18fba1d4ad026p-1"
+     ],
+     [
+      [
+       3,
+       4,
+       5
+      ],
+      "0x1.36b09264e9d29p+0"
+     ],
+     [
+      [
+       -1,
+       4,
+       5
+      ],
+      "0x1.4b36e3c0cee63p+0"
+     ]
+    ],
+    "eps_max": "1508014301265110212210531135789433919262563062937126445449153766240405586123431823342743394534566435927056356253600209291203385124994765794776479899441737755548338772926974008712671009764769795099197087276523896072521861519103442867235119310387667688286379400732806098106007386857498456032472308789536403591243235329/13582985290493858492773514283592667786034938469317445497485196697278130927542418487205392083207560592298578262953847383475038725543234929971155548342800628721885763499406390331782864144164680730766837160526223176512798435772129956553355286032203080380775759732320198985094884004069116123084147875437183658467465148948790552744165376"
+   },
+   "expected": {
+    "status": "EPSILON_OPTIMAL",
+    "epsilon": "1/9007199254740992",
+    "lower_bound": "55223456832543621/9007199254740992"
+   }
+  }
+ ]
+}

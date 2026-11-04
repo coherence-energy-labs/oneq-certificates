@@ -1,0 +1,2010 @@
+{
+ "schema": "oneq-qldpc-input-domain-vectors/1",
+ "contract": "docs/QLDPC_RECEIPT_INPUT_DOMAIN.md",
+ "implementations": [
+  "P-flat",
+  "P-tree",
+  "P-screen",
+  "R-flat",
+  "R-tree",
+  "JS-flat",
+  "JS-tree"
+ ],
+ "how_to_read": "Each vector is a base instance (support form: n, checks, syndrome bits s, integer weights w, candidate cand, facets [row, F, num, den] or a tree) with ONE slot, at `path`, replaced by `value` exactly as JSON writes it (1.0 stays a float, true a bool, \"1\" a string). Adapters in tests/test_qldpc_input_domain.py carry the value into each implementation's own format untouched. Every applicable implementation must reach `expect` (the float screen `expect_screen` where given); `not_expressible` names formats with no slot for the value.",
+ "provenance": "the 66-probe matrix of the adjudication of external audit 2 (2026-11-03, findings F05/F06), plus the divergences found while writing the contract: repeated candidate, F and row entries read as sets by the production checker; one-element row combinations read as single rows by tree checker B and the JavaScript tree checker; multipliers 2/2 and -1/-1 normalised by JavaScript; and (the final referee, 2026-11-03) facets with multiplier 0 skipped before validation by six of the seven implementations, flat and at tree depth 1",
+ "bases": {
+  "B1": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    1
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [
+    1
+   ],
+   "facets": [
+    [
+     0,
+     [],
+     1,
+     1
+    ]
+   ]
+  },
+  "B0": {
+   "n": 1,
+   "checks": [
+    [
+     0
+    ]
+   ],
+   "s": [
+    1
+   ],
+   "w": [
+    1
+   ],
+   "cand": [
+    0
+   ],
+   "facets": [
+    [
+     0,
+     [],
+     1,
+     1
+    ]
+   ]
+  },
+  "B2": {
+   "n": 2,
+   "checks": [
+    [
+     0
+    ],
+    [
+     1
+    ]
+   ],
+   "s": [
+    0,
+    1
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [
+    1
+   ],
+   "facets": [
+    [
+     1,
+     [],
+     1,
+     1
+    ]
+   ]
+  },
+  "B3a": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    0
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [],
+   "facets": [
+    [
+     0,
+     [
+      0
+     ],
+     1,
+     1
+    ]
+   ]
+  },
+  "B3b": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    0
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [],
+   "facets": [
+    [
+     0,
+     [
+      1
+     ],
+     1,
+     1
+    ]
+   ]
+  },
+  "B4": {
+   "n": 2,
+   "checks": [
+    [
+     0
+    ],
+    [
+     1
+    ]
+   ],
+   "s": [
+    0,
+    1
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [
+    1
+   ],
+   "facets": [
+    [
+     [
+      0,
+      1
+     ],
+     [],
+     1,
+     1
+    ]
+   ]
+  },
+  "BT0": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    0
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [],
+   "facets": []
+  },
+  "BTb0": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    0
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [],
+   "tree": [
+    "branch",
+    0,
+    [
+     "bound",
+     []
+    ],
+    [
+     "bound",
+     []
+    ]
+   ]
+  },
+  "BTb1": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    0
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [],
+   "tree": [
+    "branch",
+    1,
+    [
+     "bound",
+     []
+    ],
+    [
+     "bound",
+     []
+    ]
+   ]
+  },
+  "BTi0": {
+   "n": 1,
+   "checks": [
+    [
+     0
+    ]
+   ],
+   "s": [
+    1
+   ],
+   "w": [
+    1
+   ],
+   "cand": [
+    0
+   ],
+   "tree": [
+    "branch",
+    0,
+    [
+     "infeasible",
+     0
+    ],
+    [
+     "bound",
+     []
+    ]
+   ]
+  },
+  "BTi1": {
+   "n": 1,
+   "checks": [
+    [
+     0
+    ],
+    [
+     0
+    ]
+   ],
+   "s": [
+    1,
+    1
+   ],
+   "w": [
+    1
+   ],
+   "cand": [
+    0
+   ],
+   "tree": [
+    "branch",
+    0,
+    [
+     "infeasible",
+     1
+    ],
+    [
+     "bound",
+     []
+    ]
+   ]
+  },
+  "BTi2": {
+   "n": 2,
+   "checks": [
+    [
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1
+    ]
+   ],
+   "s": [
+    1,
+    0,
+    1
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [
+    0,
+    1
+   ],
+   "tree": [
+    "branch",
+    0,
+    [
+     "infeasible",
+     0
+    ],
+    [
+     "branch",
+     1,
+     [
+      "infeasible",
+      [
+       0,
+       1
+      ]
+     ],
+     [
+      "bound",
+      []
+     ]
+    ]
+   ]
+  },
+  "B1z": {
+   "n": 2,
+   "checks": [
+    [
+     0,
+     1
+    ]
+   ],
+   "s": [
+    1
+   ],
+   "w": [
+    1,
+    1
+   ],
+   "cand": [
+    1
+   ],
+   "facets": [
+    [
+     0,
+     [],
+     1,
+     1
+    ],
+    [
+     0,
+     [
+      0,
+      1
+     ],
+     0,
+     1
+    ]
+   ]
+  },
+  "BT1z": {
+   "n": 3,
+   "checks": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "s": [
+    1,
+    1
+   ],
+   "w": [
+    1,
+    1,
+    1
+   ],
+   "cand": [
+    1
+   ],
+   "tree": [
+    "branch",
+    0,
+    [
+     "bound",
+     [
+      [
+       0,
+       [],
+       1,
+       1
+      ],
+      [
+       1,
+       [
+        1,
+        2
+       ],
+       0,
+       1
+      ]
+     ]
+    ],
+    [
+     "bound",
+     []
+    ]
+   ]
+  }
+ },
+ "vectors": [
+  {
+   "id": "control-B1",
+   "field": "control",
+   "base": "B1",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-B0",
+   "field": "control",
+   "base": "B0",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-B2",
+   "field": "control",
+   "base": "B2",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-B3a",
+   "field": "control",
+   "base": "B3a",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-B3b",
+   "field": "control",
+   "base": "B3b",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-B4",
+   "field": "control",
+   "base": "B4",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BT0",
+   "field": "control",
+   "base": "BT0",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BTb0",
+   "field": "control",
+   "base": "BTb0",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BTb1",
+   "field": "control",
+   "base": "BTb1",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BTi0",
+   "field": "control",
+   "base": "BTi0",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BTi1",
+   "field": "control",
+   "base": "BTi1",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BTi2",
+   "field": "control",
+   "base": "BTi2",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-B1z",
+   "field": "control",
+   "base": "B1z",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "control-BT1z",
+   "field": "control",
+   "base": "BT1z",
+   "path": null,
+   "value": null,
+   "expect": "accept",
+   "note": "the unperturbed base: every applicable implementation must accept"
+  },
+  {
+   "id": "v000",
+   "field": "weight",
+   "base": "B1",
+   "path": [
+    "w",
+    1
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v001",
+   "field": "weight",
+   "base": "B1",
+   "path": [
+    "w",
+    1
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v002",
+   "field": "weight",
+   "base": "B1",
+   "path": [
+    "w",
+    1
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v003",
+   "field": "weight",
+   "base": "B1",
+   "path": [
+    "w",
+    1
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": "",
+   "expect_screen": "accept"
+  },
+  {
+   "id": "v004",
+   "field": "weight",
+   "base": "B1",
+   "path": [
+    "w",
+    1
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v005",
+   "field": "weight",
+   "base": "B1",
+   "path": [
+    "w",
+    1
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v006",
+   "field": "check index",
+   "base": "B1",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v007",
+   "field": "check index",
+   "base": "B1",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v008",
+   "field": "check index",
+   "base": "B1",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v009",
+   "field": "check index",
+   "base": "B1",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v010",
+   "field": "check index",
+   "base": "B1",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v011",
+   "field": "check index",
+   "base": "B0",
+   "path": [
+    "checks",
+    0,
+    0
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": "int(0.9) = 0 would land on the base"
+  },
+  {
+   "id": "v012",
+   "field": "check index",
+   "base": "BT0",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": "a variable with no weight; the trivial base accepts anything in range"
+  },
+  {
+   "id": "v013",
+   "field": "check index",
+   "base": "BT0",
+   "path": [
+    "checks",
+    0,
+    1
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": "a variable with no weight; the trivial base accepts anything in range"
+  },
+  {
+   "id": "v014",
+   "field": "syndrome entry",
+   "base": "B1",
+   "path": [
+    "s",
+    0
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v015",
+   "field": "syndrome entry",
+   "base": "B1",
+   "path": [
+    "s",
+    0
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v016",
+   "field": "syndrome entry",
+   "base": "B1",
+   "path": [
+    "s",
+    0
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v017",
+   "field": "syndrome entry",
+   "base": "B1",
+   "path": [
+    "s",
+    0
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v018",
+   "field": "syndrome entry",
+   "base": "B1",
+   "path": [
+    "s",
+    0
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v019",
+   "field": "syndrome entry",
+   "base": "B1",
+   "path": [
+    "s",
+    0
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v020",
+   "field": "syndrome entry",
+   "base": "BT0",
+   "path": [
+    "s",
+    0
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": "2 & 1 = 0 would land on the base (audit 2, F05)"
+  },
+  {
+   "id": "v021",
+   "field": "syndrome entry",
+   "base": "BT0",
+   "path": [
+    "s",
+    0
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": "2 & 1 = 0 would land on the base (audit 2, F05)"
+  },
+  {
+   "id": "v022",
+   "field": "syndrome entry",
+   "base": "B2",
+   "path": [
+    "s",
+    1
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v023",
+   "field": "syndrome entry",
+   "base": "B2",
+   "path": [
+    "s",
+    1
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v024",
+   "field": "syndrome entry",
+   "base": "B2",
+   "path": [
+    "s",
+    1
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v025",
+   "field": "candidate index",
+   "base": "B1",
+   "path": [
+    "cand",
+    0
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v026",
+   "field": "candidate index",
+   "base": "B1",
+   "path": [
+    "cand",
+    0
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v027",
+   "field": "candidate index",
+   "base": "B1",
+   "path": [
+    "cand",
+    0
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v028",
+   "field": "candidate index",
+   "base": "B1",
+   "path": [
+    "cand",
+    0
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v029",
+   "field": "candidate index",
+   "base": "B1",
+   "path": [
+    "cand",
+    0
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v030",
+   "field": "candidate index",
+   "base": "B1",
+   "path": [
+    "cand",
+    0
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v031",
+   "field": "candidate list",
+   "base": "B1",
+   "path": [
+    "cand"
+   ],
+   "value": [
+    1,
+    1
+   ],
+   "expect": "refuse",
+   "note": "a repeated entry cancels over GF(2); a set reading keeps {1}",
+   "not_expressible": {
+    "R-flat": "the reference takes the candidate as a bit vector: a repeat cannot be written"
+   }
+  },
+  {
+   "id": "v032",
+   "field": "facet row",
+   "base": "B2",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v033",
+   "field": "facet row",
+   "base": "B2",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v034",
+   "field": "facet row",
+   "base": "B2",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v035",
+   "field": "facet row",
+   "base": "B2",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v036",
+   "field": "facet row",
+   "base": "B2",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v037",
+   "field": "facet row",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v038",
+   "field": "facet rows",
+   "base": "B4",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": [
+    0,
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "a repeated row, and a one-element combination",
+   "not_expressible": {
+    "R-flat": "the reference writes every row spec as a list, so a one-element list IS its single row"
+   }
+  },
+  {
+   "id": "v039",
+   "field": "facet rows",
+   "base": "B4",
+   "path": [
+    "facets",
+    0,
+    0
+   ],
+   "value": [
+    1
+   ],
+   "expect": "refuse",
+   "note": "a repeated row, and a one-element combination",
+   "not_expressible": {
+    "R-flat": "the reference writes every row spec as a list, so a one-element list IS its single row"
+   }
+  },
+  {
+   "id": "v040",
+   "field": "facet F index",
+   "base": "B3b",
+   "path": [
+    "facets",
+    0,
+    1,
+    0
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v041",
+   "field": "facet F index",
+   "base": "B3b",
+   "path": [
+    "facets",
+    0,
+    1,
+    0
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v042",
+   "field": "facet F index",
+   "base": "B3b",
+   "path": [
+    "facets",
+    0,
+    1,
+    0
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v043",
+   "field": "facet F index",
+   "base": "B3b",
+   "path": [
+    "facets",
+    0,
+    1,
+    0
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v044",
+   "field": "facet F index",
+   "base": "B3b",
+   "path": [
+    "facets",
+    0,
+    1,
+    0
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v045",
+   "field": "facet F index",
+   "base": "B3a",
+   "path": [
+    "facets",
+    0,
+    1,
+    0
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v046",
+   "field": "facet F list",
+   "base": "B3a",
+   "path": [
+    "facets",
+    0,
+    1
+   ],
+   "value": [
+    0,
+    0,
+    0
+   ],
+   "expect": "refuse",
+   "note": "a set reading keeps {0}, which is a valid facet here"
+  },
+  {
+   "id": "v047",
+   "field": "multiplier num",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    2
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v048",
+   "field": "multiplier num",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    2
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v049",
+   "field": "multiplier num",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    2
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v050",
+   "field": "multiplier num",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    2
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": "",
+   "expect_screen": "accept"
+  },
+  {
+   "id": "v051",
+   "field": "multiplier num",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    2
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v052",
+   "field": "multiplier num",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    2
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v053",
+   "field": "multiplier den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    3
+   ],
+   "value": 2,
+   "expect": "accept",
+   "note": "",
+   "expect_screen": "refuse",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v054",
+   "field": "multiplier den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    3
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": "",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v055",
+   "field": "multiplier den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    3
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": "",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v056",
+   "field": "multiplier den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    3
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": "",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v057",
+   "field": "multiplier den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    3
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": "",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v058",
+   "field": "multiplier den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0,
+    3
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": "",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v059",
+   "field": "multiplier num/den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0
+   ],
+   "value": [
+    0,
+    [],
+    2,
+    2
+   ],
+   "expect": "refuse",
+   "note": "not in lowest terms / a negative denominator: both would normalise to 1",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v060",
+   "field": "multiplier num/den",
+   "base": "B1",
+   "path": [
+    "facets",
+    0
+   ],
+   "value": [
+    0,
+    [],
+    -1,
+    -1
+   ],
+   "expect": "refuse",
+   "note": "not in lowest terms / a negative denominator: both would normalise to 1",
+   "not_expressible": {
+    "P-flat": "the Python API takes y as one rational object, never num/den",
+    "P-tree": "the Python API takes y as one rational object, never num/den",
+    "P-screen": "the Python API takes y as one rational object, never num/den"
+   }
+  },
+  {
+   "id": "v061",
+   "field": "branch variable",
+   "base": "BTb1",
+   "path": [
+    "tree",
+    1
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v062",
+   "field": "branch variable",
+   "base": "BTb1",
+   "path": [
+    "tree",
+    1
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v063",
+   "field": "branch variable",
+   "base": "BTb1",
+   "path": [
+    "tree",
+    1
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v064",
+   "field": "branch variable",
+   "base": "BTb1",
+   "path": [
+    "tree",
+    1
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v065",
+   "field": "branch variable",
+   "base": "BTb1",
+   "path": [
+    "tree",
+    1
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v066",
+   "field": "branch variable",
+   "base": "BTb0",
+   "path": [
+    "tree",
+    1
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v067",
+   "field": "infeasible row",
+   "base": "BTi1",
+   "path": [
+    "tree",
+    2,
+    1
+   ],
+   "value": 2,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v068",
+   "field": "infeasible row",
+   "base": "BTi1",
+   "path": [
+    "tree",
+    2,
+    1
+   ],
+   "value": -1,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v069",
+   "field": "infeasible row",
+   "base": "BTi1",
+   "path": [
+    "tree",
+    2,
+    1
+   ],
+   "value": 1.0,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v070",
+   "field": "infeasible row",
+   "base": "BTi1",
+   "path": [
+    "tree",
+    2,
+    1
+   ],
+   "value": true,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v071",
+   "field": "infeasible row",
+   "base": "BTi1",
+   "path": [
+    "tree",
+    2,
+    1
+   ],
+   "value": "1",
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v072",
+   "field": "infeasible row",
+   "base": "BTi0",
+   "path": [
+    "tree",
+    2,
+    1
+   ],
+   "value": 0.9,
+   "expect": "refuse",
+   "note": ""
+  },
+  {
+   "id": "v073",
+   "field": "infeasible rows",
+   "base": "BTi2",
+   "path": [
+    "tree",
+    3,
+    2,
+    1
+   ],
+   "value": [
+    1
+   ],
+   "expect": "refuse",
+   "note": "a one-element combination, and a repeated row"
+  },
+  {
+   "id": "v074",
+   "field": "infeasible rows",
+   "base": "BTi2",
+   "path": [
+    "tree",
+    3,
+    2,
+    1
+   ],
+   "value": [
+    0,
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "a one-element combination, and a repeated row"
+  },
+  {
+   "id": "v075",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    999,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v076",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    -1,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v077",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    [
+     0
+    ],
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread",
+   "not_expressible": {
+    "R-flat": "the reference writes every row spec as a list, so a one-element list IS its single row"
+   }
+  },
+  {
+   "id": "v078",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    0,
+    [
+     99999
+    ],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v079",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    true,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v080",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    0.9,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v081",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    [
+     0,
+     0
+    ],
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v082",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    0,
+    [
+     1,
+     1
+    ],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v083",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    0,
+    [
+     0
+    ],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v084",
+   "field": "zero-multiplier facet",
+   "base": "B1z",
+   "path": [
+    "facets",
+    1
+   ],
+   "value": [
+    0,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "each facet rule, on a facet whose multiplier is 0: refused, never skipped unread"
+  },
+  {
+   "id": "v085",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    999,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v086",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    -1,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v087",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    [
+     1
+    ],
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v088",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    1,
+    [
+     99999
+    ],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v089",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    true,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v090",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    0.9,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v091",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    [
+     1,
+     1
+    ],
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v092",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    1,
+    [
+     2,
+     2
+    ],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v093",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    1,
+    [
+     1
+    ],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  },
+  {
+   "id": "v094",
+   "field": "zero-multiplier tree facet",
+   "base": "BT1z",
+   "path": [
+    "tree",
+    2,
+    1,
+    1
+   ],
+   "value": [
+    0,
+    [],
+    0,
+    1
+   ],
+   "expect": "refuse",
+   "note": "the same rules on a bound leaf at depth 1, on the reduced instance"
+  }
+ ]
+}

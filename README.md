@@ -55,6 +55,18 @@ status. Of the shipped proofs, 218 establish prefix irreducible exclusions
 specific finite models. See [proof availability and replay](DISTANCE_PROOF_REPLAY.md)
 for the single command, exact missing hashes and statement scopes.
 
+## Current checker input contracts
+
+The follow-up [contract synchronization](CHECKER_CONTRACT_SYNC_2026-11-03.md)
+validates zero-multiplier facets, aligns the standalone readers, and uses a
+current equivalence baseline with no historical transition allowances. The
+previous public checker sources and historical evidence remain preserved.
+This is an intentional API tightening: epsilon certificate IDs must be Python
+integers, bound-only qLDPC results use the explicit `LOWER_BOUND_PROVEN` payload,
+and JSON qLDPC integer fields require integer tokens. Use Node 24 for the
+JavaScript readers. The linked guide identifies the migration and focused
+commands; it makes no claim of full backward behavioral compatibility.
+
 ## Historical release
 
 This release accompanies three manuscripts by Josh Philbrick (Coherence Energy

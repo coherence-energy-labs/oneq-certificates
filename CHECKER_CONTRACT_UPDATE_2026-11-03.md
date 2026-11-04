@@ -1,5 +1,9 @@
 # Checker contract and portable model serialization update
 
+> Historical update note: the subsequent [checker contract synchronization](CHECKER_CONTRACT_SYNC_2026-11-03.md)
+> supersedes the endpoint, bound-only metadata and current-equivalence descriptions below.
+> The original note is retained to describe the earlier review revision.
+
 Base: public `main` commit `451d773bbb58325a3d6eeed361a2313f2673b7c8`.
 This update repairs the November 3 audit's input and return-value findings.
 It does not rewrite the released manuscripts, historical receipts, frozen

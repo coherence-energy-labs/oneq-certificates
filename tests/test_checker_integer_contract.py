@@ -86,6 +86,16 @@ def test_tree_integer_fields_are_validated(field, bad):
     assert not result.accepted, (field, bad, result)
 
 
+@pytest.mark.parametrize("budget", [True, 1.0, "1", Fraction(1)], ids=repr)
+def test_positive_noninteger_node_budget_is_refused(budget):
+    kwargs = {"checks": [(0,)], "weights": {0: 1}, "syndrome": [1],
+              "error_support": (0,), "tree": ("bound", ((0, (), 1),))}
+    control = check_qldpc_bnb(**kwargs, max_nodes=1)
+    assert control.accepted, control.reason
+    result = check_qldpc_bnb(**kwargs, max_nodes=budget)
+    assert not result.accepted, (budget, result)
+
+
 def _reference(document, tmp_path):
     path = tmp_path / "receipt.json"
     path.write_text(json.dumps(document), encoding="utf-8")
@@ -147,8 +157,10 @@ def test_reference_tree_rational_integer_fields_are_strict(field, bad, tmp_path)
     assert result.returncode == 2, result.stdout + result.stderr
 
 
-@pytest.mark.parametrize("threshold", [0, Fraction(1, 2), 1])
-def test_bound_only_proves_threshold_without_inventing_an_optimum(threshold):
+@pytest.mark.parametrize("threshold,lower_bound", [
+    (0, 1), (Fraction(1, 2), 1), (1, 2),
+])
+def test_bound_only_proves_threshold_without_inventing_an_optimum(threshold, lower_bound):
     result = check_qldpc_bnb(
         checks=[(0,)], weights={0: 2}, syndrome=[1], error_support=(),
         tree=("bound", ((0, (), 2),)), bound_only_threshold=threshold,
@@ -159,8 +171,9 @@ def test_bound_only_proves_threshold_without_inventing_an_optimum(threshold):
     assert result.dual_bound is None
     assert result.gap is None
     assert "objective" not in result.checks
-    assert result.checks["claim"] == "lower_bound"
-    assert result.checks["relation"] == ">"
+    assert result.checks["status"] == "LOWER_BOUND_PROVEN"
+    assert result.checks["feasibility"] == "not established"
+    assert result.checks["lower_bound"] == {"num": lower_bound, "den": 1}
     expected = Fraction(threshold)
     assert result.checks["threshold"] == {"num": expected.numerator,
                                           "den": expected.denominator}

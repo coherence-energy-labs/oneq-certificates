@@ -1,0 +1,584 @@
+{
+  "schema": "oneq-public-checker-contract-qualification/1",
+  "completed_at_utc": "2026-11-04T04:10:29.393267+00:00",
+  "status": "PASSED_FOR_CURRENT_CHECKER_REPLAY",
+  "base_commit": "bc962616512b6b0ce5a07e08fa1e72768846f7a2",
+  "runtime": {
+    "python": "3.14.3",
+    "platform": "Windows",
+    "node": "v24.18.0"
+  },
+  "pytest": {
+    "tests": 809,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 809
+  },
+  "source_sha256": {
+    "src/oneq/abft_l0.py": "be50bf1e2b0b99536b40d11b39420f84a4dac80f501a11fdedfbe3f5e4c2160c",
+    "src/oneq/api.py": "e4c5a0a96521327bb42ad231922e1315d2e02882d3a1fea4f21a631bcf73d23a",
+    "src/oneq/certified_weight.py": "5868df73eb1d256f031dfaa932dfa5f0c6c80e3ab06df4023b18c5a461687e95",
+    "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+    "src/oneq/cert_format.py": "2ed189391bc9915f9193735a9ab1e695b33c8173a3e0ab47bec092cf80ffe5c6",
+    "src/oneq/dem_calibration.py": "d3b37ac1f3f1083f97b8bcfb239bcf0a1132b20fcabc3ad12d151e994abdf56c",
+    "src/oneq/dem_families.py": "e93e027d3fd2b814b62ed7ed4cff3b97ae4713c8852ee539e17d3fd39e60d476",
+    "src/oneq/dem_measured.py": "752edc4c9d045ebbfcf4458d1ed5a46c4573bd301c5299ec7da14f694289cdf6",
+    "src/oneq/device_dem.py": "04977ed89deac9ccc210fa073f129ae3e6013e82c638a4d139fe8eab040aa10c",
+    "src/oneq/dual_forgery.py": "8ee31fe5719f74d31ff1e9eec665a6866732302460e4f2c57ecccbb77f59e1ce",
+    "src/oneq/exact_decode.py": "0c6640696b4f42c297cb439190b27938613500b28a1e67a0ee5a77de0c8ad7b4",
+    "src/oneq/exact_lp.py": "81654d2b63321e1ba793de3bb04610112e8f08bb086d6a7842278f62990b735b",
+    "src/oneq/exchangeability.py": "cbd0734f27e104cc65913336fe264e6ad0eac830ceb5af3728d3dd6e0829ec70",
+    "src/oneq/forgeries.py": "d80a675d4314e2763ca841667461079dd23d94c48827c3967b9bd643b033c6c7",
+    "src/oneq/logical_cut.py": "ff11c79da3ae34c63da9cdaa8e4d4fcf4d43a24b9c7027ee9e31356fb7a45a0f",
+    "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+    "src/oneq/matching_cert_epsilon.py": "b368cb688a0442c4c9ba981128b5ad56c2b0f1924b50401f2ef125dab4dabbff",
+    "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+    "src/oneq/moat_dual.py": "cd83c5c8e7bb9c5ceb0afe25561df1dba6473ea9834c0224e985576926c0b124",
+    "src/oneq/moat_growth.py": "9c35fbfba9d29cdb2986f6af3fd3c33635546fceef6aa74b55b80cb0e77e070d",
+    "src/oneq/model_audit.py": "fbc23e0c48c2b1f8c3043fc4d83060fb4f1850f8084d497b42fa9bc129564f09",
+    "src/oneq/passport.py": "4c4454bca1296c8e09cfe5b3919152fbb6dd3e49b1398821f24812f7075af136",
+    "src/oneq/pq_receipt.py": "a8ecef1fe5cf848cfb72c89d7947b3d6c2e47fad15d4254aa3b626ea19b8cd19",
+    "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+    "src/oneq/qldpc_check.py": "c923c984c60a0888233cd00ccfea40995877cace05c572744f24dbf25a50b273",
+    "src/oneq/repair_impossible.py": "b37953e51a84324085f83a6271c9b7e2fd646836af6b9100b0f31def4e44aad7",
+    "src/oneq/soft_estimator.py": "9d3ede302a3bc3e43d9efbbede669d6160ffd48f4a6397c7deac77c8ed305194",
+    "src/oneq/streaming.py": "f95cb624a999418ecfcacfb1039495c86d24525571cf57db37e518dd5464ed4e",
+    "src/oneq/tjoin_exact.py": "354b0218affe618ef20c97258219fba75cd14f882367e57b65f35aafbc1c7a1c",
+    "src/oneq/__init__.py": "5cb264a79ca9b86b697d822cb64c9ebd88462486f729859ea75c8cbb65604a1f",
+    "tests/test_audit_2026_08_04.py": "2c2802c81a5990847cbfd3ea9446727ddc4af22c29ba71c4de0854d571747cd7",
+    "tests/test_checker_contract_migration.py": "404e912130a2f08e899e9eeb79de4850febf83c1356295f29031a145c3d253f9",
+    "tests/test_checker_equivalence_exact_result.py": "c825b18cd472807a24aefa1f68e1563fc4a1af94a9b84eb8b7856270375879d7",
+    "tests/test_checker_integer_contract.py": "a6d2d3e7277f62f4ef9b909a0c32194ba02eb967a8c8e60f07904cedbb346807",
+    "tests/test_corrected_gap_current_checker.py": "4a356cf91f07d1b50e5f24a3744ea583d5241ed4586b17c95bdf90c6b9db8b7d",
+    "tests/test_corrected_gap_distribution.py": "2debd5593ef88fc3d2b8a6decb0a6d1b07a0e296e338b7b1865c1e0012f944e7",
+    "tests/test_distance_receipt_inventory.py": "5b3f08a66d2b8098c8ce0b0d8e9d21f8f7e644c96095e5f7488a46bf3c5ccafa",
+    "tests/test_epsilon_fuzzer_gate.py": "56821acad7daaf0a76e2aa61e755873ae4fdc30a1382fa3ed1894d557a6a3299",
+    "tests/test_epsilon_vectors.py": "e50b593e8e2809592e30a953be8f1ea34dbabf7ad095107e85b5401d24747ceb",
+    "tests/test_exact_dual_polish.py": "4e670098d53b377cc748f97c6859cd81de92e2b4292907bcc0be992323e67bd9",
+    "tests/test_exact_dual_repair.py": "3ba66448aee8071f24685a6b5ce425e76c517df2db2b9abc1b2ab95427c6b90f",
+    "tests/test_matching_cert_epsilon.py": "cf7d6b00a09b106fa63b262af6809a1bb7f9fa48adb0225540fd6e0f0998032b",
+    "tests/test_matching_endpoint_contract.py": "ecbfb67eba45a143696efbe9fd3af54aaeca3caa21559463179de2d477ce8600",
+    "tests/test_native_metric_replay.py": "ae8b860912d9e4e77349a0eeb24b57b09bc74f6f437839e4d006115204e570dc",
+    "tests/test_qldpc_bnb.py": "f38660d9e7af24b18edb158bee3c8f740865057cc8da48d69609b394a69fd3cb",
+    "tests/test_qldpc_cert.py": "f2cd717bff20fbe1f9d7c2c8aa15bc922d99d8432d5688b9bc98a337d2660977",
+    "tests/test_qldpc_check_contract.py": "c6c2ecf1c7dabcee444226b88d7146efbfb1b93f1d96f1b3407febaea5484bb5",
+    "tests/test_qldpc_exact.py": "9c96b2b38e6d86bd3c1c50cf9357778dd46fcda09bb20428484d541612f4694f",
+    "tests/test_qldpc_heldout_flat_certs.py": "ee3dda5fe125dd4559a7823fcbdf2e2ba02b70ac1438d656c90f6e55fe2e24e6",
+    "tests/test_qldpc_input_domain.py": "2f4d731b20274ec3c41411eb4bd9bf32b1e87a79892f4e9e8b7250fd5fabed73",
+    "tests/test_qldpc_safe_bound_soundness.py": "f4165947bf68d3d10a229fd6a8fea257d9d36b79a7b10cc666838795c2de23b2",
+    "tests/test_qldpc_screen_refusal_contract.py": "4c160a576e2554783dae5b81cc4c4b7375c8c664053945419f2beb0905d87391",
+    "tests/test_qldpc_syndrome_domain.py": "8388fcd7ada479d52740055ad6df25e34b4159569eb54cba34f156ad6fc4bf5b",
+    "tests/test_r198_circuit_distance_exact.py": "7f87771cd1180602918c2a20a838854a60a32ae9202072425df0d91ddbc2451b",
+    "tests/test_r198_ibm_recert.py": "98b3822df89b8dfbfe6fa044ce344bd10aa1bd462175b04122973d650fb96d1e",
+    "tests/test_r198_paper3_review.py": "cad91d8989df87c8752cd36892360c2ce458893a0154959b947ed0f39ccfd997",
+    "tests/test_replay_epsilon_receipts.py": "fa829885f06e286d8eec7ed1dbde219dc712c00828c642fc81b55f716ed220db",
+    "tests/fixtures/gap_counterexample_20261103.json": "ef7cb3489f26daaebda582ca0145ede53d6e1f605d5c14e6757a34fdb065979f",
+    "tools/analyze_corrected_gap_cost.py": "8049666e4a704634736a80a656f1f1ba972fa8a8455f0771fb46f4e2a3c1a666",
+    "tools/bposd_circuit_outcome.py": "f20b46e2f5b7741f9342c86e4f015111a7cd705355efa86d91e9c7a652fea6b8",
+    "tools/checker_equivalence_gate.py": "01ab927fccb7a5bcf4370717060417787b7069e405647b961add5e187901f5ae",
+    "tools/check_lean_certificate.py": "612432bd437622f04aaab56d47600c8e562828c79358af62ad82a65a8ff5f919",
+    "tools/claims_provenance_gate.py": "ecacefe032ed7eb4a298700b2efdb910136d81a1606f84aad91fb7ccfa9c4df1",
+    "tools/compare_heldout.py": "465422fdfe44926428d335bdd37cd0a0161c3a7d0dfee5bb8ca3bdad318d34f6",
+    "tools/corpus_chunk_driver.py": "d47b504a95bae89a426e38e65f6150f5c8f2b98c9017ab1f93f2acad643eab3a",
+    "tools/derive_claims.py": "10a193bb76ef6be1293de04ba41646ed7c282199e7e0fae95ba16aa198357369",
+    "tools/distance_receipt_inventory.py": "3dc0f4690ec497a1676efd27af18cca81a034deec99cf7f64cf2ff72c21576b7",
+    "tools/doc_claims_gate.py": "17dd2cea620653987b0e537a13d4a7244d0dc92b331fd4c9e5826e26e94b7892",
+    "tools/export_p2_certificates.py": "2bac6d0c438911108233def701d3774658003d319097bcdf5a3c25db90a3f99d",
+    "tools/export_receipt_instances.py": "792d1fdc962e4f0d176a77041b8321411afbbab8a5a6b50fe38c95929fc58dc5",
+    "tools/fetch_google_corpus.py": "e2d407b34dde187d3c1e81564a0bcada1529350416b3eef359b50f692519480b",
+    "tools/fuzz_epsilon_checkers.py": "6ad12c44938b3ff580f0010adf90c3a1f3b12fbc7a2880fea76899a1a7c43a33",
+    "tools/gate_all.py": "869f5a99514a1487f5be5fd35d944856b0e35d39c7db356bdec224d412c110cb",
+    "tools/make_cert_vectors.py": "8b48c7b02a0889606b0eea05128bf9571abd11d51edabe38ae1583a372564953",
+    "tools/merge_million_shot.py": "d50ea7684eca8335a833eb3ffce622e262e5067e6814f387343d6444fd8f5956",
+    "tools/mutation_gate.py": "1daf9af0fd49d48193b0bdc6d8eff6d29332645455ddd4f528c8b29c8917658a",
+    "tools/mutation_score.py": "d25e0e3d0d680a28b793f529a5c77cc5fe298db714858229924a00f4bfdd67c7",
+    "tools/pack_epsilon_receipts.py": "1db34e84e897f3b97b115556ea2563a8628cbaf37222a3ae58573f6f19429b23",
+    "tools/pathrel.py": "7de1b6ffda36cd728435c43066b9a5dd356ce7d372560eb4abd4e7d2c82ab491",
+    "tools/producer_equivalence_gate.py": "df5219b49e39bd6076a8997ef365878b876c2b3a73bc629f316fbbfd37178aad",
+    "tools/qldpc_js_agreement.py": "25c4325f4601152e693d3cce626ae0fa5be0e7bf12e067e876ebc507b8ea707e",
+    "tools/qldpc_tree_js_agreement.py": "5e68be76212eb94cd3f526f49b70feee08e3bafd7d1e5e65b26b04a06e889bcc",
+    "tools/receipt_manifest.py": "f5cae0aa6edb48036e8a5a89a60b18b726bac8a675430d4ae9b2193a734b9078",
+    "tools/recheck_all.py": "b3738f7f54a88794f1a96f4c9c7cf47d2a1883b8d12c9676f1e99b8beb777f7f",
+    "tools/recheck_corrected_gaps_current.py": "a94f5066f9d0802cff7902ee9e5d7d18f04689aa368145deb107e02158a321a8",
+    "tools/replay_corrected_gaps.py": "b2b2c5ef06c5a0a9dd41e12f30d31d4bc7d29e7bb48b2d3b8214975cdd1bed72",
+    "tools/replay_epsilon_receipts.py": "d0fb66cd83f36d2af24c637255e805465966481b412ac788052274dafb9a6238",
+    "tools/replay_receipts.py": "6e3b7c72d74bf089188eee12e89dd317fdb9c35486430910f3a6c8ac9aa93557",
+    "tools/replay_strong_baseline.py": "41e15f389d14f61d4e49e6d408f6d2c607066d06b9f55dda4480a90af24220fd",
+    "tools/reproduce_heldout_public.py": "a22b8e448e88978f57bfbcae5da5b7651fde3a9b5c3464d113e1917df9d708b7",
+    "tools/revision_snapshots.py": "f0cb7ff39faa9da50aea1b0daa10222ca039d24275f3e0edecde4498fedada6a",
+    "tools/roster_digest.py": "bf47cb4b7118ff4f4cd52743210933fed5701c812b32eddec9265b1e1f2d336f",
+    "tools/sign_release.py": "7a277b56a5383e7531f5683a7af336557093f4aac54ea0718e6adf628e4c6b74",
+    "tools/verify_release.py": "4d2b7f8d75adffc7c7273291734ea1ffec4ab900651fdf358234ee95095205c8",
+    "tools/zenodo_range.py": "9ca6fe5132e780ab6ed403d05c15599a853e32be4fbb13a63ddded3a69ba5966",
+    "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+    "tools/external/tree_checker_b.py": "c26840577293f04814c441d63823cc9e407da73326c854a691485a1d3b6d2811",
+    "tools/frozen/exact_lp.py": "97a88f6b70034dce3059e4fae0a6022ee773069a7d9ae0f3db0d855d77d4c3cc",
+    "tools/frozen/matching_cert.py": "658b2f6af5b5d6438d90a0dfa9b2c7747dc7213fdfee465a556436c3b69ee3da",
+    "tools/frozen/qldpc_cert.py": "a21c6b89f4b21a13d3e14167c1b6143c9c4e44543251eb068f8d0c12c9aa43fb",
+    "tools/frozen/qldpc_check.py": "c923c984c60a0888233cd00ccfea40995877cace05c572744f24dbf25a50b273",
+    "tools/frozen/tjoin_exact.py": "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+    "tools/native_matching_duals/adapter_validation.json": "707c1c4b9c7683c1dc349dadcd231e7f9fc8abc27520836a1a2365d45bc71610",
+    "tools/native_matching_duals/benchmark_final.json": "8f95aff90ec996002f7e8d832686ff43a850d7bb857b28e3ffddf1c7fe03befd",
+    "tools/native_matching_duals/benchmark_native.py": "015c0b9612fe0216ee4d8ac67857d36eea33b187f7540a1dc54ae01e7a8a7191",
+    "tools/native_matching_duals/build_native.py": "ee158e913c03123021298b1da8efbc8f454e2a80214e4c6d6b9220a006b67da3",
+    "tools/native_matching_duals/metric_dual_check.py": "7f817808cc24e5b398d4fa5c57efc9319d79645ce3a2bb4a759dcc09e540b602",
+    "tools/native_matching_duals/native_dual.cc": "5c41582571fe298703d3d97015ca97715937a8aa5dfd5c62c2be23dd1bb5cd54",
+    "tools/native_matching_duals/native_dual.manifest.json": "d734fa35e325464ce8d067d15212e89b7d59faa0485cdeae5274e035fbbd51a5",
+    "tools/native_matching_duals/native_metric_producer.py": "d714a3754ace8c2963c4a28259f52f0baf34c63aa00d59bd6b1af1a5db1f8e2f",
+    "tools/native_matching_duals/native_metric_verify.py": "78dca4b006ba5eb2dcde841299bdda5157eb93abd162fcee6970208c1e662e76",
+    "tools/native_matching_duals/native_wrapper.py": "56c177d1a02e8593bf92bb0093c0f260cc8e8f906a1deed30adefd2f4ca971e1",
+    "tools/native_matching_duals/reconcile_original.py": "511c761858a232a5b16ad885cd7a50326c282a69cf529c42415c4c93f2e40e29",
+    "tools/native_matching_duals/replay_native.py": "0a95a1381236c11c8314545f820e84408061139cedb0365b095a90bb71677fc4",
+    "tools/native_matching_duals/validate_adapter.py": "ca78ceca894b4955e9b71fad3895a2f5aae8fd18d4085aba48d750967b201ec0",
+    "tools/native_matching_duals/validate_native.py": "c0b974901405e09f87729d5ebfd99540cf04dfdf0ef4b949cb206a9b16ffb949",
+    "tools/native_matching_duals/validation.json": "e99121023b7402175e0918426aa24664afdfc49aac0bdcf9bed1ea2a8c87d139",
+    "tools/native_matching_duals/__init__.py": "2a456c0de0d0aec7102d93eb05b014a63bd7513c7df2ca36ae510edd5f65fdab",
+    "tools/frozen/historical/matching_cert_epsilon_public_pre_contract_sync_20261103.py": "ac8ef04df05a6eb5cf40d6effc7f18f60f8348e5c84d90b37e2d87f13e401fec",
+    "tools/frozen/historical/qldpc_check_pre_input_contract_20261103.py": "2580ac1f14a97f54a2436b411dbe15609cc69b3bab4848d38a08d7dc7a22eee0",
+    "tools/frozen/historical/qldpc_check_pre_merge_contract_20261104.py": "51940b3712a830895cbffa3516c81ba57836d470dbe52085219e581709c15ecc",
+    "tools/frozen/historical/qldpc_check_pre_zero_multiplier_20261103.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+    "tools/frozen/historical/qldpc_check_public_pre_contract_sync_20261103.py": "ed2f10cfb1669680bb0f721c78a2ebebe430817149ea52720f0fcc12e2073920",
+    "verifier-js/verify-certificate.mjs": "d6a0db419fb0a594b03c9357f05818d73ebabc25418612b4ecb4be3b0d175877",
+    "verifier-js/verify-epsilon.mjs": "ff450d1aa00fba6f522e38b6da6305e2d46fa48d02d98becf0cfba4626377353",
+    "verifier-js/verify-qldpc-flat.mjs": "d95412c64d150f31cf8bc0966471109d872b095e86df53af4df059bada8d252a",
+    "verifier-js/verify-qldpc-tree.mjs": "93590e118643e65284b74d04efe643bdae9f56363eae0461914b616a99ec5949",
+    "conformance/cert_vectors.json": "f2f6e339e8e4858ba3be7a41892bded90c6db02a79e8a6d31893f56bdeb7c79c",
+    "conformance/dem_leaves_d3.json": "b8282863ac8edd59b3388d7650b241f35b3fc9b115f66630b2a2ea750921a9a1",
+    "conformance/epsilon_vectors.json": "9da42f4bb549699f0cc21e2f4c11780696c202b7ef7fd62b065bfc1148f0d115",
+    "conformance/qldpc_input_domain_vectors.json": "8f5d10cc43abf5c319915b3997bf9c332a8abadb86879ae60424bf2de541270c"
+  },
+  "retained_artifact_sha256": {
+    "evidence/receipt_manifest.json": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
+    "evidence/corrected_gap_20261103/summary.json": "144afe41d783eb730b1c467f238c23a1f87977ee88265228b801cfe53e7699c0",
+    "evidence/qldpc_js_agreement.json": "f3e82acb948d1e5fccddab2513904cccfdedc6c6c59448a4761fdb4aa2bbea07",
+    "evidence/qldpc_tree_js_agreement.json": "760c4c79c44305a333b1d99fa47090d2ddbbb9b64e82af6cd1cc7c50a8ba4de6"
+  },
+  "retained_artifacts_unchanged": true,
+  "exact_current_equivalence": {
+    "schema": "oneq-checker-equivalence/1",
+    "comparison_contract": "complete-dataclass-exact-values/1",
+    "cases": 400,
+    "seed": 20260804,
+    "calls_compared": 6702,
+    "accepted": 97,
+    "rejected": 1103,
+    "raised": 0,
+    "exact_calls": 134,
+    "bnb_calls": 4162,
+    "bnb_accepting": 454,
+    "malformed_calls": 400,
+    "matching_calls": 800,
+    "matching_accepting": 156,
+    "api_contract_calls": 22,
+    "budget_contract_calls": 16,
+    "screen_refusal_contract_calls": 6,
+    "divergences": 0,
+    "declared_reason_aliases_used": 0,
+    "declared_reason_aliases": [],
+    "frozen_sha256": {
+      "qldpc_check.py": "c923c984c60a0888233cd00ccfea40995877cace05c572744f24dbf25a50b273",
+      "tjoin_exact.py": "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
+      "matching_cert.py": "658b2f6af5b5d6438d90a0dfa9b2c7747dc7213fdfee465a556436c3b69ee3da"
+    },
+    "claim": "the refactored trust modules return the identical verdict, reason string, primal weight and dual bound as the versioned snapshot, on every exercised case; finite regression evidence, not a proof for all inputs"
+  },
+  "sensitivity": {
+    "behavioral_mutations_caught": 24,
+    "behavioral_mutations_tested": 24,
+    "declared_unreachable_branches_surviving": 1,
+    "cases_per_mutation": 200
+  },
+  "python_receipt_replay_stdout": "COMPLETE REPLAY PASSED: 2042 receipts, each checked by two separately written checkers against the pinned instance -- {'heldout_flat': 2002, 'heldout_tree': 17, 'dev_tree': 19, 'dev_refsched_tree': 4}\n",
+  "javascript_flat_stdout": "{\"flat_receipts\": 2002, \"flat_receipts_accepted\": 2002, \"planted_defects\": 136, \"planted_defects_refused_for_their_reason\": 136, \"lattice_boundary_accepts\": 8, \"node\": \"v24.18.0\"}\nJS AGREEMENT PASSED: every flat receipt accepted, every planted defect refused for its own reason, and the lattice boundary decided exactly, by a checker in a second language\n",
+  "javascript_tree_stdout": "{\"trees\": 40, \"trees_by_cohort\": {\"heldout_tree\": 17, \"dev_tree\": 19, \"dev_refsched_tree\": 4}, \"trees_accepted\": 40, \"planted_defects\": 74, \"planted_defects_refused_for_their_reason\": 74, \"node\": \"v24.18.0\"}\nTREE JS AGREEMENT PASSED: every branch-dual tree accepted and every planted defect refused for its own reason, by a checker in a second language\n",
+  "epsilon_fuzz": {
+    "schema": "oneq-epsilon-checker-fuzz/1",
+    "seed": 20261103,
+    "base_cases": 400,
+    "cases": 18007,
+    "implementations": {
+      "py_a": "check_epsilon via tools/replay_epsilon_receipts.py",
+      "py_b": "verify_b (tools/replay_epsilon_receipts.py)",
+      "js": "verifier-js/verify-epsilon.mjs"
+    },
+    "valid_domain_cases": 2963,
+    "valid_domain_disagreements": 0,
+    "per_class": {
+      "base": {
+        "agree": 400,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 378,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 22
+      },
+      "graph:boundary_first_edge": {
+        "agree": 400,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 378,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 22
+      },
+      "graph:parallel_edge_heavier": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "graph:parallel_edge_lighter": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "graph:self_loop": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "hex:decimal_not_hex": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "hex:json_number_not_string": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "hex:non_canonical_spelling": {
+        "agree": 377,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 355,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 22
+      },
+      "hex:not_binary64_extra_digits": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "hex:overflow": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "hex:subnormal_weight": {
+        "agree": 400,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 158,
+        "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 217,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 25
+      },
+      "id:boolean_in_correction": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "id:boolean_in_set": {
+        "agree": 377,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 263,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 16,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 98
+      },
+      "id:boolean_in_syndrome": {
+        "agree": 400,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 141,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 249,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 10
+      },
+      "id:fractional_in_correction": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "id:fractional_in_set": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 342,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 33,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 2
+      },
+      "id:fractional_in_syndrome": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "id:integral_float_in_correction": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "id:string_in_correction": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "id:unknown_fired_detector": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "id:unknown_vertex_in_set": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "negative:dual": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "negative:weight": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "nonfinite:dual_-inf": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "nonfinite:dual_inf": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "nonfinite:dual_nan": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "nonfinite:weight_-inf": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "nonfinite:weight_inf": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "nonfinite:weight_nan": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "repeat:correction_edge_twice": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "repeat:correction_edge_twice_reversed": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "repeat:set_listed_twice_other_value": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "repeat:set_listed_twice_permuted": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "repeat:set_listed_twice_same_value": {
+        "agree": 377,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 377
+      },
+      "syndrome:boundary_in_syndrome": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "syndrome:detector_fired_twice": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "syndrome:entry_2_not_fired": {
+        "agree": 117,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 117
+      },
+      "trap:boundary_side_parity_{B,t}": {
+        "agree": 223,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 223
+      },
+      "trap:empty_set": {
+        "agree": 400,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 400
+      },
+      "trap:pair_of_fired": {
+        "agree": 284,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 284
+      },
+      "trap:set_with_no_T_vertex": {
+        "agree": 365,
+        "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 365
+      },
+      "valid:empty_packing": {
+        "agree": 400,
+        "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 377,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 23
+      },
+      "valid:eps_max_equals_epsilon": {
+        "agree": 22,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 22
+      },
+      "valid:eps_max_one_unit_above": {
+        "agree": 22,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 22
+      },
+      "valid:eps_max_one_unit_below": {
+        "agree": 22,
+        "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 22
+      },
+      "valid:negative_zero_value": {
+        "agree": 377,
+        "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 377
+      },
+      "valid:packing_scaled_down": {
+        "agree": 377,
+        "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 377
+      },
+      "valid:packing_scaled_up_overload": {
+        "agree": 377,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 201,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 176
+      },
+      "valid:packing_tiny_shortfall": {
+        "agree": 377,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 377
+      },
+      "valid:reversed_edge_orientation_in_correction": {
+        "agree": 400,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 378,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 22
+      },
+      "valid:zero_valued_set": {
+        "agree": 189,
+        "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 179,
+        "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 10
+      }
+    },
+    "disagreeing_classes": [],
+    "examples": {}
+  },
+  "corrected_gap_current_replay": {
+    "accepted": true,
+    "families": 3,
+    "reference_witnesses_rechecked": 1047,
+    "scope": "graph costs, proof verdicts, TRAIN selection, denominators and timing aggregation",
+    "qualification": "retained-evidence replay under explicitly identified current sources",
+    "summary_sha256": "144afe41d783eb730b1c467f238c23a1f87977ee88265228b801cfe53e7699c0",
+    "trace_sha256": "d907c5814755b59d37aeb2e1b590669c15a9f45deda61aad770aa7b2f1b47b25",
+    "measured_source_commit": "282ad3b38f724428582d1102fcfcaf4d2c0966d4",
+    "measured_sources_identical": false,
+    "source_changes": {
+      "src/oneq/matching_cert_epsilon.py": {
+        "measured_sha256": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+        "current_sha256": "b368cb688a0442c4c9ba981128b5ad56c2b0f1924b50401f2ef125dab4dabbff"
+      }
+    },
+    "current_source_sha256": {
+      "experiments/m0_prior_art/gap_distribution.py": "4b1ea8af65292a5f6c32f78a044e170004742ef8d6c0873901d81451b6162585",
+      "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+      "src/oneq/matching_cert_epsilon.py": "b368cb688a0442c4c9ba981128b5ad56c2b0f1924b50401f2ef125dab4dabbff",
+      "src/oneq/matching_cert_strict.py": "3ed104bf714e67032f86735cc5489e7bfb8d5ef9fbf2f5b11ef75305f4eaf034",
+      "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+      "tools/replay_corrected_gaps.py": "b2b2c5ef06c5a0a9dd41e12f30d31d4bc7d29e7bb48b2d3b8214975cdd1bed72"
+    },
+    "new_measurement": false,
+    "historical_scale_campaigns_requalified": false
+  },
+  "historical_source_gate": {
+    "expected_refusal": true,
+    "exit_code": 1,
+    "accepted": false,
+    "reason": "source hash mismatch: src/oneq/matching_cert_epsilon.py"
+  },
+  "executed_steps": [
+    {
+      "name": "01_complete_public_tests",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "-ra",
+        "--capture=sys",
+        "--junitxml",
+        ".build/continuation_20261104/public_validation/tests.xml"
+      ],
+      "exit_code": 0,
+      "log_sha256": "b814f34a970b6b301874c5ee9123988461887fda236b998fb22d711009321327"
+    },
+    {
+      "name": "02_exact_equivalence_and_sensitivity",
+      "command": [
+        "python",
+        "tools/checker_equivalence_gate.py",
+        "--cases",
+        "400",
+        "--prove-sensitive",
+        "--json",
+        ".build/continuation_20261104/public_validation/equivalence.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9dbff5c9785d2c2d66a4e60c1d84dd37685f01b2ff4476391dde41425b989179"
+    },
+    {
+      "name": "02_current_exact_equivalence",
+      "command": [
+        "python",
+        "tools/checker_equivalence_gate.py",
+        "--cases",
+        "400",
+        "--json",
+        ".build/continuation_20261104/public_validation_resume/equivalence.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "3e62a7ba6d265702bc2bce4e2e36b56916d811fb62198b897d5a0103a01c7f35"
+    },
+    {
+      "name": "03_complete_receipt_replay",
+      "command": [
+        "python",
+        "tools/replay_receipts.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e804d5166236804694e1fae3e1af3ccb01455be596b4039c2abd5c4c62f947e2"
+    },
+    {
+      "name": "04_flat_javascript",
+      "command": [
+        "python",
+        "tools/qldpc_js_agreement.py",
+        "--no-write"
+      ],
+      "exit_code": 0,
+      "log_sha256": "1acd120670491799c0240cf422764987ca3352a0fbce5e16c0441ebc8dfdef3d"
+    },
+    {
+      "name": "05_tree_javascript",
+      "command": [
+        "python",
+        "tools/qldpc_tree_js_agreement.py",
+        "--no-write"
+      ],
+      "exit_code": 0,
+      "log_sha256": "7d728e9a60978cde5b41edd6d086cefa74acdbfb20a96f9dcd25a0543015e971"
+    },
+    {
+      "name": "06_epsilon_differential",
+      "command": [
+        "python",
+        "tools/fuzz_epsilon_checkers.py",
+        "--cases",
+        "400",
+        "--seed",
+        "20261103",
+        "--out",
+        ".build/continuation_20261104/public_validation_resume/epsilon_fuzz.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "287752d9951c69c24346994325ff3f18bcfa286c43b2ea0c1acad4b198aa82fd"
+    },
+    {
+      "name": "07_corrected_gap_witnesses",
+      "command": [
+        "python",
+        "tools/replay_corrected_gaps.py",
+        "evidence/corrected_gap_20261103/summary.json"
+      ],
+      "exit_code": 1,
+      "log_sha256": "930ab020c0bc1aef351fcb350f17da5eeed17b3c6c952e1ed0ed11791763ab55"
+    },
+    {
+      "name": "explicit_current_checker_gap_replay",
+      "command": [
+        "python",
+        "tools/recheck_corrected_gaps_current.py",
+        "evidence/corrected_gap_20261103/summary.json"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e6e73f76d1c86cf41c3faf88e5b7f918e7bded7bfb1f37b4cd8255816a48695c"
+    }
+  ],
+  "qualification_notes": [
+    "The sensitivity CLI returns before the current-equivalence JSON writer; current equivalence was executed separately.",
+    "Historical replay correctly refuses changed checker source. Its explicit current-checker companion rechecks retained witnesses and reports every changed source pin.",
+    "The earlier orchestration errors and logs remain retained; completed checks were reused only after all source/input hashes were reverified."
+  ],
+  "limitations": [
+    "Finite exercised-input evidence; not a full-domain equivalence proof.",
+    "The frozen source is a versioned regression reference, initially identical to production.",
+    "Elapsed times are shared-workload execution diagnostics, not latency benchmarks.",
+    "No outside human reproduction is claimed."
+  ]
+}

@@ -272,3 +272,32 @@ def test_slack_exactly_equal_to_eps_max_is_accepted():
     below = mce.check_epsilon(edges=_E1, syndrome=[0, 1], cert=_cert1(duals),
                               eps_max=loose.epsilon - Fraction(1, 10**30))
     assert below.status == mce.NOT_PROVEN, below
+
+
+# ---- the input contract made one policy (2026-11-03): the JavaScript fuzzer found this checker coercing and collapsing
+
+@pytest.mark.parametrize("extra", [(0, 1, 2.0), (1, 0, 1.0), (-1, 1, 1.0)], ids=["heavier", "reversed", "boundary"])
+def test_a_parallel_edge_is_refused_not_collapsed_to_the_lighter(extra):
+    v = mce.check_epsilon(edges=_E1 + [extra], syndrome=[0, 1], cert=_cert1(), eps_max=0)
+    assert v.status == mce.INVALID_INPUT and "twice" in v.reason, v
+
+
+@pytest.mark.parametrize("corr", [((0.9, 1),), ((0, True),), ((0.0, 1),), ((0, 1, 7),)], ids=repr)
+def test_a_correction_endpoint_is_never_coerced(corr):
+    """int(0.9) == 0 and True == 1: before the fix all three were accepted as the edge (0, 1)."""
+    v = mce.check_epsilon(edges=_E1, syndrome=[0, 1], cert=_cert1(corr=corr), eps_max=0)
+    assert v.status == mce.INVALID_INPUT, v
+
+
+def test_a_packing_set_member_must_be_a_vertex_of_the_graph():
+    duals = {frozenset([0, 99]): 0.5, frozenset([1]): 0.5}
+    v = mce.check_epsilon(edges=_E1, syndrome=[0, 1], cert=_cert1(duals), eps_max=0)
+    assert v.status == mce.INVALID_INPUT and "not a vertex" in v.reason, v
+    ok = mce.check_epsilon(edges=_E1, syndrome=[0, 1], cert=_cert1({frozenset([0, -1]): 0.5,
+                                                                    frozenset([1]): 0.5}), eps_max=1)
+    assert ok.status != mce.INVALID_INPUT, ok          # the boundary is a vertex
+
+
+def test_a_negative_vertex_other_than_the_boundary_is_refused():
+    v = mce.check_epsilon(edges=_E1 + [(-2, 0, 1.0)], syndrome=[0, 1], cert=_cert1(), eps_max=0)
+    assert v.status == mce.INVALID_INPUT, v
