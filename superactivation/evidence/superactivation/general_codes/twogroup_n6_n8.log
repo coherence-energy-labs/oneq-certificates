@@ -1,0 +1,6 @@
+(a,b)=(3,3) restart 0: F(power decoders) = 0.7336316232
+(a,b)=(3,3) restart 1: F(power decoders) = 0.7327626545
+(a,b)=(3,3) n=6: best F = 0.7336316181 (exact decoders)
+(a,b)=(4,4) restart 0: F(power decoders) = 0.7406898292
+(a,b)=(4,4) restart 1: F(power decoders) = 0.7415172308
+(a,b)=(4,4) n=8: best F = 0.7415172245 (exact decoders)

@@ -1,0 +1,34 @@
+{
+ "schema": "oneq.ion_sequential/1",
+ "looks": [
+  1000,
+  2000,
+  4000,
+  8000
+ ],
+ "claim_delta": 2.8665157187919455e-07,
+ "delta_per_look": 7.166289296979864e-08,
+ "batches": [
+  [
+   0,
+   1000
+  ],
+  [
+   1000,
+   2000
+  ],
+  [
+   2000,
+   4000
+  ],
+  [
+   4000,
+   8000
+  ]
+ ],
+ "alpha_split": "claim delta / looks per look; the package certificate splits it again over its groups",
+ "seed": 201,
+ "units": 8000,
+ "requested_units": 8000,
+ "design_qpy_sha256": "33b42b4126cf14f7011a2f7e72ce15fdd6b9d42835c8e0974062adf9150873f6"
+}

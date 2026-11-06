@@ -1,0 +1,450 @@
+\documentclass[aps,pra,twocolumn,superscriptaddress,nofootinbib,longbibliography,floatfix]{revtex4-2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\input{../owner.tex}
+\input{../release.tex}
+\input{generated/numbers.tex}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{imported}{Imported result}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\proj}[1]{|#1\rangle\langle #1|}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\nt}{\widetilde{\mathcal N}}
+\newcommand{\deph}{\overline{\varDelta}}
+\newcommand{\mes}{\varPhi}
+\newcommand{\sym}{\mathrm{Sym}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\dk}[2]{\ket{D^{#1}_{#2}}}
+\newcommand{\prk}{\operatorname{Pr}}
+% Every number in this file is a macro from paper/tools/make_numbers_superactivation.py, which reads it from
+% committed evidence and refuses on a missing or inconsistent input, or when the evidence no longer supports a
+% sentence below. The constants that appear bare are definitions: the threshold 3/4 of Result 1, the erasure
+% probability 1/2, the qubit (Schmidt rank 2) being transmitted, the numbers of uses a statement is about, and the
+% 1e-6 size of the dense check's negative controls.
+%
+% References. Every entry is in the shared refs.bib and agrees with its source (arXiv citation metadata or
+% Crossref), checked by paper/tools/verify_refs.py --fetch on 2026-11-03. The definition, Result 1 and Prop. 1 are
+% quoted from the authors' arXiv source (v2, sha256 a5c80fa2..., fetched again 2026-11-03: identical); their
+% general effective-channel theorem is in the same source's supplement (Sec. S3.2 "Proof of Effective Channel",
+% label thm:effective_channel_general, outside every comment block), which the referee's HTML copy did not reach. The novelty wording is held to docs/PAPER4_LITERATURE_SEARCH.md (with its
+% 2026-11-03 addendum). The ledger entries the claims rest on: docs/RESEARCH_LEDGER.md R132, R135, R136, R137,
+% R140, R141, R142, R186 (parts 1 and 4); the outlook paragraph: R143-R147, R188, R189 (part 2), R213, R224, R225.
+% The first independent review of this manuscript (verdict: minor revision) and how each finding was answered:
+% findings F1-F17, answered in this revision with evidence/superactivation/general_codes/reduction_dense_check.json
+% and evidence/superactivation/shield_family/p2_kraus_comparison.json.
+
+\begin{document}
+
+\title{Superactivation in two channel uses: exact certificates for a family of PPT channels}
+
+\OwnerAuthor
+\OwnerAffiliation
+
+\date{\today}
+
+\begin{abstract}
+Parentin, Bergh, Datta and Wilde made superactivation of quantum capacity a finite question. A PPT channel and a 50\% erasure channel each transmit a qubit with channel fidelity at most 3/4 in any number of uses; the least number $n^*$ of joint uses whose fidelity exceeds 3/4 measures the onset, and for Smith and Yard's pair they established that $n^*$ is at most \PubN\ with an explicit code whose fidelity they evaluated in floating point. We certify codes: a stored encoder and decoder whose fidelity is bounded from below in exact or rigorous interval arithmetic, through a reduction we prove. For the Smith--Yard pair, a code supported on the symmetric subspaces of two groups of \TgFifteenA\ and \TgFifteenB\ uses, and not symmetric across them, has fidelity at least \TgFifteenF, so $n^*$ is at most \TgFifteenN. Smith and Yard's PPT channel is the smallest member of a family $P_d$ of private Horodecki channels with shield dimension $d$, constructed by K.~Horodecki \textit{et al.}, which is PPT at one flip probability. We prove that $P_d$, for every complex Hadamard twist, is PPT for exactly that one value; that one joint use of $P_d$ with a 50\% erasure channel simulates a flagged qubit channel; that one use of any PPT channel with a 50\% erasure channel never exceeds 3/4; and that two uses of $P_d$ with a 50\% erasure channel exceed 3/4 for every $d$ from \TwoUseDmin\ on, by certificates at $d=\TwoUseDmin$ and \TwoUseDnext\ and by the closed form $(7-6p+2p^2)/8$ from $d=\ClosedDmin$ on. At threshold 3/4 the onset is therefore exactly two uses for every such $d$. For $d=\OnsetCertLo$ to \OnsetCertHi\ we certify upper bounds on $n^*$: four uses at $d=\OnsetFourLo$ and \OnsetFourHi, and three for $d=\OnsetThreeLo$ to \OnsetThreeHi. At one use, a certified code on the joint channel beats every code on the reduced qubit channel through which all these codes are built, so that reduction is strictly lossy there. A PPT-assisted relaxation cannot certify $n^*>2$: we prove its value at two uses is 7/8. Every step is proven or certified here; no hardware demonstration is claimed.
+\end{abstract}
+
+\maketitle
+
+% ======================================================================
+\section{Introduction}
+\label{sec:intro}
+
+Smith and Yard showed that two channels with zero quantum capacity, a positive-partial-transpose (PPT) channel and a 50\% erasure channel, can have positive quantum capacity when used together~\cite{smith2008quantum}. Their witness is single-letter: the coherent information of one joint use is at least half the private information of the PPT channel. In terms of rates, the effect is therefore visible at one use. What a rate does not say is how many joint uses a code needs before its fidelity exceeds anything either channel can reach alone. (Detecting positive capacity through the coherent information of $n$ uses is a different question, with no bound on $n$ valid for all channels~\cite{cubitt2015unbounded}.)
+
+Parentin, Bergh, Datta and Wilde made this finite question precise~\cite{parentin2026onset}. They measure a code by its channel fidelity $F_c(\mathcal N,2)$, the largest fidelity with which a qubit of a maximally entangled pair survives the channel, and show that neither of Smith and Yard's channels exceeds $3/4$ in any number of uses (their Result~1). The pair is \emph{$n$-shot superactivated} when $n$ joint uses exceed $3/4$, and the least such $n$ is the onset $n^*$. Reducing each joint use to a flagged qubit channel $\nt$ (their Prop.~1) and optimizing permutation-invariant codes~\cite{bergh2026permutation}, they established $n^*\le\PubN$ with an explicit code whose fidelity they evaluated in floating point (\PubFPrinted\ in their text, \PubF\ in their ancillary data), and asked whether $n^*$ can be lowered. Our independent composition of their stored code agrees with their stored data (Sec.~\ref{sec:dtwo}); the distinction we draw is between floating-point and rigorous evaluation, not doubt about their bound.
+
+This paper certifies codes and uses the certificates to locate the onset (Table~\ref{tab:claims}):
+\begin{enumerate}
+\item \emph{Certificates.} For a code given as stored bytes, we prove a lower bound on its fidelity: the rounded bytes define the encoder and decoder, positivity is proved exactly, normalization costs only a non-negative completion, and the fidelity is evaluated in ball arithmetic or exactly in $\mathbb Q(\sqrt d)$. For codes whose encoder output is supported on the symmetric subspaces of groups of uses, the evaluation runs through a reduction that we prove (Lemma~\ref{lem:groups}) and also check, with the certifiers' own arithmetic, against the dense construction (Sec.~\ref{sec:certs}).
+\item \emph{The family.} Smith and Yard's PPT channel is the $d=2$ member of the family $P_d$ of private Horodecki channels with shield dimension $d$ constructed by K.~Horodecki, Pankowski, M.~Horodecki and P.~Horodecki~\cite{horodecki2008low}, PPT at flip probability $p=1/(\sqrt d+1)$ (written out for the Fourier twist in Ref.~\cite{badziag2014bound}). We prove that $P_d$ is PPT at no other $p$, for every complex Hadamard twist, that one joint use with a 50\% erasure channel simulates a flagged qubit channel, that neither channel alone exceeds $3/4$, and that one use of any PPT channel with a 50\% erasure channel never exceeds $3/4$ (Sec.~\ref{sec:family}). At $d=2$ these are Ref.~\cite{parentin2026onset}'s Prop.~1 and Result~1, which they reproduce.
+\item \emph{Smith and Yard's pair.} A code supported on the symmetric subspaces of two groups of uses, and not symmetric across them, certifies superactivation at $n=\TgFifteenN$ and $n=\TgSixteenN$, so $n^*\le\TgFifteenN$ (Sec.~\ref{sec:dtwo}). That non-symmetric codes beat symmetric ones is already visible in Fig.~2 of Ref.~\cite{parentin2026onset}; what is new is a certified code below \PubN\ uses.
+\item \emph{Two uses.} Two uses of $P_d$ with a 50\% erasure channel exceed $3/4$ for every $d\ge\TwoUseDmin$, so at threshold $3/4$ the onset is exactly two uses (Sec.~\ref{sec:twouse}).
+\item \emph{The onset across the family.} Certified upper bounds on $n^*$ for $d=\OnsetCertLo,\dots,\OnsetCertHi$ (Sec.~\ref{sec:onset}).
+\item \emph{The reduction is lossy at one use.} One use of the joint channel, coded directly, beats every code on $\nt$ (Sec.~\ref{sec:direct}).
+\item \emph{Limits.} We give no lower bound on $n^*$ beyond $n^*\ge2$, and show that a PPT-assisted relaxation cannot give one (Sec.~\ref{sec:limits}).
+\end{enumerate}
+
+\begin{table*}[tbp]
+\caption{The results and their evidence classes. The proofs use standard results we cite: the fidelity bounds for PPT states~\cite{horodecki1999general} and for two-extendible states~\cite{johnson2013compatible,kaur2019extendibility}, and data processing. At $d=2$ the proven rows on the family are Prop.~1 and Result~1 of Ref.~\cite{parentin2026onset}.}
+\label{tab:claims}
+\small
+\input{generated/tab_claims.tex}
+\end{table*}
+
+\paragraph*{Evidence classes.} We label each statement. \emph{Proven}: a proof is given here in full. \emph{Certified}: a lower bound proved by exact or rigorous interval arithmetic from committed bytes, and re-derived by a committed checker. \emph{Imported}: a result of Ref.~\cite{parentin2026onset}, quoted and not re-proved; no statement of ours depends on one. \emph{Derived}: a hand calculation, checked numerically, whose proof is not given in full. \emph{Measured}: a floating-point computation, not certified. \emph{Simulated}: a device model.
+
+% ======================================================================
+\section{Setting, and the two results of Ref.~\cite{parentin2026onset}}
+\label{sec:setting}
+
+For a channel $\mathcal N$ from $A$ to $B$, the channel fidelity for qubit transmission is
+\begin{equation}
+F_c(\mathcal N,2)=\max_{\mathcal E,\mathcal D}\,\bra{\mes}\bigl(\id_R\otimes\mathcal D\circ\mathcal N\circ\mathcal E\bigr)(\proj{\mes})\ket{\mes},
+\end{equation}
+where $\ket{\mes}=(\ket{00}+\ket{11})/\sqrt2$ on a reference $R$ and a qubit, and the maximum runs over every encoding channel $\mathcal E$ from the qubit to $A$ and every decoding channel $\mathcal D$ from $B$ to a qubit. For $n$ uses the channel is $\mathcal N^{\otimes n}$. Any explicit encoder and decoder give a lower bound on $F_c$.
+
+\begin{definition}[Ref.~\cite{parentin2026onset}, specialised to qubits]
+\label{def:nshot}
+Channels $P$ and $A$ exhibit $n$-shot superactivation at threshold error $\varepsilon\in(0,1)$ if
+$\max\{F_c(P^{\otimes m},2),F_c(A^{\otimes m},2)\}\le1-\varepsilon$ for every $m$ and $F_c((P\otimes A)^{\otimes n},2)>1-\varepsilon$. The onset $n^*$ is the least such $n$.
+\end{definition}
+Ref.~\cite{parentin2026onset} defines the channel fidelity and the definition for a message of any Schmidt rank; we use only rank $2$, write $F_c(\cdot,2)$, and reserve the letter $d$ for the shield dimension of Sec.~\ref{sec:family}. We use $\varepsilon=1/4$ throughout. Ref.~\cite{parentin2026onset} states:
+
+\begin{imported}[Result~1 of Ref.~\cite{parentin2026onset}]
+\label{imp:result1}
+Let $P$ be the private Horodecki channel and $A$ the 50\% erasure channel considered in Ref.~\cite{smith2008quantum}. Then $\max\{F_c(P^{\otimes m},2),F_c(A^{\otimes m},2)\}\le3/4$ for every $m$, and $F_c((P\otimes A)^{\otimes\PubN},2)>3/4$.
+\end{imported}
+\noindent Their proof of the first part shows more for $P$: its outputs are PPT, so $F_c(P^{\otimes m},2)\le1/2$.
+
+\begin{imported}[Prop.~1 of Ref.~\cite{parentin2026onset}]
+\label{imp:prop1}
+There exist pre- and post-processing operations $(\widetilde{\mathcal E},\widetilde{\mathcal D})$ for $P\otimes A$ such that $\nt=\widetilde{\mathcal D}\circ(P\otimes A)\circ\widetilde{\mathcal E}$ is the qubit-input channel
+\begin{equation}
+\label{eq:nt}
+\nt_p(\rho)=\tfrac12\,\rho\otimes\proj0_Z+\tfrac12\,(\mathcal X^p\circ\deph)(\rho)\otimes\proj1_Z,
+\end{equation}
+with $p=1/(1+\sqrt2)$, where $\mathcal X^p(\rho)=(1-p)\rho+pX\rho X$, $\deph$ is complete dephasing and $Z$ is a classical flag.
+\end{imported}
+\noindent Sec.~\ref{sec:family} proves both statements for every member of the family $P_d$, with $p=1/(\sqrt d+1)$ (Lemmas~\ref{lem:reduction} and~\ref{lem:alone}), and so for $d=2$, whose member is Smith and Yard's channel (Sec.~\ref{sec:family}). The supplementary material of Ref.~\cite{parentin2026onset} also states (Sec.~S3.2) and proves (Secs.~S3.3--S3.5) a general form of Prop.~1, for every channel whose Choi state is a mixture of shifted private states, of which Lemma~\ref{lem:reduction} is an instance; we give the proof in full so that every step our results use is proven here.
+
+Because $\nt$ is one use of $P\otimes A$ with processing before and after, data processing gives
+\begin{equation}
+\label{eq:dp}
+F_c\bigl((P\otimes A)^{\otimes n},2\bigr)\ge F_c\bigl(\nt^{\otimes n},2\bigr)\quad\text{for every }n.
+\end{equation}
+In $\nt^{\otimes n}$ the decoder reads the flags $z\in\{0,1\}^n$; each flagged qubit is classical, so it may be measured in $Z$ without loss, and $F=\sum_z2^{-n}F_z$ with $F_z$ the fidelity of the branch with flags $z$.
+
+% ======================================================================
+\section{Certificates and the group reduction}
+\label{sec:certs}
+
+Floating-point see-saw optimizers~\cite{reimpell2005iterative} propose an encoder and decoders. A separate certifier then proves a lower bound for maps defined by the stored bytes; it never uses the proposer's numbers. Its steps:
+\begin{description}
+\item[The maps] Every stored entry is rounded to the dyadic grid $2^{-\GridBits}$ (for the symmetric and two-group certifiers, then shifted by $2^{-\EtaExp}$ times the identity). The rounded matrices define the certified maps; nothing is approximated after this step.
+\item[Positivity] Exactly: either by construction, the encoder's Choi matrix being a Gram matrix $\proj{\tilde w}$ and each decoder's $\tilde K\tilde K^\dagger$ for a rounded factor $\tilde K$, or by proving every block positive definite with Sylvester's criterion, each leading principal minor an exact integer determinant (Bareiss elimination for large blocks).
+\item[Normalization] Without square roots: an exact Gershgorin bound $\lambda_{\max}\le1+e$ on the relevant partial trace makes the map divided by $1+e$ trace non-increasing. Completing it to a channel adds a completely positive term whose contribution to the fidelity is non-negative, so dividing by the normalizers gives a lower bound for a pair of channels.
+\item[The fidelity] Either in \PrecBits-bit ball arithmetic, with $p$ and every square root as a rigorous ball, or exactly: for $p=1/(\sqrt d+1)=(\sqrt d-1)/(d-1)$ the dense certifier expands each flagged branch over the subsets of flipped bits, every term an exact non-negative integer at a fixed scale, so the bound is $a+b\sqrt d$ with $a,b$ rational and $F>3/4$ is decided by the sign of $(a-3/4)+b\sqrt d$.
+\end{description}
+A wrong witness fails a positivity proof or certifies less. The certified number is a lower bound on $F_c(\nt^{\otimes n},2)$, which is a maximum over all codes.
+
+\paragraph*{The group reduction.} Codes whose encoder output is supported on $R\otimes\sym^{m_1}\otimes\dots\otimes\sym^{m_G}$, for consecutive groups of uses, are evaluated in a reduced representation; for $G=1$ it is the symmetric-subspace case of the permutation-invariant evaluation of Refs.~\cite{parentin2026onset,bergh2026permutation}. (Invariance under permutations within groups is not enough: $\frac12\openone_R\otimes\proj{\varPsi^-}$ is invariant under the swap of two qubits but orthogonal to $\sym^2$.) Let the $n$ uses form consecutive groups of sizes $m_1,\dots,m_G$ ($G=1$ for symmetric codes, $G=2$ for two-group codes), let $\sym^m$ be the symmetric subspace of $m$ qubits with Dicke basis $\dk mw$ ($w=0,\dots,m$), and define $P^{(m)}_{k,a}\colon\sym^m\to\sym^{m-k}$ by
+\begin{equation}
+P^{(m)}_{k,a}\dk mw=\biggl(\binom{m-k}{w-a}\biggm/\binom mw\biggr)^{1/2}\dk{m-k}{w-a},
+\end{equation}
+the term being absent when $w-a\notin[0,m-k]$. Let $\prk_k(b|a)$ be the probability that $k$ bits, $a$ of them equal to $1$, read $b$ ones after each is flipped independently with probability $p$.
+
+\begin{lemma}[group reduction]
+\label{lem:groups}
+Let $\omega$ be a state on $R\otimes(\mathbb C^2)^{\otimes n}$ supported on $R\otimes\sym^{m_1}\otimes\dots\otimes\sym^{m_G}$, sent through $\nt_p^{\otimes n}$. Fix flags $z$ with $k_g$ flagged uses in group $g$, let Bob measure the flagged qubits in $Z$, and let $b_g$ be the number of ones he reads in group $g$. After Bob relabels the qubits within each group so that the flagged ones come first, his operator on $R$ and the unflagged qubits, summed over all outcome strings with weights $b=(b_g)$, is
+\begin{equation}
+\label{eq:groups}
+\rho_{k,b}(\omega)=\sum_{a}\prod_{g}\binom{k_g}{a_g}\prk_{k_g}(b_g|a_g)\,Q_a\,\omega\,Q_a^\dagger,
+\end{equation}
+with $Q_a=\openone_R\otimes\bigotimes_gP^{(m_g)}_{k_g,a_g}$, whatever the positions of the flags; it is supported on $R\otimes\bigotimes_g\sym^{m_g-k_g}$. Consequently, for any decoding channels $\mathcal D_{k,b}$ on these registers, the decoder that reads the flags and the weights and applies $\mathcal D_{k,b}$ achieves
+\begin{equation}
+\label{eq:groupsF}
+F=\sum_{k}2^{-n}\prod_g\binom{m_g}{k_g}\sum_{b}\bra{\mes}(\id_R\otimes\mathcal D_{k,b})(\rho_{k,b}(\omega))\ket{\mes}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+\emph{Splitting a Dicke state.} The strings of weight $w$ on $m$ qubits split as $(t,v)$, with $t$ on the first $k$ qubits and $v$ of weight $w-|t|$ on the rest, and the uniform superposition of the $v$ is $\binom{m-k}{w-|t|}^{1/2}\dk{m-k}{w-|t|}$. Hence
+\[
+\dk mw=\sum_{t\in\{0,1\}^k}\ket t\otimes P^{(m)}_{k,|t|}\dk mw,
+\]
+so $(\bra t\otimes\openone)\ket\psi=(\openone\otimes P^{(m)}_{k,|t|})\ket\psi$ for every $\ket\psi\in\mathcal H\otimes\sym^m$, with $\bra t$ acting on the first $k$ qubits of the group; the same holds group by group.
+
+\emph{Placement.} Let $\pi$ permute qubits within groups and $U_\pi$ act accordingly. $U_\pi$ fixes $\sym^{m_1}\otimes\dots\otimes\sym^{m_G}$ pointwise, so $U_\pi\omega U_\pi^\dagger=\omega$. The channel applied under flags $\pi(z)$ is $U_\pi\mathcal N_z(U_\pi^\dagger\cdot U_\pi)U_\pi^\dagger$, where $\mathcal N_z$ applies $\mathcal X^p\circ\deph$ to the flagged qubits and the identity elsewhere; so the output under $\pi(z)$ is $U_\pi\mathcal N_z(\omega)U_\pi^\dagger$, and Bob, who knows $z$, undoes $U_\pi$. It therefore suffices to flag the first $k_g$ qubits of each group.
+
+\emph{The flagged qubits.} $\deph$ maps $\ket t\!\bra{t'}$ to $\delta_{tt'}\ket t\!\bra t$, and $\mathcal X^p$ flips a classical bit with probability $p$, so on the $k$ flagged qubits and anything else,
+\begin{align*}
+&\bigl((\mathcal X^p\circ\deph)^{\otimes k}\otimes\id\bigr)(\sigma)\\
+&\qquad=\sum_s\proj s\otimes\sum_tT(s|t)\,(\bra t\otimes\openone)\sigma(\ket t\otimes\openone),
+\end{align*}
+with $T(s|t)=\prod_i(1-p)^{[s_i=t_i]}p^{[s_i\ne t_i]}$. The flagged register is classical, so reading $s$ loses nothing. By the splitting, $(\bra t\otimes\openone)\omega(\ket t\otimes\openone)=(\openone\otimes\bigotimes_gP_{k_g,|t_g|})\,\omega\,(\cdot)^\dagger$.
+
+\emph{Summing over strings.} The sum of $T(s|t)$ over strings $s$ with group weights $b$ factorizes over groups, and in group $g$ it is the probability that $b_g$ ones are read from $t_g$; the flips are independent and identically distributed, so this depends on $t_g$ only through $a_g=|t_g|$ and equals $\prk_{k_g}(b_g|a_g)$. There are $\binom{k_g}{a_g}$ strings $t_g$ of weight $a_g$, which gives~\eqref{eq:groups}; each $P_{k_g,a_g}$ maps into $\sym^{m_g-k_g}$, which gives the support.
+
+\emph{The fidelity.} The decoder of the statement is a channel: it reads $z$ and $s$, relabels, and applies $\mathcal D_{k,b}$ through the isometry from the Dicke registers onto the symmetric subspaces of the unflagged qubits (completed arbitrarily outside them, where the state has no support). Each flag pattern has probability $2^{-n}$, and $\prod_g\binom{m_g}{k_g}$ patterns have flag counts $k$; linearity in the outcome strings gives~\eqref{eq:groupsF}.
+\end{proof}
+\noindent The symmetric and two-group certifiers evaluate exactly the right side of~\eqref{eq:groupsF} for the stored maps, in their own ball arithmetic, so with Lemma~\ref{lem:groups} their bounds are bounds on $F_c(\nt^{\otimes n},2)$; that arithmetic is checked against the dense construction below.
+
+\paragraph*{The reduction against the dense construction.} We also checked Lemma~\ref{lem:groups} against the dense $2^n$-dimensional construction, without using its formula: the encoder is embedded in the full space, the flagged qubits are permuted to the front, and for every flagged string $t$ the slice that the reference and the unflagged qubits hold is computed directly, with the probability of each observed weight computed for that string $t$ by convolution over its bits. For a random two-group code with groups of \RedA\ and \RedB\ uses ($n=\RedN$) every one of the \RedPatterns\ flag patterns was enumerated, with no symmetry assumed; for the certified two-group codes at $n=\RedEtoEFour,\RedEtoEEight,\TgFifteenN,\TgSixteenN$ and the certified symmetric code at $n=\CurveLo$, every flag-count branch was checked at the first positions and at random positions inside each group, with the stored decoders. In every case the slices satisfy the splitting identity, nothing leaves the symmetric subspaces, the branch states equal $\rho_{k,b}$, and the fidelity computed from the dense states equals the reduction's (for the certified codes, the recorded value of the stored pair), all to \RedDevMax\ (fidelities to \RedFidMax). For the symmetric certificates at $n=\SymMidN$ and \SymCertN, whose embedding we do not form, the slices of each Dicke state are counted over all $2^n$ strings, for every flagged string at both placements; this checks the splitting identity and the support, not the states.
+
+The comparison also covers the certifiers' own ball arithmetic, which is code separate from the floating-point reduction above. The midpoints of the selection matrices the certificates multiply by equal the dense slices for every flagged string at every certified $n$, and the midpoints of their coefficients equal the per-string law summed over the strings of each weight for every group size up to \SymCertN\ (to \RedCoeffDev\ per string), every ball radius (per string, for the coefficients) being at most \RedRadius. Run now on every witness except the two-group ones at $n=\TgFifteenN,\TgSixteenN$, whose certificates take hours (two-group $n=\RedEtoEFour,\RedEtoEEight$; symmetric $n=\CurveLo,\SymMidN,\SymCertN$), each certifier reproduces its committed bound digit for digit, and the fidelity of the same stored pair (from the dense states, and as recorded at $n=\SymMidN,\SymCertN$) lies above that bound by less than \RedEtoEMax. Four negative controls each change one quantity by a relative $10^{-6}$, and each is caught far above the deviations just quoted. Changing one amplitude of the reduction's selection matrix in the comparator's expectation (deviation \RedCtlExpect) shows that the identity check can fail. Changing the same amplitude inside the module that produces the reduced states (\RedCtlModule) shows that the state comparison runs the code the stored pairs were evaluated with, not a copy of it. Changing $p$ in the dense per-string law (\RedCtlFlip) shows that the comparison sees the per-string probabilities, where an error in the symmetry argument would appear. Changing one midpoint of a certifier's selection matrix (\RedCtlCert) shows that the certifier comparison reads the certifier's own matrices.
+
+\paragraph*{Four certifiers.} \emph{Symmetric codes} ($G=1$) and \emph{two-group codes} ($G=2$), through Lemma~\ref{lem:groups}, in ball arithmetic. \emph{The $n$-use certifier}, for any code in the dense model, exact in $\mathbb Q(\sqrt d)$, used for $n\le4$. At $n=2$ two further checks: a ball-arithmetic two-use certifier, and an exact-rational checker that imports none of our code, with explicit physical decoders (encoder inversion, single-qubit corrections given by integer quaternions, measure-and-prepare) and $p$ enclosed by integer square roots. On a common code the $n$-use and two-use certifiers agree (a test holds them together).
+
+\paragraph*{Binding.} Each certificate records the SHA-256 of the bytes it proved and the git objects of the code that proved it. The test suite recomputes each stored pair's floating-point fidelity and requires the certified bound to sit just below it: a bound above its own pair certifies some other pair. A check of this kind retracted the first record of the $n=\TgFifteenN$ certificate, which had proved decoders held only in memory; the result below was re-proved from stored decoders.
+
+% ======================================================================
+\section{The family $P_d$ and what one use gives}
+\label{sec:family}
+
+\paragraph*{Shifted private states.} Let the key systems $R',B'$ be qubits and the shields $R'',B''$ be $d$-dimensional. For $\ell\in\{0,1\}$ let
+\begin{equation}
+\label{eq:gamma}
+\gamma^\ell=\frac12\sum_{i,j\in\{0,1\}}\ket{i}\!\bra{j}_{R'}\otimes\ket{i\oplus\ell}\!\bra{j\oplus\ell}_{B'}\otimes\tau^\ell_{ij},
+\end{equation}
+where $\tau^\ell_{ij}=U^{i,\ell}\sigma^\ell U^{j,\ell\dagger}$, with shield states $\sigma^0=\openone/d^2$ and $\sigma^1=\frac1d\sum_a\proj{aa}$ on $R''B''$, and twists $U^{0,\ell}=\openone$, $U^{1,0}=D_uF$ and $U^{1,1}$, where $F$ swaps $R''$ and $B''$, $D_u=\sum_{a,b}u_{ab}\proj{ab}$, and $U^{1,1}\ket{aa}=d^{-1/2}\sum_bu_{ab}\ket{bb}$ on $\mathrm{span}\{\ket{aa}\}$ and $U^{1,1}$ is the identity on its orthogonal complement. Here $u$ is a complex Hadamard matrix: $|u_{ab}|=1$ and $uu^\dagger=d\,\openone$ (for example the Fourier matrix), so that $D_u$, $U^{1,1}$ and $u/\sqrt d$ are unitary. Let $P_d$ be the channel on $\mathbb C^{2d}$ with Choi state
+\begin{equation}
+\label{eq:choi}
+\mes^{P_d}=p_0\gamma^0+p_1\gamma^1,\qquad p_0+p_1=1;
+\end{equation}
+its marginal on the input $R'R''$ is maximally mixed (each $\tau^\ell_{ii}$ has $\tr_{B''}\tau^\ell_{ii}=\openone/d$), so it is a channel.
+
+\paragraph*{$P_2$ is Smith and Yard's channel.} For $d=2$, $u=\bigl(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\bigr)$ and $p_1=1/(\sqrt2+1)$, the Choi matrix~\eqref{eq:choi} equals, entry by entry and exactly, that of Smith and Yard's channel as Ref.~\cite{parentin2026onset} states it: its six Kraus operators (Eqs.~S2.20--S2.27 of its supplement) and its Choi state (Eqs.~S2.4--S2.17). Against both, each of the \KrausEntries\ entry differences is an algebraic number whose minimal polynomial is $x$, and so are those between the Kraus operators and the Choi-state formula; in floating point the differences are at most \KrausDiff. No local unitary is needed. The check can fail: with the sign error in $M_1$ that the supplement reports in Smith and Yard's original Kraus operators, \KrausTypoUnequal\ entries differ (by up to \KrausTypoDiff), and with the formula's weights $q_0,q_1$ and $q_2,q_3$ exchanged, \KrausSwapUnequal\ do.
+
+\paragraph*{Origin.} The family is the construction of K.~Horodecki, Pankowski, M.~Horodecki and P.~Horodecki~\cite{horodecki2008low}, written out for the Fourier matrix by Badzi\k{a}g \textit{et al.}~\cite{badziag2014bound} (their Appendix~A). In the $X$-form of a private bit, $\gamma^0$ has $X\propto W_{u^\dagger}$ and $\gamma^1$ has $X\propto W_{\bar u}^\varGamma$, with $W_U=\sum_{ij}U_{ij}\ket{ij}\!\bra{ji}$ and $\varGamma$ the partial transpose on $B''$; theirs are $W_U$ and $W_U^\varGamma$ for one unitary $U$ with $|U_{ij}|=1/\sqrt d$. So for a symmetric $u$ (the Hadamard, Sylvester and Fourier matrices) Eq.~\eqref{eq:choi} is their state with $U=\bar u/\sqrt d$. For a non-symmetric $u$ the two terms carry the twists $u^\dagger$ and $\bar u$; when $\bar u_{ij}/\bar u_{ji}=r_i/r_j$ for some phases $r_i$, the product of $\mathrm{diag}(\sqrt{r_i})$ on $R''$ and its conjugate on $B''$ multiplies the entries of $W_{u^\dagger}$ by $r_i/r_j$ and fixes $W_{\bar u}^\varGamma$, so it maps the state onto theirs with $U=\bar u/\sqrt d$; whether every non-symmetric $u$ is locally equivalent to one of their states we have not settled (a test checks both cases). They show that their state is ``PPT invariant'' at the weights its norms fix, $p_1=1/(\sqrt d+1)$ when $|U_{ij}|=1/\sqrt d$; for $U$ the Hadamard gate, that ``any mixture with the weight of $\gamma_1$ different then value $p_1$'' (our $\gamma^0$ and $p_0$) ``leads to NPT state''; and that ``the same argument proves extremity of the state from our construction with $X=W_U$, if only $X$ is hermitian operator, and either $X$ or $X^\varGamma$ has some positive eigenvalue'' (their Observation~2). Smith and Yard's channel is their $d=2$ state with $U=H$~\cite{smith2008quantum}, and a remark left out of the compiled version of Ref.~\cite{parentin2026onset} places it in this family, built from ``a unitary $u$ with unimodular entries''; the published construction states the condition as $|U_{ij}|=1/\sqrt d$, the complex Hadamard condition above. The next theorem proves both directions for every complex Hadamard $u$; what it adds to theirs is the ``only if'' for every such twist, stated as such, in particular when $W_{\bar u}$ is not Hermitian (the Fourier matrix for $d\ge3$, for example).
+
+\begin{theorem}[the PPT point of Ref.~\cite{horodecki2008low}, and its uniqueness]
+\label{thm:ppt}
+For every $d\ge2$ and every complex Hadamard matrix $u$, the state~\eqref{eq:choi} has positive partial transpose if and only if $p_1=1/(\sqrt d+1)$. In that case $P_d$ is a PPT channel.
+\end{theorem}
+\begin{proof}
+Transpose $B'B''$. An off-diagonal key term $\ket i\!\bra j_{R'}\otimes\ket{i\oplus\ell}\!\bra{j\oplus\ell}_{B'}$ ($i\ne j$) becomes $\ket i\!\bra j\otimes\ket{j\oplus\ell}\!\bra{i\oplus\ell}$, so the partial transpose is block diagonal in the key sectors $S_0=\mathrm{span}\{\ket{00},\ket{11}\}$ and $S_1=\mathrm{span}\{\ket{01},\ket{10}\}$ of $R'B'$. In $S_0$ the diagonal blocks come from $\gamma^0$ and the off-diagonal ones from $\gamma^1$; in $S_1$ it is the reverse. Two facts fix the diagonal blocks: $\sigma^0\propto\openone$ is invariant under unitaries and transposition, and $U^{1,1}\sigma^1U^{1,1\dagger}=\sigma^1$ because $U^{1,1}$ acts on $\mathrm{span}\{\ket{aa}\}$, where $\sigma^1=\openone/d$, as the unitary $u^{\mathsf T}/\sqrt d$.
+
+\emph{Sector $S_0$.} Since $\sigma^1U^{1,1\dagger}=d^{-3/2}\sum_{a,b}\bar u_{ab}\ket{aa}\!\bra{bb}$, whose partial transpose on $B''$ is $d^{-3/2}M$ with $M=\sum_{a,b}\bar u_{ab}\ket{ab}\!\bra{ba}$, the block is
+\[
+\begin{pmatrix}\alpha\openone&\beta M\\\beta M^\dagger&\alpha\openone\end{pmatrix},\qquad\alpha=\frac{p_0}{2d^2},\quad\beta=\frac{p_1}{2d^{3/2}}.
+\]
+$M^\dagger M=\sum_{a,b}|u_{ab}|^2\proj{ba}=\openone$, so $M$ is unitary and the eigenvalues are $\alpha\pm\beta$.
+
+\emph{Sector $S_1$.} The off-diagonal block is $\frac{p_0}{2d^2}N$ with $N$ the partial transpose of $(D_uF)^\dagger=\sum_{a,b}\bar u_{ba}\ket{ab}\!\bra{ba}$, that is $N=\sum_{a,b}\bar u_{ba}\ket{aa}\!\bra{bb}$, and the diagonal blocks are $\frac{p_1}{2}\sigma^1$. Both act within $\mathrm{span}\{\ket{aa}\}$, where $\sigma^1=\openone/d$ and $N$ is the matrix $u^\dagger$, with $NN^\dagger=d\,\openone$; they vanish on its complement. The nonzero eigenvalues are therefore $\frac{p_1}{2d}\pm\frac{p_0}{2d^{3/2}}$.
+
+All eigenvalues are non-negative if and only if $p_0\ge\sqrt d\,p_1$ (sector $S_0$) and $\sqrt d\,p_1\ge p_0$ (sector $S_1$), that is $p_0=\sqrt d\,p_1$, or $p_1=1/(\sqrt d+1)$. A channel whose Choi state is PPT maps every input to a PPT state.
+\end{proof}
+\noindent The test suite checks the predicted spectrum numerically on both sides of the boundary and the PPT property at the boundary for Fourier and real Hadamard twists; just below the boundary the partial transpose has a negative eigenvalue (a negative control).
+
+From now on $p=p_1=1/(\sqrt d+1)$, and $A_{2d}$ is the 50\% erasure channel on $\mathbb C^{2d}$. We write the input of $P_d$ as a key qubit $K_1$ and a shield $S_1$, that of $A_{2d}$ as $K_2S_2$, and the output of $P_d$ as $B'B''$. The coupling below is Smith and Yard's, who send a purification of the PPT channel's input through the erasure channel~\cite{smith2008quantum}; the decoder is that of Ref.~\cite{parentin2026onset} (their Prop.~1 at $d=2$, and the general form of their supplement).
+
+\begin{lemma}[one joint use simulates $\nt_p$]
+\label{lem:reduction}
+With the encoder $V\ket r=d^{-1/2}\sum_s\ket{r,s}_{K_1S_1}\otimes\ket{r,s}_{K_2S_2}$ and the decoder below, one use of $P_d\otimes A_{2d}$ simulates exactly the channel $\nt_p$ of~\eqref{eq:nt}, with $A_{2d}$'s erasure flag as the flag $Z$. Hence $F_c((P_d\otimes A_{2d})^{\otimes n},2)\ge F_c(\nt_p^{\otimes n},2)$ for every $n$.
+\end{lemma}
+\begin{proof}
+With the normalized Choi state, $P_d(Y)=2d\,\tr_{R'R''}[(Y^{\mathsf T}\otimes\openone)\mes^{P_d}]$. For $Y=\ket{r,s}\!\bra{r',s'}$ only the terms $i=r$, $j=r'$ of~\eqref{eq:gamma} survive:
+\[
+P_d\bigl(\ket{r,s}\!\bra{r',s'}\bigr)=d\sum_\ell p_\ell\,\ket{r\oplus\ell}\!\bra{r'\oplus\ell}_{B'}\otimes\bra s\tau^\ell_{rr'}\ket{s'}_{R''},
+\]
+an operator on $B'B''$. The encoder gives $V\ket r\!\bra{r'}V^\dagger=\frac1d\sum_{s,s'}\ket{r,s}\!\bra{r',s'}\otimes\ket{r,s}\!\bra{r',s'}$.
+
+\emph{$A$ delivers} (probability $1/2$). Since $\sum_{s,s'}\ket s\!\bra{s'}_{S_2}\otimes\bra s\tau\ket{s'}_{R''}$ is $\tau$ with $R''$ renamed $S_2$, the output is
+\[
+\sum_\ell p_\ell\,\ket{r\oplus\ell,r}\!\bra{r'\oplus\ell,r'}_{B'K_2}\otimes U^{r,\ell}\sigma^\ell U^{r',\ell\dagger}\ \text{ on }S_2B''.
+\]
+Bob applies a CNOT from $K_2$ to $B'$, which maps $\ket{r\oplus\ell,r}$ to $\ket{\ell,r}$, and measures $B'$, obtaining $\ell$ with probability $p_\ell$; the same $\ell$ appears in the ket and the bra, so the coherence between $r$ and $r'$ is kept. He then applies $\sum_i\proj i_{K_2}\otimes U^{i,\ell\dagger}$ on $S_2B''$, which maps $\ket r\!\bra{r'}\otimes U^{r,\ell}\sigma^\ell U^{r',\ell\dagger}$ to $\ket r\!\bra{r'}\otimes\sigma^\ell$, and outputs $K_2$: the result is $\ket r\!\bra{r'}$, the identity channel.
+
+\emph{$A$ erases} (probability $1/2$). $A$'s output is the flag whatever its input, so the trace over $K_2S_2$ leaves $\frac1d\sum_s\delta_{rr'}P_d(\ket{r,s}\!\bra{r,s})=\delta_{rr'}\sum_\ell p_\ell\proj{r\oplus\ell}_{B'}\otimes\tr_{R''}\tau^\ell_{rr}$. Bob discards $B''$ and outputs $B'$: $\delta_{rr'}\sum_\ell p_\ell\proj{r\oplus\ell}$, which is $(\mathcal X^{p_1}\circ\deph)(\ket r\!\bra{r'})$.
+
+Bob reads the flag, which is orthogonal to the rest of $A$'s output, applies the matching branch and keeps the flag; every step is a channel, so the composition is $\nt_{p_1}$. Applying $V$ and the decoder to each use turns any code for $\nt_p^{\otimes n}$ into a code for $(P_d\otimes A_{2d})^{\otimes n}$ with the same fidelity.
+\end{proof}
+\noindent At $d=2$ this is Imported result~\ref{imp:prop1}, since $P_2$ is Smith and Yard's channel. The proof uses only that the Choi state is a mixture of shifted private states. Tests also check both branches numerically for small $d$ (Knill--Laflamme conditions; Helstrom error $p$), with a negative control.
+
+\begin{lemma}[neither channel alone]
+\label{lem:alone}
+$F_c(P_d^{\otimes m},2)\le1/2$ and $F_c(A_{2d}^{\otimes m},2)\le3/4$ for every $m$ and $d$.
+\end{lemma}
+\begin{proof}
+The standard argument, as in Ref.~\cite{parentin2026onset}. \emph{$P_d$.} By Theorem~\ref{thm:ppt} the Choi state of $P_d$ is PPT, so is that of $P_d^{\otimes m}$ (a tensor product of PPT states), and $P_d^{\otimes m}$ maps every input to a state that is PPT across reference and output. The encoder acts before the channel and the decoder locally after it, so the final state on $R$ and Bob's qubit is PPT, and its fidelity with $\mes$ is at most $1/2$~\cite{horodecki1999general}. \emph{$A_{2d}$.} $A_{2d}$ has the isometric extension $\ket\psi\mapsto(\ket\psi_B\ket e_E+\ket e_B\ket\psi_E)/\sqrt2$, symmetric under exchanging $B$ and $E$. For $m$ uses and any encoder, the joint state of $R$, $B^m$ and $E^m$ is therefore symmetric under exchanging $B^m$ and $E^m$; applying the decoder to $B^m$ and a copy of it to $E^m$ gives a state of $R$ and two qubits, symmetric in the two qubits, whose marginal on $R$ and the first qubit is the code's output. That output is two-extendible, and a two-extendible state has fidelity at most $3/4$ with $\mes$~\cite{johnson2013compatible,kaur2019extendibility}.
+\end{proof}
+\noindent At $d=2$ this gives the first part of Imported result~\ref{imp:result1}.
+
+\begin{lemma}[one use never suffices]
+\label{lem:oneuse}
+For any PPT channel $P$ and any 50\% erasure channel $A$, $F_c(P\otimes A,2)\le3/4$.
+\end{lemma}
+\begin{proof}
+$A$'s flag is classical and orthogonal to its other outputs, so the decoder may read it first, and $F=\frac12F_{\mathrm{kept}}+\frac12F_{\mathrm{erased}}$ for the fidelities conditioned on the flag. $F_{\mathrm{kept}}\le1$. When $A$ erases, its output carries no information about its input, and the map from the transmitted qubit to Bob's output is a channel applied before $P$, then $P$, then the decoder. Its output on half of $\mes$ is PPT, because $P$ outputs PPT states and the decoder is local, so $F_{\mathrm{erased}}\le1/2$~\cite{horodecki1999general}. Hence $F\le3/4$.
+\end{proof}
+
+% ======================================================================
+\section{Smith and Yard's pair: $n^*\le\TgFifteenN$}
+\label{sec:dtwo}
+
+Every code that Ref.~\cite{parentin2026onset} reports near the onset is permutation-invariant. A two-group code has its encoder output supported on $R\otimes\sym^a\otimes\sym^b$ with $a+b=n$, so it is invariant under permutations within each group of uses, but not across them. Bergh and Parentin note that their see-saw can be restricted to a subgroup when the channel is covariant only under it: for $\mathcal N_1^{\otimes k}\otimes\mathcal N_2^{\otimes n-k}$ ``one can restrict to encoders and decoders that are invariant under the action of the subgroup $G=S_k\times S_{n-k}$'', and ``A similar case arises for the channels involved in superactivation'' (Ref.~\cite{bergh2026permutation}, the Remark after Lemma~IV.9 in Sec.~IV.C and its footnote~3); there the decoders of Ref.~\cite{parentin2026onset} for $k$ flagged uses are covariant under $S_k\times S_{n-k}$ (Sec.~S6.2.3 of its supplement). The channel $\nt^{\otimes n}$ itself is covariant under all of $S_n$, so restricting the encoder to two groups is a choice of code family, not a symmetry of the channel; what is new is a certified code of that family, evaluated through Lemma~\ref{lem:groups}. The family contains every symmetric code ($a=0$) and, at $n=2$, every code. We grew two-group codes from smaller $n$ by a see-saw, seeding each size with the code found one size below.
+
+\begin{theorem}
+\label{thm:dtwo}
+There is a code for $\nt^{\otimes\TgFifteenN}$ with a two-group encoder ($a=\TgFifteenA$, $b=\TgFifteenB$) and $F\ge\TgFifteenF$, and one for $\nt^{\otimes\TgSixteenN}$ ($a=\TgSixteenA$, $b=\TgSixteenB$) with $F\ge\TgSixteenF$. Smith and Yard's channels therefore exhibit $\TgFifteenN$-shot superactivation at threshold $3/4$, and $n^*\le\TgFifteenN$.
+\end{theorem}
+\begin{proof}
+The two bounds are certified through Lemma~\ref{lem:groups}. By Lemma~\ref{lem:reduction} at $d=2$, since $P_2$ is Smith and Yard's channel (Sec.~\ref{sec:family}), $F_c((P\otimes A)^{\otimes\TgFifteenN},2)\ge F_c(\nt^{\otimes\TgFifteenN},2)>3/4$; by Lemma~\ref{lem:alone} neither channel alone exceeds $3/4$ at any number of uses. These two steps are also Imported results~\ref{imp:prop1} and~\ref{imp:result1}.
+\end{proof}
+\noindent\emph{Certified.} The $n=\TgFifteenN$ certificate proves \TgFifteenBlocks\ blocks positive definite in exact integer arithmetic and took \TgFifteenHours~h; its margin over $3/4$ is at least \TgFifteenMargin. At $n=\TgSixteenN$: \TgSixteenBlocks\ blocks, \TgSixteenHours~h, margin at least \TgSixteenMargin, so the crossing holds at two consecutive $n$ and the margin grows. Table~\ref{tab:dtwo} sets these beside the symmetric codes. At $n=\TgFourteenN$ the two-group search (groups of \TgFourteenA\ and \TgFourteenB) stalled at \TgFourteenF, below $3/4$; whether some code with $n\le\TgFourteenN$ crosses is open.
+
+\begin{table}[tbp]
+\caption{Codes for Smith and Yard's pair ($d=2$). \emph{Code}: $a{+}b$ for a two-group code, sym.\ for a symmetric one. \emph{Authors'}: the floating-point values of symmetric (isometric-ansatz) codes in the public table of Ref.~\cite{parentin2026onset}'s authors (\url{https://github.com/bbbergh/permqit}, commit \PermqitCommit); the published paper prints \PubFPrinted\ for its code at $n=\PubN$ (\PubF\ in its ancillary data), and the table's value at $n=\PubN$ belongs to a later code of the same ansatz, better by \AuthLaterGain. \emph{$F$ (float)}: our code's fidelity with its stored decoders (two-group) or with exact decoders (symmetric). \emph{Certified}: the lower bound, truncated. The $n=\TgFourteenN$ row is the best code our search found there; it bounds nothing about other codes.}
+\label{tab:dtwo}
+\small\setlength{\tabcolsep}{4pt}
+\input{generated/tab_dtwo.tex}
+\end{table}
+
+\paragraph*{What is and is not new.} Ref.~\cite{parentin2026onset} itself shows, in its Fig.~2, codes found by an unrestricted see-saw that beat symmetric codes for small $n$. That symmetric codes are not optimal is therefore not new. What is new is a certified code, of any kind, below \PubN\ uses.
+
+\paragraph*{Symmetric codes past the published range.} Our symmetric codes for $n=\CurveLo,\dots,\CurveHi$, scored with exact decoders, rise monotonically (Table~\ref{tab:dtwo}); Fig.~2 of Ref.~\cite{parentin2026onset} stops short of the upper end of this range. Three are certified: $F\ge\SymSeventeenF$ at $n=\CurveLo$, $F\ge\SymTwentyF$ at $n=\SymMidN$ and $F\ge\SymCertF$ at $n=\SymCertN$, a margin of at least \SymCertMargin\ (\SymCertBlocks\ blocks proved positive definite). Each value is an achievable code, not a converged optimum: every search stopped at its step limit. The encoders found are numerically isometries: truncating an encoder to its top eigenvector does not lower its fidelity (measured at every $n$; a test holds it at $n=\CurveHi$).
+
+\paragraph*{The published code, composed independently.} The authors' ancillary verifier contracts stored intermediate maps with stored decoders, so it does not check that those maps are the channel applied to the encoder. We predicted each of the \StoredBlocks\ stored blocks from the stored encoder through our own composition with $\nt$. All agree to \StoredResid. Since the basis order inside each irreducible block is not documented, we ran all four orders; the other three miss by at least \StoredOther, so the check can fail.
+
+\paragraph*{Erasure tolerance.} A code built for erasure probability $1/2$ should not need it exactly. Holding each certified symmetric code fixed and raising the erasure probability $q$ of $A$, which keeps $A$ antidegradable and so keeps Lemma~\ref{lem:alone}, the fidelity stays above $3/4$ for $q<\ErasQSeventeen$ ($n=\CurveLo$), $q<\ErasQTwenty$ ($n=\SymMidN$) and $q<\ErasQTwentyFour$ ($n=\CurveHi$). These are floating-point values with exact decoders, not certified. The slope $|dF/dq|$ at $q=1/2$ lies between \ErasSlopeLo\ and \ErasSlopeHi\ for all three.
+
+% ======================================================================
+\section{Two uses suffice from $d=\TwoUseDmin$}
+\label{sec:twouse}
+
+\begin{theorem}[two uses suffice]
+\label{thm:two}
+For every $d\ge\TwoUseDmin$, $F_c(\nt_p^{\otimes2},2)>3/4$ at $p=1/(\sqrt d+1)$, and so $F_c((P_d\otimes A_{2d})^{\otimes2},2)>3/4$.
+\end{theorem}
+\begin{proof}
+\emph{$d\ge\ClosedDmin$ (proven).} Take $\ket{0_L}=\ket{++}$ and $\ket{1_L}=\ket{--}$. With no flag Bob inverts the encoder: fidelity $1$. With one flag, say on the second use, Bob holds the first qubit intact and a bit $c$ that equals the second qubit's $Z$ value $m$ with probability $1-p$. Given $m$, the first qubit and the reference are in $(\ket0_R\ket++(-1)^m\ket1_R\ket-)/\sqrt2$, which $X^m$ maps to the code state; applying $X^c$ is right with probability $1-p$ and otherwise leaves a logical phase error, so the branch has fidelity $1-p$. With two flags, a $Z$ outcome $(a,b)$ leaves the reference in $(\ket0+(-1)^{a\oplus b}\ket1)/\sqrt2$, so Bob learns the reference's $X$ value from the parity of his two bits, which is wrong with probability $2p(1-p)$; preparing the matching $X$ eigenstate gives fidelity $\frac12-p(1-p)$. With weights $\frac14,\frac12,\frac14$,
+\begin{equation}
+\label{eq:closed}
+F=\frac{7-6p+2p^2}{8}.
+\end{equation}
+$F$ decreases in $p$ on $[0,1]$, and $F>3/4$ if and only if $2p^2-6p+1>0$, that is $p<(3-\sqrt7)/2\approx\ClosedPstar$, that is $\sqrt d+1>3+\sqrt7$, that is $d>11+4\sqrt7\approx\ClosedDstar$. So the code crosses $3/4$ for every $d\ge\ClosedDmin$.
+
+\emph{$d=\TwoUseDmin,\TwoUseDnext$ (certified).} The $n$-use certifier proves $F\ge\NuseTwenty$ at $d=\TwoUseDmin$ (margin at least \NuseTwentyMargin) and $F\ge\NuseTwentyOne$ at $d=\TwoUseDnext$, exactly in $\mathbb Q(\sqrt d)$. For another pair of codes the two-use certifier proves $F\ge\TwoTwentyBall$ and $F\ge\TwoTwentyOneBall$, and the exact-rational checker, which imports none of our code, reproduces both bounds to the digits shown. The second statement follows by Lemma~\ref{lem:reduction}.
+\end{proof}
+\noindent The closed form is also certified directly: $F\ge\ClosedTwentyTwo$ at $d=\ClosedDmin$, a margin of \ClosedTwentyTwoMargin; at $d=\ClosedSixtyFourD$, $p=1/9$ and~\eqref{eq:closed} is exactly \ClosedSixtyFourFrac, above $3/4$ by more than \ClosedSixtyFourMargin.
+
+\begin{corollary}
+\label{cor:exact}
+For every $d\ge\TwoUseDmin$ the channels $P_d$ and $A_{2d}$ exhibit two-shot superactivation at threshold $3/4$, and their onset is exactly $n^*=2$.
+\end{corollary}
+\begin{proof}
+Lemma~\ref{lem:alone} gives the first condition of Definition~\ref{def:nshot} at $\varepsilon=1/4$, Theorem~\ref{thm:two} the second at $n=2$, and Lemma~\ref{lem:oneuse} excludes $n=1$.
+\end{proof}
+
+\paragraph*{What ``exactly'' covers.} Definition~\ref{def:nshot} depends on $\varepsilon$, and the corollary is for $\varepsilon=1/4$. For a smaller threshold $1-\varepsilon<3/4$ the first condition needs $\sup_mF_c(A_{2d}^{\otimes m},2)\le1-\varepsilon$. Nobody has shown that this supremum equals $3/4$; if it is smaller, one use could exceed an admissible threshold below $3/4$, and $n^*=2$ would not be the least onset over all thresholds.
+
+\paragraph*{Better two-use codes.} The closed form is not optimal below $d\approx\FamADopt$. Deforming its two-qubit gate into a controlled phase, $\ket{0_L}=\ket+\ket{\beta(\varDelta/2)}$ and $\ket{1_L}=\ket-\ket{\beta(-\varDelta/2)}$ with $\ket{\beta(\phi)}=(\ket0+e^{i\phi}\ket1)/\sqrt2$, and optimizing $\varDelta$ gives
+\begin{equation}
+F_A=\frac{9-2p+\sqrt{\sqrt d+(3-2p)^2}}{16}
+\end{equation}
+for $d\le21+12\sqrt3\approx\FamADopt$ (beyond, the optimum is the closed form). $F_A$ exceeds $3/4$ exactly when $d>(49-\sqrt{97})/2\approx\FamADstar$, equivalently $p<(\sqrt{97}-1)/48\approx\FamAPstar$ (derived; the branch fidelities behind it are matched by our evaluator and by a gate-level simulation). It is certified at $d=\TwoUseDmin$, $F\ge\FamATwenty$, and at $d=\FamAD$, $F\ge\FamAThirtyTwo$ against the closed form's \ClosedThirtyTwo, a gain of about \FamAGain. At $d=\TwoUseDmin$ a code with two entangling gates does better (the \NuseTwenty\ above). At $d=\TwoUseDbelow$ the best two-use code we found has $F=\TwoNineteen<3/4$; with no upper bound on $F_c$, we do not know whether some two-use code crosses there.
+
+\paragraph*{What larger $d$ costs.} $P_d$ and $A_{2d}$ act on $\mathbb C^{2d}$: one key qubit and a $d$-dimensional shield. Corollary~\ref{cor:exact} is about these larger channels. It does not lower the onset for Smith and Yard's $d=2$ pair, for which Sec.~\ref{sec:dtwo} gives $n^*\le\TgFifteenN$.
+
+% ======================================================================
+\section{The onset across the family}
+\label{sec:onset}
+
+Table~\ref{tab:onset} gives, for $d=\TableDLo,\dots,\TableDHi$, the least $n$ at which we found a code above $3/4$. For $n\le4$ the codes come from a see-saw over every encoder and decoder in the dense model (\SearchSeeds\ seeds of \SearchRestarts\ restarts each, the best code then polished); for larger $n$, at $d=3,4,6$ from symmetric codes, and at $d=2$ the entry is the two-group code of Theorem~\ref{thm:dtwo}. Each entry is an upper bound on $n^*$, found by a local search: the best values of different seeds differ by up to \SeedSpreadMax\ (at $d=\SeedSpreadD$), and better optimization can only lower the entries. Where marked, the code with its stored decoders is certified exactly in $\mathbb Q(\sqrt d)$ by the $n$-use certifier, with the thinnest margin, \NineMargin\ ($F\ge\NineF$), at $d=\ThinD$ and $n=\ThinN$; elsewhere the value is a floating-point fidelity, and the entry is an upper bound only as far as that measured value is.
+
+\begin{table}[tbp]
+\caption{The onset across the family, $p=1/(\sqrt d+1)$. \emph{$n^*\le$}: the least $n$ at which a code was found above $3/4$; \emph{$F$ at $n$}: that code's fidelity, certified lower bound (truncated) or floating-point value; \emph{best at $n-1$}: the best floating-point value our search found with one use fewer, which bounds nothing about other codes. At $d=2$ the entry is the two-group code of Theorem~\ref{thm:dtwo}; symmetric codes first cross at $\PubN$. $^\dagger$The certificate of this code fails: its certified lower bound, \DarkF, is below $3/4$, so it certifies nothing (a lower-bound certifier cannot show that a value is below $3/4$). $^\ddagger$Lemma~\ref{lem:oneuse}. At $d=5$ no code with $n\le4$ that our search found crosses (the best, at $n=4$, is \FiveBest), and larger $n$ was not searched.}
+\label{tab:onset}
+\small\setlength{\tabcolsep}{3pt}
+\input{generated/tab_onset.tex}
+\end{table}
+
+Three facts bear on how to read the table. First, the certifier can fail: at $d=\DarkD$ and $n=\DarkN$ the best code's certified lower bound, \DarkF, is below $3/4$, so that code certifies nothing. Second, with Lemma~\ref{lem:oneuse}, $n^*\ge2$ for every $d$, so the certified entries bracket the onset: $n^*\in\{2,3,4\}$ for $d=\OnsetFourLo,\OnsetFourHi$; $n^*\in\{2,3\}$ for $d=\OnsetThreeLo,\dots,\OnsetThreeHi$; and $n^*=2$ for $d\ge\TwoUseDmin$ (Corollary~\ref{cor:exact}). Third, an earlier version of the search used a transposed adjoint of the decoders in its encoder step, so it climbed the wrong functional. A test now checks, for random codes, that the encoder step reproduces the fidelity as a linear functional of the encoder, which the old adjoint fails on every case tried, and the table was recomputed and re-certified after the fix. For $d\le6$ no code with $n\le4$ that our search found crosses (at $d=6$, $n=4$, the best is \SixFour); with the seed spread above, this is not evidence that no such code exists.
+
+% ======================================================================
+\section{The per-use reduction is lossy at one use}
+\label{sec:direct}
+
+Every code above, the published one included, sends each use of $P\otimes A$ through the fixed processing of Lemma~\ref{lem:reduction}. For Smith and Yard's pair the joint channel has input dimension $16$ and output dimension $20$, which Ref.~\cite{parentin2026onset} describes as too large to optimize directly. At one use it is not: the erasure flag is classical, so the fidelity splits over the erasure pattern, and a see-saw over every encoder into $\mathbb C^{16}$ and every decoder is small.
+
+\begin{theorem}
+\label{thm:direct}
+For Smith and Yard's channels, $F_c(P\otimes A,2)\ge\DirectF>\NtOneOpt=F_c(\nt,2)$. One use of the joint channel, coded directly, beats every code on $\nt$ by at least \DirectGain.
+\end{theorem}
+\begin{proof}
+\emph{The lower bound is certified}: an isometric encoder and Gram-factor decoders, positive by construction, normalized and evaluated in ball arithmetic as in Sec.~\ref{sec:certs}. \emph{The value of $F_c(\nt,2)$ is proven}: the identity code reaches $\frac12+\frac{1-p}4$. Conversely $F=\frac12F_0+\frac12F_1$ with $F_0\le1$. In the flagged branch the composite channel is measure-and-prepare, $\rho\mapsto\sum_y\tr(N_y\rho)\,\sigma_y$, with $N_y=\sum_xT(y|x)M_x$ for a POVM $\{M_x\}$ on the encoded qubit, $T$ the binary symmetric channel with flip probability $p$, and states $\sigma_y$. Its fidelity with $\mes$ is $\frac14\sum_y\tr(N_y\sigma_y)\le\frac14\sum_y\|N_y\|$. Writing $N_0=p\openone+(1-2p)M_0$ and $N_1=(1-p)\openone-(1-2p)M_0$ gives $\|N_0\|+\|N_1\|\le1+(1-2p)=2-2p$, so $F_1\le(1-p)/2$ and $F\le\frac12+\frac{1-p}4$. At $p=\sqrt2-1$ this is $1-\sqrt2/4$.
+\end{proof}
+\noindent The reduction's decoder is optimal for its encoder (measured: lifted through its encoder, the identity code at one use and the best two-use $\nt$ code we know score their $\nt$ values in the direct model; a test holds the first); the loss is in the encoder, which the direct code changes to give up perfect recovery when $A$ delivers in exchange for more when it erases. Only the one-use statement is shown; we have no certified or committed direct code at two uses.
+
+% ======================================================================
+\section{What is not shown: lower bounds on the onset}
+\label{sec:limits}
+
+Every entry of Table~\ref{tab:onset} is an upper bound. A lower bound $n^*>m$ needs an upper bound of at most $3/4$ on $F_c$ of $m$ joint uses, and the only one we have is Lemma~\ref{lem:oneuse}, for $m=1$.
+
+\paragraph*{A PPT relaxation cannot do it.} The standard computable upper bound on $F_c(\mathcal N,M)$ is the PPT-assisted channel fidelity of Leung and Matthews~\cite{leung2015power}, the semidefinite program
+\begin{align*}
+F_{\mathrm{PPT}}(\mathcal N,M)=\max\ &\tr(J_{\mathcal N}W)\ \text{subject to}\ \tr\rho=1,\\
+&0\le W\le\rho\otimes\openone_B,\\
+&-\rho\otimes\openone_B\le MW^{T_B}\le\rho\otimes\openone_B,
+\end{align*}
+with $J_{\mathcal N}=\sum_{ij}\ket i\!\bra j\otimes\mathcal N(\ket i\!\bra j)$, so that $\tr_BJ_{\mathcal N}=\openone_A$; here $M=2$.
+
+\begin{proposition}
+\label{prop:ppt}
+For every $n$ and every $p\in[0,1]$, $F_{\mathrm{PPT}}(\nt_p^{\otimes n},2)=F_{\mathrm{PPT}}(A^{\otimes n},2)=1-2^{-(n+1)}$, where $A$ is the 50\% erasure channel on a qubit. For any channel $P$ and any 50\% erasure channel $A'$ on $\mathbb C^D$, $D\ge2$, $F_{\mathrm{PPT}}((P\otimes A')^{\otimes n},2)\ge1-2^{-(n+1)}$, with equality when $P$ is PPT.
+\end{proposition}
+\begin{proof}
+In each case the erasure pattern $z\in\{0,1\}^n$ is classical at the output (for $A$ and $A'$ the flag is the erasure symbol's orthogonal sector): the channel is $\sum_z2^{-n}\mathcal N_z\otimes\proj z$, where the channel $\mathcal N_z$ acts on the kept uses as the identity (tensored with $P$ for the joint channel) and on the erased ones as $\mathcal X^p\circ\deph$, as preparation of the erasure symbol, or as $P$ tensored with that preparation. So $J=\bigoplus_z2^{-n}J_z$ with $\tr_BJ_z=\openone$.
+
+\emph{Upper bound.} Let $J_e=2^{-n}J_{1\cdots1}$ be the all-erased block. Its channel is PPT: an entanglement-breaking map is, and so is $P^{\otimes n}$ tensored with a preparation when $P$ is PPT. Hence $Y=J-J_e\ge0$ and $Z=J_e^{T_B}/M\ge0$, and for every feasible $(W,\rho)$, by $W\le\rho\otimes\openone$ and $MW^{T_B}\le\rho\otimes\openone$,
+\begin{align*}
+\tr(JW)&=\tr(YW)+M\tr(ZW^{T_B})\\
+&\le\tr\bigl((Y+Z)(\rho\otimes\openone)\bigr)=1-2^{-n}+2^{-n}/M,
+\end{align*}
+since $\tr_B(Y+Z)=(1-2^{-n}+2^{-n}/M)\openone$. This is a dual certificate, with no assumption on the form of $W$; at $M=2$ it is $1-2^{-(n+1)}$.
+
+\emph{Feasible point.} Let $\rho=\openone/2^n$ and $W=\bigoplus_zW_z$, block diagonal in $z$; the blocks are labelled by basis states, so the partial transpose keeps them and each constraint holds if it holds on every block. For a pattern whose first kept use is $i$, let $W_z=\frac12\mes_{A_iB_i}\otimes\rho_{\mathrm{rest}}\otimes\openone_{\mathrm{rest}}$, with $\mes$ the projector on $\ket{\mes}$ and $\rho_{\mathrm{rest}}=\openone/2^{n-1}$. Then $0\le W_z\le\rho\otimes\openone$; $MW_z^{T_B}=\frac12F_i\otimes\rho_{\mathrm{rest}}\otimes\openone$ with $F_i$ the swap, whose eigenvalues are $\pm1$, lies between $-\rho\otimes\openone$ and $\rho\otimes\openone$; and $\tr(J_zW_z)=\tr(J_{\id}\frac12\mes)\tr(J_{\mathrm{rest}}(\rho_{\mathrm{rest}}\otimes\openone))=1$. For the all-erased pattern, $W_z=\frac12\rho\otimes\openone$ is feasible with value $\frac12$. The value, $1-2^{-n}+2^{-n}/2$, meets the upper bound.
+
+\emph{The joint channel.} Embed the qubit in $\mathbb C^D$ by a real isometry, which keeps every constraint, and let $P$'s inputs be $\proj0$ and its outputs be traced: $W'=W\otimes\bigotimes_i(\proj0\otimes\openone)$, $\rho'=\rho\otimes\bigotimes_i\proj0$ is feasible for $(P\otimes A')^{\otimes n}$, with the same value because $\tr(J_P(\proj0\otimes\openone))=1$. When $P$ is PPT the upper bound applies.
+\end{proof}
+\noindent Every $P_d$ at its PPT point $p_1=1/(\sqrt d+1)$, the one used throughout, is PPT (Theorem~\ref{thm:ppt}), so for every pair of this paper the relaxation's value at two joint uses is exactly \PptTwo, and since a lower bound $n^*>2$ needs an upper bound of at most $3/4$ there, it can never certify one. The proposition is also checked, and each check covers only what it states. In exact arithmetic on the full output space, with the erasure symbol a one-dimensional sector and no block structure assumed, the feasible point and the dual certificate of the proof are verified at $n=1,\dots,\PptNmax$ for $\nt_p$ at each of \PptPs\ rational values of $p\in[0,1]$ and for $A$, and for Smith and Yard's joint channel $P_2\otimes A_4$ at $n=1$ (dimension \PptJointDim, in $\mathbb Q(\sqrt2)$). Each of \PptControls\ controls fails as it must: a block without its factor $\frac12$ or scaled by $\frac12+\frac1{64}$, the dual with $t-\frac1{64}$, and the dual of two channels whose all-erased block is not PPT. A dense floating-point solution of the program, which builds one block per flag pattern with a common $\rho$ and so presupposes the decomposition rather than testing it, gives \PptOne\ and \PptTwo\ for both channels at one value of $p$ (to \PptProbeDev). PPT-assisted codes do not respect the two-extendibility that caps the erasure channel. A relaxation that keeps it, such as the extendibility hierarchies for bilinear problems of Berta \textit{et al.}~\cite{berta2022semidefinite} with permutation symmetry, is a candidate; we have not attempted it, and its size at the $n$ that matters here is unestimated.
+
+\paragraph*{What is known.} At threshold $3/4$: $n^*=2$ for $d\ge\TwoUseDmin$; $2\le n^*\le3$ for $d=\OnsetThreeLo,\dots,\OnsetThreeHi$; $2\le n^*\le4$ for $d=\OnsetFourLo,\OnsetFourHi$; and $2\le n^*\le\TgFifteenN$ for Smith and Yard's pair. Whether $\sup_mF_c(A^{\otimes m},2)=3/4$, which would make these statements hold for every admissible threshold, is open.
+
+% ======================================================================
+\section{Outlook: hardware}
+\label{sec:hardware}
+
+For context only (none of this demonstrates superactivation): the two-use protocol is small: per use, one key qubit and $\log_2d$ shield qubits enter $P_d$, with copies into $A_{2d}$. In simulation, $P_d$ with $d$ a power of two decomposes exactly into randomized Clifford(+T) circuits whose entangling gates are controlled-$Z$ gates from the key, and for the smallest shields the whole protocol reproduces~\eqref{eq:closed}. On IBM heavy-hex devices our calibrated model predicts that no shield size we modelled reaches $3/4$. One preregistered run on \texttt{ibm\_kingston} at $d=\HwD$, whose circuits replaced an erased use by its classical equivalent rather than implementing two physical channels, measured an entanglement fidelity of $\HwFe\pm\HwFeSd$, against a model prediction of \HwPred\ for the same circuits: the model over-predicted by \HwOver, \HwOverSigma\ standard errors. In models of trapped-ion devices built from published specifications, circuits that implement both channels on both uses clear $3/4$ at typical, not maximum, specified error rates (simulated), with projected margins of $+\IonMarginLo$ to $+\IonMarginHi$ at $d=\IonOldD$. Those margins are smaller than the over-prediction just quoted, so they are design targets, not forecasts. A first frozen package of \IonOldUnits\ single-shot circuits at $d=\IonOldD$ sampled only one of the two orders in which exactly one use is erased, so a strategy that ignores the PPT channel could have passed its test. A later package, at $d=\IonD$ with \IonUnits\ circuits, samples both orders and carries a sequential decision rule declared before any run. It has not been run: we have no access to such a device.
+
+% ======================================================================
+\section{Related work}
+\label{sec:related}
+
+Superactivation of quantum capacity is due to Smith and Yard~\cite{smith2008quantum}, building on bound entanglement~\cite{horodecki1998mixed} and private states~\cite{horodecki2005secure}. It was extended to optical channels with attenuation and Gaussian noise by Smith, Smolin and Yard~\cite{smith2011gaussian}, and shown by Brand\~ao, Oppenheim and Strelchuk to occur for a wide class of inequivalent channels, including one built from the depolarizing channel~\cite{brandao2012noise}. Its non-asymptotic form, the definition we use, Imported results~\ref{imp:result1} and~\ref{imp:prop1} and the general effective-channel theorem of their supplement are those of Parentin, Bergh, Datta and Wilde~\cite{parentin2026onset}, with the permutation-invariant framework of Bergh and Parentin~\cite{bergh2026permutation}. Cubitt \textit{et al.} showed that detecting quantum capacity may require an unbounded number of uses~\cite{cubitt2015unbounded}. Superactivation of zero-error capacities is a different notion, shown already at a single use~\cite{duan2009superactivation} and for the asymptotic zero-error classical capacity~\cite{cubitt2011superactivation}. Wu and Wang study capacity amplification through private channels whose Choi operators are private states, and give an alternative proof of superactivation that extends it to a broader parameter regime~\cite{wu2025quantum}. In its version of 5 October 2026, Zhu and Wang's work~\cite{zhu2026incapacity} shows that a fixed qutrit channel superactivates every finite-dimensional channel with zero quantum but positive private capacity. These works concern capacities: the statements are asymptotic, the last one existential, and we found no number of uses in any of them. Activating private capacity~\cite{zhu2026private,g2026private} is a different notion again. Khanian, Leung and Smith relate permutation-invariant inputs to finite-block coherent information, without a superactivation result~\cite{khanian2026permutation}. An NMR experiment reports superactivation by coherently superposing channels~\cite{bhargava2026noise}, a different mechanism from the parallel uses here.
+
+\paragraph*{Novelty.} In a literature search logged on 3 November 2026, with earlier searches on 13 and 14 October and an addendum on 3 November, we found no certified onset below \PubN\ for Smith and Yard's pair, no superactivation of quantum capacity in two uses in the sense of Definition~\ref{def:nshot}, and no study of the onset as a function of shield dimension. The searches were not exhaustive, and we make no priority claim beyond this.
+
+% ======================================================================
+\section{Scope and limitations}
+\label{sec:scope}
+
+\paragraph*{What the proofs cite.} The proofs use two standard fidelity bounds, for PPT states~\cite{horodecki1999general} and for two-extendible states~\cite{johnson2013compatible,kaur2019extendibility}, and data processing. Imported results~\ref{imp:result1} and~\ref{imp:prop1} are the $d=2$ instances of Lemmas~\ref{lem:alone} and~\ref{lem:reduction}; no statement depends on them.
+
+\paragraph*{Reductions inside the certifiers.} The symmetric and two-group certifiers compute in the reduced representation of Lemma~\ref{lem:groups}, which is proven; their own ball-arithmetic matrices and coefficients are checked against the dense construction at every size a certificate uses, and the certifiers themselves are re-run end to end on every witness except the two-group ones at $n=\TgFifteenN,\TgSixteenN$, whose certificates take hours (Sec.~\ref{sec:certs}). The $n$-use, two-use and exact-rational certifiers work in the dense model.
+
+\paragraph*{Upper bounds only.} Apart from Lemma~\ref{lem:oneuse}, nothing here bounds $n^*$ from below, and the searches behind Table~\ref{tab:onset} are local.
+
+\paragraph*{Floating point.} The symmetric codes between certificates, the onset entries marked float, the erasure tolerances, the best code at $d=\TwoUseDbelow$, family A's formula, and the hardware numbers are not certified.
+
+\paragraph*{Different channels.} Two-shot superactivation for $d\ge\TwoUseDmin$ concerns larger channels than Smith and Yard's (Sec.~\ref{sec:twouse}).
+
+% ======================================================================
+\section{Reproducibility}
+\label{sec:repro}
+
+{\raggedright The code is in \texttt{experiments/\allowbreak superactivation/} (\texttt{shield\_family/} for the family, the onset search, the $n$-use and two-use certifiers and \texttt{p2\_kraus\_comparison.py}; \texttt{general\_codes/} for the two-group codes, their certificate and \texttt{verify\_reduction\_dense.py}; \texttt{direct/} for Sec.~\ref{sec:direct}; \texttt{ppt\_relaxation\_probe.py}, \texttt{ppt\_relaxation\_fullspace.py}, \texttt{erasure\_sensitivity.py} and \texttt{stored\_maps\_entrywise.py}), in \texttt{src/\allowbreak oneq/\allowbreak superactivation.py} and \texttt{superactivation\_certificate.py}, and in the exact-rational checker \texttt{tools/\allowbreak verify\_r142\_rational\_witness.py}. The evidence is in \texttt{evidence/\allowbreak superactivation/} (\texttt{general\_codes/}, \texttt{shield\_family/}, \texttt{direct/} and the certificate, curve, erasure, stored-map and PPT-probe records at its top level); the dense check, the comparison of $P_2$ and the full-space check of Proposition~\ref{prop:ppt} are \texttt{general\_codes/\allowbreak reduction\_dense\_check\_v2.json}, \texttt{shield\_family/\allowbreak p2\_kraus\_comparison\_v2.json} and \texttt{ppt\_relaxation\_fullspace.json} (each \texttt{\_v2} supersedes the file of the same name without the suffix, and the last supersedes \texttt{ppt\_relaxation\_exact.json}, which assumed the block form). The two-group certificates take hours of exact arithmetic; the tests bind them to their stored bytes and recompute the stored pairs, the dense check of Sec.~\ref{sec:certs} recomputes them outside the reduction (about \RedMinutes~min), and every $n$-use certificate re-derives in under a second. The stored-map check of Sec.~\ref{sec:dtwo} needs the authors' arXiv source archive, which is not redistributed.\par}
+
+{\raggedright\emph{Stored decoders.} An $n$-use certificate's decoder file holds, for each flag pattern $z$, a factor $K_z$ with $2^{n+1}$ rows. Reshaping a column of $K_z$ to a $2\times2^n$ matrix, whose row is the reference qubit (the decoder's output) and whose column indexes the $n$ received qubits (the first most significant), and taking its complex conjugate gives a Kraus operator of the decoding channel. Equivalently, $D_z=K_zK_z^\dagger$ is the Choi matrix of the decoder's adjoint map with the output index first, $\tr_RD_z=\openone$, and the fidelity of pattern $z$ is $\tr(\sigma_zD_z)/4$ for Bob's state $\sigma_z=(\id_R\otimes\mathcal N_z)(\proj w)$, $\ket w=\sum_r\ket r\otimes V\ket r$; only this reading reproduces the branch values the certificates record. The symmetric and two-group decoders are stored in the same convention on the Dicke registers of Lemma~\ref{lem:groups} (the two-group files keep the upper triangle of each $D$).\par}
+
+{\raggedright Every number in this paper is a macro written by \texttt{paper/\allowbreak tools/\allowbreak make\_numbers\_superactivation.py} from those committed files; it re-proves every $n$-use certificate and the exact-rational bounds, recomputes the closed forms and their thresholds, and refuses to run when a certificate no longer binds to its bytes, when the dense check, the comparison of $P_2$ or the full-space check of Proposition~\ref{prop:ppt} was produced by other code than the tree holds, or when the evidence no longer supports a comparison it checks; it checks every comparison the text draws between numbers from those files. Not checked by it: statements about the literature, which rest on reading the sources, and those the text attributes to a test (the spectrum of Theorem~\ref{thm:ppt} and the match with the state of Ref.~\cite{horodecki2008low}, the isometric encoders of Sec.~\ref{sec:dtwo}, the encoder step of Sec.~\ref{sec:onset}, the decoder optimality of Sec.~\ref{sec:direct}, family~A's branch fidelities and the circuit decompositions of Sec.~\ref{sec:hardware}), which the test suite holds. These files, the generator and the tests are in release \LaneRelease\ of \url{https://github.com/coherence-energy-labs/oneq-certificates}.\par}
+
+\paragraph*{Use of AI tools.} AI tools assisted with software development, the proofs and manuscript preparation. Independent checks of the two-group certificate, of the family's argument and of Proposition~\ref{prop:ppt} (whose exact full-space check began as one), and two reviews of earlier drafts of this manuscript, were carried out by AI agents that had not written the artifact under review; they are not third-party peer review. The author is responsible for all content.
+
+\bibliography{refs}
+
+\end{document}

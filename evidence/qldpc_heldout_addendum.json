@@ -48690,7 +48690,11 @@
     }
   ],
   "dev_bd_note": "19 non-circuit development trees stored; the 4 development refsched trees remain re-derivable via qldpc_bnb_residue_gate",
-  "tree_checker_b_sha256": "4f9b7022679be14ac09294513b757cd55b7269defa026350c2d6730d2939300b",
+  "tree_checker_b_sha256": "77a45faaf737940f0cedb87f6ed8f6e2102de519b46c7a19de7283c2fccc80af",
+  "tree_checker_b_previous_pins": [
+    {"sha256": "4f9b7022679be14ac09294513b757cd55b7269defa026350c2d6730d2939300b", "superseded": "2026-11-03", "reason": "input-domain contract docs/QLDPC_RECEIPT_INPUT_DOMAIN.md (external audit 2 of release v2026.11.03, findings F05-F07): syndrome entries no longer reduced with & 1, every index validated before use, one-element row combinations and non-canonical multipliers refused, root bound above U refused", "reverification_record": "evidence/qldpc_receipt_reverification_2026-11-03.json"},
+    {"sha256": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f", "superseded": "2026-11-03", "reason": "final referee of paper 2, MAJOR 2: a facet with multiplier 0 is now validated (row, F, multiplier, uniqueness) before it is skipped; it used to be skipped unread, so a malformed zero-multiplier facet was accepted", "reverification_record": "evidence/qldpc_receipt_reverification_2026-11-03b.json"}
+  ],
   "tree_xval_checker_b": {
     "attempted": 36,
     "agreed": 36

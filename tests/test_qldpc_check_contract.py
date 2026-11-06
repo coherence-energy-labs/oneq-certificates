@@ -120,12 +120,25 @@ EONE = dict(checks=[(0,)], weights={0: F(1)}, syndrome=[1])
     (dict(checks=[(0, 1), (1, 2)], weights={0: F(1), 1: F(3), 2: F(1)}, syndrome=[1, 1]),
      C((0, 2), ((0, (), F(1)), (1, (), F(1)), ((0, 1), (0, 2), F(1, 2)))), "RIGHT"),
     (dict(checks=[(0,)], weights={0: True}, syndrome=[1]), C((0,), ((0, (), F(1)),)), "exact rational"),
-    (dict(checks=[(0, 1)], weights={0: F(1)}, syndrome=[1]), C((0,), ((0, (), F(1)),)), "NOT PROVEN"),
+    # A check naming a variable with no weight is outside the declared domain (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md,
+    # 2026-11-03); before the contract this instance was read with variable 1 as a free weight-0 variable and
+    # refused NOT PROVEN. That reading of the safe bound is still pinned, below the entry points, by
+    # test_safe_bound_charges_a_loaded_variable_that_has_no_weight.
+    (dict(checks=[(0, 1)], weights={0: F(1)}, syndrome=[1]), C((0,), ((0, (), F(1)),)), "has no weight"),
 ], ids=lambda x: x if isinstance(x, str) else "")
 def test_exact_refusals(kwargs, cert, needle):
     r = check_qldpc_exact(**kwargs, cert=cert)
     assert not r.accepted
     assert needle in r.reason, r.reason
+
+
+def test_safe_bound_charges_a_loaded_variable_that_has_no_weight():
+    # The producers call the safe bound directly (certified_bnb), below the entry points' domain check. A loaded
+    # variable with no weight must be charged its whole load as slack (w treated as 0), never skipped: here
+    # y = 1 on the empty facet of {0, 1} loads both, and L = 1 - (1 - 0) = 0, not 1.
+    from oneq.qldpc_check import _exact_safe_dual_bound
+    L, err = _exact_safe_dual_bound([frozenset({0, 1})], [1], {0: F(1)}, [(0, (), F(1))])
+    assert err is None and L == 0, (L, err)
 
 
 def test_exact_accepts_zero_and_fractional_weights():

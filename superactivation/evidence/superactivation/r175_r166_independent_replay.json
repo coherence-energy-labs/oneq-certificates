@@ -1,0 +1,139 @@
+{
+  "archival_comparison": {
+    "disagrees": true,
+    "filename": "result_frozen_20261017T233752Z.json",
+    "independently_windowed_claim": true,
+    "original_full_pub_claim": false,
+    "sha256": "ef44a0f88e595c85f7c37cde2a42b7f925b5affe15239b920f38a5d766098dc0"
+  },
+  "evidence": "ARCHIVED IBM JOB/SHOT/SCHEDULE CONSISTENCY; not provider attestation",
+  "frozen_sha256": "c737c1b3ca2e8be999de5ee2d61e27f379c7792745f5985ea9c067ae95c48fbb",
+  "jobs": {
+    "active": {
+      "artifact_sha256": {
+        "counts_dba0ds8c77vs73824c3g.json": "5994a48e99508a92d23a6251ec8171c0e601324c0c851240333430f0bd775ab4",
+        "flight_dba0ds8c77vs73824c3g.json": "b40fedaa3c4b98876db0633246c5380905f0530cf429daccb2195ad513e81427",
+        "flight_dba0ds8c77vs73824c3g.npz": "c01d54a2fa98a217730d28ef53e8c385aed5280e9998101dff832efb7a3c1f8e",
+        "r166_active_dba0ds8c77vs73824c3g.job.json": "2f3391f03199e3954613043a360d6af90b0df5ec37ebdb37e794f9a6ac8a753f"
+      },
+      "cz_period_dt": 33,
+      "job_id": "dba0ds8c77vs73824c3g",
+      "ladder_window_dt": [
+        1139,
+        1403
+      ],
+      "ladder_window_physical_1q_pulses": {
+        "a": {
+          "sx": 16
+        },
+        "b": {
+          "sx": 16
+        },
+        "c": {},
+        "d": {},
+        "il": {},
+        "ip": {
+          "sx": 2
+        },
+        "it": {
+          "sx": 2
+        },
+        "iu": {}
+      },
+      "pubs_replayed": 8,
+      "scheduled_cz_overlaps_hub_broadcast": true,
+      "shots_replayed": 8000,
+      "strategy": "active",
+      "whole_pub_physical_1q_pulses": {
+        "a": {
+          "sx": 18
+        },
+        "b": {
+          "sx": 18
+        },
+        "c": {},
+        "d": {},
+        "il": {
+          "sx": 2
+        },
+        "ip": {
+          "sx": 4
+        },
+        "it": {
+          "sx": 2
+        },
+        "iu": {}
+      }
+    },
+    "active-accum": {
+      "artifact_sha256": {
+        "counts_dba0dufi0auc7391ap5g.json": "f0a89ff312a28511b303b843b471eeb152f0f6732199941506cedc0e3d123222",
+        "flight_dba0dufi0auc7391ap5g.json": "ac4d41a008a2f3aaaf3fcc64d6d0c3b336b95985c7550231d6cddb0c23f10825",
+        "flight_dba0dufi0auc7391ap5g.npz": "b14c74d22e19d7fac32beb96604f6b4e1dde4b990ec1e978ebc914c200b00010",
+        "r166_accum_dba0dufi0auc7391ap5g.job.json": "9755e1025576a161de74aaa6aab5604855d5dba6616a8a8c1946d12a8a02838c"
+      },
+      "cz_period_dt": 33,
+      "job_id": "dba0dufi0auc7391ap5g",
+      "ladder_window_dt": [
+        1139,
+        1403
+      ],
+      "ladder_window_physical_1q_pulses": {
+        "a": {
+          "sx": 16
+        },
+        "b": {
+          "sx": 16
+        },
+        "c": {},
+        "d": {},
+        "il": {},
+        "ip": {
+          "sx": 16
+        },
+        "it": {
+          "sx": 16
+        },
+        "iu": {}
+      },
+      "pubs_replayed": 8,
+      "scheduled_cz_overlaps_hub_broadcast": true,
+      "shots_replayed": 8000,
+      "strategy": "active-accum",
+      "whole_pub_physical_1q_pulses": {
+        "a": {
+          "sx": 18
+        },
+        "b": {
+          "sx": 18
+        },
+        "c": {},
+        "d": {},
+        "il": {
+          "sx": 2
+        },
+        "ip": {
+          "sx": 18
+        },
+        "it": {
+          "sx": 18
+        },
+        "iu": {}
+      }
+    }
+  },
+  "measurements": {
+    "active_accum_touched_idle_in_ladder": 16,
+    "active_touched_idle_in_ladder": 2,
+    "corrected_late_left_alone_during_ladder": true,
+    "idle_dressing_delta": 16,
+    "late_idle_pulses_in_ladder_accum": 0,
+    "late_idle_pulses_in_ladder_active": 0,
+    "period_ns": 132.00000000000003,
+    "untouched_idle_pulses_in_ladder": 0
+  },
+  "qpy_sha256": "eda48f18b6a487e2864a8e814aba3fa7f681d8ec99113fac82976f0357f04017",
+  "schedule_overlap_is_not_proof_of_physical_overlap": true,
+  "schema": "oneq.r175.independent_r166_flight/1",
+  "total_shots_replayed": 16000
+}

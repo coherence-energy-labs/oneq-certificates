@@ -56,13 +56,23 @@ def test_non_binary_syndrome_is_refused_by_all_three(syndrome):
         assert "syndrome[0]" in r.reason, r.reason
 
 
-def test_numpy_and_bool_entries_are_still_binary():
+def test_numpy_integer_entries_are_binary_and_booleans_are_not():
+    # NumPy integer scalars ARE integers (the producers pass them) and are read exactly. A bool was accepted here
+    # until 2026-11-03; the input-domain contract (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md) refuses it, as the reference
+    # checker, tree checker B and both JavaScript checkers always did: True is not a GF(2) entry, it is a flag.
     np = pytest.importorskip("numpy")
     tree = _tree()
-    syns = ([np.uint8(1)], [np.int64(1)], [True])
-    assert len(syns) == 3, "numpy uint8, numpy int64 and a bare bool are all three meant here"
-    for syn in syns:
+    good = ([np.uint8(1)], [np.int64(1)])
+    bad = ([True], [np.True_])
+    assert len(good) == 2 and len(bad) == 2, "both numpy widths and both boolean types are meant here"
+    for syn in good:
         rs = _run_all(syn, tree)
         assert len(rs) == 3, "the name says all three; a dropped checker must not pass quietly"
         for r in rs:
             assert r.accepted, r.reason
+    for syn in bad:
+        rs = _run_all(syn, tree)
+        assert len(rs) == 3
+        for r in rs:
+            assert not r.accepted
+            assert "syndrome[0]" in r.reason, r.reason

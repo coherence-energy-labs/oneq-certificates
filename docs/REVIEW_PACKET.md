@@ -1,119 +1,203 @@
-# Review packet — both manuscripts, 2026-09-15
+# Review packet — four manuscripts, release v2026.11.05
 
-**Evidence class:** [PROJECT] a reader's guide to what each paper claims, where the evidence for each
-claim lives, and the commands that re-derive it. Nothing here is evidence itself; every line points at
-an artifact or a command.
+**Evidence class:** [PROJECT] a reader's guide to what each paper claims, where the evidence for each claim lives,
+and the commands that re-derive it. Nothing here is evidence itself; every line points at an artifact or a command.
 
-Two manuscripts, one repository, one public release
-(https://github.com/coherence-energy-labs/oneq-certificates, release v2026.09.16):
+Four manuscripts, one repository, one public release
+(https://github.com/coherence-energy-labs/oneq-certificates, tag v2026.11.05, two bundles each signed by the issuer
+key pinned in its own `ISSUERS.json`). The decoder bundle `oneq-certifying-decoder` (papers 1–3) is the root of the
+public tree; the superactivation bundle `oneq-superactivation` (paper 4) is its subdirectory `superactivation/`, a
+complete tree of its own with its own `SHA256SUMS`, in-toto statement, signed archive and tests, whose commands run
+from inside it (`cd superactivation`). Every path below is relative to the bundle that carries the paper. The PDFs,
+every receipt archive, the source snapshots and the unshipped proofs are release assets.
 
-| | Paper 1 | Paper 2 |
-|---|---|---|
-| Title | Certifying quantum error-correction decoders: independently checkable near-optimality receipts at scale | Exact, independently checkable optimality receipts for BP-OSD on the [[144,12,12]] bivariate-bicycle code |
-| Source | `paper/certifying-decoders/main.tex` | `paper/qldpc-certificates/main.tex` |
-| Long-form record | `docs/PAPER_DRAFT.md` (the typeset manuscript governs where they differ) | `docs/PAPER2_QLDPC_DRAFT.md` (same rule) |
-| Numbers | `paper/certifying-decoders/generated/*.tex`, from `paper/tools/make_numbers.py` | `paper/qldpc-certificates/generated/*.tex`, from `paper/tools/make_numbers_qldpc.py` |
-| State on 2026-09-16 | **Draft-complete except 16 numbers** that wait on the Willow d=7×30 rerun (below); everything else builds and traces | **Complete after the 2026-09-15 follow-up audit** (`docs/EXTERNAL_AUDIT_2026-09-15.md`: 20 findings, 19 closed, 1 open and named: paper 1's rerun-cost sentence (F-19 closed 2026-09-16: the archive and statement carry Bitcoin-anchored OpenTimestamps proofs, block 967247); F-18, BP-OSD's own outcome on the 149 circuit shots, closed after the v2026.09.16 tag and ships in the next); builds clean, every number traces, every proof retained and replayed |
-| Length | 10 pages, abstract 1,527 characters | 7 pages, abstract 1,887 characters (arXiv limit 1,920) |
+| | Paper 1 | Paper 2 | Paper 3 | Paper 4 |
+|---|---|---|---|---|
+| Title | Certifying quantum error-correction decoders: independently checkable near-optimality receipts at scale | Exact, independently checkable optimality receipts for BP-OSD on the [[144,12,12]] bivariate-bicycle code | Machine-checkable lower-bound certificates for the circuit-level distances of bivariate-bicycle syndrome-extraction circuits | Superactivation in two channel uses: exact certificates for a family of PPT channels |
+| Source | `paper/certifying-decoders/main.tex` | `paper/qldpc-certificates/main.tex` | `paper/circuit-distance/main.tex` | `superactivation/paper/superactivation/main.tex` |
+| Numbers | `generated/*.tex` from `paper/tools/make_numbers.py` | `generated/*.tex` from `paper/tools/make_numbers_qldpc.py` | `generated/*.tex` from `paper/tools/make_numbers_distance.py` | `generated/*.tex` from `paper/tools/make_numbers_superactivation.py` |
+| Length | 14 pages | 12 pages | 13 pages, two supplementary hand proofs | 12 pages |
+| Reviews before release | four referee rounds by AI agents that had not written it (`docs/reviews/PAPER1_REFEREE*_2026-11-02.md`), then the two external audits of 2026-11-03 | four rounds (`docs/reviews/PAPER2_REFEREE*_2026-11-02.md`), then the same two audits | four rounds (`docs/reviews/PAPER3_REFEREE_2026-10-29.md`, `PAPER3_REFEREE*_2026-11-02.md`, `PAPER3_REFEREE3_2026-11-03.md`), then the same two audits and a final read against Pan's live repository | two archived referee rounds (`superactivation/docs/reviews/PAPER4_REFEREE_2026-11-03.md`, `PAPER4_REFEREE2_2026-11-03.md`), then two adversary passes on Proposition 11 and a final read, recorded in the source repository's ledger (R234) |
 
-**If you are an unaffiliated reader deciding whether to spend time on this**, start with
-`docs/REVERIFIER_INVITATION.md`. It states in three tiers what re-verification would involve, from
-thirty minutes to a couple of days, says plainly where this work is weaker than a skim suggests,
-and commits in advance to publishing whatever you find.
+**No human peer review has occurred.** Every review round was carried out by AI agents that had not written the
+manuscript under review, or was an external written audit: the two audits of September, answered in
+`docs/EXTERNAL_AUDIT_2026-09-14.md` and `docs/EXTERNAL_AUDIT_2026-09-15.md`, and the two audits of release
+v2026.11.03, reproduced verbatim in `docs/reviews/EXTERNAL1_2026-11-03.md` and `docs/reviews/EXTERNAL2_2026-11-03.md`,
+whose tool or author is not identified in what was received. The brief the third ε-checker was written from is
+`docs/reviews/JS_EPSILON_BRIEF_2026-11-03.md`. Paper 4 was not covered by either external audit. The responses to
+every round are recorded in `docs/RESEARCH_LEDGER.md` of the source repository
+(https://github.com/coherence-energy-labs/ONE_Q; entries R228–R235), which the release does not carry. That is what
+this packet is for. An unaffiliated reader deciding whether to spend time on this can start with `AUDIT.md` and
+`REPRODUCE.md` at the bundle root, and with `superactivation/AUDIT.md` and `superactivation/README.md` for paper 4.
 
 ## How to read them in the order that catches the most
 
+Every command below exists in the bundle named and is one `tools/rehearse_public_release.py` runs for a stranger,
+from a copy of each bundle with nothing beside it; a step that cannot run there has not passed.
+
 1. **Build the PDFs yourself**, so you are reading what the artifacts say and not a stale copy:
-   `python paper/tools/build.py certifying-decoders` and `python paper/tools/build.py qldpc-certificates`.
-   The builder fails on any undefined reference, any BibTeX warning, any overfull line, a float
-   placed after the last section, and an abstract over arXiv's limit. Output lands in
-   `build/main.pdf` under each paper's directory. Paper 1 typesets its pending numbers as **[pending]** in bold and
-   `build.py --release` refuses while any remain.
-2. **Regenerate every number**: `python paper/tools/make_numbers.py`, `python paper/tools/make_numbers_qldpc.py`,
-   `python paper/tools/make_figures.py`, then `git status paper/` — nothing should change. Each
-   generator refuses to typeset a claim its artifact contradicts (it exits with the sentence it would
-   have typeset).
-3. **Check the references**: `python paper/tools/verify_refs.py` — 48 entries against sources fetched
-   2026-09-14 (`paper/refs_verified.json`). Two citation defects were found and fixed on 2026-09-13
-   (an invented author list and an invented venue; ledger R57); that is why this check exists.
-4. **Replay the receipts** rather than trusting the counts. Paper 2: `python tools/replay_receipts.py`
-   replays all 2,042 stored receipts (2,002 flat, 40 trees) by two Python checkers against a pinned
-   manifest in about a minute; `python tools/qldpc_js_agreement.py` and
-   `python tools/qldpc_tree_js_agreement.py` decide the same receipts with two JavaScript checkers
-   written from the specification and refuse 104 + 55 planted defects, each for its own reason.
-   Paper 1: `tools/replay_epsilon_receipts.py` re-decides every retained ε-receipt of the rerun with a
-   second, integer-arithmetic verifier and runs the boundary, non-finite and graph-substitution
-   attacks (receipts are release assets; sha256 pinned in `evidence/epsilon_rerun/*.json`).
-5. **Then read the text against the registers.** `docs/EXTERNAL_AUDIT_2026-09-14.md` and
-   `docs/EXTERNAL_AUDIT_2026-09-15.md` hold every finding three external audits raised against both
-   papers, its verdict after re-verification here, and its closure with the commit that closed it. A referee's likeliest objections are already rows there; the useful review
-   is the objection that is not.
+   `python paper/tools/build.py <name>` for each of `certifying-decoders`, `qldpc-certificates` and
+   `circuit-distance`, and inside `superactivation/`, `python paper/tools/build.py superactivation`. The builder
+   fails on an undefined reference, a BibTeX warning, an overfull line or an abstract over arXiv's limit;
+   `--release` also refuses the author placeholder, an unset release tag and a pending number.
+2. **Regenerate every number**: `python paper/tools/make_numbers.py`, `make_numbers_qldpc.py`,
+   `make_numbers_distance.py` and `make_figures.py` in the decoder bundle, `python
+   paper/tools/make_numbers_superactivation.py` in `superactivation/`; then every file under `paper/*/generated/`
+   must come back byte for byte (the rehearsal hashes them before and after). Each generator refuses to typeset a
+   claim its artifact contradicts, refuses an artifact judged by checker bytes other than this tree's, and paper 4's
+   re-proves every n-use certificate in exact arithmetic before it writes a macro.
+3. **Check that the tree is the one that was signed**: `sha256sum -c SHA256SUMS` in each bundle, then
+   `python tools/verify_release.py --bundle certifying-decoder` and, inside `superactivation/`,
+   `python tools/verify_release.py --bundle superactivation`, each with its three signed release assets placed in
+   `release/`; both check the signature against `ISSUERS.json`, the in-toto statement, every subject's digest and
+   the `.ots` timestamps beside the release files.
+4. **Replay the receipts** rather than trusting the counts:
+   - paper 1: `python tools/pack_epsilon_receipts.py --verify` with the receipt archives (release assets, one
+     `<config>.tar` per `evidence/epsilon_rerun/<config>/archive.json`) placed in `data/epsilon_receipts_archive/`;
+     then, with an archive extracted at the tree root, `python tools/replay_epsilon_receipts.py --config <config>
+     --jobs 8`, adding `--partial` for the six held-out distance-7 arms. The rehearsal first shows each replay
+     refusing without its receipts;
+   - paper 2: `python tools/recheck_all.py` (two checkers against the pinned manifest),
+     `python tools/replay_strong_baseline.py`, `python tools/qldpc_js_agreement.py --no-write`,
+     `python tools/qldpc_tree_js_agreement.py --no-write`, `python tools/bposd_circuit_outcome.py --check`, and
+     `python tools/reproduce_heldout_public.py --work <dir> --snapshots <dir>` with the source snapshots (release
+     assets, checked by `python tools/revision_snapshots.py --verify --no-git --out <dir>`);
+   - paper 3: `python -m pytest tests/test_r198_ibm_recert.py tests/test_r198_paper3_review.py` (a C compiler is
+     needed), which re-checks the shipped proofs with the committed checker and refuses a corrupted one;
+   - paper 4, inside `superactivation/`: `python tools/verify_r142_rational_witness.py
+     evidence/superactivation/shield_family/certificate_two_use_d20.json
+     evidence/superactivation/shield_family/rational_recovery_d20.json`, and the same for `d21` and `d22_closed`
+     with `rational_recovery_d21.json` and `rational_recovery_d22.json`: a producer-free exact-rational checker
+     whose output must say the crossing of 3/4 is proven on the effective channel;
+   - the one-minute check: `node verifier-js/verify-certificate.mjs --conformance conformance/cert_vectors.json`
+     and `python tools/external/exact_lp_certificate_reference.py --self-test`;
+   - the shipped tests of each bundle, run as its README says, with no skip in the reader's tree.
+5. **Then read the text against the review reports** in `docs/reviews/` (paper 4's in
+   `superactivation/docs/reviews/`). A referee's likeliest objections are already there; the response to each is in
+   the source repository's ledger (R228–R235). The useful review is the objection that is not.
 
 ## Paper 1 — the claims, and where each one lives
 
 | Claim in the text | Class | Artifact / command |
 |---|---|---|
-| Any feasible T-odd cut packing lower-bounds every correction; scaling by θ makes any non-negative packing feasible with a proven slack ε (the lemma) | PROVEN | Sec. IV; the auditor's independent script reproduced 1,000 packings with 0 violations (register, "What survived") |
-| 99.81% of 10⁶ simulated d=5×25 shots proven within 10⁻⁶ of optimal, 8,628 exactly, largest slack 6.2×10⁻¹²; 8,000,001 forgeries in nine classes, none accepted | MEASURED | `evidence/epsilon_rerun/sim_d5_r25/summary.json`, replay `evidence/epsilon_rerun/replay_sim_d5_r25.json` |
-| Willow: ten configurations at generation 4 complete under the ε-checker; d=7×30 X and Z **pending** | MEASURED / PENDING | `evidence/epsilon_rerun/willow_*/summary.json` and `evidence/epsilon_rerun/replay_willow_*.json`; the d=7×30 rerun log is `%LOCALAPPDATA%\oneq_rerun\d7x30.log` |
-| The original tolerance-rule rates (99.76% / 99.69%) are historical; the audit of 1,588 accepted certificates found none inadmissible and a largest slack of 2.6×10⁻¹³; the exact checker accepts 842 of them | MEASURED | `evidence/certification_semantics_audit.json`; Table I |
-| Seeded faults: 3,549 invalid + 1,312 proven suboptimal of 4,861; base rate 1 refusal in 770 (base ladder), 0 (full); 62 equal-weight controls certified | MEASURED | `evidence/detection_outcomes/` |
-| Stale calibration: 547 suboptimal all proven, 2 false alarms in 6,147, discordant cells at d=3 | MEASURED | `evidence/stale_calibration*.json`, Table II |
-| Both residual d=7×30 shots: decoder exactly optimal, exact tier capped at 200 rounds | MEASURED | `evidence/willow_residual_shots.json` |
-| Certification costs ~6,610× batch decoding | MEASURED | `evidence/decode_vs_certify.json` |
-| Certifying against a model **measured from the run itself**: 40,963 of 40,979 held-out nontrivial shots certified exactly minimum-weight, six records, two IBM processors, d=3 and 5, r=13 and 40; every refusal on a 40-round record | MEASURED, held out, preregistered | `evidence/certified_measured_lane.json` (`totals` block); `docs/PREREG_measured_model_program_2026-09-16.md` §A; lane `experiments/dual_observable/certified_measured_lane.py` |
-| The decoding margin in that section (1,517 → 17 errors) is **context, not a claim**: the estimator is Spitz et al., and Stein et al. beat calibration-weighted matching by 11.1× at d=11 on these same two processors | OBSERVED (search of 2026-09-16) | register rows 14, 15, 29–32 in `docs/PRIOR_ART_REGISTER.md` |
-| Literature: no forgery battery, upstream-fault experiment or hardware certification rates found elsewhere; and no per-shot optimality witness over a model estimated from the decoded shots | OBSERVED (searches of 2026-09-15 and 2026-09-16, twelve queries logged verbatim) | `docs/PAPER1_LITERATURE_SEARCH.md`, `docs/PRIOR_ART_REGISTER.md` |
-
-**What is pending and why.** The 16 `[pending]` macros are the Willow totals (`EpsHw*`), the forgery
-total, the largest slack over all reruns, and the boundary-attack counts of the complete replay. They
-wait on the d=7×30 X and Z reruns (200 chunks of 250 shots each per basis, full ladder with the exact
-tier). The reboot of 2026-09-15 15:09 killed that run at X chunk 41 of 200; it was relaunched detached
-at 19:03 and resumes from its chunk index. Measured on the relaunched run (first chunks, 3 workers, a
-shared machine under load): a median of 3,676 s per chunk, the slowest 6,359 s. At that rate X needs
-about two days more and Z about two days after it, then the merge, the two-verifier replay and
-`make_numbers.py`; an idle machine or more workers shortens it. Until then the paper reads correctly with those
-16 numbers shown as pending; nothing else in it depends on them.
-
-**What the paper does not claim** is collected in Sec. IX: not real-time; not complete; ε-optimality,
-not exact optimality at scale; optimality for the given weights only; blind to tied optima.
+| A T-odd cut packing, scaled to feasibility, lower-bounds every correction with a proven slack ε (the lemma) | PROVEN | Sec. IV, Lemma 1 |
+| 998,145 of 10⁶ simulated d=5×25 shots (99.81%) proven within 10⁻⁶ of optimal, 8,628 exactly, 1,855 not proven; 8,000,001 forgeries, none accepted, 3,000,000 of them the doubled-edge documents the text now names as malformed input, one refused by the bound | MEASURED | `evidence/epsilon_rerun/sim_d5_r25/summary.json`; replay `evidence/epsilon_rerun/replay_2026-11-03/replay_sim_d5_r25.json` |
+| Willow development shots: 198,987 of 199,384 (99.80%): 99.60% of 99,384 on the ten base-ladder configurations, 99.998% of 100,000 at d=7×30 with the full ladder; 44,157 exact, 397 not proven; 1,629,828 forgeries, none accepted | MEASURED | `evidence/epsilon_rerun/willow_*/summary.json`, `replay_2026-11-03/replay_willow_*.json`; `generated/tab_epsilon_willow.tex` |
+| Held-out Willow sample at 50 rounds, protocol committed before the run: 19,909 of 20,000 (99.54%; 99.44–99.64%); all 10,000 at d=3, 9,909 of 10,000 at d=5 (99.09%); 169,999 forgeries, none accepted; the sample cannot separate overfitting from the longer runs | MEASURED, preregistered | `docs/PREREG_heldout_willow_2026-11-02.md`; `evidence/epsilon_rerun/heldout_willow_r50.json`, `heldout_d{3,5}_*/summary.json` |
+| Held-out d=7 sample, preregistered with a 40 core-hour stopping rule that stopped it at 43 of 240 chunks: in the completed chunks all 800 held-out 50-round corrections proven (one-sided 95% bound on the not-proven rate 0.374%), all 700 at 10 rounds (0.428%), all 650 same-producer development shots at 30 rounds (0.460%); the preregistered test does not reject (p = 1.00 in both comparisons); worst case counting the 150 shots of the 3 unfinished chunks as not proven 13.0% of 900, longest completed prefix 700 of 700; 23,650 in-run forgeries and, on replay, 2,150 receipts with 516 forgeries, none accepted; the abstract carries only "at least 99.62% of 800"; the bound cannot confirm the 99.998% development rate | MEASURED, preregistered (partial sample, by its own rule) | `docs/PREREG_heldout_d7_2026-11-03.md`, `docs/PREREG_heldout_d7_2026-11-03_DEVIATIONS.md` (the arm order, committed before any count was read); `evidence/epsilon_rerun/heldout_d7_partial.json`, `heldout_d7_stopped_2026-11-04/`, `replay_heldout_d7_2026-11-05.json`; `generated/tab_heldout_d7.tex` |
+| The producer that certified the held-out Willow sample reproduces its receipts byte for byte: 80 of 80 held-out chunks, 310 of 320 development chunks; on 1 of the 11 changed development shots the verdict changed to not proven | MEASURED | `evidence/producer_identity_willow_2026-11-03.json`, `evidence/producer_identity_willow_diff_2026-11-03.json` |
+| Fresh-seed simulation, drawn after the first review round: 9,981 of 10,000 (99.81%), 80,000 forgeries, none accepted | MEASURED, post hoc | `evidence/epsilon_rerun/fresh_sim_d5_r25/summary.json`, `replay_2026-11-03/replay_fresh_sim_d5_r25.json` |
+| IBM `ibm_fez` repetition-code run re-certified from its raw registers: 2,296 of 2,296, 2,257 exactly, none of 21,169 forgeries accepted; reported apart from every total (the error model is ours) | MEASURED | `evidence/ibm_live/d9nt2imij12s73fu9ihg.epsilon_2026-11-03.json` and its `.epsilon_receipts_2026-11-03.jsonl.gz` |
+| Strict replay of every released receipt chunk under both Python verifiers (18 configurations): 59,224 forgeries, 10,034 refused by the bound, none accepted; the parity adversary's 4,920 forgeries are accepted by parity-blind copies of both verifiers and refused by the real ones, 4,920 of 4,920; the substitution attack now picks its graph by content | MEASURED | `evidence/epsilon_rerun/replay_2026-11-03/replay_*.json`; `src/oneq/forgeries.py`, `src/oneq/dual_forgery.py` |
+| Three ε-checkers, one written input domain: a JavaScript checker written by a separate agent from the paper and a logged brief returns the recorded verdict, slack and bound on 48,969 replayed receipts from 8 configurations and agrees with both Python verifiers on 89,984 fuzzed inputs (14,812 valid); before the fix of 2026-11-03 the three split in 20 classes (34,894 cases), every one rooted in the Python readers; 153 standing vectors in 51 classes | MEASURED | `docs/reviews/JS_EPSILON_BRIEF_2026-11-03.md`; `verifier-js/verify-epsilon.mjs`; `tools/fuzz_epsilon_checkers.py`; `evidence/epsilon_checker_fuzz.json`, `evidence/epsilon_checker_fuzz_after_fix.json`; `conformance/epsilon_vectors.json` |
+| What the original runs' tolerance rule proved: of 1,588 accepted certificates re-analysed in exact arithmetic none was inadmissible, largest proven slack 2.6×10⁻¹³, bounding the inadmissible share below 0.75%, 2.00% and 7.22% for the three runs sampled; the exact checker accepts 842 of them (53%); a parity defect in the exact checkers (fixed 2026-10-18) touched no headline rate, and every count an exact checker decided was recomputed, unchanged | MEASURED | `evidence/certification_semantics_audit.json`; `generated/tab_semantics.tex`; Appendix A |
+| Certifying against a model measured from the run itself: 6 preregistered records on 2 IBM processors, 70,000 held-out shots; 40,963 of 40,979 nontrivial shots proven exactly minimum-weight (the 16 refusals on the two 40-round records), 40,979 within 10⁻⁶; 462,794 forgeries, 122,767 refused by the bound, none accepted; no decoding margin is claimed | MEASURED, preregistered | `docs/PREREG_measured_model_program_2026-09-16.md`; `evidence/certified_measured_lane.json`; `evidence/certified_measured_receipts/` |
+| Seeded decoder faults: of 4,861 defective corrections 3,549 were invalid and 1,312 proven suboptimal, none certified; false alarms 1 of 770 unmodified corrections (base ladder), 0 (full ladder); all 62 equal-weight controls certified; the released corpus holds 4,924 cases. Stale calibration: 110, 166 and 271 suboptimal corrections at drift 1.5, 2.0 and 3.0, every one proven suboptimal and none detected by syndrome checking; 2 false alarms on 5,600 acceptable corrections, both one base shot; control drift 1.0: 0 suboptimal | MEASURED | `evidence/detection_outcomes/d{3,5,7}.json`; `evidence/seeded_fault_corpus_d*.json`; `evidence/stale_calibration_d*.json`; `evidence/stale_false_alarm_shots.json`; `generated/tab_stale.tex` |
+| Per-shot optimality gaps, preregistered (2,000 shots per distance, seeds 4108103, 4108105 and 4108107): BP-OSD on the merged edge model at scaling 0.625 proven within 10⁻⁶ on 99.48 / 99.24 / 95.69% of shots at d=3, 5, 7; belief-matching 95.25 / 85.64 / 62.27%; BP-OSD on components at scaling 1 91.28 / 85.38 / 79.45%; logical failures 28 / 27 / 15 (PyMatching), 28 / 26 / 16 (merged), 32 / 26 / 18 (components), 29 / 12 / 7 (belief-matching). The earlier version's scorer charged an edge once per selected component: 158 of its 1,000 table shots and 149 of its 863 figure shots were overcounted by 7.62–146.31 units, and its finding that belief-matching lands far closer to the minimum than BP-OSD does not survive | MEASURED, preregistered (the rescoring of the earlier run: MEASURED) | `docs/PREREG_gap_distribution_2026-11-03.md`; `evidence/gap_distribution_v4/prereg_2026-11-03/summary.json`, `rejudged.json`, `logical_failures.json`; `evidence/gap_distribution_v4/original_rescored.json`; `generated/tab_gaps.tex` |
+| Certification takes a median of 30 ms and a mean of 53 ms per shot (99th percentile 275 ms), about 3,200 times a batched decode and 400 times a per-call decode; checking a receipt a mean of 7.4 ms, about 450 times a batched decode | MEASURED | `evidence/certify_cost_d5_r25.json` |
+| PyMatching's own sparse-blossom dual, two arms: checked against the integers the decoder decodes with, it proves every one of 6,000 corrections exactly optimal (2,000 per configuration) and those corrections equal the certified receipts; on the published doubles it proves 3 within 10⁻⁶ (largest slack 3.6×10⁻⁵), and the dual exported on our own re-rounding proves 0 (1.9×10⁻⁴); 6.6–8.2 times a plain decode per call, conversion included (the earlier 11.0–12.8 timed a rescale into binary64 units) | MEASURED | `evidence/pymatching_native_dual.json`, `evidence/pymatching_native_dual_arms.json`; `third_party/pymatching_return_duals.patch` |
 
 ## Paper 2 — the claims, and where each one lives
 
 | Claim in the text | Class | Artifact / command |
 |---|---|---|
-| Safe-dual lemma, lattice rule, branch partition, infeasibility witness | PROVEN | Secs. II–III; auditor's independent script: 4,000 safe-dual bounds vs exhaustive, 419 + 500 lattice acceptances, 0 violations |
-| Adaptive separation rule is exact (Taghavi–Siegel), restated for syndromes | PROVEN + MEASURED | Sec. V; `qldpc_claims_backing.json:separation_bruteforce` (8,000 instances, 0 suboptimal) |
-| Preregistered campaign: 2,019 nontrivial shots, 2,002 flat + 17 trees, 1,780 tier-1, 222 repairs | MEASURED, preregistered | `docs/HELD_OUT_PREDECLARATION.md` (tag `held-out-freeze`), `evidence/qldpc_heldout.json`, Table I |
-| Every stored receipt replays under two Python checkers and a JavaScript checker per receipt kind | MEASURED | `tools/replay_receipts.py`; `evidence/qldpc_js_agreement.json`; `evidence/qldpc_tree_js_agreement.json` |
-| Circuit level under the published depth-8 schedule: 149/149, transcription validated at fault level (0 mismatches) | MEASURED | `evidence/qldpc_refsched_fault_xval.json`; Sec. VI B |
-| Strong baseline: pipeline errors change with the BP-OSD configuration; the advantage is over the stated configuration, not BP-OSD as such | MEASURED, every proof retained | `evidence/qldpc_strong_baseline_v3.json`, Table II; the 955 proofs under `evidence/strong_baseline_v3/`; `python tools/replay_strong_baseline.py` rebuilds every number from records and proofs alone (`evidence/strong_baseline_v3_replay.json`) |
-| The instrument, two ways: tier-1 (the flat route proves BP-OSD's answer) and optimum-hit (BP-OSD's answer feasible at the certified optimum) at all five levels; at p=0.07 under C, 146 vs 196 of 200 | MEASURED | Table III, same artifact and replay |
-| The frozen held-out campaign re-runs from the public source snapshot alone, no git history | MEASURED | `python tools/reproduce_heldout_public.py --work <dir>`; `evidence/heldout_public_reproduction.json` (8 rungs, 14 fields, all record files byte-identical, 155 s) |
-| Mutation score of the checker's tests: 315 of 323 killed, 8 equivalent with reasons | MEASURED | `evidence/mutation_score/qldpc_check.json` |
-| 58 of 2,002 regenerated flat certificates differ from the run of record while remaining exact; cause open | OBSERVED | Sec. VII; ledger R56b |
-| "Under a logged search protocol we did not find a prior report of exact, independently re-checkable, minimum-weight receipt coverage for BP-OSD on this code" | OBSERVED (search of 2026-09-15) | `docs/PAPER2_LITERATURE_SEARCH.md`; nearest: arXiv:2608.25545, cited and distinguished in Sec. VIII |
+| Safe-dual lemma, lattice rule, branch partition, infeasibility witness | PROVEN | Secs. II–III; the safe bound is also proved in Lean (`lean/OneqCert`, `evidence/lean_safe_bound.json`) |
+| Preregistered campaign over 8 datasets: all 2,019 nontrivial syndromes received an exact receipt, 2,010 (99.55%) a single dual (2,002 attaining L = U, 8 by the lattice rule) and 9 a branching tree; BP-OSD's own answer proven optimal on 1,783 (1,780 in tier 1, 3 by trees); on the other 236 the receipt proves it strictly heavier (230 certified repairs by a single dual), 178 of them on the stress dataset. Tiers are now read from what each receipt proves, re-decided from the stored proofs, not from the producer's labels | MEASURED, preregistered | `docs/HELD_OUT_PREDECLARATION.md`, `docs/HELD_OUT_RESULTS.md`; `evidence/qldpc_heldout.json`; `evidence/qldpc_tier_by_receipt.json`; `generated/tab_heldout.tex` |
+| All 2,042 stored receipts (2,002 held-out flat certificates, 17 held-out trees, 23 development trees) replay under two separately written checkers against a pinned manifest, and again under the checkers of the input-domain contract | MEASURED | `python tools/recheck_all.py`; `evidence/receipt_manifest.json`; `evidence/qldpc_receipt_reverification_2026-11-03b.json` |
+| Preregistered comparison of two scaling settings on 6,500 fresh syndromes of the same 8 datasets, every one receipted and checked twice: min-sum scaling 0.625 (the Sinter wrapper's default) finds significantly more optima than 1.0 (the class default) on 4 datasets by exact McNemar tests, stress 989 against 381 of 1,000, X-sector 995 against 936, uniform p=0.02 994 against 954, circuit level 486 against 415 of 500, each p ≤ 5×10⁻¹⁰ and so surviving a Bonferroni correction over the 8 tests that the preregistration did not contain; on the other 4 the settings are indistinguishable at this size (2 to 4 syndromes apart, p ≥ 0.21). Secondary: the scaled setting commits fewer logical errors on all 5 code-capacity datasets, significantly on 3. One recorded deviation (the lazy-separation LP for the phenomenological p=0.02 dataset) changes a receipt's form, not its optimum | MEASURED, preregistered | `docs/PREREG_qldpc_scaling_2026-11-03.md`, `docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md`; `evidence/qldpc_scaling_prereg/summary.json` and its per-dataset `.jsonl.gz` records; `generated/tab_prereg.tex`, `tab_prereg_logical.tex` |
+| On the held-out syndromes, re-decoded after the fact: scaling 0.625 lifts BP-OSD's optimum hits from 1,783 to 2,002 of 2,019, on the stress dataset from 122 to 299 of 300, and on 3 datasets finds fewer; because those syndromes were known when the question was asked, the preregistered comparison above asks it again on fresh ones | MEASURED, post hoc | `evidence/qldpc_heldout_scaled_posthoc_all8.json`; `generated/tab_posthoc_all8.tex` |
+| Unscaled min-sum depends on the floating-point form of the declared rate: across 16 declared rates configuration B finds the optimum on 87 to 197 of the p=0.05 syndromes and 20 to 178 at p=0.07, so B at scaling 1 is not a well-defined arm; a 10⁻⁶ prior jitter recovers at least 87% of the way to the scaled decoder | MEASURED, post hoc | `evidence/qldpc_minsum_rate_scan.json`, `evidence/qldpc_minsum_rate_invariance.json`, `evidence/qldpc_bposd_scaling_sensitivity.json` |
+| Every strong-baseline proof is retained (891 flat certificates, 64 trees) and every number of the strong-baseline tables rebuilds from records and proofs alone: 996 proof checks over 4,000 decisions, no producer, no solver, no BP-OSD | MEASURED | `python tools/replay_strong_baseline.py`; `evidence/qldpc_strong_baseline_v3.json`, `evidence/strong_baseline_v3_replay.json` |
+| One written input domain enforced by all seven checker implementations, reaching one verdict on each of 109 shared vectors; the stored corpora list 983 zero-multiplier facets in 121 receipts, every one well formed, and no stored receipt was affected by the coercions the audit found | MEASURED (held by tests) | `docs/QLDPC_RECEIPT_INPUT_DOMAIN.md`; `conformance/qldpc_input_domain_vectors.json`; `tests/test_qldpc_input_domain.py`; `evidence/qldpc_receipt_reverification_2026-11-03b.json` |
+| The tree checker's bound-only mode reports `LOWER_BOUND_PROVEN` with the threshold and the lattice-rounded bound, and no primal value or optimality claim; no published number read the old fields | MEASURED (held by tests) | `src/oneq/qldpc_check.py`; `tests/test_qldpc_input_domain.py` |
+| The JavaScript checkers accept all 2,002 flat receipts and refuse all 136 planted defects in 17 classes; accept all 40 stored trees and refuse all 74 planted tree defects in 19 classes | MEASURED | `python tools/qldpc_js_agreement.py --no-write`, `python tools/qldpc_tree_js_agreement.py --no-write`; `evidence/qldpc_js_agreement.json`, `evidence/qldpc_tree_js_agreement.json` |
+| Circuit level under the published depth-8 schedule: all 149 nontrivial held-out shots certified; the declared observable agreed with the sampled truth on 149 of 149 (disagreement rate below 2.00%, one-sided 95%); the certificate replaced 31 BP-OSD answers, every one in the same logical class. The dataset's 2,304 mechanisms equal paper 3's model of the same cycle projected to its Z-type detectors, so paper 3's certified bound gives d_DEM = 10 for the declared observable at three rounds; this paper's own machinery reaches only 1.0 flat and did not close within 200,000 nodes | MEASURED (the certification); PROVEN from MACHINE-CHECKED premises via paper 3 (d_DEM = 10) | `evidence/qldpc_refsched_p3_equality.json`; `python tools/bposd_circuit_outcome.py --check`, `evidence/bposd_circuit_outcome.json`; `evidence/heldout_qldpc_bb_refsched_gate.json` |
 
-**Every shot is simulated** and Sec. VII says so first; no device has run this code.
+**Every shot is simulated**, and Sec. VII says so first; no device has run this code.
 
-## What a reviewer should know about the review history
+## Paper 3 — the claims, and where each one lives
 
-- Every review round before today was AI-assisted (`docs/reviews/`, `docs/PAPER2_QLDPC_DRAFT.md` header)
-  or an external written audit answered in `docs/EXTERNAL_AUDIT_2026-09-14.md`. **No human peer
-  review has occurred.** That is what this packet is for.
-- The manuscripts' own numbers cannot drift from their artifacts: the generators refuse, the claims
-  gate (`python tools/claims_provenance_gate.py`) traces every material number in the documents to the
-  evidence tree, and `tests/test_paper_*.py`, `tests/test_doc_claims_*.py`,
-  `tests/test_bundle_carries_the_papers_evidence.py` hold the builder, the bibliography and the bundle.
-- What cannot be checked from the release alone: re-running the sampling and production needs the
-  code at the freeze commits, shipped as source snapshots in release v2026.09.16
-  (`evidence/revision_snapshots.json`); the 17.3 GB of ε-receipts for paper 1 are release assets, not
-  repository files.
+Every value here is a property of the stated fault placement, which equals SD6's on the circuits compared; the paper
+makes no priority claim for any value, and its novelty wording is held to `docs/PAPER3_LITERATURE_SEARCH.md` (two
+passes, the second over Pan's live repository head).
+
+| Claim in the text | Class | Artifact / command |
+|---|---|---|
+| IBM's depth-8 cycle has circuit distance 10 for every number of rounds from 2 up, in both memory bases: 22 time-shift certificates (T = 1, …, 11) with rule S and Theorem 1, witnesses verified on the full model at T = 2, …, 6. Pan's public records E-037 (VeriPB certificates for every R up to 12) and E-043 (every R, by solver runs without certificates) report the value; what is claimed here is the first lower bound for every number of rounds in which every search result is certified, among the works found | PROVEN from MACHINE-CHECKED premises | `evidence/circuit_distance_exact/ibm_recert_20261026/` (the 22 proofs with their models); `experiments/circuit_distance_exact/WINDOW_PROOF.md`; `evidence/circuit_distance_exact/records/window_uniform_run.jsonl`; `evidence/circuit_distance_exact/results.json`; `generated/tab_summary.tex` |
+| The three-colour cycle has circuit distance 11 for every number of rounds from 2 up: 24 time-shift certificates (T = 1, …, 12), witnesses verified at T = 2, …, 12; the value Pan derived from Strikis, Browne and Beverland's reduction and exhaustive search under SD6; the lower bound is certified here for the first time among the works found | PROVEN from MACHINE-CHECKED premises | `evidence/circuit_distance_exact/recert_20261102/manifest.json` (cells `3c`, `3c_t2`; the proofs regenerate, see below); `evidence/circuit_distance_exact/records/3c_shift_certificates_w10.jsonl` |
+| Shaw and Terhal's morphing circuits have circuit distance 6 ([[72,12,6]]) and 12 ([[144,12,12]]) for every number of rounds from 1: Theorem 2 (the fold theorem, now stated with its mid-cycle image condition, with the counterexample to the weaker form) and the one-round certificates; 14 time-shift certificates for the smaller circuit ship, the four for the larger regenerate. Pan's records E-019 and E-017 already report both values by exhaustive search without certificates; these are the first certificates found | PROVEN from MACHINE-CHECKED premises | `experiments/circuit_distance_exact/FOLD_PROOF.md`; `evidence/circuit_distance_exact/records/fold_lemma.jsonl`, `fold_uniform_hom_*.jsonl`; `recert_20261102/` (cells `morph72`, `morph144`) |
+| The [[144,12,12]] morphing circuit's end-cycle code has the gross code's parameters but is not the gross code: its stabilizer group has weight-9 elements, the gross code's are all of even weight; the paper compares codes with the same parameters, not two schedules on one code | MEASURED (read off Stim's deterministic final detectors; tested) | Sec. VI C; `evidence/circuit_distance_exact/results.json` (`morph144` claim); the test suite |
+| Exact values for 14 morphing circuits with the code parameters of the 2026 follow-up, 4 of them kernel-checked at one round; the CNOT order alone moves the distance by up to 2 on 5 fixed-code pairs; circuit `c42a` keeps 6. Standard schedules hold for every T by Theorem 2; the tree circuits are machine-checked to T = 6 only | PROVEN from MACHINE-CHECKED premises (standard schedules); MACHINE-CHECKED to T = 6 (tree circuits) | `evidence/circuit_distance_exact/results.json`; `recert_20261102/` (the 238 `morph2026` proofs ship, each equal to its record); `generated/tab_morph.tex` |
+| The checker's calculus is proven sound in Lean 4 (v4.34.0, Mathlib): 40 theorems on the standard axioms, a Lean-free receipt gate; formalizing it found inputs (a repeated detector) on which the C checker accepted a false claim, now refused at load; for 4 small models (`c42a` with d = 6 and `t30a` with d = 5, both bases) the kernel checks the exported model's distance itself; none is a gross-code model | KERNEL-CHECKED | `lean/CertR198/`; `evidence/circuit_distance_exact/lean_r198_receipt.json`; `experiments/circuit_distance_exact/lean_receipt.py`, `lean_kernel_proof.py` |
+| Every certificate the results rest on was re-proved and re-checked by the committed prover and checker on models byte-identical to the ones their searches ran on: 282 proofs beyond IBM's 22, all verified; 252 byte-identical to their records (238 of the 2026 circuits, 14 three-colour), the other 30 reproduced bit for bit by the prover of commit 72d03874 in its earlier format; 252 ship and 30 regenerate (24 three-colour time-shift, 2 three-colour T = 2, 4 [[144,12,12]] morphing) | MACHINE-CHECKED | `evidence/circuit_distance_exact/recert_20261102/manifest.json`; `evidence/circuit_distance_exact/records/recert_old_prover.jsonl`; `experiments/circuit_distance_exact/old_provers/`; `generated/tab_recert.tex` |
+| Every proof too large to ship has been produced twice, identically: 14 equal their records and the other 16 were regenerated again at 4 and 6 threads instead of the campaign's 8 (18 runs, up to 53 MB) | MEASURED | `evidence/circuit_distance_exact/records/recert_determinism.jsonl` |
+| The circuits are Pan's circuits: on all four (IBM, three-colour, both morphing circuits), both bases, T = 1 to 3, the projected mechanism set of his own circuit files and builder under his SD6 noise equals ours after an invertible change of observable basis, 24 of 24 comparisons, and each of the 8 near-miss controls differs; the fault placement also equals SD6's on all four at T = 1, …, 4 (32 comparisons) | MEASURED (scripts with controls that must and do fail) | `experiments/circuit_distance_exact/pan_crosscheck.py` (pins Pan's files by hash); `evidence/circuit_distance_exact/records/pan_crosscheck.jsonl`, `sd6_equivalence.jsonl` |
+| The two hand proofs' finite hypotheses: Theorem 1's checks pass with 60 negative controls failing, the builder matches its template at 12 values of T up to 32, the closed form equals Stim's model at T = 16, 24 and 32, and an independent review found no difference in 102 comparisons up to T = 27; Theorem 2's six hypotheses pass with 20 controls per run over 4 runs, the template matches at 10 values of T up to 32 (5.7×10⁶ components), and an independent review checked 18 fresh points and 8 small codes the proof never saw | MACHINE-CHECKED (the hypotheses); the proofs themselves are hand proofs, each audited once by an AI agent | `evidence/circuit_distance_exact/records/window_uniform_run.jsonl`, `window_review_formula.jsonl`, `fold_uniform_hom_x.jsonl`, `fold_review_cor2.jsonl`, `fold_review_b_n18.jsonl`, `fold_review_b_n36.jsonl` |
+
+## Paper 4 — the claims, and where each one lives
+
+Paths are relative to `superactivation/`. The paper names none of the other three and shares no evidence with them.
+Its own classes are *proven*, *certified* (an exact or rigorous interval-arithmetic lower bound re-derived by a
+committed checker, written MACHINE-CHECKED below), *measured* and *simulated*; two results of Parentin, Bergh, Datta
+and Wilde are quoted as imported, and no statement depends on them.
+
+| Claim in the text | Class | Artifact / command |
+|---|---|---|
+| The group reduction behind the symmetric and two-group certificates is exact (Lemma 1); checked against the dense construction with no symmetry assumed: all 4,096 flag patterns of a random two-group code at n = 12, the certified codes at n = 4, 8, 15, 16 and the symmetric code at n = 17, every deviation at most 7.8×10⁻¹⁵, four negative controls each caught | PROVEN; the check MEASURED | `evidence/superactivation/general_codes/reduction_dense_check_v2.json` |
+| Smith and Yard's pair: a two-group code on 7 + 8 uses has fidelity at least 0.7500784415 (1,621 blocks proved positive definite in exact integers, 2.1 h, margin 7.8×10⁻⁵) and one on 8 + 8 uses at least 0.7503771797, so n* ≤ 15 against the published n* ≤ 17 (0.75013 in print, 0.750131 in the ancillary data); the best code found at n = 14 reaches 0.7497607 and bounds nothing | MACHINE-CHECKED (the bounds); PROVEN (the steps to n*, Lemmas 3 and 4 at d = 2); MEASURED (n = 14) | `evidence/superactivation/general_codes/certificate_twogroup_a7_b8.json`, `certificate_twogroup_a8_b8.json`; `generated/tab_dtwo.tex` |
+| The family P_d of K. Horodecki, Pankowski, M. Horodecki and P. Horodecki is PPT if and only if p₁ = 1/(√d + 1), for every complex Hadamard twist (Theorem 2); what is new is the "only if" for every twist. P₂ is Smith and Yard's channel exactly: all 256 entry differences against the published Kraus operators and Choi state are algebraic zeros, and the check fails on the supplement's reported sign error (8 entries) and on exchanged weights (28) | PROVEN; the identity of P₂ MACHINE-CHECKED (exact algebraic) | `evidence/superactivation/shield_family/p2_kraus_comparison_v2.json` |
+| One joint use of P_d with a 50% erasure channel simulates the flagged qubit channel Ñ_p (Lemma 3, Smith and Yard's coupling); neither channel alone exceeds 3/4 at any number of uses, P_d at most 1/2 (Lemma 4); one use of any PPT channel with a 50% erasure channel never exceeds 3/4 (Lemma 5) | PROVEN | Sec. IV |
+| Two uses of P_d with a 50% erasure channel exceed 3/4 for every d ≥ 20 (Theorem 6): certified at d = 20 (F ≥ 0.7508849257, margin 8.8×10⁻⁴) and d = 21 (F ≥ 0.7526656475) exactly in Q(√d), a second pair at 0.7508847632 and 0.7526654055 reproduced by the producer-free rational checker; proven from d = 22 by the closed form (7 − 6p + 2p²)/8, which exceeds 3/4 exactly when d > 11 + 4√7 ≈ 21.6; also certified at d = 22 (0.7509200542) and exact at d = 64 (515/648) | PROVEN (d ≥ 22); MACHINE-CHECKED (d = 20, 21) | `evidence/superactivation/shield_family/certificate_nuse_d20_n2.json`, `certificate_nuse_d21_n2.json`, `certificate_two_use_d20.json`, `certificate_two_use_d21.json`, `certificate_two_use_d22_closed.json`, `certificate_two_use_d64_closed.json`; `python tools/verify_r142_rational_witness.py` with `rational_recovery_d{20,21,22}.json` |
+| At threshold 3/4 the onset is exactly two uses for every d ≥ 20 (Corollary 7); stated for ε = 1/4 only, since whether sup_m F_c(A^⊗m, 2) = 3/4 is open | PROVEN from the rows above | Sec. VI |
+| Certified upper bounds on the onset across the family: n* ≤ 4 for d = 7, 8 and n* ≤ 3 for d = 9, …, 19, so n* ∈ {2, 3, 4} and n* ∈ {2, 3} there; the thinnest certified margin is 5.0×10⁻⁴ at d = 9, n = 3 (F ≥ 0.7505010800); at d = 8, n = 3 the certifier returns 0.74576 and certifies nothing; the entries for d = 3, 4, 6 are floating point, and at d = 5 no code with n ≤ 4 was found above 3/4 | MACHINE-CHECKED (the certified entries); MEASURED (the floating-point entries; every entry a local search's upper bound) | `evidence/superactivation/shield_family/phase_diagram.json`; `generated/tab_onset.tex` |
+| One use of the joint channel, coded directly, has fidelity at least 0.6627576287, above the proven value 1 − √2/4 = 0.6464466094 of every code on Ñ (Theorem 9), so the per-use reduction is strictly lossy at one use | MACHINE-CHECKED (the bound); PROVEN (the value of F_c(Ñ, 2)) | `evidence/superactivation/direct/certificate_direct_n1.json` |
+| A PPT-assisted relaxation cannot certify n* > 2: its value at n uses is exactly 1 − 2^−(n+1) for Ñ_p, for the erasure channel and, with equality when P is PPT, for (P ⊗ A')^⊗n, so 7/8 at two uses (Proposition 11); the feasible point and dual certificate are also checked exactly on the full output space, no block structure assumed, for n = 1, …, 3 at 6 rational values of p and for P₂ ⊗ A₄ at n = 1 (dimension 320, in Q(√2)), with 13 controls each failing; a dense floating-point solve gives 3/4 and 7/8 to 1.1×10⁻⁸ | PROVEN; the full-space check MACHINE-CHECKED | `evidence/superactivation/ppt_relaxation_fullspace.json` (supersedes `ppt_relaxation_exact.json`, which assumed the block form) |
+| Symmetric codes certified at n = 17 (F ≥ 0.7502033333), 20 (0.7506549819) and 24 (0.7510307324, 326 blocks); every value an achievable code, not a converged optimum | MACHINE-CHECKED | `evidence/superactivation/certificate_n17.json`, `certificate_n20.json`, `certificate_n24.json`, `curve_n17_n24.json` |
+| The published n = 17 code, composed independently from its stored encoder: all 330 stored blocks agree to 3.8×10⁻¹⁴, and the three other basis orders miss by at least 6.2×10⁻³ | MEASURED | `evidence/superactivation/stored_maps_entrywise.json` (re-running it needs the authors' arXiv source, not redistributed) |
+| Hardware, for context only and claiming no superactivation: a preregistered `ibm_kingston` run at d = 32 measured an entanglement fidelity of 0.615 ± 0.009 against a model prediction of 0.657 (over by 0.042, 4.6 standard errors); a trapped-ion package at d = 256 with 8,000 circuits and a sequential rule declared in advance has not been run | MEASURED (the device run); SIMULATED (the ion models) | `evidence/superactivation/hw_run_m5/result_db8jpre94fic73etigpg.json`; `evidence/superactivation/ion_run_m8_r224/design.json` |
+
+Novelty wording is held to `docs/PAPER4_LITERATURE_SEARCH.md` (searches of 13–14 October and 3 November 2026, not
+exhaustive).
+
+## What cannot be checked from the release alone
+
+- Re-running paper 1's original runs and paper 2's frozen campaign needs the code at their commits. That code ships
+  as source snapshots (release assets `oneq-source-<commit>.tar`, pinned by commit and sha256 in
+  `evidence/revision_snapshots.json`; `python tools/revision_snapshots.py --verify --no-git --out <dir>` checks a
+  download). Paper 2's 1,851 development flat certificates were checked when produced and not stored, so that check
+  cannot be replayed; regenerating the 2,002 held-out flat certificates gives 1,797 byte-identical and 58 that
+  differ while remaining exact and accepted (147 circuit records carry no hash), for a reason not established.
+- Paper 1's ε-receipts are release assets, not repository files: one `<config>.tar` per
+  `evidence/epsilon_rerun/<config>/archive.json`, which pins its sha256, byte count and member list. The six arms of
+  the held-out distance-7 sample (`heldout_d7_{X,Z}_r50`, `heldout_d7_{X,Z}_r10`, `samedev_d7_{X,Z}_r30`) are pinned
+  the same way with `"partial": true`: each holds only the chunks its stopping rule completed, has no `summary.json`,
+  and replays in `--partial` mode against `heldout_d7_partial.json`.
+- Paper 3's 30 unshipped proofs (24 three-colour time-shift, 2 three-colour T = 2, 4 [[144,12,12]] morphing;
+  0.73 GB) are release assets, `oneq-recert-proofs-3c.tar.gz` and `oneq-recert-proofs-morph144.tar.gz`, to be
+  hash-matched cell by cell to `evidence/circuit_distance_exact/recert_20261102/manifest.json`; the committed prover
+  also regenerates each from its shipped model (`recert_campaign.py --families 3c 3c_t2 morph144`; the three-colour
+  re-certification took 32 h), and the checker then decides it again.
+- Paper 3's every-round statements rest on two hand proofs. Their finite hypotheses are machine-checked, each proof
+  was audited once by an AI agent that did not write it, and no human expert has read them; neither theorem is
+  formalized, that the builders emit the template for every T rests on reading the code, and the tree circuits of
+  Table II are machine-checked to T = 6 only. The correspondence between the C checker and the Lean predicate is
+  argued and cross-checked, not proved.
+- Paper 4's two-group certificates at n = 15 and 16 take hours of exact arithmetic and are not re-run by the
+  generator: each is bound by sha256 to its witness and decoder bytes, the tests recompute the stored pairs, and the
+  dense check re-derives the reduction outside the certifiers. The see-saw producers that found every code need an
+  SDP solver the bundle does not pin; their outputs are what is checked. The stored-map check of the published code
+  needs the authors' arXiv source archive, which is not redistributed. Nothing bounds n* from below beyond Lemma 5.
+- Every statement about the literature rests on reading the sources (the logs are `docs/PAPER{1,2,3}_LITERATURE_SEARCH.md`
+  and, for paper 4, `superactivation/docs/PAPER4_LITERATURE_SEARCH.md`); the reference check
+  `paper/tools/verify_refs.py` compares `paper/refs.bib` with `paper/refs_verified.json`, and `--fetch` needs the network.
+- The ledger that records what each review changed, and the responses to every finding, is in the source repository,
+  not the release.
 
 ## Submission notes (for the owner, not the reviewer)
 
-- Each paper cites the other by title as a companion; on submission, cite the arXiv identifiers.
-- `paper/owner.tex` holds the author block; `build.py --release` refuses placeholders and pending
-  numbers, and writes `build/arxiv_metadata.txt` with the plain-text abstract.
-- Paper 1 should not be released until the d=7×30 reruns merge and its complete two-verifier replay
-  exists; the generator enforces this.
+- Papers 1–3 cite each other by title as companion manuscripts; once arXiv assigns identifiers, cite them in a v2.
+  Paper 4 names none of the other three and is a separate arXiv submission, released in its own signed bundle.
+- `paper/owner.tex` holds the author block and `paper/release.tex` the release tag (`\ReleaseTag`, v2026.11.05;
+  paper 4's `\LaneRelease` is derived from the bundle builder's contents, never typed); `build.py --release` writes
+  `build/arxiv_metadata.txt` with the plain-text abstract, and `paper/tools/arxiv_package.py <name>` writes an upload
+  that compiles on its own.

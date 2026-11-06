@@ -1,0 +1,72 @@
+{
+ "schema": "oneq.r203_rehearsal/2",
+ "package": "evidence/superactivation/ion_run_m8_r224",
+ "rule": "betting_ad",
+ "rates": {
+  "kept/high|X": 0.011486684449875726,
+  "kept/high|Y": 0.030701251560534593,
+  "ee_x/high|X": 0.0073882435990990985,
+  "kept/high|Z": 0.028031676459584296
+ },
+ "rates_source": "R195 executed projection, Helios, per (group, input basis) x lambda (SIMULATED)",
+ "scenarios": {
+  "at_spec": {
+   "lam": 1.0,
+   "batches_run": 10,
+   "errors_injected": 172,
+   "exit": 0,
+   "verdict": "CLAIM HOLDS",
+   "stopped_at": 1000,
+   "looks_reached": 2,
+   "log_wealth": [
+    8.728,
+    23.063
+   ],
+   "log_bar": 15.064998393988724,
+   "claim_scope": "the shot-averaged design channel the device implemented (each shot's given the device's own history) is not antidegradable -- its F_e exceeds 3/4 or its w* witness exceeds the antidegradable bound -- so no device using P alone or A alone, with any mixture, memory or shared randomness, implements it; valid for any behaviourally non-anticipating device -- drift, memory and outcome-dependent errors included -- under any stopping rule (Ville), provided the shots ran in an order independent of their content, each batch was submitted once, Bob's basis choice beta does not signal into the copy readout it is matched against, and no device moves an erased register's content before its reset; delta is over the seeded draw of the units (the design's randomization)",
+   "hqc_spent": 178.1
+  },
+  "four_x": {
+   "lam": 4.0,
+   "batches_run": 10,
+   "errors_injected": 696,
+   "exit": 0,
+   "verdict": "CLAIM FAILS (stopped for futility at look 1500)",
+   "stopped_at": 1500,
+   "looks_reached": 3,
+   "log_wealth": [
+    -3.784,
+    -7.874,
+    -11.43
+   ],
+   "log_bar": 15.064998393988724,
+   "claim_scope": "the shot-averaged design channel the device implemented (each shot's given the device's own history) is not antidegradable -- its F_e exceeds 3/4 or its w* witness exceeds the antidegradable bound -- so no device using P alone or A alone, with any mixture, memory or shared randomness, implements it; valid for any behaviourally non-anticipating device -- drift, memory and outcome-dependent errors included -- under any stopping rule (Ville), provided the shots ran in an order independent of their content, each batch was submitted once, Bob's basis choice beta does not signal into the copy readout it is matched against, and no device moves an erased register's content before its reset; delta is over the seeded draw of the units (the design's randomization)",
+   "hqc_spent": 267.2
+  },
+  "stopped_early": {
+   "lam": 2.5,
+   "batches_run": 4,
+   "errors_injected": 104,
+   "exit": 0,
+   "verdict": "NOT DECIDED (stopped before the last look)",
+   "stopped_at": 3000,
+   "looks_reached": 5,
+   "log_wealth": [
+    2.808,
+    2.556,
+    6.822,
+    10.636
+   ],
+   "log_bar": 15.064998393988724,
+   "claim_scope": "the shot-averaged design channel the device implemented (each shot's given the device's own history) is not antidegradable -- its F_e exceeds 3/4 or its w* witness exceeds the antidegradable bound -- so no device using P alone or A alone, with any mixture, memory or shared randomness, implements it; valid for any behaviourally non-anticipating device -- drift, memory and outcome-dependent errors included -- under any stopping rule (Ville), provided the shots ran in an order independent of their content, each batch was submitted once, Bob's basis choice beta does not signal into the copy readout it is matched against, and no device moves an erased register's content before its reset; delta is over the seeded draw of the units (the design's randomization)",
+   "hqc_spent": 356.3
+  },
+  "rerun": {
+   "lam": 1.0,
+   "batches_run": 10,
+   "errors_injected": 147,
+   "exit": 1,
+   "refusal": "SequentialRefused: batch 1's program was submitted 2 times: one job per batch"
+  }
+ }
+}

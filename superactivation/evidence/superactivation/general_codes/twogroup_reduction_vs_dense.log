@@ -1,0 +1,3 @@
+Round-2 encoder through the two-group reduction, exact decoders: F = 0.6897047612   (dense brute force 0.6897047609)
+(a,b)=(1,2) random code: reduction 0.5139230665  dense 0.5139230597  |diff| 6.81e-09
+(a,b)=(2,2) random code: reduction 0.5741531016  dense 0.5741530957  |diff| 5.88e-09

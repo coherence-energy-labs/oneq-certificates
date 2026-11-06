@@ -1,0 +1,52 @@
+{
+ "schema": "oneq-heldout-d7-amendment-stop/1",
+ "reason": "blind order amendment (docs/PREREG_heldout_d7_2026-11-03_DEVIATIONS.md): the run is stopped and resumed with the chunk order changed; no chunk verdict or status was read",
+ "start": "2026-11-03T14:35:29",
+ "stopped": "2026-11-03T16:18:10",
+ "core_hours_spent": 5.134,
+ "runner_pid": 42168,
+ "workers": [
+  {
+   "pid": 49828,
+   "started": "2026-11-03T14:35:31",
+   "cpu_seconds": 6095.8
+  },
+  {
+   "pid": 55360,
+   "started": "2026-11-03T16:02:32",
+   "cpu_seconds": 920.6
+  },
+  {
+   "pid": 45408,
+   "started": "2026-11-03T16:16:09",
+   "cpu_seconds": 117.9
+  }
+ ],
+ "taskkill_exit": 0,
+ "taskkill_out": "SUCCESS: The process with PID 49828 (child process of PID 42168) has been terminated.\nSUCCESS: The process with PID 55360 (child process of PID 42168) has been terminated.\nSUCCESS: The process with PID 45408 (child process of PID 42168) has been terminated.\nSUCCESS: The process with PID 42168 (child process of PID 55332) has been terminated.",
+ "processes_left": [],
+ "completed_chunks": {
+  "heldout_d7_X_r50": 4,
+  "heldout_d7_X_r10": 0,
+  "samedev_d7_X_r30": 0,
+  "heldout_d7_Z_r50": 0,
+  "heldout_d7_Z_r10": 0,
+  "samedev_d7_Z_r30": 0
+ },
+ "completed_seeds": {
+  "heldout_d7_X_r50": [
+   1,
+   3,
+   4,
+   5
+  ]
+ },
+ "current_arm": "heldout_d7_X_r50",
+ "in_flight_seeds_lost": [
+  2,
+  6,
+  7
+ ],
+ "index_unchanged_by_the_stop": true,
+ "note": "in-flight seeds are inferred as the smallest uncompleted seeds of the arm being run (the pool hands seeds out in order, one per worker, maxtasksperchild=1); their work is lost and counts against the unchanged 40 core-hour deadline"
+}

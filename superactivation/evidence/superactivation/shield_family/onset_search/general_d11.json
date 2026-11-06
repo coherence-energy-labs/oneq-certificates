@@ -1,0 +1,157 @@
+{
+ "d": 11,
+ "p": 0.23166247903554,
+ "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+ "code_version": {
+  "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+  "code_git_blobs": {
+   "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+   "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+   "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+   "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+   "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+  },
+  "python": "3.14.3",
+  "numpy": "2.3.5"
+ },
+ "n": {
+  "2": {
+   "F": 0.7312636096790529,
+   "F_choi": 0.7312636096790535,
+   "encoder_second_eigenvalue": 7.741303331604619e-17,
+   "seed_spread": 5.6066262743570405e-14,
+   "seeds": [
+    {
+     "seed": 5,
+     "F_best": 0.7312636096790298,
+     "F_polished": 0.7312636096790531,
+     "polish_steps": 60,
+     "polish_last50_gain": 1.0658141036401503e-14,
+     "seconds": 18.1
+    },
+    {
+     "seed": 6,
+     "F_best": 0.7312636096731304,
+     "F_polished": 0.7312636096789974,
+     "polish_steps": 60,
+     "polish_last50_gain": 2.6670887720570136e-12,
+     "seconds": 18.2
+    },
+    {
+     "seed": 7,
+     "F_best": 0.7312636096790232,
+     "F_polished": 0.7312636096790535,
+     "polish_steps": 60,
+     "polish_last50_gain": 1.3766765505351941e-14,
+     "seconds": 20.5
+    },
+    {
+     "seed": 8,
+     "F_best": 0.7312636096760643,
+     "F_polished": 0.731263609679025,
+     "polish_steps": 60,
+     "polish_last50_gain": 1.3459233727530773e-12,
+     "seconds": 24.5
+    }
+   ],
+   "restarts_per_seed": 6,
+   "steps": 200,
+   "polish_cap": 2000,
+   "code_file": "general_code_d11_n2.npy",
+   "code_sha256": "c087e6bc92f55c558bcfff06957aa2a3b4183c3760488079210fe2d00c6183fb",
+   "exceeds_three_quarters_float": false
+  },
+  "3": {
+   "F": 0.7588328403227071,
+   "F_choi": 0.7588328403227069,
+   "encoder_second_eigenvalue": 3.2866568098616445e-16,
+   "seed_spread": 3.9968028886505635e-15,
+   "seeds": [
+    {
+     "seed": 5,
+     "F_best": 0.758832840322613,
+     "F_polished": 0.7588328403227068,
+     "polish_steps": 60,
+     "polish_last50_gain": 1.9539925233402755e-14,
+     "seconds": 55.2
+    },
+    {
+     "seed": 6,
+     "F_best": 0.7588328395799797,
+     "F_polished": 0.7588328403227029,
+     "polish_steps": 78,
+     "polish_last50_gain": 9.089284880303694e-12,
+     "seconds": 61.0
+    },
+    {
+     "seed": 7,
+     "F_best": 0.7588328403227056,
+     "F_polished": 0.7588328403227069,
+     "polish_steps": 60,
+     "polish_last50_gain": 0.0,
+     "seconds": 57.1
+    },
+    {
+     "seed": 8,
+     "F_best": 0.7588328403227059,
+     "F_polished": 0.7588328403227065,
+     "polish_steps": 60,
+     "polish_last50_gain": 1.1102230246251565e-16,
+     "seconds": 59.9
+    }
+   ],
+   "restarts_per_seed": 6,
+   "steps": 200,
+   "polish_cap": 2000,
+   "code_file": "general_code_d11_n3.npy",
+   "code_sha256": "56c17e24f8dc91fd49ae0bf6f2c8a2e2e7c2332fa58ddbe14647fd9c8de0a8c3",
+   "exceeds_three_quarters_float": true
+  },
+  "4": {
+   "F": 0.7669914619714855,
+   "F_choi": 0.7669914619714854,
+   "encoder_second_eigenvalue": 3.3155632502765074e-16,
+   "seed_spread": 3.689468547218855e-05,
+   "seeds": [
+    {
+     "seed": 5,
+     "F_best": 0.7669900173127703,
+     "F_polished": 0.7669914619714854,
+     "polish_steps": 313,
+     "polish_last50_gain": 9.988898597157458e-12,
+     "seconds": 277.8
+    },
+    {
+     "seed": 6,
+     "F_best": 0.7669467388990012,
+     "F_polished": 0.7669545677600405,
+     "polish_steps": 2000,
+     "polish_last50_gain": 3.0240632220568386e-10,
+     "seconds": 527.8
+    },
+    {
+     "seed": 7,
+     "F_best": 0.7669514133081002,
+     "F_polished": 0.7669545672860132,
+     "polish_steps": 2000,
+     "polish_last50_gain": 3.883425803152818e-10,
+     "seconds": 568.1
+    },
+    {
+     "seed": 8,
+     "F_best": 0.7669542414801956,
+     "F_polished": 0.7669545688721077,
+     "polish_steps": 2000,
+     "polish_last50_gain": 1.0038159192760077e-10,
+     "seconds": 373.7
+    }
+   ],
+   "restarts_per_seed": 6,
+   "steps": 200,
+   "polish_cap": 2000,
+   "code_file": "general_code_d11_n4.npy",
+   "code_sha256": "808fef50e28dd2c723580ea67021d1019ad9622e164ae5dc60b845c29b6fa449",
+   "exceeds_three_quarters_float": true
+  }
+ }
+}

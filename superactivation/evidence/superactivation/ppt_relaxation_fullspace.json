@@ -1,0 +1,661 @@
+{
+ "schema": "oneq.superactivation.ppt-relaxation-fullspace/1",
+ "sdp": "F_PPT(N, 2) of ppt_relaxation_probe.py (Leung-Matthews), on the FULL output space, no blocks assumed",
+ "supersedes": "ppt_relaxation_exact.json (one block per flag pattern, feasible point only)",
+ "calibration": {
+  "[[1,1],[1,1]] is psd": true,
+  "[[1,2],[2,1]] is not psd": true,
+  "rank-5 Gram 12x12 is psd": true,
+  "that Gram minus 1/1000 v v^T, v in its kernel, is not psd": true,
+  "[[1, sqrt2], [sqrt2, 2]] is psd (singular)": true,
+  "[[1, sqrt2], [sqrt2, 199/100]] is not psd": true,
+  "[[3 - 2 sqrt2]] is psd, [[2 sqrt2 - 3]] is not": true
+ },
+ "rows": [
+  {
+   "n": 1,
+   "channel": "flagged channel N~_p",
+   "field": "Q",
+   "target": "3/4",
+   "block_decomposition_assumed": false,
+   "primal": {
+    "feasible": true,
+    "conditions": {
+     "W >= 0": true,
+     "rho (x) 1 - W >= 0": true,
+     "rho (x) 1 - M W^TB >= 0": true,
+     "rho (x) 1 + M W^TB >= 0": true
+    },
+    "trace_rho": "1",
+    "value_at_p": {
+     "0": "3/4",
+     "1/10": "3/4",
+     "1/3": "3/4",
+     "1/2": "3/4",
+     "3/4": "3/4",
+     "1": "3/4"
+    },
+    "value_constant_in_p": true,
+    "full_dimension": 8
+   },
+   "dual_at_p": {
+    "0": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1/10": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1/3": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1/2": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "3/4": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    }
+   },
+   "probe_measured": 0.7499999975087579,
+   "probe_minus_exact": -2.4912421014988695e-09
+  },
+  {
+   "n": 1,
+   "channel": "50% erasure channel (qubit)",
+   "field": "Q",
+   "target": "3/4",
+   "block_decomposition_assumed": false,
+   "primal": {
+    "feasible": true,
+    "conditions": {
+     "W >= 0": true,
+     "rho (x) 1 - W >= 0": true,
+     "rho (x) 1 - M W^TB >= 0": true,
+     "rho (x) 1 + M W^TB >= 0": true
+    },
+    "trace_rho": "1",
+    "value_at_p": {
+     "0": "3/4",
+     "1/10": "3/4",
+     "1/3": "3/4",
+     "1/2": "3/4",
+     "3/4": "3/4",
+     "1": "3/4"
+    },
+    "value_constant_in_p": true,
+    "full_dimension": 6
+   },
+   "dual_at_p": {
+    "0": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1/10": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1/3": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1/2": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "3/4": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    },
+    "1": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "3/4",
+     "valid": true
+    }
+   },
+   "probe_measured": 0.7499999981809178,
+   "probe_minus_exact": -1.8190822181907151e-09
+  },
+  {
+   "n": 2,
+   "channel": "flagged channel N~_p",
+   "field": "Q",
+   "target": "7/8",
+   "block_decomposition_assumed": false,
+   "primal": {
+    "feasible": true,
+    "conditions": {
+     "W >= 0": true,
+     "rho (x) 1 - W >= 0": true,
+     "rho (x) 1 - M W^TB >= 0": true,
+     "rho (x) 1 + M W^TB >= 0": true
+    },
+    "trace_rho": "1",
+    "value_at_p": {
+     "0": "7/8",
+     "1/10": "7/8",
+     "1/3": "7/8",
+     "1/2": "7/8",
+     "3/4": "7/8",
+     "1": "7/8"
+    },
+    "value_constant_in_p": true,
+    "full_dimension": 64
+   },
+   "dual_at_p": {
+    "0": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1/10": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1/3": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1/2": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "3/4": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    }
+   },
+   "probe_measured": 0.8749999895696158,
+   "probe_minus_exact": -1.0430384222992473e-08
+  },
+  {
+   "n": 2,
+   "channel": "50% erasure channel (qubit)",
+   "field": "Q",
+   "target": "7/8",
+   "block_decomposition_assumed": false,
+   "primal": {
+    "feasible": true,
+    "conditions": {
+     "W >= 0": true,
+     "rho (x) 1 - W >= 0": true,
+     "rho (x) 1 - M W^TB >= 0": true,
+     "rho (x) 1 + M W^TB >= 0": true
+    },
+    "trace_rho": "1",
+    "value_at_p": {
+     "0": "7/8",
+     "1/10": "7/8",
+     "1/3": "7/8",
+     "1/2": "7/8",
+     "3/4": "7/8",
+     "1": "7/8"
+    },
+    "value_constant_in_p": true,
+    "full_dimension": 36
+   },
+   "dual_at_p": {
+    "0": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1/10": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1/3": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1/2": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "3/4": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    },
+    "1": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "7/8",
+     "valid": true
+    }
+   },
+   "probe_measured": 0.8749999991546283,
+   "probe_minus_exact": -8.453716615619555e-10
+  },
+  {
+   "n": 3,
+   "channel": "flagged channel N~_p",
+   "field": "Q",
+   "target": "15/16",
+   "block_decomposition_assumed": false,
+   "primal": {
+    "feasible": true,
+    "conditions": {
+     "W >= 0": true,
+     "rho (x) 1 - W >= 0": true,
+     "rho (x) 1 - M W^TB >= 0": true,
+     "rho (x) 1 + M W^TB >= 0": true
+    },
+    "trace_rho": "1",
+    "value_at_p": {
+     "0": "15/16",
+     "1/10": "15/16",
+     "1/3": "15/16",
+     "1/2": "15/16",
+     "3/4": "15/16",
+     "1": "15/16"
+    },
+    "value_constant_in_p": true,
+    "full_dimension": 512
+   },
+   "dual_at_p": {
+    "0": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1/10": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1/3": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1/2": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "3/4": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    }
+   }
+  },
+  {
+   "n": 3,
+   "channel": "50% erasure channel (qubit)",
+   "field": "Q",
+   "target": "15/16",
+   "block_decomposition_assumed": false,
+   "primal": {
+    "feasible": true,
+    "conditions": {
+     "W >= 0": true,
+     "rho (x) 1 - W >= 0": true,
+     "rho (x) 1 - M W^TB >= 0": true,
+     "rho (x) 1 + M W^TB >= 0": true
+    },
+    "trace_rho": "1",
+    "value_at_p": {
+     "0": "15/16",
+     "1/10": "15/16",
+     "1/3": "15/16",
+     "1/2": "15/16",
+     "3/4": "15/16",
+     "1": "15/16"
+    },
+    "value_constant_in_p": true,
+    "full_dimension": 216
+   },
+   "dual_at_p": {
+    "0": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1/10": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1/3": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1/2": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "3/4": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    },
+    "1": {
+     "J_couples_all_erased_sector_to_another": false,
+     "Y >= 0": true,
+     "P >= 0": true,
+     "Y + M P^TB - J >= 0": true,
+     "Y + M P^TB == J": true,
+     "t 1 - Tr_B(Y + P) >= 0": true,
+     "t": "15/16",
+     "valid": true
+    }
+   }
+  }
+ ],
+ "joint": {
+  "n": 1,
+  "channel": "Smith and Yard's joint channel P_2 (x) A_4",
+  "field": "Q(sqrt 2)",
+  "target": "3/4",
+  "block_decomposition_assumed": false,
+  "P_2": {
+   "max_abs_difference_vs_ppt_family_choi_state": 1.6653345369377348e-16,
+   "partial_trace_over_output_is_identity_exactly": true,
+   "J_P >= 0 exactly": true,
+   "J_P^TB >= 0 exactly (Theorem 3, d = 2)": true
+  },
+  "primal": {
+   "feasible": true,
+   "conditions": {
+    "W >= 0": true,
+    "rho (x) 1 - W >= 0": true,
+    "rho (x) 1 - M W^TB >= 0": true,
+    "rho (x) 1 + M W^TB >= 0": true
+   },
+   "trace_rho": "1",
+   "value_at_p": {
+    "(no free p)": "3/4"
+   },
+   "value_constant_in_p": true,
+   "full_dimension": 320
+  },
+  "dual": {
+   "J_couples_all_erased_sector_to_another": false,
+   "Y >= 0": true,
+   "P >= 0": true,
+   "Y + M P^TB - J >= 0": true,
+   "Y + M P^TB == J": true,
+   "t 1 - Tr_B(Y + P) >= 0": true,
+   "t": "3/4",
+   "valid": true
+  }
+ },
+ "controls": [
+  {
+   "control": "kept block without its 1/2 (n = 2, flagged)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "kept block without its 1/2 (n = 2, erasure)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "all-erased block without its 1/2 (n = 2, flagged)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "all-erased block without its 1/2 (n = 2, erasure)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "kept block scaled 1/2 + 1/64 (n = 2, erasure)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "kept block scaled 1/2 + 1/64 (n = 3, flagged)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "all-erased block scaled 1/2 + 1/64 (n = 3, flagged)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "all-erased block scaled 1/2 + 1/64 (n = 2, erasure)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "dual with t - 1/64 (n = 2, flagged)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "dual with t - 1/64 (n = 3, erasure)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "dual of a channel whose erased branch is the identity, not PPT (n = 2)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "joint dual with t - 1/64 (n = 1)",
+   "passed_but_must_fail": false
+  },
+  {
+   "control": "joint dual with P_2 at p1 = 1/2, not PPT (n = 1)",
+   "passed_but_must_fail": false
+  }
+ ],
+ "verdict": "EXACT",
+ "seconds": 1.2,
+ "provenance": {
+  "code_git_blobs": {
+   "experiments/superactivation/ppt_relaxation_fullspace.py": "e0f098bb275f0db7124d383b7f3726bbc1ac3752",
+   "experiments/superactivation/ppt_relaxation_probe.py": "8dcdf5bcfd14f36e9a5b465c07c8a1895e015537",
+   "experiments/superactivation/shield_family/ppt_family.py": "49f4dd41182928066bc941bd8afe8da3c2515116"
+  },
+  "python": "3.14.3",
+  "ported_from": "an independent adversarial check of Proposition 11 (s1_exact.py, 2026-11-03)"
+ }
+}

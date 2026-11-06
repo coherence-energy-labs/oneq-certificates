@@ -32,6 +32,14 @@ The verdict is one of
 rational; it travels with the verdict. A refusal is never evidence of
 suboptimality -- only a lighter feasible correction is.
 
+THE INPUT DOMAIN (one policy, shared by verify_b and verifier-js/verify-epsilon.mjs; fixed 2026-11-03 after a
+differential fuzzer against the JavaScript checker showed this module truncating a fractional correction endpoint
+with int() and collapsing parallel edges where the other reading refused them). Vertex ids are Python ints, never
+bools (True is not detector 1) and never floats; the boundary is -1 and no other negative id exists. The graph is
+SIMPLE: a self-loop, or an edge listed twice in either orientation, is INVALID_INPUT, not "the lighter one". Every
+packing set member and every correction endpoint is a vertex of the graph (an endpoint of some edge, or the
+boundary). Nothing is coerced; anything outside the domain is INVALID_INPUT.
+
 This is a CHECKER: it imports no producer (tools/standards_gate.py).
 """
 
@@ -84,20 +92,33 @@ def _key(u: int, v: int) -> tuple[int, int]:
     return (u, v) if (u, v) <= (v, u) else (v, u)
 
 
+def _vertex(x, what: str) -> int:
+    """An integer vertex id, refused rather than coerced (no int(0.9) == 0, no True == 1)."""
+    if isinstance(x, bool) or not isinstance(x, int):
+        raise ValueError(f"{what}: {x!r} is not an integer vertex id")
+    if x < 0 and x != BOUNDARY:
+        raise ValueError(f"{what}: {x} is negative and not the boundary")
+    return x
+
+
 def _graph(edges: Iterable) -> tuple[dict, dict]:
-    """Canonical weights (parallel edges collapse to the minimum) and adjacency."""
+    """Canonical weights and adjacency of a SIMPLE graph; a repeated edge (either orientation) is refused."""
     W: dict[tuple[int, int], Fraction] = {}
-    for u, v, w in edges:
-        if isinstance(u, bool) or isinstance(v, bool) or not isinstance(u, int) or not isinstance(v, int):
-            raise ValueError(f"edge ({u!r}, {v!r}): vertices must be integers")
+    for e in edges:
+        if len(e) != 3:
+            raise ValueError(f"edge {e!r} is not (u, v, w)")
+        u, v, w = e
+        _vertex(u, "edge endpoint")
+        _vertex(v, "edge endpoint")
         if u == v:
             raise ValueError(f"edge ({u}, {v}): self-loop")
         wf = _rational(w, f"weight of edge ({u}, {v})")
         if wf < 0:
             raise ValueError(f"edge ({u}, {v}): negative weight")
         k = _key(u, v)
-        if k not in W or wf < W[k]:
-            W[k] = wf
+        if k in W:
+            raise ValueError(f"edge {k} listed twice: the graph must be simple")
+        W[k] = wf
     adj: dict[int, list] = {}
     for k in W:
         for x in k:
@@ -118,7 +139,9 @@ def _correction(W, syndrome: Sequence[int], matched_edges) -> tuple[Fraction, se
     primal = Fraction(0)
     seen = set()
     for e in matched_edges:
-        u, v = int(e[0]), int(e[1])
+        if len(e) != 2:
+            raise ValueError(f"correction entry {e!r} is not an edge (u, v)")
+        u, v = _vertex(e[0], "correction endpoint"), _vertex(e[1], "correction endpoint")
         k = _key(u, v)
         if k not in W:
             raise ValueError(f"correction uses edge {k} absent from the graph")
@@ -145,6 +168,8 @@ def _scaled_bound(W, adj, T: set, blossom_duals) -> Fraction:
             raise ValueError("empty dual set")
         if any(isinstance(x, bool) or not isinstance(x, int) for x in members):
             raise ValueError("dual set members must be integers")
+        if any(x not in adj and x != BOUNDARY for x in members):
+            raise ValueError("dual set member is not a vertex of the graph")
         zf = _rational(z, f"dual of set of size {len(members)}")
         if zf < 0:
             raise ValueError("negative dual")

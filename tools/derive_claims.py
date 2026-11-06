@@ -220,12 +220,22 @@ def main() -> int:
         out["certify_cost_refused_over_accepted_median_2sf"] = two_sig(
             cc["certify_ms_refused"]["median"] / cc["certify_ms_accepted"]["median"]) if cc["certify_ms_refused"] else None
         # the development shots re-run for the producer-identity comparison (paper 1, second referee, M2)
-        pid = _j("producer_identity_willow.json")
+        # the identity re-run of 2026-11-03 (battery and checker input domain changed) once it exists, else the record
+        pid = (_j("producer_identity_willow_2026-11-03.json")
+               if (ROOT / "evidence" / "producer_identity_willow_2026-11-03.json").exists()
+               else _j("producer_identity_willow.json"))
         out["producer_identity_development_nontrivial"] = sum(
             c["nontrivial"] for c in pid["configs"].values() if c["sample"] == "development")
         # checking alone against a batched decode (paper 1, second referee, m7): median check over batch mean
         out["certify_cost_check_median_over_batch_2sf"] = two_sig(
             cc["check_ms"]["median"] * 1000 / cc["decode_batch_us_per_shot"])
+        # mean over mean, the convention of the certification ratio beside it (external review 1, 2026-11-03: the
+        # median-over-mean ratio above compared two different statistics)
+        # ... computed from the two means AS PRINTED (check to 0.1 ms, decode to 0.1 us), so a reader dividing the
+        # printed numbers gets the printed ratio (final referee, 2026-11-03: "about 460" beside 7.4 ms and 16.4 us,
+        # which give 451; the unrounded means give 455)
+        out["certify_cost_check_mean_over_batch_2sf"] = two_sig(
+            round(cc["check_ms"]["mean"], 1) * 1000 / round(cc["decode_batch_us_per_shot"], 1))
         out["certify_cost_refused_median_ms_2sf"] = two_sig(cc["certify_ms_refused"]["median"]) \
             if cc["certify_ms_refused"] else None
 
@@ -418,6 +428,38 @@ def main() -> int:
             out["dem_morph2026_models"] = len(rows)
             out["dem_morph2026_mechanisms_min"] = min(r["mechanisms"] for r in rows)
             out["dem_morph2026_mechanisms_max"] = max(r["mechanisms"] for r in rows)
+    # PAPER 1, 2026-11-03: sums paper/tools/make_numbers.py typesets that no single artifact states, recorded here so
+    # each traces to one (claims_provenance_gate). make_numbers recomputes each and refuses if this file disagrees.
+    cmr = _j("certified_measured_receipts/summary.json")
+    if cmr:
+        out["p1_cert_measured_forgeries_refused_by_bound"] = sum(
+            r["forgeries_by_class"].get(c, 0) for r in cmr["runs"]
+            for c in ("A_suboptimal", "D_spurious_cycle", "G_dual_inflated_to_meet_a_worse_primal"))
+    fz0, fz1 = _j("epsilon_checker_fuzz.json"), _j("epsilon_checker_fuzz_after_fix.json")
+    if fz0:
+        out["p1_epsilon_fuzz_disagreements_before_fix"] = sum(v.get("disagree", 0) for v in fz0["per_class"].values())
+    if fz1 and cmr:
+        out["p1_js_epsilon_replayed_receipts"] = (sum(x["receipts"] for x in fz1["real_receipts_js_vs_recorded"].values())
+                                                  + cmr["totals"]["nontrivial"])
+    # the rebuilt forgery battery over the strict replay of every released configuration, once all are replayed
+    released = sorted(p.parent.name for p in er.glob("*/summary.json")
+                      if not p.parent.name.startswith(("heldout_d7", "samedev_d7")))
+    strict = {n: er / "replay_2026-11-03" / f"replay_{n}.json" for n in released}
+    if released and all(p.is_file() for p in strict.values()):
+        fbat: dict = {}
+        par: dict = {}
+        for p in strict.values():
+            fb = json.loads(p.read_text(encoding="utf-8"))["results"][0].get("forgery_battery", {})
+            for k, v in fb.get("refusals_by_class_and_verdict", {}).items():
+                fbat[k] = fbat.get(k, 0) + v
+            for k, v in fb.get("parity_adversary", {}).items():
+                par[k] = par.get(k, 0) + v
+        out["p1_strict_replay_forgeries"] = sum(fbat.values())
+        out["p1_strict_replay_forgeries_refused_by_bound"] = sum(v for k, v in fbat.items() if k.endswith(":NOT_PROVEN"))
+        if par:
+            out["p1_strict_replay_parity_forgeries"] = par.get("attempted", 0)
+            # accepted by the parity-blind copies of both verifiers, run on each forgery (final referee, 2026-11-03)
+            out["p1_strict_replay_parity_accepted_by_blind_copies"] = par.get("accepted_by_both_parity_blind_copies", 0)
     dest = EVID / "derived_claims.json"
     dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
 

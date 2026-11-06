@@ -1,13 +1,13 @@
 {
  "schema": "oneq-qldpc-js-agreement/2",
  "checker": "verifier-js/verify-qldpc-flat.mjs",
- "checker_sha256": "93a15cbc9dba9eed1c1225b00b4f3a8e0b7361cb8dfd09891d07d6579fd92104",
+ "checker_sha256": "d95412c64d150f31cf8bc0966471109d872b095e86df53af4df059bada8d252a",
  "node": "v24.18.0",
- "manifest_sha256": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
+ "manifest_sha256": "07138cde8b8799e2ff65b77c2bba234ffe6190b92a60c355bfdd8b648f55b449",
  "flat_receipts": 2002,
  "flat_receipts_accepted": 2002,
- "planted_defects": 104,
- "planted_defects_refused_for_their_reason": 104,
+ "planted_defects": 136,
+ "planted_defects_refused_for_their_reason": 136,
  "lattice_boundary_accepts": 8,
  "planted_by_class": {
   "candidate_extra_variable": 8,
@@ -21,6 +21,10 @@
   "zero_denominator": 8,
   "row_out_of_range": 8,
   "combined_check_with_one_row": 8,
+  "zero_multiplier_row_out_of_range": 8,
+  "zero_multiplier_facet_variable_outside_check": 8,
+  "zero_multiplier_facet_wrong_parity": 8,
+  "zero_multiplier_facet_listed_twice": 8,
   "combined_check_parity_is_xor": 8,
   "lattice_boundary_refuse": 8,
   "lattice_boundary_accept": 8

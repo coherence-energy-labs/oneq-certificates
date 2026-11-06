@@ -1,0 +1,141 @@
+{
+ "small": [
+  {
+   "n": 3,
+   "err": 1.9478403400799704e-15,
+   "cz": 24,
+   "nearest_neighbour": true,
+   "cz_formula": 24
+  },
+  {
+   "n": 3,
+   "err": 1.7165875494458388e-15,
+   "cz": 24,
+   "nearest_neighbour": true,
+   "cz_formula": 24
+  },
+  {
+   "n": 3,
+   "err": 2.488113585276671e-15,
+   "cz": 24,
+   "nearest_neighbour": true,
+   "cz_formula": 24
+  },
+  {
+   "n": 4,
+   "err": 1.9062645721593414e-15,
+   "cz": 48,
+   "nearest_neighbour": true,
+   "cz_formula": 48
+  },
+  {
+   "n": 4,
+   "err": 1.926964694222131e-15,
+   "cz": 48,
+   "nearest_neighbour": true,
+   "cz_formula": 48
+  },
+  {
+   "n": 4,
+   "err": 2.648295014812466e-15,
+   "cz": 48,
+   "nearest_neighbour": true,
+   "cz_formula": 48
+  },
+  {
+   "n": 5,
+   "err": 3.6650236557393156e-15,
+   "cz": 79,
+   "nearest_neighbour": true,
+   "cz_formula": 79
+  },
+  {
+   "n": 5,
+   "err": 3.043003643214025e-15,
+   "cz": 79,
+   "nearest_neighbour": true,
+   "cz_formula": 79
+  },
+  {
+   "n": 5,
+   "err": 2.9447410029752244e-15,
+   "cz": 79,
+   "nearest_neighbour": true,
+   "cz_formula": 79
+  },
+  {
+   "n": 6,
+   "err": 2.696293818201744e-15,
+   "cz": 117,
+   "nearest_neighbour": true,
+   "cz_formula": 117
+  },
+  {
+   "n": 6,
+   "err": 3.30186375085152e-15,
+   "cz": 117,
+   "nearest_neighbour": true,
+   "cz_formula": 117
+  },
+  {
+   "n": 6,
+   "err": 4.647634670724248e-15,
+   "cz": 117,
+   "nearest_neighbour": true,
+   "cz_formula": 117
+  },
+  {
+   "n": 7,
+   "err": 5.721958498152797e-15,
+   "cz": 162,
+   "nearest_neighbour": true,
+   "cz_formula": 162
+  },
+  {
+   "n": 7,
+   "err": 4.941739743737033e-15,
+   "cz": 162,
+   "nearest_neighbour": true,
+   "cz_formula": 162
+  },
+  {
+   "n": 7,
+   "err": 5.3991729210351875e-15,
+   "cz": 162,
+   "nearest_neighbour": true,
+   "cz_formula": 162
+  }
+ ],
+ "codes": [
+  {
+   "n": 17,
+   "statevector_err": 9.42938302444126e-16,
+   "cz_logical": 997,
+   "nearest_neighbour": true,
+   "cz_formula": 997,
+   "heavy_hex_path": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    19
+   ],
+   "cz_routed_on_path": 997,
+   "depth_routed": 1472,
+   "depth_2q_routed": 304,
+   "depth_2q_logical": 304
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "oneq-issuers/1",
+  "note": "Public keys only. Pin an issuer from this file; never contact us to obtain one. A passport signed by a key absent from this list should be treated as unattributed.",
+  "issuers": [
+    {
+      "label": "coherence-energy-labs/one-q",
+      "pubkey": "1eace2ebc1edd8795ad5d499f1d4df40dd4e3a8269ed411b3b52d6633afcf664",
+      "fingerprint": "1eace2ebc1edd879",
+      "alg": "ed25519",
+      "created": "2026-07-27",
+      "status": "active",
+      "scope": "ONE-Q Fault-Tolerance Passports"
+    }
+  ],
+  "revoked": [
+    {
+      "pubkey": "3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29",
+      "reason": "ALL-ZEROS Ed25519 seed. Publicly derivable; every signature under it is forgeable by anyone. Used by scripts/quantum_tournament.py to obtain byte-reproducible evidence files -- reproducibility belongs to the core DIGEST (L1 REPLAY), never to the signature.",
+      "affected_artifacts": [
+        "coherence_lang/evidence/quantum_tournament.json",
+        "coherence_lang/evidence/quantum_crossover_receipt.json"
+      ],
+      "scientific_impact": "none -- the measurements reproduce byte-exact from refetched IBM counts; only the attribution layer was void",
+      "status": "PERMANENTLY REVOKED; retained as Genesis Test 0 mutant"
+    }
+  ]
+}

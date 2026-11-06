@@ -1,0 +1,10370 @@
+{
+  "channel": "P_d (x) P_d on BOTH uses; A_1/2 (x) A_1/2 separately",
+  "d": 32,
+  "draws_per_stratum": 2,
+  "entries": [
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "Z",
+            "X",
+            "Z"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s0_b0_r0000_Xp",
+      "pair_id": "kept_kept_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "Z",
+            "X",
+            "Z"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b0_r0000_Xm",
+      "pair_id": "kept_kept_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "Z",
+            "X",
+            "Z"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s0_b0_r0000_Yp",
+      "pair_id": "kept_kept_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "Z",
+            "X",
+            "Z"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b0_r0000_Ym",
+      "pair_id": "kept_kept_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "Z",
+            "X",
+            "Z"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s0_b0_r0000_Zp",
+      "pair_id": "kept_kept_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "Z",
+            "X",
+            "Z"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b0_r0000_Zm",
+      "pair_id": "kept_kept_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Y",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b0_r0001_Xm",
+      "pair_id": "kept_kept_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Y",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s0_b0_r0001_Yp",
+      "pair_id": "kept_kept_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Y",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b0_r0001_Ym",
+      "pair_id": "kept_kept_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Y",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s0_b0_r0001_Zp",
+      "pair_id": "kept_kept_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Y",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b0_r0001_Zm",
+      "pair_id": "kept_kept_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Y",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s0_b0_r0001_Xp",
+      "pair_id": "kept_kept_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "Z",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b1_r0000_Xm",
+      "pair_id": "kept_kept_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "Z",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s0_b1_r0000_Yp",
+      "pair_id": "kept_kept_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "Z",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b1_r0000_Ym",
+      "pair_id": "kept_kept_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "Z",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s0_b1_r0000_Zp",
+      "pair_id": "kept_kept_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "Z",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b1_r0000_Zm",
+      "pair_id": "kept_kept_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "Z",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s0_b1_r0000_Xp",
+      "pair_id": "kept_kept_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s0_b1_r0001_Yp",
+      "pair_id": "kept_kept_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b1_r0001_Ym",
+      "pair_id": "kept_kept_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s0_b1_r0001_Zp",
+      "pair_id": "kept_kept_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b1_r0001_Zm",
+      "pair_id": "kept_kept_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s0_b1_r0001_Xp",
+      "pair_id": "kept_kept_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s0_b1_r0001_Xm",
+      "pair_id": "kept_kept_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.007522126778014304
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s1_b0_r0000_Xp",
+      "pair_id": "kept_kept_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b0_r0000_Xm",
+      "pair_id": "kept_kept_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s1_b0_r0000_Yp",
+      "pair_id": "kept_kept_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b0_r0000_Ym",
+      "pair_id": "kept_kept_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s1_b0_r0000_Zp",
+      "pair_id": "kept_kept_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "Z",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b0_r0000_Zm",
+      "pair_id": "kept_kept_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b0_r0001_Xm",
+      "pair_id": "kept_kept_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s1_b0_r0001_Yp",
+      "pair_id": "kept_kept_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b0_r0001_Ym",
+      "pair_id": "kept_kept_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s1_b0_r0001_Zp",
+      "pair_id": "kept_kept_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b0_r0001_Zm",
+      "pair_id": "kept_kept_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s1_b0_r0001_Xp",
+      "pair_id": "kept_kept_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b1_r0000_Xm",
+      "pair_id": "kept_kept_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s1_b1_r0000_Yp",
+      "pair_id": "kept_kept_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b1_r0000_Ym",
+      "pair_id": "kept_kept_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s1_b1_r0000_Zp",
+      "pair_id": "kept_kept_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b1_r0000_Zm",
+      "pair_id": "kept_kept_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Z",
+            "Y",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s1_b1_r0000_Xp",
+      "pair_id": "kept_kept_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s0s1_b1_r0001_Yp",
+      "pair_id": "kept_kept_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b1_r0001_Ym",
+      "pair_id": "kept_kept_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s0s1_b1_r0001_Zp",
+      "pair_id": "kept_kept_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b1_r0001_Zm",
+      "pair_id": "kept_kept_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s0s1_b1_r0001_Xp",
+      "pair_id": "kept_kept_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s0s1_b1_r0001_Xm",
+      "pair_id": "kept_kept_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s0_b0_r0000_Xp",
+      "pair_id": "kept_kept_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b0_r0000_Xm",
+      "pair_id": "kept_kept_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s0_b0_r0000_Yp",
+      "pair_id": "kept_kept_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b0_r0000_Ym",
+      "pair_id": "kept_kept_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s0_b0_r0000_Zp",
+      "pair_id": "kept_kept_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "Y",
+            "Y",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b0_r0000_Zm",
+      "pair_id": "kept_kept_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "I",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b0_r0001_Xm",
+      "pair_id": "kept_kept_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "I",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s0_b0_r0001_Yp",
+      "pair_id": "kept_kept_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "I",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b0_r0001_Ym",
+      "pair_id": "kept_kept_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "I",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s0_b0_r0001_Zp",
+      "pair_id": "kept_kept_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "I",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b0_r0001_Zm",
+      "pair_id": "kept_kept_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "I",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s0_b0_r0001_Xp",
+      "pair_id": "kept_kept_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "I",
+            "X",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b1_r0000_Xm",
+      "pair_id": "kept_kept_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "I",
+            "X",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s0_b1_r0000_Yp",
+      "pair_id": "kept_kept_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "I",
+            "X",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b1_r0000_Ym",
+      "pair_id": "kept_kept_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "I",
+            "X",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s0_b1_r0000_Zp",
+      "pair_id": "kept_kept_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "I",
+            "X",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b1_r0000_Zm",
+      "pair_id": "kept_kept_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "Z",
+            "I",
+            "X",
+            "Y"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s0_b1_r0000_Xp",
+      "pair_id": "kept_kept_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s0_b1_r0001_Yp",
+      "pair_id": "kept_kept_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b1_r0001_Ym",
+      "pair_id": "kept_kept_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s0_b1_r0001_Zp",
+      "pair_id": "kept_kept_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b1_r0001_Zm",
+      "pair_id": "kept_kept_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s0_b1_r0001_Xp",
+      "pair_id": "kept_kept_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "I",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s0_b1_r0001_Xm",
+      "pair_id": "kept_kept_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0013297367134197076
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s1_b0_r0000_Xp",
+      "pair_id": "kept_kept_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b0_r0000_Xm",
+      "pair_id": "kept_kept_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s1_b0_r0000_Yp",
+      "pair_id": "kept_kept_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b0_r0000_Ym",
+      "pair_id": "kept_kept_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s1_b0_r0000_Zp",
+      "pair_id": "kept_kept_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b0_r0000_Zm",
+      "pair_id": "kept_kept_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b0_r0001_Xm",
+      "pair_id": "kept_kept_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s1_b0_r0001_Yp",
+      "pair_id": "kept_kept_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b0_r0001_Ym",
+      "pair_id": "kept_kept_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s1_b0_r0001_Zp",
+      "pair_id": "kept_kept_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b0_r0001_Zm",
+      "pair_id": "kept_kept_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s1_b0_r0001_Xp",
+      "pair_id": "kept_kept_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b1_r0000_Xm",
+      "pair_id": "kept_kept_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s1_b1_r0000_Yp",
+      "pair_id": "kept_kept_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b1_r0000_Ym",
+      "pair_id": "kept_kept_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s1_b1_r0000_Zp",
+      "pair_id": "kept_kept_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b1_r0000_Zm",
+      "pair_id": "kept_kept_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s1_b1_r0000_Xp",
+      "pair_id": "kept_kept_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_kept_s1s1_b1_r0001_Yp",
+      "pair_id": "kept_kept_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b1_r0001_Ym",
+      "pair_id": "kept_kept_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_kept_s1s1_b1_r0001_Zp",
+      "pair_id": "kept_kept_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b1_r0001_Zm",
+      "pair_id": "kept_kept_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_kept_s1s1_b1_r0001_Xp",
+      "pair_id": "kept_kept_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 1,
+      "branch": "kept_kept",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        false
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_kept_s1s1_b1_r0001_Xm",
+      "pair_id": "kept_kept_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.00023506646181294696
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "Z",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s0_b0_r0000_Xp",
+      "pair_id": "kept_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "Z",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b0_r0000_Xm",
+      "pair_id": "kept_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "Z",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s0_b0_r0000_Yp",
+      "pair_id": "kept_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "Z",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b0_r0000_Ym",
+      "pair_id": "kept_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "Z",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s0_b0_r0000_Zp",
+      "pair_id": "kept_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "Z",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b0_r0000_Zm",
+      "pair_id": "kept_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b0_r0001_Xm",
+      "pair_id": "kept_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s0_b0_r0001_Yp",
+      "pair_id": "kept_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b0_r0001_Ym",
+      "pair_id": "kept_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s0_b0_r0001_Zp",
+      "pair_id": "kept_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b0_r0001_Zm",
+      "pair_id": "kept_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s0_b0_r0001_Xp",
+      "pair_id": "kept_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "I",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Z",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b1_r0000_Xm",
+      "pair_id": "kept_erased_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "I",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Z",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s0_b1_r0000_Yp",
+      "pair_id": "kept_erased_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "I",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Z",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b1_r0000_Ym",
+      "pair_id": "kept_erased_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "I",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Z",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s0_b1_r0000_Zp",
+      "pair_id": "kept_erased_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "I",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Z",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b1_r0000_Zm",
+      "pair_id": "kept_erased_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "I",
+            "Y"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "Z",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s0_b1_r0000_Xp",
+      "pair_id": "kept_erased_s0s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s0_b1_r0001_Yp",
+      "pair_id": "kept_erased_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b1_r0001_Ym",
+      "pair_id": "kept_erased_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s0_b1_r0001_Zp",
+      "pair_id": "kept_erased_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b1_r0001_Zm",
+      "pair_id": "kept_erased_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s0_b1_r0001_Xp",
+      "pair_id": "kept_erased_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Z",
+            "Z",
+            "X",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s0_b1_r0001_Xm",
+      "pair_id": "kept_erased_s0s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s1_b0_r0000_Xp",
+      "pair_id": "kept_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b0_r0000_Xm",
+      "pair_id": "kept_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s1_b0_r0000_Yp",
+      "pair_id": "kept_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b0_r0000_Ym",
+      "pair_id": "kept_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s1_b0_r0000_Zp",
+      "pair_id": "kept_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b0_r0000_Zm",
+      "pair_id": "kept_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b0_r0001_Xm",
+      "pair_id": "kept_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s1_b0_r0001_Yp",
+      "pair_id": "kept_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b0_r0001_Ym",
+      "pair_id": "kept_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s1_b0_r0001_Zp",
+      "pair_id": "kept_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b0_r0001_Zm",
+      "pair_id": "kept_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "X",
+            "Y",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s1_b0_r0001_Xp",
+      "pair_id": "kept_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b1_r0000_Xm",
+      "pair_id": "kept_erased_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s1_b1_r0000_Yp",
+      "pair_id": "kept_erased_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b1_r0000_Ym",
+      "pair_id": "kept_erased_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s1_b1_r0000_Zp",
+      "pair_id": "kept_erased_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b1_r0000_Zm",
+      "pair_id": "kept_erased_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "Z"
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s1_b1_r0000_Xp",
+      "pair_id": "kept_erased_s0s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "I",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s0s1_b1_r0001_Yp",
+      "pair_id": "kept_erased_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "I",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b1_r0001_Ym",
+      "pair_id": "kept_erased_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "I",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s0s1_b1_r0001_Zp",
+      "pair_id": "kept_erased_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "I",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b1_r0001_Zm",
+      "pair_id": "kept_erased_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "I",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s0s1_b1_r0001_Xp",
+      "pair_id": "kept_erased_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "I",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s0s1_b1_r0001_Xm",
+      "pair_id": "kept_erased_s0s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "X",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s0_b0_r0000_Xp",
+      "pair_id": "kept_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "X",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b0_r0000_Xm",
+      "pair_id": "kept_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "X",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s0_b0_r0000_Yp",
+      "pair_id": "kept_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "X",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b0_r0000_Ym",
+      "pair_id": "kept_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "X",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s0_b0_r0000_Zp",
+      "pair_id": "kept_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "X",
+            "Y",
+            "Y",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b0_r0000_Zm",
+      "pair_id": "kept_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b0_r0001_Xm",
+      "pair_id": "kept_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s0_b0_r0001_Yp",
+      "pair_id": "kept_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b0_r0001_Ym",
+      "pair_id": "kept_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s0_b0_r0001_Zp",
+      "pair_id": "kept_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b0_r0001_Zm",
+      "pair_id": "kept_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "X",
+            "Z",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s0_b0_r0001_Xp",
+      "pair_id": "kept_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "X",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b1_r0000_Xm",
+      "pair_id": "kept_erased_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "X",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s0_b1_r0000_Yp",
+      "pair_id": "kept_erased_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "X",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b1_r0000_Ym",
+      "pair_id": "kept_erased_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "X",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s0_b1_r0000_Zp",
+      "pair_id": "kept_erased_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "X",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b1_r0000_Zm",
+      "pair_id": "kept_erased_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "I",
+            "X",
+            "Y",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s0_b1_r0000_Xp",
+      "pair_id": "kept_erased_s1s0_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Y",
+            "I",
+            "Z",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s0_b1_r0001_Yp",
+      "pair_id": "kept_erased_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Y",
+            "I",
+            "Z",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b1_r0001_Ym",
+      "pair_id": "kept_erased_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Y",
+            "I",
+            "Z",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s0_b1_r0001_Zp",
+      "pair_id": "kept_erased_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Y",
+            "I",
+            "Z",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b1_r0001_Zm",
+      "pair_id": "kept_erased_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Y",
+            "I",
+            "Z",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s0_b1_r0001_Xp",
+      "pair_id": "kept_erased_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Y",
+            "I",
+            "Z",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s0_b1_r0001_Xm",
+      "pair_id": "kept_erased_s1s0_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s1_b0_r0000_Xp",
+      "pair_id": "kept_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b0_r0000_Xm",
+      "pair_id": "kept_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s1_b0_r0000_Yp",
+      "pair_id": "kept_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b0_r0000_Ym",
+      "pair_id": "kept_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s1_b0_r0000_Zp",
+      "pair_id": "kept_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b0_r0000_Zm",
+      "pair_id": "kept_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b0_r0001_Xm",
+      "pair_id": "kept_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s1_b0_r0001_Yp",
+      "pair_id": "kept_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b0_r0001_Ym",
+      "pair_id": "kept_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s1_b0_r0001_Zp",
+      "pair_id": "kept_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b0_r0001_Zm",
+      "pair_id": "kept_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s1_b0_r0001_Xp",
+      "pair_id": "kept_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b1_r0000_Xm",
+      "pair_id": "kept_erased_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s1_b1_r0000_Yp",
+      "pair_id": "kept_erased_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b1_r0000_Ym",
+      "pair_id": "kept_erased_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s1_b1_r0000_Zp",
+      "pair_id": "kept_erased_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b1_r0000_Zm",
+      "pair_id": "kept_erased_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s1_b1_r0000_Xp",
+      "pair_id": "kept_erased_s1s1_b1_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "kept_erased_s1s1_b1_r0001_Yp",
+      "pair_id": "kept_erased_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b1_r0001_Ym",
+      "pair_id": "kept_erased_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "kept_erased_s1s1_b1_r0001_Zp",
+      "pair_id": "kept_erased_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b1_r0001_Zm",
+      "pair_id": "kept_erased_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "kept_erased_s1s1_b1_r0001_Xp",
+      "pair_id": "kept_erased_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 1,
+      "branch": "kept_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        false,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "kept_erased_s1s1_b1_r0001_Xm",
+      "pair_id": "kept_erased_s1s1_b1_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s0s0_b0_r0000_Xp",
+      "pair_id": "erased_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s0s0_b0_r0000_Xm",
+      "pair_id": "erased_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s0s0_b0_r0000_Yp",
+      "pair_id": "erased_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s0s0_b0_r0000_Ym",
+      "pair_id": "erased_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s0s0_b0_r0000_Zp",
+      "pair_id": "erased_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "I",
+            "X"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "Z",
+            "I",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s0s0_b0_r0000_Zm",
+      "pair_id": "erased_erased_s0s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "X",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s0s0_b0_r0001_Xm",
+      "pair_id": "erased_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "X",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s0s0_b0_r0001_Yp",
+      "pair_id": "erased_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "X",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s0s0_b0_r0001_Ym",
+      "pair_id": "erased_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "X",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s0s0_b0_r0001_Zp",
+      "pair_id": "erased_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "X",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s0s0_b0_r0001_Zm",
+      "pair_id": "erased_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Z",
+            "I",
+            "I",
+            "I",
+            "I"
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "X",
+            "X",
+            "X",
+            "Z"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s0s0_b0_r0001_Xp",
+      "pair_id": "erased_erased_s0s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.015044253556028607
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s0s1_b0_r0000_Xp",
+      "pair_id": "erased_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s0s1_b0_r0000_Xm",
+      "pair_id": "erased_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s0s1_b0_r0000_Yp",
+      "pair_id": "erased_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s0s1_b0_r0000_Ym",
+      "pair_id": "erased_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s0s1_b0_r0000_Zp",
+      "pair_id": "erased_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "I",
+            "Z",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s0s1_b0_r0000_Zm",
+      "pair_id": "erased_erased_s0s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s0s1_b0_r0001_Xm",
+      "pair_id": "erased_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s0s1_b0_r0001_Yp",
+      "pair_id": "erased_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s0s1_b0_r0001_Ym",
+      "pair_id": "erased_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s0s1_b0_r0001_Zp",
+      "pair_id": "erased_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s0s1_b0_r0001_Zm",
+      "pair_id": "erased_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "X",
+            "X",
+            "Y"
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s0s1_b0_r0001_Xp",
+      "pair_id": "erased_erased_s0s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s1s0_b0_r0000_Xp",
+      "pair_id": "erased_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s1s0_b0_r0000_Xm",
+      "pair_id": "erased_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s1s0_b0_r0000_Yp",
+      "pair_id": "erased_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s1s0_b0_r0000_Ym",
+      "pair_id": "erased_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s1s0_b0_r0000_Zp",
+      "pair_id": "erased_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ]
+        ],
+        [
+          "s0",
+          [
+            "Y",
+            "Y",
+            "Y",
+            "I",
+            "X"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s1s0_b0_r0000_Zm",
+      "pair_id": "erased_erased_s1s0_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "I",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s1s0_b0_r0001_Xm",
+      "pair_id": "erased_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "I",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s1s0_b0_r0001_Yp",
+      "pair_id": "erased_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "I",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s1s0_b0_r0001_Ym",
+      "pair_id": "erased_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "I",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s1s0_b0_r0001_Zp",
+      "pair_id": "erased_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "I",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s1s0_b0_r0001_Zm",
+      "pair_id": "erased_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        [
+          "s0",
+          [
+            "X",
+            "I",
+            "I",
+            "X",
+            "I"
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s1s0_b0_r0001_Xp",
+      "pair_id": "erased_erased_s1s0_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s0"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0026594734268394152
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s1s1_b0_r0000_Xp",
+      "pair_id": "erased_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s1s1_b0_r0000_Xm",
+      "pair_id": "erased_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s1s1_b0_r0000_Yp",
+      "pair_id": "erased_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s1s1_b0_r0000_Ym",
+      "pair_id": "erased_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s1s1_b0_r0000_Zp",
+      "pair_id": "erased_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s1s1_b0_r0000_Zm",
+      "pair_id": "erased_erased_s1s1_b0_r0000",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        -1
+      ],
+      "name": "erased_erased_s1s1_b0_r0001_Xm",
+      "pair_id": "erased_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        1
+      ],
+      "name": "erased_erased_s1s1_b0_r0001_Yp",
+      "pair_id": "erased_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Y",
+        -1
+      ],
+      "name": "erased_erased_s1s1_b0_r0001_Ym",
+      "pair_id": "erased_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        1
+      ],
+      "name": "erased_erased_s1s1_b0_r0001_Zp",
+      "pair_id": "erased_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "Z",
+        -1
+      ],
+      "name": "erased_erased_s1s1_b0_r0001_Zm",
+      "pair_id": "erased_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    },
+    {
+      "beta": 0,
+      "branch": "erased_erased",
+      "choices": [
+        [
+          "s1",
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        [
+          "s1",
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      ],
+      "erasure_outputs": [
+        true,
+        true
+      ],
+      "input": [
+        "X",
+        1
+      ],
+      "name": "erased_erased_s1s1_b0_r0001_Xp",
+      "pair_id": "erased_erased_s1s1_b0_r0001",
+      "physical_P_uses": 2,
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "shots": 128,
+      "weight_in_favg": 0.0004701329236258939
+    }
+  ],
+  "evidence_class": "DESIGN_ONLY: no IBM QPU job, no measured physical fidelity",
+  "frozen_prediction_equals_submitted_twirling": true,
+  "implementation": "hw_faithful.FUnit with decoder=cz1 and erase=reset",
+  "interleave_randomizations": true,
+  "m": 5,
+  "one_erased_symmetry_assumption": "P labels IID and encoder/decoder exchange symmetric",
+  "p": 0.15022110482233483,
+  "per_shot_score_range": [
+    0,
+    2
+  ],
+  "plan_sha256": "3215a5a363d2097ed18b6eec54af3123b5686f758a10b19f0871e5e864373e25",
+  "schema": "oneq.r177.paired_faithful_six_state/2",
+  "seed": 177,
+  "separate_calibration_spans_required": true,
+  "six_inputs": [
+    [
+      "X",
+      1
+    ],
+    [
+      "X",
+      -1
+    ],
+    [
+      "Y",
+      1
+    ],
+    [
+      "Y",
+      -1
+    ],
+    [
+      "Z",
+      1
+    ],
+    [
+      "Z",
+      -1
+    ]
+  ],
+  "terminal_readout": "RAW; corrected estimates must be separately typed",
+  "twirl_mode": "client"
+}

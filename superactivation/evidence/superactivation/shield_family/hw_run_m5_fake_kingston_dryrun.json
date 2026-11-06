@@ -1,0 +1,230 @@
+{
+ "protocol": "superactivation two-use (hw_two_use.py)",
+ "m": 5,
+ "design": "sampled-stratified",
+ "circuits_per_stratum": 2,
+ "shots_per_circuit": 2000,
+ "alpha": 0.01,
+ "bar_F_avg": 0.8333333333333334,
+ "snapshot_sha256": "cedd961ac3953d6ec06e689addbb712aed8fb0df320e15050df6b08ca66f6b74",
+ "calibrated_utc": "2026-04-15 09:15:15+02:00",
+ "backend": "fake_kingston",
+ "layout": [
+  73,
+  74,
+  58,
+  75,
+  70,
+  72,
+  71,
+  52,
+  51,
+  69,
+  79,
+  93,
+  53,
+  50
+ ],
+ "layout_proxy": -0.4476739231489947,
+ "noise": {
+  "cz_factor": 2.2943908255991663,
+  "sx_factor": 1.0,
+  "idle": true,
+  "readout": true,
+  "idle_factor": 1.0,
+  "readout_factor": 1.0
+ },
+ "prediction": {
+  "F_e": 0.6454234020931577,
+  "F_e_se": 0.00932011198723598,
+  "F_avg": 0.7636156013954385,
+  "F_avg_se": 0.006213407991490653,
+  "record": "hw_predict_m5_fake_kingston_cz2.29.json"
+ },
+ "predicted_halfwidth_F_avg": 0.7059448128573842,
+ "predicted_run_sd_F_avg": 0.016000092907907278,
+ "predicted_pass_probability": 0.0,
+ "prereg_sha256": null,
+ "sources": [
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\experiments\\superactivation\\shield_family\\hw_two_use.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\experiments\\superactivation\\shield_family\\hw_predict.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\experiments\\superactivation\\shield_family\\hw_run.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\__init__.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\engine.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\freeze.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\layout.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\noise.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\snapshot.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\stats.py",
+  "C:\\Users\\Josh\\Projects\\ONE_Q\\src\\oneq\\hw\\submit.py"
+ ],
+ "n_circuits": 26,
+ "total_shots": 52000,
+ "qpu_seconds_estimate": 20.72,
+ "qpy_sha256": "55b750fc92d04b34f53fed6e41604eb7a9e93a0b49f2891ce91cfa5ad1392abf",
+ "guards": [
+  "AUTHORIZED: needs --i-understand-this-spends-credits AND ONEQ_IBM_SUBMIT=1",
+  "PREREGISTERED: C:\\Users\\Josh\\Projects\\ONE_Q\\docs\\PREREG_superactivation_two_use_m5.md does not hash to ...",
+  "PREREGISTERED: the frozen record pins a different preregistration",
+  "QUOTA: remaining quota was not read",
+  "HEALTHY: the live calibration was not checked",
+  "PREDICTED: pass probability 0 < 0.5 -- the model already expects this verdict to fail (set measurement_reason to run it as a measurement)"
+ ],
+ "verdict_if_submitted": "NO-GO: predicted to fail",
+ "dryrun": {
+  "simulator": "SamplerV2 local mode (qiskit-aer, the fake backend's own noise model)",
+  "F_avg_hat": 0.749198772190515,
+  "F_avg_lower": 0.0432539593331307,
+  "halfwidth": 0.7059448128573843,
+  "F_e_hat": 0.6237981582857726,
+  "F_e_lower": -0.43511906100030395,
+  "passed": false,
+  "model_sensitivity": {
+   "F_avg_fake_own_model": 0.7491987721905149,
+   "F_avg_target_model": 0.7908770828268825,
+   "difference": -0.04167831063636762,
+   "note": "the fake's own model adds relaxation during readout"
+  },
+  "plumbing": {
+   "F_avg_from_counts": 0.7908770828268825,
+   "F_avg_engine_same_circuits": 0.785263901670196,
+   "shot_sd": 0.00220239147809311,
+   "engine_sd": 0.00110140394212365,
+   "z": 2.279518445756489,
+   "note": "SamplerV2 runs the circuits UNSCHEDULED: Aer applies no idle noise, the engine does (+0.003-0.005 expected)",
+   "per_unit": {
+    "kept_kept|s0|0|0#0": {
+     "counts": 1.847,
+     "engine": 1.8078319163566743,
+     "cz": 34
+    },
+    "kept_kept|s0|0|0#1": {
+     "counts": 1.693,
+     "engine": 1.7060201340376746,
+     "cz": 34
+    },
+    "kept_kept|s0|1|0#0": {
+     "counts": 0.011,
+     "engine": 0.01062368600445024,
+     "cz": 35
+    },
+    "kept_kept|s0|1|0#1": {
+     "counts": 0.004,
+     "engine": 0.0027905064530492673,
+     "cz": 31
+    },
+    "kept_kept|s1|0|0#0": {
+     "counts": 0.048,
+     "engine": 0.03581705207855831,
+     "cz": 55
+    },
+    "kept_kept|s1|0|0#1": {
+     "counts": 0.063,
+     "engine": 0.06536034491227072,
+     "cz": 55
+    },
+    "kept_kept|s1|1|0#0": {
+     "counts": 1.67,
+     "engine": 1.6380076000724186,
+     "cz": 55
+    },
+    "kept_kept|s1|1|0#1": {
+     "counts": 1.867,
+     "engine": 1.8622459414926897,
+     "cz": 55
+    },
+    "kept_erased|s0|0|0#0": {
+     "counts": 1.8,
+     "engine": 1.7828707716726302,
+     "cz": 24
+    },
+    "kept_erased|s0|0|0#1": {
+     "counts": 1.742,
+     "engine": 1.718579907811161,
+     "cz": 37
+    },
+    "kept_erased|s0|0|1#0": {
+     "counts": 1.811,
+     "engine": 1.8196927529408573,
+     "cz": 27
+    },
+    "kept_erased|s0|0|1#1": {
+     "counts": 1.774,
+     "engine": 1.7614331876013316,
+     "cz": 30
+    },
+    "kept_erased|s0|1|0#0": {
+     "counts": 0.008,
+     "engine": 0.012955654264394826,
+     "cz": 33
+    },
+    "kept_erased|s0|1|0#1": {
+     "counts": 0.006,
+     "engine": 0.01138369658986761,
+     "cz": 37
+    },
+    "kept_erased|s0|1|1#0": {
+     "counts": 0.016,
+     "engine": 0.013619385321248088,
+     "cz": 18
+    },
+    "kept_erased|s0|1|1#1": {
+     "counts": 0.013,
+     "engine": 0.010375276951607988,
+     "cz": 24
+    },
+    "kept_erased|s1|0|0#0": {
+     "counts": 0.048,
+     "engine": 0.06562513614135768,
+     "cz": 54
+    },
+    "kept_erased|s1|0|0#1": {
+     "counts": 0.031,
+     "engine": 0.05333408553704429,
+     "cz": 54
+    },
+    "kept_erased|s1|0|1#0": {
+     "counts": 0.035,
+     "engine": 0.044752282793488515,
+     "cz": 54
+    },
+    "kept_erased|s1|0|1#1": {
+     "counts": 0.037,
+     "engine": 0.037964233232522605,
+     "cz": 54
+    },
+    "kept_erased|s1|1|0#0": {
+     "counts": 1.869,
+     "engine": 1.8488424368170222,
+     "cz": 54
+    },
+    "kept_erased|s1|1|0#1": {
+     "counts": 1.704,
+     "engine": 1.6371865190524413,
+     "cz": 54
+    },
+    "kept_erased|s1|1|1#0": {
+     "counts": 0.235,
+     "engine": 0.2610598414947497,
+     "cz": 54
+    },
+    "kept_erased|s1|1|1#1": {
+     "counts": 1.781,
+     "engine": 1.7143689193834588,
+     "cz": 54
+    },
+    "erased_erased|None|0|0#0": {
+     "counts": 0.5,
+     "engine": 0.5,
+     "cz": 1
+    },
+    "erased_erased|None|0|0#1": {
+     "counts": 0.5,
+     "engine": 0.5,
+     "cz": 1
+    }
+   }
+  },
+  "counts_sha256": "b5bae9a64f5dc1ab2a052332ee4abf71ac98d2c322408f41d7a54df5cf34eddc"
+ }
+}

@@ -1,0 +1,312 @@
+{
+  "created_utc": "2026-10-18T04:48:57+00:00",
+  "circuit_order": [
+    "smoke_kept_kept_s0s1_Xp",
+    "smoke_kept_kept_s0s1_Xm",
+    "smoke_kept_kept_s0s1_Yp",
+    "smoke_kept_kept_s0s1_Ym",
+    "smoke_kept_kept_s0s1_Zp",
+    "smoke_kept_kept_s0s1_Zm",
+    "smoke_erased_erased_s1s1_Xp",
+    "smoke_erased_erased_s1s1_Xm",
+    "smoke_erased_erased_s1s1_Yp",
+    "smoke_erased_erased_s1s1_Ym",
+    "smoke_erased_erased_s1s1_Zp",
+    "smoke_erased_erased_s1s1_Zm"
+  ],
+  "circuit_sha256": {
+    "smoke_kept_kept_s0s1_Xp": "3deae7bf215625e4283031b855b223995d8fadb17d6c5711a34fafd28ec3c393",
+    "smoke_kept_kept_s0s1_Xm": "69b792bf4b18098653c461d19194158d9a50b639ab8bfa0e81a264e84299048b",
+    "smoke_kept_kept_s0s1_Yp": "02fe1b78504f04a07981019c7750fd76021229c93a0b50897f97d3fb5f1ac8e7",
+    "smoke_kept_kept_s0s1_Ym": "77fcb66e71f88ce55ddf544c4377af7948c69541861c43fa803ddb4b3f993c63",
+    "smoke_kept_kept_s0s1_Zp": "befc5633ed437cbf3d6c9443dc34fefb898166372299402762d3f581ee4efbb7",
+    "smoke_kept_kept_s0s1_Zm": "7f4323048966e65abf3200e9f37698db1728d2ecd80fd12fe5f5dd0646103434",
+    "smoke_erased_erased_s1s1_Xp": "19e2dba125a1abddfcb273100e2cab728088247e49f7e96131e559c07863165e",
+    "smoke_erased_erased_s1s1_Xm": "6853c1bd5733722ff7110597efa51b7a4ba59058069804b46b77ce0c5fd68ef4",
+    "smoke_erased_erased_s1s1_Yp": "07a2a01beb0e90155ccb13af595b6b03df6b5d892547e20f56204a3a75e06270",
+    "smoke_erased_erased_s1s1_Ym": "ac7c882032ca85af8377a190ee6a4609b140273c66e8bf82c9a174d32dd0ede1",
+    "smoke_erased_erased_s1s1_Zp": "b52d1ea53a64b1058e0dfd230fcebf4afb9214ed187663f1178ded4330933ffd",
+    "smoke_erased_erased_s1s1_Zm": "b716861c4c10966062f87476647f36e2992a439ae8a430a42f6d2c68e163748d"
+  },
+  "qpy_sha256": "b7105f99189d344a5a38417f2e64628b9b3c8052af7cb7edcc54fcf984d9d560",
+  "n_circuits": 12,
+  "versions": {
+    "qiskit": "2.5.0",
+    "qiskit-aer": null,
+    "qiskit-ibm-runtime": "0.47.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "source_sha256": {
+    "tools/r178_faithful_qpy_pilot.py": "87903a736797a886a8ace881955aa4eb892a828345a1a0929904edb8d640dedd",
+    "experiments/superactivation/shield_family/hw_faithful.py": "fd476b5998f884d4eeed494a9fe26b8cc6235cfda59cb4ee47ec7223e59ab248",
+    "src/oneq/hw/freeze.py": "442eed6302df6981424960eb086c7e6806dfea2988baead12d0fccf4d2071640",
+    "src/oneq/hw/layout.py": "133fbe8ad14a8c6f548e245f233bc21bd94f0ad4b4828819f5755790aef00c5a"
+  },
+  "schema": "oneq.r178.faithful_six_state_qpy_pilot/1",
+  "evidence": "OFFLINE CALIBRATED FAKE BACKEND ONLY; QPY IS NOT AUTHORIZED FOR IBM SUBMISSION",
+  "research_only": true,
+  "backend": "ibm_kingston",
+  "snapshot_sha256": "1a058f46e1a3cf8c901bb4176470ed0867ef2562362118789c76dca74e5c7423",
+  "source_calibration_utc": "2026-10-17 19:29:50-04:00",
+  "m": 7,
+  "n_channel_uses": 2,
+  "physical_uses_per_circuit": 2,
+  "final_output_erasure": "trace unused A registers; no reset in ISA",
+  "score_class": "[0,2] importance estimator, not Bernoulli",
+  "paired_P_choice_sha256": {
+    "kept": "12aaa0f7ef431d6e3bb1eaa5ad647670437106bd199e1b91c0634895c1948424",
+    "erased": "fd4f5834315546deced7267f78779d63d29cbeff3649018bbeb31e886dffdb89"
+  },
+  "shared_initial_layout": [
+    92,
+    91,
+    79,
+    109,
+    0,
+    94,
+    72,
+    74,
+    59,
+    75,
+    14,
+    1,
+    95,
+    71,
+    73,
+    55,
+    54,
+    13,
+    110,
+    118,
+    108,
+    98,
+    90,
+    97,
+    106,
+    111,
+    129,
+    107,
+    93,
+    89,
+    87,
+    105
+  ],
+  "transpiler_seed": 5,
+  "observed_policy": {
+    "max_readout": 0.05,
+    "max_readout_any": 0.15,
+    "min_t1": 2e-05,
+    "min_t2": 2e-05,
+    "max_sx": 0.002,
+    "max_cz": 0.01
+  },
+  "is_prospective_full_P_channel_ensemble": false,
+  "same_fixed_logical_channel_randomizer_within_six_inputs": true,
+  "channel_boundaries_compiler_barriers": true,
+  "barrier_sync_is_not_free_and_requires_hardware_prereg": true,
+  "is_IBM_QPU_data": false,
+  "independent_calibration_spans_required": true,
+  "twirling_mode": "client (proposed, not submitted or frozen in job options)",
+  "shots_planned_per_circuit": 0,
+  "counts": [
+    {
+      "name": "smoke_kept_kept_s0s1_Xp",
+      "physical_registers": 32,
+      "native_cz": 104,
+      "native_sx": 221,
+      "depth": 102,
+      "native_gate_count": {
+        "sx": 221,
+        "rz": 134,
+        "cz": 104,
+        "measure": 17,
+        "x": 14,
+        "barrier": 2
+      }
+    },
+    {
+      "name": "smoke_kept_kept_s0s1_Xm",
+      "physical_registers": 32,
+      "native_cz": 104,
+      "native_sx": 221,
+      "depth": 102,
+      "native_gate_count": {
+        "sx": 221,
+        "rz": 134,
+        "cz": 104,
+        "measure": 17,
+        "x": 14,
+        "barrier": 2
+      }
+    },
+    {
+      "name": "smoke_kept_kept_s0s1_Yp",
+      "physical_registers": 32,
+      "native_cz": 104,
+      "native_sx": 222,
+      "depth": 101,
+      "native_gate_count": {
+        "sx": 222,
+        "rz": 133,
+        "cz": 104,
+        "measure": 17,
+        "x": 14,
+        "barrier": 2
+      }
+    },
+    {
+      "name": "smoke_kept_kept_s0s1_Ym",
+      "physical_registers": 32,
+      "native_cz": 104,
+      "native_sx": 222,
+      "depth": 101,
+      "native_gate_count": {
+        "sx": 222,
+        "rz": 134,
+        "cz": 104,
+        "measure": 17,
+        "x": 14,
+        "barrier": 2
+      }
+    },
+    {
+      "name": "smoke_kept_kept_s0s1_Zp",
+      "physical_registers": 32,
+      "native_cz": 104,
+      "native_sx": 221,
+      "depth": 103,
+      "native_gate_count": {
+        "sx": 221,
+        "rz": 134,
+        "cz": 104,
+        "measure": 17,
+        "x": 14,
+        "barrier": 2
+      }
+    },
+    {
+      "name": "smoke_kept_kept_s0s1_Zm",
+      "physical_registers": 32,
+      "native_cz": 104,
+      "native_sx": 221,
+      "depth": 103,
+      "native_gate_count": {
+        "sx": 221,
+        "rz": 135,
+        "cz": 104,
+        "measure": 17,
+        "x": 14,
+        "barrier": 2
+      }
+    },
+    {
+      "name": "smoke_erased_erased_s1s1_Xp",
+      "physical_registers": 32,
+      "native_cz": 189,
+      "native_sx": 377,
+      "depth": 189,
+      "native_gate_count": {
+        "sx": 377,
+        "cz": 189,
+        "rz": 106,
+        "x": 12,
+        "barrier": 2,
+        "measure": 2
+      }
+    },
+    {
+      "name": "smoke_erased_erased_s1s1_Xm",
+      "physical_registers": 32,
+      "native_cz": 189,
+      "native_sx": 377,
+      "depth": 189,
+      "native_gate_count": {
+        "sx": 377,
+        "cz": 189,
+        "rz": 106,
+        "x": 12,
+        "barrier": 2,
+        "measure": 2
+      }
+    },
+    {
+      "name": "smoke_erased_erased_s1s1_Yp",
+      "physical_registers": 32,
+      "native_cz": 189,
+      "native_sx": 377,
+      "depth": 188,
+      "native_gate_count": {
+        "sx": 377,
+        "cz": 189,
+        "rz": 104,
+        "x": 12,
+        "barrier": 2,
+        "measure": 2
+      }
+    },
+    {
+      "name": "smoke_erased_erased_s1s1_Ym",
+      "physical_registers": 32,
+      "native_cz": 189,
+      "native_sx": 377,
+      "depth": 188,
+      "native_gate_count": {
+        "sx": 377,
+        "cz": 189,
+        "rz": 105,
+        "x": 12,
+        "barrier": 2,
+        "measure": 2
+      }
+    },
+    {
+      "name": "smoke_erased_erased_s1s1_Zp",
+      "physical_registers": 32,
+      "native_cz": 189,
+      "native_sx": 376,
+      "depth": 189,
+      "native_gate_count": {
+        "sx": 376,
+        "cz": 189,
+        "rz": 104,
+        "x": 12,
+        "barrier": 2,
+        "measure": 2
+      }
+    },
+    {
+      "name": "smoke_erased_erased_s1s1_Zm",
+      "physical_registers": 32,
+      "native_cz": 189,
+      "native_sx": 376,
+      "depth": 189,
+      "native_gate_count": {
+        "sx": 376,
+        "cz": 189,
+        "rz": 105,
+        "x": 12,
+        "barrier": 2,
+        "measure": 2
+      }
+    }
+  ],
+  "channel_native_segment_sha256": {
+    "kept": "5945f1c67e5ef599dee0e24db5a3e1c419b64a2ce9273c655ce7821bcd6a0c4c",
+    "erased": "3671ff66423df612a43a036a894c2a02b1db2a7b0926fb8c998b7cd8d29a4c71"
+  },
+  "semantic_instruction_sha256": {
+    "smoke_kept_kept_s0s1_Xp": "6a5f6d159596c5b25d8643e2706b48b64c80b5bed8f2df4df1549724219384be",
+    "smoke_kept_kept_s0s1_Xm": "57c31209c72c916dfa2f73562c3028bacc0da8704f19dcf3029b7db6ffa5e066",
+    "smoke_kept_kept_s0s1_Yp": "cf9ab1287ad4b63cf9dbd643c281334c0ea6c906de2e9fe4a01fef45553c3990",
+    "smoke_kept_kept_s0s1_Ym": "aedcb670b559b1bd7d29ef5342cd9a1d62c035450bb692b0b57dd34aca13521e",
+    "smoke_kept_kept_s0s1_Zp": "67c70e4c17c3fa4b8e823f7b5e9e043a6569bd03392303fe9b0980f49232a383",
+    "smoke_kept_kept_s0s1_Zm": "71b87a46d3a180ef94b30da2ac4b8185b80960a8815fd4016a6196575c31f52d",
+    "smoke_erased_erased_s1s1_Xp": "ff84438e9b81ea7bd4747ec2bf34352f8bfba25078b9e354afe69b2c86e5fbb3",
+    "smoke_erased_erased_s1s1_Xm": "e8cf07da637138770eed20ad90bb52f8f6789aeacbb222f5b9674f4e7ac1a299",
+    "smoke_erased_erased_s1s1_Yp": "4e95066e9762f52d3fc14e82ee5a608ea5b33ed9b69ed886e44b05c12e7b1974",
+    "smoke_erased_erased_s1s1_Ym": "4202776b7c05c36289523f2d4e9d5c3b933289249cd5ce1286553d0236fb695f",
+    "smoke_erased_erased_s1s1_Zp": "4aa8abab775de5438dc8b4ad398ca844cfedc680c797ee332d995e9f604bc80c",
+    "smoke_erased_erased_s1s1_Zm": "f6914df6189e1a70044da090aefbfbb2b5b6433717ff07fb0a1f548b5530dc10"
+  }
+}

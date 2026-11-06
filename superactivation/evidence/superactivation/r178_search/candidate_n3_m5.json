@@ -1,0 +1,24 @@
+{
+  "schema": "oneq.r178.symmetric_code_candidate/1",
+  "evidence": "NUMERICAL / EFFECTIVE FLAGGED CHANNEL ONLY",
+  "n_uses": 3,
+  "shield_m": 5,
+  "p": 0.15022110482233483,
+  "seed": 6,
+  "restart_count": 7,
+  "optimization_steps": 40,
+  "F_e_candidate_float": 0.788492382168774,
+  "F_e_by_k_flagged": [
+    0.9999999999999984,
+    0.8956485822418909,
+    0.746807410380623,
+    0.3805710794826523
+  ],
+  "control_closed_n_code_float": 0.7648744911500786,
+  "candidate_isometry_trace_error": 1.1102230246251565e-15,
+  "margin_above_three_quarters": 0.03849238216877404,
+  "numerical_optimization_monotone_witness": true,
+  "not_a_rigorous_certificate": true,
+  "not_a_physical_Ibm_run": true,
+  "isometry_numpy_sha256": "659877be1b0dd5fc03ea51cb9513fe344184dfdd0273aec3a9b7d40db106e533"
+}

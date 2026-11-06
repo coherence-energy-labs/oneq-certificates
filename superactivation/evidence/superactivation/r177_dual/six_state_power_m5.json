@@ -1,0 +1,72 @@
+{
+  "evidence": "OFFLINE STRICT HOEFFDING; not cost prediction, quantum witness or IBM result",
+  "k2_paired_plan_uncertainty": {
+    "alpha": 0.01,
+    "by_cardinal": {
+      "X+": {
+        "P_unitary_sampling_hoeffding_radius": 0.9716942648375029,
+        "shot_hoeffding_radius": 0.08588645048833442,
+        "total_uncertainty_radius": 1.0575807153258372
+      },
+      "X-": {
+        "P_unitary_sampling_hoeffding_radius": 0.9716942648375029,
+        "shot_hoeffding_radius": 0.08588645048833442,
+        "total_uncertainty_radius": 1.0575807153258372
+      },
+      "Y+": {
+        "P_unitary_sampling_hoeffding_radius": 0.9716942648375029,
+        "shot_hoeffding_radius": 0.08588645048833442,
+        "total_uncertainty_radius": 1.0575807153258372
+      },
+      "Y-": {
+        "P_unitary_sampling_hoeffding_radius": 0.9716942648375029,
+        "shot_hoeffding_radius": 0.08588645048833442,
+        "total_uncertainty_radius": 1.0575807153258372
+      },
+      "Z+": {
+        "P_unitary_sampling_hoeffding_radius": 0.9716942648375029,
+        "shot_hoeffding_radius": 0.08588645048833442,
+        "total_uncertainty_radius": 1.0575807153258372
+      },
+      "Z-": {
+        "P_unitary_sampling_hoeffding_radius": 0.9716942648375029,
+        "shot_hoeffding_radius": 0.08588645048833442,
+        "total_uncertainty_radius": 1.0575807153258372
+      }
+    },
+    "conditions": [
+      "All per-shot scores lie in [0,2] and the circuit score code has been independently verified",
+      "Shot noise independent conditional on each sampled P_d unitary within each circuit",
+      "The P_d unitary labels are independently sampled across pair_id groups with the declared probabilities",
+      "No unmeasured provider drift, scheduling bias, or cross-circuit memory violates independence",
+      "The matched six-state physical circuit implements identical channel-unitary draws for each cardinal input",
+      "No post-selection; beta score of 2 is a bounded importance weight, not binary survival"
+    ],
+    "confidence_at_least": 0.99,
+    "evidence_class": "OFFLINE THEORETICAL COST PLAN; not a measured quantum witness",
+    "pair_randomizer_not_equivalent_to_shot_count": true,
+    "schema": "oneq.r177.paired_two_stage_uncertainty/1"
+  },
+  "m": 5,
+  "schema": "oneq.r177.six_state_power/1",
+  "theoretical_randomizer_requirements": [
+    {
+      "lower_bound_on_six_state_circuit_settings": 22680,
+      "minimum_unitary_draws_per_stratum": 189,
+      "practical_hardware_cost_measured": false,
+      "target_sampling_radius": 0.1
+    },
+    {
+      "lower_bound_on_six_state_circuit_settings": 90720,
+      "minimum_unitary_draws_per_stratum": 756,
+      "practical_hardware_cost_measured": false,
+      "target_sampling_radius": 0.05
+    },
+    {
+      "lower_bound_on_six_state_circuit_settings": 566520,
+      "minimum_unitary_draws_per_stratum": 4721,
+      "practical_hardware_cost_measured": false,
+      "target_sampling_radius": 0.02
+    }
+  ]
+}

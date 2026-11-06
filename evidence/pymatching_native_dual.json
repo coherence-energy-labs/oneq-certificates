@@ -1,0 +1,126 @@
+{
+ "schema": "oneq-pymatching-native-dual/1",
+ "configs": {
+  "sim_d5_r25": {
+   "raw": {
+    "nontrivial": 2000,
+    "correction_equals_plain_pymatching": 2000,
+    "status": {
+     "NOT_PROVEN": 1997,
+     "EPSILON_OPTIMAL": 3
+    },
+    "eps_max_seen": 1.3141091896677862e-05,
+    "eps_median": 3.991748277121732e-06,
+    "decode_us_median": 23.700064048171043,
+    "decode_with_duals_us_median": 107.70000517368317,
+    "convert_us_median": 195.60009241104126,
+    "check_ms_median": 6.588550051674247,
+    "sets_per_receipt_median": 48.0
+   },
+   "grid": {
+    "nontrivial": 2000,
+    "correction_equals_plain_pymatching": 2000,
+    "status": {
+     "EXACT_OPTIMAL": 2000
+    },
+    "eps_max_seen": 0.0,
+    "eps_median": 0.0,
+    "decode_us_median": 21.700048819184303,
+    "decode_with_duals_us_median": 103.199970908463,
+    "convert_us_median": 181.79998733103275,
+    "check_ms_median": 6.241049850359559,
+    "sets_per_receipt_median": 48.0,
+    "grid_bits": 19,
+    "same_dual_on_raw_graph": {
+     "status": {
+      "NOT_PROVEN": 2000
+     },
+     "eps_max_seen": 4.868579307193325e-05,
+     "eps_median": 2.5850075686774974e-05
+    }
+   }
+  },
+  "willow_d5_at_q8_7_X_r30": {
+   "raw": {
+    "nontrivial": 2000,
+    "correction_equals_plain_pymatching": 2000,
+    "status": {
+     "NOT_PROVEN": 2000
+    },
+    "eps_max_seen": 2.033781002059121e-05,
+    "eps_median": 1.0060977991107662e-05,
+    "decode_us_median": 34.69991497695446,
+    "decode_with_duals_us_median": 142.5000373274088,
+    "convert_us_median": 286.3999688997865,
+    "check_ms_median": 8.673150092363358,
+    "sets_per_receipt_median": 67.0
+   },
+   "grid": {
+    "nontrivial": 2000,
+    "correction_equals_plain_pymatching": 2000,
+    "status": {
+     "EXACT_OPTIMAL": 2000
+    },
+    "eps_max_seen": 0.0,
+    "eps_median": 0.0,
+    "decode_us_median": 32.69989974796772,
+    "decode_with_duals_us_median": 139.000010676682,
+    "convert_us_median": 267.44999922811985,
+    "check_ms_median": 8.173050126060843,
+    "sets_per_receipt_median": 67.0,
+    "grid_bits": 18,
+    "same_dual_on_raw_graph": {
+     "status": {
+      "NOT_PROVEN": 2000
+     },
+     "eps_max_seen": 0.00010903062614807595,
+     "eps_median": 4.9977964625080564e-05
+    }
+   }
+  },
+  "willow_d7_at_q6_7_X_r30": {
+   "raw": {
+    "nontrivial": 2000,
+    "correction_equals_plain_pymatching": 2000,
+    "status": {
+     "NOT_PROVEN": 2000
+    },
+    "eps_max_seen": 3.590505204850258e-05,
+    "eps_median": 1.981617749924242e-05,
+    "decode_us_median": 75.29999129474163,
+    "decode_with_duals_us_median": 270.29996272176504,
+    "convert_us_median": 558.3000602200627,
+    "check_ms_median": 19.99985007569194,
+    "sets_per_receipt_median": 142.0
+   },
+   "grid": {
+    "nontrivial": 2000,
+    "correction_equals_plain_pymatching": 2000,
+    "status": {
+     "EXACT_OPTIMAL": 2000
+    },
+    "eps_max_seen": 0.0,
+    "eps_median": 0.0,
+    "decode_us_median": 73.69997911155224,
+    "decode_with_duals_us_median": 275.8000046014786,
+    "convert_us_median": 525.499926880002,
+    "check_ms_median": 18.931300030089915,
+    "sets_per_receipt_median": 142.0,
+    "grid_bits": 18,
+    "same_dual_on_raw_graph": {
+     "status": {
+      "NOT_PROVEN": 2000
+     },
+     "eps_max_seen": 0.00019090482496004848,
+     "eps_median": 0.00010659010426910352
+    }
+   }
+  }
+ },
+ "shots_per_config": 2000,
+ "patch_sha256": "6d1843e968b25763e0387ed01b0f73d2ffd639709883c064e14d16d605a06401",
+ "build": "pymatching-2.4.0 sdist (sha256 0c30dafa...2326) + the patch, MinGW-w64 g++ 15 (UCRT), -include cstdint, against CPython 3.14.3",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "sim_shots": "the 10^6-shot run's own seed plan, chunks 1.. (250 shots each)",
+ "willow_shots": "the first shots of the development configuration"
+}

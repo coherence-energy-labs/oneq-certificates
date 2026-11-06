@@ -1,0 +1,22 @@
+{
+ "schema": "oneq-epsilon-receipt-archive/1",
+ "config": "heldout_d7_X_r10",
+ "archive": "heldout_d7_X_r10.tar",
+ "sha256": "e2d9669caa8c89a44e99ac21b7bf3ee9490472520eede1288fbd65c82868951b",
+ "bytes": 307200,
+ "members": 7,
+ "chunks_index_sha256": "18693a606e237835b39eb924b7357a9439e168a42b235c9acf306e00bc24485c",
+ "extract_to": "the repository root (members are data/epsilon_receipts/<config>/chunk_*.jsonl.gz)",
+ "then": "python tools/replay_epsilon_receipts.py --config heldout_d7_X_r10 --jobs 8 --partial",
+ "partial": true,
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "why_partial": "the run was stopped by its preregistered rule; these are every chunk it completed"
+}

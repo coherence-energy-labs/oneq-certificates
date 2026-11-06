@@ -1,0 +1,42 @@
+{
+ "created_utc": "2026-10-17T00:06:21+00:00",
+ "circuit_order": [
+  "end_r146_ro_all0",
+  "end_r146_ro_all1",
+  "end_r146_ro_alt01",
+  "end_r146_ro_alt10",
+  "end_blk147_ro_all0",
+  "end_blk147_ro_all1",
+  "end_blk147_ro_alt01",
+  "end_blk147_ro_alt10",
+  "t1_r146",
+  "t1_blk147"
+ ],
+ "circuit_sha256": {
+  "end_r146_ro_all0": "f1a10a7764f36114177ec200aa894901ebb13879219d51aeff45f9b46f5014f7",
+  "end_r146_ro_all1": "4f7e3f9011fa4ba101d649d78e365298b5fee10f66d5783bd82c2f700e8c3eef",
+  "end_r146_ro_alt01": "d31287a37ecf047b14ab32cee3ce81d08c7e4835d3fcf4ff0433adc2264fac75",
+  "end_r146_ro_alt10": "e3134ce7e08c3512eca585edf7e54c9bfd5ca3559ba7b4e8d61d4f47c0eac423",
+  "end_blk147_ro_all0": "106963251062f6a436ea6e8728b4da5dea86e06fb07bd57cbb990450a86ceae7",
+  "end_blk147_ro_all1": "f84ab7ce3f4dc810b7da7f77580ae83e79a477f1726cb6376c2df9cb1885bdc0",
+  "end_blk147_ro_alt01": "c5799ae7df4b5f2eb233c897a9df2ecf35b71cc381134278a8bbe5ccecd6c59d",
+  "end_blk147_ro_alt10": "34a1cc6b25b2fbc1edd1239edf629db8ae6a71318179f89753745cb91f65a1a3",
+  "t1_r146": "2206119ac1a101973945e0b2d4d4ade70567f2476c3a0d39e67c061733e70728",
+  "t1_blk147": "06bf8fa16e94974c7888f5cf3acab0ff0f1888808ce3625b1a0eb8da2f6d7465"
+ },
+ "qpy_sha256": "be487d21c3c0ea6bb30dea3769e8ee55861b132fe5283e10c8d719da7d6cf886",
+ "n_circuits": 10,
+ "versions": {
+  "qiskit": "2.5.2",
+  "qiskit-aer": "0.17.2",
+  "qiskit-ibm-runtime": "0.50.0",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1"
+ },
+ "source_sha256": {},
+ "kind": "R152 EXPLORATORY: end-of-job readout sentinel and in-circuit T1, outside every verdict",
+ "t1_wait_dt": 12496,
+ "t1_wait_s": 4.9984e-05,
+ "prereg": "PREREG_campaign_r152_one_job.md",
+ "prereg_sha256": "f3c4bdf3dab050222b7fd1f2a5fd880937592efad9af1422aba6bc3a003f9c71"
+}

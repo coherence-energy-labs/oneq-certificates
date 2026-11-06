@@ -1,0 +1,32 @@
+{
+  "prereg": "PREREG_superactivation_twirl_followup_2026-10-12.md",
+  "prereg_sha256": "6135a2ec550b1ab1169e5751b5a676409580970ece86e9e6ab1452c58cec16da",
+  "backend": "ibm_kingston",
+  "layout": [
+    148,
+    149
+  ],
+  "shots": 4000,
+  "twirling": {
+    "gates": true,
+    "measure": false,
+    "num_randomizations": 32
+  },
+  "circuit_names": [
+    "pauli_I_ZZ",
+    "pauli_I_XX",
+    "pauli_I_YY",
+    "depth_2_ZZ",
+    "depth_2_XX",
+    "depth_2_YY",
+    "depth_4_ZZ",
+    "depth_4_XX",
+    "depth_4_YY",
+    "depth_8_ZZ",
+    "depth_8_XX",
+    "depth_8_YY"
+  ],
+  "job_id": "db6pne04qg6s73c561s0",
+  "submitted_utc": "2026-10-13T02:47:21Z",
+  "quota_remaining_before_s": 174
+}

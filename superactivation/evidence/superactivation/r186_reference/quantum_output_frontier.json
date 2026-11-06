@@ -1,0 +1,1164 @@
+{
+  "Pareto_on_DECLARED_ideal_metrics_only": [
+    {
+      "decoder": "cz2",
+      "m": 1
+    },
+    {
+      "decoder": "cz1",
+      "m": 1
+    },
+    {
+      "decoder": "cz2",
+      "m": 2
+    },
+    {
+      "decoder": "cz1",
+      "m": 2
+    },
+    {
+      "decoder": "cz2",
+      "m": 3
+    },
+    {
+      "decoder": "cz1",
+      "m": 3
+    },
+    {
+      "decoder": "cz2",
+      "m": 4
+    },
+    {
+      "decoder": "cz1",
+      "m": 4
+    },
+    {
+      "decoder": "cz2",
+      "m": 5
+    },
+    {
+      "decoder": "cz1",
+      "m": 5
+    },
+    {
+      "decoder": "cz2",
+      "m": 6
+    },
+    {
+      "decoder": "cz1",
+      "m": 6
+    },
+    {
+      "decoder": "cz2",
+      "m": 7
+    },
+    {
+      "decoder": "cz1",
+      "m": 7
+    }
+  ],
+  "candidates": [
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 2,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 7,
+            "cz": 2,
+            "h": 7,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 5,
+            "s": 1,
+            "x": 1
+          },
+          "classical_bits": 5,
+          "native_P_CZ_in_example": 2,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 9,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 1,
+            "cx": 9,
+            "cz": 2,
+            "h": 7,
+            "if_else": 4,
+            "measure": 5,
+            "p": 1,
+            "reset": 2,
+            "s": 1,
+            "x": 1
+          },
+          "classical_bits": 5,
+          "native_P_CZ_in_example": 2,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 9,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 1,
+            "cx": 9,
+            "cz": 2,
+            "h": 7,
+            "if_else": 4,
+            "measure": 5,
+            "p": 1,
+            "s": 1,
+            "x": 1
+          },
+          "classical_bits": 5,
+          "native_P_CZ_in_example": 2,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 9,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.6072330470336311,
+      "m": 1,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 9,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 1,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 7,
+            "cz": 2,
+            "h": 7,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 5,
+            "s": 1,
+            "x": 1
+          },
+          "classical_bits": 6,
+          "native_P_CZ_in_example": 2,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 9,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 8,
+            "cz": 2,
+            "h": 7,
+            "if_else": 6,
+            "measure": 6,
+            "p": 1,
+            "reset": 2,
+            "s": 1,
+            "x": 1
+          },
+          "classical_bits": 6,
+          "native_P_CZ_in_example": 2,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 9,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 8,
+            "cz": 2,
+            "h": 7,
+            "if_else": 6,
+            "measure": 6,
+            "p": 1,
+            "s": 1,
+            "x": 1
+          },
+          "classical_bits": 6,
+          "native_P_CZ_in_example": 2,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 9,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 1,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.6072330470336311,
+      "m": 1,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 9,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 4,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 9,
+            "cz": 4,
+            "h": 9,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 7,
+            "s": 1,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 6,
+          "native_P_CZ_in_example": 4,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 13,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 2,
+            "cx": 12,
+            "cz": 4,
+            "h": 9,
+            "if_else": 6,
+            "measure": 6,
+            "p": 1,
+            "reset": 3,
+            "s": 1,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 6,
+          "native_P_CZ_in_example": 4,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 13,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 2,
+            "cx": 12,
+            "cz": 4,
+            "h": 9,
+            "if_else": 6,
+            "measure": 6,
+            "p": 1,
+            "s": 1,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 6,
+          "native_P_CZ_in_example": 4,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 13,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.6527777777777778,
+      "m": 2,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 13,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 2,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 9,
+            "cz": 4,
+            "h": 9,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 7,
+            "s": 1,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 8,
+          "native_P_CZ_in_example": 4,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 13,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 10,
+            "cz": 4,
+            "h": 9,
+            "if_else": 10,
+            "measure": 8,
+            "p": 1,
+            "reset": 3,
+            "s": 1,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 8,
+          "native_P_CZ_in_example": 4,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 13,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 10,
+            "cz": 4,
+            "h": 9,
+            "if_else": 10,
+            "measure": 8,
+            "p": 1,
+            "s": 1,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 8,
+          "native_P_CZ_in_example": 4,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 13,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 2,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.6527777777777778,
+      "m": 2,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 13,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 6,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 11,
+            "cz": 6,
+            "h": 11,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 9,
+            "s": 2,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 7,
+          "native_P_CZ_in_example": 6,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 17,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 3,
+            "cx": 15,
+            "cz": 6,
+            "h": 11,
+            "if_else": 8,
+            "measure": 7,
+            "p": 1,
+            "reset": 4,
+            "s": 2,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 7,
+          "native_P_CZ_in_example": 6,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 17,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 3,
+            "cx": 15,
+            "cz": 6,
+            "h": 11,
+            "if_else": 8,
+            "measure": 7,
+            "p": 1,
+            "s": 2,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 7,
+          "native_P_CZ_in_example": 6,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 17,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.6961539598512124,
+      "m": 3,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 17,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 3,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 11,
+            "cz": 6,
+            "h": 11,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 9,
+            "s": 2,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 10,
+          "native_P_CZ_in_example": 6,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 17,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 12,
+            "cz": 6,
+            "h": 11,
+            "if_else": 14,
+            "measure": 10,
+            "p": 1,
+            "reset": 4,
+            "s": 2,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 10,
+          "native_P_CZ_in_example": 6,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 17,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 12,
+            "cz": 6,
+            "h": 11,
+            "if_else": 14,
+            "measure": 10,
+            "p": 1,
+            "s": 2,
+            "sdg": 1,
+            "x": 1
+          },
+          "classical_bits": 10,
+          "native_P_CZ_in_example": 6,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 17,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 3,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.6961539598512124,
+      "m": 3,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 17,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 8,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 13,
+            "cz": 8,
+            "h": 13,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 11,
+            "s": 2,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 8,
+          "native_P_CZ_in_example": 8,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 21,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 4,
+            "cx": 18,
+            "cz": 8,
+            "h": 13,
+            "if_else": 10,
+            "measure": 8,
+            "p": 1,
+            "reset": 5,
+            "s": 2,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 8,
+          "native_P_CZ_in_example": 8,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 21,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 4,
+            "cx": 18,
+            "cz": 8,
+            "h": 13,
+            "if_else": 10,
+            "measure": 8,
+            "p": 1,
+            "s": 2,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 8,
+          "native_P_CZ_in_example": 8,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 21,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.735,
+      "m": 4,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 21,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 4,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 13,
+            "cz": 8,
+            "h": 13,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 11,
+            "s": 2,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 12,
+          "native_P_CZ_in_example": 8,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 21,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 14,
+            "cz": 8,
+            "h": 13,
+            "if_else": 18,
+            "measure": 12,
+            "p": 1,
+            "reset": 5,
+            "s": 2,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 12,
+          "native_P_CZ_in_example": 8,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 21,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 14,
+            "cz": 8,
+            "h": 13,
+            "if_else": 18,
+            "measure": 12,
+            "p": 1,
+            "s": 2,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 12,
+          "native_P_CZ_in_example": 8,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 21,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 4,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.735,
+      "m": 4,
+      "minimum_effective_visibility_if_final_depolarization": null,
+      "native_quantum_registers": 21,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 10,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 15,
+            "cz": 10,
+            "h": 15,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 13,
+            "s": 3,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 9,
+          "native_P_CZ_in_example": 10,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 25,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 5,
+            "cx": 21,
+            "cz": 10,
+            "h": 15,
+            "if_else": 12,
+            "measure": 9,
+            "p": 1,
+            "reset": 6,
+            "s": 3,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 9,
+          "native_P_CZ_in_example": 10,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 25,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 5,
+            "cx": 21,
+            "cz": 10,
+            "h": 15,
+            "if_else": 12,
+            "measure": 9,
+            "p": 1,
+            "s": 3,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 9,
+          "native_P_CZ_in_example": 10,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 25,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.7679757664667596,
+      "m": 5,
+      "minimum_effective_visibility_if_final_depolarization": 0.965296124586336,
+      "native_quantum_registers": 25,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 5,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 15,
+            "cz": 10,
+            "h": 15,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 13,
+            "s": 3,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 14,
+          "native_P_CZ_in_example": 10,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 25,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 16,
+            "cz": 10,
+            "h": 15,
+            "if_else": 22,
+            "measure": 14,
+            "p": 1,
+            "reset": 6,
+            "s": 3,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 14,
+          "native_P_CZ_in_example": 10,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 25,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 16,
+            "cz": 10,
+            "h": 15,
+            "if_else": 22,
+            "measure": 14,
+            "p": 1,
+            "s": 3,
+            "sdg": 2,
+            "x": 1
+          },
+          "classical_bits": 14,
+          "native_P_CZ_in_example": 10,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 25,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 5,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.7679757664667596,
+      "m": 5,
+      "minimum_effective_visibility_if_final_depolarization": 0.965296124586336,
+      "native_quantum_registers": 25,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 12,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 17,
+            "cz": 12,
+            "h": 17,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 15,
+            "s": 3,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 10,
+          "native_P_CZ_in_example": 12,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 29,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 6,
+            "cx": 24,
+            "cz": 12,
+            "h": 17,
+            "if_else": 14,
+            "measure": 10,
+            "p": 1,
+            "reset": 7,
+            "s": 3,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 10,
+          "native_P_CZ_in_example": 12,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 29,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 6,
+            "cx": 24,
+            "cz": 12,
+            "h": 17,
+            "if_else": 14,
+            "measure": 10,
+            "p": 1,
+            "s": 3,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 10,
+          "native_P_CZ_in_example": 12,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 29,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.7947530864197531,
+      "m": 6,
+      "minimum_effective_visibility_if_final_depolarization": 0.9178470254957507,
+      "native_quantum_registers": 29,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 6,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 17,
+            "cz": 12,
+            "h": 17,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 15,
+            "s": 3,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 16,
+          "native_P_CZ_in_example": 12,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 29,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 18,
+            "cz": 12,
+            "h": 17,
+            "if_else": 26,
+            "measure": 16,
+            "p": 1,
+            "reset": 7,
+            "s": 3,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 16,
+          "native_P_CZ_in_example": 12,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 29,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 18,
+            "cz": 12,
+            "h": 17,
+            "if_else": 26,
+            "measure": 16,
+            "p": 1,
+            "s": 3,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 16,
+          "native_P_CZ_in_example": 12,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 29,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 6,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.7947530864197531,
+      "m": 6,
+      "minimum_effective_visibility_if_final_depolarization": 0.9178470254957507,
+      "native_quantum_registers": 29,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 14,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 19,
+            "cz": 14,
+            "h": 19,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 17,
+            "s": 4,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 11,
+          "native_P_CZ_in_example": 14,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 33,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "ch": 7,
+            "cx": 27,
+            "cz": 14,
+            "h": 19,
+            "if_else": 16,
+            "measure": 11,
+            "p": 1,
+            "reset": 8,
+            "s": 4,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 11,
+          "native_P_CZ_in_example": 14,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 33,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "ch": 7,
+            "cx": 27,
+            "cz": 14,
+            "h": 19,
+            "if_else": 16,
+            "measure": 11,
+            "p": 1,
+            "s": 4,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 11,
+          "native_P_CZ_in_example": 14,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 33,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz2",
+      "extra_Bob_pair_readout_wires": 0,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.815741050977879,
+      "m": 7,
+      "minimum_effective_visibility_if_final_depolarization": 0.8837965693593455,
+      "native_quantum_registers": 33,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    },
+    {
+      "Bob_shield_entangling_CZ_per_kept_use": 7,
+      "all_3_erasure_flags_costs": {
+        "erased_erased": {
+          "circuit_ops": {
+            "cx": 19,
+            "cz": 14,
+            "h": 19,
+            "if_else": 2,
+            "measure": 4,
+            "p": 1,
+            "reset": 17,
+            "s": 4,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 18,
+          "native_P_CZ_in_example": 14,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 33,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_erased": {
+          "circuit_ops": {
+            "cx": 20,
+            "cz": 14,
+            "h": 19,
+            "if_else": 30,
+            "measure": 18,
+            "p": 1,
+            "reset": 8,
+            "s": 4,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 18,
+          "native_P_CZ_in_example": 14,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 33,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        },
+        "kept_kept": {
+          "circuit_ops": {
+            "cx": 20,
+            "cz": 14,
+            "h": 19,
+            "if_else": 30,
+            "measure": 18,
+            "p": 1,
+            "s": 4,
+            "sdg": 3,
+            "x": 1
+          },
+          "classical_bits": 18,
+          "native_P_CZ_in_example": 14,
+          "physical_final_Bell_measures": 2,
+          "physical_qubits": 33,
+          "quantum_output_not_classical_importance_sampling": true,
+          "sampled_P_labels_hidden_from_Bob": true
+        }
+      },
+      "capacity_proof_claimed": false,
+      "decoder": "cz1",
+      "extra_Bob_pair_readout_wires": 7,
+      "extra_classical_control_latency_unknown": true,
+      "hardware_F_e_predicted": null,
+      "ideal_model_PPT_erasure_F_e": 0.815741050977879,
+      "m": 7,
+      "minimum_effective_visibility_if_final_depolarization": 0.8837965693593455,
+      "native_quantum_registers": 33,
+      "real_QPU_cost_benchmarked": false,
+      "required_logical_bar": 0.75
+    }
+  ],
+  "evidence_class": "EXACT IDEAL CHANNEL MATH + COMPILED DYNAMIC CIRCUIT SOURCE COUNTS",
+  "missing_backend_actual_native_translation_and_gate_duration": true,
+  "mode": "TWO CHANNEL USES WITH A REAL CONDITIONAL QUANTUM OUTPUT",
+  "next_hardware_go_nogo": "fresh native compiled ISA plus physical timing and readout model; do not choose lower-CZ design without verified controlled-gate latency and heldout quantum-output fidelity",
+  "no_independently_measured_challenger_fidelity": true,
+  "no_new_IBM_jobs": true,
+  "no_real_physical_quantum_capacity_claim": true,
+  "schema": "oneq.r186.quantum_output_resource_frontier/1",
+  "source_sha256": {
+    "experiments/superactivation/shield_family/hw_two_use.py": "77f9aadf0581dc23135cc2f31007cd462c325644715e86d25821be069246f167",
+    "experiments/superactivation/shield_family/r186_reference_decoder.py": "ae66c62eaadf93b532c48c4443dd9098b9f9d633c20408722094fa1822156ec3"
+  },
+  "viable_ideal_at_075": [
+    {
+      "decoder": "cz2",
+      "m": 5,
+      "min_visibility": 0.965296124586336
+    },
+    {
+      "decoder": "cz1",
+      "m": 5,
+      "min_visibility": 0.965296124586336
+    },
+    {
+      "decoder": "cz2",
+      "m": 6,
+      "min_visibility": 0.9178470254957507
+    },
+    {
+      "decoder": "cz1",
+      "m": 6,
+      "min_visibility": 0.9178470254957507
+    },
+    {
+      "decoder": "cz2",
+      "m": 7,
+      "min_visibility": 0.8837965693593455
+    },
+    {
+      "decoder": "cz1",
+      "m": 7,
+      "min_visibility": 0.8837965693593455
+    }
+  ]
+}

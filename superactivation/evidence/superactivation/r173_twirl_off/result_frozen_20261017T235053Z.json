@@ -1,0 +1,1142 @@
+{
+ "report": {
+  "ro_all0": {
+   "duration_ns": 11160.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    }
+   },
+   "cz_period_ns": [],
+   "barrier_rows": 30,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 30,
+    "INIT": 96,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  },
+  "ro_all1": {
+   "duration_ns": 11192.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    }
+   },
+   "cz_period_ns": [],
+   "barrier_rows": 30,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 30,
+    "INIT": 96,
+    "x": 8,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  },
+  "ladder_bar": {
+   "duration_ns": 11804.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "cz": 8,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 8,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "cz": 8,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 8,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "sx": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    }
+   },
+   "cz_period_ns": [
+    68.0,
+    68.0,
+    68.0,
+    68.0,
+    68.0,
+    68.0,
+    68.0
+   ],
+   "barrier_rows": 102,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 102,
+    "INIT": 96,
+    "sx": 10,
+    "rz": 10,
+    "cz": 32,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  },
+  "ladder_nobar": {
+   "duration_ns": 11804.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "cz": 8,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 8,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "cz": 8,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 8,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "sx": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    }
+   },
+   "cz_period_ns": [
+    68.0,
+    68.0,
+    68.0,
+    68.0,
+    68.0,
+    68.0,
+    68.0
+   ],
+   "barrier_rows": 46,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 46,
+    "INIT": 96,
+    "sx": 10,
+    "rz": 10,
+    "cz": 32,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  },
+  "slots": {
+   "duration_ns": 11560.000000000002,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "cz": 3,
+      "sx": 3,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 3,
+      "sx": 3,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "cz": 3,
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 3,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "cz": 3,
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 3,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "cz": 3,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 3,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    }
+   },
+   "cz_period_ns": [
+    100.00000000000001,
+    132.00000000000003
+   ],
+   "barrier_rows": 46,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 46,
+    "INIT": 96,
+    "sx": 14,
+    "rz": 11,
+    "cz": 24,
+    "x": 2,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  },
+  "dynamic": {
+   "duration_ns": 14012.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "cz": 4,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 4,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "cz": 4,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "cz": 4,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "sx": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "sx": 2,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "sx": 2,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": 0.0
+    }
+   },
+   "cz_period_ns": [
+    68.0,
+    68.0,
+    68.0
+   ],
+   "barrier_rows": 62,
+   "channels": [
+    "AWGR",
+    "Hub",
+    "Qubit",
+    "Receive"
+   ],
+   "gate_names": {
+    "barrier": 62,
+    "INIT": 96,
+    "sx": 10,
+    "rz": 10,
+    "cz": 16,
+    "measure": 40,
+    "broadcast": 1,
+    "receive": 1,
+    "x": 1,
+    "FINI": 96
+   },
+   "control": [
+    {
+     "gate": "broadcast",
+     "channel": "Hub",
+     "t0_ns": 5104.000000000001,
+     "dur_ns": 2104.0
+    },
+    {
+     "gate": "receive",
+     "channel": "Receive",
+     "t0_ns": 7208.0,
+     "dur_ns": 28.000000000000004
+    }
+   ]
+  },
+  "ro_end0": {
+   "duration_ns": 11160.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    }
+   },
+   "cz_period_ns": [],
+   "barrier_rows": 30,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 30,
+    "INIT": 96,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  },
+  "ro_end1": {
+   "duration_ns": 11192.0,
+   "roles": {
+    "a": {
+     "qubit": 91,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "b": {
+     "qubit": 98,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "c": {
+     "qubit": 148,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "d": {
+     "qubit": 149,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "it": {
+     "qubit": 10,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "ip": {
+     "qubit": 154,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "iu": {
+     "qubit": 25,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    },
+    "il": {
+     "qubit": 117,
+     "compiled": {
+      "x": 1,
+      "measure": 1
+     },
+     "executed": {
+      "INIT": 10,
+      "x": 1,
+      "measure": 4,
+      "FINI": 10
+     },
+     "extra": {},
+     "extra_per_layer": null
+    }
+   },
+   "cz_period_ns": [],
+   "barrier_rows": 30,
+   "channels": [
+    "AWGR",
+    "Qubit"
+   ],
+   "gate_names": {
+    "barrier": 30,
+    "INIT": 96,
+    "x": 8,
+    "measure": 40,
+    "FINI": 96
+   },
+   "control": []
+  }
+ },
+ "readings": {
+  "timing_returned": {
+   "ro_all0": true,
+   "ro_all1": true,
+   "ladder_bar": true,
+   "ladder_nobar": true,
+   "slots": true,
+   "dynamic": true,
+   "ro_end0": true,
+   "ro_end1": true
+  },
+  "extra_pulses": {
+   "ro_all0": {},
+   "ro_all1": {},
+   "ladder_bar": {},
+   "ladder_nobar": {},
+   "slots": {},
+   "dynamic": {},
+   "ro_end0": {},
+   "ro_end1": {}
+  },
+  "plays_as_compiled": true,
+  "cz_period_ns": [
+   68
+  ]
+ }
+}

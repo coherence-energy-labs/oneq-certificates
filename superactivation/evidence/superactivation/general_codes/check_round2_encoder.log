@@ -1,0 +1,3 @@
+isometry check |V^dag V - 1| = 4.440892098500626e-16
+symmetric under swap?  |SWAP V - V| = 0.9999999999999998
+Round-2 explicit encoder, exact decoders: F = 0.6897047609   (claimed 0.6897047613)

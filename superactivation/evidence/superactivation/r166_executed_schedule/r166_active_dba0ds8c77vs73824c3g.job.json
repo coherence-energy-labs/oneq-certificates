@@ -1,0 +1,36 @@
+{
+ "tag": "r166_active",
+ "job_id": "dba0ds8c77vs73824c3g",
+ "backend": "ibm_kingston",
+ "submitted_utc": "2026-10-17T23:38:26+00:00",
+ "submit_called_utc": "2026-10-17T23:38:25.074965+00:00",
+ "quota_remaining_before_s": 62.0,
+ "estimated_cost_s": 4.640000000000001,
+ "prereg": "C:\\Users\\Josh\\Projects\\ONE_Q\\docs\\PREREG_r166_executed_schedule.md",
+ "prereg_sha256": "891321dc91595e68e9014edf2716b2589a4f32bda7bb02a5a4fc507080de9f5a",
+ "qpy_sha256": "eda48f18b6a487e2864a8e814aba3fa7f681d8ec99113fac82976f0357f04017",
+ "circuit_order": [
+  "ro_all0",
+  "ro_all1",
+  "ladder_bar",
+  "ladder_nobar",
+  "slots",
+  "dynamic",
+  "ro_end0",
+  "ro_end1"
+ ],
+ "shots": {
+  "ro_all0": 1000,
+  "ro_all1": 1000,
+  "ladder_bar": 1000,
+  "ladder_nobar": 1000,
+  "slots": 1000,
+  "dynamic": 1000,
+  "ro_end0": 1000,
+  "ro_end1": 1000
+ },
+ "twirl_randomizations": 4,
+ "extra": {},
+ "twirl_strategy": "active",
+ "scheduler_timing": true
+}

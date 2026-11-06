@@ -1,0 +1,11 @@
+P: ||J_kraus - 4 Phi^P||_max = 2.7755575615628914e-16
+P: sum K^dag K = I ? 0.0
+P: Choi rank = 6  min eig -2.0098743090065263e-16
+P: min eig of Choi^{T_B} = -1.950507271575755e-16 (PPT iff >= 0)
+P: with the misprinted M1 sign, ||J - 4 Phi^P||_max = 0.29289321881345254
+Lemma choi-as-mixture: ||(1-p)g0 + p g1 - Phi^P||_max = 4.163336342344337e-17
+D+ unitary: 0.0  D- unitary: 0.0
+D+ diag phases / pi: [ 0.125 -0.375 -0.125  0.375]
+P mixed-unitary decomposition: ||J_mu - J||_max = 1.1102230246251565e-16
+A: Choi shape (20, 20)  trace 4.000000000000001  TP: 2.220446049250313e-16
+N~: Choi trace 2.0  eigenvalues [0.       0.       0.       0.207107 0.207107 0.292893 0.292893 1.      ]

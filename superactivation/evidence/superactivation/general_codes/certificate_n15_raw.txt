@@ -1,0 +1,19 @@
+float fidelity with these power decoders: 0.7500784804
+{
+ "a": 7,
+ "b": 8,
+ "n": 15,
+ "certified_lower_bound": "[0.7500784431043293748015661108820318753416 +/- 1.55e-41]",
+ "certified_lower_bound_float": 0.7500784431043294,
+ "exceeds_three_quarters": true,
+ "certified_margin_lower_bound": 7.84431043293748e-05,
+ "fidelity_ball": "[0.750078443104329374801566110882 +/- 3.19e-32]",
+ "encoder_trace_excess": 4.190951976475459e-09,
+ "max_decoder_trace_excess": 1.164737927687818e-10,
+ "blocks_proved_positive_definite": 1621,
+ "grid_bits": 96,
+ "precision_bits": 256,
+ "eta": 5.820766091346741e-11,
+ "seconds": 7592.6
+}
+peak rss 2.51 GB, exit 0

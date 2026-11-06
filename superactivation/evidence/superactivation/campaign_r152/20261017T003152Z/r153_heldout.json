@@ -1,0 +1,140 @@
+{
+ "schema": "oneq.r153_heldout/1",
+ "rule": ", fixed here before any R147 number is computed:\n  1. FIT on R146's held-out p0 (R145's 208 static circuits on R146's qubits): scan the spectator probability, take the\n     value that matches p0's measured F_e (linear interpolation on the scan).\n  2. PREDICT R147 (other qubits, other design, mid-circuit reads) with that value frozen, on R147's own block fit.\n     R147's counts enter only the comparison.\nA model that closes R147 held out has earned a hardware attempt; one that does not, has not.",
+ "traj": 40,
+ "spectator_grid": [
+  0.0,
+  0.002,
+  0.005,
+  0.01,
+  0.02
+ ],
+ "r146_measured": 0.6167117524746093,
+ "r146_measured_sd": 0.008364206320957345,
+ "r146_scans": {
+  "repaired": [
+   [
+    0.0,
+    0.6710790378289335
+   ],
+   [
+    0.002,
+    0.6574915219617798
+   ],
+   [
+    0.005,
+    0.6429307943452467
+   ],
+   [
+    0.01,
+    0.6193055572504798
+   ],
+   [
+    0.02,
+    0.584431375308454
+   ]
+  ],
+  "repaired+crosstalk": [
+   [
+    0.0,
+    0.6726004238893073
+   ],
+   [
+    0.002,
+    0.6634230911427568
+   ],
+   [
+    0.005,
+    0.6469871759233803
+   ],
+   [
+    0.01,
+    0.6228734022935278
+   ],
+   [
+    0.02,
+    0.5846866194079796
+   ]
+  ]
+ },
+ "spectator_fitted_on_r146": {
+  "repaired": 0.010743760751200516,
+  "repaired+crosstalk": 0.011613555621426913
+ },
+ "r147_held_out": {
+  "repaired (R152's rule)": {
+   "F_e_measured": 0.6272772705949263,
+   "sd": 0.006375281304991569,
+   "F_e_predicted": 0.6640756868275004,
+   "delta": -0.03679841623257407,
+   "V2_within_0p03": false,
+   "residual_by_sector": {
+    "s0": -0.049757760940478776,
+    "s1": -0.018430977857319696
+   },
+   "dynamic_minus_static": {
+    "n": 16,
+    "measured": 0.1696875,
+    "measured_sd": 0.06376465313622692,
+    "predicted": 0.23579647960542272
+   }
+  },
+  "repaired + spectator 0.0107": {
+   "F_e_measured": 0.6272772705949263,
+   "sd": 0.006375281304991569,
+   "F_e_predicted": 0.630830618296401,
+   "delta": -0.0035533477014746406,
+   "V2_within_0p03": true,
+   "residual_by_sector": {
+    "s0": 0.0006886192377656004,
+    "s1": 0.09094836409625776
+   },
+   "dynamic_minus_static": {
+    "n": 16,
+    "measured": 0.1696875,
+    "measured_sd": 0.06376465313622692,
+    "predicted": 0.2137558059105618
+   }
+  },
+  "repaired+crosstalk + spectator 0.0116": {
+   "F_e_measured": 0.6272772705949263,
+   "sd": 0.006375281304991569,
+   "F_e_predicted": 0.6282182074048543,
+   "delta": -0.0009409368099280169,
+   "V2_within_0p03": true,
+   "residual_by_sector": {
+    "s0": 0.0001211093320189349,
+    "s1": 0.10047176076293327
+   },
+   "dynamic_minus_static": {
+    "n": 16,
+    "measured": 0.1696875,
+    "measured_sd": 0.06376465313622692,
+    "predicted": 0.21974861127429618
+   }
+  }
+ },
+ "crosstalk_r146": {
+  "n_edges": 13,
+  "n_control": 14,
+  "edge_z_median": 0.6239824683352035,
+  "control_z_median": 0.0709125625600844,
+  "control_z_rms": 2.2834226489605323,
+  "sd_inflation": 2.2834226489605323,
+  "zeta_khz_median": 16.920946681792667,
+  "t2_intrinsic_over_vendor_median": 0.6735067198924796,
+  "t2_eff_over_vendor_median": 0.2856337673953485
+ },
+ "crosstalk_blk147": {
+  "n_edges": 19,
+  "n_control": 16,
+  "edge_z_median": 0.3781464125256668,
+  "control_z_median": 0.25988291509633676,
+  "control_z_rms": 0.9847465220371493,
+  "sd_inflation": 1.0,
+  "zeta_khz_median": 7.076937280333835,
+  "t2_intrinsic_over_vendor_median": 0.278729122364321,
+  "t2_eff_over_vendor_median": 0.2720546077178769
+ },
+ "seconds": 465.0007121562958
+}

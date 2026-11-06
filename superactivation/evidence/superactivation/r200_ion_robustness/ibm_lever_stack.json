@@ -1,0 +1,67 @@
+{
+ "schema": "oneq.r200.ibm_lever_stack/1",
+ "device": "kingston_hh",
+ "m": 6,
+ "decoder": "mix",
+ "units": 64,
+ "seed": 7,
+ "mean_cz": 81.4345703125,
+ "bar": 0.75,
+ "configs": {
+  "ideal": {
+   "F_e": 0.7947530864197532,
+   "se": 0.0,
+   "margin": 0.044753086419753174
+  },
+  "full": {
+   "F_e": 0.6520355520141359,
+   "se": 0.003460650993723762,
+   "margin": -0.09796444798586412
+  },
+  "ro0": {
+   "F_e": 0.6902642492008992,
+   "se": 0.002702164986171878,
+   "margin": -0.05973575079910076
+  },
+  "ro0_idle0": {
+   "F_e": 0.7087041059661858,
+   "se": 0.0021812499006141754,
+   "margin": -0.04129589403381417
+  },
+  "ro0_idle0_cz.5": {
+   "F_e": 0.740906321405697,
+   "se": 0.0013705249612854012,
+   "margin": -0.00909367859430299
+  },
+  "ro0_idle0_cz.5_sx.5": {
+   "F_e": 0.7497016312578682,
+   "se": 0.0011609917670916512,
+   "margin": -0.0002983687421318493
+  },
+  "ro0_idle0_cz.25_sx.5": {
+   "F_e": 0.7670599127228706,
+   "se": 0.0007121896929772754,
+   "margin": 0.01705991272287055
+  },
+  "RAWro_idle0_cz.5_sx.5": {
+   "F_e": 0.7055963682288886,
+   "se": 0.0023131751322919077,
+   "margin": -0.044403631771111396
+  },
+  "RAWro_idle0_cz.25_sx.25": {
+   "F_e": 0.7254885938800295,
+   "se": 0.002024743728212819,
+   "margin": -0.02451140611997049
+  }
+ },
+ "best_under_raw_readout": "RAWro_idle0_cz.25_sx.25",
+ "seconds": 171.1945457458496,
+ "sources_sha256": {
+  "experiments/superactivation/shield_family/r186_faithful_requirements.py": "3df7607e238f9e5ea5963fdc0a54643fcdc91f3526a1969169dd522d901922ec",
+  "experiments/superactivation/shield_family/hw_faithful.py": "fd476b5998f884d4eeed494a9fe26b8cc6235cfda59cb4ee47ec7223e59ab248",
+  "experiments/superactivation/shield_family/hw_two_use.py": "77f9aadf0581dc23135cc2f31007cd462c325644715e86d25821be069246f167",
+  "src/oneq/hw/noise.py": "b9b145fe2aca96eb453417dcbfc82741d10cb257964f7fb10e114efc09bd17ae",
+  "src/oneq/hw/engine.py": "3dbcdcfa3c89f5fa0eaa5a2bc5012a8bfb9c196d1de7016b0bd0b8513a46eade"
+ },
+ "evidence_class": "PROJECTED (R186's exact evaluator on the validated Kingston model)"
+}

@@ -1,0 +1,17 @@
+\begin{tabular}{@{}p{0.60\textwidth}p{0.25\textwidth}l@{}}
+\toprule
+statement & class & where \\
+\midrule
+The group reduction behind the symmetric and two-group certificates is exact & proven; also checked against the dense construction & Lemma~\ref{lem:groups} \\
+Smith--Yard pair ($d=2$): a code with $n=15$ uses has $F\ge0.7500784415$, so $n^*\le 15$ (published: $n^*\le 17$) & certified; the steps from it to $n^*$ proven & Thm.~\ref{thm:dtwo} \\
+$P_d$, the construction of Ref.~\cite{horodecki2008low}, is PPT if and only if $p_1=1/(\sqrt d+1)$, for every complex Hadamard twist (``if'' for a symmetric twist: Ref.~\cite{horodecki2008low}; ``only if'' for the Hadamard twist: its Obs.~2, and for every twist: here); $P_2$ is Smith and Yard's channel & proven; $P_2$ by exact computation & Thm.~\ref{thm:ppt} \\
+One joint use of $P_d$ and $A_{2d}$ simulates $\nt_p$, $p=1/(\sqrt d+1)$ (Smith and Yard's coupling; at $d=2$, Prop.~1 of Ref.~\cite{parentin2026onset}) & proven & Lemma~\ref{lem:reduction} \\
+Neither $P_d$ nor $A_{2d}$ alone exceeds $3/4$ at any number of uses & proven (standard argument) & Lemma~\ref{lem:alone} \\
+One use of any PPT channel with a 50\% erasure channel: $F_c\le 3/4$ & proven & Lemma~\ref{lem:oneuse} \\
+Two uses of $P_d\otimes A_{2d}$: $F_c>3/4$ for every $d\ge 20$ & certified ($d=20,21$); proven ($d\ge 22$) & Thm.~\ref{thm:two} \\
+At threshold $3/4$, $n^*=2$ exactly for every $d\ge 20$ & follows from the rows above & Cor.~\ref{cor:exact} \\
+$n^*\le 4$ for $d=7,8$ and $n^*\le 3$ for $d=9,\dots,19$ & certified upper bounds & Table~\ref{tab:onset} \\
+One use of the joint channel ($d=2$): a code with $F\ge 0.6627576287$ beats every code on the reduced channel ($\max=0.6464466094$) & certified and proven & Thm.~\ref{thm:direct} \\
+A PPT-assisted relaxation cannot certify a lower bound on $n^*$ above $2$: at $n$ uses its value is exactly $1-2^{-(n+1)}$, for $\nt_p$, for $A$ and for every pair $P_d\otimes A_{2d}$ & proven; feasible point and dual certificate also checked exactly on the full output space for $\nt_p$ and $A$ ($n\le\PptNmax$) and for $P_2\otimes A_4$ ($n=1$) & Prop.~\ref{prop:ppt} \\
+\bottomrule
+\end{tabular}

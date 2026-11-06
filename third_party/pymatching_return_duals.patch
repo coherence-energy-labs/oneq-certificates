@@ -1,0 +1,227 @@
+ONE_Q R177 -- expose sparse blossom's frozen dual from PyMatching 2.4.0 (decode_to_edges_array_with_duals)
+
+Against: pymatching-2.4.0.tar.gz (PyPI sdist, sha256
+0c30dafa506b086f50d15530debd7b7b39228597d22c52d5ccd114bcbb0a2326).  Apply from the sdist root
+with `patch -p1 < pymatching_return_duals.patch`.  3 files, +~150 lines, no behaviour change to
+any existing entry point (decode_detection_events_to_edges now forwards to a shared _impl with
+duals = nullptr).
+
+BUILT AND RUN 2026-10-18: cmake -GNinja -DCMAKE_BUILD_TYPE=Release && ninja -j2 _cpp_pymatching,
+621 s wall on 2 cores (FetchContent pulls Stim 1320ad7 and googletest from GitHub; Stim is ~95%
+of the build).  The .so was dropped into a COPY of the venv's pymatching package
+(the venv itself is untouched) and driven by tools/r177_checker_bench.py --pm-arm.
+
+WHAT IT EXPORTS.  After process_timeline_until_completion() -- every region matched and frozen --
+and BEFORE the blossoms are shattered, extract_region_duals() walks every region reachable from a
+detection event (top region, then blossom children recursively) and emits one RegionDual each:
+
+  parent        index of the enclosing blossom in the output list, -1 at top level
+  source        detector the leaf grew from (-1 for a blossom)
+  radius        the region's frozen growth, GraphFillRegion::radius at cur_time: the TOTAL radius
+                for a leaf, the EXTRA radius since formation for a blossom
+  shell_nodes / shell_arrival
+                the detector nodes the region owns directly (GraphFillRegion::shell_area) and
+                DetectorNode::radius_of_arrival for each, in the region's own radius frame
+
+Python: MatchingGraph.decode_to_edges_array_with_duals(dets) ->
+        (edges[k,2], [(parent, source, radius, shell_nodes, shell_arrival)], normalising_constant)
+
+UNITS.  Radii are PyMatching's internal integers.  It discretises every weight to
+W_int = 2*round(w*c), c = (2^24 - 1)/max|w| -- or c = 1 when every weight is already an integer --
+and normalising_constant = 2c, so a radius r is r/(2c) in weight units.  The exported dual is
+EXACT for the integer problem PyMatching actually solves, and for no other.  Feed it integer
+weights (a dyadic DEM scaled by 2^k, k <= 24 - 2 - ceil(log2(max w + 1))) and that integer problem
+IS the certified graph; see docs/campaign_r168/OWNER_DECISION_DYADIC_WEIGHTS.md.
+
+MAPPING TO THE CHECKER.  The checker's dual is a non-negative packing of T-odd cuts on the
+ORIGINAL graph (the checker refuses node potentials).  In metric-closure MWPM terms a leaf's radius
+is y_v and a blossom's is z_B; on the original graph each region R contributes the nested sets
+
+    S_R(t) = area(descendants of R) u { n in shell(R) : arrival(n) <= t },   0 <= t < radius(R)
+
+with weight dt, i.e. one set per distinct arrival radius below radius(R), each carrying the gap
+to the next breakpoint (tools/r177_checker_bench.py: region_duals_to_cut_packing).  Every S_R(t)
+holds an odd number of detection events (1 for a leaf, odd for a blossom) and never the boundary,
+so it is T-odd under either parity convention; sum over all sets = sum of radii = the matching
+weight; feasibility is sparse blossom's no-overlap invariant (an edge is covered at most by the
+local radii at its two ends).  The checker re-verifies all of it; nothing here is trusted.
+
+Not supported: enable_correlations (the second pass decodes a REWEIGHTED graph) and negative
+weights (the flipped-edge preprocessing changes the problem the dual belongs to).
+
+diff -ruN -x build a/src/pymatching/sparse_blossom/driver/mwpm_decoding.cc b/src/pymatching/sparse_blossom/driver/mwpm_decoding.cc
+--- a/src/pymatching/sparse_blossom/driver/mwpm_decoding.cc	2026-10-18 01:41:45.147181540 -0400
++++ b/src/pymatching/sparse_blossom/driver/mwpm_decoding.cc	2026-10-18 01:42:32.204277151 -0400
+@@ -14,6 +14,8 @@
+ 
+ #include "pymatching/sparse_blossom/driver/mwpm_decoding.h"
+ 
++#include <unordered_map>
++
+ #include "pymatching/sparse_blossom/driver/user_graph.h"
+ 
+ pm::ExtendedMatchingResult::ExtendedMatchingResult() : obs_crossed(), weight(0) {
+@@ -265,13 +267,67 @@
+     }
+ }
+ 
++static void export_region(
++    pm::Mwpm& mwpm,
++    pm::GraphFillRegion* r,
++    int64_t parent,
++    std::unordered_map<pm::GraphFillRegion*, int64_t>& seen,
++    std::vector<pm::RegionDual>& out) {
++    if (seen.count(r))
++        return;
++    int64_t me = (int64_t)out.size();
++    seen[r] = me;
++    out.emplace_back();
++    pm::RegionDual& d = out.back();
++    d.parent = parent;
++    d.source = -1;
++    d.radius = (int64_t)r->radius.get_distance_at_time(mwpm.flooder.queue.cur_time);
++    pm::DetectorNode* base = &mwpm.flooder.graph.nodes[0];
++    for (pm::DetectorNode* n : r->shell_area) {
++        out[me].shell_nodes.push_back((int64_t)(n - base));
++        out[me].shell_arrival.push_back((int64_t)n->radius_of_arrival);
++        if (r->blossom_children.empty() && n->radius_of_arrival == 0)
++            out[me].source = (int64_t)(n - base);
++    }
++    for (auto& child : r->blossom_children)
++        export_region(mwpm, child.region, me, seen, out);
++}
++
++void pm::extract_region_duals(
++    pm::Mwpm& mwpm, const std::vector<uint64_t>& detection_events, std::vector<pm::RegionDual>& out) {
++    std::unordered_map<pm::GraphFillRegion*, int64_t> seen;
++    for (auto& i : detection_events) {
++        pm::DetectorNode& n = mwpm.flooder.graph.nodes[i];
++        if (n.region_that_arrived_top)
++            export_region(mwpm, n.region_that_arrived_top, -1, seen, out);
++    }
++}
++
++void pm::decode_detection_events_to_edges_with_duals(
++    pm::Mwpm& mwpm,
++    const std::vector<uint64_t>& detection_events,
++    std::vector<int64_t>& edges,
++    std::vector<pm::RegionDual>& duals) {
++    decode_detection_events_to_edges_impl(mwpm, detection_events, edges, &duals);
++}
++
+ void pm::decode_detection_events_to_edges(
+     pm::Mwpm& mwpm, const std::vector<uint64_t>& detection_events, std::vector<int64_t>& edges) {
++    decode_detection_events_to_edges_impl(mwpm, detection_events, edges, nullptr);
++}
++
++void pm::decode_detection_events_to_edges_impl(
++    pm::Mwpm& mwpm,
++    const std::vector<uint64_t>& detection_events,
++    std::vector<int64_t>& edges,
++    std::vector<pm::RegionDual>* duals) {
+     if (mwpm.flooder.graph.nodes.size() != mwpm.search_flooder.graph.nodes.size()) {
+         throw std::invalid_argument(
+             "Mwpm object does not contain search flooder, which is required to decode to edges.");
+     }
+     process_timeline_until_completion(mwpm, detection_events);
++    if (duals)
++        pm::extract_region_duals(mwpm, detection_events, *duals);
+     mwpm.flooder.match_edges.clear();
+     shatter_blossoms_for_all_detection_events_and_extract_match_edges(mwpm, detection_events);
+     if (!mwpm.flooder.negative_weight_detection_events.empty())
+diff -ruN -x build a/src/pymatching/sparse_blossom/driver/mwpm_decoding.h b/src/pymatching/sparse_blossom/driver/mwpm_decoding.h
+--- a/src/pymatching/sparse_blossom/driver/mwpm_decoding.h	2026-10-18 01:41:45.147281982 -0400
++++ b/src/pymatching/sparse_blossom/driver/mwpm_decoding.h	2026-10-18 01:42:15.093454937 -0400
+@@ -79,6 +79,51 @@
+ void decode_detection_events_to_edges(
+     pm::Mwpm& mwpm, const std::vector<uint64_t>& detection_events, std::vector<int64_t>& edges);
+ 
++/// [ONE_Q R177 patch] One graph fill region of the FINAL (all-matched, frozen) sparse-blossom
++/// state, exported before the blossoms are shattered and the state is reset.
++///
++/// Units are PyMatching's internal integer units: every edge weight was discretised to
++/// W_int = 2 * round(w * c) with c = (NUM_DISTINCT_WEIGHTS - 1) / max|w|, and
++/// `normalising_constant` (= 2c) converts back: w ~= W_int / normalising_constant.
++///
++///   radius        the region's own frozen growth (a leaf: total radius from its detection
++///                 event; a blossom: the EXTRA radius grown since the blossom formed). This is
++///                 y_v for a leaf and z_B for a blossom in the metric-closure MWPM dual.
++///   parent        index of the enclosing blossom in the output vector, or -1 if top level.
++///   source        detector index of the detection event a leaf grew from; -1 for a blossom.
++///   shell_nodes / shell_arrival
++///                 the detector nodes this region owns DIRECTLY and the region radius at which
++///                 it reached each one. Ordered by arrival, they define the nested cut sets
++///                     S_R(t) = area(children of R) U { n in shell(R) : arrival(n) <= t }
++///                 for t in [0, radius), each carrying dual weight dt -- i.e. the Edmonds-
++///                 Johnson T-join cut packing on the ORIGINAL graph, with sum = sum of radii.
++struct RegionDual {
++    int64_t parent;
++    int64_t source;
++    int64_t radius;
++    std::vector<int64_t> shell_nodes;
++    std::vector<int64_t> shell_arrival;
++};
++
++/// [ONE_Q R177 patch] Walk every region reachable from a detection event and export it.
++/// Must be called after the timeline has completed and BEFORE any shattering.
++void extract_region_duals(
++    pm::Mwpm& mwpm, const std::vector<uint64_t>& detection_events, std::vector<RegionDual>& out);
++
++/// [ONE_Q R177 patch] Shared body; `duals` may be null (the unpatched behaviour).
++void decode_detection_events_to_edges_impl(
++    pm::Mwpm& mwpm,
++    const std::vector<uint64_t>& detection_events,
++    std::vector<int64_t>& edges,
++    std::vector<RegionDual>* duals);
++
++/// [ONE_Q R177 patch] As decode_detection_events_to_edges, additionally filling `duals`.
++void decode_detection_events_to_edges_with_duals(
++    pm::Mwpm& mwpm,
++    const std::vector<uint64_t>& detection_events,
++    std::vector<int64_t>& edges,
++    std::vector<RegionDual>& duals);
++
+ void decode_detection_events_to_edges_with_edge_correlations(
+     pm::Mwpm& mwpm, const std::vector<uint64_t>& detection_events, std::vector<int64_t>& edges);
+ 
+diff -ruN -x build a/src/pymatching/sparse_blossom/driver/user_graph.pybind.cc b/src/pymatching/sparse_blossom/driver/user_graph.pybind.cc
+--- a/src/pymatching/sparse_blossom/driver/user_graph.pybind.cc	2026-10-18 01:41:45.148366300 -0400
++++ b/src/pymatching/sparse_blossom/driver/user_graph.pybind.cc	2026-10-18 01:42:32.204792640 -0400
+@@ -15,6 +15,7 @@
+ #include "pymatching/sparse_blossom/driver/user_graph.pybind.h"
+ 
+ #include "pybind11/pybind11.h"
++#include "pybind11/stl.h"
+ #include "pymatching/sparse_blossom/driver/mwpm_decoding.h"
+ #include "pymatching/sparse_blossom/driver/user_graph.h"
+ #include "stim.h"
+@@ -217,6 +218,29 @@
+         },
+         "detection_events"_a,
+         "enable_correlations"_a = false);
++    // [ONE_Q R177 patch] decode_to_edges_array plus the frozen sparse-blossom dual.
++    // Returns (edges[k,2], regions, normalising_constant) where each region is the tuple
++    // (parent, source, radius, shell_nodes, shell_arrival) in internal integer units; divide
++    // by normalising_constant for weight units. Enable-correlations is not supported here,
++    // because the second pass decodes a REWEIGHTED graph and its dual binds to those weights.
++    g.def(
++        "decode_to_edges_array_with_duals",
++        [](pm::UserGraph &self, const py::array_t<uint64_t> &detection_events) {
++            auto &mwpm = self.get_mwpm_with_search_graph();
++            std::vector<uint64_t> detection_events_vec(
++                detection_events.data(), detection_events.data() + detection_events.size());
++            auto edges = new std::vector<int64_t>();
++            std::vector<pm::RegionDual> duals;
++            pm::decode_detection_events_to_edges_with_duals(mwpm, detection_events_vec, *edges, duals);
++            auto num_edges = edges->size() / 2;
++            auto edges_arr = pm_pybind::vec_to_array<int64_t>(edges);
++            edges_arr.resize({(py::ssize_t)num_edges, (py::ssize_t)2});
++            py::list regions;
++            for (auto &d : duals)
++                regions.append(py::make_tuple(d.parent, d.source, d.radius, d.shell_nodes, d.shell_arrival));
++            return py::make_tuple(edges_arr, regions, mwpm.flooder.graph.normalising_constant);
++        },
++        "detection_events"_a);
+     g.def(
+         "decode_to_matched_detection_events_array",
+         [](pm::UserGraph &self, const py::array_t<uint64_t> &detection_events) {

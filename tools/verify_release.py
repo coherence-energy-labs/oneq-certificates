@@ -116,6 +116,48 @@ def ots_covered_sha256(proof: bytes) -> str | None:
     return digest.hex() if len(digest) == 32 else None
 
 
+# An attestation is serialised as 0x00, an 8-byte tag, then varbytes; the Bitcoin tag's payload is
+# the block height as a varuint (python-opentimestamps, core/notary.py).
+_OTS_BITCOIN_ATTESTATION = b"\x00" + bytes.fromhex("0588960d73d71901")
+
+
+def _varuint(buf: bytes, i: int) -> tuple[int, int] | None:
+    value, shift = 0, 0
+    while i < len(buf):
+        b = buf[i]
+        value |= (b & 0x7F) << shift
+        i += 1
+        if not b & 0x80:
+            return value, i
+        shift += 7
+    return None
+
+
+def ots_bitcoin_heights(proof: bytes) -> list[int]:
+    """The Bitcoin block heights a proof is attested in; [] while it is only a calendar receipt.
+
+    *** WHY THIS IS HERE: ledger R231. *** The v2026.11.03 proofs were polled for seven hours by a
+    loop that logged "no attestation yet" every time, while every `ots upgrade` it ran had REFUSED
+    (two tracked `.ots.bak` files blocked the client's backup) and the calendars already held the
+    attestation. The verifier said only "covers ... exactly", which is true of both states, so
+    nothing a reader runs distinguished an anchored release from a pending one.
+
+    This reads the proof; it does not check the block. Confirming that the block's merkle root is
+    the proof's final digest needs a Bitcoin node (`ots verify`) or a block explorer.
+    """
+    heights, i = [], 0
+    while (i := proof.find(_OTS_BITCOIN_ATTESTATION, i)) != -1:
+        j = i + len(_OTS_BITCOIN_ATTESTATION)
+        length = _varuint(proof, j)
+        if length is not None:
+            n, start = length
+            height = _varuint(proof[start:start + n], 0)
+            if height is not None and height[1] == n:
+                heights.append(height[0])
+        i += 1
+    return sorted(set(heights))
+
+
 def check_timestamps(release_dir: pathlib.Path, ok: list[str], fails: list[str]) -> None:
     """Every `<file>.ots` beside a release file must cover THAT file's bytes (R70).
 
@@ -156,7 +198,12 @@ def check_timestamps(release_dir: pathlib.Path, ok: list[str], fails: list[str])
                          f"{actual[:16]}... -- a timestamp is over BYTES and this release's bytes "
                          f"are not the ones it was made for (re-stamp at mint; see ledger R70)")
         else:
-            ok.append(f"{proof.name} covers {target.name} exactly ({actual[:12]}...)")
+            heights = ots_bitcoin_heights(raw)
+            state = (f"attested in Bitcoin block {', '.join(map(str, heights))}; confirm that block's "
+                     f"merkle root with `ots verify` and a node, or any block explorer" if heights else
+                     "a calendar receipt only, no Bitcoin attestation yet (`ots upgrade` a COPY of "
+                     "the proof: the client refuses to overwrite an existing .bak)")
+            ok.append(f"{proof.name} covers {target.name} exactly ({actual[:12]}...) -- {state}")
 
 
 def sha(p: pathlib.Path) -> str:
@@ -179,7 +226,10 @@ class _ArchivePayload:
 
     PREFIX = "oneq-certifying-decoder/"
 
-    def __init__(self, archive: pathlib.Path):
+    def __init__(self, archive: pathlib.Path, prefix: str | None = None):
+        # each bundle's archive holds one tree under its own directory name (2026-11-03: two bundles, one tag)
+        if prefix is not None:
+            self.PREFIX = prefix
         self._tar = tarfile.open(archive, "r:gz")
         self._members: dict[str, tarfile.TarInfo] = {}
         for member in self._tar.getmembers():
@@ -408,9 +458,38 @@ def _verify_bound_evidence(payload: _ArchivePayload, fails: list[str],
     ok.append(f"published weight vectors verified exactly: {good}/{len(expected)}")
 
 
-def main() -> int:
+def _verify_tree_matches(payload: _ArchivePayload, fails: list[str], ok: list[str]) -> None:
+    """Every file of the authenticated archive equals the file of that name in the tree being verified.
+
+    The superactivation bundle has no per-shot manifest to bind, so its tree is bound file by file: the reader's
+    extracted copy (or the minted copy in the repository) must be exactly the signed bytes, none missing.
+    """
+    differ, absent = [], []
+    for rel in sorted(payload.names):
+        local = ROOT / rel
+        if not local.is_file():
+            absent.append(rel)
+        elif hashlib.sha256(local.read_bytes()).hexdigest() != hashlib.sha256(payload.read(rel)).hexdigest():
+            differ.append(rel)
+    if absent or differ:
+        fails.append(f"the tree is not the signed archive: {len(absent)} file(s) absent {absent[:3]}, "
+                     f"{len(differ)} differ {differ[:3]}")
+    else:
+        ok.append(f"every one of the archive's {len(payload.names)} files is in this tree, byte for byte")
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description="verify one bundle of a signed release")
+    ap.add_argument("--bundle", choices=("certifying-decoder", "superactivation"), default="certifying-decoder",
+                    help="which of the release's bundles (default: the decoder bundle)")
+    a = ap.parse_args(argv)
+    sys.path.insert(0, str(ROOT / "tools"))
+    from sign_release import release_paths
+    paths = release_paths(a.bundle, ROOT)
     fails: list[str] = []
     ok: list[str] = []
+    doc = None
 
     # 1. RELEASE SIGNATURE -- actually verified, not searched for.
     #
@@ -426,8 +505,8 @@ def main() -> int:
     #
     # A crypto check that cannot run has NOT passed. Every branch below
     # that cannot establish something appends to `fails`.
-    arc = ROOT / "release" / "oneq-certifying-decoder.tar.gz"
-    sig = arc.with_suffix(".gz.sig.json")
+    arc = paths["archive"]
+    sig = paths["signature"]
     if not (arc.exists() and sig.exists()):
         fails.append("release archive or signature missing")
     else:
@@ -438,6 +517,10 @@ def main() -> int:
             fails.append(f"signature document unparseable: {exc}")
         if doc is not None:
             digest = sha(arc)
+            # (0) the signature names THIS bundle's archive: one bundle's signature beside the other's archive is
+            #     a substitution, whatever the digests say
+            if doc.get("archive") != arc.name:
+                fails.append(f"the signature is for {doc.get('archive')!r}, not this bundle's {arc.name}")
             # (a) the archive digest at its NAMED path, not by search
             if doc.get("archive_sha256") != digest:
                 fails.append(
@@ -530,9 +613,12 @@ def main() -> int:
     if not fails and doc is not None:
         payload = None
         try:
-            payload = _ArchivePayload(arc)
+            payload = _ArchivePayload(arc, f"{paths['dir']}/")
             _verify_statement(payload, doc, fails, ok)
-            _verify_bound_evidence(payload, fails, ok)
+            if a.bundle == "certifying-decoder":
+                _verify_bound_evidence(payload, fails, ok)
+            else:
+                _verify_tree_matches(payload, fails, ok)
         except Exception as exc:
             fails.append(f"authenticated archive payload cannot be checked: "
                          f"{type(exc).__name__}: {exc}")

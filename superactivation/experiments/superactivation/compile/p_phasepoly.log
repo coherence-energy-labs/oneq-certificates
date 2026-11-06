@@ -1,0 +1,3 @@
+phase polynomial: 14 parity terms, 10 non-linear
+coherent P via phase polynomial: best 20 CZ (term order seed None), Choi trace distance 8.60e-15; 0 of 41 term orders rejected (non-local AAM residual)
+hand gate-by-gate version: 26 CZ

@@ -1,0 +1,90 @@
+{
+ "schema": "oneq-qldpc-refsched-p3-equality/1",
+ "stim": "1.16.0",
+ "rounds": 3,
+ "basis": "Z",
+ "p2_model_is_the_persisted_instance": true,
+ "detectors": {
+  "p2": 288,
+  "p3": 432,
+  "p3_z_type": 288,
+  "aligned_by_measurement_events": 288,
+  "alignment_is_a_bijection_onto_p3_z_type": true
+ },
+ "observables": {
+  "p2": 1,
+  "p3": 12,
+  "p2_logical_is_p3_observable": [
+   0
+  ],
+  "p2_logical_matches_logical_z": true
+ },
+ "mechanisms_p2_observable": {
+  "P2": 2304,
+  "P3": 2304,
+  "both": 2304,
+  "P2_only": 0,
+  "P3_only": 0,
+  "relation": "equal"
+ },
+ "mechanisms_13_observables": {
+  "P2": 2304,
+  "P3": 2304,
+  "both": 2304,
+  "P2_only": 0,
+  "P3_only": 0,
+  "relation": "equal"
+ },
+ "p2_dem_lines_equal_distinct_signatures": true,
+ "stored_model": {
+  "file": "evidence/circuit_distance_exact/ibm_recert_20261026/models/ibm_l12_Z3.txt",
+  "sha256": "924e81e17ba666c24a1fe72394843364e0c649bd51c2775e5d061e9887669e2f",
+  "manifest_sha256": "924e81e17ba666c24a1fe72394843364e0c649bd51c2775e5d061e9887669e2f",
+  "header": [
+   288,
+   2304,
+   12,
+   32,
+   12,
+   6
+  ],
+  "export_equals_stored": true,
+  "mechanisms_vs_p2_with_p3_observables": {
+   "P2": 2304,
+   "P3": 2304,
+   "both": 2304,
+   "P2_only": 0,
+   "P3_only": 0,
+   "relation": "equal"
+  }
+ },
+ "witness": {
+  "columns": [
+   2088,
+   2089,
+   2101,
+   2146,
+   2159,
+   2212,
+   2236,
+   2238,
+   2242,
+   2287
+  ],
+  "weight": 10,
+  "provenance": "paper 3's memory-Z IBM witness at T = 2 (evidence/circuit_distance_exact/records/ibm_witnesses.jsonl, line 1), shifted one round later and written in paper 2's DEM column order",
+  "zero_syndrome_and_flips_p2_observable": true,
+  "no_9_column_subset_does_both": true
+ },
+ "conclusion": "At T = 3, memory-Z, paper 2's 2,304-mechanism model and paper 3's IBM model projected to its Z-type detectors have the SAME mechanism set (paper 3's idle faults add no signature), so paper 3's certified lower bound on that model applies to paper 2's unchanged, and the 10-column witness bounds it from above: d_DEM = 10 for paper 2's declared observable at T = 3 (DERIVED: this measurement plus paper 3's certificate and time-shift theorem). Only T = 3 is compared.",
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_refsched_p3_equality.py": "d30aa09db66be5e01330cc1117f7c070ec0d16c719437f70eac804890457eea3",
+  "experiments/m0_prior_art/qldpc_bb_refsched_gate.py": "9b81fc95b1918db0c2935c781a36fef512da6cd08537606d569cfdbda27d29fa",
+  "experiments/circuit_distance_exact/bb_circuits.py": "93869cbab5787769b30eaba5ececaface9556b18188ba7f32b9a83a70665f1e4",
+  "experiments/circuit_distance_exact/export_model.py": "0910cd73e2fddd6b3993ec35c8ea7247d9e5e0e1cda64514fb8b1fcd34177e8d"
+ },
+ "inputs_sha256": {
+  "evidence/instances/bb144_refsched_r3_p002.json": "3f7379de381b5c10d851530919f57610b796af92f771551ce986f9af2e6bb9eb",
+  "evidence/circuit_distance_exact/ibm_recert_20261026/manifest.json": "11570b0437b458987dc43ab2765a9d9fa33e69e3103026f4bd213108bc80bace"
+ }
+}

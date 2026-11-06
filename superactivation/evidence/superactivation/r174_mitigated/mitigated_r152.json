@@ -1,0 +1,19 @@
+{
+ "schema": "oneq.r174.mitigated/1",
+ "label": "SECONDARY -- terminal readout inverted; the claim is on raw counts",
+ "r152_job": "db9c50oc77vs73817rog",
+ "r146": {
+  "raw_reproduced": 0.6167117524746097,
+  "raw_recorded": 0.6167117524746097,
+  "mitigated": 0.6396042403500715,
+  "mitigated_shot_sd": 0.0031682825701283565,
+  "gain": 0.02289248787546172
+ },
+ "r147": {
+  "raw_reproduced": 0.6272772705949263,
+  "raw_recorded": 0.6272772705949263,
+  "mitigated": 0.6667510466505082,
+  "mitigated_shot_sd": 0.00504914382084545,
+  "gain": 0.03947377605558189
+ }
+}

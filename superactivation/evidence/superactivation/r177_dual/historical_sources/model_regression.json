@@ -1,0 +1,56 @@
+{
+ "schema": "oneq.hw.model_regression/1",
+ "job": "db9c50oc77vs73817rog",
+ "submitted_mode": "server-active-accum",
+ "traj": 24,
+ "measured": {
+  "r146": 0.6167117524746097,
+  "r147": 0.6272772705949263
+ },
+ "sd": {
+  "r146": 0.0084,
+  "r147_main": 0.0022,
+  "r147_inline": 0.0084,
+  "r147_static": 0.0105
+ },
+ "variants": {
+  "v1: template + dressing x2 as error ops": {
+   "params": {
+    "twirl_template": true,
+    "twirl": "active-accum",
+    "dressing_factor": 2.0
+   },
+   "r146": 0.6224671146186171,
+   "r146_miss": -0.005755362144007403,
+   "r147": 0.6548375001156643,
+   "r147_miss": -0.027560229520738,
+   "residual": {
+    "main": -0.024140038973919836,
+    "twin_inline": -0.024334296681265126,
+    "twin_static": 0.0216571232367136
+   }
+  },
+  "v2: template + dressing as pulses": {
+   "params": {
+    "twirl_template": true,
+    "twirl_template_dress": true
+   },
+   "r146": 0.6134088074252435,
+   "r146_miss": 0.003302945049366235,
+   "r147": 0.6262238105255538,
+   "r147_miss": 0.0010534600693725693,
+   "residual": {
+    "main": 0.006750309468621549,
+    "twin_inline": 0.014043522570588891,
+    "twin_static": 0.021993547184584766
+   }
+  }
+ },
+ "sources_sha256": {
+  "src/oneq/hw/noise.py": "85a27b37ae369f555850856f595a14ebbe9b761b13c5af89d89e2faf39cc997b",
+  "src/oneq/hw/engine.py": "3dbcdcfa3c89f5fa0eaa5a2bc5012a8bfb9c196d1de7016b0bd0b8513a46eade",
+  "tools/model_regression.py": "184f3ec61050180cade33df4f29d2463f698398a540318e08bf4952d3bf6221d",
+  "experiments/superactivation/shield_family/r152_posthoc.py": "7ebb71f6dce50ac6d91318bfde36dc1f68c19a54d846c911fdfb137b82b4fd2b",
+  "experiments/superactivation/shield_family/r155_heldout_r152.py": "9c1aff77aee6cae5f9c355b375c511052bad4b6e53a3ec9ce67305a5c9cdcbf0"
+ }
+}

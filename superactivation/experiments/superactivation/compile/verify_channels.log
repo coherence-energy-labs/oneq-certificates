@@ -1,0 +1,65 @@
+P coherent Stinespring, gate-by-gate select phase    raw 1.49e-15  compiled 1.26e-14  PASS   (1s)
+P coherent Stinespring, phase-polynomial select (AAM) raw 8.77e-15  compiled 8.60e-15  PASS   (1s)
+P randomized (6 unitaries, classical seed)           raw 5.36e-16  compiled 7.68e-16  PASS   (1s)
+P coherent via generic Isometry synthesis            raw 3.29e-14  compiled 4.39e-14  PASS   (1s)
+A coherent (Toffoli move)                            raw 0.00e+00  compiled 3.81e-15  PASS   (1s)
+A coherent (relative-phase Toffoli move)             raw 0.00e+00  compiled 3.71e-15  PASS   (1s)
+block COHERENT channels, D~=paper (U on s2_first)    raw 2.33e-15  compiled 8.49e-15  PASS   (1s)
+block RANDOMIZED channels, D~=paper (U on s2_first)  raw 2.39e-15  compiled 2.04e-15  PASS   (1s)
+block COHERENT channels, D~=paper (U on s1_first)    raw 2.33e-15  compiled 8.49e-15  PASS   (1s)
+block RANDOMIZED channels, D~=paper (U on s1_first)  raw 2.39e-15  compiled 2.04e-15  PASS   (1s)
+block COHERENT channels, D~=opt                      raw 8.44e-16  compiled 7.30e-15  PASS   (1s)
+block RANDOMIZED channels, D~=opt                    raw 6.24e-16  compiled 8.14e-16  PASS   (1s)
+block COHERENT channels, D~=coherent                 raw 7.14e-16  compiled 7.73e-15  PASS   (1s)
+block RANDOMIZED channels, D~=coherent               raw 6.24e-16  compiled 9.45e-16  PASS   (1s)
+{
+ "E~ CZ": 2,
+ "P coherent CZ (gate-by-gate select)": 26,
+ "P coherent CZ (phase-polynomial select, used in blocks)": 20,
+ "P coherent CZ (generic Isometry)": 104,
+ "P randomized CZ per unitary": [
+  1,
+  1,
+  0,
+  0,
+  1,
+  1
+ ],
+ "P randomized expected CZ": 0.7071067811865476,
+ "A coherent CZ (Toffoli move)": 15,
+ "A coherent CZ (rccx move)": 9,
+ "D^0 paper: compiled counts": {
+  "rz": 36,
+  "sx": 33,
+  "x": 9,
+  "cz": 18,
+  "reset": 3,
+  "measure": 1,
+  "cond:x": 1,
+  "feedforward_blocks": 1
+ },
+ "D^0 paper: CZ": 18,
+ "D^0 opt: compiled counts": {
+  "rz": 8,
+  "sx": 8,
+  "cz": 3,
+  "x": 1,
+  "reset": 3,
+  "measure": 2,
+  "cond:sx": 2,
+  "cond:rz": 3,
+  "cond:x": 1,
+  "feedforward_blocks": 2
+ },
+ "D^0 opt: CZ": 3,
+ "D^0 coherent: compiled counts": {
+  "rz": 16,
+  "sx": 13,
+  "cz": 7,
+  "x": 3,
+  "reset": 3
+ },
+ "D^0 coherent: CZ": 7,
+ "D^1 CZ": 0
+}
+all pass: True  comparison rows pass: True

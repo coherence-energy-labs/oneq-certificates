@@ -1,0 +1,39 @@
+{
+ "schema": "oneq.superactivation.p2-kraus-comparison/2",
+ "supersedes": "p2_kraus_comparison.json (schema 1: exact against the Kraus operators only)",
+ "source": "arXiv:2604.27042v2 source archive, supplemental.tex, Eqs. S2.4-S2.27",
+ "source_sha256": "a5c80fa27c47f8a7a237defd485ddff1b1cd76ea5b0569716135f7f48ac58e3d",
+ "p": 0.4142135623730951,
+ "twist": "u = [[1, 1], [1, -1]]",
+ "comparison": "normalized Choi matrices on R'R''B'B'', entrywise max |difference|; no local unitary applied",
+ "kraus_trace_preservation_deviation": 0.0,
+ "max_abs_differences": {
+  "family_d2_vs_kraus_S2.20-S2.27": 5.551115123125783e-17,
+  "family_d2_vs_choi_formula_S2.4-S2.17": 4.163336342344337e-17,
+  "kraus_vs_choi_formula": 6.938893903907228e-17
+ },
+ "controls_must_differ": {
+  "smith_yard_original_M1_sign_typo_vs_family_d2": 0.07322330470336313,
+  "family_at_0.97p_vs_kraus": 0.0031066017177982658,
+  "exact_check_with_the_M1_sign_typo_family_vs_kraus_entries_equal": 248,
+  "exact_check_with_swapped_formula_weights_family_vs_choi_formula_entries_equal": 228
+ },
+ "tolerance": 1e-14,
+ "exact_symbolic": {
+  "entries": 256,
+  "family_vs_kraus_S2.20-S2.27": 256,
+  "family_vs_choi_formula_S2.4-S2.17": 256,
+  "kraus_vs_choi_formula": 256,
+  "method": "sympy: each Choi-entry difference is an algebraic number, and it is zero iff its minimal polynomial is x",
+  "sympy": "1.14.0"
+ },
+ "verdict": "IDENTICAL",
+ "provenance": {
+  "code_git_blobs": {
+   "experiments/superactivation/shield_family/p2_kraus_comparison.py": "a8678a10078618970824e488d709f8752b3174e5",
+   "experiments/superactivation/shield_family/ppt_family.py": "49f4dd41182928066bc941bd8afe8da3c2515116"
+  },
+  "python": "3.14.3",
+  "numpy": "2.3.5"
+ }
+}

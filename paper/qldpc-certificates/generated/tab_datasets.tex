@@ -1,0 +1,14 @@
+\begin{tabular}{@{}llrlll@{}}
+\toprule
+dataset & check matrix & rows $\times$ columns & fault model & prior & objective \\
+\midrule
+uniform, $p=0.01$ & $H_Z$ & 72 $\times$ 144 & i.i.d.\ $X$ & $p$ & unit \\
+uniform, $p=0.02$ & $H_Z$ & 72 $\times$ 144 & i.i.d.\ $X$ & $p$ & unit \\
+heterogeneous, $p=0.02$ & $H_Z$ & 72 $\times$ 144 & independent $X$, $p_i\sim 0.02\,U(\tfrac12,2)$ & $p_i$ & integer \\
+phenomenological, $p=p_m=0.01$ & spacetime $H_Z$ & 360 $\times$ 864 & i.i.d.\ data and measurement & $p$ & integer \\
+phenomenological, $p=p_m=0.02$ & spacetime $H_Z$ & 360 $\times$ 864 & i.i.d.\ data and measurement & $p$ & integer \\
+X-sector, $p=0.02$ & $H_X$ & 72 $\times$ 144 & i.i.d.\ $Z$ & $p$ & unit \\
+stress, $p=0.05$ & $H_Z$ & 72 $\times$ 144 & i.i.d.\ $X$ & $p$ & unit \\
+circuit, reference schedule & DEM & 288 $\times$ 2{,}304 & circuit-level, idles unfaulted & DEM & integer \\
+\bottomrule
+\end{tabular}

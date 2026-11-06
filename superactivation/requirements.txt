@@ -1,0 +1,17 @@
+# The Python dependencies of the superactivation bundle (oneq-superactivation), pinned to the environment of record
+# (Python 3.14).     python -m pip install -r requirements.txt
+# Checked against every module the bundle's code imports. Enough to check every certificate, run the shipped tests and
+# regenerate and build the manuscript.
+numpy==2.3.5
+scipy==1.17.0
+python-flint==0.9.0           # the certificate checker: exact integers and ball arithmetic
+sympy==1.14.0                 # the exact Kraus and PPT-relaxation checks
+qiskit==2.5.0                 # the hardware designs' circuits and their tests
+cryptography==50.0.0          # Ed25519: tools/verify_release.py
+psutil>=5.9                   # the exact certifiers record their working sets
+pytest>=8
+#
+# NOT needed to check anything here; only to RE-RUN a producer (install by hand if you do):
+#   cvxpy, clarabel              the see-saw producers (general_codes, twogroup, ppt_relaxation_probe)
+#   qiskit-aer, qiskit-ibm-runtime==0.47.0   hardware submissions (an IBM account is also needed)
+#   guppylang                    the ion-trap programs under evidence/superactivation/ion_run_*

@@ -1,0 +1,249 @@
+{
+ "project": "lean/BettingR203",
+ "build_exit": 0,
+ "sources": {
+  "lean/BettingR203/BettingR203/AxiomCheck.lean": "e7ad5a8a266a01d080a2a9f2bae47375312c596e7d628a48a6f8161fc8a5198b",
+  "lean/BettingR203/BettingR203/Family.lean": "fea618d47b3f410dfc6bcd0ffe6b8c1f158b000b2e7d0a8f1913e3a90c306ce1",
+  "lean/BettingR203/BettingR203/Package.lean": "dc680e2cf11002dff615294cbebc86ccdc96e6dfe1010f31e1e0fcb717ab5082",
+  "lean/BettingR203/BettingR203/PackageAD.lean": "e77dae7178eda398579c8b1c15d3d5e1cbb6dc805313d11777e4cb5dfb34f332",
+  "lean/BettingR203/BettingR203/Statement.lean": "e96f15a2fdf71832315eefb85a625d0e62c034a216852e98243e9e780beddd15",
+  "lean/BettingR203/BettingR203/StatementAD.lean": "f4e498f68b2ac53e74588a1dcacee02ec197f826fe862f4e648925299a6f04ae",
+  "lean/BettingR203/BettingR203/Ville.lean": "dfb6a897c9027e26a9080b21c62e7e848e77ff85afd70392db1fa7f59b195ffc",
+  "lean/BettingR203/BettingR203.lean": "053f6c30d423e4050c93e1097488d10cb5fd82bd9580e7759acee9a51a2a2fa2",
+  "lean/BettingR203/lake-manifest.json": "d406bc321b48cc645e7b21f36247198ace66df7121f6c7adb51e0180150c49be",
+  "lean/BettingR203/lakefile.toml": "310d3454cc71d7d80619f9913601bba36b8f519d3f419f76e14d19be47997821",
+  "lean/BettingR203/lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632"
+ },
+ "theorems": {
+  "BettingR203.factor_pos": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.compensator_le_one": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.wealth_eq": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ratio_pos": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.wealth_le_ratio": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ratio_le_pow": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ratio_measurable": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ratio_martingale": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ville_mixture": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ville_mixture_mean": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.clippedMean_spec": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ville_any_device": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.bets_safe": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.scores_ordered": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.wealth_counts": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.package_valid": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.package_valid_any_device": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.m_le_exact": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.package_valid_exact_threshold": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Package.package_hypotheses_satisfiable": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.Statement.frozen_run_valid": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ville_family": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.ville_family_any_device": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.PackageAD.witness_bets_safe": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.PackageAD.witness_scores_ordered": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.PackageAD.mW_le_exact": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.PackageAD.weights_sum": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.PackageAD.components_safe": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.PackageAD.package_ad_valid_exact_threshold": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "BettingR203.StatementAD.frozen_run_valid_ad": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ]
+ },
+ "constants": {
+  "m": [
+   490876775993669,
+   9007199254740992
+  ],
+  "m_exact": [
+   63,
+   1156
+  ],
+  "sRare": [
+   8343606576082883,
+   9007199254740992
+  ],
+  "sCommon": [
+   7150856185829113,
+   9007199254740992
+  ],
+  "bet": [
+   [
+    5404319552844595,
+    18014398509481984
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3602879701896397,
+    4503599627370496
+   ]
+  ],
+  "δ": [
+   5414695101216829,
+   18889465931478580854784
+  ],
+  "witness": {
+   "mW": [
+    2205421867981215,
+    36028797018963968
+   ],
+   "mW_exact": [
+    8845242869351,
+    144500000000000
+   ],
+   "kRX": [
+    6257704932062163,
+    4503599627370496
+   ],
+   "kKX": [
+    5363142139371835,
+    4503599627370496
+   ],
+   "kKY": [
+    8151976051845189,
+    18014398509481984
+   ],
+   "kKZ": [
+    1662574063205269,
+    2251799813685248
+   ],
+   "wbet": [
+    [
+     8412724103928087,
+     18014398509481984
+    ],
+    [
+     2607584184247517,
+     4503599627370496
+    ],
+    [
+     6296032279063953,
+     9007199254740992
+    ]
+   ]
+  }
+ },
+ "lean_version": "Lean (version 4.34.0, x86_64-w64-windows-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)",
+ "mathlib_rev": "5ed2965256430c3649e86755f9576b54eca72435",
+ "mathlib_clean": true,
+ "axiom_check_lines": 30
+}

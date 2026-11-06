@@ -17,7 +17,14 @@ in git. This tool
 temporary directory and re-checks every member against the chunk index.
 
     python tools/pack_epsilon_receipts.py                    # every completed config
+    python tools/pack_epsilon_receipts.py --verify           # every config with an archive.json
     python tools/pack_epsilon_receipts.py --verify --config sim_d5_r25
+    python tools/pack_epsilon_receipts.py --partial --config heldout_d7_X_r50 ...   # a run its rule stopped
+
+PARTIAL-PLAN MODE (2026-11-05, matching replay_epsilon_receipts.py --partial). A sample a preregistered budget stopped
+has no summary.json, so there is no plan to complete; the archive is then every chunk the index holds and the receipt
+file verifies, archive.json says `partial: true` and lists the seeds, and a chunk whose file exists but does not hash
+to its index row is a refusal, never a silent omission. A configuration that HAS a summary is never packed this way.
 """
 from __future__ import annotations
 
@@ -71,11 +78,34 @@ def _bound_rows(name: str, summ: dict) -> list[dict]:
     return [by_seed[s] for s in range(lo, hi + 1)]
 
 
-def pack(name: str) -> dict:
-    summ = _complete(name)
-    if summ is None:
-        raise PackError(f"{name}: no complete merged run to pack")
-    rows = _bound_rows(name, summ)
+def _partial_rows(name: str) -> list[dict]:
+    """Every verified index row of a stopped run, in seed order; a named file that does not verify is a refusal."""
+    if (INDEX / name / "summary.json").exists():
+        raise PackError(f"{name}: has a summary.json; a merged run is packed as complete, not partial")
+    rows = [json.loads(x) for x in (INDEX / name / "chunks.jsonl").read_text(encoding="utf-8").splitlines() if x]
+    by_seed: dict[int, dict] = {}
+    for r in rows:
+        rp = ROOT / r["receipts_file"]
+        if not rp.exists():
+            continue
+        if _sha(gzip.decompress(rp.read_bytes())) != r["receipts_sha256"]:
+            raise PackError(f"{name}: chunk {r['seed']}'s receipt file does not hash to its index row")
+        if r["seed"] in by_seed:
+            raise PackError(f"{name}: chunk {r['seed']} indexed twice")
+        by_seed[r["seed"]] = r
+    if not by_seed:
+        raise PackError(f"{name}: no verified chunk in the index")
+    return [by_seed[s] for s in sorted(by_seed)]
+
+
+def pack(name: str, partial: bool = False) -> dict:
+    if partial:
+        rows = _partial_rows(name)
+    else:
+        summ = _complete(name)
+        if summ is None:
+            raise PackError(f"{name}: no complete merged run to pack")
+        rows = _bound_rows(name, summ)
     named = {pathlib.PurePosixPath(r["receipts_file"]).name for r in rows}
     present = {p.name for p in (RECEIPTS / name).iterdir() if p.is_file()}
     stray = sorted(present - named)
@@ -102,7 +132,12 @@ def pack(name: str) -> dict:
            "members": len(rows),
            "chunks_index_sha256": _sha((INDEX / name / "chunks.jsonl").read_bytes()),
            "extract_to": "the repository root (members are data/epsilon_receipts/<config>/chunk_*.jsonl.gz)",
-           "then": f"python tools/replay_epsilon_receipts.py --config {name} --jobs 8"}
+           "then": f"python tools/replay_epsilon_receipts.py --config {name} --jobs 8"
+                   + (" --partial" if partial else "")}
+    if partial:
+        doc["partial"] = True
+        doc["seeds"] = [r["seed"] for r in rows]
+        doc["why_partial"] = "the run was stopped by its preregistered rule; these are every chunk it completed"
     (INDEX / name / "archive.json").write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8", newline="\n")
     return doc
 
@@ -142,13 +177,23 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", nargs="*", default=None)
     ap.add_argument("--verify", action="store_true")
+    ap.add_argument("--partial", action="store_true",
+                    help="partial-plan mode: pack every chunk a stopped run completed (needs --config)")
     ap.add_argument("--archive-dir", default=None,
                     help="where the downloaded archives are (default: data/epsilon_receipts_archive)")
     a = ap.parse_args()
-    names = a.config or sorted(p.parent.name for p in INDEX.glob("*/summary.json") if _complete(p.parent.name))
+    if a.partial and not a.config:
+        print("--partial needs the configurations named with --config", file=sys.stderr)
+        return 2
+    if a.verify:
+        # every pinned archive, complete or partial: a pin nobody verifies is a pin
+        names = a.config or sorted(p.parent.name for p in INDEX.glob("*/archive.json"))
+    else:
+        names = a.config or sorted(p.parent.name for p in INDEX.glob("*/summary.json") if _complete(p.parent.name))
     try:
         for n in names:
-            res = verify(n, pathlib.Path(a.archive_dir) if a.archive_dir else None) if a.verify else pack(n)
+            res = (verify(n, pathlib.Path(a.archive_dir) if a.archive_dir else None) if a.verify
+                   else pack(n, partial=a.partial))
             print(json.dumps({k: res[k] for k in ("config", "members", "sha256")}), flush=True)
     except PackError as exc:
         print(f"PACK FAILED: {exc}", file=sys.stderr)

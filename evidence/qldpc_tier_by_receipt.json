@@ -1,0 +1,344 @@
+{
+ "schema": "oneq-qldpc-tier-by-receipt/1",
+ "definition": "tier1: BP-OSD's own answer accepted by the shot's single dual (a flat certificate or a one-node tree) under check_qldpc_exact; tier2: the single dual proves another answer and BP-OSD's is heavier; branching_bp_optimal / branching_repair: the optimum is proven by a branching tree and BP-OSD's answer attains it / is heavier. single_dual_attaining: L = U; single_dual_lattice: U - 1/D < L < U.",
+ "heldout": {
+  "uniform_p01": {
+   "N": 300,
+   "recorded_tier1": 300,
+   "recorded_tier1->tier1": 300,
+   "single_dual_attaining": 300,
+   "tier1": 300
+  },
+  "uniform_p02": {
+   "N": 470,
+   "recorded_tier1": 450,
+   "recorded_tier1->tier1": 450,
+   "recorded_tier2": 20,
+   "recorded_tier2->tier2": 20,
+   "single_dual_attaining": 470,
+   "tier1": 450,
+   "tier2": 20
+  },
+  "hetero_p02": {
+   "N": 300,
+   "recorded_tier1": 299,
+   "recorded_tier1->tier1": 299,
+   "recorded_tier2": 1,
+   "recorded_tier2->tier2": 1,
+   "single_dual_attaining": 300,
+   "tier1": 299,
+   "tier2": 1
+  },
+  "phenom_p01": {
+   "N": 150,
+   "recorded_tier1": 150,
+   "recorded_tier1->tier1": 150,
+   "single_dual_attaining": 150,
+   "tier1": 150
+  },
+  "phenom_p02": {
+   "N": 150,
+   "branching_bp_optimal": 1,
+   "recorded_tier1": 149,
+   "recorded_tier1->tier1": 149,
+   "recorded_tierBD": 1,
+   "recorded_tierBD->branching_bp_optimal": 1,
+   "single_dual_attaining": 149,
+   "tier1": 149
+  },
+  "xsector_p02": {
+   "N": 200,
+   "recorded_tier1": 194,
+   "recorded_tier1->tier1": 194,
+   "recorded_tier2": 6,
+   "recorded_tier2->tier2": 6,
+   "single_dual_attaining": 200,
+   "tier1": 194,
+   "tier2": 6
+  },
+  "stress_p05": {
+   "N": 300,
+   "branching_repair": 6,
+   "recorded_tier1": 122,
+   "recorded_tier1->tier1": 122,
+   "recorded_tier2": 164,
+   "recorded_tier2->tier2": 164,
+   "recorded_tierBD": 14,
+   "recorded_tierBD->branching_repair": 6,
+   "recorded_tierBD->tier2": 8,
+   "single_dual_attaining": 286,
+   "single_dual_lattice": 8,
+   "tier1": 122,
+   "tier2": 172
+  },
+  "bb_refsched": {
+   "N": 149,
+   "branching_bp_optimal": 2,
+   "recorded_tier1": 116,
+   "recorded_tier1->tier1": 116,
+   "recorded_tier2": 31,
+   "recorded_tier2->tier2": 31,
+   "recorded_tierBD": 2,
+   "recorded_tierBD->branching_bp_optimal": 2,
+   "single_dual_attaining": 147,
+   "tier1": 116,
+   "tier2": 31
+  }
+ },
+ "strong_baseline": {
+  "p=0.01": {
+   "A": {
+    "N": 200,
+    "optimum_hit": 199,
+    "recorded_tier1": 199,
+    "single_dual_attaining": 200,
+    "tier1": 199,
+    "tier2": 1
+   },
+   "B": {
+    "N": 200,
+    "optimum_hit": 200,
+    "recorded_tier1": 200,
+    "single_dual_attaining": 200,
+    "tier1": 200
+   },
+   "C": {
+    "N": 200,
+    "optimum_hit": 200,
+    "recorded_tier1": 200,
+    "single_dual_attaining": 200,
+    "tier1": 200
+   },
+   "A_s": {
+    "N": 200,
+    "optimum_hit": 199,
+    "recorded_tier1": 199,
+    "single_dual_attaining": 200,
+    "tier1": 199,
+    "tier2": 1
+   },
+   "B_s": {
+    "N": 200,
+    "optimum_hit": 199,
+    "recorded_tier1": 199,
+    "single_dual_attaining": 200,
+    "tier1": 199,
+    "tier2": 1
+   }
+  },
+  "p=0.02": {
+   "A": {
+    "N": 200,
+    "optimum_hit": 190,
+    "recorded_tier1": 190,
+    "single_dual_attaining": 200,
+    "tier1": 190,
+    "tier2": 10
+   },
+   "B": {
+    "N": 200,
+    "optimum_hit": 200,
+    "recorded_tier1": 200,
+    "single_dual_attaining": 200,
+    "tier1": 200
+   },
+   "C": {
+    "N": 200,
+    "optimum_hit": 197,
+    "recorded_tier1": 197,
+    "single_dual_attaining": 200,
+    "tier1": 197,
+    "tier2": 3
+   },
+   "A_s": {
+    "N": 200,
+    "optimum_hit": 196,
+    "recorded_tier1": 196,
+    "single_dual_attaining": 200,
+    "tier1": 196,
+    "tier2": 4
+   },
+   "B_s": {
+    "N": 200,
+    "optimum_hit": 197,
+    "recorded_tier1": 197,
+    "single_dual_attaining": 200,
+    "tier1": 197,
+    "tier2": 3
+   }
+  },
+  "p=0.03": {
+   "A": {
+    "N": 200,
+    "optimum_hit": 165,
+    "recorded_tier1": 165,
+    "single_dual_attaining": 200,
+    "tier1": 165,
+    "tier2": 35
+   },
+   "B": {
+    "N": 200,
+    "optimum_hit": 199,
+    "recorded_tier1": 199,
+    "single_dual_attaining": 200,
+    "tier1": 199,
+    "tier2": 1
+   },
+   "C": {
+    "N": 200,
+    "optimum_hit": 200,
+    "recorded_tier1": 200,
+    "single_dual_attaining": 200,
+    "tier1": 200
+   },
+   "A_s": {
+    "N": 200,
+    "optimum_hit": 199,
+    "recorded_tier1": 199,
+    "single_dual_attaining": 200,
+    "tier1": 199,
+    "tier2": 1
+   },
+   "B_s": {
+    "N": 200,
+    "optimum_hit": 198,
+    "recorded_tier1": 198,
+    "single_dual_attaining": 200,
+    "tier1": 198,
+    "tier2": 2
+   }
+  },
+  "p=0.05": {
+   "A": {
+    "N": 200,
+    "branching_repair": 2,
+    "optimum_hit": 84,
+    "recorded_tier1": 84,
+    "single_dual_attaining": 188,
+    "single_dual_lattice": 10,
+    "tier1": 84,
+    "tier2": 114
+   },
+   "B": {
+    "N": 200,
+    "branching_repair": 2,
+    "optimum_hit": 87,
+    "recorded_tier1": 86,
+    "single_dual_attaining": 188,
+    "single_dual_lattice": 10,
+    "tier1": 87,
+    "tier2": 111
+   },
+   "C": {
+    "N": 200,
+    "branching_bp_optimal": 2,
+    "optimum_hit": 198,
+    "recorded_tier1": 187,
+    "single_dual_attaining": 188,
+    "single_dual_lattice": 10,
+    "tier1": 196,
+    "tier2": 2
+   },
+   "A_s": {
+    "N": 200,
+    "branching_bp_optimal": 2,
+    "optimum_hit": 197,
+    "recorded_tier1": 185,
+    "single_dual_attaining": 188,
+    "single_dual_lattice": 10,
+    "tier1": 195,
+    "tier2": 3
+   },
+   "B_s": {
+    "N": 200,
+    "branching_bp_optimal": 2,
+    "optimum_hit": 197,
+    "recorded_tier1": 185,
+    "single_dual_attaining": 188,
+    "single_dual_lattice": 10,
+    "tier1": 195,
+    "tier2": 3
+   }
+  },
+  "p=0.07": {
+   "A": {
+    "N": 200,
+    "branching_repair": 18,
+    "optimum_hit": 24,
+    "recorded_tier1": 24,
+    "single_dual_attaining": 150,
+    "single_dual_lattice": 32,
+    "tier1": 24,
+    "tier2": 158
+   },
+   "B": {
+    "N": 200,
+    "branching_bp_optimal": 8,
+    "branching_repair": 10,
+    "optimum_hit": 171,
+    "recorded_tier1": 143,
+    "single_dual_attaining": 150,
+    "single_dual_lattice": 32,
+    "tier1": 163,
+    "tier2": 19
+   },
+   "C": {
+    "N": 200,
+    "branching_bp_optimal": 17,
+    "branching_repair": 1,
+    "optimum_hit": 196,
+    "recorded_tier1": 146,
+    "single_dual_attaining": 150,
+    "single_dual_lattice": 32,
+    "tier1": 179,
+    "tier2": 3
+   },
+   "A_s": {
+    "N": 200,
+    "branching_bp_optimal": 18,
+    "optimum_hit": 196,
+    "recorded_tier1": 145,
+    "single_dual_attaining": 150,
+    "single_dual_lattice": 32,
+    "tier1": 178,
+    "tier2": 4
+   },
+   "B_s": {
+    "N": 200,
+    "branching_bp_optimal": 18,
+    "optimum_hit": 196,
+    "recorded_tier1": 145,
+    "single_dual_attaining": 150,
+    "single_dual_lattice": 32,
+    "tier1": 178,
+    "tier2": 4
+   }
+  }
+ },
+ "heldout_totals": {
+  "N": 2019,
+  "tier1": 1780,
+  "tier2": 230,
+  "branching_bp_optimal": 3,
+  "branching_repair": 6,
+  "single_dual_attaining": 2002,
+  "single_dual_lattice": 8
+ },
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_tier_by_receipt.py": "7554385d2caa97646335a4fbae7ab1ad1f856267aa9634936f3d136c2ec9c0be",
+  "src/oneq/qldpc_check.py": "51940b3712a830895cbffa3516c81ba57836d470dbe52085219e581709c15ecc"
+ },
+ "inputs_sha256": {
+  "evidence/qldpc_heldout_flat_certs.json": "c78b7e0dd4136bf37db9f841afb4f9e04d53ff49b309cc247af3aaf7c477797e",
+  "evidence/qldpc_heldout_addendum.json": "e6e90398c63992e3efc1f5fb53ee1017d80c79ffb6de031745b880417f0c3cef",
+  "evidence/strong_baseline_v3/MANIFEST.json": "64df7ec7bc89584cdcab8890c37496b7eb3aecbc1ec372a4653a5343a1dceb3a",
+  "evidence/per_shot/heldout_uniform_p01.jsonl": "3f7196359f9c2237c7eec0394afd1788ccb94bbab531a7a3dbb5bda333f682a2",
+  "evidence/per_shot/heldout_uniform_p02.jsonl": "72367b7054cc6d03b8e5718f31e329ea78c590b383f84dae9d12d4e17795789c",
+  "evidence/per_shot/heldout_hetero_p02.jsonl": "906299e9aedda8c2625a261c46d69bfdab19e8eb6bb1542e14feb0a14951f478",
+  "evidence/per_shot/heldout_phenom_p01.jsonl": "142032cd1112fd59831265bdefd6ff231cb1cf2ffbc078fa846ba926f47f776e",
+  "evidence/per_shot/heldout_phenom_p02.jsonl": "7226b90b338987d5f2d918ed378d521c525a4335326938fe122594134d550926",
+  "evidence/per_shot/heldout_xsector_p02.jsonl": "d107299b0d4f587ae62d44528efe6bfdd828505721fac28f143e50cb91a38c19",
+  "evidence/per_shot/heldout_stress_p05.jsonl": "c8a0aadfc26d027c704bd1059a08126a4406b1872170ecba8c31cbcaf85a5c43",
+  "evidence/per_shot/heldout_bb_refsched.jsonl": "69dc6e271bf41e7f7a6457040e9b50e15685f4b52b52aa7039da093acfa7f34d"
+ }
+}

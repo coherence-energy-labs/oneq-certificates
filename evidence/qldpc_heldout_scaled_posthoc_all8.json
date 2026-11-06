@@ -1,0 +1,407 @@
+{
+ "schema": "oneq-qldpc-heldout-scaled-posthoc-all8/1",
+ "post_hoc": "NOT preregistered. The held-out syndromes and receipts were known before this was run; the scaling factor 0.625 is the default of ldpc's SinterBpOsdDecoder and was not tuned. The preregistered comparison on fresh seeds is docs/PREREG_qldpc_scaling_2026-11-03.md.",
+ "question": "per dataset, how often does BP-OSD at each scaling factor return a certified optimum?",
+ "decoder_common": {
+  "bp_method": "ms",
+  "schedule": "parallel",
+  "osd_method": "osd_cs",
+  "osd_order": 5
+ },
+ "alphas": [
+  1.0,
+  0.625
+ ],
+ "freeze_commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
+ "environment": {
+  "python": "3.14.3",
+  "ldpc": "2.4.1",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "stim": "1.16.0"
+ },
+ "rungs": {
+  "uniform_p01": {
+   "shots": 300,
+   "instance": "bb144_z_code_capacity",
+   "channel": "rate",
+   "declared_rate": 0.01,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 300,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 300,
+     "syndrome_valid": 300,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 300,
+     "max_excess_over_optimum": 0,
+     "logical_errors": 0
+    },
+    "0.625": {
+     "optimum_hit": 300,
+     "syndrome_valid": 300,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 300,
+     "max_excess_over_optimum": 0,
+     "logical_errors": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 0,
+    "hit_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 1.0
+   },
+   "pipeline": {
+    "logical_errors": 0
+   }
+  },
+  "uniform_p02": {
+   "shots": 470,
+   "instance": "bb144_z_code_capacity",
+   "channel": "rate",
+   "declared_rate": 0.02,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 450,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 450,
+     "syndrome_valid": 470,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 470,
+     "max_excess_over_optimum": 16,
+     "logical_errors": 18
+    },
+    "0.625": {
+     "optimum_hit": 468,
+     "syndrome_valid": 470,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 447,
+     "max_excess_over_optimum": 10,
+     "logical_errors": 1
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 2,
+    "hit_at_0.625_only": 20,
+    "exact_two_sided_mcnemar_p": 0.00012111663818359375
+   },
+   "pipeline": {
+    "logical_errors": 0
+   }
+  },
+  "hetero_p02": {
+   "shots": 300,
+   "instance": "bb144_z_code_capacity",
+   "channel": "hetero",
+   "declared_rate": 0.02,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "channel_seed_recorded": true,
+    "channel_regenerates_weights": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 299,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 299,
+     "syndrome_valid": 300,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 300,
+     "max_excess_over_optimum": 289,
+     "logical_errors": 0
+    },
+    "0.625": {
+     "optimum_hit": 298,
+     "syndrome_valid": 300,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 299,
+     "max_excess_over_optimum": 289,
+     "logical_errors": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 1,
+    "hit_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 1.0
+   },
+   "pipeline": {
+    "logical_errors": 0
+   }
+  },
+  "phenom_p01": {
+   "shots": 150,
+   "instance": "bb144_phenom_r4",
+   "channel": "phenom",
+   "declared_rate": 0.01,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "spacetime_system_equals_instance": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 150,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 150,
+     "syndrome_valid": 150,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 150,
+     "max_excess_over_optimum": 0
+    },
+    "0.625": {
+     "optimum_hit": 148,
+     "syndrome_valid": 150,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 148,
+     "max_excess_over_optimum": 13785
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 2,
+    "hit_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 0.5
+   },
+   "pipeline": {}
+  },
+  "phenom_p02": {
+   "shots": 150,
+   "instance": "bb144_phenom_r4",
+   "channel": "phenom",
+   "declared_rate": 0.02,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "spacetime_system_equals_instance": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 150,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 150,
+     "syndrome_valid": 150,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 150,
+     "max_excess_over_optimum": 0
+    },
+    "0.625": {
+     "optimum_hit": 149,
+     "syndrome_valid": 150,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 147,
+     "max_excess_over_optimum": 11676
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 1,
+    "hit_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 1.0
+   },
+   "pipeline": {}
+  },
+  "xsector_p02": {
+   "shots": 200,
+   "instance": "bb144_x_code_capacity",
+   "channel": "rate",
+   "declared_rate": 0.02,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 194,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 194,
+     "syndrome_valid": 200,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 200,
+     "max_excess_over_optimum": 14,
+     "logical_errors": 6
+    },
+    "0.625": {
+     "optimum_hit": 199,
+     "syndrome_valid": 200,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 194,
+     "max_excess_over_optimum": 6,
+     "logical_errors": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 0,
+    "hit_at_0.625_only": 5,
+    "exact_two_sided_mcnemar_p": 0.0625
+   },
+   "pipeline": {
+    "logical_errors": 0
+   }
+  },
+  "stress_p05": {
+   "shots": 300,
+   "instance": "bb144_z_code_capacity",
+   "channel": "rate",
+   "declared_rate": 0.05,
+   "max_iter": 30,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 122,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 122,
+     "syndrome_valid": 300,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 300,
+     "max_excess_over_optimum": 20,
+     "logical_errors": 175
+    },
+    "0.625": {
+     "optimum_hit": 299,
+     "syndrome_valid": 300,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 120,
+     "max_excess_over_optimum": 6,
+     "logical_errors": 8
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 0,
+    "hit_at_0.625_only": 177,
+    "exact_two_sided_mcnemar_p": 1.044048714879764e-53
+   },
+   "pipeline": {
+    "logical_errors": 5
+   }
+  },
+  "bb_refsched": {
+   "shots": 149,
+   "instance": "bb144_refsched_r3_p002",
+   "channel": "circuit",
+   "declared_rate": 0.002,
+   "max_iter": 40,
+   "controls": {
+    "instance_hash": true,
+    "weights_hash": true,
+    "weights_length": true,
+    "dem_equals_instance": true,
+    "dem_regenerates_weights": true,
+    "seed_follows_rule": true,
+    "resample_nontrivial_count": true,
+    "every_receipt_answer_explains_its_syndrome": true,
+    "certified_optimum_matches_recorded_objective": true,
+    "alpha_1_reproduces_every_stored_candidate": true,
+    "stim_resample_reproduces_every_syndrome": true,
+    "stored_answers_score_as_the_decoder_reproduces": true
+   },
+   "recorded_optimum_hits": 118,
+   "alpha": {
+    "1.0": {
+     "optimum_hit": 118,
+     "syndrome_valid": 149,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 149,
+     "max_excess_over_optimum": 28186,
+     "observable_agreement": 149
+    },
+    "0.625": {
+     "optimum_hit": 141,
+     "syndrome_valid": 149,
+     "lighter_than_receipt": 0,
+     "reproduces_stored_candidate": 116,
+     "max_excess_over_optimum": 38849,
+     "observable_agreement": 149
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 3,
+    "hit_at_0.625_only": 26,
+    "exact_two_sided_mcnemar_p": 1.5236437320709229e-05
+   },
+   "pipeline": {
+    "observable_agreement": 149
+   }
+  }
+ },
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_heldout_scaled_posthoc_all8.py": "22dd3a3d9ebedc3943f37acf3bfeb27340aaa8afb10ebf141461d38f75c5dc54",
+  "experiments/m0_prior_art/qldpc_bb_gate.py": "d1e3ae6ca78d4769b1a31a5aceca3b2a3ec6d9b33fec06d094a3c3976dde51ae",
+  "experiments/m0_prior_art/qldpc_bb_phenom.py": "303e51cca9425763bbb51ee9f3af1f1b530f81b9dd3b5ca7dc82a75387290f68",
+  "experiments/m0_prior_art/qldpc_bb_refsched_gate.py": "9b81fc95b1918db0c2935c781a36fef512da6cd08537606d569cfdbda27d29fa",
+  "experiments/m0_prior_art/qldpc_circuit_gate.py": "88fa8c81b0309fd40fb936c5e223b6f4b4523009b1a450473c3823777963fd44",
+  "experiments/m0_prior_art/qldpc_heldout_gate.py": "8fa3d41e4cdee9996e0c17c88b8d219e6f2b84fb1d1bb4f8a1079bfe0cf491f2"
+ },
+ "inputs_sha256": {
+  "evidence/instances/bb144_z_code_capacity.json": "96d052a100562bc33bae3b5be1cd71dc8b06fab74e62b5373aea04fcb4f24b9a",
+  "evidence/weights/heldout_uniform_p01_weights.json": "52a6b7a664e2cebc74bfabd4febefcc31bc617eec83f9ed1311dae62aee8ec85",
+  "evidence/per_shot/heldout_uniform_p01.jsonl": "3f7196359f9c2237c7eec0394afd1788ccb94bbab531a7a3dbb5bda333f682a2",
+  "evidence/weights/heldout_uniform_p02_weights.json": "52a6b7a664e2cebc74bfabd4febefcc31bc617eec83f9ed1311dae62aee8ec85",
+  "evidence/per_shot/heldout_uniform_p02.jsonl": "72367b7054cc6d03b8e5718f31e329ea78c590b383f84dae9d12d4e17795789c",
+  "evidence/weights/heldout_hetero_p02_weights.json": "0537d03f06a2e0419b0fc98055a372073e38556bdda1e2099667804cdc03e26e",
+  "evidence/per_shot/heldout_hetero_p02.jsonl": "906299e9aedda8c2625a261c46d69bfdab19e8eb6bb1542e14feb0a14951f478",
+  "evidence/instances/bb144_phenom_r4.json": "e9130581b81661b017d0c262a570c60b5c07d554e97e0293db3a564daf67e4a5",
+  "evidence/weights/heldout_phenom_p01_weights.json": "adaea30b5731f92627a153b02f9999702034beb03949db34c6fb5b550ff26dc4",
+  "evidence/per_shot/heldout_phenom_p01.jsonl": "142032cd1112fd59831265bdefd6ff231cb1cf2ffbc078fa846ba926f47f776e",
+  "evidence/weights/heldout_phenom_p02_weights.json": "71e7d3895dd32c50afb67ab97cb3c0a6d2b9b69049649ce6958ceaa816dac163",
+  "evidence/per_shot/heldout_phenom_p02.jsonl": "7226b90b338987d5f2d918ed378d521c525a4335326938fe122594134d550926",
+  "evidence/instances/bb144_x_code_capacity.json": "ba61df4c6c3b2375ccbdd8bf1d94b960bd12aa79bf11f9fa1446d52f3cd81235",
+  "evidence/weights/heldout_xsector_p02_weights.json": "52a6b7a664e2cebc74bfabd4febefcc31bc617eec83f9ed1311dae62aee8ec85",
+  "evidence/per_shot/heldout_xsector_p02.jsonl": "d107299b0d4f587ae62d44528efe6bfdd828505721fac28f143e50cb91a38c19",
+  "evidence/weights/heldout_stress_p05_weights.json": "52a6b7a664e2cebc74bfabd4febefcc31bc617eec83f9ed1311dae62aee8ec85",
+  "evidence/per_shot/heldout_stress_p05.jsonl": "c8a0aadfc26d027c704bd1059a08126a4406b1872170ecba8c31cbcaf85a5c43",
+  "evidence/instances/bb144_refsched_r3_p002.json": "3f7379de381b5c10d851530919f57610b796af92f771551ce986f9af2e6bb9eb",
+  "evidence/weights/heldout_bb_refsched_weights.json": "95bc08305652fd06b83c65fdd42a59eb85cf84d6bf07e27ff82db01b47094422",
+  "evidence/per_shot/heldout_bb_refsched.jsonl": "69dc6e271bf41e7f7a6457040e9b50e15685f4b52b52aa7039da093acfa7f34d"
+ },
+ "totals_per_alpha": {
+  "1.0": 1783,
+  "0.625": 2002
+ },
+ "totals_note": "a sum over datasets for bookkeeping, not a pooled comparison",
+ "shots_total": 2019,
+ "seconds": 2.5
+}

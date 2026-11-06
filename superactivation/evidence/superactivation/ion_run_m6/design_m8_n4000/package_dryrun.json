@@ -1,0 +1,42 @@
+[
+ {
+  "device": "spec:helios_1",
+  "arm": "exec",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 2000,
+  "certified_F_e_median": 0.7906971859690319,
+  "certified_F_e_p05": 0.785008385686025
+ },
+ {
+  "device": "spec:helios_1",
+  "arm": "barriers",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 2000,
+  "certified_F_e_median": 0.7780687145365728,
+  "certified_F_e_p05": 0.7718557494926483
+ },
+ {
+  "device": "spec:h2_2_mem56",
+  "arm": "exec",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 2000,
+  "certified_F_e_median": 0.7864777781144308,
+  "certified_F_e_p05": 0.7807024304019805
+ },
+ {
+  "device": "spec:h2_2_mem56",
+  "arm": "barriers",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 2000,
+  "certified_F_e_median": 0.7767560146034884,
+  "certified_F_e_p05": 0.7705623285954494
+ }
+]

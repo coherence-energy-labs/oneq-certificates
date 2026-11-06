@@ -1,0 +1,35 @@
+{
+ "tag": "r173_off",
+ "job_id": "dba0jsvi0auc7391b5gg",
+ "backend": "ibm_kingston",
+ "submitted_utc": "2026-10-17T23:51:15+00:00",
+ "submit_called_utc": "2026-10-17T23:51:14.532610+00:00",
+ "quota_remaining_before_s": 54.0,
+ "estimated_cost_s": 4.58,
+ "prereg": "C:\\Users\\Josh\\Projects\\ONE_Q\\docs\\PREREG_r173_twirl_off_schedule.md",
+ "prereg_sha256": "94c82787ec3547566b770a17a21c2b29f6d0f6751ff5deb8856174266e70be12",
+ "qpy_sha256": "eda48f18b6a487e2864a8e814aba3fa7f681d8ec99113fac82976f0357f04017",
+ "circuit_order": [
+  "ro_all0",
+  "ro_all1",
+  "ladder_bar",
+  "ladder_nobar",
+  "slots",
+  "dynamic",
+  "ro_end0",
+  "ro_end1"
+ ],
+ "shots": {
+  "ro_all0": 1000,
+  "ro_all1": 1000,
+  "ladder_bar": 1000,
+  "ladder_nobar": 1000,
+  "slots": 1000,
+  "dynamic": 1000,
+  "ro_end0": 1000,
+  "ro_end1": 1000
+ },
+ "twirl_randomizations": null,
+ "extra": {},
+ "scheduler_timing": true
+}

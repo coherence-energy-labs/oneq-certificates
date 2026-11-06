@@ -1,0 +1,64 @@
+{
+  "schema": "oneq.r178.r147_two_uncertainty_audit/1",
+  "evidence": "ARCHIVED IBM COUNTS + COMMITTED R176 RESAMPLING + NEW OFFLINE SIMULATION",
+  "source_job": "db9c50oc77vs73817rog",
+  "input_sha256": {
+    "evidence/superactivation/r178_search/r147_v2_mc_independent.json": "f6c3c8d38bd23041b85420813c3ffadc87b81bf41a8e450813ec901ff905e5df",
+    "evidence/superactivation/r176_frame_bars/r152_db9c50oc77vs73817rog.json": "2f54deeb012472acc67b1ed4d51c0551edee3e6ff5a4eaa0415607c52dd22cf8"
+  },
+  "simultaneous_familywise_alpha": 0.01,
+  "gaussian_approx_z_threshold": 2.9351994688666982,
+  "subgroups": {
+    "main": {
+      "n": 195,
+      "mean_r147_hardware_minus_v2_prediction": 0.005936652661934902,
+      "frame_bootstrap_sd": 0.002261987267400249,
+      "independent_simulation_mc_sd": 0.001894922091961496,
+      "combined_sd_independence_assumed": 0.002950816180734506,
+      "z_after_both_uncertainties": 2.0118680047556103,
+      "uncorrected_gaussian_p_approx": 0.04423385293504857,
+      "familywise_bonferroni_p_approx": 0.13270155880514573,
+      "rejected_zero_residual_at_familywise_1pct": false,
+      "exploratory_99pct_simultaneous_interval": [
+        -0.0027245814244802793,
+        0.014597886748350082
+      ]
+    },
+    "twin_inline": {
+      "n": 16,
+      "mean_r147_hardware_minus_v2_prediction": 0.014590755664682997,
+      "frame_bootstrap_sd": 0.008491359255917274,
+      "independent_simulation_mc_sd": 0.00570005495647952,
+      "combined_sd_independence_assumed": 0.01022711144556168,
+      "z_after_both_uncertainties": 1.426674163310798,
+      "uncorrected_gaussian_p_approx": 0.15367383619213593,
+      "familywise_bonferroni_p_approx": 0.4610215085764078,
+      "rejected_zero_residual_at_familywise_1pct": false,
+      "exploratory_99pct_simultaneous_interval": [
+        -0.015427856418370179,
+        0.044609367747736176
+      ]
+    },
+    "twin_static": {
+      "n": 16,
+      "mean_r147_hardware_minus_v2_prediction": 0.022355603721116418,
+      "frame_bootstrap_sd": 0.009751743089085984,
+      "independent_simulation_mc_sd": 0.003837450540907884,
+      "combined_sd_independence_assumed": 0.010479624035691856,
+      "z_after_both_uncertainties": 2.133244822999084,
+      "uncorrected_gaussian_p_approx": 0.03290464792199719,
+      "familywise_bonferroni_p_approx": 0.09871394376599157,
+      "rejected_zero_residual_at_familywise_1pct": false,
+      "exploratory_99pct_simultaneous_interval": [
+        -0.008404183182369001,
+        0.05311539062460184
+      ]
+    }
+  },
+  "any_group_rejected_at_familywise_1pct": false,
+  "not_an_equivalence_test": true,
+  "simulator_architecture_selected_after_examining_R152": true,
+  "prospectively_hardware_validated": false,
+  "calibration_parameter_uncertainty_not_included": true,
+  "independent_per_unit_simulation_noise_is_not_a_new_physical_effect": true
+}

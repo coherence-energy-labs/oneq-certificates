@@ -1,0 +1,883 @@
+{
+  "R180_physical_resource_frontier": {
+    "5": {
+      "comparison": {
+        "backend": "ibm_kingston",
+        "evidence": "ARCHIVED CALIBRATION + VERIFIED OFFLINE NATIVE CIRCUITS; no current hardware outcomes",
+        "family": {
+          "X0": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 72.0,
+              "expected_native_SX_per_shot": 156.0,
+              "expected_native_depth_per_shot": 93.0,
+              "expected_readouts_per_shot": 13.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 67.0,
+              "expected_native_SX_per_shot": 126.0,
+              "expected_native_depth_per_shot": 89.0,
+              "expected_readouts_per_shot": 3.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 5.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "drop_irrelevant_pairs",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            }
+          ],
+          "X1": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 72.0,
+              "expected_native_SX_per_shot": 141.0,
+              "expected_native_depth_per_shot": 91.0,
+              "expected_readouts_per_shot": 8.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 67.0,
+              "expected_native_SX_per_shot": 126.0,
+              "expected_native_depth_per_shot": 89.0,
+              "expected_readouts_per_shot": 3.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 5.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "drop_irrelevant_pairs",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            }
+          ],
+          "Y0": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 72.0,
+              "expected_native_SX_per_shot": 157.0,
+              "expected_native_depth_per_shot": 93.0,
+              "expected_readouts_per_shot": 13.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 71.0,
+              "expected_native_SX_per_shot": 152.0,
+              "expected_native_depth_per_shot": 93.0,
+              "expected_readouts_per_shot": 13.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.003,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.25,
+                "YY": 0.25,
+                "ZZ": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            }
+          ],
+          "Y1": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 72.0,
+              "expected_native_SX_per_shot": 142.0,
+              "expected_native_depth_per_shot": 91.0,
+              "expected_readouts_per_shot": 8.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 71.0,
+              "expected_native_SX_per_shot": 140.0,
+              "expected_native_depth_per_shot": 91.0,
+              "expected_readouts_per_shot": 8.5,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.001,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.5,
+                "ZI": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            }
+          ],
+          "Z0": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 72.0,
+              "expected_native_SX_per_shot": 156.0,
+              "expected_native_depth_per_shot": 93.0,
+              "expected_readouts_per_shot": 13.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 71.0,
+              "expected_native_SX_per_shot": 151.0,
+              "expected_native_depth_per_shot": 93.0,
+              "expected_readouts_per_shot": 13.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.003,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.25,
+                "YY": 0.25,
+                "ZZ": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            }
+          ],
+          "Z1": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 72.0,
+              "expected_native_SX_per_shot": 141.0,
+              "expected_native_depth_per_shot": 91.0,
+              "expected_readouts_per_shot": 8.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 71.0,
+              "expected_native_SX_per_shot": 139.0,
+              "expected_native_depth_per_shot": 91.0,
+              "expected_readouts_per_shot": 8.5,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.001,
+              "m": 5,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.5,
+                "ZI": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2"
+            }
+          ]
+        },
+        "m": 5,
+        "more_CZ_savings_do_not_imply_less_MSE": true,
+        "no_imputed_empirical_bias_or_capacity": true,
+        "original_archive_sha256": "1bb28761db9e6c20e1d00958b2b76d1b6a2e634b8fe79d01a5159a422a0e52c7",
+        "same_channel_source": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+        "schema": "oneq.r184.hardware_measurement_frontier/1",
+        "shot_budget": 1000
+      },
+      "independent_QPY_validation": {
+        "Pauli_one_pair_decoder_CZ_removed": 1,
+        "Pauli_unitary_distribution_is_incomplete": true,
+        "X_input_decoder_CZ_removed": 5,
+        "decoded_quantum_state_preserved": false,
+        "hardware_qpu_executed": false,
+        "m": 5,
+        "physically_identical_P_channel_arms": 18,
+        "qpu_fidelity_improvement_not_measured": true,
+        "qpy_sha256": "1bb28761db9e6c20e1d00958b2b76d1b6a2e634b8fe79d01a5159a422a0e52c7",
+        "same_native_P_channel_across_all_six_inputs": true,
+        "schema": "oneq.r180.independent_native_shadow/1",
+        "source_files_verified": 6,
+        "verdict": "OFFLINE_IDENTICAL_NATIVE_CHANNEL_AND_LESS_BOB_CZ"
+      },
+      "priorities": [
+        {
+          "extra_variance_of_sample_mean_upper": 0.0,
+          "family": "X0",
+          "native_CZ_removed_per_shot": 5.0,
+          "recommended_test": "drop_irrelevant_pairs",
+          "same_native_channel_digest": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+          "status": "MATHEMATICALLY_LICENSED_RESOURCE_SAVING"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.0,
+          "family": "X1",
+          "native_CZ_removed_per_shot": 5.0,
+          "recommended_test": "drop_irrelevant_pairs",
+          "same_native_channel_digest": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+          "status": "MATHEMATICALLY_LICENSED_RESOURCE_SAVING"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.003,
+          "family": "Y0",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.001,
+          "family": "Y1",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.003,
+          "family": "Z0",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.001,
+          "family": "Z1",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "f05f1f59610139e2e4a956fb463f19cf79d771786392fed76c4e89abfa633fb2",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        }
+      ]
+    },
+    "7": {
+      "comparison": {
+        "backend": "ibm_kingston",
+        "evidence": "ARCHIVED CALIBRATION + VERIFIED OFFLINE NATIVE CIRCUITS; no current hardware outcomes",
+        "family": {
+          "X0": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 116.0,
+              "expected_native_SX_per_shot": 250.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 17.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 109.0,
+              "expected_native_SX_per_shot": 208.0,
+              "expected_native_depth_per_shot": 162.0,
+              "expected_readouts_per_shot": 3.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 7.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "drop_irrelevant_pairs",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            }
+          ],
+          "X1": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 116.0,
+              "expected_native_SX_per_shot": 229.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 10.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "X",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 109.0,
+              "expected_native_SX_per_shot": 208.0,
+              "expected_native_depth_per_shot": 162.0,
+              "expected_readouts_per_shot": 3.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 7.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "drop_irrelevant_pairs",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            }
+          ],
+          "Y0": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 116.0,
+              "expected_native_SX_per_shot": 250.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 17.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 115.0,
+              "expected_native_SX_per_shot": 245.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 17.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.003,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.25,
+                "YY": 0.25,
+                "ZZ": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            }
+          ],
+          "Y1": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 116.0,
+              "expected_native_SX_per_shot": 229.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 10.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Y",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 115.0,
+              "expected_native_SX_per_shot": 227.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 10.5,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.001,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.5,
+                "ZI": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            }
+          ],
+          "Z0": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 116.0,
+              "expected_native_SX_per_shot": 251.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 17.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 0,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 115.0,
+              "expected_native_SX_per_shot": 246.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 17.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.003,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.25,
+                "YY": 0.25,
+                "ZZ": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            }
+          ],
+          "Z1": [
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 116.0,
+              "expected_native_SX_per_shot": 230.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 10.0,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.0,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "native_CZ_saving_per_shot": 0.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "baseline",
+              "risk_verdict": "NOT_APPLICABLE_NO_EXTRA_SHADOW_RANDOMIZATION",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            },
+            {
+              "MSE_gain_certified_by_independent_hardware": false,
+              "basis": "Z",
+              "beta": 1,
+              "completed_sampling_support": true,
+              "expected_native_CZ_per_shot": 115.0,
+              "expected_native_SX_per_shot": 228.0,
+              "expected_native_depth_per_shot": 166.0,
+              "expected_readouts_per_shot": 10.5,
+              "extra_variance_of_sample_mean_lower": 0.0,
+              "extra_variance_of_sample_mean_upper": 0.001,
+              "m": 7,
+              "math_unbiased_observable_only": true,
+              "measurement_distribution": {
+                "XX": 0.5,
+                "ZI": 0.5
+              },
+              "native_CZ_saving_per_shot": 1.0,
+              "not_a_quantum_decoder_channel": true,
+              "not_executed_on_IBM": true,
+              "policy": "one_Pauli_shadow_pair",
+              "risk_verdict": "INSUFFICIENT_INDEPENDENT_HARDWARE_BIAS_EVIDENCE",
+              "shots": 1000,
+              "source_native_P_sha256": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257"
+            }
+          ]
+        },
+        "m": 7,
+        "more_CZ_savings_do_not_imply_less_MSE": true,
+        "no_imputed_empirical_bias_or_capacity": true,
+        "original_archive_sha256": "a33f875026dc865d64c3d6089f52bfe288534fc149dfc0d1e8d6b249ce22159d",
+        "same_channel_source": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+        "schema": "oneq.r184.hardware_measurement_frontier/1",
+        "shot_budget": 1000
+      },
+      "independent_QPY_validation": {
+        "Pauli_one_pair_decoder_CZ_removed": 1,
+        "Pauli_unitary_distribution_is_incomplete": true,
+        "X_input_decoder_CZ_removed": 7,
+        "decoded_quantum_state_preserved": false,
+        "hardware_qpu_executed": false,
+        "m": 7,
+        "physically_identical_P_channel_arms": 18,
+        "qpu_fidelity_improvement_not_measured": true,
+        "qpy_sha256": "a33f875026dc865d64c3d6089f52bfe288534fc149dfc0d1e8d6b249ce22159d",
+        "same_native_P_channel_across_all_six_inputs": true,
+        "schema": "oneq.r180.independent_native_shadow/1",
+        "source_files_verified": 6,
+        "verdict": "OFFLINE_IDENTICAL_NATIVE_CHANNEL_AND_LESS_BOB_CZ"
+      },
+      "priorities": [
+        {
+          "extra_variance_of_sample_mean_upper": 0.0,
+          "family": "X0",
+          "native_CZ_removed_per_shot": 7.0,
+          "recommended_test": "drop_irrelevant_pairs",
+          "same_native_channel_digest": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+          "status": "MATHEMATICALLY_LICENSED_RESOURCE_SAVING"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.0,
+          "family": "X1",
+          "native_CZ_removed_per_shot": 7.0,
+          "recommended_test": "drop_irrelevant_pairs",
+          "same_native_channel_digest": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+          "status": "MATHEMATICALLY_LICENSED_RESOURCE_SAVING"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.003,
+          "family": "Y0",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.001,
+          "family": "Y1",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.003,
+          "family": "Z0",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        },
+        {
+          "extra_variance_of_sample_mean_upper": 0.001,
+          "family": "Z1",
+          "native_CZ_removed_per_shot": 1.0,
+          "recommended_test": "one_Pauli_shadow_pair",
+          "same_native_channel_digest": "eed65b3699869ad8d7e4682996123221315b022b20b4db9a16e748a0433b6257",
+          "status": "REQUIRES_INDEPENDENT_PHYSICAL_BIAS_MEASUREMENT"
+        }
+      ]
+    }
+  },
+  "R182_predicted_frame_gain_not_experimental": [
+    0.029523557882981638,
+    0.046515732048025796
+  ],
+  "R183_exact_frozen_hypothesis": {
+    "contract": {
+      "evidence_type": "PROSPECTIVE_IBM_CHALLENGE",
+      "gate_on_device": true,
+      "min_z": 3.0,
+      "name": "R183 paired frame vs as-compiled",
+      "pass_threshold": 0.015,
+      "predicted_gain_high": 0.046515732048025796,
+      "predicted_gain_low": 0.029523557882981638,
+      "prereg_sha256": "2b3c381ed8acf4c65b332e704078055dda83f106054f8c8d54641913e5491634",
+      "source_sha256": "f186d802da296c822c868dade0fdd91d32049fc41d6d45d957fc85cd2cc17839",
+      "standalone_capacity_claim": false
+    },
+    "events": [
+      {
+        "after_sha256": "62742799f533686a7c63c100c6ededf85b025c3d82271bd6f7ad3102e8dfe140",
+        "before_sha256": "befc8037c9c482cc29b0a7a465823f02b5f4f668be3194728d5439c577d1c30b",
+        "index": 0,
+        "payload": {
+          "prereg_sha256": "2b3c381ed8acf4c65b332e704078055dda83f106054f8c8d54641913e5491634"
+        },
+        "state": "PREREGISTERED"
+      },
+      {
+        "after_sha256": "3233c3997930fcbfe591c4adc8b191f3262420fa71d5626095084a9ff58bda5d",
+        "before_sha256": "62742799f533686a7c63c100c6ededf85b025c3d82271bd6f7ad3102e8dfe140",
+        "index": 1,
+        "payload": {
+          "independent_verifier_sha256": "de342fb0a2ba7fd65ad9feb0ff07eaca28f1d9da6fa60e4c338d5d5c097968bb",
+          "mathematical_checks_passed": true,
+          "offline_falsifiers_checked": true
+        },
+        "state": "OFFLINE_VERIFIED"
+      }
+    ],
+    "genesis_sha256": "befc8037c9c482cc29b0a7a465823f02b5f4f668be3194728d5439c577d1c30b",
+    "schema": "oneq.r184.research_loop/1"
+  },
+  "R183_status": "OFFLINE_VERIFIED",
+  "artifacts_sha256": {
+    "frame_projection": "d08478d05b23167be8b99f82cc88ccbfe803a30670862e0318cadac7b9bafa36",
+    "model": "f8f2eb7a62ec0aa2069a2af94808a8faa49020a5a02fbf4c13b3b3b278fa3027",
+    "native_m5": "eb1279577b329886ef08e07b5a03d045dfed484015d95ad28b0c079e7a3ad2ef",
+    "native_m7": "5025d9d20d09cd69a59c5fe9bbe2483c5fdf6fdadb587ebf95a51890d839186e",
+    "pareto": "e4410e8fd6c5e586757ce4bbafb8096135397bc95b7f29bfcb874bf69ae26b02",
+    "prereg": "2b3c381ed8acf4c65b332e704078055dda83f106054f8c8d54641913e5491634",
+    "qpy_m5": "1bb28761db9e6c20e1d00958b2b76d1b6a2e634b8fe79d01a5159a422a0e52c7",
+    "qpy_m7": "a33f875026dc865d64c3d6089f52bfe288534fc149dfc0d1e8d6b249ce22159d",
+    "r183_source": "f186d802da296c822c868dade0fdd91d32049fc41d6d45d957fc85cd2cc17839"
+  },
+  "conclusion": "prioritize a new R183 paired A/B and a separate X no-variance observable test; do not pay for multipair shadow sampling before hardware bias evidence",
+  "evidence_level": "SOURCE-PINNED OFFLINE INSTRUMENTATION; NO NEW IBM RUN",
+  "experiment_portfolio": [
+    {
+      "decision": "PREREGISTERED_OFFLINE_ONLY",
+      "experiment": "R183 frame A/B",
+      "live_frozen_and_submitted": false,
+      "next_hard_gate": "independent backend account/quota+health, fresh ISA freeze, owner-approved spend, paired hardware run",
+      "predicted_gain_range": [
+        0.029523557882981638,
+        0.046515732048025796
+      ],
+      "priority": 1,
+      "tests_model_mechanism_not_capacity": true
+    },
+    {
+      "decision": "MATHEMATICALLY_LICENSED_OFFLINE_COMPILED",
+      "experiment": "R180 parity-independent X observable",
+      "is_a_state_decoder": false,
+      "max_native_CZ_removed_per_m": {
+        "5": 5,
+        "7": 7
+      },
+      "next_hard_gate": "measure held-out readout/schedule effects on matched physical channel",
+      "priority": 2
+    },
+    {
+      "decision": "NEEDS_HARDWARE_BIAS_AND_FRAME_VARIANCE",
+      "experiment": "R180 one-pair grouped Pauli shadow",
+      "multishadow_global_variance_not_assumed_factorizable": true,
+      "next_hard_gate": "paired Pauli-setting randomizations with hardware bias validation, not cherry-picked term",
+      "priority": 3
+    },
+    {
+      "decision": "SEARCH_BEYOND_SIX_DOMINATED_COMPLETED_CODES",
+      "experiment": "joint logical code and physical scheduling",
+      "next_hard_gate": "independent code+decoder certificate, topology and measured channel-quality cost",
+      "pareto_candidate_population": 6,
+      "priority": 4
+    }
+  ],
+  "hypothetical_bounded_fault_sensitivity": {
+    "p0.002_beta0": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 25001,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.002
+    },
+    "p0.002_beta1": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 25001,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.002
+    },
+    "p0.005_beta0": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 4001,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.005
+    },
+    "p0.005_beta1": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 4001,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.005
+    },
+    "p0.010_beta0": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 1001,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.01
+    },
+    "p0.010_beta1": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 1001,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.01
+    },
+    "p0.025_beta0": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 160,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.025
+    },
+    "p0.025_beta1": {
+      "no_hardware_MSE_success_claim": true,
+      "optimistic_minimum_shots": 160,
+      "physical_error_bound_measured": false,
+      "purely_hypothetical_fault_probability": 0.025
+    }
+  },
+  "origin_main_commit": "cba17d9fe8561f1702759a3910c644b4a625b41a",
+  "schema": "oneq.r184.closed_loop_research_report/1",
+  "scientific_guardrails": {
+    "each_Pauli_term_supports_complete_sampling": true,
+    "model_predictive_validity_prospectively_measured": false,
+    "new_IBM_qpu_jobs_submitted": 0,
+    "new_interprocessor_quantum_teleportation": false,
+    "new_physical_superactivation_evidence": false,
+    "no_hardware_credit_action_in_this_report": true
+  }
+}

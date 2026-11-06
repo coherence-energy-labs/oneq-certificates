@@ -1,0 +1,59 @@
+{
+ "d": 64,
+ "p": 0.1111111111111111,
+ "certified_lower_bound": "[0.7947530864197520275365097516350160118439 +/- 3.92e-41]",
+ "certified_lower_bound_float": 0.7947530864197521,
+ "exceeds_three_quarters": true,
+ "certified_margin_lower_bound": 0.04475308641975203,
+ "pair_float_fidelity": 0.7947530864197525,
+ "encoder_trace_excess": 0.0,
+ "max_decoder_trace_excess": 1.1599431198212915e-15,
+ "grid_bits": 96,
+ "precision_bits": 256,
+ "psd_by_construction": true,
+ "seconds": 3.23,
+ "code": "closed form {|++>, |-->}",
+ "code_sha256": null,
+ "code_columns": [
+  [
+   [
+    0.4999999999999999,
+    0.0
+   ],
+   [
+    0.4999999999999999,
+    0.0
+   ]
+  ],
+  [
+   [
+    0.4999999999999999,
+    0.0
+   ],
+   [
+    -0.4999999999999999,
+    0.0
+   ]
+  ],
+  [
+   [
+    0.4999999999999999,
+    0.0
+   ],
+   [
+    -0.4999999999999999,
+    0.0
+   ]
+  ],
+  [
+   [
+    0.4999999999999999,
+    0.0
+   ],
+   [
+    0.4999999999999999,
+    0.0
+   ]
+  ]
+ ]
+}

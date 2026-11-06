@@ -1,0 +1,118 @@
+{
+ "schema": "oneq-pymatching-native-dual-arms/1",
+ "configs": {
+  "sim_d5_r25": {
+   "nontrivial": 2000,
+   "pymatching_c": 2535317.795700318,
+   "normalising_constant_equals_2c": 2000,
+   "raw_dual_on_pymatching_integer_weights": {
+    "EXACT_OPTIMAL": 2000
+   },
+   "corrections": {
+    "grid_eq_raw": 2000,
+    "raw_eq_released": 2000,
+    "grid_eq_released": 2000,
+    "released_compared": 2000,
+    "control_reoriented_still_equal": 2000,
+    "control_dropped_edge_caught": 2000
+   },
+   "grid_differs_from_raw": {
+    "n": 0,
+    "heavier_on_published": 0,
+    "lighter_on_published": 0,
+    "equal_on_published": 0,
+    "max_heavier_on_published": "0",
+    "max_lighter_on_published": "0",
+    "integer_weight_never_below_raw": true,
+    "released_status_of_those_shots": {}
+   },
+   "cost_per_call_us": {
+    "plain_decode_median": 22.500054910779,
+    "decode_with_duals_median": 94.89990770816803,
+    "region_to_cut_conversion_median": 86.90007962286472,
+    "with_duals_plus_conversion_median": 183.15005581825972,
+    "ratio_of_medians": 8.139982615354368,
+    "median_of_per_call_ratios": 8.114165289616214
+   },
+   "grid_bits": 19
+  },
+  "willow_d5_at_q8_7_X_r30": {
+   "nontrivial": 2000,
+   "pymatching_c": 2187506.3014664566,
+   "normalising_constant_equals_2c": 2000,
+   "raw_dual_on_pymatching_integer_weights": {
+    "EXACT_OPTIMAL": 2000
+   },
+   "corrections": {
+    "grid_eq_raw": 2000,
+    "raw_eq_released": 2000,
+    "grid_eq_released": 2000,
+    "released_compared": 2000,
+    "control_reoriented_still_equal": 2000,
+    "control_dropped_edge_caught": 2000
+   },
+   "grid_differs_from_raw": {
+    "n": 0,
+    "heavier_on_published": 0,
+    "lighter_on_published": 0,
+    "equal_on_published": 0,
+    "max_heavier_on_published": "0",
+    "max_lighter_on_published": "0",
+    "integer_weight_never_below_raw": true,
+    "released_status_of_those_shots": {}
+   },
+   "cost_per_call_us": {
+    "plain_decode_median": 31.299889087677002,
+    "decode_with_duals_median": 118.75003110617399,
+    "region_to_cut_conversion_median": 117.10007674992085,
+    "with_duals_plus_conversion_median": 237.30017710477114,
+    "ratio_of_medians": 7.581502172101881,
+    "median_of_per_call_ratios": 7.632551489539971
+   },
+   "grid_bits": 18
+  },
+  "willow_d7_at_q6_7_X_r30": {
+   "nontrivial": 2000,
+   "pymatching_c": 2187506.3014664566,
+   "normalising_constant_equals_2c": 2000,
+   "raw_dual_on_pymatching_integer_weights": {
+    "EXACT_OPTIMAL": 2000
+   },
+   "corrections": {
+    "grid_eq_raw": 2000,
+    "raw_eq_released": 2000,
+    "grid_eq_released": 2000,
+    "released_compared": 2000,
+    "control_reoriented_still_equal": 2000,
+    "control_dropped_edge_caught": 2000
+   },
+   "grid_differs_from_raw": {
+    "n": 0,
+    "heavier_on_published": 0,
+    "lighter_on_published": 0,
+    "equal_on_published": 0,
+    "max_heavier_on_published": "0",
+    "max_lighter_on_published": "0",
+    "integer_weight_never_below_raw": true,
+    "released_status_of_those_shots": {}
+   },
+   "cost_per_call_us": {
+    "plain_decode_median": 77.94995326548815,
+    "decode_with_duals_median": 264.65009432286024,
+    "region_to_cut_conversion_median": 248.849974013865,
+    "with_duals_plus_conversion_median": 518.1999877095222,
+    "ratio_of_medians": 6.647855014673268,
+    "median_of_per_call_ratios": 6.653604314638674
+   },
+   "grid_bits": 18
+  }
+ },
+ "shots_per_config": 2000,
+ "companion": "evidence/pymatching_native_dual.json (the RAW and GRID arms' certification, left as recorded)",
+ "pymatching_integer_weights": "W_int = 2*round(w*c), c = (2^24 - 1)/max|w|, C round (half away from zero)",
+ "released_receipts": "data/epsilon_receipts/<config>/chunk_000001.. (250 shots each): the corrections the paper certifies for the same shots",
+ "patch_sha256": "6d1843e968b25763e0387ed01b0f73d2ffd639709883c064e14d16d605a06401",
+ "script_sha256": "547efbba14c9af8fc05cefff79024399c3e04af38f77f7240d0fc7f6c80c4973",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.14.3"
+}

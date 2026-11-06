@@ -1,0 +1,93 @@
+{
+ "schema": "oneq.r203_float_boundary/1",
+ "looks": [
+  {
+   "look": 500,
+   "k_rare_values": 501,
+   "states": 125751,
+   "boundaries_certified": 506,
+   "min_boundary_margin": 0.11136560329129243
+  },
+  {
+   "look": 1000,
+   "k_rare_values": 1001,
+   "states": 501501,
+   "boundaries_certified": 1023,
+   "min_boundary_margin": 0.004367780207842135
+  },
+  {
+   "look": 1500,
+   "k_rare_values": 1501,
+   "states": 1127251,
+   "boundaries_certified": 1542,
+   "min_boundary_margin": 0.005496996824958513
+  },
+  {
+   "look": 2000,
+   "k_rare_values": 2001,
+   "states": 2003001,
+   "boundaries_certified": 2064,
+   "min_boundary_margin": 0.004182759734413815
+  },
+  {
+   "look": 3000,
+   "k_rare_values": 3001,
+   "states": 4504501,
+   "boundaries_certified": 3109,
+   "min_boundary_margin": 0.0006359606048487815
+  },
+  {
+   "look": 4000,
+   "k_rare_values": 4001,
+   "states": 8006001,
+   "boundaries_certified": 4156,
+   "min_boundary_margin": 0.0011821437108247143
+  },
+  {
+   "look": 5000,
+   "k_rare_values": 5001,
+   "states": 12507501,
+   "boundaries_certified": 5205,
+   "min_boundary_margin": 0.0005107368349084076
+  },
+  {
+   "look": 6000,
+   "k_rare_values": 6001,
+   "states": 18009001,
+   "boundaries_certified": 6256,
+   "min_boundary_margin": 0.0010383181225959257
+  },
+  {
+   "look": 7000,
+   "k_rare_values": 7001,
+   "states": 24510501,
+   "boundaries_certified": 7306,
+   "min_boundary_margin": 0.00023294206798887967
+  },
+  {
+   "look": 8000,
+   "k_rare_values": 8001,
+   "states": 32012001,
+   "boundaries_certified": 8357,
+   "min_boundary_margin": 0.00033974754122329025
+  }
+ ],
+ "states": 103307010,
+ "r_max": [
+  126266619883097266970126955462948,
+  164912131787753265067114671157183
+ ],
+ "gap": 0.26701709530425,
+ "eps_derived": 1e-09,
+ "max_measured_error": 9.094947017729282e-13,
+ "fraction_fallbacks": 0,
+ "disagreements": [],
+ "agrees_everywhere": true,
+ "package": {
+  "design.json": "1ff906231b5989dd2c8dd5fccef938a5d78a27f988386fc4c12b84deec4ba70c",
+  "sequential.json": "b25212f352c2f78fd0f098bd617c95c4ee18972b70103e8deae906d48a65203e"
+ },
+ "producer": {
+  "ion_betting.py": "578e4ac35a21829ee86a79198535aceb4e88cbea13621bb8ae6b1edb81a01301"
+ }
+}

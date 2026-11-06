@@ -6,7 +6,7 @@ the reason, when an input is missing or two inputs disagree.
 
     python paper/tools/make_numbers_distance.py
 
-Writes paper/circuit-distance/generated/{numbers,tab_summary,tab_morph,tab_costs}.tex.
+Writes paper/circuit-distance/generated/{numbers,tab_summary,tab_morph,tab_costs,tab_recert}.tex.
 
 INPUTS (all committed):
   evidence/circuit_distance_exact/results.json           the lane's claims, as collect_results.py assembles them
@@ -52,6 +52,18 @@ REC = EV / "records"
 LANE = ROOT / "experiments" / "circuit_distance_exact"
 OUT = ROOT / "paper" / "circuit-distance" / "generated"
 STANDARD_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
+# The values Pan's released research record reports for the two morphing circuits of 2407.16336 (exhaustive search,
+# fold premise checked by computation, no certificate): research/audits/2026-10-08-E-019.md Sec. 2.1 (the [[72,12,6]]
+# end-cycle circuits, 6/6) and 2026-10-08-E-017.md Sec. 8 (the [[144,12,12]] end-cycle circuit, 12), at commit
+# 5ae848ab of github.com/GavinNull/gross-code-distance-12 (blobs eab30a71, 25afd539; also in release v1.0). Read
+# 2026-11-03; docs/PAPER3_LITERATURE_SEARCH.md.
+PAN_E019_MORPH72 = 6
+PAN_E017_MORPH144 = 12
+# IBM's depth-8 gross cycle in Pan's records on his main branch after v2.0: E-037 (commit 34ffcb14, 2026-10-25), 88
+# VeriPB certificates of "no undetectable logical of weight <= 9" for R = 1..12; E-043 (commit 18e47dae, 2026-10-31),
+# d_circ = 10 for every R (bulk criterion with two uncertified solvers, direct search R <= 3, persistence). Read
+# 2026-11-03 at main HEAD 41c8f978; docs/PAPER3_LITERATURE_SEARCH.md.
+PAN_E043_IBM = 10
 NUMBER_WORDS = {"two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 
 
@@ -297,7 +309,8 @@ def build() -> dict[str, str]:
             r"for the first member of their BB circuit family", results_md, "RESULTS.md, exact values for smaller circuits")
     bib = TXT("paper/refs.bib")
     for key, arx in (("beni2025tesseract", pr.group(1)), ("webster2026distance", pr.group(8))):
-        need(re.search(r"@\w+\{" + key + r",[^@]*eprint = \{" + re.escape(arx) + r"\}", bib) is not None,
+        # a pinned version (2603.22532v2, the latest one the literature log re-read) is the same work
+        need(re.search(r"@\w+\{" + key + r",[^@]*eprint = \{" + re.escape(arx) + r"(v\d+)?\}", bib) is not None,
              f"refs.bib's {key} is not arXiv {arx}, the source RESULTS.md quotes")
     need(code_params(pr.group(4), "Tesseract's first code") == small, "Tesseract's exact value is not for the small code")
     put("PriorSmallD", pr.group(5), "RESULTS.md: exact values for smaller BB circuits (arXiv " + pr.group(1) + ")")
@@ -564,9 +577,90 @@ def build() -> dict[str, str]:
         "records/recert_determinism.jsonl")
     # every proof that does not ship has been produced twice, bit for bit: by the record's run (proof_equal) or by a
     # determinism run at another thread count -- what "regenerate" rests on, observed rather than argued
-    twice = {(d["family"], d["basis"], d["rounds"]) for d in det_ok if d["identical"]}
-    need(all(c["proof_equal"] or (c["family"], c["basis"], c["rounds"]) in twice for c in cells if not c["shipped"]),
+    # keyed on the whole cell, not (family, basis, rounds): two cells of one family that share a basis and a round
+    # count (a cert and a shift certificate, or two morph2026 circuits) must not vouch for each other
+    def cell_key(c):
+        return (c["family"], c["kind"], c["circuit"], c["basis"], c["rounds"], c["w"], c["maxround"])
+
+    twice = {cell_key(d) for d in det_ok if d["identical"]}
+    need(all(c["proof_equal"] or cell_key(c) in twice for c in cells if not c["shipped"]),
          "a proof that does not ship has been produced only once; the text says each was produced twice")
+    # THE TABLE OF THE RE-CERTIFICATION (external review 1, finding P3-11): one row per proof set, every count
+    # recomputed here from the cells, the determinism rows and the reproduction rows; nothing typed
+    old_ok = {(o["family"], o["kind"], o["circuit"], o["basis"], o["rounds"], o["w"], o["maxround"])
+              for o in old_rows if o["reproduces_record"]}
+    groups = [("morph2026", "2026 circuits (Table~\\ref{tab:morph})", lambda c: c["family"] == "morph2026"),
+              ("morph72", r"morphing $[[72,12,6]]$, shift", lambda c: c["family"] == "morph72"),
+              ("3c=", r"three-colour, shift (a)", lambda c: c["family"] == "3c" and c["proof_equal"]),
+              ("3c!", r"three-colour, shift (b)", lambda c: c["family"] == "3c" and not c["proof_equal"]),
+              ("3c_t2", r"three-colour, $T=2$", lambda c: c["family"] == "3c_t2"),
+              ("morph144", r"morphing $[[144,12,12]]$", lambda c: c["family"] == "morph144")]
+    rec_rows, tot = [], collections.Counter()
+    covered = set()
+    for _, label, sel in groups:
+        cs = [c for c in cells if sel(c)]
+        need(cs, f"re-certification table: the group {label!r} is empty")
+        covered.update(id(c) for c in cs)
+        n = collections.Counter(
+            count=len(cs), shipped=sum(c["shipped"] for c in cs), equal=sum(bool(c["proof_equal"]) for c in cs),
+            old=sum(cell_key(c) in old_ok for c in cs), det=sum(cell_key(c) in twice for c in cs),
+            twice=sum(bool(c["proof_equal"]) or cell_key(c) in twice for c in cs))
+        need(n["equal"] + n["old"] == n["count"], f"re-certification table, {label}: a proof neither equals its "
+                                                  f"record nor has its record reproduced by the earlier prover")
+        need(n["shipped"] in (0, n["count"]), f"re-certification table, {label}: a group ships only partly")
+        need(n["shipped"] == n["count"] or n["twice"] == n["count"],
+             f"re-certification table, {label}: an unshipped proof was produced only once")
+        tot.update(n)
+        rec_rows.append(rf"{label} & {n['count']} & {n['shipped']} & {n['count']} & {n['equal']} & {n['old']} & "
+                        rf"{n['det']} \\")
+    need(len(covered) == len(cells), "re-certification table: a cell belongs to no row")
+    need(tot["count"] == len(cells) and tot["shipped"] == sum(c["shipped"] for c in cells)
+         and tot["det"] == len(det_ok), "re-certification table: the totals do not reconcile with the manifest")
+    unshipped_twice = sum(1 for c in cells if not c["shipped"] and (c["proof_equal"] or cell_key(c) in twice))
+    need(unshipped_twice == len([c for c in cells if not c["shipped"]]),
+         "re-certification table: not every unshipped proof was produced twice")
+    # the sets behind each count of App. A, named (final referee of 2026-11-03, N4: two different 30s and two
+    # different 252s); each sum must reconcile with the total it decomposes
+    def n_(sel):
+        return sum(1 for c in cells if sel(c))
+    parts = dict(
+        RecertEqTwentySix=n_(lambda c: c["proof_equal"] and c["family"] == "morph2026"),
+        RecertEqTc=n_(lambda c: c["proof_equal"] and c["family"] == "3c"),
+        RecertDiffSmall=n_(lambda c: not c["proof_equal"] and c["family"] == "morph72"),
+        RecertDiffTc=n_(lambda c: not c["proof_equal"] and c["family"] == "3c"),
+        RecertDiffTcTwo=n_(lambda c: not c["proof_equal"] and c["family"] == "3c_t2"),
+        RecertDiffBig=n_(lambda c: not c["proof_equal"] and c["family"] == "morph144"),
+        RecertRegenTc=n_(lambda c: not c["shipped"] and c["family"] == "3c"),
+        RecertOverlap=n_(lambda c: not c["shipped"] and not c["proof_equal"]))
+    need(parts["RecertEqTwentySix"] + parts["RecertEqTc"] == sum(bool(c["proof_equal"]) for c in cells)
+         and n_(lambda c: c["proof_equal"] and c["family"] not in ("morph2026", "3c")) == 0,
+         "the byte-identical proofs are not exactly the 2026 and three-colour ones the text names")
+    need(sum(parts[k] for k in ("RecertDiffSmall", "RecertDiffTc", "RecertDiffTcTwo", "RecertDiffBig"))
+         == sum(not c["proof_equal"] for c in cells), "the differing proofs are not the four sets the text names")
+    need(n_(lambda c: c["shipped"]) == parts["RecertEqTwentySix"] + parts["RecertDiffSmall"]
+         and all(c["shipped"] == (c["family"] in ("morph2026", "morph72")) for c in cells),
+         "the shipped proofs are not exactly the 2026 and [[72,12,6]] ones the text names")
+    need(n_(lambda c: not c["shipped"]) == parts["RecertRegenTc"] + parts["RecertDiffTcTwo"] + parts["RecertDiffBig"]
+         and parts["RecertOverlap"] == parts["RecertDiffTc"] + parts["RecertDiffTcTwo"] + parts["RecertDiffBig"],
+         "the unshipped proofs are not the three-colour, T = 2 and [[144,12,12]] sets the text names")
+    for k, v in parts.items():
+        put(k, v, src)
+    put("RecertTwiceByRecord", sum(1 for c in cells if not c["shipped"] and c["proof_equal"]), src)
+    put("RecertTwiceByRerun", sum(1 for c in cells if not c["shipped"] and not c["proof_equal"]
+                                  and cell_key(c) in twice), src)
+    rec_rows.append(rf"total & {tot['count']} & {tot['shipped']} & {tot['count']} & {tot['equal']} & {tot['old']} & "
+                    rf"{tot['det']} \\")
+    # IBM's cycle: its own campaign (rule S, every proof shipped) and the original rule-W certificates, which carry no
+    # result and which the committed prover cannot regenerate (another trace format; checker not preserved)
+    need(all(o.get("proof_magic") == "CDP5" and o["checker_verdict"].startswith("VERIFIED") for o in obs),
+         "an IBM re-certification proof is not a verified CDP5 proof")
+    rec_rows.append(r"\midrule")
+    rec_rows.append(rf"IBM, rule S (own campaign) & {len(obs)} & {len(obs)} & {len(obs)} & -- & -- & -- \\")
+    rec_rows.append(rf"IBM, rule W (original) & {len(ibm_proofs)} & 0 & -- & -- & -- & -- \\")
+    tab_recert = "\n".join([
+        r"\begin{tabular}{@{}lrrrrrr@{}}", r"\toprule",
+        r"proof set & proofs & shipped & regen. & $=$ record & old prover & 2nd run \\", r"\midrule",
+        *rec_rows, r"\bottomrule", r"\end{tabular}"]) + "\n"
     put("RecertCampaignThreads", rm["campaign_threads"], src)
     put("RecertProofEqualBits", len(eq_bits), src)
     put("RecertProofEqualMaxMB", f"{max(c['proof_bytes'] for c in eq_bits) / 1e6:.0f}", src)
@@ -1011,7 +1105,7 @@ def build() -> dict[str, str]:
     tab_morph = "\n".join([
         r"\begin{tabular}{@{}lccccccccc@{}}", r"\toprule",
         r"circuit & end-cycle code & degree & schedule & $A$ & $B$ & $d_{\mathrm{circ}}$ (Z / X) & loses & "
-        r"rounds & kernel \\", r"\midrule", *rows, r"\bottomrule", r"\end{tabular}"]) + "\n"
+        r"rounds & kernel ($T=1$) \\", r"\midrule", *rows, r"\bottomrule", r"\end{tabular}"]) + "\n"
 
     # -------------------------------------------- Lean
     th = receipt["theorems"]
@@ -1078,19 +1172,78 @@ def build() -> dict[str, str]:
     put("SchedRegressedD", one((b["fault_weight"] for r in worse for b in r["basis"]), "R206 regressed distance"),
         "r206_schedule_discovery/registry.json")
 
+    # -------------------------------------------- the morphing end-cycle code is not the gross code (audit 2, F09)
+    # Read off the emitted circuit, not the builder's algebra: Stim accepts a final detector only if it is
+    # deterministic, so the memory-type product over its data readouts is an end-cycle stabilizer. Every element of
+    # the gross code's stabilizer group has even weight (weight-6 generators that commute); qubit permutations and
+    # local Cliffords preserve Pauli weight.
+    import bb_circuits as bcm  # noqa: E402  (on sys.path via lane_modules)
+    import numpy as np  # noqa: E402
+    gx, gz = bcm.BB(12, 6).check_matrices()
+    gw = {int(w) for w in np.concatenate([gx.sum(1), gz.sum(1)])}
+    need(gw == {6}, "the gross code's generators are not all of weight 6")
+    end_w = set()
+    for b in "ZX":
+        circ = bcm.morphing_cycle("morph144", b, 1)
+        circ.detector_error_model(decompose_errors=False)
+        first_data, k_ = circ.num_measurements - 144, 0
+        for ins in circ.flattened():
+            if ins.name in ("M", "MX"):
+                k_ += len(ins.targets_copy())
+            elif ins.name == "DETECTOR":
+                nd = sum(1 for t in ins.targets_copy() if k_ + t.value >= first_data)
+                if nd:
+                    end_w.add(nd)
+    need(len(end_w) == 1 and next(iter(end_w)) % 2 == 1,
+         "the morph144 end-cycle stabilizers read off the circuit are not all of one odd weight")
+    put("MorphEndStabW", next(iter(end_w)), "bb_circuits.morphing_cycle('morph144', b, 1): final detectors")
+    put("GrossStabW", next(iter(gw)), "bb_circuits.BB(12, 6) check matrices")
+
+    # -------------------------------------------- our circuits against Pan's own (audit 1/2, finding P3-09)
+    pan = JL("pan_crosscheck.jsonl")
+    ph, prow = pan[0], [r for r in pan[1:] if r.get("kind") != "control"]
+    pctl = [r for r in pan[1:] if r.get("kind") == "control"]
+    need(ph.get("kind") == "header" and ph["all_equal"] and ph["controls_all_fail"],
+         "the Pan cross-check is not all-equal with every control failing")
+    need(ph["ours"]["bb_circuits"] == sha256(LANE / "bb_circuits.py")
+         and ph["ours"]["export_model"] == sha256(LANE / "export_model.py")
+         and ph["ours"]["this_script"] == sha256(LANE / "pan_crosscheck.py"),
+         "the Pan cross-check was run on other builder, exporter or script bytes; re-run pan_crosscheck.py")
+    need(ph["pan_release"]["tag_commit"].startswith("5ae848ab"), "the Pan cross-check is not pinned to v2.0")
+    kinds_ = {(r["circuit"], r["basis"], r["T"]) for r in prow}
+    need(kinds_ == {(c, b, t) for c in ("ibm", "3c", "morph72", "morph144") for b in "ZX" for t in ph["rounds"]}
+         and all(r["equal"] and r["observable_map_rank"] == 12 and r["ours_mechanisms"] == r["export_model_mechanisms"]
+                 for r in prow), "the Pan cross-check does not cover every circuit, basis and round count equal")
+    need({(r["circuit"], r["basis"]) for r in pctl} == {(c, b) for c in ("ibm", "3c", "morph72", "morph144") for b in "ZX"}
+         and all(r["fails_as_required"] for r in pctl), "a Pan cross-check control is missing or did not fail")
+    put("PanXRows", len(prow), "records/pan_crosscheck.jsonl")
+    put("PanXControls", len(pctl), "records/pan_crosscheck.jsonl")
+    put("PanXTmin", min(ph["rounds"]), "records/pan_crosscheck.jsonl")
+    put("PanXTmax", max(ph["rounds"]), "records/pan_crosscheck.jsonl")
+
     # -------------------------------------------- tables
+    need(int(m72_d) == PAN_E019_MORPH72 and int(m144_d) == PAN_E017_MORPH144 and int(ibm_d) == PAN_E043_IBM,
+         "our morphing distances differ from the values Pan's records report; the text says they agree")
     G = code_tex(*gross)
     tab_summary = "\n".join([
         r"\begin{tabular}{@{}llccccc@{}}", r"\toprule",
         r"circuit & code (mid-cycle) & prior value & $d_{\mathrm{circ}}$ (Z / X) & lower bound certified & "
         r"witness verified & holds for \\", r"\midrule",
-        rf"IBM depth-{lit_depth}~\cite{{bravyi2024high}} & ${G}$ & $\le {q.group(1)}$ & {ibm_d} / {ibm_d} & "
+        # Pan's records on his main branch after v2.0 (final referee of 2026-11-03, N1): certificates for R <= 12
+        # (E-037), every R by an argument without certificates (E-043)
+        rf"IBM depth-{lit_depth}~\cite{{bravyi2024high}} & ${G}$ & $\le {q.group(1)}$; "
+        rf"{PAN_E043_IBM}~\cite{{pan2026e037,pan2026e043}} & {ibm_d} / {ibm_d} & "
         rf"$T={ibm_t_lo},\dots,{ibm_t_hi}$ & $T={ibm_dir[0]},\dots,{ibm_dir[1]}$ & $T\ge {ibm_tmin}$ \\",
         rf"three-colour & ${G}$ & {q.group(3)} (conj.) & {tc_d} / {tc_d} & $T={tc_s_lo},\dots,{tc_s_hi}$ & "
         rf"$T={tc_e_lo},\dots,{tc_e_hi}$ & $T\ge {tc_tmin}$ \\",
-        rf"morphing & ${code_tex(*small)}$ (${G}$) & $\le {M['LitMorphSmall'][0]}$ & {m72_d} / {m72_d} & "
+        # prior value: the source paper's bound, then the value Pan's released research record reports (by exhaustive
+        # search and fold checks, no certificate; external audit 2, F11). Pan's values are typed from his records
+        # E-019 Sec. 2.1 and E-017 Sec. 8 (read 2026-11-03), and must equal ours: a disagreement is a refusal.
+        rf"morphing & ${code_tex(*small)}$ (${G}$) & $\le {M['LitMorphSmall'][0]}$; "
+        rf"{PAN_E019_MORPH72}~\cite{{pan2026e019}} & {m72_d} / {m72_d} & "
         rf"$T={m72_t[0]},\dots,{m72_t[1]}$ & $T={m72_e_t[0]},\dots,{m72_e_t[1]}$ & $T\ge {morph_tmin}$ \\",
-        rf"morphing & ${G}$ (${code_tex(*big_mid)}$) & $\le {lit144.group(1)}$ & {m144_d} / {m144_d} & "
+        rf"morphing & ${G}$ (${code_tex(*big_mid)}$) & $\le {lit144.group(1)}$; "
+        rf"{PAN_E017_MORPH144}~\cite{{pan2026e017}} & {m144_d} / {m144_d} & "
         rf"$T={', '.join(str(t) for t in m144_ct)}$ (fold: $T\le {m144_tmax}$) & $T={e144[0]},\dots,{e144[1]}$ & "
         rf"$T\ge {morph_tmin}$ \\",
         rf"IBM-style & ${code_tex(*small)}$ & {M['PriorSmallD'][0]} (exact)~\cite{{beni2025tesseract}} & "
@@ -1140,7 +1293,7 @@ def build() -> dict[str, str]:
         body.append(f"% {src}")
         body.append(rf"\newcommand{{\{k}}}{{{v}}}")
     return {"numbers.tex": "\n".join(body) + "\n", "tab_summary.tex": tab_summary, "tab_morph.tex": tab_morph,
-            "tab_costs.tex": tab_costs}
+            "tab_costs.tex": tab_costs, "tab_recert.tex": tab_recert}
 
 
 def main() -> int:

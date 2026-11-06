@@ -1,0 +1,49 @@
+{
+ "schema": "oneq.r189.param_shots_receipt/1",
+ "verdict": "PASS",
+ "shots_checked": 1000,
+ "rows": 1000,
+ "failures": [],
+ "n_failures": 0,
+ "worst_overlap": 1.0,
+ "negative_control_overlap": 0.25000000000208855,
+ "negative_control_dropped_two_qubit_gate": 0,
+ "design_qpy_sha256": "56bf543fe2e57c7326060ba5a5b74932ba67457f6920179f0275e0862bd8eb1b",
+ "program_sha256": "bb80cf0590f69e7f41b835f9a0740902986791c8060f0aa04afc518ee77a364a",
+ "table_sha256": "296189ef3917b185dd14b4f5bf47e8537aa2b49513ab59e1eeaaff0c35f9bd7d",
+ "circuits_qasm_sha256": "7a43aa1cdb4f3f5100040d44822545a09a5bc22edceb3c79dfa54d5b3502de83",
+ "verifier_sha256": "3d55188f2d6861a837c2691fcecc86381c75ad67989e9c0c5f80307a547904de",
+ "hugr_sha256": "390021d85adcfe58ae71c1fb89f788217565c9609faa1fdf8ac5177894e7539c",
+ "hugr_bytes": 220928,
+ "native_counts_max": {
+  "n1q": 106,
+  "n2q": 51,
+  "nm": 47
+ },
+ "native_counts_mean": {
+  "n1q": 95.968,
+  "n2q": 42.441,
+  "nm": 46.271
+ },
+ "hqc": {
+  "formula": "5 + C (Max N1q + 10 Max N2q + 5 Max N_M) / 5000, one program (Helios costing page, docs.quantinuum.com, read 2026-10-19)",
+  "C": 1000,
+  "total": 175.2,
+  "per_shot": 0.1702,
+  "versus_one_program_per_unit": 5150.3
+ },
+ "caveats": [
+  "native counts are selene's Helios lowering, not Quantinuum's production compiler; the hardware compile may differ (re-verify on the vendor's syntax checker before submission)",
+  "N_M counts allocations as the costing page states; whether the fixed 5 is per program or per job is not stated there"
+ ],
+ "tools": {
+  "guppylang": "1.1.3",
+  "selene-sim": "0.3.6",
+  "qiskit": "2.6.1",
+  "qiskit-aer": "0.18.0"
+ },
+ "seconds": {
+  "emulate": 5.6,
+  "total": 387.4
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "schema": "oneq.r172.design_levers/1",
+ "label": "EXPLORATORY -- outside every preregistered verdict",
+ "r152_job": "db9c50oc77vs73817rog",
+ "traj": 24,
+ "measured": {
+  "r146": 0.6167117524746097,
+  "r147": 0.6272772705949263
+ },
+ "bar": 0.75,
+ "variants": {
+  "as run (active-accum: template + dressing x2)": {
+   "params": {
+    "twirl_template": true,
+    "twirl": "active-accum",
+    "dressing_factor": 2.0
+   },
+   "r146": 0.6224671146186171,
+   "r146_miss": -0.005755362144007403,
+   "r147": 0.6548375001156643,
+   "r147_miss": -0.027560229520738,
+   "residual": {
+    "main": -0.024140038973919836,
+    "twin_inline": -0.024334296681265126,
+    "twin_static": 0.0216571232367136
+   }
+  },
+  "active (template, no idle dressing)": {
+   "params": {
+    "twirl_template": true
+   },
+   "r146": 0.6504859654127111,
+   "r146_miss": -0.033774212938101345,
+   "r147": 0.664159759237948,
+   "r147_miss": -0.03688248864302168,
+   "residual": {
+    "main": -0.03558956126995677,
+    "twin_inline": -0.03508309270426457,
+    "twin_static": -0.0013658246874129407
+   }
+  },
+  "off (compiled pulses; the CZ still a Pauli channel: a projection)": {
+   "params": {},
+   "r146": 0.667379185902927,
+   "r146_miss": -0.050667433428317254,
+   "r147": 0.668672538255338,
+   "r147_miss": -0.04139526766041168,
+   "residual": {
+    "main": -0.04371317795226974,
+    "twin_inline": -0.044352921455002185,
+    "twin_static": -0.022265464883124156
+   }
+  }
+ },
+ "bias_corrected": {
+  "as run (active-accum: template + dressing x2)": {
+   "r146": 0.6224671146186171,
+   "r147": 0.6548375001156643,
+   "r146_bias_corrected": 0.6167117524746097,
+   "r147_bias_corrected": 0.6272772705949263,
+   "gain_vs_reference": {
+    "r146": 0.0,
+    "r147": 0.0
+   }
+  },
+  "active (template, no idle dressing)": {
+   "r146": 0.6504859654127111,
+   "r147": 0.664159759237948,
+   "r146_bias_corrected": 0.6447306032687037,
+   "r147_bias_corrected": 0.63659952971721,
+   "gain_vs_reference": {
+    "r146": 0.02801885079409394,
+    "r147": 0.009322259122283683
+   }
+  },
+  "off (compiled pulses; the CZ still a Pauli channel: a projection)": {
+   "r146": 0.667379185902927,
+   "r147": 0.668672538255338,
+   "r146_bias_corrected": 0.6616238237589196,
+   "r147_bias_corrected": 0.6411123087346,
+   "gain_vs_reference": {
+    "r146": 0.04491207128430985,
+    "r147": 0.013835038139673683
+   }
+  }
+ }
+}

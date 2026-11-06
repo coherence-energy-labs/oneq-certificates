@@ -1,0 +1,3049 @@
+{
+  "schema": "oneq.claim_annotations/1",
+  "scope": "Per-statement classifications, not proof of every claim or a document waiver. Frozen preregistrations retain their bytes; retrospective results remain separate from planned criteria.",
+  "documents": [
+    {
+      "path": "docs/HARDWARE_DIAGNOSTIC_PROTOCOL_2026-10-22.md",
+      "document_lf_sha256": "fa605833b82e42d7bc47ffe38f0ca88df4a011f47c60d948c71800f2447fb489",
+      "claims": [
+        {
+          "line_hint": 18,
+          "text": "Retain every residual and measured physical wire, not only flagged entries.",
+          "line_sha256": "28d53c7d952c27e8e7eb9364810b24d2a28539e1eed044afa653caaa4ba2323e",
+          "class": "PROPOSED",
+          "rationale": "Planned development diagnostics retain every measured-wire residual; this is not a claim of prospective physical validation.",
+          "references": []
+        },
+        {
+          "line_hint": 27,
+          "text": "proves graph optimality. Count every refusal against correct completion.",
+          "line_sha256": "cf719d3651f9f01138e53d14c380628f99bc4c51caffb15b21d757dfdf9a50dd",
+          "class": "PROPOSED",
+          "rationale": "Planned scoring distinguishes graph-optimal witnesses from physical correctness and charges every refusal.",
+          "references": []
+        },
+        {
+          "line_hint": 33,
+          "text": "not a latency guarantee or a performance distribution. Do not claim a speedup",
+          "line_sha256": "941c9baba912c933c5aa11d25a2ef6749859f8dddbe2743e43d29475dff1cca1",
+          "class": "PROPOSED",
+          "rationale": "The local benchmark has no latency-guarantee or distributional scope; the protocol restricts performance claims.",
+          "references": []
+        },
+        {
+          "line_hint": 34,
+          "text": "unless the measured complete path improves, and report changed physical outcomes.",
+          "line_sha256": "fa19c3934fa430637f0cad4f804f3bda4a530780cc705728e8c5d11bdb5e58c6",
+          "class": "PROPOSED",
+          "rationale": "Planned reporting requires complete-path observations and disclosure of changed physical outcomes, not inferred hardware advantage.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/PREREG_schedule_fault_model_2026-10-22.md",
+      "document_lf_sha256": "34165a4834eae6981573aed435addb33a6d58d2cd75649bbd2035aa7e39a3d01",
+      "claims": [
+        {
+          "line_hint": 15,
+          "text": "assumptions rather than measured calibration values. Report omitted readout",
+          "line_sha256": "3024fa633dc8e507766bb195ac2c9b68f78e6513b0cfe362156fb6c3a6eed7cd",
+          "class": "PROPOSED",
+          "rationale": "Missing reset calibration is represented by explicit model hypotheses, not a measured rate.",
+          "references": []
+        },
+        {
+          "line_hint": 17,
+          "text": "Backend-width padding disconnected from every measured/operated wire contributes",
+          "line_sha256": "41c14ed5a4bfc7cf5efb70b83b8f3b164b2adc06fffd028cbcd52d001bfc0744",
+          "class": "PROPOSED",
+          "rationale": "Declared spectator-free noise scope for the prospective model experiment, not an observed physical guarantee.",
+          "references": []
+        },
+        {
+          "line_hint": 46,
+          "text": "logical-gate workloads, temporal drift validation and measured physical resource",
+          "line_sha256": "07ad37bfaa1b7cb52c316855ef661b1b1d55508ac06c579aec48ab53752db0fb",
+          "class": "PROPOSED",
+          "rationale": "Outstanding physical-validation and workload requirements, not a measured resource-advantage assertion.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/PREREG_repetition_schedule_2026-10-22.md",
+      "document_lf_sha256": "5d1499b782dcef1ef605441a9f155ce1d77e0a1409084b28c51e4cabceca0d10",
+      "claims": [
+        {
+          "line_hint": 31,
+          "text": "first path: two schedules, two bases and two preparation bits, 512 shots per",
+          "line_sha256": "5767ff46b5bbef08a8f81dcbfc4f4adc082a29187649443903aea7dac5598d13",
+          "class": "PROPOSED",
+          "rationale": "Prospective pilot allocation and evidence-retention requirements; these lines do not assert a completed hardware run.",
+          "references": []
+        },
+        {
+          "line_hint": 34,
+          "text": "guarantee; actual execution spans and scheduler metadata must be retained.",
+          "line_sha256": "6db029b9bb28303a7f1d45076aef662abc612b6ca23451eeceaa048bce00f9d2",
+          "class": "PROPOSED",
+          "rationale": "Prospective pilot allocation and evidence-retention requirements; these lines do not assert a completed hardware run.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/BUILD_CAMPAIGN_2026-09-08.md",
+      "claims": [
+        {
+          "line_hint": 80,
+          "text": "| 2.3 | Circuit-distance audit of published schedules (`d_eff < d`?) with the in-tree LRAT/G1 harness | FTQC_CONCEPTS Rank 3 primary | days | DONE (R37): exact, zero-Monte-Carlo. 20 of 24 CX orders are NOT SCHEDULES (detectors non-deterministic); of the 4 valid, half give d_eff = ceil((d+1)/2) -- a bad order costs HALF the distance, confirmed out of sample at d=7 and d=9. On the wall (3 s) |",
+          "line_sha256": "d24753f0b3d59841257d4daf322f2e5ca7fe303fd050091a63c35201c9451c55",
+          "class": "PROPOSED",
+          "rationale": "An explicitly queued circuit-distance audit, not a claim that its planned result was obtained.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/ECNU_COLLABORATION_OUTREACH.md",
+      "claims": [
+        {
+          "line_hint": 6,
+          "text": "**Subject:** Collaboration proposal: adaptive, independently verified control layer for 100-channel quantum teleportation",
+          "line_sha256": "55d44caf2bc241734b5078da653ab50a182c2e4ca023697e6ca290a7b5cf091b",
+          "class": "PROPOSED",
+          "rationale": "The proposed collaboration subject is an intended request, not evidence of a collaboration or device run.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/EXTERNAL_AUDIT_2026-09-14.md",
+      "claims": [
+        {
+          "line_hint": 30,
+          "text": "| R-01 | CONFIRMED | `tools/recheck_all.py` exits 0 when the flat-certificate file is absent; tree lists default to empty; no expected cardinalities. | Manifest-pinned complete replay: missing / duplicate / extra / count-mismatched records FAIL; a subset mode is explicitly named. Planted-omission tests. |",
+          "line_sha256": "83295de7d963a7e5959c8607024b48fe6f596c38e23f5097afef30796f055d87",
+          "class": "ESTATE-BUILT",
+          "rationale": "The audit names the implemented receipt-replay instrument; this binding does not reassert every historical audit verdict.",
+          "references": [
+            {
+              "path": "tools/recheck_all.py",
+              "hash_mode": "lf",
+              "sha256": "3feacfc39dafa10a778a48fe1ca98ba081675c8407c3b847a30574ec4baf08c5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/EXTERNAL_AUDIT_2026-09-15.md",
+      "claims": [
+        {
+          "line_hint": 30,
+          "text": "| F-2 | **CONFIRMED** | The strong-baseline runner (v2) checked every receipt during the run and discarded it: `exact_flat` used as yes/no, `tree_receipt` returning a node count; the 2,042-receipt replay never read a strong-baseline proof. \"The checker accepted a proof during our run\" is not \"the reader has the proof\". | **RESOLVED** (v3): `qldpc_strong_baseline_v3.py` retains every proof content-addressed, every decision names its proof, the sampled error is kept; `tools/replay_strong_baseline.py` rebuilds every summary number from records and proofs alone with the production checkers and writes a verdict the paper's generator requires; v2's numbers reproduce level by level; the proofs and manifest ship in the bundle. |",
+          "line_sha256": "f54948aa90774a29d54ebde466eeef86e0e79d1cc60d38ae34c45e2856342ebd",
+          "class": "ESTATE-BUILT",
+          "rationale": "Binds the audit-described strong-baseline replay path to its implementation, without upgrading unrelated empirical claims.",
+          "references": [
+            {
+              "path": "tools/replay_strong_baseline.py",
+              "hash_mode": "lf",
+              "sha256": "41e15f389d14f61d4e49e6d408f6d2c607066d06b9f55dda4480a90af24220fd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/HW_PIPELINE.md",
+      "claims": [
+        {
+          "line_hint": 3,
+          "text": "`src/oneq/hw/` takes a protocol from circuits to a certified verdict. The rule that makes it trustworthy:",
+          "line_sha256": "8f0cf753793e992dec09486583d88600f2a393239d42b66a3e8418eb0888f1c9",
+          "class": "ESTATE-BUILT",
+          "rationale": "The common hardware software pipeline is implemented here; provider measurements and model validity remain separate claims.",
+          "references": [
+            {
+              "path": "src/oneq/hw/engine.py",
+              "hash_mode": "lf",
+              "sha256": "3dbcdcfa3c89f5fa0eaa5a2bc5012a8bfb9c196d1de7016b0bd0b8513a46eade"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/IBM_INTERCONNECT_COLLABORATION.md",
+      "claims": [
+        {
+          "line_hint": 23,
+          "text": "We would welcome an introductory discussion on two topics: (1) access or an appropriate partnership pathway for robust cross-processor research and (2) whether your group has any research collaboration or early-access program supporting **physically coupled quantum processor modules, inter-chip Bell-pair generation, entanglement swapping or logically encoded quantum-state transfer**. We would like to understand the capabilities, prerequisites, scientific milestones and availability rather than assume commercial cloud backends share a quantum link.",
+          "line_sha256": "f9d243e4ed96f19852b6c6eb8ba8576b533b10aef8742c86cbb726a47fac378c",
+          "class": "PROPOSED",
+          "rationale": "A proposed introductory discussion and access request, not an existing partnership or entitlement.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/IBM_OQTOPUS_CROSSCLOUD.md",
+      "claims": [
+        {
+          "line_hint": 40,
+          "text": "A physical program should start with co-located nodes and compatible transduction/memory interfaces, **not** an unsupported claim of intercontinental direct-fiber teleportation. A proposed 11,000 km cross-ocean example is included solely to quantify why a naive link is not an engineering solution.",
+          "line_sha256": "f13c4ef669c7162d5ff5d5f8023ec22b1dca158640bf8cb791823d38ea89376b",
+          "class": "PROPOSED",
+          "rationale": "A proposed physical-program design; it does not assert that a quantum interconnect is available or has run.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/IBM_OQTOPUS_EXPERIMENT_GATES.md",
+      "claims": [
+        {
+          "line_hint": 5,
+          "text": "1. Obtain RIKEN/OQTOPUS account entitlements and **actual** Japanese target device ID. OQTOPUS is open-source software; its source does not confer physical QPU access. Contact the official operator / research-access program; submit a scientific proposal. Never use an invented API endpoint or borrowed credentials.",
+          "line_sha256": "377ec07de66b8aea4ea81433248daa796d082fd389e19afd3b6db5faeaf9adbc",
+          "class": "PROPOSED",
+          "rationale": "An access prerequisite for a proposed experiment, not evidence that credentials or physical QPU access were granted.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/MEASURED_MODEL_PROGRAM_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 115,
+          "text": "`experiments/dual_observable/certified_measured_lane.py`, `memory_kernel.py`,",
+          "line_sha256": "6cf4e1564ab6b7040140fb556a012069569947f96560885b13e322ed5f5e33b1",
+          "class": "ESTATE-BUILT",
+          "rationale": "The named measured-model analysis/certificate lane is implemented; labeling its source does not validate every physical interpretation in the research program.",
+          "references": [
+            {
+              "path": "experiments/dual_observable/certified_measured_lane.py",
+              "hash_mode": "lf",
+              "sha256": "5f60103838a3e8ff15ca5da8249fdb0f2653fb9912e36da13d61c3918671c232"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/NEXUS_HANDOFF_2026-09-21.md",
+      "claims": [
+        {
+          "line_hint": 27,
+          "text": "**Do not resubmit it.** It will run when capacity frees. Resubmitting spends the new",
+          "line_sha256": "25807de32155d5f61828e540bf1512f6ca748c86c39c07eed98afb710aad4e48",
+          "class": "PROPOSED",
+          "rationale": "An operational no-duplicate-submission instruction, not a refreshed assertion about provider job state.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/NEXUS_R01_FEEDFORWARD_COLLISION.md",
+      "claims": [
+        {
+          "line_hint": 3,
+          "text": "**Evidence class:** [MEASURED] on `ibm_marrakesh` (Heron r2), derived offline from committed evidence.",
+          "line_sha256": "acfa44d3dbf2022ff4b5e5b1c686bddd60b0fdeea3929579b6ca6a5662ffaff9",
+          "class": "ESTATE-MEASURED",
+          "rationale": "An offline analysis of an archived IBM record; the annotation does not extend its causal interpretation or assert new hardware execution.",
+          "references": [
+            {
+              "path": "evidence/nexus_r01_asymmetry/feedforward_collision.json",
+              "hash_mode": "raw",
+              "sha256": "894c1311c00ddfd2d7e43742fdc9cb1edd2750a006559d3950d358fd3ddc77ac"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/NEXUS_R2_REAL_QUADRATURE.md",
+      "claims": [
+        {
+          "line_hint": 3,
+          "text": "**Evidence class:** [MEASURED] on an external instrument, applied to a [SIMULATED] Nexus operating point.",
+          "line_sha256": "1cf44a87e27a3424621ad5942b927a11e4bc9faaa18125d6456ce358d887d882",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Estate calculations use externally recorded noise at a simulated Nexus operating point. This is not a Nexus hardware demonstration.",
+          "references": [
+            {
+              "path": "evidence/nexus_r2_real_quadrature/summary.json",
+              "hash_mode": "raw",
+              "sha256": "a712ee6740a579c172739cbf44529622ea321ba904116de9ff221bce9cc89c7d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/OUTREACH_DRAFTS_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 6,
+          "text": "the one cheap step that would settle whether it is a property of IBM's calibration DEM pipeline or",
+          "line_sha256": "4028c8caaba2da824a4d2aa3575e1369807a6b917a51f294736753bd33b618a4",
+          "class": "PROPOSED",
+          "rationale": "An intended collaboration/data test, not confirmation of the proposed calibration-pipeline explanation.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/OWNER_DECISION_FIXED_POINT_WEIGHTS.md",
+      "claims": [
+        {
+          "line_hint": 61,
+          "text": "| **B** | fixed-point at a declared scale | optimal w.r.t. a published integer lattice | must publish the scale and justify it; sub-ulp effects disappear by construction |",
+          "line_sha256": "982a9cf764929e9939de84c4e0aaf009d19e0361c9e2d4852f74efc97bea6b89",
+          "class": "PROPOSED",
+          "rationale": "A design alternative and its disclosure requirement, not a new owner decision or silent adoption of a changed objective.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/PAPER2_QLDPC_DRAFT.md",
+      "claims": [
+        {
+          "line_hint": 300,
+          "text": "derives the slacks, and recomputes L exactly. Acceptance is lattice-strengthened: with all weights in",
+          "line_sha256": "b8bc66035b857b43b233afe2d3f3bc8d465c9dfa3952516b5ab7fa61a6efb062",
+          "class": "ESTATE-BUILT",
+          "rationale": "Labels the implemented exact-rational checker step, not the manuscript's entire empirical or novelty claims.",
+          "references": [
+            {
+              "path": "src/oneq/qldpc_check.py",
+              "hash_mode": "lf",
+              "sha256": "51940b3712a830895cbffa3516c81ba57836d470dbe52085219e581709c15ecc",
+              "previous_pins": [{"sha256": "fa3ea1032535bfe021fb5e4a14050cadc736d934332fb54bd5b3a3586169ede2", "superseded": "2026-11-03", "reason": "input-domain contract docs/QLDPC_RECEIPT_INPUT_DOMAIN.md (external audit 2 of release v2026.11.03, findings F05-F07): syndrome entries no longer reduced with & 1, every index validated before use, one-element row combinations and non-canonical multipliers refused, root bound above U refused; bound-only results now LOWER_BOUND_PROVEN", "reverification_record": "evidence/qldpc_receipt_reverification_2026-11-03.json"}, {"sha256": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25", "superseded": "2026-11-03", "reason": "final referee of paper 2, MAJOR 2: a facet with multiplier 0 is now validated (row, F, multiplier, uniqueness) before it is skipped; it used to be skipped unread, so a malformed zero-multiplier facet was accepted", "reverification_record": "evidence/qldpc_receipt_reverification_2026-11-03b.json"}]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/PREREG_R158_NATIVE_SIGN_RAMSEY_V1.md",
+      "claims": [
+        {
+          "line_hint": 38,
+          "text": "- The freeze must bind the exact 60 native QPY circuits, order, per-circuit",
+          "line_sha256": "ffda3789f442abe35d48778c1d289a2e948e95fa09e233765cfc437d77c410ed",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "126abd0af8c928b2cd0495216798e6b726baa2af14a9cecf0b8ca73d4c0592b6"
+    },
+    {
+      "path": "docs/PREREG_bin_family_2026-09-05.md",
+      "claims": [
+        {
+          "line_hint": 31,
+          "text": "| F1 | the [1, 2) bin is powered in at least two families | ≥ 2 families with ≥ 30 shots in the bin (the report's own thin-bin rule) |",
+          "line_sha256": "d26678a76cb208083fd3a2fb73df8384201aa9761f2d2d28fdf477930ce6efb9",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 32,
+          "text": "| F2 (idle/T1) | the time-like-dominated shots carry the miss | their [1, 2) deviation (observed − predicted) ≤ −0.05, while the space-like-dominated shots' deviation is within ±0.05 |",
+          "line_sha256": "da86ef2570f18b92f8a901561839d40b30ba3d8b2f4e660518cdeb76f96b93d6",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 33,
+          "text": "| F3 (scale) | the miss is family-independent | every powered family's deviation ≤ −0.05, none within ±0.05 |",
+          "line_sha256": "df863b5661ff320d66b8fe0b5984185290160e698505989dfb1bfccae8928cb8",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 34,
+          "text": "| F4 | Run A shows the same family pattern where powered | reported, not gated |",
+          "line_sha256": "ec2b267ce92bd5f9c806a77d4dec4881b023dca8b09a5aaeda70494dd9d6999d",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "514667a5a1a91457ddc5a9fb0dd2c212f15c81e0a6caab2efa73403d10427fc1"
+    },
+    {
+      "path": "docs/PREREG_bin_round_2026-09-05.md",
+      "claims": [
+        {
+          "line_hint": 24,
+          "text": "| Q1 | the [1, 2) bin is powered in at least two round classes | ≥ 2 classes with ≥ 30 shots in the bin |",
+          "line_sha256": "95b212a5036504db3e860a939f76772ea8e45b18c8a1d0b9652bd4b8725da116",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 25,
+          "text": "| Q2 (uniform) | the deviation (observed − predicted) is the same in every powered class | max − min of the powered classes' deviations < 0.05 |",
+          "line_sha256": "f22d9a6ddc21ae519637e4512540562fa187e386a449897b3beb873ce95bdd30",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 38,
+          "text": "| Q3 (temporal) | the deviation grows in magnitude with the round | early, middle, late powered and monotone, with late − early ≤ −0.05 or ≥ +0.05 |",
+          "line_sha256": "2f0824f496618b44d13dda6f13e6d3fdc946dee5c7e0f9746863fc3623a95be0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 27,
+          "text": "| Q4 | Run A reported where powered | reported, not gated |",
+          "line_sha256": "c70301f704bee41b14a149706a134f23efd53c3df8f655a98141bc0e1e2bc2d1",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "ff43e48cd0fbb2e5e617de4f9cc747d08ac6b3bb512aa2cb15100cd77396b9de"
+    },
+    {
+      "path": "docs/PREREG_burst_decoding_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 25,
+          "text": "| F1 | the burst state alone repairs most of the DEM | dem+burst <= dem / 1.5 on every record | >= 30 DEM errors held out |",
+          "line_sha256": "bc5bf76cd4f69fc28856f0e80f2e375bcc32ef25cf832ac099475feea8ddcc5b",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 38,
+          "text": "| F2 | the burst state explains the measured graph's gain | dem+burst <= 2 x measured + 3 on at least 4 of the 6 records | -- |",
+          "line_sha256": "fd8928956c5ca9160735bd1cd3d0b72270374a8277d281f30afb98acf8f602f0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 27,
+          "text": "| F3 | the burst state does not harm the measured graph | measured+burst <= measured + 3 on every record | -- |",
+          "line_sha256": "03871e31607e8098d0f1f59b60976a6c6dc9a790c01e133a7c41af354428eada",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 28,
+          "text": "| F4 | the per-shot model certifies | certified >= 0.99 of attempted under dem+burst on the four r=13 records (`--certify`) | >= 100 attempted |",
+          "line_sha256": "af5ae5b2dd3a9b6a04c1d4b5cb4da2d5cd95b6409b03c7ec593350fa061edddf",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 29,
+          "text": "| F5 | the parity rule still reads the logical | opposite-cut errors >= 10x declared-cut errors under dem+burst, every record with >= 1 declared error | -- |",
+          "line_sha256": "c3e47cdda3585a05f7a869df88006a6176715c3a7f207cf7f0c7759c87cc1eee",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "98b15d1c1eb33f74a1e0570ad9e68a6710d7be75dc0ea5314c7ae50a083ffbbb"
+    },
+    {
+      "path": "docs/PREREG_burst_second_device_2026-09-06.md",
+      "claims": [
+        {
+          "line_hint": 50,
+          "text": "| G1 | the burst model cuts the logical errors on a device it never saw | ratio ≤ 1/1.5 and the interval's upper end < 1, with the DEM arm ≥ 30 errors |",
+          "line_sha256": "f42aa069316303073abd4971d9ad61e52f1b43dfa450a6e900340d7c1af950cf",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 51,
+          "text": "| G2 | it is calibrated there | burst-model calibration error < 0.02 |",
+          "line_sha256": "869146f4c7f97701a4ee7fb9598614de661f56a6d279e959fa0fa42e390bbfce",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 52,
+          "text": "| G3 | the surrogate also helps, and by less than the burst model | surrogate ratio < 1; burst errors ≤ surrogate errors |",
+          "line_sha256": "26be9bb613a3defb91afa7b0384597f9634dd947b3e2d4ed596c80b91fda7526",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 53,
+          "text": "| G4 | R21a's overstatement is a property of these DEMs, not of marrakesh | sampling from THIS run's pinned weights gives a nontrivial fraction and a logical error rate both ≥ 3× the run's own |",
+          "line_sha256": "5ea697739f706857c397fdebb22d67a20ec971a8f6edc8b8639615b8f2eaeab3",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 54,
+          "text": "| G5 | the direction is real | a uniform scale on every family leaves the error count unchanged (matching sees only relative weights), and inverting the burst pricing is worse |",
+          "line_sha256": "e907031453a64ae715ab5696ff93adc3d6124825e1b48a332bb4029a599e0673",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "46b3da04db193c1187e50bd73233748a979428392a5c3e2263763548a88875eb"
+    },
+    {
+      "path": "docs/PREREG_calibration_power_2026-09-04.md",
+      "claims": [
+        {
+          "line_hint": 42,
+          "text": "| A1 | decoder errors | ≥ 30 (point estimate 60, Poisson from 6/4,000) | < 30: calibration verdict is NOT read; record UNDERPOWERED |",
+          "line_sha256": "a0945e46be316cfaba27733ea8d5f23f06cc22e1caf64a33807731a233a84f5a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 43,
+          "text": "| A2 | `dem_calibration` powered bins | ≥ 3 | < 3: same as A1 |",
+          "line_sha256": "0b98c77394c79c4ef1239de38853132a9bed597e1f49c5fcebbcac194d2f3d63",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 44,
+          "text": "| A3 | `dem_calibration` verdict | \"significant but immaterial\", error 0.001–0.02 (the 4,000-shot reading) | MISCALIBRATED with err > 0.02 is a device-model finding; CONSISTENT is fine |",
+          "line_sha256": "4ccf5161503c720f020c81f0ae5ba96c8cdc9bbc6d574bf7111e837608596ce0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 45,
+          "text": "| A4 | `gap_is_always_zero` | VERIFIED on every nontrivial shot | one refutation = a certified suboptimal decode, a first |",
+          "line_sha256": "e533ee81904d620d45ba8d9fdd1b174cdf72a1f7ad7745a3a5a1e0241b6c409c",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 46,
+          "text": "| A5 | exact envelope | no dominant detector; unique duals 0% | a dominant detector over the engine's pool is a CANDIDATE only |",
+          "line_sha256": "c8513de4841292ed5559ac89a739b7d17155210eb56778254f6de8229a72e7ee",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "54567f337ed58afe74d3e52432d39738f0a3c5fc1fff6fe1974f20b3725934d3"
+    },
+    {
+      "path": "docs/PREREG_campaign_r152_one_job.md",
+      "claims": [
+        {
+          "line_hint": 93,
+          "text": "| C1 | the block ladders every real CZ edge R147 uses and reads every qubit it touches, and the fit returns a channel for each | precondition: if NOT MET, R147's V2–V5 are reported as INVALID, not as met or failed |",
+          "line_sha256": "7aead7bdc4e65ca4eed8d20e084a93b291d7463a5773e0ecaa20fe2ba9da53dc",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 94,
+          "text": "| C2 | the execution spans account for every shot of every circuit | reported: it says whether the time-resolved analyses below are complete |",
+          "line_sha256": "07ae892c161dfef956ad7a7b6159f64e6992fce44e1652cd02b47534f5401c5a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 95,
+          "text": "| C3 | the vendor calibration's change between freeze and fetch, on every qubit and edge used | reported |",
+          "line_sha256": "4c8d4418871d28ca06dcfcc473d86a2ed43f2853cecdfc323db88dfaff886c86",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "f3c4bdf3dab050222b7fd1f2a5fd880937592efad9af1422aba6bc3a003f9c71"
+    },
+    {
+      "path": "docs/PREREG_data_qubit_latent_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 28,
+          "text": "| H1 | the bursts live on the data qubits | data-model log-likelihood > per-position model's (same p1) by >= 50 nats on at least 3 of the 4 d=3 records | -- |",
+          "line_sha256": "88f36b3bade6d2d62a125d78581372e3493321498e0ab5fe9a8c4a07499bd89b",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 29,
+          "text": "| H2 | the shared state produces the cross-position memory | data null's share of the mixed-far excess >= 50% on at least 3 of 5 records (the per-position null: 0%) | >= 30 pairs |",
+          "line_sha256": "c77d5932bf13852c7b8735943a547e64687a4d624d4a831cbd342209f27f4932",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 30,
+          "text": "| H3 | and no less of the temporal one | data null's share of time-far >= the per-position null's share − 0.05 on every record | >= 30 pairs |",
+          "line_sha256": "490ba67e3a2f0d87f9ef2827cd79f73bcefbd3aed2db54f9fa33a3ad8f35d633",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 31,
+          "text": "| H4 | its lowering decodes at least as well | dem+datachain <= dem+burstchain + 3 on every record | -- |",
+          "line_sha256": "cd243d5eff0bf41c5b16b3551f2641894d4a9a90360e158c4961cd64056686a5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "69568db1e27cb5131be5e430e224b0bad4cd2c3ac0ff1272522f0c02f555f54d"
+    },
+    {
+      "path": "docs/PREREG_distance_nested_2026-09-07.md",
+      "claims": [
+        {
+          "line_hint": 136,
+          "text": "| D1 | the measured model beats the DEM at d=5 | ratio ≤ 1/1.5, interval upper end < 1, DEM arm ≥ 30 errors |",
+          "line_sha256": "b7b97e8cf9ec33a583a422a0f18413b3069371f1446b909cca4ad4a9e5b9f7db",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 137,
+          "text": "| D2 | the margin GROWS with distance | held-out ratio at d=5 exceeds the ratio at d=3 on the SAME qubits, both arms ≥ 30 DEM errors |",
+          "line_sha256": "4ee013a7d5fc894194a4b4486cab8e57d696a6e8a55712046be1d810b91c65d5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 138,
+          "text": "| D3 | the space-like overstatement persists at d=5 | measured space-like ratio > measured time-like ratio, as on all 5 prior runs |",
+          "line_sha256": "61f3825b6dc4793bf04f044f9966d49015a3b1f651ac2af1c973394652ff03dd",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 139,
+          "text": "| D4 | the structure/pricing split is not all structure | the estimate beats the flat-weight control on at least one arm |",
+          "line_sha256": "47e1c2f2ebc152015730039c110ed15a41ac9b5210a39878e34e6a6168f2b3c5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 140,
+          "text": "| D5 | the new chain lands in one of the two known payoff groups | its estimator payoff falls outside 1.0–2.5×, the empty gap in the 12-chunk sample |",
+          "line_sha256": "73dd0ab0366a00b2ab275ede10a03cd87191543973217194579907f28e32d4c4",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "2b51cb777a3f1c0685e4482c577b926a77eb725f55466a0ac31a9de64afce369"
+    },
+    {
+      "path": "docs/PREREG_fast_reset_replication_2026-09-08.md",
+      "claims": [
+        {
+          "line_hint": 45,
+          "text": "| F1 | the span-2 excess over the independent control is SMALLER on phoenix than on fez at the same distance | d=5: +0.0058 raw / +0.0069 stratified; d=3: +0.0037 / +0.0058 | phoenix excess < half the fez excess at both spans 2 and 4, on both arms, stratified |",
+          "line_sha256": "d2fd38f9c3ce5d7d6b0effee7460aa4f46b7d370cf30af598b379836b445007d",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 46,
+          "text": "| F2 | the burst model's advantage over the DEM shrinks with the tail | fez d=5: DEM 52 -> burst 0; d=3: 41 -> 1 | the burst arm's error ratio to the DEM on phoenix is at least 3x LARGER (closer to 1) than on fez, with >= 30 DEM errors and >= 10 burst errors on the arm (a floor on BOTH counts, the R25 lesson) |",
+          "line_sha256": "f59250de5d1e3cb9a6b8d549a35c53802b013e2cc5bb3944bbf4079ba024ac22",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 47,
+          "text": "| F3 | the space-like overstatement of the vendor DEM does NOT shrink (it is a calibration-pipeline property, not a leakage property) | fez: 26.3x / 26.9x | phoenix space-like ratio > 5x on both arms |",
+          "line_sha256": "0318b2b3b00ccef47521dc73c62b649af479b624e02a570bc200fe8b5ea84a6a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "edbe517a80ad22b1ff1ff98c80ca6366c9dc380dfa051dcbdd66091a52b264c5"
+    },
+    {
+      "path": "docs/PREREG_fixed_scales_run2_2026-09-05.md",
+      "claims": [
+        {
+          "line_hint": 33,
+          "text": "| T1 | the primary scales cut the logical errors by at least 3× | errors_scaled / errors_original ≤ 1/3 with both counts ≥ 30 (the cross-application read 1/7.4; 3× is the conservative bar) |",
+          "line_sha256": "4a37124fced11cdca0f71e6703d96e8ca6ce96b010a459846c177be9ae428bf4",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 34,
+          "text": "| T2 | the primary-scaled model is calibrated | calibration error (scaled) < 0.02, whatever the original reads (the lesson of S2: no premise about the original) |",
+          "line_sha256": "da1837a104a35b3840399009b66c5c7667d0421f0216b74bbbf644efc3237800",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 35,
+          "text": "| T3 | the secondary scales also cut the errors | ratio ≤ 1/2 |",
+          "line_sha256": "fab72c632e4da62a23ee72227ab58bff3d95c2855cc07c7bc3d4ed7fb01ef3f8",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 36,
+          "text": "| T4 | the direction is real | inverted primary scales (time-like 1/0.0875, space-like 1/1.6459, boundary 1/0.9411) make the decoder WORSE (ratio > 1) |",
+          "line_sha256": "763e012b670f45b5d8ec428724529ce251c038f7810ef36e1163f5a090c20f9c",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "4cf9ca8fb3ab64636b917e1a8929d50bece3c467a2ab218ad91dacf03d603559"
+    },
+    {
+      "path": "docs/PREREG_fixed_scales_runA_2026-09-05.md",
+      "claims": [
+        {
+          "line_hint": 36,
+          "text": "| U1 | the primary scales cut the logical errors at least 1.5× | original errors ≥ 30; ratio ≤ 1/1.5 and the interval's upper end < 1 |",
+          "line_sha256": "d1667ef7a13365a97a12cd71821fb3c1edd9a407e23186f70fd7ee195986820e",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 37,
+          "text": "| U2 | the primary-scaled model is calibrated | calibration error (scaled) < 0.02 |",
+          "line_sha256": "436d566cee6fe6b04f0db159b545d9a08ab15ad8365fd7077611d9ffe511f237",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 38,
+          "text": "| U3 (per-device) | Run B's scales also cut Run A's errors | ratio ≤ 1/1.2 with the interval's upper end < 1 |",
+          "line_sha256": "990cc99b677d1c36182153834b2d615c6425f6d059c51b15be352c1f5841393c",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 39,
+          "text": "| U4 | the direction is real | the inverted primary makes the decoder worse (ratio > 1) |",
+          "line_sha256": "3aaba8e2f71747dd3c62b20f749b73f0c11e4bf41179eeb120891b8645132282",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "ef1a0b69d2af72df143fbf4f5229c7bbe80533d39767b0fd20be5fc5c990d235"
+    },
+    {
+      "path": "docs/PREREG_fixed_scales_run_2026-09-05.md",
+      "claims": [
+        {
+          "line_hint": 32,
+          "text": "| S1 | the re-weighted decoder makes fewer logical errors than the original on the whole run | errors_scaled / errors_original ≤ 1/1.5 (the held-out ratio was 1/2.46; 1.5× is the conservative bar), with both counts ≥ 30 so the ratio is powered |",
+          "line_sha256": "d9f50da94134ec6f3300006ecb782f813647092e4e7d5e69d16dd8c03e6daacb",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 33,
+          "text": "| S2 | the re-weighted model is calibrated where the original is not | calibration error (scaled) < 0.02 AND (original) ≥ 0.02, on the whole run |",
+          "line_sha256": "c3807dc713d7d980182505da9f9c80b9a0c85ecf0f4ce3d0d7de678ef8b85ddd",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 34,
+          "text": "| S3 | the family signature reproduces | boundary-dominated shots' [1, 2) deviation ≤ −0.05 under the ORIGINAL weights (`probes/bin_family.py`) |",
+          "line_sha256": "ebb7485c82091854ceb9fad5426249db468452bd6e82214707b6f2a71b0f7130",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 35,
+          "text": "| S4 | the miss is still static across shots | R12's M3 (a powered null in the [1, 2) bin) on the new run |",
+          "line_sha256": "e2e7f4e2241508448251726b3eb16e3a5c9c53a33ab2e7e4193e1c32413ef13d",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "db76d5d642b086d641fac553bfd4b791423845552c8f815a2f40af4b13003e3b"
+    },
+    {
+      "path": "docs/PREREG_ga11_herald_2026-09-17.md",
+      "claims": [
+        {
+          "line_hint": 56,
+          "text": "| H1 | the readout is two-blob at all | both ancillas' clouds separate with a centroid distance exceeding 3× the within-cluster RMS | — |",
+          "line_sha256": "93a45c65eaa36eabfc64bd99e31fd9246a6879b832aaaa6fe297b43c75939c86",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 57,
+          "text": "| H2 | **the GA-11 clause**: heralding removes detection events | `p_det_herald / p_det_hard` ≤ 0.90 at 5% erasure | ≥ 10,000 detectors defined |",
+          "line_sha256": "dbe35bb0d73bd313f941b1dbe904ce38d6c523dff21c30b00f3576177b0a06e8",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 58,
+          "text": "| H3 | the cost is stated, not hidden | the erased fraction and the full `t` sweep are in the artifact | — |",
+          "line_sha256": "05e4346ee8fde8601ce9f8a176c1033be9946bdcdc9a0f96c8644698486909a5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 59,
+          "text": "| H4 | **the dark check**: it is the AMBIGUITY, not the arithmetic | erasing the same 5% of measurements **at random** gives a ratio > 0.95 | same |",
+          "line_sha256": "84bdea5ca5aaaf56109994ba49c89d4ea31c150b7b6ca9278ee5bd9055e83102",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 60,
+          "text": "| H5 | the herald concentrates on real ambiguity | heralded points' mean `\\|s\\|` is below the unheralded mean by ≥ 2× | — |",
+          "line_sha256": "b821fa33ef513ecd46a76ff1e009f49b8854f830382a7e1d41b6778c8348aeec",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "23aa3680b7c9c85b71a8cfb808f7c38140f12d927d456acda6acb15302aad189"
+    },
+    {
+      "path": "docs/PREREG_herald_value_2026-09-17.md",
+      "claims": [
+        {
+          "line_hint": 131,
+          "text": "| V1 | the instrument holds the configuration | ≥99% of shots enclose with status `ok` in every arm | 20,000 shots submitted |",
+          "line_sha256": "d6f47f64b0d8c62a8787c3b7afbe62c7f4d249ca56d46a79a5c28d569bd78368",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 132,
+          "text": "| V2 | **THE CLAIM**: the herald has value at a decoder that can see it | `unlocated` logical error rate / `located` logical error rate **> 1**, with a paired McNemar two-sided p < 0.01 over discordant shots | ≥10,000 shots decoded per arm |",
+          "line_sha256": "8382b510bc9b3089916cc9d3f5bf9f4b2a733032ab11a3d6b4d45e28f022028a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 133,
+          "text": "| V3 | the control: it is the CORRECT herald | `scrambled` does NOT beat `unlocated` | same |",
+          "line_sha256": "bc19d50eae6be0f3bf5c6432670a87ed5dce30ba911e4eb2361be147b255da07",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 134,
+          "text": "| V4 | **the dark check**: it is not the arithmetic of raising priors | `anti` does NOT beat `unlocated` | same |",
+          "line_sha256": "a5a3571122c16f07e6aba13f4e8236771554f4f17ad7a2414c5f96ab6b502760",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 135,
+          "text": "| V5 | the separation this design rests on | the enclosure changes its prediction on strictly MORE shots than minimum-weight matching does, given the identical herald | same |",
+          "line_sha256": "63487d039f6b0b7e067dd26351ee2576695501fc627db70620551ce73ddff426",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 136,
+          "text": "| V6 | the cost is stated | heralded fraction, arm-vs-arm disagreement rate and discordant-pair counts are all in the artifact, whatever they are | — |",
+          "line_sha256": "135f26e0cbb095dce6a4c70139f7bcc612958a439606403f91c3309329f20a33",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "deeafabba737643b622a1b1671c4a07c3a46294f3eb0beae82542c1967aedb84"
+    },
+    {
+      "path": "docs/PREREG_hw_diag_r146.md",
+      "claims": [
+        {
+          "line_hint": 89,
+          "text": "| V1 the repaired model holds | \\|measured F_e(p0) − repaired F_e(p0)\\| ≤ 0.01 | **UNCERTAIN, about even.** The two named mechanisms closed ~72% of R145's miss post hoc; this tests whether in-circuit numbers close the rest. MET: the hardware requirement can be re-derived on a model that closed held-out. NOT MET: the residual is named by stratum and branch, and is the next instrument's target. |",
+          "line_sha256": "8c0dad36028b7e53749e01a05303995bb4a7076c67bb397da808142953fbbe2f",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 90,
+          "text": "| V2 the copy primitive | repaired-model flip within 3 sd of measured, for both control values. The sd combines the measurement's shot noise with the prediction's own spread over 8 parametric draws of the fit (the prediction rests on one fitted edge, 47–57) | **MET** if the excess is on edge 47–57 (laddered); NOT MET would place it in the protocol's context (crosstalk, timing), not the primitive |",
+          "line_sha256": "4c7df549cd0e06a1440e476e8555deac4795e5814c35514ba8ba7d3735bcf003",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 91,
+          "text": "| V3 the vendor model fails again | \\|measured − vendor F_e(p0)\\| > 0.03 | **MET** (R145's failure reproduces on the same circuits) |",
+          "line_sha256": "191aa5dd99843397df2c13cccbdc3dac457f393a9c0f9c5b602539328aa2c3b5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 92,
+          "text": "| V4 readout is worse in-circuit | mean over the 14 qubits of measured / vendor readout error > 1 | **MET** |",
+          "line_sha256": "30579f17f8e4652842bba2b960b289e45db88320023cc2390b9bcc76b454fe8a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 93,
+          "text": "| V5 the schedule | `fit_timing`'s choice. It is made only if the winner beats the runner-up by χ² ≥ 9 (3 sd). Otherwise it is UNDETERMINED and the repaired model keeps ALAP | **no prediction**: the model assumes ALAP, and every outcome changes it or confirms it |",
+          "line_sha256": "30e64c691863aa4b3626fba242ca9b0d309d818b87dc78f5bff4b8af2a8b5126",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "73d3474323781d0d2d0ccf250b9f5da432bacb60645dbaedbbb2c7cb91b75f10"
+    },
+    {
+      "path": "docs/PREREG_ibm_drift_lambda_2026-09-22.md",
+      "claims": [
+        {
+          "line_hint": 40,
+          "text": "| P1 | hour-scale drift exists on `ibm_fez` | halves-z of the 24-point per-job mean multiplicity, against a permutation null of the job order (2,000 draws), outside the 97.5% two-sided quantile | all 24 jobs returned |",
+          "line_sha256": "51df6318a8a7d309f9bdc733b3ef5ba47bb020d67fd34d8c747acbe90cffdcf9",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 41,
+          "text": "| P2 | the drift is monotone enough to forecast | Spearman ρ between span-start and per-job mean multiplicity, \\|ρ\\| ≥ 0.4, same null | all 24 jobs |",
+          "line_sha256": "fd3c90417c8e5f3399518570b863c4bc16e642262262dc12383ec982b219ea18",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 42,
+          "text": "| P3 | Λ's coverage survives the gaps | ACI coverage on the pooled series within ±0.03 of 0.90 overall AND ≥ 0.85 in the after-gap stratum | ≥ 20 jobs |",
+          "line_sha256": "ced6b4c5635f93dd1a6b28e37044c009ceebc40a46a457f9f8e50dd0d4698629",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 43,
+          "text": "| P4 | the forecast tracks something | local-level CRPS reduction vs persistence on the 24-point job series ≥ the AR(1) bound at the series' φ (`crps_reduction_ar1`) − 0.05 | all 24 jobs |",
+          "line_sha256": "ab51870ce9e7ccd510915779152648f73d1abd9dbc4ee91f114cc18fd8b95124",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "07c35c30c0b5b76ca2bb66dd4d8af816e0ac20a67e433aab0360b1ecb8ca5bd1"
+    },
+    {
+      "path": "docs/PREREG_ion_run_m6_DRAFT.md",
+      "claims": [
+        {
+          "line_hint": 94,
+          "text": "- **The claim holds** iff F_e_lower = 1.5 f_lower − 0.5 > 3/4.",
+          "line_sha256": "1194b65c91ac2c9397ca71b8641ef2276805e4db776f49b406098040829b50c4",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 95,
+          "text": "- **Every frozen circuit must have run** exactly one shot. A missing circuit or a repeated shot makes the run",
+          "line_sha256": "1e97197e0fcaecebab89d335248316750de420b9a0c9009b18140f191c444823",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "68b460c47f690ff06db8564f172c76c0ed565f863cb87bed27c9706652348d77"
+    },
+    {
+      "path": "docs/PREREG_ion_run_m8_sequential_DRAFT.md",
+      "claims": [
+        {
+          "line_hint": 82,
+          "text": "  - **Stop at the first look with K ≥ 1/δ: the claim holds.** No later batch is run.",
+          "line_sha256": "72467dd23896090ccbb8a51bc53fdbbfe51a45affdadfa9333985a032817c4cb",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 90,
+          "text": "  - **If every look stays below, the claim fails.** It is reported as a failure.",
+          "line_sha256": "8e70dcbb2837d17ab1c8b189261b27fb7713012c28d2ed9fa3ad74bfa79d544c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 93,
+          "text": "  - **If the run ends before a look's units have all run, that look is NOT REACHED** and the claim is NOT DECIDED.",
+          "line_sha256": "73efedc2697a3e616ae2b50b63245fd1996689ff6cb8a71c73ca8edf43e4bea0",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "0fb1e6d3d52500e4fb1efea7c4d57b6c2269d2de7324ed7304747492152e3dd4",
+      "revision_context": "Reconciled to main add46acf: futility stopping added to the explicitly unsubmitted DRAFT. Its at-device-time section still requires a distinct dated freeze before execution."
+    },
+    {
+      "path": "docs/PREREG_latent_burst_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 40,
+          "text": "| E1 | the EM fit and the kernel agree on the persistence | fitted rho within 0.15 of the kernel's stratified-fit rho, each d=3 record (position-averaged) | -- |",
+          "line_sha256": "bb413dbb681b3bc6bc51460dda2af55f73a5c25ca40f36c3e52b07fab2a9d8db",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 41,
+          "text": "| E2 | the temporal far-range excess IS the latent state | time-far excess INSIDE the burst null (p >= 0.05) on at least 3 of the 4 d=3 records | >= 30 pairs |",
+          "line_sha256": "6f2559edaa878eae6bce5c4dfe56256a1ec7d306562b006cb1ec34033b36aa90",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 42,
+          "text": "| E3 | the model carries no cross-position memory, and the data has some | mixed-far excess still BEYOND the burst null (p < 0.05) on every record | >= 30 pairs |",
+          "line_sha256": "8bc363197d8b819860c4cd201f8575288b84441ed2231db7c12aa6e66d137b6c",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 43,
+          "text": "| E4 | the burst fraction is small | stationary burst fraction a/(a+b) < 0.10 at every position, every record | -- |",
+          "line_sha256": "50b96235bce39ec80c7b30ce6cdc062a422d60ad4e05578fb32cb5f7b5b0ac11",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "c69c613990c6b48fe8483acc2082b7b1dcd86ebe91a5de6d229302f87a428f10"
+    },
+    {
+      "path": "docs/PREREG_leakage_hmm_2026-09-08.md",
+      "claims": [
+        {
+          "line_hint": 71,
+          "text": "| H1 | the HMM's posterior carries mechanism information the measured graph does not: on the 47 held-out shots the measured model gets WRONG, mean max-posterior leakage is higher than on the shots it gets right | AUC of `max_{i,t} gamma` for wrong-vs-right shots > 0.60 with a 95% bootstrap interval excluding 0.50, pooled over the six runs | >= 30 wrong shots (47 exist) and >= 1,000 right shots |",
+          "line_sha256": "f4a71241009d29aa1be487382b4303d78a9a357e624d598a25259ec5645ab13d",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 72,
+          "text": "| H2 | the HMM is a GENERATIVE model where the measured model is not: its implied detector marginals match the held-out rates | >= 90% of detectors within 3 SE of the held-out rate, pooled; the measured model's figure (192/196 unsatisfiable) is the comparison | all detectors |",
+          "line_sha256": "7a324598e93583b3d1ff4e03c4875dac206ca678bd562cde8a01660c754a507f",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 73,
+          "text": "| H3 | it reproduces the round-profile the neighbours measured (PAEMS: detector rate growing with round): the fitted `lambda_i, mu_i` predict the held-out per-round detector rate | RMS error of the predicted round profile < 10% of the mean rate on every run | all rounds |",
+          "line_sha256": "ddd8f97634523ccd7fb201bb99b0707a41eb7b3635f1fc7c511701d5914dbed1",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 74,
+          "text": "| H4 | the dark check: on DEM-sampled shots the HMM finds no leakage | fitted `lambda_i < 1e-3` on every position AND the reweighted arm changes < 1% of decisions relative to the DEM arm | 20,000 sampled shots per run |",
+          "line_sha256": "83a4831e24384ba9b79e6abef09bda7ca8c4f9141593eb51d663466eb484b5c1",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 75,
+          "text": "| H5 | decode: HMM-reweighted vs measured, PAIRED on shots (exact binomial on discordant shots, two-sided) | reported with the interval; the honest prediction is NO significant difference pooled (the measured structure already prices the tail); a difference either way at p < 0.05 with >= 20 discordant shots is the finding | >= 20 discordant shots, else UNDECIDABLE |",
+          "line_sha256": "8df020b1ed4b8a0957195a36b1ffcf42e8d71652d5b93a12b0f6656246a0e2d7",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "4f362e7decb05e13cf3af45417e7a43ccdcf001c7dfb88d362c20da1de9e0757"
+    },
+    {
+      "path": "docs/PREREG_leakage_hmm_v2_2026-09-08.md",
+      "claims": [
+        {
+          "line_hint": 56,
+          "text": "| V1 (dark) | on DEM-sampled shots the `L` state is not distinct OR never entered, AND decisions barely move | every position: `abs(ell - P(x=1 given H)) < 0.05` or `lambda < 1e-3`; reweighted decisions differ from the DEM arm on < 1% of shots; on EVERY run | 20,000 sampled shots per run |",
+          "line_sha256": "bbff525da1e54b62c154520f146c0d328e182b46ea0f7bf16b3e3b53fc04d2e8",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 57,
+          "text": "| V2 (dark, new) | on DEM-sampled shots the `M` state recovers the DEM's own time-like probability | fitted `nu_i` within a factor 2 of the DEM's time-like edge probability at that position, every position, every run | as above |",
+          "line_sha256": "7e95afe308522c0430a96631f9a0a148033ed4495d7f36609a727b1067379f3e",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 58,
+          "text": "| V3 | on real data the healthy rate does not collapse | `P(x=1 given H)` > 0.3 x the observed rate on every position of every run | -- |",
+          "line_sha256": "98677aa9e7297a2c6c0d8730a5b421acde2d080f0566ddd61521d4ca61d1cd34",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 59,
+          "text": "| V4 (= v1's H1) | the `L` posterior separates the measured model's held-out failures from its successes | AUC > 0.60, 95% bootstrap interval excluding 0.50, pooled | >= 30 wrong, >= 1,000 right |",
+          "line_sha256": "1885f2924496a352063c6972d8a7283b0b6f279268a7e2af6767c469624332d0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 60,
+          "text": "| V5 (= v1's H2) | the model's implied marginals match the held-out rates | >= 90% of detectors within 3 SE, pooled | all |",
+          "line_sha256": "7af89aa190c6c14589a687ce9e93c12734d5d1fbb7bc0a92f86d58b674ff1b9a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "f561b95b82acf74fe62560a87aa448f9370628a2f39f2e4b3304e5224f67d6dd"
+    },
+    {
+      "path": "docs/PREREG_magic_echo_20261020.md",
+      "claims": [
+        {
+          "line_hint": 62,
+          "text": "| PRESENT | the interval's lower end > +0.05 |",
+          "line_sha256": "38c43fbd5aede67c0eaacb737ab987b3c1817b912a21acfa0041ea69c61a9b86",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 63,
+          "text": "| NEGATIVE | its upper end < −0.05 |",
+          "line_sha256": "1c883435b19a1e33645e72f866262efbd2795235df1d98c762c9d2a573ae80cd",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 64,
+          "text": "| ABSENT | the whole interval inside [−0.05, +0.05] |",
+          "line_sha256": "f09c7e98f077787d728ecb694c5a8eaeca23a41041009b71df9091f86628cab6",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 65,
+          "text": "| UNRESOLVED | otherwise |",
+          "line_sha256": "5fbfc8cc491989bb7a7f222b5ce87747dc7c5a6cc479b226dce7a54e9c786ef2",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 87,
+          "text": "| UNRESOLVED | otherwise |",
+          "line_sha256": "5fbfc8cc491989bb7a7f222b5ce87747dc7c5a6cc479b226dce7a54e9c786ef2",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "a3cb12f56a314838c9c849df6ee9f426f5d4c9cd6addf41a67313e8e6f0ed209"
+    },
+    {
+      "path": "docs/PREREG_magic_matched_20261020.md",
+      "claims": [
+        {
+          "line_hint": 49,
+          "text": "- **PASS** when inj's Wilson 95% lower bound exceeds noS's upper bound AND exceeds noT's upper bound.",
+          "line_sha256": "25d76e4f3b21db0725f185ae22aa8acd32ee6cdad8dd85941c48bec937ca7f0c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 50,
+          "text": "- **The headline claim** (T injection beats both matched controls on two independent chains) needs **PASS on both",
+          "line_sha256": "5d5d3a607cd92d7e8e12ffe11d702114e2ad306a7f140fe3ec99d0cc2e3252f9",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "71371175cb818a411251f87c93152bafffd47ed3af47e8c562abe628b3d99d78"
+    },
+    {
+      "path": "docs/PREREG_measured_model_program_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 38,
+          "text": "| A1 | the checker certifies under measured weights | certified >= 0.99 of nontrivial held-out shots, every record | >= 100 nontrivial |",
+          "line_sha256": "04c5b2dd30aa678c0f717a3ff394d70d045642df191f95d0961ffbfeb35a6e9f",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 39,
+          "text": "| A2 | the certified logical-error count under the measured model beats the DEM's | measured <= DEM / 1.5 on every record | >= 30 DEM errors held out |",
+          "line_sha256": "3537f2349a21f119a628ce303f680aaef24773a03cf9b5d4a4a5e21d2f8fb3f6",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 40,
+          "text": "| A3 | the accept path and the lane's scorer agree on the measured model | certified-lane count within 3 shots of `score()`'s count on the same half, every record | -- |",
+          "line_sha256": "4279c3eaf5c5fb0cc42857a2ef65dc371fc331bbc12d8cabc496b4e347181c5f",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 41,
+          "text": "| A4 | the parity rule reads the logical class | opposite-cut errors >= 10x declared-cut errors under the measured model, every record with >= 1 declared error | -- |",
+          "line_sha256": "3bba8b4ce1e1dc9f3da9a0db2d8f2f3bbfc5484124521ee8acab54e2d0e211ea",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "d800f533f1c71203c40fb565c6e052d9ec3ddd745935e12ac8466c983d81f8b7"
+    },
+    {
+      "path": "docs/PREREG_memory_miss_2026-09-05.md",
+      "claims": [
+        {
+          "line_hint": 36,
+          "text": "| M1 | the memory is visible in the gap classes: lag-1 autocorrelation of `low(i)` is positive | r1(low) > 0 with permutation p < 0.01 over 10,000 shuffles; sensitivity reported |",
+          "line_sha256": "821178d0b1656252e66fb41effb8ccd49ec2afb0d96ba30ca8b6327871b18b8e",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 37,
+          "text": "| M2 (shared, transient) | inside the [1, 2) bin, the error rate after a low-gap shot differs materially from the rate after a high-gap shot | absolute difference ≥ 0.02 (the campaign's materiality bar) with an exact two-sided Fisher p < 0.01 |",
+          "line_sha256": "6ad2fd8a720dd2af7171aa9b96334c63bcb0978730de587057d27215b49f1477",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 38,
+          "text": "| M3 (static) | the [1, 2) bin's error rate does NOT depend on the previous shot's class | difference < 0.02 AND the test's 95% interval excludes 0.04, i.e. the null is POWERED, not merely unrejected |",
+          "line_sha256": "5296fe86d7a0e9bced67914f8cf33a8105fac50787cf7bc3d6e5e7334e5d63fd",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "1cc669dddcb1c51670e179bc14c5c811e28789c85dd49b5ec21447f3b2b8d3af"
+    },
+    {
+      "path": "docs/PREREG_one_ledger_prospective_2026-10-18.md",
+      "claims": [
+        {
+          "line_hint": 40,
+          "text": "1. **Sign:** ONE if ≥ 5 of 6 cells are positive; otherwise **REFUTED** (a second recorded loss for entry 1).",
+          "line_sha256": "02ce97ab872e34f7eab7102e0030ea866f95e41af917a0b9539cc130f983bc4c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 41,
+          "text": "2. **Interval:** ≥ 5 of 6 inside is the calibrated expectation. Fewer than that means the two-epoch forecast was overconfident; it says nothing either way about ONE.",
+          "line_sha256": "0ced0dc29b06a6feba6cad34fc5096ea3987e7ce5844fbe37c172b4394b8835c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 43,
+          "text": "   - δ > 0 with p < 0.05 on ≥ 4/6 cells → **STANDARD (fabrication or another static spatial cause):** the map persists beyond what per-qubit persistence explains.",
+          "line_sha256": "c8136516cbf0002e98893b022755773efbb504cc93cb3077d78e0d84369f9fbf",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 44,
+          "text": "   - δ not above the null on ≥ 4/6 cells **and** the sign test above scored ONE → **ONE (dynamic field):** spatial structure within each epoch without a persistent map.",
+          "line_sha256": "301a89e91c1b324af047edc1ce79d2a70ce7d05440a59f49c5170f84dab4cae2",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "19e6e516028c7e301f614e8de47abeb8d392f26b02bdae8ca6f4f9f27b713e12"
+    },
+    {
+      "path": "docs/PREREG_parity_witness_2026-09-17.md",
+      "claims": [
+        {
+          "line_hint": 55,
+          "text": "| W1 | the witness fires on the standard model | the one-parameter DEM fitted to the detection rate disagrees with the measured odd-parity rate at \\|z\\| ≥ 5 |",
+          "line_sha256": "bbd1b8dee50eb656a024fe077ac34e075cb1d3f48784b8903b72819143740fea",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 56,
+          "text": "| W2 | acting on it reduces logical errors | refitting from syndrome-only statistics lowers the logical error count, same shots, same decoder |",
+          "line_sha256": "c2bcb4bc83095121cf1944ac61af9b0d76f416709df807c0414f31babaed9c51",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 57,
+          "text": "| W3 | acting on it closes the calibration gap | the refit model's posterior calibration miss shrinks |",
+          "line_sha256": "fd04b010c102d6aa9d681d93cda397318095a215ef51f8f6dfff1f8fc1594c98",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 58,
+          "text": "| W4 | the witness is quieter after the refit | \\|z\\| falls |",
+          "line_sha256": "1b81e090a1c3d9f09d49cde501009a57c13420b6dcfa571818aad4d3fda173b6",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 59,
+          "text": "| W5 | the refit model beats the trivial baseline | it makes fewer errors than always predicting class 0 |",
+          "line_sha256": "d9faad4a35476cfa52c86fa5bf800c4070ea6feaabba1774c787059eafc1b42b",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 60,
+          "text": "| W6 | **the control**: the witness is SILENT on a correct model | on shots drawn from a model, that model is not condemned, across distances and noise levels |",
+          "line_sha256": "dcb663f5dab0352ee5ecdd50cef1bd38f91af160364d368bf4705d3dfcb733eb",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "c59d0cf4a72a648e3f9275a4c875cf07be929b5e116ca0fb26b17cb0dd9caeb3"
+    },
+    {
+      "path": "docs/PREREG_r159_receiver_20261020.md",
+      "claims": [
+        {
+          "line_hint": 24,
+          "text": "- **V1, the relay works:** the echo success's lower bound is ≥ 0.95. Fez reproduces the bit Kingston measured, in",
+          "line_sha256": "9366f713e9690115d88edcf7ceac6df24c7b0e2ab5f1af11250d93be7d1e50e4",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 38,
+          "text": "- **V2, the classical ceiling holds:** the six-state average success is ≤ 2/3 + radius.",
+          "line_sha256": "e8255f122cd357d6a13910a3eab7557d50f2e31e59a660f4bab3ad28dffe4010",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 30,
+          "text": "- **V3, near the ceiling:** the six-state average success is ≥ 2/3 − 0.05. This is the classical relay performing",
+          "line_sha256": "ef14f29db718f8810f58765865cdd8821a8b01a2819c89d0bf5321d113624d1c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "0abcde16e137f0fa66cbda25525f7e2f5a3fc0ac0e4b3846caf7bd55e58bb3eb"
+    },
+    {
+      "path": "docs/PREREG_r161_spectator_cz.md",
+      "claims": [
+        {
+          "line_hint": 88,
+          "text": "- **S1, superposed spectators raise the CZ error:** z(+) > 3 on at least one TARGET, and the CONTROL is quiet",
+          "line_sha256": "a62277955bfb3e50f0a61b9c412c157bd025b41d2c9e0fb8b1e99f0f01a38f15",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 91,
+          "text": "- **S2, excited spectators raise it:** z(1) > 3 on a TARGET, with the CONTROL quiet. A static shift.",
+          "line_sha256": "83561bb46efd84853e0f0b0968b9393b35ec43f2275db5a1dba48ec19d862954",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 92,
+          "text": "- **S3, no spectator dependence:** |z| < 2 on both TARGETS in arms 1 and +. The excess is NOT the CZ's dependence on",
+          "line_sha256": "9758d7ba18466c6d9333bcb641ec23380967b4e0ee860baa3bbdfbde4e73e225",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "82b258cbe7db9443623a75dcb7548b7fec772780b5c548dcce4975b6b82299f7"
+    },
+    {
+      "path": "docs/PREREG_r164_twirl_strategy.md",
+      "claims": [
+        {
+          "line_hint": 49,
+          "text": "- **D1, the dressing is real:** z(Δ) > 3. Licenses:",
+          "line_sha256": "12abe3004a169ffc1b45ee33c0f2e544d3396eadf22a7fc0511f604aa711cf4e",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 53,
+          "text": "- **D2, no material dressing:** |z(Δ)| < 2. R163's mechanism is FALSIFIED as the explanation of R146's gap; the",
+          "line_sha256": "0c182d2458ed308b24f9dae3f67774be7536e075945fc8d15e0be68d6526da36",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "5175d0e744fb411eb6795ad8a6902da2f688be6ea990959a6e8d7a84252ac1cd"
+    },
+    {
+      "path": "docs/PREREG_r165_dressing_bench.md",
+      "claims": [
+        {
+          "line_hint": 45,
+          "text": "- **E1, the dressing pulses flip idle qubits:** the Z group's accum − active flip slope has z > 3. The measured flip",
+          "line_sha256": "b85d2ca47e108441612697f137b468e24d342bbba13631defa4a801909473008",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 47,
+          "text": "- **E2, no dressing-pulse error:** |z| < 2 on the Z group.",
+          "line_sha256": "93fcc43b0fd80963f3720196c35dff50676b3e0388e0e60eeef8ad0185cea5d3",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "1fc5294c30d2cc0c3402f3f05d5c33b08f9455c2767a1ecb6a06bc56aa1046e5"
+    },
+    {
+      "path": "docs/PREREG_r166_executed_schedule.md",
+      "claims": [
+        {
+          "line_hint": 52,
+          "text": "  - it must be dressed under active-accum and not under \"active\";",
+          "line_sha256": "cc21504fc3d2d9c59c6e21fb6ff063377e2c70d00105b7e95de07c7026499b95",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 53,
+          "text": "  - iu must never be dressed;",
+          "line_sha256": "583ff140b005b3ffbd1d4e02c5e003cdba699c4ab72b9453573953773006e919",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 54,
+          "text": "  - il must not be dressed during the ladder.",
+          "line_sha256": "1467d6be711538e1838cdb8c5ffb260a41f22d1829051b4644955054e69f9684",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "891321dc91595e68e9014edf2716b2589a4f32bda7bb02a5a4fc507080de9f5a"
+    },
+    {
+      "path": "docs/PREREG_r173_twirl_off_schedule.md",
+      "claims": [
+        {
+          "line_hint": 28,
+          "text": "  - \"Plays as compiled\" if no role has extra sx.",
+          "line_sha256": "c2fb56239eedf2d7cfb73bfbb047be0ab5064ddf9fcd6cfb7189e2719c3d1e1b",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 29,
+          "text": "  - \"Template without twirling\" if the H-like runs still play two sx.",
+          "line_sha256": "b1c9b40ddad9c64c1e27b3bc37e92721cc05bef5e07a5366b729d9d9cd1b5163",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "94c82787ec3547566b770a17a21c2b29f6d0f6751ff5deb8856174266e70be12"
+    },
+    {
+      "path": "docs/PREREG_r183_frame_ab.md",
+      "claims": [
+        {
+          "line_hint": 38,
+          "text": "| V1 | Δ ≥ 3 paired sd AND Δ ≥ 0.015 | **the wait is a real loss and the frame recovers it** (the lever is licensed) |",
+          "line_sha256": "8bcb6a5ba7709f489bdaf29131063f38ce225ff0680d94324633e98def7410f0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 39,
+          "text": "| V1-null | \\|Δ\\| < 2 paired sd | the wait costs nothing measurable at this size: the model over-charges it, and R147's remainder is elsewhere |",
+          "line_sha256": "a2fe1e79b49725cac51e9c9d14d05f2548de4df58dc659d5b673fbb0ca0fc407",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 40,
+          "text": "| V1-neg | Δ ≤ −3 paired sd | removing the feed-forward HURTS: a mechanism the model lacks (e.g. the conditional's timing acts as an echo) |",
+          "line_sha256": "9c2fa7a741327f4bc33353777429b4cb605c163922063a4e9f400644d98734cb",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 41,
+          "text": "| V2 | the asc arm's F_e is within 2 of its own sd of R152's R147 main-unit F_e (both active-accum) | a drift control: the device is the one R182 analysed |",
+          "line_sha256": "3de96b37df0e290bb4c3d0e1fcbbb74a79d19a412ba81ec42abaa4abac2bdce8",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 42,
+          "text": "| V3 | the executed schedule shows the asc key waiting 2.57 ± 0.15 µs at its conditional and the frm key not waiting at all | the mechanism as scheduled, read rather than inferred |",
+          "line_sha256": "9c92fd6553aa1d51ab00fbda3f08a17a19b9e46db85da68702ea41924792b0fa",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "2b3c381ed8acf4c65b332e704078055dda83f106054f8c8d54641913e5491634"
+    },
+    {
+      "path": "docs/PREREG_r194_barrier_frame_2x2.md",
+      "claims": [
+        {
+          "line_hint": 87,
+          "text": "| V1-null | \\|R182\\| < 2 sd | the wait costs nothing measurable at this size: the model over-charges it |",
+          "line_sha256": "16639023eedc75a0881db1f2e3e58bf48508d7d2d0015470fe20d1810f60fd7a",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 88,
+          "text": "| V1-neg | R182 ≤ −3 sd | removing the feed-forward HURTS a barrier-free key: a mechanism the model lacks |",
+          "line_sha256": "cbfe913a55846b3553ce60ecff269f0d59a62a9bf52c825b83f4678014af659c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 90,
+          "text": "| V2 | `nob` within 2 combined sd of R152's R147 main-unit F_e (0.627; same design), and `asc` within 2 combined sd of R183's `asc` (0.638) | drift controls, each against its own design |",
+          "line_sha256": "85079c8713e0fd3357d2d6dac0619ab261d84c5a609392e5914f54262c5c2d0c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 91,
+          "text": "| V3 | the median EXECUTED `nob` key wait at its conditional is inside **[2.07, 3.07] µs**, AND no `frm` key idles more than 0.15 µs in a quantum state | R182's mechanism is present as played. If it fails, V1 does not test R182 as modelled, and the measured wait is reported |",
+          "line_sha256": "581274626f51190310ffb0cc918e84de3f9a1fd3266f42cd2c493e2104aa9f3f",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "b0418631815f16034de4a8b24fda8897d6ff3132b6d2a1493dead94883219b24"
+    },
+    {
+      "path": "docs/PREREG_second_device_fez_r40_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 33,
+          "text": "| M1 | the two-point estimate beats the vendor DEM at r=40 on fez | held-out measured/DEM <= 1/1.5 | >= 30 DEM errors |",
+          "line_sha256": "577925c91cfcd3905a8de150024ac317bf67c460e4df9160a42b0052eea0880c",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 34,
+          "text": "| M2 | the margin does not collapse with rounds | held-out measured/DEM ratio at r=40 <= 2x the r=13 ratio (0.0163), i.e. <= 0.033 | >= 30 DEM errors at both r |",
+          "line_sha256": "df340c0f30e5810847c730eb8460a7b1dcee1b06cd4053f3b699fcfc10f18498",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 35,
+          "text": "| M3 | the space-like family is still overstated, the time-like still not | space-like ratio > 5x AND > 2x the time-like ratio | >= 30 space-like-family edges |",
+          "line_sha256": "ad7979db04d5d8091677422f3716c344faf453e12d4a177c7bd2fb025ee0db75",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 36,
+          "text": "| M4 | the burst model at its fixed price 0.5 still beats the DEM | held-out burst/DEM <= 1/1.5 | >= 30 DEM errors |",
+          "line_sha256": "2ba4b55c9980a55c195dd114e9d62da1a26bf5f9f3197ad1efd089268bf8ad29",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 37,
+          "text": "| M5 | the multi-round tail is present and NOT larger per round | span-2 excess > 0 raw AND stratified, and the stratified excess is <= 2x the r=13 value (0.0103), i.e. <= 0.0206 | as the lane reports it |",
+          "line_sha256": "bb9fbc2e12ae853375b54b72a4d3381b95c0019fab9542bde1d3ae34014257f5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "802ee61db43532f405afbdaa4815d6d292b5f14f4f0b02c7d8abc3fa2dee8be2"
+    },
+    {
+      "path": "docs/PREREG_spatial_d7_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 43,
+          "text": "| D1 | the temporal reading replicates at d=7 | time-far excess beyond both nulls (p < 0.05), each device | >= 30 pairs |",
+          "line_sha256": "192a7378c75bb4ece02a057102787eac138ddf831cef804b3ac1dcf0e7f48fb0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 44,
+          "text": "| D2 | there is no purely spatial far-range correlation | space-far excess INSIDE the measured null: p >= 0.05 or \\|z\\| < 3, each device | >= 30 pairs |",
+          "line_sha256": "9ac1588df98401c8fa17ebe13f45ad5caa8f5dfc296575499a0c6833a6c791a5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 45,
+          "text": "| D3 | certification stays viable at d=7 | certified >= 0.99 of nontrivial under the calibrated model and under the measured model (held out) | -- |",
+          "line_sha256": "b6b868cb38902d5a8d22f42b2d71813adeca9ed2fef354615dc47150e2023389",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 46,
+          "text": "| D4 | the measured model's margin holds at d=7 | held-out measured/DEM <= 1/1.5, each device | >= 30 DEM errors |",
+          "line_sha256": "76c44a421b4d36dcea18f67f0a79fb3553f87902003f97933a675678d98916d4",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "510d93fc53860edeae610308e11222f1306b21800fb8cf44013f663b708d3f3a"
+    },
+    {
+      "path": "docs/PREREG_superactivation_coding_gain_2026-10-12.md",
+      "claims": [
+        {
+          "line_hint": 45,
+          "text": "- G1 The coding gain F_hw(n=2) - F_hw(n=1) is positive at >= 3 standard errors.",
+          "line_sha256": "dc0e55791aa89fd8ce5b342d70ab14e475a71a662d3bea56ed43f17d81ba687e",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 46,
+          "text": "- G2 The gain lies in [0.015, 0.040] (ideal 0.0406).",
+          "line_sha256": "e046dc81ca976c137b418514f8634d92dc12543a66f7df050e2955c913672189",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 47,
+          "text": "- G3 F_hw(n=2) > 0.646447: the noisy two-use code beats a NOISELESS single use.",
+          "line_sha256": "a5c3de74414e66bdf4e8a0c36af4ea98e846fb8d45f96079ecddbac5cb57ec97",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "e6f39ea301a9f18043db6d4343a3001a2904e9db369a5e3c0ab0e45b04a28b4e"
+    },
+    {
+      "path": "docs/PREREG_superactivation_coding_gain_v2_2026-10-12.md",
+      "claims": [
+        {
+          "line_hint": 28,
+          "text": "- H1 The gain F(n=2) - F(n=1) is positive at >= 3 standard errors.",
+          "line_sha256": "18e4dbddf0b14c97634eafabf193dbf72707d105dc8f92bf0bf40818840019c0",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 29,
+          "text": "- H2 The mirror branches agree: |F10 - F01| < 0.02 (v1: 0.068).",
+          "line_sha256": "2174b571c4cefdd3eb0d333e789f46d5d8c1e32520500486ad85c4b9ede9190b",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 30,
+          "text": "- H3 The gain lies in [0.003, 0.035].",
+          "line_sha256": "a29aacbcb19f5e5f5858a388a52ab4a0a5750839d21230aa203c222f0109bdc6",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "219ba8e1508cf0b41f0baddd1b526866e2317d298d2d62bd2fd2cf312671075c"
+    },
+    {
+      "path": "docs/PREREG_superactivation_hw_floor_2026-10-12.md",
+      "claims": [
+        {
+          "line_hint": 69,
+          "text": "- P1 `delta_0` lies in [0.3%, 3%] (raw).",
+          "line_sha256": "cacb2eef9b64d25d178814b22c6a21e843c89125e372324194e0d378033d457a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 70,
+          "text": "- P2 `F_N~` is within 2 standard errors of `(1 - delta_0) 0.646447 + delta_0 / 4`.",
+          "line_sha256": "c85960226d16e0309820b94ce446f5849d16293ba99a61f16d5959c1c7383d98",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 71,
+          "text": "- P3 `eps_CZ` lies in [0.1%, 1.5%].",
+          "line_sha256": "42649181f93c57fb24a63efb33c4659147063846501607692d68f00b15fe29e9",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 72,
+          "text": "- P4 `R >= 50`: the published code is at least 50x outside what the device can execute, by",
+          "line_sha256": "3009e6be56fef7358482b5fda4e1bbcb861a747357ba843d2234159fc1cb03b7",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "b37938fd9c5f66c8c63a6e39e34c956f0dd5dfbadec487d4eeb3d7dac25a68b8"
+    },
+    {
+      "path": "docs/PREREG_superactivation_hw_run_m5_2026-10-15.md",
+      "claims": [
+        {
+          "line_hint": 54,
+          "text": "| V1 superactivation on this device | measured F_e − 2.326 sd > 0.75 | **NOT MET** (the model puts F_e ~0.10 below the bar) |",
+          "line_sha256": "8d4953a5bfe04f4765dd2a30eb7255248e6a35a9c2226d5fa808d2526e36400a",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 55,
+          "text": "| V2 shortfall established | measured F_e + 2.326 sd < 0.75 | **MET** |",
+          "line_sha256": "f3f81c728b6f3c9840a354508112cb84aae047a9755167add1212145229e5560",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 56,
+          "text": "| V3 the model holds at scale | \\|measured F_e − predicted F_e\\| ≤ 0.03 | **MET**, with the measured value at or below the prediction (the replay of real counts read the engine slightly optimistic) |",
+          "line_sha256": "21e10ddf3f3e2072f74d43b11902304676824fc1b82b7197847dfce8a3163e73",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 57,
+          "text": "| V4 today's CZ factor | ladder estimate (process-infidelity units) in [1.0, 4.0] | **MET**, near the R133 value 2.29 |",
+          "line_sha256": "919ffb60d074613796ddc61d7b423bb0969c185f86af88995fa1381b49211673",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "4704a5db1e94db28ee79dc542d38a7ac8bf79646a1a4a1affef2022dfc8cc8ca"
+    },
+    {
+      "path": "docs/PREREG_superactivation_twirl_followup_2026-10-12.md",
+      "claims": [
+        {
+          "line_hint": 14,
+          "text": "**Hypothesis H:** the excess is COHERENT error accumulating through m identical un-twirled CZs",
+          "line_sha256": "c843212e7f85bfc94c2a06a9a4dc99084a76c4b0228a5520b6784ab88b86e9ec",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "6135a2ec550b1ab1169e5751b5a676409580970ece86e9e6ab1452c58cec16da"
+    },
+    {
+      "path": "docs/PREREG_third_device_kingston_2026-09-08.md",
+      "claims": [
+        {
+          "line_hint": 49,
+          "text": "| K1 | the two-point estimate beats the vendor DEM on a THIRD device | held-out measured/DEM <= 1/1.5 | >= 30 DEM errors (expected ~230 at the device estimate); the measured count needs no floor for a one-sided \"beats\" |",
+          "line_sha256": "f88bd326fc3bfc1c95eaf1b17dd74143d996b27e07693273d4975b78c3582fd4",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 50,
+          "text": "| K2 | the vendor DEM's error mode is spurious flips on kingston too | >= 70% of the DEM's held-out errors are false positives (marrakesh + fez: 89.8%) | >= 30 DEM errors |",
+          "line_sha256": "888c0c2c64fe5c2d33eb5a96e4dacd776c03b3b6a7454fab4077137c5fd4eda9",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 51,
+          "text": "| K3 | the space-like family is overstated on the 8th of 8 hardware runs | space-like ratio > 5x AND > 2x the time-like ratio (fez d=3: 26.9x vs 1.67x; marrakesh: 7.6-37.6x) | >= 30 space-like-family edges with >= 20 held-out coincidences |",
+          "line_sha256": "3e4ab169778c360e78415e2a6e5a3567680960cb3ea9f88b0e6ec0b1bb4e23ef",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 52,
+          "text": "| K4 | the R21 burst model at its FIXED price 0.5 beats the DEM on a third device | held-out burst/DEM <= 1/1.5 | >= 30 DEM errors |",
+          "line_sha256": "0a6139c2b05489f1853d3727a8c5e00172b6e21c09be61814056ac4e50a80aa5",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 53,
+          "text": "| K5 | the multi-round tail survives stratification by shot rate | span-2 excess over the independent control > 0 raw AND stratified | as `measured_model_lane` reports it |",
+          "line_sha256": "726ce7406efd162eb406f8aa3bd2c33e717494fbd57949cec6e0074e4954afcf",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "39d62ce5c1d97511136f455311b107bffe1fc0da646553125210b70138ac162c"
+    },
+    {
+      "path": "docs/PREREG_third_device_kingston_r40_2026-09-16.md",
+      "claims": [
+        {
+          "line_hint": 34,
+          "text": "| L1 | the two-point estimate beats the vendor DEM at r=40 | held-out measured/DEM <= 1/1.5 | >= 30 DEM errors |",
+          "line_sha256": "56a5debd5fed0b3320f75bff880c8efd6b78f3f1225d2f8f19ba568397de450f",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 35,
+          "text": "| L2 | the margin does not collapse with rounds | held-out measured/DEM ratio at r=40 <= 2x the r=13 ratio (0.0144), i.e. <= 0.029 | >= 30 DEM errors at both r |",
+          "line_sha256": "cd5473f12353e363a3b46fd51afa9a49cbeae67b167de58ed13c8b8e71219bcd",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 36,
+          "text": "| L3 | the space-like family is still overstated | space-like ratio > 5x AND > 2x the time-like ratio | >= 30 space-like-family edges with >= 20 held-out coincidences |",
+          "line_sha256": "1c70517abd0660340b2661d3dcdf15d4b001e1c9872d51587e8853b7deb09831",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 37,
+          "text": "| L4 | the burst model at its fixed price 0.5 still beats the DEM | held-out burst/DEM <= 1/1.5 | >= 30 DEM errors |",
+          "line_sha256": "ff8797351eb79a69c18c79d8eccccbba7a7407acc4f5317b7a5087c3e23b2883",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 38,
+          "text": "| L5 | the multi-round tail is present and NOT larger per round | span-2 excess over the independent control > 0 raw AND stratified, and the stratified excess is <= 2x the r=13 value (0.0087) | as `measured_model_lane` reports it |",
+          "line_sha256": "eb68fe1f2692e29a6758e623d91e578923bd4ac84c029b4d8b68873356d667f7",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "eacb83a4b3598bdd3011378d22cc0648418408a9bf4232bf8bb80b3e42db3169"
+    },
+    {
+      "path": "docs/PREREG_tw_teleport_pilot_2026-10-13.md",
+      "claims": [
+        {
+          "line_hint": 66,
+          "text": "1. **F* ≥ 0.6811** (verdict P(PASS) ≥ 0.80 at 4,000 shots per input, allowing for the pilot's own noise): run",
+          "line_sha256": "2aa418a1f9ab179830da57621cff2bc566b861271b8876e90fd3cb7832980bdf",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 68,
+          "text": "2. **0.672 ≤ F* < 0.6811:** the verdict primary at 4,000 shots is underpowered. Re-design before any verdict",
+          "line_sha256": "917756de6445fd09c68d1fde8c26dce50698b4fdf2ef6e4b2ad8f5d894dbffc6",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "ec76ca864daad4b6cbeb5e787976e4dcf73a6ddc0e10bca3c5cafef7c3311c5f"
+    },
+    {
+      "path": "docs/PREREG_tw_teleport_specificity_2026-10-13.md",
+      "claims": [
+        {
+          "line_hint": 51,
+          "text": "  - comm, mu0 and ident must each be consistent with exactly 1/2 (two-sided at α/3 each). Balanced decoder",
+          "line_sha256": "564650794200ee1f9e9b12d04bb01971c544f84f8af9ada95a7831403007c765",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 53,
+          "text": "  - int and canary must not be certified above 2/3.",
+          "line_sha256": "d2c1b323158655e3a688f4f56430a539b72567ed814e94c4ad8c4edfcf217bd1",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 56,
+          "text": "- **P1 SPECIFICITY:** F(main) − F(int) − r > 0, where r is the one-sided Hoeffding radius for a difference of",
+          "line_sha256": "f3ada34978ce7cab867887e0b4a8c414562986446fa86d77aa9041f6c8828601",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 58,
+          "text": "- **P2 SIGN SYMMETRY** (two one-sided tests, margin 0.03): the interval F(main) − F(minus) ± r (each side at α/2)",
+          "line_sha256": "a879d77466d94b8ec8263aa1ad8e1ea4bcefabac16b77b0ed76700ff114f3362",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "ab609a46ed6d2ae32a6de21665b82f5073549459d4968795fa9a36e578a01f55"
+    },
+    {
+      "path": "docs/PREREG_varying_logical_2026-09-19.md",
+      "claims": [
+        {
+          "line_hint": 63,
+          "text": "- **P1** Arm B's retrospective truth column is 1 on the large majority of shots. If it is not, the",
+          "line_sha256": "e00d93a952d659b19108769e3a86c95ae95fd28bb1164f37ec143e0f88714c3c",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 65,
+          "text": "- **P2** Arm A and arm B have statistically indistinguishable **detector** rates and syndrome",
+          "line_sha256": "47be4f5867b9164b13a67c2aa891afd2c548657f55c2f7b69214ac52ad8aec48",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 68,
+          "text": "- **P3** At a synthesised `mu` of 0.6 the hard-decision estimate reads materially BELOW 0.6",
+          "line_sha256": "7d918f10642dcbb9eaf42ef3ff307da30c4f98a93822fe89cd6e896553bcb300",
+          "class": "PROPOSED",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "822d23108299fce57ee8de30d0fbd7361c4ead6961f060a5dbf14ccbb4bb9e35"
+    },
+    {
+      "path": "docs/PREREG_willow_family_ratio_2026-09-08.md",
+      "claims": [
+        {
+          "line_hint": 71,
+          "text": "| W0 (dark) | on DEM-sampled shots every family ratio is 1 | each family ratio within [0.9, 1.1] on every configuration | >= 30 pairs per family with a measured value |",
+          "line_sha256": "73a173e03fb97476b27651aa87fa33d167d08f665b2553f6c375608af5fd0c83",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 72,
+          "text": "| W1 | Google's SI1000 prior does NOT overstate the space-like family the way IBM's calibration DEM does | space-like ratio < 3 on >= 10 of 12 configurations, and its median across configurations < 2 | as W0 |",
+          "line_sha256": "890194e2ecb4e06bb101dffd257af8d4efcb1d295554869aa618f6ee68c21462",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 73,
+          "text": "| W2 | the time-like family is priced within a factor 2 (Google calibrates measurement error directly) | time-like ratio in [0.5, 2] on >= 10 of 12 | as W0 |",
+          "line_sha256": "b98aa36928c293e5810a9e2ac945375e7d8904726cf2ead0fa4e3ace94f4ad12",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        },
+        {
+          "line_hint": 74,
+          "text": "| W3 | the multi-round tail is SMALLER on Willow than on the IBM runs (Willow runs leakage removal; the IBM tail is leakage accumulation, register row 18) | span-2 excess over the DEM-sampled control < 0.0037 (the smallest IBM value, fez d=3 nested) on >= 10 of 12 | as the lane reports it |",
+          "line_sha256": "f7ddbfa9d8a90233a7e9e8e2fabba8b451815c29841bacb8bac5ac023250af77",
+          "class": "HYPOTHESIS",
+          "rationale": "Prespecified experimental criterion or protocol requirement; the label does not assert that the condition was observed or met.",
+          "references": []
+        }
+      ],
+      "document_lf_sha256": "ec0bb265dd6513d6530dab8625beaa09ecd23d83cea183c4e21ef01826a3f0f3"
+    },
+    {
+      "path": "docs/PRIOR_ART_REGISTER.md",
+      "claims": [
+        {
+          "line_hint": 91,
+          "text": "| 14 | Two-point estimation of edge probabilities from detector correlations (`oneq.dem_measured.pair_probability`, R23) | Spitz, Tarasinski, Beenakker, O'Brien, *Adaptive weight estimator for QEC*, [1712.02360](https://arxiv.org/abs/1712.02360) (2018): weights \"determined from the measured data in the absence of an error model\"; Google's pij analysis (Korotkov) in [2102.06132](https://arxiv.org/abs/2102.06132); Takou, Benito, Vezvaee, Lidar, Brown, [2606.11496](https://arxiv.org/abs/2606.11496) Eq. 17 and hyperedge moment inversion; Blume-Kohout & Young, [2504.14643](https://arxiv.org/abs/2504.14643) (theory) | **NOT NOVEL — prior art, credited.** The formula is theirs; R23's \"no calibration, no logical outcomes\" is the 2018 abstract's own claim |",
+          "line_sha256": "8065374c81435e822557a41c8fd1a37d72bb4cbf725b4aa5e984669f923551b2",
+          "class": "ESTATE-BUILT",
+          "rationale": "Only the in-estate two-point estimator implementation is labeled; the prior-art attribution and non-novelty boundary remain unchanged.",
+          "references": [
+            {
+              "path": "src/oneq/dem_measured.py",
+              "hash_mode": "lf",
+              "sha256": "752edc4c9d045ebbfcf4458d1ed5a46c4573bd301c5299ec7da14f694289cdf6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R146_CAUSAL_DIAGNOSTIC_PLAN.md",
+      "claims": [
+        {
+          "line_hint": 10,
+          "text": "**Status: PROPOSED / SOFTWARE-TESTED.** This is not a frozen QPU submission, a causal explanation of the R145 failure, or proof of quantum superactivation. Do not promote any of those claims from this document.",
+          "line_sha256": "9204dd779bdf6ea71af6fc7b933c4aa9e9a131a40b3c2b797cb39f5a93b9dcac",
+          "class": "PROPOSED",
+          "rationale": "The stated follow-up remains proposed; software testing is not promoted to causal hardware evidence.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R148_ENGINEER_HANDOFF.md",
+      "claims": [
+        {
+          "line_hint": 19,
+          "text": "4. The generated `r148_offline_campaign.sealed.json` must reproduce byte-identically, including the full SHA256 (Python and Node must accept the exact bytes). The 100,000-trial red-team output must have the expected declared seed and semantic type `SIMULATION`, not `HARDWARE`.",
+          "line_sha256": "c51bf5849dd2a9da59f7fd7c125705f30a3d3b9e7bbc26a5cc41cc174d5a7e5a",
+          "class": "PROPOSED",
+          "rationale": "A required reproducibility/verification condition for integration, not an assertion that a new run passed it.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R148_PROOF_CARRYING_INTERCONNECT.md",
+      "claims": [
+        {
+          "line_hint": 7,
+          "text": "Build an operating layer that can eventually coordinate an **unknown state** at a physical IBM-compatible sender and **recover its entanglement with an untouched reference** at an independent receiver accessible through OQTOPUS or another controlled QPU, *after* a genuine shared Bell resource has been distributed. Everything needed for hardware promotion must be independently verifiable, with complete herald attempt/failure accounting and bit-exact receipts.",
+          "line_sha256": "558bac2929f72042cc923d786e88fe5979a8ed8ebe40fa06cdda8b68f5898470",
+          "class": "PROPOSED",
+          "rationale": "An eventual physical-interconnect goal, explicitly distinct from the current offline/model implementation.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R148_README.md",
+      "claims": [
+        {
+          "line_hint": 23,
+          "text": "- Bell overlap derived from declared simulator counts: **1925 / 2048**; conservative exact lower **57133 / 65536** for alpha=1/20. The statistical witness is *conditional on trusted random choices and measurements*; no physical EPR resource was measured.",
+          "line_sha256": "54e64b4194f3d04079ce8dd7c3f8d4dee1780d0ed58b27fa729184a2ced1bd2e",
+          "class": "ESTATE-MEASURED",
+          "rationale": "A computed overlap from the committed simulated campaign. It is not a measured physical interprocessor Bell resource.",
+          "references": [
+            {
+              "path": "evidence/crosscloud/results/r148_offline_campaign.sealed.json",
+              "hash_mode": "raw",
+              "sha256": "9b36598745d5dfa1f03ace4b86e4a95a09d2fd9b9f3ecbde263ea96c24423ddf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R148_SCALABLE_ROUTE_CERTIFICATES.md",
+      "claims": [
+        {
+          "line_hint": 7,
+          "text": "The R148 exhaustive network checker recomputes every simple path, which is a good second oracle but has an intentional ten-node upper limit. For practical routing this is insufficient: checking should be much cheaper than generating the optimized answer. The new `scalable_routing.py` solves up to **512 named nodes and 4,096 undirected physical-link candidates** with a typed Dijkstra search; the separately written Node verifier **does not rerun the optimization**. It checks a mathematical certificate in time linear in the network size.",
+          "line_sha256": "3855ba515c1b39334dabff6892721df3335ee537cebb2010ff701370b549e3f4",
+          "class": "ESTATE-BUILT",
+          "rationale": "The implemented integer routing algorithm and separate linear-time certificate checker operate on declared model inputs, not verified physical EPR links.",
+          "references": [
+            {
+              "path": "src/oneq/crosscloud/scalable_routing.py",
+              "hash_mode": "lf",
+              "sha256": "9724e0e356a00f74a6a16d22dd54469426074b487c98d344c7940b83a0e81dcb"
+            },
+            {
+              "path": "tools/crosscloud_verify_scalable.mjs",
+              "hash_mode": "lf",
+              "sha256": "44e6622b75fd1414f2721ecf48762f17b4db6f9ad3a38b3e5a2db9f5661d0fdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R149_COLLECTIVE_QSWARM.md",
+      "claims": [
+        {
+          "line_hint": 27,
+          "text": "The **Python verifier** imports no `oneq` producer modules, re-enumerates all physical Pauli errors using an independent bit-mask formalism, recalculates every rational score and the exhaustive finite-family optimum. The **Node.js verifier** independently reproduces the exact commitment bytes, herald and logical-channel arithmetic, and argmax; it does *not* independently rederive syndrome decoding. Both refuse unauthorized science claim promotion.",
+          "line_sha256": "ef146d574d97804c09210000449dc95cfdea121e7f50e923a63dc1301a32983c",
+          "class": "ESTATE-BUILT",
+          "rationale": "Binds the finite-model independent verifier implementation; synthetic channel assumptions are not promoted to hardware measurements.",
+          "references": [
+            {
+              "path": "tools/verify_collective.py",
+              "hash_mode": "lf",
+              "sha256": "c29309e178557a6e5abd1d01c81d239bdfb46df63ad5683062716f408ce443e9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R149_ENGINEER_HANDOFF.md",
+      "claims": [
+        {
+          "line_hint": 33,
+          "text": "- `dispatch.py`: R148 physical-pair ledger to a single encoded logical transfer transaction; all physical pairs must be prepared and allocated before the first Bell measurement.",
+          "line_sha256": "8037ea172fe8cf5c2ee8235ac962c892eb9b383ed9ac6b5891ddd93c188fcd0b",
+          "class": "PROPOSED",
+          "rationale": "A required pre-payload allocation ordering rule, not evidence of an executed physical collective transfer.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R149_PHYSICAL_EXPERIMENT_AND_KILL_GATES.md",
+      "claims": [
+        {
+          "line_hint": 40,
+          "text": "- Independent stranger replay must validate raw physical events, trusted operator identities, circuit/compiler versions and token binding. Signed false claims remain false; the verifier must recompute science independently.",
+          "line_sha256": "92b6fb6e14f0781cbfdc97b09b9e2feaca6d7c1d4258694320d659be49a1db71",
+          "class": "PROPOSED",
+          "rationale": "Prerequisites for a future physical claim. A signed record alone is explicitly not enough to meet them.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R150_BEST_RESULT_RESEARCH.md",
+      "claims": [
+        {
+          "line_hint": 22,
+          "text": "The exact 10-qubit statevector uses all 64 (coherent) or 256 (measured-syndrome) measurement branches. A separate checker uses integer Gaussian amplitudes with global powers of √2 and reconstructs the Choi overlap with exact integer arithmetic. It does not import the producer. Both verify the same full circuit, with no qubit-state lookup oracle.",
+          "line_sha256": "29fffa7d89e86e8bcd500165ea59250db1724c00218eea73d65ac880253e523a",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Exact finite-model reference calculations, not measured physical gate or network performance.",
+          "references": [
+            {
+              "path": "evidence/r150_reference_census.json",
+              "hash_mode": "raw",
+              "sha256": "5f1890fb29aa3597cd7d0ba188a05f6fb9b644e7832bd73183ef981f54ffab22"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R150_ENGINEER_HANDOFF.md",
+      "claims": [
+        {
+          "line_hint": 48,
+          "text": "7. Short pilot first. No default submission. Upon a measured, independently checked effect, freeze the 12-setting confirmatory schedule with enough shots for its desired confidence, and repeat on another calibration epoch.",
+          "line_sha256": "e27e69c4e4de16d9fe6745094dbc52f9fb9f7621a02dc2c2fa4b8fb201922b87",
+          "class": "PROPOSED",
+          "rationale": "A future pilot/freeze condition, with no default provider submission or assertion of an observed effect.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R150_README.md",
+      "claims": [
+        {
+          "line_hint": 7,
+          "text": "1. **Actual source-circuit structure:** 4-qubit bare reference teleportation, 10-qubit three-carrier encoded teleportation, two alternative physical recovery circuits (Toffoli versus measured-syndrome), a no-entanglement control, and optional deferred classical frame metrology. All Bell and syndrome results are included, not postselected.",
+          "line_sha256": "7b49e6b0ded66fe3ca436dde3e7fbb870a2c6d6f61e3bdcf7ca24d45e84a5b40",
+          "class": "ESTATE-BUILT",
+          "rationale": "Labels the implemented reference-circuit structure rather than a physical execution claim.",
+          "references": [
+            {
+              "path": "src/oneq/collective/reference_hardware.py",
+              "hash_mode": "lf",
+              "sha256": "ba8251b6d1933a11c778cf6d789b04c1f407809d21254add50938f6eab7e29e4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R151_EXECUTION_REPORT.md",
+      "claims": [
+        {
+          "line_hint": 13,
+          "text": "2. Conditional receiver-manifest generation from all Alice source outcomes, with exact `0`/`1` count conservation and at most 72 PUBs for all message-bit × echo/target arms. QPY native compilation is implemented as an optional adapter, but Qiskit/Runtime dependencies and a live IBM account were **not available here**, so ISA correctness and native API compatibility have NOT been exercised.",
+          "line_sha256": "cd6c4e402ad8b9e3f3cb61e2b373f2d9b6f9ca1e74c9ae2aaf065a8357b68fc1",
+          "class": "ESTATE-BUILT",
+          "rationale": "Receiver-manifest generation and count conservation are software operations; the report's sample remains explicitly simulated.",
+          "references": [
+            {
+              "path": "src/oneq/ibmrelay/protocol.py",
+              "hash_mode": "lf",
+              "sha256": "6db2d8b98fe18401a69812ec242d49964f8498d2305e66c1faeefff919fd3993"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R151_EXPERIMENT_AND_EVIDENCE.md",
+      "claims": [
+        {
+          "line_hint": 10,
+          "text": "- **Classical bridge:** 18 source histograms bound to frozen plan SHA256 and IBM job ID; a deterministic receiver-manifest commits each branch, exact shot number and recipe. Must re-fetch Alice's counts from the IBM API *before* submitting Bob. After Alice results are retrieved and verified, Bob's frozen QPY is compiled and released to the next stage.",
+          "line_sha256": "f23fd7d6d444c9f43edc0c7f604bdea38f2d6847f458bbbf8423ab2548834d4d",
+          "class": "PROPOSED",
+          "rationale": "A required source-refetch-before-receiver operating rule, not evidence that a live receiver or quantum channel exists.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R151_OVERVIEW.md",
+      "claims": [
+        {
+          "line_hint": 3,
+          "text": "**PRIVATE ONE_Q research lane.** Implements an auditable experiment in which qubit measurement results obtained from one IBM device determine actual quantum state preparation on another independent IBM device. The bridge uses **classical bits and cloud APIs**. This is not inter-QPU quantum teleportation, does not preserve reference entanglement and cannot beat the 2/3 six-state entanglement-breaking upper bound by merely transmitting measurement results.",
+          "line_sha256": "ac7f8a6005a0ba89273ef58563084b1cd44e1786cf526eb7ff43de2d84935bf6",
+          "class": "ESTATE-BUILT",
+          "rationale": "An implemented auditable classical relay experiment interface; this does not imply physical interprocessor entanglement.",
+          "references": [
+            {
+              "path": "tools/run_ibm_ibm_relay.py",
+              "hash_mode": "lf",
+              "sha256": "928e5e6ad6d989520bf86b338b9f31d02eb2f347d8784995615cf0a98b2e80de"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R152_R155_COORDINATION.md",
+      "claims": [
+        {
+          "line_hint": 87,
+          "text": "  plus a feed-forward stall per if_else on every superposed qubit (R155's measured L). It will be tested HELD OUT on",
+          "line_sha256": "e192ccaee543e90e3f1a7b6cc7d98b4e109d406f0572639684ebbeacd7876cd7",
+          "class": "HYPOTHESIS",
+          "rationale": "A dated held-out model-testing plan. The hypothesized mechanism is not established by the annotation.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R153_CROSS_BACKEND_REPLICATION_PLAN.md",
+      "claims": [
+        {
+          "line_hint": 30,
+          "text": "4. **Proposed drift-aware split:** two **separate, preregistered epochs** per backend of 2,048 shots/circuit, 22 circuits each. This supplies 4,096 shots/circuit per backend (90,112 physical shots on each, 180,224 total) and time-labeled replication blocks, preserving a similar information budget to the 4,000-shot original while permitting a rudimentary stability check. Each epoch is a unique ONE-RUN plan. All four epochs require separate consent and a quota/cost review.",
+          "line_sha256": "5b3845ba11a492f8e311040219b3f13b17a4bf1af2a990d397d9b3a316639a9d",
+          "class": "PROPOSED",
+          "rationale": "A proposed cross-backend, split-epoch protocol, not evidence of independent backend access or a completed replication.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R154_R142_INDEPENDENT_DECODER_AUDIT.md",
+      "claims": [
+        {
+          "line_hint": 70,
+          "text": "- The parent reduction to the effective flagged channel, the PPT channel-family proof, and the universal 3/4 solo-channel upper bound remain logically separate premises. An independent publication-grade proof must review those links as well.",
+          "line_sha256": "c4e8f391c10e5e3cbcb21dc549db9dad3f44670d947e283ecae057b39e034436",
+          "class": "PROPOSED",
+          "rationale": "A required separate proof review of the physical/channel premises; numerical decoder witnesses do not discharge it.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R155_COHERENT_HARDWARE_MODEL_PROGRAM.md",
+      "claims": [
+        {
+          "line_hint": 78,
+          "text": "2. **Dynamic measurement boundary:** a spectator model must operate at actual native pulse/read timing, on the unmeasured neighbors, not merely on the read qubit. Respect conditional branches and no fake joint quantum link.",
+          "line_sha256": "87eb5f416d382a2df07e227fd722235c5a04c3fe5d11ab4ef0a90a3e3274a9be",
+          "class": "PROPOSED",
+          "rationale": "A model-development requirement for future controls, not an identified physical coherent-coupling mechanism.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R156_LOW_MEMORY_VERIFIED_INTEGRATION.md",
+      "claims": [
+        {
+          "line_hint": 30,
+          "text": "The command runs **serially** and refuses any failed or unavailable stage.",
+          "line_sha256": "3c5a7c6e7cc1f68ab0ceb272414b4574bec9d7ea625fa399fffaed366170a688",
+          "class": "ESTATE-BUILT",
+          "rationale": "The serial, fail-closed integration path is implemented; its dated counts are not presented as a new full release wall.",
+          "references": [
+            {
+              "path": "tools/r156_gate.py",
+              "hash_mode": "lf",
+              "sha256": "e9f5b922058531436e36e1d3889ddec83ced60ea63a4571ac73c88b0ec670d58"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R157_FOREST_IDENTIFIABILITY_AND_DECISIVE_CONTROLS.md",
+      "claims": [
+        {
+          "line_hint": 59,
+          "text": "src/oneq/hw/graph_zz_identifiability.py. The standard stabilizer/graph",
+          "line_sha256": "31f7145c95ab0671f5d01f1ef3bb432747823e4aacc7d5c9a8cea0e4d318aefe",
+          "class": "ESTATE-BUILT",
+          "rationale": "The named graph-identifiability instrument is implemented under its declared model; it does not identify a physical mechanism from insufficient observations.",
+          "references": [
+            {
+              "path": "src/oneq/hw/graph_zz_identifiability.py",
+              "hash_mode": "lf",
+              "sha256": "02394d3713a4b865d67f5c4cae22001729ec29f6389cc92f1479f9fcfd09c4fa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/R158_NATIVE_FREEZE_AUDIT.md",
+      "claims": [
+        {
+          "line_hint": 32,
+          "text": "another control. This is a proposed mechanism discriminator, NOT a",
+          "line_sha256": "3b5df9fa99cec44b6f8ae9641832b3470a0648616b8c3e3405a08d95e84a4aba",
+          "class": "PROPOSED",
+          "rationale": "A proposed mechanism discriminator, explicitly not an executed IBM result or established causal explanation.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R159_PARTNER_ACCESS_REQUESTS.md",
+      "claims": [
+        {
+          "line_hint": 19,
+          "text": "Suggested subject: External collaboration inquiry | independently verified two-node teleportation study",
+          "line_sha256": "ccf2697637c220d56bf3c87c75459961da9c442bc23215fb64242a1c0e63e84e",
+          "class": "PROPOSED",
+          "rationale": "A suggested collaboration-request subject, not a sent message, agreement or granted device entitlement.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R159_REAL_QUANTUM_LINK_EXECUTION_PROGRAM.md",
+      "claims": [
+        {
+          "line_hint": 159,
+          "text": "the established proof stack. Its contracts must stay at MODEL-only",
+          "line_sha256": "659dde1bcd118e0905b986374a357763ec94a1072ee4c4d92a5f0e792ae3f102",
+          "class": "PROPOSED",
+          "rationale": "A requirement that model-only contracts remain model-only until physical evidence exists; no new quantum-link claim is made.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/R160_REAL_KINGSTON_FROZEN_FEZ.md",
+      "claims": [
+        {
+          "line_hint": 97,
+          "text": "With a NEW, explicit receiver approval, the follow-up would be:",
+          "line_sha256": "0f3871527e8c8071e5e19ffc3fedff843a18af87305c106c85f04dbc5948769c",
+          "class": "PROPOSED",
+          "rationale": "A proposed follow-up conditional on new explicit receiver authorization, not an authorization or submission.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/REVIEW_PACKET.md",
+      "claims": [
+        {
+          "line_hint": 38,
+          "text": "1. **Build the PDFs yourself**, so you are reading what the artifacts say and not a stale copy:",
+          "line_sha256": "e8b931b2ea955a2b6e4f12041a557dd7813154099a8b894c2c6de378db2af751",
+          "class": "ESTATE-BUILT",
+          "rationale": "The local manuscript build/validation path is implemented; this does not validate every manuscript claim or promise an installed TeX toolchain.",
+          "references": [
+            {
+              "path": "paper/tools/build.py",
+              "hash_mode": "lf",
+              "sha256": "880683963d84e048c0888c8076793c26c8321fab63e645d534d0e86546a02212"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/UNIFIED_QUANTUM_NETWORK_INTEGRATION.md",
+      "claims": [
+        {
+          "line_hint": 24,
+          "text": "- src/oneq/ibmrelay/hardware.py",
+          "line_sha256": "265fd117d4619e63228df63023401b709c45d17cd34f9eae6834d438d3858a47",
+          "class": "ESTATE-BUILT",
+          "rationale": "The named relay software path is implemented; a classical relay is not labeled as an unknown-state quantum link.",
+          "references": [
+            {
+              "path": "src/oneq/ibmrelay/hardware.py",
+              "hash_mode": "lf",
+              "sha256": "42e4b94d39f5ddf9b8eecb3f8205ed89ff80d51edcd13867e4fbcfd5fc6721ba"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/campaign_r168/CHARTER.md",
+      "claims": [
+        {
+          "line_hint": 35,
+          "text": "| R192 | 14 submit R166 | — | OWNER (packet in this file) |",
+          "line_sha256": "a7cb67d8bfd463950179a5d9e9f522c41d222a7864d3fb4943a5071ca4fe6243",
+          "class": "PROPOSED",
+          "rationale": "The dated charter records an owner-controlled submission step; this is a plan, not execution evidence.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/campaign_r168/OWNER_DECISION_DYADIC_WEIGHTS.md",
+      "claims": [
+        {
+          "line_hint": 31,
+          "text": "1. `src/oneq/` gets a helper `dyadic_dem(edges, k) -> (edges_k, delta)`. It computes w̃ = round(w·2^k)/2^k and returns δ = max|w − w̃| exactly, as a Fraction. Optionally it also returns the integer form w̃·2^k.",
+          "line_sha256": "0b0dc80fdbc9206824f7f9f1046c1a756c0d681f7f40c2fdda2afcc9b6e00732",
+          "class": "PROPOSED",
+          "rationale": "Explicitly described as a code change that a future owner decision would license; no adoption is asserted.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/campaign_r168/TOP25.md",
+      "claims": [
+        {
+          "line_hint": 28,
+          "text": "17. **A Floquet code on heavy-hex.** R19's sharpest untested prediction: an observable that includes measurement records should kill the time-like asymmetry. Prior-art check first.",
+          "line_sha256": "52f52a3572f0f91affa8ae7d04088fee1dc077a5e92e3ade342bc03c3ea53468",
+          "class": "HYPOTHESIS",
+          "rationale": "An untried physical-code/control prediction, explicitly requiring a prior-art check before experimentation.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R168_burst_leakage_iq.md",
+      "claims": [
+        {
+          "line_hint": 4,
+          "text": "Evidence class:  MEASURED on one committed per-shot IQ record (ibm_kingston, job `dallar82fm4c73f1ov2g`, d=3 r=13,",
+          "line_sha256": "0a05cccffc5281deac154b2b75add95b43047074926af0c9ec9eac99aabee37f",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/ibm_live/r168_burst_leakage_iq.json",
+              "hash_mode": "raw",
+              "sha256": "ef714633744a858a7b703c76e1f5143d32f2eddac52a89d22b38de210732e0a5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R170_burst_mixture.md",
+      "claims": [
+        {
+          "line_hint": 7,
+          "text": "Evidence class:  MEASURED, held out (fit on the first half of each record, logical errors judged on the second,",
+          "line_sha256": "31182e0a8310dff38295d6708530755c2e573b6de2098ee5b1d42c9e2b46a424",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/dual_observable/r170_burst_mixture.json",
+              "hash_mode": "raw",
+              "sha256": "c07d40c344b0137a2b48ec8194efbb0396be3b6c7a2d0e8c6dc1e9b0f605db74"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R171_confidence_passport.md",
+      "claims": [
+        {
+          "line_hint": 7,
+          "text": "Evidence class:  MEASURED on the 15 hardware records on disk that carry detectors, truth and a pinned DEM (kingston",
+          "line_sha256": "c94aba121214681306dcc0c363d36920f950063d5da13b74031854d4241947cd",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/passport/r171_confidence_passport.json",
+              "hash_mode": "raw",
+              "sha256": "e7661ab15cca719c27b547dada3b2b674999516f9c99fd06868a925868245299"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R176_feral_proposer.md",
+      "claims": [
+        {
+          "line_hint": 6,
+          "text": "Evidence class:  SIMULATED (stim circuit-level depolarising noise; graphlike DEM via pymatching 2.4.0; the",
+          "line_sha256": "77dfce3e26aefaf2c1292e2c3151e31b7b362b0930eb43e1b5e33c829515b172",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/feral/r176_feral_proposer.json",
+              "hash_mode": "raw",
+              "sha256": "fed9f1714e161fe18affd9d4890967f519675e4bf7a4e4830e1323410c3afd05"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R177_compiled_checker_and_duals.md",
+      "claims": [
+        {
+          "line_hint": 8,
+          "text": "Evidence class:  MEASURED (stim rotated_memory_z d=5 r=25, all four SI-style parameters = p; graph nnz = 2,742",
+          "line_sha256": "5f709905a4d6d0aefaa72cdde88a4877fb4dabf5efe20d85acb61b29ff3d00d6",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/r177_checker_bench.json",
+              "hash_mode": "raw",
+              "sha256": "49a1410c371d618f98a072e10d82eb157d0152c36e95039c431d5844dc4accee"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R180_one_ledger_entries.md",
+      "claims": [
+        {
+          "line_hint": 9,
+          "text": "Evidence class:  MEASURED on public calibration snapshots (no QPU), with every scored prediction PREREGISTERED by a",
+          "line_sha256": "61b95422a6dceeb313ef0b1bf2d9ebcd24b0f34990c0c94570bc34c846b72fbd",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/one_ledger/r180_one_ledger.json",
+              "hash_mode": "raw",
+              "sha256": "7d2c742f60f5078afa8e5c7dfb1c07afd83dbe8e6601f5cd3987453d022b2222"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R184_refetch_all_jobs.md",
+      "claims": [
+        {
+          "line_hint": 5,
+          "text": "Evidence class:  MEASURED for the inventory (a dry run over the committed tree); BLOCKED for the",
+          "line_sha256": "09a71bffbf64e72321163a937e7a7b5c76ad6a625e82859694c81428ef2afbe5",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Normalizes the existing evidence-class declaration for this frozen local record. Model, simulation, historical-source and blocked-online-fetch qualifications in the declaration are retained; no new run is asserted.",
+          "references": [
+            {
+              "path": "evidence/ibm_live/REFETCH_MANIFEST.json",
+              "hash_mode": "raw",
+              "sha256": "15152e26687aaeadc46787320019318f1b50f6281d41bbaa1e153a86f74afba1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R191_third_vendor_and_letters.md",
+      "claims": [
+        {
+          "line_hint": 12,
+          "text": "Claim (adapter): a d=3, 13-round repetition-code memory (both logical preparations, 2,000 shots each; the circuit",
+          "line_sha256": "6b4289124d295b10288878ed6c943755105c9ae1456b9918e3f71f91d48d9502",
+          "class": "ESTATE-BUILT",
+          "rationale": "The adapter/circuit payload capability is implemented; this does not establish a live third-vendor run or granted access.",
+          "references": [
+            {
+              "path": "src/oneq/hw/providers_third.py",
+              "hash_mode": "lf",
+              "sha256": "a92eb03c0417000e129ae338743c0b3a4ae6263c3f0308c63d7ca9b099e7b454"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/ledger_drafts/R193_bond_instrument.md",
+      "claims": [
+        {
+          "line_hint": 4,
+          "text": "Evidence class:  PROPOSED. A term sheet; every number in it is MEASURED elsewhere and cited there.",
+          "line_sha256": "ef0a3d275ca46461dca1d04b92a1958fdfe2c154b2627bb9524ffb72bfc1e926",
+          "class": "PROPOSED",
+          "rationale": "A proposed term sheet, not an executed financial instrument or a measurement of its future performance.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/outreach/letter_ecnu_2026-10-18.md",
+      "claims": [
+        {
+          "line_hint": 13,
+          "text": "**Subject:** A pre-registered, independently verified control experiment on a subset of your hundred-channel",
+          "line_sha256": "56085759b170d71d5af4e7fb0f83d44bf846ec2a386196e9dfc668537f0135d1",
+          "class": "PROPOSED",
+          "rationale": "The subject specifies a proposed collaboration; it does not assert that the request was sent or accepted.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/outreach/letter_ibm_interconnect_2026-10-18.md",
+      "claims": [
+        {
+          "line_hint": 15,
+          "text": "**Subject:** Coherence Energy Labs | What a preregistered, certificate-first program measured on ibm_kingston on the",
+          "line_sha256": "31766142db3d55b4e01258d59da9400b0b7d1ea5c72c25ba3ea478cecb09ec12",
+          "class": "PROPOSED",
+          "rationale": "The subject is part of an unsent outreach proposal. Results quoted elsewhere retain their original ledger/evidence scope.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/outreach/letter_stein_takou_2026-10-18.md",
+      "claims": [
+        {
+          "line_hint": 8,
+          "text": "al. on whether their IBM data shows the space-like overstatement — the one cheap step that would settle whether it is a",
+          "line_sha256": "40a22a41d0e9f860325c5790d649c45442f95101b3106c1d9ca7e8ed2b8e411c",
+          "class": "PROPOSED",
+          "rationale": "A proposed external-data comparison, not an observed result on the requested new data.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/outreach/quantinuum_startup_partner_application_2026-10-18.md",
+      "claims": [
+        {
+          "line_hint": 141,
+          "text": "- Ask 2's circuit is the one `src/oneq/hw/providers_third.plan()` emits for a third vendor (d = 3, 13 rounds, both",
+          "line_sha256": "4a5bcc522efc04ca4c0aa3824c50457bfc539d28d5a2c338e82ca01148796dcc",
+          "class": "ESTATE-BUILT",
+          "rationale": "The pure plan builder defaults to distance three, thirteen rounds and both preparations. This unchanged statement occurs in the committed application and the current owner draft; it does not claim a vendor run or a passed hardware result.",
+          "references": [
+            {
+              "path": "src/oneq/hw/providers_third.py",
+              "hash_mode": "lf",
+              "sha256": "a92eb03c0417000e129ae338743c0b3a4ae6263c3f0308c63d7ca9b099e7b454"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/LEARNED_MEMORY_PROTOCOL_2026-10-22.md",
+      "document_lf_sha256": "710c8af61f11e10df620b900496696b32cbdb1ea3eb765ed1ee29db662716348",
+      "claims": [
+        {
+          "line_hint": 51,
+          "text": "identifier. The proxy includes the measured circuit duration, declared repetition",
+          "line_sha256": "636db5531c8db0d59e8f9652683db1b8e8db6e186668700c9c15cfa6c733e8b5",
+          "class": "PROPOSED",
+          "rationale": "Planned resource proxy uses measured circuit duration; complete physical costs and production promotion remain outside this retrospective experiment.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_R208_CAUSAL_CERTIFIED_ADAPTIVE_QEC.md",
+      "document_lf_sha256": "10b207cb2897249b09d1aedea8e1fa0c54de7ae3910dc257eecb47fa87a9fbd0",
+      "claims": [
+        {
+          "line_hint": 48,
+          "text": "The producer evaluates all 25,920 in under one second on this workstation. All 936 analytically accepted schedules were independently checked using Stim's actual two-round detector semantics in **both X and Z bases**, and 80 independently sampled analytic rejections were verified to fail. **0 disagreements**. All 936 accepted schedules have stable IDs and are included in `evidence/circuit_distance_exact/r208_causal_schedules.json`. These are circuit measurement-validity checks, **not yet distance or LER superiority**.",
+          "line_sha256": "3bc5bf09e907f960f3ed82851656b9aadd015112cda39c5014db119da0758f62",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Frozen causal enumeration and both-basis simulator checks; validity is distinct from distance preservation or logical error superiority.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_causal_schedules.json",
+              "sha256": "1e38533f5d971c223b050dd0bee2bb33587e5f00288090208f29b88999b0df3b",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 54,
+          "text": "The independent checker reports `VERIFIED`. Its machine-readable report is `evidence/circuit_distance_exact/r208_causal_stranger_verification.json`.",
+          "line_sha256": "6487f578ce6314b7b922d89b31eeb6d4c88bbcb12f637193a215f1c7dc4bae86",
+          "class": "ESTATE-MEASURED",
+          "rationale": "The independent causal checker verdict is retained and replayed by the connected R208 regression suite.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_causal_stranger_verification.json",
+              "sha256": "f7f90e8a20c5e8bd8f3a9edd274d04054ba6e9ac32cb676a84040515d584ff53",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 58,
+          "text": "The first version uses a bounded Bayesian-inspired *kernel-optimistic* bandit over the complete 936 schedule list, implemented in `experiments/circuit_distance_exact/r208_active_noise_search.py`.",
+          "line_sha256": "0149daa9639b07751e54f93b85d1ec35fd636c7fe1d4f8cc467465a16328b755",
+          "class": "ESTATE-BUILT",
+          "rationale": "Finite kernel-optimistic proposal implementation, without a general optimality guarantee or a confirmed superiority claim.",
+          "references": [
+            {
+              "path": "experiments/circuit_distance_exact/r208_active_noise_search.py",
+              "sha256": "0684780862466b85a20d0637509100a7eb60ea2b91bfb69bf24cf12ba2c31b7a",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 101,
+          "text": "- Training: 73 schedules (baseline plus 72 unique alternatives), 120 shots in each memory basis, **17,520 simulated shots** at p=0.006.",
+          "line_sha256": "db4aefc1dad130388d476385de43ab696c24ecc364e5d95422cee754b9ff6c34",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Retained R208 study counts preserve training, proof rejections, separate simulation confirmation and descriptive transfer; the complete confirmation remains negative.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_active_noise/registry.json",
+              "sha256": "65c46e28f8d22a203655655e114151411e24eb3d12e65e8765243504c7b9f0e9",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 102,
+          "text": "- The proof gate examined 24 training-ranked candidates. **20 failed the projected-distance-preservation gate**; four were independently verified at exact projected distance 6 in both bases and retained for confirmation.",
+          "line_sha256": "5c9c98104ad08ca2ac5a073fbcdd80d4300f0b0f3e2a9bea5d97700e2d4d367a",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Retained R208 study counts preserve training, proof rejections, separate simulation confirmation and descriptive transfer; the complete confirmation remains negative.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_active_noise/registry.json",
+              "sha256": "65c46e28f8d22a203655655e114151411e24eb3d12e65e8765243504c7b9f0e9",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 103,
+          "text": "- Fresh confirmation: five schedules (four finalists plus baseline), 3,500 shots per basis, **35,000 shots** at p=0.006.",
+          "line_sha256": "6b713908bd69aca72ce737bd989add87a66e5bfec3d18c03797ae2389ea9ad1f",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Retained R208 study counts preserve training, proof rejections, separate simulation confirmation and descriptive transfer; the complete confirmation remains negative.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_active_noise/registry.json",
+              "sha256": "65c46e28f8d22a203655655e114151411e24eb3d12e65e8765243504c7b9f0e9",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 104,
+          "text": "- Fresh transfer: the same five schedules, 2,000 shots per basis, **20,000 shots** at p=0.003, reported descriptively only.",
+          "line_sha256": "880dbdc13317cd675dd15808e2516b26c6d851586792ca3356e385b44aec639e",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Retained R208 study counts preserve training, proof rejections, separate simulation confirmation and descriptive transfer; the complete confirmation remains negative.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_active_noise/registry.json",
+              "sha256": "65c46e28f8d22a203655655e114151411e24eb3d12e65e8765243504c7b9f0e9",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 105,
+          "text": "- **Total: 72,520 shots**. The BP+OSD-0 correction was required to satisfy each observed detector syndrome.",
+          "line_sha256": "6ec6444a9ec3c86713a1d360ebb1954ff322c03433b3c48675be07ea952a9193",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Retained R208 study counts preserve training, proof rejections, separate simulation confirmation and descriptive transfer; the complete confirmation remains negative.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r208_active_noise/registry.json",
+              "sha256": "65c46e28f8d22a203655655e114151411e24eb3d12e65e8765243504c7b9f0e9",
+              "hash_mode": "raw"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_R209_STRONG_DECODER.md",
+      "document_lf_sha256": "f8311e7a8cac586af24e6c7740bcc6917a704cf29c49954973298af960a0fb5f",
+      "claims": [
+        {
+          "line_hint": 3,
+          "text": "**Status at protocol freeze:** the decoder comparison has been designed, implemented and smoke-tested; the full holdout measurements are not yet known. This is an experiment on simulated quantum circuits, not IBM hardware.",
+          "line_sha256": "0a2db00f1358fb94804540eb4540c857aab4bcb1868899506bc272fe168ea365",
+          "class": "ESTATE-BUILT",
+          "rationale": "Historical implementation status at the protocol freeze; subsequent simulation results retain their separate confirmation scope.",
+          "references": [
+            {
+              "path": "experiments/circuit_distance_exact/r209_decoder_confirmation.py",
+              "sha256": "9258541e4a86ea2dfb9a0312acf20ef9103ce1e6655e2d4954dca99de09436c2",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 18,
+          "text": "- **1,500 fresh Stim shots per rate and basis:** 6,000 shots total. The SHA-256-derived role-separated seeds are distinct from the 200-shot pilot and R207/R208 experiment seeds. Both decoders receive **the same exact syndromes and target logical bits**, paired shot-for-shot.",
+          "line_sha256": "f5417e20a8b4b91964614889f2bc2c3a0686f02c197be50c3bf8915128f0e09e",
+          "class": "PROPOSED",
+          "rationale": "Frozen simulated-shot design specifies paired role-separated seeds; it does not claim new hardware evidence.",
+          "references": []
+        },
+        {
+          "line_hint": 35,
+          "text": "For full confirmation use the default 1,500 shots per basis. Changes to the confirmation shot count create a separate experiment and cannot be silently mixed with the frozen study.",
+          "line_sha256": "a5255cb6dbab0da64765c55861acd513abcebb30064dfb7b9c0d2d55bde23b56",
+          "class": "PROPOSED",
+          "rationale": "Protocol requirement keeps altered confirmation sample sizes separate from this fixed study.",
+          "references": []
+        },
+        {
+          "line_hint": 63,
+          "text": "Measured on this workstation, the three-iteration serial decoder was about **3.0 times slower per shot** than legacy parallel decoding at p=0.003 and about **1.7 times slower** at p=0.006. Workstation load makes these preliminary throughput measurements rather than hardware-independent benchmarks. This is nonetheless a large error-rate reduction with a computationally practical, finite overhead.",
+          "line_sha256": "c798f725c06809ae76f49f4efce55d6e2a89f9e785a015743410cea78c14c585",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Local decoder clocks compare the frozen simulator configurations; load-dependent throughput is separate from hardware or state-of-the-art claims.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r209_decoder_confirmation/registry.json",
+              "sha256": "eb3b9498aaab53ce0d1f13162d4bd50316b549e239d4b747a5b59898d51b4dc5",
+              "hash_mode": "raw"
+            }
+          ]
+        },
+        {
+          "line_hint": 65,
+          "text": "This result **does not establish a new quantum decoder algorithm**. Serial-layered BP is established, and we have not compared this result against stronger published correlated-noise decoders (GARI-NMS, BP+OTF or AlphaSyndrome-associated baselines) with matched circuits, noise and decoding time. The correct advancement is an independently verified, source-pinned improvement **within ONE_Q's supported simulator and prior decoder configuration**, not a claim about IBM hardware or new physics.",
+          "line_sha256": "3a371ecd3f99bd8400cfb68ea0327c116a94469d33845813fbb77fa1a20d7e21",
+          "class": "PROPOSED",
+          "rationale": "Claim boundary explicitly withholds new-algorithm, strongest-external-comparator and hardware superiority claims.",
+          "references": []
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_R205_CDP5.md",
+      "document_lf_sha256": "a1aeb9570434566c7ca63c799e5a1ce1f746c74d8de183551e6bf7912824a2dd",
+      "claims": [
+        {
+          "line_hint": 47,
+          "text": "The checker independently chooses its detector, regenerates candidates from its own model representation, computes parity and uses its separately implemented one/two-fault checker. This is **an exact decision** under the model and orbit hypotheses, not a heuristic bound. CDP5 omits all bits for these subtrees, so no producer-provided decision can falsely prune them.",
+          "line_sha256": "e13df762c8a9426b13d646d91ea8c07d486afd5338e8916ce87913bf59d16dca",
+          "class": "ESTATE-BUILT",
+          "rationale": "Independent C checker recomputes bounded tail decisions under the declared model and orbit assumptions; no physical distance claim follows.",
+          "references": [
+            {
+              "path": "experiments/circuit_distance_exact/ccheck.c",
+              "sha256": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+              "hash_mode": "lf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_R206_PROOF_GUIDED_DISCOVERY.md",
+      "document_lf_sha256": "7dd77c00f00ba3ac8b4717bc7263e3f8a108184ab8652a261dc1f6b0236e9444",
+      "claims": [
+        {
+          "line_hint": 21,
+          "text": "**Tuning set:** IBM BB Z, weight 9, 2 rounds; three-colour X, weight 8, 2 rounds. Three prover runs and four checker runs per variant. **Held-out set:** IBM BB X, weight 9, 2 rounds; three-colour Z, weight 8, 2 rounds. Three independent runs per arm. Same exported model, GCC 16.1.0 flags, and six OpenMP threads for each pair. Raw measurements and hashes reside in `evidence/circuit_distance_exact/r206_performance.json`.",
+          "line_sha256": "2d49b9019b70500a5c8e1d110f7e352f9165b08127babbc70e27f9f3ac87f982",
+          "class": "ESTATE-MEASURED",
+          "rationale": "Retained paired timing protocol and modeled instances; finite local repeats are not universal throughput guarantees.",
+          "references": [
+            {
+              "path": "evidence/circuit_distance_exact/r206_performance.json",
+              "sha256": "7ff958b0bba09bc590fd7b2627ea67c9f99709359e23a5d356f715daea7c2f95",
+              "hash_mode": "raw"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_R207_NOISE_AWARE_QEC.md",
+      "document_lf_sha256": "8935441a6fb0167cb6f74a3a81f991008361e94c185a15f5eafc095deb29890e",
+      "claims": [
+        {
+          "line_hint": 17,
+          "text": "Decoder: `ldpc.BpOsdDecoder` 2.4.1, sum-product alternative **not** used. Method `minimum_sum`, scaling factor **0.8**, maximum 30 iterations, **OSD_0**, OSD order 0, over the exact detector-fault incidence and logical-observable matrices extracted from Stim's **nondecomposed** full detector-error model. The model contains **hyperedges involving 3+ detectors**, which are not discarded or projected into an artificial graphlike matching decoder. Every returned correction is independently checked to reproduce the measured full syndrome; mismatches are refusals, not correctly decoded shots. The resulting decoder remains *a heuristic*, not a proof of optimal decoding.",
+          "line_sha256": "bcb14beaaa5b8421b4774045b2b6cb438ba1e2f78ce305787877f94b35f5811a",
+          "class": "ESTATE-BUILT",
+          "rationale": "The implemented simulation decoder retains full hyperedges and checks correction syndromes; this is no optimal-decoding or hardware-reliability certificate.",
+          "references": [
+            {
+              "path": "experiments/circuit_distance_exact/r207_noise_objective.py",
+              "sha256": "71ca900b7bb5998c93a2445d0b5888c9032a731a39ddfd9f7b4945ab4dea1471",
+              "hash_mode": "raw"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

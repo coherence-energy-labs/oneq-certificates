@@ -43,6 +43,102 @@ def owner_placeholders(owner_tex: str) -> list[str]:
     return [p for p in PLACEHOLDERS if p in owner_tex]
 
 
+# Top-level directories of the released tree; a \texttt path starting with one of them is a claim about that tree.
+RELEASED_TOPS = ("src", "tools", "experiments", "evidence", "docs", "tests", "paper", "verifier-js", "conformance",
+                 "lean", "schemas", "rtl", "data")
+BUNDLE_ENV = "ONEQ_RELEASE_BUNDLE"
+#: Which of the release's bundles carries each manuscript; the rest are in the decoder bundle. Since 2026-11-03 paper 4
+#: travels in its own signed bundle in the same tag (tests/test_build_release_tree_gate.py holds this to the builder).
+MANUSCRIPT_BUNDLE = {"superactivation": "oneq-superactivation"}
+DEFAULT_BUNDLE = "oneq-certifying-decoder"
+
+
+def bundle_dir(name: str = "", env: dict | None = None, paper: pathlib.Path = PAPER) -> pathlib.Path:
+    """The minted bundle `--release` checks manuscript `name`'s named paths against: the bundle that carries it.
+
+    * $ONEQ_RELEASE_BUNDLE names a directory HOLDING the bundles (a trial mint's .build/mint_trial), so the next
+      release is rehearsed against its own bundles without writing under release/, which holds the published ones;
+    * run from inside a minted bundle (SHA256SUMS beside paper/), the tree itself is the bundle -- a reader rebuilding
+      the paper from the release has no release/ copy of it;
+    * otherwise release/<bundle>.
+    The bundle checked still has to name the tag release.tex names."""
+    sub = MANUSCRIPT_BUNDLE.get(name, DEFAULT_BUNDLE)
+    v = (os.environ if env is None else env).get(BUNDLE_ENV, "").strip()
+    if v:
+        return pathlib.Path(v).resolve() / sub
+    if (paper.parent / "SHA256SUMS").is_file():
+        return paper.parent
+    return paper.parent / "release" / sub
+
+
+BUNDLE = bundle_dir()
+FILE_EXTS = "py|json|jsonl|md|mjs|js|c|h|lean|tex|gz|txt|csv|ps1|sh"
+# Files a manuscript names that are someone else's and are not claimed to be in our release -- each with its reason.
+EXTERNAL_NAMES = {
+    "decoder_setup.py": "IBM's own qLDPC repository file, named by P3 as the source of IBM's circuit model",
+}
+
+
+def named_paths(tex: str) -> set[str]:
+    r"""Every repository path a manuscript names in \texttt or \nolinkurl, normalised (\allowbreak and \_ removed)."""
+    out = set()
+    for m in re.finditer(r"\\(?:texttt|nolinkurl)\{((?:[^{}]|\{[^{}]*\})*)\}", tex):
+        p = re.sub(r"\\allowbreak(?:\{\})?\s*|\\(?=_)|\s+", "", m.group(1))
+        if re.fullmatch(r"[A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-*]+)+/?", p) and p.split("/", 1)[0] in RELEASED_TOPS:
+            out.add(p)
+        elif re.fullmatch(r"[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)*\.(?:" + FILE_EXTS + ")", p):
+            out.add(p)                 # a file named by its bare name: some file of that name must ship
+    return out
+
+
+def release_tag(release_tex: str) -> str | None:
+    m = re.search(r"\\newcommand\{\\ReleaseTag\}\{([^}]*)\}", release_tex)
+    return m.group(1) if m else None
+
+
+def release_tree_misses(tex: str, tag: str, bundle: pathlib.Path = BUNDLE) -> list[str]:
+    r"""Why the minted bundle cannot be the release the manuscript cites, or the paths it names that it lacks.
+
+    *** WHY THIS IS HERE (2026-11-03). *** The revised manuscripts named a preregistration, its per-shot records and
+    an input contract "in the release", while `\ReleaseTag` still pointed at the tag the external audits had reviewed,
+    which contains none of them; the release build passed, because it refused only the {UNSET} placeholder. A
+    referee found it by fetching the paths at the tag. The bundle ships its own `paper/release.tex`, so its tag and
+    its `SHA256SUMS` together say exactly what that release carries.
+    """
+    sums, rel = bundle / "SHA256SUMS", bundle / "paper" / "release.tex"
+    if not (sums.is_file() and rel.is_file()):
+        return [f"no minted bundle at {bundle} (SHA256SUMS and paper/release.tex) to check the named paths against"]
+    if release_tag(rel.read_text(encoding="utf-8")) != tag:
+        return [f"the minted bundle is release {release_tag(rel.read_text(encoding='utf-8'))}, not {tag}"]
+    files = {ln.split("  ", 1)[1].strip() for ln in sums.read_text(encoding="utf-8").splitlines() if "  " in ln}
+    missing = []
+    for p in sorted(named_paths(tex) - set(EXTERNAL_NAMES)):
+        if "*" in p:
+            rx = re.compile(re.escape(p).replace(r"\*", "[^/]*"))
+            hit = any(rx.fullmatch(f) or rx.match(f) for f in files)
+        elif p.endswith("/"):
+            hit = any(f.startswith(p) for f in files)
+        elif "/" not in p:
+            hit = any(f == p or f.endswith("/" + p) for f in files)
+        else:
+            hit = p in files or any(f.startswith(p + "/") for f in files)
+        if not hit:
+            missing.append(p)
+    return missing
+
+
+def cites_release(tex: str, numbers: str) -> bool:
+    r"""Does the manuscript cite the release, directly (\ReleaseTag) or through a generated macro whose body is it?
+
+    Paper 4 names its release as \LaneRelease, which its generator derives as \ReleaseTag when the builder ships the
+    lane. Testing the manuscript alone for the literal \ReleaseTag skipped the release-tree check for paper 4, and its
+    release build passed against a bundle that named another tag (found 2026-11-03 preparing the next mint)."""
+    if "\\ReleaseTag" in tex:
+        return True
+    via = [n for n, body in re.findall(r"^\\newcommand\{\\(\w+)\}\{(.*)\}\s*$", numbers, re.M) if "\\ReleaseTag" in body]
+    return any(re.search(r"\\" + n + r"(?![A-Za-z])", tex) for n in via)
+
+
 def load_macros(*files: pathlib.Path) -> dict[str, str]:
     """Zero-argument macros defined by \\newcommand in `files`."""
     macros: dict[str, str] = {}
@@ -135,11 +231,19 @@ def build(name: str, release: bool) -> int:
               f"will not produce a finished-looking file without them.")
         return 2
     rel = PAPER / "release.tex"
-    if release and "\\ReleaseTag" in tex and (not rel.is_file() or "{UNSET}" in rel.read_text(encoding="utf-8")):
+    numbers = (src / "generated" / "numbers.tex").read_text(encoding="utf-8")
+    cites = cites_release(tex, numbers)
+    if release and cites and (not rel.is_file() or "{UNSET}" in rel.read_text(encoding="utf-8")):
         print("REFUSED: the manuscript cites \\ReleaseTag and paper/release.tex does not name a minted release; "
               "set it when the release exists.")
         return 2
-    numbers = (src / "generated" / "numbers.tex").read_text(encoding="utf-8")
+    if release and cites:
+        misses = release_tree_misses(tex, release_tag(rel.read_text(encoding="utf-8")) or "", bundle_dir(name))
+        if misses:
+            print(f"REFUSED: release {release_tag(rel.read_text(encoding='utf-8'))} does not carry "
+                  f"{len(misses)} path(s) the manuscript names as in it: {', '.join(misses[:8])}"
+                  f"{', ...' if len(misses) > 8 else ''}")
+            return 2
     if release and "[pending]" in numbers:
         pending = sorted(set(re.findall(r"\\newcommand\{\\(\w+)\}\{\\textbf\{\[pending\]\}\}", numbers)))
         print(f"REFUSED: {len(pending)} numbers are still pending an experiment "
@@ -181,7 +285,9 @@ def build(name: str, release: bool) -> int:
         f"({len(abstract)} of {ARXIV_ABSTRACT_LIMIT} characters)\n{abstract}\n",
         encoding="utf-8")
     pdf = out / "main.pdf"
-    pages = re.search(r"Output written on .*?\((\d+) pages?", log, re.S)
+    # TeX wraps its log at 79 characters, so on a long build path the count can start the next line (the release
+    # rehearsal printed pages=? for paper 3 in C:\lq\rehearsal2\..., 2026-11-03)
+    pages = re.search(r"Output written on .*?\(\s*(\d+)\s+pages?", log, re.S)
     print(f"BUILD {name}: {'draft' if not release else 'release'}  "
           f"pdf={'yes' if pdf.exists() else 'NO'}  "
           f"pages={pages.group(1) if pages else '?'}  abstract={len(abstract)} chars")

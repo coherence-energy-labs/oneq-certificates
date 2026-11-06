@@ -1,0 +1,24 @@
+# The Python dependencies of the release bundle, pinned to the environment of record (Python 3.14).
+#     python -m pip install -r requirements.txt
+# Checked 2026-11-03 against every module the shipped code imports (a static scan of the bundle, imports inside
+# functions included). Enough to run the checkers, the shipped tests and the three papers' generators and builds.
+stim==1.16.0
+numpy==2.3.5
+scipy==1.17.0
+ldpc==2.4.1
+pymatching==2.4.0
+sinter==1.16.0                # ldpc.sinter_decoders, read by the BP-OSD scaling sensitivity
+networkx==3.6.1               # the exact tier (exact_decode, tjoin_exact)
+cryptography==50.0.0          # Ed25519: cert_format, passport, verify_release
+matplotlib==3.11.1            # paper/tools/make_figures.py
+qiskit==2.5.0                 # the IBM live lanes (rep_code_cert, ibm_epsilon_rerun, hardware_noise_floor)
+python-sat>=1.8               # paper 3's SAT tooling (experiments/circuit_distance_exact/tools_cde.py)
+psutil>=5.9                   # cost measurements record their working sets
+pytest>=8
+#
+# NOT needed to check, regenerate or test anything here; only to RE-RUN a producer (install by hand if you do):
+#   qiskit-ibm-runtime==0.47.0   the IBM live lanes' job submission and fetch (an IBM account is also needed)
+#   beliefmatching==0.2.0        the belief-matching arm of paper 1's gap run (gap_distribution.py)
+#   liboqs-python>=0.15,<0.17    post-quantum receipt sealing (src/oneq/pq_receipt.py), with the native liboqs
+# Two scripts compare against other groups' code that is not on PyPI and is not shipped: gross12
+# (experiments/circuit_distance_exact/pan_crosscheck.py) and morphing_qec_circuits (morph*_vs_authors.py).

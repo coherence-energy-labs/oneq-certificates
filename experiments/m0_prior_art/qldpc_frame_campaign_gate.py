@@ -98,10 +98,13 @@ def main() -> int:
                 asyn = syn + [gstar[ell] ^ 1]
                 ok = False
                 if tree is not None:
-                    ok = check_qldpc_bnb(
+                    # bound-only: LOWER_BOUND_PROVEN, never an optimum
+                    rb = check_qldpc_bnb(
                         checks=aug, weights=wx, syndrome=asyn,
                         error_support=(), tree=tree,
-                        bound_only_threshold=U).accepted
+                        bound_only_threshold=U)
+                    ok = (rb.accepted and
+                          rb.checks.get("status") == "LOWER_BOUND_PROVEN")
                 if ok:
                     proven += 1
                     continue

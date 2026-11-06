@@ -9,7 +9,7 @@ passed" (external audit, findings R-01 and R-03).
 
 It is now the manifest-pinned complete replay in tools/replay_receipts.py:
 every one of the receipts named by evidence/receipt_manifest.json, checked by
-two independently written checkers against the persisted instances and
+two separately written checkers against the persisted instances and
 integer weight vectors, failing on any missing, duplicated, unlisted or
 altered record. No LP, no MIP, no producer, no rebuilt input.
 

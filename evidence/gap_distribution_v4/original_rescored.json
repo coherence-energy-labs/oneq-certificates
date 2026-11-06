@@ -1,0 +1,176 @@
+{
+ "schema": "oneq-gap-original-rescored/1",
+ "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+ "results": {
+  "table_v_2026-07-31": {
+   "artifact": "evidence/gap_distribution.json",
+   "producer_commit": "cce1e91",
+   "scorer_commit": "cce1e91",
+   "rows": {
+    "3": {
+     "reference_shots": 230,
+     "reproduces_stored_artifact": true,
+     "overcounted_shots": 41,
+     "overcounted_true_gap_exactly_zero": 19,
+     "overcounted_bp_converged": 41,
+     "overcount_min": 8.026533231983393,
+     "overcount_max": 67.96885072131316,
+     "max_copies_of_one_edge": 9,
+     "published": {
+      "frac_zero": 0.8130434782608695,
+      "median": 0.0,
+      "p99": 38.10375837281481,
+      "max": 67.96885072131315
+     },
+     "rescored": {
+      "exact_zero": 206,
+      "exact_zero_rate": 0.8956521739130435,
+      "tolerance_zero": 206,
+      "tiny_nonzero_below_1e9": 0,
+      "negative_exact": 0,
+      "median": 0.0,
+      "p99": 2.6345504279481173,
+      "max": 20.720017185662332
+     }
+    },
+    "5": {
+     "reference_shots": 392,
+     "reproduces_stored_artifact": true,
+     "overcounted_shots": 92,
+     "overcounted_true_gap_exactly_zero": 58,
+     "overcounted_bp_converged": 92,
+     "overcount_min": 7.625863650925851,
+     "overcount_max": 146.30916345229977,
+     "max_copies_of_one_edge": 15,
+     "published": {
+      "frac_zero": 0.7270408163265306,
+      "median": 0.0,
+      "p99": 60.77818347301044,
+      "max": 147.97293806988603
+     },
+     "rescored": {
+      "exact_zero": 342,
+      "exact_zero_rate": 0.8724489795918368,
+      "tolerance_zero": 343,
+      "tiny_nonzero_below_1e9": 1,
+      "negative_exact": 0,
+      "median": 0.0,
+      "p99": 2.562379966285277,
+      "max": 3.572791438916748
+     }
+    },
+    "7": {
+     "reference_shots": 378,
+     "reproduces_stored_artifact": true,
+     "overcounted_shots": 25,
+     "overcounted_true_gap_exactly_zero": 18,
+     "overcounted_bp_converged": 25,
+     "overcount_min": 7.883862791484777,
+     "overcount_max": 77.02098984900216,
+     "max_copies_of_one_edge": 11,
+     "published": {
+      "frac_zero": 0.7433862433862434,
+      "median": 0.0,
+      "p99": 52.20328643117647,
+      "max": 78.72639428123202
+     },
+     "rescored": {
+      "exact_zero": 283,
+      "exact_zero_rate": 0.7486772486772487,
+      "tolerance_zero": 299,
+      "tiny_nonzero_below_1e9": 16,
+      "negative_exact": 11,
+      "median": 0.0,
+      "p99": 1.7054044322298596,
+      "max": 3.829107873871664
+     }
+    }
+   }
+  },
+  "fig3_2026-11-02": {
+   "artifact": "evidence/gap_distribution_exact_rule.json",
+   "producer_commit": "624d41f2",
+   "scorer_commit": "624d41f2",
+   "rows": {
+    "3": {
+     "reference_shots": 227,
+     "reproduces_stored_artifact": true,
+     "overcounted_shots": 40,
+     "overcounted_true_gap_exactly_zero": 19,
+     "overcounted_bp_converged": 40,
+     "overcount_min": 8.026533231983393,
+     "overcount_max": 67.96885072131316,
+     "max_copies_of_one_edge": 9,
+     "published": {
+      "frac_zero": 0.8149779735682819,
+      "median": 0.0,
+      "p99": 36.81846169007079,
+      "max": 67.96885072131315
+     },
+     "rescored": {
+      "exact_zero": 204,
+      "exact_zero_rate": 0.8986784140969163,
+      "tolerance_zero": 204,
+      "tiny_nonzero_below_1e9": 0,
+      "negative_exact": 0,
+      "median": 0.0,
+      "p99": 2.6345504279481173,
+      "max": 11.827391245082834
+     }
+    },
+    "5": {
+     "reference_shots": 383,
+     "reproduces_stored_artifact": true,
+     "overcounted_shots": 91,
+     "overcounted_true_gap_exactly_zero": 58,
+     "overcounted_bp_converged": 91,
+     "overcount_min": 7.625863650925851,
+     "overcount_max": 146.30916345229977,
+     "max_copies_of_one_edge": 15,
+     "published": {
+      "frac_zero": 0.7232375979112271,
+      "median": 0.0,
+      "p99": 70.21858565471882,
+      "max": 147.97293806988603
+     },
+     "rescored": {
+      "exact_zero": 334,
+      "exact_zero_rate": 0.8720626631853786,
+      "tolerance_zero": 335,
+      "tiny_nonzero_below_1e9": 1,
+      "negative_exact": 0,
+      "median": 0.0,
+      "p99": 2.575793483751649,
+      "max": 3.572791438916748
+     }
+    },
+    "7": {
+     "reference_shots": 253,
+     "reproduces_stored_artifact": true,
+     "overcounted_shots": 18,
+     "overcounted_true_gap_exactly_zero": 14,
+     "overcounted_bp_converged": 18,
+     "overcount_min": 7.883862791484786,
+     "overcount_max": 77.02098984900216,
+     "max_copies_of_one_edge": 11,
+     "published": {
+      "frac_zero": 0.7707509881422925,
+      "median": 0.0,
+      "p99": 54.393482870816406,
+      "max": 78.72639428123202
+     },
+     "rescored": {
+      "exact_zero": 206,
+      "exact_zero_rate": 0.8142292490118577,
+      "tolerance_zero": 209,
+      "tiny_nonzero_below_1e9": 3,
+      "negative_exact": 0,
+      "median": 0.0,
+      "p99": 1.7054044322298596,
+      "max": 3.829107873871664
+     }
+    }
+   }
+  }
+ }
+}

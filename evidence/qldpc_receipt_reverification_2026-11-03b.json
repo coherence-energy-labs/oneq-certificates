@@ -1,0 +1,126 @@
+{
+ "schema": "oneq-qldpc-receipt-reverification/1",
+ "date": "2026-11-03",
+ "why": "final referee of paper 2, MAJOR 2: every qLDPC checker now validates a facet with multiplier 0 (row, F, multiplier, uniqueness) before skipping it; the pins in evidence/qldpc_heldout_addendum.json, evidence/qldpc_tree_corpus.json and docs/evidence_annotations.json move to the new bytes on this record, with every previous value kept beside them",
+ "replay": {
+  "manifest": "evidence/receipt_manifest.json",
+  "manifest_sha256": "07138cde8b8799e2ff65b77c2bba234ffe6190b92a60c355bfdd8b648f55b449",
+  "pinned_in_replay_tool": "07138cde8b8799e2ff65b77c2bba234ffe6190b92a60c355bfdd8b648f55b449",
+  "complete": true,
+  "receipts_passed_by_cohort": {
+   "heldout_flat": 2002,
+   "heldout_tree": 17,
+   "dev_tree": 19,
+   "dev_refsched_tree": 4
+  },
+  "receipts_passed": 2042,
+  "each_checked_by": "flat: check_qldpc_exact and the reference checker; tree: check_qldpc_bnb and tree checker B"
+ },
+ "javascript_third_checkers": {
+  "qldpc_js_agreement.json": {
+   "checker": "verifier-js/verify-qldpc-flat.mjs",
+   "checker_sha256": "d95412c64d150f31cf8bc0966471109d872b095e86df53af4df059bada8d252a",
+   "stored_accepted": 2002,
+   "planted_defects_refused": 136
+  },
+  "qldpc_tree_js_agreement.json": {
+   "checker": "verifier-js/verify-qldpc-tree.mjs",
+   "checker_sha256": "93590e118643e65284b74d04efe643bdae9f56363eae0461914b616a99ec5949",
+   "stored_accepted": 40,
+   "planted_defects_refused": 74
+  }
+ },
+ "strong_baseline_replay": "STRONG-BASELINE REPLAY PASSED: 4000 decisions, 996 distinct proof checks over 955 stored proofs ({'flat': 891, 'tree': 64}), every summary number in evidence\\qldpc_strong_baseline_v3.json recomputed from records and proofs alone",
+ "prereg_campaign_receipts": {
+  "uniform_p01": {
+   "receipts": 1000,
+   "both_checkers_accept": 1000
+  },
+  "uniform_p02": {
+   "receipts": 1000,
+   "both_checkers_accept": 1000
+  },
+  "hetero_p02": {
+   "receipts": 1000,
+   "both_checkers_accept": 1000
+  },
+  "phenom_p01": {
+   "receipts": 500,
+   "both_checkers_accept": 500
+  },
+  "phenom_p02": {
+   "receipts": 500,
+   "both_checkers_accept": 500
+  },
+  "xsector_p02": {
+   "receipts": 1000,
+   "both_checkers_accept": 1000
+  },
+  "stress_p05": {
+   "receipts": 1000,
+   "both_checkers_accept": 1000
+  },
+  "bb_refsched": {
+   "receipts": 500,
+   "both_checkers_accept": 500
+  }
+ },
+ "zero_multiplier_facets_in_stored_receipts": {
+  "heldout_flat": {
+   "receipts": 2002,
+   "zero_multiplier_facets": 477,
+   "receipts_with_one": 58
+  },
+  "bd_trees": {
+   "receipts": 17,
+   "zero_multiplier_facets": 0,
+   "receipts_with_one": 0
+  },
+  "dev_bd_trees": {
+   "receipts": 19,
+   "zero_multiplier_facets": 0,
+   "receipts_with_one": 0
+  },
+  "dev_refsched_trees": {
+   "receipts": 4,
+   "zero_multiplier_facets": 1,
+   "receipts_with_one": 1
+  },
+  "strong_baseline_flat": {
+   "receipts": 891,
+   "zero_multiplier_facets": 502,
+   "receipts_with_one": 60
+  },
+  "strong_baseline_tree": {
+   "receipts": 64,
+   "zero_multiplier_facets": 0,
+   "receipts_with_one": 0
+  },
+  "prereg_flat": {
+   "receipts": 6472,
+   "zero_multiplier_facets": 0,
+   "receipts_with_one": 0
+  },
+  "prereg_tree": {
+   "receipts": 28,
+   "zero_multiplier_facets": 3,
+   "receipts_with_one": 2
+  }
+ },
+ "input_domain_vectors": {
+  "file": "conformance/qldpc_input_domain_vectors.json",
+  "vectors": 109,
+  "sha256": "8f5d10cc43abf5c319915b3997bf9c332a8abadb86879ae60424bf2de541270c",
+  "run_by": "tests/test_qldpc_input_domain.py"
+ },
+ "not_covered": "the 20 paired-stress trees of evidence/qldpc_tree_corpus.json: not stored (only their syndromes and candidates, evidence/qldpc_paired_bd_closure.json), so not re-verified here; their checker-B counts in that file were measured with the previous checker",
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_receipt_reverification.py": "e0ab998ab7c08b445ef10c5a734230ac2508774d7ef861c03b5d565ffbb848a6",
+  "src/oneq/qldpc_check.py": "51940b3712a830895cbffa3516c81ba57836d470dbe52085219e581709c15ecc",
+  "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "tools/external/tree_checker_b.py": "77a45faaf737940f0cedb87f6ed8f6e2102de519b46c7a19de7283c2fccc80af",
+  "verifier-js/verify-qldpc-flat.mjs": "d95412c64d150f31cf8bc0966471109d872b095e86df53af4df059bada8d252a",
+  "verifier-js/verify-qldpc-tree.mjs": "93590e118643e65284b74d04efe643bdae9f56363eae0461914b616a99ec5949",
+  "tools/replay_receipts.py": "410e3a669f8b846fc7da639b02bd950bd161ea70a4fe9f9af9847886a38ba7a4"
+ }
+}

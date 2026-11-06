@@ -1,0 +1,286 @@
+{
+ "schema": "oneq-epsilon-checker-fuzz/1",
+ "seed": 20261103,
+ "base_cases": 2000,
+ "cases": 89984,
+ "implementations": {
+  "py_a": "check_epsilon via tools/replay_epsilon_receipts.py",
+  "py_b": "verify_b (tools/replay_epsilon_receipts.py)",
+  "js": "verifier-js/verify-epsilon.mjs (written from docs/reviews/JS_EPSILON_BRIEF_2026-11-03.md)"
+ },
+ "valid_domain_cases": 14812,
+ "valid_domain_disagreements": 0,
+ "per_class": {
+  "base": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "graph:boundary_first_edge": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "graph:parallel_edge_heavier": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "graph:parallel_edge_lighter": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "graph:self_loop": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "hex:decimal_not_hex": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "hex:json_number_not_string": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "hex:non_canonical_spelling": {
+   "agree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1781,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "hex:not_binary64_extra_digits": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "hex:overflow": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "hex:subnormal_weight": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 790,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1087,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 123
+  },
+  "id:boolean_in_correction": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:boolean_in_set": {
+   "agree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1304,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 75,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 504
+  },
+  "id:boolean_in_syndrome": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 652,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1311,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 37
+  },
+  "id:fractional_in_correction": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:fractional_in_set": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1704,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 177,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 2
+  },
+  "id:fractional_in_syndrome": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:integral_float_in_correction": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:string_in_correction": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:unknown_fired_detector": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:unknown_vertex_in_set": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "negative:dual": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "negative:weight": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "nonfinite:dual_-inf": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "nonfinite:dual_inf": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "nonfinite:dual_nan": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "nonfinite:weight_-inf": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "nonfinite:weight_inf": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "nonfinite:weight_nan": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "repeat:correction_edge_twice": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "repeat:correction_edge_twice_reversed": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "repeat:set_listed_twice_other_value": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "repeat:set_listed_twice_permuted": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "repeat:set_listed_twice_same_value": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "syndrome:boundary_in_syndrome": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "syndrome:detector_fired_twice": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "syndrome:entry_2_not_fired": {
+   "agree": 606,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 606
+  },
+  "trap:boundary_side_parity_{B,t}": {
+   "agree": 1111,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1111
+  },
+  "trap:empty_set": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "trap:pair_of_fired": {
+   "agree": 1420,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1420
+  },
+  "trap:set_with_no_T_vertex": {
+   "agree": 1790,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1790
+  },
+  "valid:empty_packing": {
+   "agree": 2000,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 117
+  },
+  "valid:eps_max_equals_epsilon": {
+   "agree": 102,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "valid:eps_max_one_unit_above": {
+   "agree": 102,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "valid:eps_max_one_unit_below": {
+   "agree": 102,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 102
+  },
+  "valid:negative_zero_value": {
+   "agree": 1883,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1883
+  },
+  "valid:packing_scaled_down": {
+   "agree": 1883,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1883
+  },
+  "valid:packing_scaled_up_overload": {
+   "agree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1023,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 860
+  },
+  "valid:packing_tiny_shortfall": {
+   "agree": 1883,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 1883
+  },
+  "valid:reversed_edge_orientation_in_correction": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "valid:zero_valued_set": {
+   "agree": 974,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 922,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 52
+  }
+ },
+ "disagreeing_classes": [],
+ "examples": {},
+ "real_receipts_js_vs_recorded": {
+  "sim_d5_r25": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "fresh_sim_d5_r25": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "willow_d3_at_q4_5_X_r13": {
+   "chunks": 4,
+   "receipts": 990,
+   "identical_status_epsilon_bound": 990,
+   "mismatches": []
+  },
+  "willow_d5_at_q8_7_Z_r30": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "willow_d7_at_q6_7_X_r30": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "willow_d7_at_q6_7_Z_r30": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "heldout_d3_at_q4_5_Z_r50": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "heldout_d5_at_q8_7_X_r50": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  }
+ }
+}

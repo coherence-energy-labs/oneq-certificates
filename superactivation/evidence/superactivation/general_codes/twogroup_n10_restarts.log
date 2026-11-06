@@ -1,0 +1,6 @@
+   (5,5) restart 0: F = 0.7453169880 after 150 steps (gain +0.000630)
+   (5,5) restart 1: F = 0.7444893446 after 150 steps (gain -0.000198)
+   (5,5) restart 2: F = 0.7458727826 after 150 steps (gain +0.001186)
+   (5,5) restart 3: F = 0.7462991041 after 150 steps (gain +0.001612)
+RESTARTS (a,b)=(5,5) n=10: best F = 0.7462991041 | symmetric 0.7446872069 | gain +0.001612 | below 3/4
+peak rss 0.14 GB, exit 0

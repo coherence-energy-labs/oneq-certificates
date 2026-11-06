@@ -1,0 +1,55 @@
+{
+ "schema": "oneq.r163.stall_heldout/1",
+ "label": "EXPLORATORY -- outside every preregistered verdict",
+ "r152_job": "db9c50oc77vs73817rog",
+ "traj": 24,
+ "measured_r147": 0.6272772705949263,
+ "read_s": 2.18e-06,
+ "model": "V3c + twirl dressing active-accum (R163)",
+ "variants": {
+  "L=0.65 us": {
+   "hold_s": 2.83e-06,
+   "holds_changed": 814,
+   "r147": 0.664911251290067,
+   "r147_miss": -0.03763398069514068,
+   "residual": {
+    "main": -0.03789062456060092,
+    "twin_inline": -0.03224212062010352,
+    "twin_static": -0.003811385309057856
+   }
+  },
+  "L=0.39 us": {
+   "hold_s": 2.57e-06,
+   "holds_changed": 814,
+   "r147": 0.6634976803816701,
+   "r147_miss": -0.03622040978674379,
+   "residual": {
+    "main": -0.036166016393889625,
+    "twin_inline": -0.04511567882727556,
+    "twin_static": -0.003811385309057856
+   }
+  },
+  "L=0.85 us": {
+   "hold_s": 3.03e-06,
+   "holds_changed": 814,
+   "r147": 0.662139051071299,
+   "r147_miss": -0.03486178047637267,
+   "residual": {
+    "main": -0.03478007949137946,
+    "twin_inline": -0.03835119575936003,
+    "twin_static": -0.003811385309057856
+   }
+  },
+  "L=2.19 us": {
+   "hold_s": 4.37e-06,
+   "holds_changed": 814,
+   "r147": 0.6600721561880867,
+   "r147_miss": -0.03279488559316035,
+   "residual": {
+    "main": -0.03544581625168427,
+    "twin_inline": -0.00127934739646462,
+    "twin_static": -0.003811385309057856
+   }
+  }
+ }
+}

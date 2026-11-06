@@ -1,0 +1,45 @@
+{
+ "note": "SCALING PROBE, not a decision input: 35 units, Helios only; the m = 10 and 12 probes were stopped (hours for little gain)",
+ "results": [
+  {
+   "m": 9,
+   "d": 512,
+   "device": "spec:helios_1",
+   "units": 35,
+   "f_ideal": 0.895803359941762,
+   "F_e_ideal": 0.8437050399126429,
+   "deterministic_ideal_units": 35,
+   "nondeterministic_units": 0,
+   "seconds": 535.7,
+   "arms": {
+    "faithful": {
+     "F_e": 0.8168893697573445,
+     "F_e_se": 0.003337373045554119,
+     "mean_2q": 44.22857142857143,
+     "high_group_error": {
+      "kept/high": 0.02873245741471552,
+      "ee_x/high": 0.008883282233590917
+     }
+    },
+    "barriers": {
+     "F_e": 0.7995111067001355,
+     "F_e_se": 0.007884173645659584,
+     "mean_2q": 44.22857142857143,
+     "high_group_error": {
+      "kept/high": 0.043507497600245484,
+      "ee_x/high": 0.008342509653731511
+     }
+    },
+    "frozen": {
+     "F_e": 0.823922636794935,
+     "F_e_se": 0.0023287708116270307,
+     "mean_2q": 39.25714285714286,
+     "high_group_error": {
+      "kept/high": 0.02309322414914685,
+      "ee_x/high": 0.008834166857711656
+     }
+    }
+   }
+  }
+ ]
+}

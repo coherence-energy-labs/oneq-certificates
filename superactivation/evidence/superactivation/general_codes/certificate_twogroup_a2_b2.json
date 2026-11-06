@@ -1,0 +1,38 @@
+{
+ "a": 2,
+ "b": 2,
+ "n": 4,
+ "certified_lower_bound": "[0.7203089262084322467573558623273521217406 +/- 1.37e-41]",
+ "certified_lower_bound_float": 0.7203089262084322,
+ "exceeds_three_quarters": false,
+ "certified_margin_lower_bound": -0.029691073791567754,
+ "fidelity_ball": "[0.720308926208432246757355862327 +/- 3.53e-31]",
+ "encoder_trace_excess": 5.238687812540721e-10,
+ "max_decoder_trace_excess": 1.1642450111620795e-10,
+ "blocks_proved_positive_definite": 37,
+ "grid_bits": 96,
+ "precision_bits": 256,
+ "eta": 5.820766091346741e-11,
+ "seconds": 0.0,
+ "witness": "twogroup_witness_a2_b2.npy",
+ "witness_sha256": "4c9069ca80fd4c06a707640f4b8c040b84dc912c48570246866a3110f51e2e15",
+ "decoders": "twogroup_decoders_a2_b2.npz",
+ "decoders_sha256": "5fc396114c699a5d5f02880dc69c47ac95e6c283e681e3079d8c897a1b99717f",
+ "decoders_source": "power iteration, 3000 steps; clipped, 1e-9 depolarizing mix, Tr_R renormalized by congruence",
+ "pair_float_fidelity": 0.7203089265095654,
+ "provenance": {
+  "code_git_blobs": {
+   "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+   "experiments/superactivation/general_codes/twogroup_certificate.py": "5fbc7decb2cb537091eae1c6e050ce16e9b55532",
+   "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2",
+   "src/oneq/superactivation_certificate.py": "aa9efe4c3412dbfc8cfbba917da4e45245603f98"
+  },
+  "python": "3.14.3",
+  "executable": "python.exe",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "flint": "0.9.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "thread_env": {}
+ }
+}

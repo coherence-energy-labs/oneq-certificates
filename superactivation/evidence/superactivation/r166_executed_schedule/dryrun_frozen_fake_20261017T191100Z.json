@@ -1,0 +1,50 @@
+{
+ "reports": {
+  "active": {
+   "ro_all0": null,
+   "ro_all1": null,
+   "ladder_bar": null,
+   "ladder_nobar": null,
+   "slots": null,
+   "dynamic": null,
+   "ro_end0": null,
+   "ro_end1": null
+  },
+  "active-accum": {
+   "ro_all0": null,
+   "ro_all1": null,
+   "ladder_bar": null,
+   "ladder_nobar": null,
+   "slots": null,
+   "dynamic": null,
+   "ro_end0": null,
+   "ro_end1": null
+  }
+ },
+ "verdicts": {
+  "active": {
+   "timing_returned": {
+    "ro_all0": false,
+    "ro_all1": false,
+    "ladder_bar": false,
+    "ladder_nobar": false,
+    "slots": false,
+    "dynamic": false,
+    "ro_end0": false,
+    "ro_end1": false
+   }
+  },
+  "active-accum": {
+   "timing_returned": {
+    "ro_all0": false,
+    "ro_all1": false,
+    "ladder_bar": false,
+    "ladder_nobar": false,
+    "slots": false,
+    "dynamic": false,
+    "ro_end0": false,
+    "ro_end1": false
+   }
+  }
+ }
+}

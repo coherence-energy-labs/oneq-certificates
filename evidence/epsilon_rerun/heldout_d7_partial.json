@@ -1,0 +1,489 @@
+{
+ "schema": "oneq-heldout-willow-d7-partial/1",
+ "preregistration": "docs/PREREG_heldout_d7_2026-11-03.md",
+ "status": "STOPPED_BY_RULE",
+ "stop_record": {
+  "schema": "oneq-heldout-d7-stop/2",
+  "rule": "docs/PREREG_heldout_d7_2026-11-03.md, Stopping rule, with the order of docs/PREREG_heldout_d7_2026-11-03_DEVIATIONS.md (deviation 1)",
+  "reason": "40.0 core-hours reached (3 workers x 13.33 h wall since the original start)",
+  "start": "2026-11-03T14:35:29",
+  "stopped": "2026-11-04T03:55:29",
+  "core_hours": 40.0,
+  "runner_pid": 11476,
+  "worker_pids": [
+   53712,
+   42352,
+   50808
+  ],
+  "taskkill_exit": 0,
+  "taskkill_out": "SUCCESS: The process with PID 53712 (child process of PID 11476) has been terminated.\nSUCCESS: The process with PID 42352 (child process of PID 11476) has been terminated.\nSUCCESS: The process with PID 50808 (child process of PID 11476) has been terminated.\nSUCCESS: The process with PID 11476 (child process of PID 52748) has been terminated.",
+  "processes_left": [],
+  "completed_chunks": {
+   "heldout_d7_X_r50": 10,
+   "heldout_d7_X_r10": 7,
+   "samedev_d7_X_r30": 7,
+   "heldout_d7_Z_r50": 6,
+   "heldout_d7_Z_r10": 7,
+   "samedev_d7_Z_r30": 6
+  },
+  "completed_seeds": {
+   "heldout_d7_X_r50": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11
+   ],
+   "heldout_d7_X_r10": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "samedev_d7_X_r30": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "heldout_d7_Z_r50": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "heldout_d7_Z_r10": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "samedev_d7_Z_r30": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "dispatched_unfinished": {
+   "heldout_d7_X_r50": [
+    9
+   ],
+   "heldout_d7_Z_r50": [
+    7
+   ],
+   "samedev_d7_Z_r30": [
+    7
+   ]
+  },
+  "index_unchanged_by_the_stop": true,
+  "note": "chunks in dispatched_unfinished were being computed at the stop and are not in the sample"
+ },
+ "arms": {
+  "heldout_d7_X_r50": {
+   "rounds": "r50",
+   "completed_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11
+   ],
+   "completed": {
+    "chunks": 10,
+    "shots": 500,
+    "nontrivial": 500,
+    "accepted": 500,
+    "exact_optimal": 0,
+    "not_proven": 0,
+    "refused_other": 0,
+    "largest_accepted_epsilon": "83990668023033219863/26051067372925099357603664756736",
+    "forgeries_attempted": 5500,
+    "forgeries_accepted": 0,
+    "battery_attacks_not_false": 0,
+    "not_proven_upper_95_one_sided": 0.005973551516349557
+   },
+   "prefix": {
+    "chunks": 8,
+    "nontrivial": 400,
+    "accepted": 400,
+    "not_proven": 0,
+    "not_proven_upper_95_one_sided": 0.007461355528799601
+   },
+   "dispatched_unfinished_seeds": [
+    9
+   ],
+   "dispatched_unfinished_nontrivial": 50,
+   "dispatched_worst_case": {
+    "chunks": 11,
+    "nontrivial": 550,
+    "not_proven_or_unfinished": 50,
+    "upper_95_one_sided": 0.11365765860474604
+   }
+  },
+  "heldout_d7_X_r10": {
+   "rounds": "r10",
+   "completed_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "completed": {
+    "chunks": 7,
+    "shots": 350,
+    "nontrivial": 350,
+    "accepted": 350,
+    "exact_optimal": 41,
+    "not_proven": 0,
+    "refused_other": 0,
+    "largest_accepted_epsilon": "408616822124756593/3761423221902112770025353904128",
+    "forgeries_attempted": 3850,
+    "forgeries_accepted": 0,
+    "battery_attacks_not_false": 0,
+    "not_proven_upper_95_one_sided": 0.008522709100562015
+   },
+   "prefix": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "accepted": 350,
+    "not_proven": 0,
+    "not_proven_upper_95_one_sided": 0.008522709100562015
+   },
+   "dispatched_unfinished_seeds": [],
+   "dispatched_unfinished_nontrivial": 0,
+   "dispatched_worst_case": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "not_proven_or_unfinished": 0,
+    "upper_95_one_sided": 0.008522709100562015
+   }
+  },
+  "samedev_d7_X_r30": {
+   "rounds": "r30",
+   "completed_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "completed": {
+    "chunks": 7,
+    "shots": 350,
+    "nontrivial": 350,
+    "accepted": 350,
+    "exact_optimal": 1,
+    "not_proven": 0,
+    "refused_other": 0,
+    "largest_accepted_epsilon": "105157128663188905/94134162629298599455312838656",
+    "forgeries_attempted": 3850,
+    "forgeries_accepted": 0,
+    "battery_attacks_not_false": 0,
+    "not_proven_upper_95_one_sided": 0.008522709100562015
+   },
+   "prefix": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "accepted": 350,
+    "not_proven": 0,
+    "not_proven_upper_95_one_sided": 0.008522709100562015
+   },
+   "dispatched_unfinished_seeds": [],
+   "dispatched_unfinished_nontrivial": 0,
+   "dispatched_worst_case": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "not_proven_or_unfinished": 0,
+    "upper_95_one_sided": 0.008522709100562015
+   }
+  },
+  "heldout_d7_Z_r50": {
+   "rounds": "r50",
+   "completed_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "completed": {
+    "chunks": 6,
+    "shots": 300,
+    "nontrivial": 300,
+    "accepted": 300,
+    "exact_optimal": 0,
+    "not_proven": 0,
+    "refused_other": 0,
+    "largest_accepted_epsilon": "89175500645543959116875/38516973792277733148445283700441088",
+    "forgeries_attempted": 3300,
+    "forgeries_accepted": 0,
+    "battery_attacks_not_false": 0,
+    "not_proven_upper_95_one_sided": 0.009936081944457708
+   },
+   "prefix": {
+    "chunks": 6,
+    "nontrivial": 300,
+    "accepted": 300,
+    "not_proven": 0,
+    "not_proven_upper_95_one_sided": 0.009936081944457708
+   },
+   "dispatched_unfinished_seeds": [
+    7
+   ],
+   "dispatched_unfinished_nontrivial": 50,
+   "dispatched_worst_case": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "not_proven_or_unfinished": 50,
+    "upper_95_one_sided": 0.17730852044147338
+   }
+  },
+  "heldout_d7_Z_r10": {
+   "rounds": "r10",
+   "completed_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "completed": {
+    "chunks": 7,
+    "shots": 350,
+    "nontrivial": 350,
+    "accepted": 350,
+    "exact_optimal": 52,
+    "not_proven": 0,
+    "refused_other": 0,
+    "largest_accepted_epsilon": "439601284905222917/3554124539949372188817549688832",
+    "forgeries_attempted": 3850,
+    "forgeries_accepted": 0,
+    "battery_attacks_not_false": 0,
+    "not_proven_upper_95_one_sided": 0.008522709100562015
+   },
+   "prefix": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "accepted": 350,
+    "not_proven": 0,
+    "not_proven_upper_95_one_sided": 0.008522709100562015
+   },
+   "dispatched_unfinished_seeds": [],
+   "dispatched_unfinished_nontrivial": 0,
+   "dispatched_worst_case": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "not_proven_or_unfinished": 0,
+    "upper_95_one_sided": 0.008522709100562015
+   }
+  },
+  "samedev_d7_Z_r30": {
+   "rounds": "r30",
+   "completed_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "completed": {
+    "chunks": 6,
+    "shots": 300,
+    "nontrivial": 300,
+    "accepted": 300,
+    "exact_optimal": 2,
+    "not_proven": 0,
+    "refused_other": 0,
+    "largest_accepted_epsilon": "926060024409794851543/1421577597661600888491514664058880",
+    "forgeries_attempted": 3300,
+    "forgeries_accepted": 0,
+    "battery_attacks_not_false": 0,
+    "not_proven_upper_95_one_sided": 0.009936081944457708
+   },
+   "prefix": {
+    "chunks": 6,
+    "nontrivial": 300,
+    "accepted": 300,
+    "not_proven": 0,
+    "not_proven_upper_95_one_sided": 0.009936081944457708
+   },
+   "dispatched_unfinished_seeds": [
+    7
+   ],
+   "dispatched_unfinished_nontrivial": 50,
+   "dispatched_worst_case": {
+    "chunks": 7,
+    "nontrivial": 350,
+    "not_proven_or_unfinished": 50,
+    "upper_95_one_sided": 0.17730852044147338
+   }
+  }
+ },
+ "pooled": {
+  "r50": {
+   "arms_with_data": [
+    "heldout_d7_X_r50",
+    "heldout_d7_Z_r50"
+   ],
+   "nontrivial": 800,
+   "not_proven": 0,
+   "not_proven_rate": 0.0,
+   "not_proven_upper_95_one_sided": 0.0037376628261006077,
+   "worst_case_nontrivial": 900,
+   "worst_case_not_proven": 100,
+   "worst_case_upper_95_one_sided": 0.12985333416513725
+  },
+  "r10": {
+   "arms_with_data": [
+    "heldout_d7_X_r10",
+    "heldout_d7_Z_r10"
+   ],
+   "nontrivial": 700,
+   "not_proven": 0,
+   "not_proven_rate": 0.0,
+   "not_proven_upper_95_one_sided": 0.0042704730201890894,
+   "worst_case_nontrivial": 700,
+   "worst_case_not_proven": 0,
+   "worst_case_upper_95_one_sided": 0.0042704730201890894
+  },
+  "r30": {
+   "arms_with_data": [
+    "samedev_d7_X_r30",
+    "samedev_d7_Z_r30"
+   ],
+   "nontrivial": 650,
+   "not_proven": 0,
+   "not_proven_rate": 0.0,
+   "not_proven_upper_95_one_sided": 0.004598214574012618,
+   "worst_case_nontrivial": 700,
+   "worst_case_not_proven": 50,
+   "worst_case_upper_95_one_sided": 0.08954253629464325
+  }
+ },
+ "tests": {
+  "heldout_r50_vs_same_producer_dev_r30": {
+   "p_one_sided": 1.0,
+   "computed": true,
+   "note": "partial sample; bases pooled as the preregistration pools them"
+  },
+  "heldout_r10_vs_same_producer_dev_r30": {
+   "p_one_sided": 1.0,
+   "computed": true,
+   "note": "partial sample; bases pooled as the preregistration pools them"
+  }
+ },
+ "forgeries_accepted_total": 0,
+ "views": {
+  "completed": "every completed chunk, as the stopping rule names",
+  "dispatched_worst_case": "every dispatched chunk, each unfinished nontrivial shot counted as not proven; completion order cannot flatter it",
+  "prefix": "the longest run of completed chunks from seed 1"
+ },
+ "head": {
+  "producer": {
+   "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+   "tree": "C:\\Users\\Josh\\AppData\\Local\\Temp\\claude\\c--Users-Josh-Projects-Coherence-A-C-E\\824a9479-674b-407d-ae95-4f5b37b09361\\scratchpad\\frozen_2008c81f",
+   "sha256": {
+    "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+    "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+    "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+    "src/oneq/forgeries.py": "0283d4ca7c1298a0d4e2da05586cca412c304302c1229b68a454def38695bd1a",
+    "src/oneq/moat_dual.py": "cd83c5c8e7bb9c5ceb0afe25561df1dba6473ea9834c0224e985576926c0b124",
+    "src/oneq/moat_growth.py": "9c35fbfba9d29cdb2986f6af3fd3c33635546fceef6aa74b55b80cb0e77e070d",
+    "src/oneq/exact_lp.py": "81654d2b63321e1ba793de3bb04610112e8f08bb086d6a7842278f62990b735b",
+    "src/oneq/repair_impossible.py": "b37953e51a84324085f83a6271c9b7e2fd646836af6b9100b0f31def4e44aad7",
+    "experiments/m0_prior_art/epsilon_rerun.py": "8161638949d135893c2c78423bd99befb64807aef7f921ac49987aacc6e12cb5",
+    "experiments/m0_prior_art/heldout_willow_d7.py": "5887bca8b2268e4974006357bec481c664532f9ab763c0238707ee00ca59b20a",
+    "experiments/m0_prior_art/google_corpus_gate.py": "df7006797ad88a8b591f3ec342a95ed0b3f8f6ed67426c1f257e3c2c4d199d61"
+   }
+  },
+  "deviation": {
+   "commit": "4030f88d",
+   "sha256": {
+    "experiments/m0_prior_art/heldout_willow_d7_interleaved.py": "84f076c437a8df865ede89ef1e97db5ead6295f76bf06b7cb77539b17c8cae86",
+    "experiments/m0_prior_art/heldout_d7_watchdog.py": "a34d19ab7c6d03663171c91bf09ea548bf0b460e927df550bb7a8b67c3c6dac4"
+   }
+  },
+  "report": {
+   "commit": "0a4ba9d8508b8a0a054d9a1c03706a8aa1e9dd33",
+   "repository": "present",
+   "uncommitted_changes_in_judged_files": true,
+   "sha256": {
+    "experiments/m0_prior_art/heldout_d7_partial.py": "b140804c442953fe76f684074a6d1d6774b0e2d38c9c810d58fa5d9174dedaec"
+   }
+  },
+  "records": {
+   "dir": "evidence/epsilon_rerun/heldout_d7_stopped_2026-11-04",
+   "stop_record": "d7_stop_record.json",
+   "sha256": {
+    "d7_stop_record.json": "0f86cd662797dcaa4ef116e7a9ce0e947c4abdc55481605207a08fc262099ac3",
+    "d7_amendment_stop_record.json": "8ecb2fafc07de1592353ff1891cdb1ae5bf1f78aff24c7ad87301379f6bddcba",
+    "d7_watchdog.log": "9d611e90d4d246f6eb027f93a7952b74adb4ca14d28e3319fe2704a46bbc57f3",
+    "d7_babysitter.log": "574f3581412b704257054f05d1359365812f07d1d69406e3168544212a67f435",
+    "d7_run.log": "c344e1c63d6be905c10841f9c2997697d624fa062bc65814290bba59fc9f028a",
+    "d7_run_interleaved.log": "14dee79615f8ef89d70b6452d16797f5293fab343b6f9bf30b4db46d9a88353d"
+   },
+   "dispatch_markers": 42,
+   "amendment_stop": {
+    "stopped": "2026-11-03T16:18:10",
+    "core_hours_spent": 5.134,
+    "completed_seeds": {
+     "heldout_d7_X_r50": [
+      1,
+      3,
+      4,
+      5
+     ]
+    },
+    "in_flight_seeds_lost": [
+     2,
+     6,
+     7
+    ]
+   }
+  },
+  "copied_from": {
+   "tree": "C:\\Users\\Josh\\AppData\\Local\\Temp\\claude\\c--Users-Josh-Projects-Coherence-A-C-E\\824a9479-674b-407d-ae95-4f5b37b09361\\scratchpad\\frozen_2008c81f",
+   "index_receipts_and_instances_identical": true
+  }
+ },
+ "deviations": "docs/PREREG_heldout_d7_2026-11-03_DEVIATIONS.md",
+ "recorded_development_2026_09_17": {
+  "nontrivial": 100000,
+  "not_proven": 2,
+  "not_proven_upper_95_one_sided": 6.295658396091556e-05,
+  "note": "an earlier producer; reported beside, never pooled"
+ }
+}

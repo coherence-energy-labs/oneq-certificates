@@ -1,0 +1,141 @@
+{
+ "schema": "oneq-producer-identity-willow/2",
+ "head": {
+  "commit": "9fbc647e49f2bd5a7ef93a7cfdda62fd85f7cde4",
+  "modules": "every repository module the workers loaded",
+  "uncommitted_changes_in_judged_files": true,
+  "sha256": {
+   "experiments/m0_prior_art/epsilon_rerun.py": "8161638949d135893c2c78423bd99befb64807aef7f921ac49987aacc6e12cb5",
+   "experiments/m0_prior_art/fresh_seed_sim.py": "0ce66f2b4c442be29ee97b9f3da32981b82e9870f3cda04b6b1ea7041689c30d",
+   "experiments/m0_prior_art/google_corpus_gate.py": "df7006797ad88a8b591f3ec342a95ed0b3f8f6ed67426c1f257e3c2c4d199d61",
+   "experiments/m0_prior_art/heldout_willow.py": "e8c9598951db5c9b90f5cb615e287aa49c5c9e5dfe1eb06c1f38b37562209c20",
+   "experiments/m0_prior_art/producer_identity_willow.py": "866cdce8587a1488ab5407c8a75963b5872764e0990c3e9a6106e379f690632d",
+   "src/oneq/__init__.py": "5cb264a79ca9b86b697d822cb64c9ebd88462486f729859ea75c8cbb65604a1f",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "src/oneq/forgeries.py": "0283d4ca7c1298a0d4e2da05586cca412c304302c1229b68a454def38695bd1a",
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_epsilon.py": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8",
+   "src/oneq/moat_dual.py": "cd83c5c8e7bb9c5ceb0afe25561df1dba6473ea9834c0224e985576926c0b124",
+   "src/oneq/moat_growth.py": "9c35fbfba9d29cdb2986f6af3fd3c33635546fceef6aa74b55b80cb0e77e070d"
+  }
+ },
+ "configs": {
+  "willow_d3_at_q4_5_X_r13": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 40,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 9841
+  },
+  "willow_d3_at_q4_5_X_r30": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 40,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 9994
+  },
+  "willow_d3_at_q4_5_Z_r13": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 40,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 9560
+  },
+  "willow_d3_at_q4_5_Z_r30": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 40,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 9991
+  },
+  "willow_d5_at_q8_7_X_r13": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 40,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 10000
+  },
+  "willow_d5_at_q8_7_X_r30": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 37,
+   "differ": [
+    10,
+    24,
+    40
+   ],
+   "failed": [],
+   "nontrivial": 10000
+  },
+  "willow_d5_at_q8_7_Z_r13": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 39,
+   "differ": [
+    7
+   ],
+   "failed": [],
+   "nontrivial": 9998
+  },
+  "willow_d5_at_q8_7_Z_r30": {
+   "sample": "development",
+   "chunks": 40,
+   "identical": 34,
+   "differ": [
+    2,
+    12,
+    17,
+    19,
+    23,
+    27
+   ],
+   "failed": [],
+   "nontrivial": 10000
+  },
+  "heldout_d3_at_q4_5_X_r50": {
+   "sample": "held-out",
+   "chunks": 20,
+   "identical": 20,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 5000
+  },
+  "heldout_d3_at_q4_5_Z_r50": {
+   "sample": "held-out",
+   "chunks": 20,
+   "identical": 20,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 5000
+  },
+  "heldout_d5_at_q8_7_X_r50": {
+   "sample": "held-out",
+   "chunks": 20,
+   "identical": 20,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 5000
+  },
+  "heldout_d5_at_q8_7_Z_r50": {
+   "sample": "held-out",
+   "chunks": 20,
+   "identical": 20,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 5000
+  },
+  "fresh_sim_d5_r25": {
+   "sample": "fresh-seed",
+   "chunks": 40,
+   "identical": 40,
+   "differ": [],
+   "failed": [],
+   "nontrivial": 10000
+  }
+ }
+}

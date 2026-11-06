@@ -1,0 +1,2280 @@
+{
+ "2": {
+  "d": 2,
+  "p": 0.4142135623730951,
+  "F": {
+   "2": 0.6897047612749627,
+   "3": 0.7103052014275002,
+   "4": 0.7219924923497553,
+   "5": 0.7232085835002693,
+   "6": 0.7279757834603179,
+   "7": 0.7314810060723239,
+   "8": 0.7366277236630451,
+   "9": 0.7414140611918209,
+   "10": 0.7446745986167941,
+   "11": 0.746616768479121,
+   "12": 0.7478949631512375,
+   "13": 0.7486243947714594,
+   "14": 0.7492066761036382,
+   "15": 0.7496145761723598,
+   "16": 0.7498427674154966,
+   "17": 0.7501663347463303
+  },
+  "entries": {
+   "5": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "6": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "7": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "8": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "9": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "10": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "11": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "12": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "13": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "14": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "15": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "16": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "17": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.5757174171303632e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d2_n2.npy",
+    "code_sha256": "b3b88709db7921a6c8fb90783c3384932c6d045db40db326bdc155ec9ed292f7",
+    "encoder_second_eigenvalue": 3.865216316572801e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.6897047612040095
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 8.886225089099753e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d2_n3.npy",
+    "code_sha256": "aabe6d657cd4a1142c20663d2d840c7aa47d6e47ba2e2c79a8cfdd155dcd2a50",
+    "encoder_second_eigenvalue": 3.394047920686495e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.702183582953787
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.2800048880111667e-05,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d2_n4.npy",
+    "code_sha256": "06d45d01d661eaf6ba06b0c72f9ef4cb594f9c9372f32a708a03f0d1b1f67a2b",
+    "encoder_second_eigenvalue": 3.1329286492218256e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7148395666638021
+   }
+  },
+  "onset_upper_bound": 17,
+  "family": "symmetric",
+  "onset_class": "MEASURED-float",
+  "onset_recorded_before_fix": 17
+ },
+ "3": {
+  "d": 3,
+  "p": 0.36602540378443865,
+  "F": {
+   "2": 0.6988462843967558,
+   "3": 0.7178561546499557,
+   "4": 0.7294926748538091,
+   "5": 0.7313269987402427,
+   "6": 0.7358134341149533,
+   "7": 0.7389609719233924,
+   "8": 0.7411967065487048,
+   "9": 0.7458564436450836,
+   "10": 0.7490091670968623,
+   "11": 0.7509932420074528
+  },
+  "entries": {
+   "5": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "6": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "7": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "8": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "9": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "10": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "11": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.6209256159527285e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d3_n2.npy",
+    "code_sha256": "75cb265d9161323023d35d191a435461ac8742160b5edf15c2ee9aff4faba3f9",
+    "encoder_second_eigenvalue": 2.193428754059797e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.6987669780795663
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0004279169211819367,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d3_n3.npy",
+    "code_sha256": "ec9bcdd989e8fee7315d9d5821077fb5921133e733186026e56e20973ce7801c",
+    "encoder_second_eigenvalue": 5.505286146529272e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7108577613595617
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0004893030392673081,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d3_n4.npy",
+    "code_sha256": "71715f267cc67ea0cb681de8a755236e4a9d0fe49185e5f631d498b46b053f1e",
+    "encoder_second_eigenvalue": 5.62035560201603e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7218588417118914
+   }
+  },
+  "onset_upper_bound": 11,
+  "family": "symmetric",
+  "onset_class": "MEASURED-float",
+  "onset_recorded_before_fix": 11
+ },
+ "4": {
+  "d": 4,
+  "p": 0.3333333333333333,
+  "F": {
+   "2": 0.7057719646307274,
+   "3": 0.7244525161725014,
+   "4": 0.7363674133286632,
+   "5": 0.7384478793688566,
+   "6": 0.7427818556780615,
+   "7": 0.7457440881463685,
+   "8": 0.7478331186211223,
+   "9": 0.7500942410719822
+  },
+  "entries": {
+   "5": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "6": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "7": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "8": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "9": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.6764367671839864e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d4_n2.npy",
+    "code_sha256": "a845484254ac55c42d6a705c20702a45f201ca8a7c3be90bc92dc798a98b72d8",
+    "encoder_second_eigenvalue": 3.192586511355383e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7022048029898098
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 5.4511950509095186e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d4_n3.npy",
+    "code_sha256": "010549a4f689d0894725afc95af19bbca1c7053e1ccd4e215e7fa9b26155b1fe",
+    "encoder_second_eigenvalue": 4.906930676606177e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7193858441356609
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0006250745710714156,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d4_n4.npy",
+    "code_sha256": "015fb19601eb5a8fdc38804cb6b2ddc0cbfdb1270b2221de0ede2c3f4862955a",
+    "encoder_second_eigenvalue": 6.839450532208081e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7289518771147416
+   }
+  },
+  "onset_upper_bound": 9,
+  "family": "symmetric",
+  "onset_class": "MEASURED-float",
+  "onset_recorded_before_fix": 9
+ },
+ "5": {
+  "d": 5,
+  "p": 0.3090169943749474,
+  "F": {
+   "2": 0.7112821099418405,
+   "3": 0.7304712002399127,
+   "4": 0.7423772669224383
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.7763568394002505e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d5_n2.npy",
+    "code_sha256": "c30789e1f9446d99bc3c528cb6574ee3be124336fe577d17dff121a86fce6fd8",
+    "encoder_second_eigenvalue": 1.9112637726457617e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.9761969838327786e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d5_n3.npy",
+    "code_sha256": "2ae1c49d778b9067436f6cd7d0ce55fd3ce747baf3370feacd714d812f2a0205",
+    "encoder_second_eigenvalue": 2.1352504403248458e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0005778937384401939,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d5_n4.npy",
+    "code_sha256": "9f7a22aa519ef8ef85fde9418be241d36680336878a508fbf621bbb233cafef9",
+    "encoder_second_eigenvalue": 4.549255284322253e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": null
+ },
+ "6": {
+  "d": 6,
+  "p": 0.28989794855663564,
+  "F": {
+   "2": 0.7158195138004257,
+   "3": 0.7357068772666076,
+   "4": 0.7476507113654951,
+   "5": 0.7498885892334133,
+   "6": 0.7540755886660532
+  },
+  "entries": {
+   "5": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "6": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 3.008704396734174e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d6_n2.npy",
+    "code_sha256": "4f255a408d83cf7ce8650c0810198746bbab24bf915dcb5c8dd679cc41da3ba7",
+    "encoder_second_eigenvalue": 4.681712783499834e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.705317293794527
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.786659791809143e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d6_n3.npy",
+    "code_sha256": "913ca57e6aba5ed32db686e1d2b72179e1d7aaf6ba1419d02e2361a841e9d334",
+    "encoder_second_eigenvalue": 1.7914014759404162e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7330431441769657
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 7.649436639667329e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d6_n4.npy",
+    "code_sha256": "486a055b52b88f4f2b53a7a50c57cdcea0eba810514a77d0a0b41d9877ed1e3f",
+    "encoder_second_eigenvalue": 1.8992911221386228e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7384549517907407
+   }
+  },
+  "onset_upper_bound": 6,
+  "family": "symmetric",
+  "onset_class": "MEASURED-float",
+  "onset_recorded_before_fix": 6
+ },
+ "7": {
+  "d": 7,
+  "p": 0.27429188517743175,
+  "F": {
+   "2": 0.7196516593085989,
+   "3": 0.7405928295745543,
+   "4": 0.7523282646032726
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 7.438494264988549e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d7_n2.npy",
+    "code_sha256": "2aee2b9ebeb74ce083a36e88f6533fd23e69f3479d4b87e2c29cbbfd762dff09",
+    "encoder_second_eigenvalue": 2.4960402159739587e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0002631627859204233,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d7_n3.npy",
+    "code_sha256": "f0f4d5bcce4c122d5a20d48b898a221f6e4d31f235ec10c5ae439b71da078150",
+    "encoder_second_eigenvalue": 6.062720047537361e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 0.0004189320403016339,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d7_n4.npy",
+    "code_sha256": "f8f8f03e113863acc9e989e863a8f3ab79856a8606560b84a291bbc191a79b3d",
+    "encoder_second_eigenvalue": 3.284410193108284e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d7_n4.json",
+    "certified_lower_bound": 0.7523282646031269,
+    "certified_exceeds_three_quarters": true
+   }
+  },
+  "onset_upper_bound": 4,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7523282646031269
+ },
+ "8": {
+  "d": 8,
+  "p": 0.2612038749637414,
+  "F": {
+   "2": 0.7229514530843841,
+   "3": 0.7457644677742579,
+   "4": 0.7565237363962426
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 3.952393967665557e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d8_n2.npy",
+    "code_sha256": "e5e5920923b4c0651d817e7098440860dab3c52e1e332ebd6a4d3c77f76ddb24",
+    "encoder_second_eigenvalue": 2.1574219590079685e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0013001658353474221,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d8_n3.npy",
+    "code_sha256": "3353a882dd41f42d63411d0ebf1e6b9a9505322069c4033ee4d67e288abb0629",
+    "encoder_second_eigenvalue": 3.0142169427460504e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d8_n3.json",
+    "certified_lower_bound": 0.7457644677742533,
+    "certified_exceeds_three_quarters": false
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 0.0003291919123928899,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d8_n4.npy",
+    "code_sha256": "bb1bd4a91aeb6ec659eb49291e6055ce1020bfb3a80f753992db5828fc5c2d3e",
+    "encoder_second_eigenvalue": 3.500776136275227e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d8_n4.json",
+    "certified_lower_bound": 0.7565237363961138,
+    "certified_exceeds_three_quarters": true
+   }
+  },
+  "onset_upper_bound": 4,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7565237363961138
+ },
+ "9": {
+  "d": 9,
+  "p": 0.25,
+  "F": {
+   "2": 0.7258814835878273,
+   "3": 0.7505010800754448,
+   "4": 0.7603240458170168,
+   "5": 0.7625162414366099
+  },
+  "entries": {
+   "5": {
+    "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+    "provenance": "carried forward as recorded at R142 (commit 641b20fd); not recomputed: oneq.superactivation is not touched by the apply_dual fix",
+    "class": "MEASURED-float"
+   },
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.708944180085382e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d9_n2.npy",
+    "code_sha256": "72c4ffa35bda0329ab16500860e8399b9b87d230daf36677d74df09136ec7f28",
+    "encoder_second_eigenvalue": 3.4434963004098915e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7142997111039959
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 0.002298301869815944,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d9_n3.npy",
+    "code_sha256": "d8fa2b01ea305d44e94c63140d5b07ba1eb3ab399a38d474c9ef5eb3d683792d",
+    "encoder_second_eigenvalue": 1.770629423320825e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7494107319503489,
+    "certificate": "certificate_nuse_d9_n3.json",
+    "certified_lower_bound": 0.7505010800754398,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.00023727295102282664,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d9_n4.npy",
+    "code_sha256": "40cced449ed9766011587e85bbdf9d359f82642f87258ec5019cf2bd2c784acb",
+    "encoder_second_eigenvalue": 4.912668218630903e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7487605895644066
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7505010800754398,
+  "onset_recorded_before_fix": 5
+ },
+ "10": {
+  "d": 10,
+  "p": 0.2402530733520421,
+  "F": {
+   "2": 0.7286400980843427,
+   "3": 0.7548663940664888,
+   "4": 0.7637959594444464
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 5.667688540711424e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d10_n2.npy",
+    "code_sha256": "bb9df7684ef31be75375210a09878edecedb46428b79f5b5359384445d8155fc",
+    "encoder_second_eigenvalue": 2.812704415355185e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 0.0032214917208072125,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d10_n3.npy",
+    "code_sha256": "dc9000c862b75532cd3686be7ad56146e7d23938f0e3207ac8c4e43c2d48fb9c",
+    "encoder_second_eigenvalue": 4.774380445060732e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d10_n3.json",
+    "certified_lower_bound": 0.7548663940664836,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.00014350570791210604,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d10_n4.npy",
+    "code_sha256": "489784214cb6300340df82ed8a19db1733226ed2e35d431e2696b96092e0e214",
+    "encoder_second_eigenvalue": 4.886784996483079e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7548663940664836
+ },
+ "11": {
+  "d": 11,
+  "p": 0.23166247903554,
+  "F": {
+   "2": 0.7312636096790529,
+   "3": 0.7588328403227071,
+   "4": 0.7669914619714855
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 5.6066262743570405e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d11_n2.npy",
+    "code_sha256": "c087e6bc92f55c558bcfff06957aa2a3b4183c3760488079210fe2d00c6183fb",
+    "encoder_second_eigenvalue": 7.741303331604619e-17,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 3.9968028886505635e-15,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d11_n3.npy",
+    "code_sha256": "56c17e24f8dc91fd49ae0bf6f2c8a2e2e7c2332fa58ddbe14647fd9c8de0a8c3",
+    "encoder_second_eigenvalue": 3.2866568098616445e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d11_n3.json",
+    "certified_lower_bound": 0.7588328403227014,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 3.689468547218855e-05,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d11_n4.npy",
+    "code_sha256": "808fef50e28dd2c723580ea67021d1019ad9622e164ae5dc60b845c29b6fa449",
+    "encoder_second_eigenvalue": 3.3155632502765074e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7588328403227014
+ },
+ "12": {
+  "d": 12,
+  "p": 0.2240092377397959,
+  "F": {
+   "2": 0.733773047307396,
+   "3": 0.7624592028732106,
+   "4": 0.77073017018597
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 5.440092820663267e-15,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d12_n2.npy",
+    "code_sha256": "8681f18d255096a9218443ab1d5e7fe1857852808cee26f9a08f7437ece3c8e6",
+    "encoder_second_eigenvalue": 2.3930995721011605e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.723044635400513
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 0.003440020287366674,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d12_n3.npy",
+    "code_sha256": "cd4097500f5dd7ff88d75662055b0b5bcfa8847731d75d0fbe6f0d17ecea63f0",
+    "encoder_second_eigenvalue": 3.9279495291426056e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7611007297081737,
+    "certificate": "certificate_nuse_d12_n3.json",
+    "certified_lower_bound": 0.7624592028732052,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0006162561045712778,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d12_n4.npy",
+    "code_sha256": "6cfe76b5b9be1f59bc2bb720ca00c0425663e29ab4789d40842c91a0ce64d784",
+    "encoder_second_eigenvalue": 2.2618013195024435e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7624592028732052,
+  "onset_recorded_before_fix": 3
+ },
+ "13": {
+  "d": 13,
+  "p": 0.21712927295533244,
+  "F": {
+   "2": 0.7361853381123302,
+   "3": 0.7657928745725275,
+   "4": 0.7739762087293951
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 5.551115123125783e-15,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d13_n2.npy",
+    "code_sha256": "87c07305d0e571391b3f31f666eafbc034bb0b09163bd66b910dd56d7c513282",
+    "encoder_second_eigenvalue": 4.59403070451948e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 4.440892098500626e-16,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d13_n3.npy",
+    "code_sha256": "a326238de7010af01983d617441770b1daf3aa030931d913e45cab65adc3dc04",
+    "encoder_second_eigenvalue": 2.2049570242426143e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d13_n3.json",
+    "certified_lower_bound": 0.7657928745725212,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0007145285669285517,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d13_n4.npy",
+    "code_sha256": "9ee0066d5e09bf26b81d2e87432a35f8b537da78b745a7f45fa1bff0e1288040",
+    "encoder_second_eigenvalue": 2.3872290358399303e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7657928745725212
+ },
+ "14": {
+  "d": 14,
+  "p": 0.21089672205953397,
+  "F": {
+   "2": 0.7385142124793581,
+   "3": 0.7688724759548108,
+   "4": 0.7770025991055894
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.4876988529977098e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d14_n2.npy",
+    "code_sha256": "766034c4907c1c85c8ba977e003355098cf04408d9f90f8592d07929f7569176",
+    "encoder_second_eigenvalue": 3.749570153298052e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 5.551115123125783e-16,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d14_n3.npy",
+    "code_sha256": "8a832a9a3c84103f719dddec51de4580134ed5668f2f1d6d84fbf7ea5cfa2a96",
+    "encoder_second_eigenvalue": 6.732060421842089e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d14_n3.json",
+    "certified_lower_bound": 0.7688724759548047,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0006151949612860363,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d14_n4.npy",
+    "code_sha256": "b88aaf42bc40149efa8b0f0428380a0a98d5e179a9fa64fb9794f51f1daaa7eb",
+    "encoder_second_eigenvalue": 2.616385130753898e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7688724759548047
+ },
+ "15": {
+  "d": 15,
+  "p": 0.20521309615767264,
+  "F": {
+   "2": 0.7407708821548739,
+   "3": 0.7717298078467789,
+   "4": 0.7798343053243287
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.687538997430238e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d15_n2.npy",
+    "code_sha256": "65c758ebc9da5ffae162a934083703a14bf2033d83491d943e9d941f83c91c16",
+    "encoder_second_eigenvalue": 2.9857852829106565e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 6.439293542825908e-15,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d15_n3.npy",
+    "code_sha256": "a88d193c462b22b03475500d4526dda07e32b75c68fa9d0bb0c74462fd709bec",
+    "encoder_second_eigenvalue": 3.309381267145285e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d15_n3.json",
+    "certified_lower_bound": 0.7717298078467721,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0005592809509196162,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d15_n4.npy",
+    "code_sha256": "7645c1213cc25e696bbdc5c7a9712ce08df2e894ed621bcef00c21a3e2f0e093",
+    "encoder_second_eigenvalue": 2.987591719668778e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7717298078467721
+ },
+ "16": {
+  "d": 16,
+  "p": 0.2,
+  "F": {
+   "2": 0.742964548990169,
+   "3": 0.7743913132056216,
+   "4": 0.7824925382587794
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 5.828670879282072e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d16_n2.npy",
+    "code_sha256": "39fb66d49dbe70d627a6e04811ce8bc08b7da64fd8611c50399888b771517d7d",
+    "encoder_second_eigenvalue": 3.924624672207648e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7350007543087859
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 7.083222897108499e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d16_n3.npy",
+    "code_sha256": "7b65e1a3347b6cac9f592b56d60633545d0f2c57f01a8b2b96d5e67aeba31117",
+    "encoder_second_eigenvalue": 4.544169573500809e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.772472062240748,
+    "certificate": "certificate_nuse_d16_n3.json",
+    "certified_lower_bound": 0.77439131320561,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.00047518448374583855,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d16_n4.npy",
+    "code_sha256": "d75c7d5b9e196fbe063d5e67e9525de52936c907db856397574b2b08ef0ac59e",
+    "encoder_second_eigenvalue": 2.1207685541164898e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.77439131320561,
+  "onset_recorded_before_fix": 3
+ },
+ "17": {
+  "d": 17,
+  "p": 0.1951941016011038,
+  "F": {
+   "2": 0.7450818556024882,
+   "3": 0.7768791806094388,
+   "4": 0.7849954577714721
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 1.4444001550373287e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d17_n2.npy",
+    "code_sha256": "e082bfaf72039217033ca606a36431b1e236d09144586a2a3e1961c67cbeddc2",
+    "encoder_second_eigenvalue": 1.7660444785801578e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 1.2156942119645464e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d17_n3.npy",
+    "code_sha256": "35aa3c76b99970bb3f636986c7ca4ecb3295e3f1b49c22d7a9795bfe1ce4bd06",
+    "encoder_second_eigenvalue": 4.736026421802969e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d17_n3.json",
+    "certified_lower_bound": 0.7768791806094315,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0006694657882433397,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d17_n4.npy",
+    "code_sha256": "a4114ba0ba87ac5dafca1ebe75c5ee864d44889a20c76d3edd8744f7afbfad32",
+    "encoder_second_eigenvalue": 3.949331545903956e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7768791806094315
+ },
+ "18": {
+  "d": 18,
+  "p": 0.1907435698305462,
+  "F": {
+   "2": 0.7471011045278989,
+   "3": 0.7792121855530613,
+   "4": 0.7873587197078545
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.2572078650640037e-09,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d18_n2.npy",
+    "code_sha256": "701a836a6f3f488aac2a8d5ad6148d3ff5f7af73cdde9ee71e104710df700855",
+    "encoder_second_eigenvalue": 1.9347808490541372e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 1.0291767438275201e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d18_n3.npy",
+    "code_sha256": "159426dcb82f3a4b0b31ff4f4aaeb2b4d2a7bc5a092727998b6104b8c906f704",
+    "encoder_second_eigenvalue": 1.2710296979212928e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d18_n3.json",
+    "certified_lower_bound": 0.7792121855530553,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0008039129771879594,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d18_n4.npy",
+    "code_sha256": "177be715530086f8b1039223dca4c01960863e885b0fa85b9fa2c0f80977cb70",
+    "encoder_second_eigenvalue": 3.000683352690317e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7792121855530553
+ },
+ "19": {
+  "d": 19,
+  "p": 0.18660549686337075,
+  "F": {
+   "2": 0.7490323642608763,
+   "3": 0.7814063385664284,
+   "4": 0.7895087986946595
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 3.630429290524262e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d19_n2.npy",
+    "code_sha256": "6b6dd1c34ff2d8448ee44810f5bcbab83da2d00bfd2ada399699486c7367edbb",
+    "encoder_second_eigenvalue": 8.82892227271965e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 1.432187701766452e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d19_n3.npy",
+    "code_sha256": "b3351d3ccd3c4010e417641caebcec10c30d482daa351dd7cace72faa1b5ddd4",
+    "encoder_second_eigenvalue": 2.5529416129757555e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d19_n3.json",
+    "certified_lower_bound": 0.7814063385664225,
+    "certified_exceeds_three_quarters": true
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0006102933736601424,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d19_n4.npy",
+    "code_sha256": "fde3bcadffd06236ac6ed04b3f33835e15b5b1a9d6971e1b31e88eaa2a812baa",
+    "encoder_second_eigenvalue": 2.896918736407843e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 3,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7814063385664225
+ },
+ "20": {
+  "d": 20,
+  "p": 0.1827439976315568,
+  "F": {
+   "2": 0.7508849257776461,
+   "3": 0.7834753897030983,
+   "4": 0.7918101417555321
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 1.4643841694805815e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d20_n2.npy",
+    "code_sha256": "4474fd01526642fb1c1064fd86658144e4080629c43b53fc2ee0e7f5fa4135f4",
+    "encoder_second_eigenvalue": 1.3629853455712728e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "certificate": "certificate_nuse_d20_n2.json",
+    "certified_lower_bound": 0.7508849257776447,
+    "certified_exceeds_three_quarters": true
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.353672812205332e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d20_n3.npy",
+    "code_sha256": "8d722329ebde3b98730c2edb9e76eeec0c76917f5f8f47253c64c1eee9876af8",
+    "encoder_second_eigenvalue": 2.035716874991102e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 0.0006512539924820038,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d20_n4.npy",
+    "code_sha256": "5653bdfea9dff6b0c8a387deff0c9414e0e64f04f4049c98046426b8bad37d74",
+    "encoder_second_eigenvalue": 2.750851696292925e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 2,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7508849257776447
+ },
+ "21": {
+  "d": 21,
+  "p": 0.179128784747792,
+  "F": {
+   "2": 0.7526656475120935,
+   "3": 0.7854312251686959,
+   "4": 0.7940021894974435
+  },
+  "entries": {
+   "2": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "CERTIFIED",
+    "seed_spread": 8.093525849517391e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d21_n2.npy",
+    "code_sha256": "2eefe09a6c18f8856faa8c48cc25573e796741ca4c1baf1870547cc3ec80077f",
+    "encoder_second_eigenvalue": 7.250209184258996e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7486751918204974,
+    "certificate": "certificate_nuse_d21_n2.json",
+    "certified_lower_bound": 0.7526656475120921,
+    "certified_exceeds_three_quarters": true
+   },
+   "3": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.2537527399890678e-14,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d21_n3.npy",
+    "code_sha256": "48068632cfe785b53d6dd8cc72abc42b1d3ac865c0a702e440db0bd85db0819a",
+    "encoder_second_eigenvalue": 4.784026685591329e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    },
+    "recorded_before_fix": 0.7842501085493693
+   },
+   "4": {
+    "search": "onset_vs_p.best (dense, every encoder; power see-saw)",
+    "class": "MEASURED-float",
+    "seed_spread": 2.9531932455029164e-13,
+    "restarts_per_seed": 6,
+    "steps": 200,
+    "polish_cap": 2000,
+    "code_file": "general_code_d21_n4.npy",
+    "code_sha256": "248c0d2c85226f880bffdc950e39a96f3dde578210f9f9afc39cee8569655000",
+    "encoder_second_eigenvalue": 2.3464706751387257e-16,
+    "seeds": [
+     5,
+     6,
+     7,
+     8
+    ],
+    "code_version": {
+     "git_head": "d7e75eacdc496340f5d1ed5950dc38b2051e3283",
+     "code_git_blobs": {
+      "experiments/superactivation/shield_family/phase_diagram.py": "6963230e30f2dff929cc6d8cc320c13449f80389",
+      "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+      "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+      "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+      "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+     },
+     "python": "3.14.3",
+     "numpy": "2.3.5"
+    }
+   }
+  },
+  "onset_upper_bound": 2,
+  "family": "general",
+  "onset_class": "CERTIFIED",
+  "onset_certified_lower_bound": 0.7526656475120921,
+  "onset_recorded_before_fix": 3
+ }
+}

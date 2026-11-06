@@ -1,0 +1,385 @@
+{
+ "kind": "PARTIAL-PLAN (every chunk a stopped run completed)",
+ "battery_per_chunk": 1,
+ "head": {
+  "tool": "tools/replay_epsilon_receipts.py",
+  "commit": "0a4ba9d8508b8a0a054d9a1c03706a8aa1e9dd33",
+  "repository": "present",
+  "uncommitted_changes_in_judged_files": true,
+  "sha256": {
+   "tools/replay_epsilon_receipts.py": "d2e48f4c05391f05d26615b42b922cee44f3b50b5093e278c8c66a16b88c87ec",
+   "src/oneq/matching_cert_epsilon.py": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8",
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/forgeries.py": "0283d4ca7c1298a0d4e2da05586cca412c304302c1229b68a454def38695bd1a"
+  },
+  "timestamp": "2026-11-05T18:24:26+00:00",
+  "python": "3.14.3",
+  "jobs": 2,
+  "sample": null,
+  "battery": 1,
+  "forgeries": 1,
+  "partial": true,
+  "seed": 20260914
+ },
+ "results": [
+  {
+   "config": "heldout_d7_X_r50",
+   "chunks": 10,
+   "complete_plan": false,
+   "nontrivial": 500,
+   "receipts_rechecked": 500,
+   "full": true,
+   "instance_sha256": "400f6760cbb0f177e413271595b87dab6d876a7f6bd56fa994be254628881ccd",
+   "battery": {
+    "boundary_attempts": 10,
+    "boundary_just_outside_refused": 10,
+    "boundary_just_inside_accepted": 10,
+    "substituted_graph_refused": 10,
+    "boundary_excess_over_eps_max_max": 1.0874872445556752e-15
+   },
+   "partial": true,
+   "eps_max": "1/1000000",
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11
+   ],
+   "status": {
+    "EPSILON_OPTIMAL": 500
+   },
+   "accepted": 500,
+   "largest_accepted_epsilon": "83990668023033219863/26051067372925099357603664756736",
+   "substituted_graph": {
+    "config": "fresh_sim_d5_r25",
+    "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 10,
+     "F_duplicated_edge:INVALID_INPUT": 10,
+     "I_mismatched_pair:INVALID_INPUT": 10,
+     "D_spurious_cycle:NOT_PROVEN": 10,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 10,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 10,
+     "M_doubled_edge:INVALID_INPUT": 10,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 10,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 10,
+     "N_nan_dual:INVALID_INPUT": 10,
+     "N_inf_dual:INVALID_INPUT": 10,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 10
+    },
+    "parity_adversary": {
+     "attempted": 10,
+     "accepted_by_parity_blind_check_epsilon": 10,
+     "accepted_by_parity_blind_verify_b": 10,
+     "accepted_by_both_parity_blind_copies": 10
+    }
+   }
+  },
+  {
+   "config": "heldout_d7_X_r10",
+   "chunks": 7,
+   "complete_plan": false,
+   "nontrivial": 350,
+   "receipts_rechecked": 350,
+   "full": true,
+   "instance_sha256": "8c5f738b12c24b9b3345afc3c3221ce9a018bbfd0dda31be8e0439900b3f463e",
+   "battery": {
+    "boundary_attempts": 7,
+    "boundary_just_outside_refused": 7,
+    "boundary_just_inside_accepted": 7,
+    "substituted_graph_refused": 7,
+    "boundary_excess_over_eps_max_max": 1.2251285582275287e-15
+   },
+   "partial": true,
+   "eps_max": "1/1000000",
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "status": {
+    "EPSILON_OPTIMAL": 309,
+    "EXACT_OPTIMAL": 41
+   },
+   "accepted": 350,
+   "largest_accepted_epsilon": "408616822124756593/3761423221902112770025353904128",
+   "substituted_graph": {
+    "config": "fresh_sim_d5_r25",
+    "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 7,
+     "F_duplicated_edge:INVALID_INPUT": 7,
+     "I_mismatched_pair:INVALID_INPUT": 7,
+     "D_spurious_cycle:NOT_PROVEN": 7,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 7,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 7,
+     "M_doubled_edge:INVALID_INPUT": 7,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 7,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 7,
+     "N_nan_dual:INVALID_INPUT": 7,
+     "N_inf_dual:INVALID_INPUT": 7,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 7
+    },
+    "parity_adversary": {
+     "attempted": 7,
+     "accepted_by_parity_blind_check_epsilon": 7,
+     "accepted_by_parity_blind_verify_b": 7,
+     "accepted_by_both_parity_blind_copies": 7
+    }
+   }
+  },
+  {
+   "config": "samedev_d7_X_r30",
+   "chunks": 7,
+   "complete_plan": false,
+   "nontrivial": 350,
+   "receipts_rechecked": 350,
+   "full": true,
+   "instance_sha256": "5c64e02d07509cd64bfbabd0e0b5c17f2a9f2f17171bbee6cf95200274495385",
+   "battery": {
+    "boundary_attempts": 7,
+    "boundary_just_outside_refused": 7,
+    "boundary_just_inside_accepted": 7,
+    "substituted_graph_refused": 7,
+    "boundary_excess_over_eps_max_max": 1.2760739448683807e-15
+   },
+   "partial": true,
+   "eps_max": "1/1000000",
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "status": {
+    "EPSILON_OPTIMAL": 349,
+    "EXACT_OPTIMAL": 1
+   },
+   "accepted": 350,
+   "largest_accepted_epsilon": "105157128663188905/94134162629298599455312838656",
+   "substituted_graph": {
+    "config": "fresh_sim_d5_r25",
+    "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 7,
+     "F_duplicated_edge:INVALID_INPUT": 7,
+     "I_mismatched_pair:INVALID_INPUT": 7,
+     "D_spurious_cycle:NOT_PROVEN": 7,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 7,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 7,
+     "M_doubled_edge:INVALID_INPUT": 7,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 7,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 7,
+     "N_nan_dual:INVALID_INPUT": 7,
+     "N_inf_dual:INVALID_INPUT": 7,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 7
+    },
+    "parity_adversary": {
+     "attempted": 7,
+     "accepted_by_parity_blind_check_epsilon": 7,
+     "accepted_by_parity_blind_verify_b": 7,
+     "accepted_by_both_parity_blind_copies": 7
+    }
+   }
+  },
+  {
+   "config": "heldout_d7_Z_r50",
+   "chunks": 6,
+   "complete_plan": false,
+   "nontrivial": 300,
+   "receipts_rechecked": 300,
+   "full": true,
+   "instance_sha256": "fb9b89703a1e27a4169158ddeac099ded2e3ed092ad97abccc45a2ffa7cf02db",
+   "battery": {
+    "boundary_attempts": 6,
+    "boundary_just_outside_refused": 6,
+    "boundary_just_inside_accepted": 6,
+    "substituted_graph_refused": 6,
+    "boundary_excess_over_eps_max_max": 1.2901323126226256e-15
+   },
+   "partial": true,
+   "eps_max": "1/1000000",
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "status": {
+    "EPSILON_OPTIMAL": 300
+   },
+   "accepted": 300,
+   "largest_accepted_epsilon": "89175500645543959116875/38516973792277733148445283700441088",
+   "substituted_graph": {
+    "config": "fresh_sim_d5_r25",
+    "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 6,
+     "F_duplicated_edge:INVALID_INPUT": 6,
+     "I_mismatched_pair:INVALID_INPUT": 6,
+     "D_spurious_cycle:NOT_PROVEN": 6,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 6,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 6,
+     "M_doubled_edge:INVALID_INPUT": 6,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 6,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 6,
+     "N_nan_dual:INVALID_INPUT": 6,
+     "N_inf_dual:INVALID_INPUT": 6,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 6
+    },
+    "parity_adversary": {
+     "attempted": 6,
+     "accepted_by_parity_blind_check_epsilon": 6,
+     "accepted_by_parity_blind_verify_b": 6,
+     "accepted_by_both_parity_blind_copies": 6
+    }
+   }
+  },
+  {
+   "config": "heldout_d7_Z_r10",
+   "chunks": 7,
+   "complete_plan": false,
+   "nontrivial": 350,
+   "receipts_rechecked": 350,
+   "full": true,
+   "instance_sha256": "dfd2e663fabd2bf2c0bcf16522e13112734ea9b90909c97bb759e172b9a69cf7",
+   "battery": {
+    "boundary_attempts": 7,
+    "boundary_just_outside_refused": 7,
+    "boundary_just_inside_accepted": 7,
+    "substituted_graph_refused": 7,
+    "boundary_excess_over_eps_max_max": 1.322850862608932e-15
+   },
+   "partial": true,
+   "eps_max": "1/1000000",
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "status": {
+    "EPSILON_OPTIMAL": 298,
+    "EXACT_OPTIMAL": 52
+   },
+   "accepted": 350,
+   "largest_accepted_epsilon": "439601284905222917/3554124539949372188817549688832",
+   "substituted_graph": {
+    "config": "fresh_sim_d5_r25",
+    "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 7,
+     "F_duplicated_edge:INVALID_INPUT": 7,
+     "I_mismatched_pair:INVALID_INPUT": 7,
+     "D_spurious_cycle:NOT_PROVEN": 7,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 7,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 7,
+     "M_doubled_edge:INVALID_INPUT": 7,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 7,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 7,
+     "N_nan_dual:INVALID_INPUT": 7,
+     "N_inf_dual:INVALID_INPUT": 7,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 7
+    },
+    "parity_adversary": {
+     "attempted": 7,
+     "accepted_by_parity_blind_check_epsilon": 7,
+     "accepted_by_parity_blind_verify_b": 7,
+     "accepted_by_both_parity_blind_copies": 7
+    }
+   }
+  },
+  {
+   "config": "samedev_d7_Z_r30",
+   "chunks": 6,
+   "complete_plan": false,
+   "nontrivial": 300,
+   "receipts_rechecked": 300,
+   "full": true,
+   "instance_sha256": "7500b5d6dbc648692a9b9e4fd1042e6a3de818fd9bb1625d40cf4d4c25e1557d",
+   "battery": {
+    "boundary_attempts": 6,
+    "boundary_just_outside_refused": 6,
+    "boundary_just_inside_accepted": 6,
+    "substituted_graph_refused": 6,
+    "boundary_excess_over_eps_max_max": 1.2720338410314488e-15
+   },
+   "partial": true,
+   "eps_max": "1/1000000",
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "status": {
+    "EPSILON_OPTIMAL": 298,
+    "EXACT_OPTIMAL": 2
+   },
+   "accepted": 300,
+   "largest_accepted_epsilon": "926060024409794851543/1421577597661600888491514664058880",
+   "substituted_graph": {
+    "config": "fresh_sim_d5_r25",
+    "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 6,
+     "F_duplicated_edge:INVALID_INPUT": 6,
+     "I_mismatched_pair:INVALID_INPUT": 6,
+     "D_spurious_cycle:NOT_PROVEN": 6,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 6,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 6,
+     "M_doubled_edge:INVALID_INPUT": 6,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 6,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 6,
+     "N_nan_dual:INVALID_INPUT": 6,
+     "N_inf_dual:INVALID_INPUT": 6,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 6
+    },
+    "parity_adversary": {
+     "attempted": 6,
+     "accepted_by_parity_blind_check_epsilon": 6,
+     "accepted_by_parity_blind_verify_b": 6,
+     "accepted_by_both_parity_blind_copies": 6
+    }
+   }
+  }
+ ]
+}

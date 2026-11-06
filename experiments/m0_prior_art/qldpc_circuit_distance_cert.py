@@ -167,11 +167,17 @@ def main() -> int:
         r = check_qldpc_bnb(checks=aug, weights=wx, syndrome=syn,
                             error_support=(), tree=tree,
                             bound_only_threshold=T)
-        if not r.accepted:
+        # bound-only acceptance is LOWER_BOUND_PROVEN, never an optimum
+        # (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md section 4); the bound used is
+        # the checker's own lattice-rounded one, not this script's T + 1
+        if not (r.accepted and r.checks.get("status") == "LOWER_BOUND_PROVEN"):
             print(f"  T={T}: checker refused ({r.reason[:60]}) -- "
                   f"stopping")
             break
-        lower = T + 1
+        lb = r.checks["lower_bound"]
+        if lb["den"] != 1:
+            raise SystemExit(f"non-integer lattice bound {lb} on integer weights")
+        lower = lb["num"]
         tree_used = (T, nodes, round(dt, 1))
         print(f"  T={T}: PROVEN min > {T} in exact arithmetic "
               f"({nodes} nodes, {dt:.0f}s) => d_circ >= {T + 1}")

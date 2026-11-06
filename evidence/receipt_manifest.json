@@ -51,7 +51,7 @@
   "evidence/per_shot/stress_p05.jsonl": "c3f14093866b84d42bf950615f0487f63e849bd3c3aa654592bb97abe86a2e3c",
   "evidence/per_shot/uniform_p02.jsonl": "806e0eb1fc81641d58b44af42c330149d3286a4a25be3f827dd17dc377962da7",
   "evidence/qldpc_dev_refsched_trees.json": "3646e1be6217e30bf201517014f7f2f585a01a06265d6d6612d76e25dca81e00",
-  "evidence/qldpc_heldout_addendum.json": "13866f22f5debf4dedb7e9b6b068487aaeedef4909f447034cbbe91a20f6aed8",
+  "evidence/qldpc_heldout_addendum.json": "e6e90398c63992e3efc1f5fb53ee1017d80c79ffb6de031745b880417f0c3cef",
   "evidence/qldpc_heldout_flat_certs.json": "c78b7e0dd4136bf37db9f841afb4f9e04d53ff49b309cc247af3aaf7c477797e",
   "evidence/weights/bb_refsched_weights.json": "95bc08305652fd06b83c65fdd42a59eb85cf84d6bf07e27ff82db01b47094422",
   "evidence/weights/heldout_bb_refsched_weights.json": "95bc08305652fd06b83c65fdd42a59eb85cf84d6bf07e27ff82db01b47094422",

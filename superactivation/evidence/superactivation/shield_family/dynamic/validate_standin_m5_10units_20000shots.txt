@@ -1,0 +1,13 @@
+kept_kept__s0_ZIIII__b0__Yp__f00             ideal 2.000  engine stand-in 1.8177  Aer real dynamic 1.8261+-0.0040  diff -0.0084 | Aer static (no routing) 1.8066
+kept_erased__s0_ZYIIX__b0__Xp__f00           ideal 2.000  engine stand-in 1.9570  Aer real dynamic 1.9591+-0.0020  diff -0.0021 | Aer static (no routing) 1.9465
+kept_kept__s0_YXXIY__b0__Yp__f00             ideal 2.000  engine stand-in 1.8274  Aer real dynamic 1.8325+-0.0039  diff -0.0051 | Aer static (no routing) 1.8250
+kept_erased__s0_IIXXZ__b0__Xm__f00           ideal 2.000  engine stand-in 1.9649  Aer real dynamic 1.9635+-0.0019  diff +0.0014 | Aer static (no routing) 1.9489
+kept_kept__s0_XXYYI__b0__Yp__f00             ideal 2.000  engine stand-in 1.8339  Aer real dynamic 1.8318+-0.0039  diff +0.0021 | Aer static (no routing) 1.8319
+kept_erased__s0_ZZZXX__b0__Xm__f00           ideal 2.000  engine stand-in 1.9649  Aer real dynamic 1.9635+-0.0019  diff +0.0014 | Aer static (no routing) 1.9471
+kept_kept__s0_YYZXZ__b0__Zp__f00             ideal 2.000  engine stand-in 1.8326  Aer real dynamic 1.8434+-0.0038  diff -0.0108 | Aer static (no routing) 1.8370
+kept_erased__s0_IZZXI__b0__Zm__f00           ideal 2.000  engine stand-in 1.8402  Aer real dynamic 1.8432+-0.0038  diff -0.0030 | Aer static (no routing) 1.8305
+kept_kept__s0_IZYYI__b0__Xp__f00             ideal 2.000  engine stand-in 1.9583  Aer real dynamic 1.9591+-0.0020  diff -0.0008 | Aer static (no routing) 1.9452
+kept_erased__s0_IZXIX__b0__Yp__f00           ideal 2.000  engine stand-in 1.8362  Aer real dynamic 1.8353+-0.0039  diff +0.0009 | Aer static (no routing) 1.8293
+
+mean (stand-in - Aer dynamic) = -0.0024 +- 0.0016 (Aer shots AND engine trajectories)   [same model: should be ~0; idle OFF on both sides, so the read-out hold tau is NOT tested here]
+mean (Aer dynamic - Aer static, no routing) = +0.0110   [the measure-and-correct trade before routing: read-out error vs CZ error]

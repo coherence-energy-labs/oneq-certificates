@@ -1,0 +1,21 @@
+{
+ "sdp": "F_PPT(N, 2), Leung-Matthews PPT-assisted code fidelity, dense, flag-block-diagonal",
+ "sanity": {
+  "identity": 0.9999999998889533,
+  "entanglement_breaking": 0.49999999941525397
+ },
+ "rows": [
+  {
+   "n": 1,
+   "F_PPT_erasure": 0.7499999981809178,
+   "F_PPT_flagged": 0.7499999975087579,
+   "unassisted_lower": 0.6464466094
+  },
+  {
+   "n": 2,
+   "F_PPT_erasure": 0.8749999991546283,
+   "F_PPT_flagged": 0.8749999895696158,
+   "unassisted_lower": 0.6870387847
+  }
+ ]
+}

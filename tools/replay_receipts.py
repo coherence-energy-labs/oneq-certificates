@@ -13,8 +13,10 @@ instance the result is about. So this command:
   4. re-derives each receipt's syndrome, candidate and proof hash, and its
      agreement with the per-shot record the manifest binds it to;
   5. checks every flat receipt with the production exact checker AND the
-     pinned independently written reference checker, and every tree with the
-     production tree checker AND the separately written tree checker B;
+     pinned, separately written reference checker, and every tree with the
+     production tree checker AND the separately written tree checker B (same
+     author, same language: separate implementations, not independent
+     third-party ones -- paper 2's vocabulary);
   6. reports COMPLETE only when every expected cohort count is met exactly.
 
 It reads stored instances and weights; it rebuilds nothing, and imports no
@@ -40,7 +42,15 @@ sys.path.insert(0, str(ROOT / "src"))
 
 #: The manifest this release's claims rest on. Changing the corpus means
 #: rebuilding the manifest AND changing this pin in the same, reviewed commit.
-PINNED_MANIFEST_SHA256 = "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4"
+#: PREVIOUS PINS (2026-11-03): 23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4, until the
+#: input-domain contract (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md) moved tree checker B's pin inside the bound
+#: evidence/qldpc_heldout_addendum.json; the receipts, counts and every other bound file are unchanged, and all
+#: 2,042 receipts were re-verified under the new pin (evidence/qldpc_receipt_reverification_2026-11-03.json).
+#: aca2030645e639c30e2cf37b83a0e072d87fc45fd748a695b1fe16fc654bd6c9, until the final referee's MAJOR 2 (a facet with
+#: multiplier 0 is validated before it is skipped) moved tree checker B's pin in the addendum again; only that one
+#: bound file's hash changed, and all 2,042 receipts were re-verified
+#: (evidence/qldpc_receipt_reverification_2026-11-03b.json).
+PINNED_MANIFEST_SHA256 = "07138cde8b8799e2ff65b77c2bba234ffe6190b92a60c355bfdd8b648f55b449"
 REFERENCE_CHECKER = ROOT / "tools" / "external" / "exact_lp_certificate_reference.py"
 TREE_CHECKER_B = ROOT / "tools" / "external" / "tree_checker_b.py"
 
@@ -225,7 +235,7 @@ def main() -> int:
     label = f"SUBSET ({a.subset})" if a.subset else "COMPLETE"
     if ok:
         total = sum(passed.values())
-        print(f"{label} REPLAY PASSED: {total} receipts, each checked by two independently "
+        print(f"{label} REPLAY PASSED: {total} receipts, each checked by two separately "
               f"written checkers against the pinned instance -- {passed}")
         return 0
     print(f"{label} REPLAY FAILED ({len(fails)} problem(s))")

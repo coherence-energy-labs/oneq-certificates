@@ -23,7 +23,6 @@ import pathlib
 import subprocess
 import sys
 import tempfile
-from concurrent.futures import ProcessPoolExecutor
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "experiments" / "m0_prior_art"))
@@ -57,20 +56,35 @@ def _job(job):
     return job, r, _loaded()
 
 
+def _tree_sha(paths):
+    return {p: hashlib.sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest() for p in paths}
+
+
 def main() -> int:
+    global OUT
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=3)
+    ap.add_argument("--tag", default=None, help="write producer_identity_willow_<tag>.json beside the cited record")
+    ap.add_argument("--allow-uncommitted", action="store_true",
+                    help="run on uncommitted producer bytes; the record says so, and the paper build accepts it only "
+                         "once exactly those bytes are committed (paper/tools/make_numbers.py judged_by_this_tree)")
     a = ap.parse_args()
+    if a.tag:
+        OUT = ROOT / "evidence" / f"producer_identity_willow_{a.tag}.json"
     import epsilon_rerun as er
 
     def git(*args: str) -> str:
         return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
 
-    # the src/oneq and experiment trees must be clean for the run to be attributed to a commit; the modules actually
-    # loaded are pinned afterwards, from the workers themselves
+    # the src/oneq and experiment trees must be clean for the run to be attributed to a commit (or the run says it was
+    # not); the modules actually loaded are pinned afterwards, from the workers themselves. On a box several lanes
+    # share, HEAD can move for files the producer never loads, so what must not change during the run is the bytes of
+    # the modules it loaded, checked against a snapshot taken before it started.
     dirty = git("status", "--porcelain", "--", "src/oneq", "experiments/m0_prior_art")
-    if dirty:
+    if dirty and not a.allow_uncommitted:
         raise SystemExit(f"producer sources have uncommitted changes; refusing to attribute a result to a commit:\n{dirty}")
+    before = _tree_sha(sorted(p.relative_to(ROOT).as_posix() for d in ("src/oneq", "experiments/m0_prior_art")
+                              for p in (ROOT / d).rglob("*.py")))
     commit = git("rev-parse", "HEAD")
     index = {}
     for name in DEV + HELD + FRESH:
@@ -78,14 +92,27 @@ def main() -> int:
         index[name] = {r["seed"]: r["receipts_sha256"] for r in rows}
     jobs = [(name, seed) for name in DEV + HELD + FRESH for seed in sorted(index[name])]
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as scratch:
-        with ProcessPoolExecutor(a.workers, initializer=_worker_init, initargs=(scratch,)) as ex:
-            got = list(ex.map(_job, jobs, chunksize=1))
+        # a fresh worker every 4 chunks, as epsilon_rerun.run recycles its Willow workers (base-ladder workers grew to
+        # ~1.6 GB private over tens of chunks): bounded memory, and the same per-process history the receipts had.
+        # multiprocessing.Pool, the pool epsilon_rerun itself uses: on this box (CPython 3.14.3, Windows)
+        # ProcessPoolExecutor(max_tasks_per_child=4) left the parent waiting with no live worker (2026-11-03)
+        import multiprocessing as mp
+        got = []
+        with mp.Pool(a.workers, initializer=_worker_init, initargs=(scratch,), maxtasksperchild=4) as pool:
+            for k, item in enumerate(pool.imap(_job, jobs, chunksize=1), 1):
+                got.append(item)
+                if k % 20 == 0 or k == len(jobs):
+                    print(f"  {k}/{len(jobs)} chunks re-run", flush=True)
     res = [(job, r) for job, r, _mods in got]
     modules = sorted({m for _j, _r, mods in got for m in mods})
-    if git("status", "--porcelain", "--", *modules) or git("rev-parse", "HEAD") != commit:
+    after = _tree_sha(modules)
+    if any(before.get(m) != h for m, h in after.items()):
+        raise SystemExit("a loaded module changed during the run")
+    if not a.allow_uncommitted and (git("status", "--porcelain", "--", *modules) or git("rev-parse", "HEAD") != commit):
         raise SystemExit("a loaded module changed, or HEAD moved, during the run")
     head = {"commit": commit, "modules": "every repository module the workers loaded",
-            "sha256": {m: hashlib.sha256((ROOT / m).read_bytes().replace(b"\r\n", b"\n")).hexdigest() for m in modules}}
+            "uncommitted_changes_in_judged_files": bool(git("status", "--porcelain", "--", *modules)),
+            "sha256": after}
     out = {"schema": "oneq-producer-identity-willow/2", "head": head, "configs": {}}
     bad = 0
     for name in DEV + HELD + FRESH:

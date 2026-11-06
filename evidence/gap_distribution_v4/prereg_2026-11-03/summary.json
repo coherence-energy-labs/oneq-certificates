@@ -1,0 +1,818 @@
+{
+ "schema": "oneq-gap-distribution/4",
+ "head": {
+  "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+  "uncommitted_changes": false,
+  "sha256": {
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "experiments/m0_prior_art/gap_distribution.py": "9338073a78c7163e770547d989f614fb1013cf0ac3e0246f30fe147164420d78"
+  }
+ },
+ "argv": [
+  "--seed",
+  "4108100",
+  "--shots",
+  "2000",
+  "--tag",
+  "prereg_2026-11-03"
+ ],
+ "environment": {
+  "python": "3.14.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "stim": "1.16.0",
+  "pymatching": "2.4.0",
+  "ldpc": "2.4.1",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "beliefmatching": "0.2.0"
+ },
+ "eps_max": "1/1000000",
+ "rows": [
+  {
+   "distance": 3,
+   "rounds": 3,
+   "p": 0.005,
+   "seed": 4108103,
+   "shots": 2000,
+   "nontrivial": 1159,
+   "graph_edges": 78,
+   "component_columns": 556,
+   "merged_weight_max_relative_difference": 3.01956265815103e-16,
+   "reference": {
+    "epsilon_accepted": 1159,
+    "epsilon_status": {
+     "EXACT_OPTIMAL": 949,
+     "EPSILON_OPTIMAL": 210
+    },
+    "exact_checker_accepted": 1154
+   },
+   "bposd_settings": {
+    "bposd_merged": {
+     "ms_scaling_factor": "0.625",
+     "bp_method": "minimum_sum",
+     "schedule": "parallel",
+     "osd_method": "OSD_CS",
+     "osd_order": "5",
+     "max_iter": "30",
+     "columns": 78
+    },
+    "bposd_component": {
+     "ms_scaling_factor": "1.0",
+     "bp_method": "minimum_sum",
+     "schedule": "parallel",
+     "osd_method": "OSD_CS",
+     "osd_order": "5",
+     "max_iter": "30",
+     "columns": 556
+    }
+   },
+   "seconds": 8.842404100112617,
+   "per_shot": "evidence/gap_distribution_v4/prereg_2026-11-03/per_shot_d3.jsonl.gz",
+   "per_shot_sha256": "dad55d9bb8c6457aad3d1dedb5ebb872b03c7d6dc3c0cdd986c7ee0128ce9c5e",
+   "decoders": {
+    "bposd_merged": {
+     "nontrivial": 1159,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1159,
+      "reference_shots": 1159,
+      "proven_exact_hit": 945,
+      "possible_exact_hit": 1153,
+      "proven_eps_optimal": 1153,
+      "proven_miss": 6,
+      "proven_miss_beyond_eps": 6,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.8153580672993961,
+       0.994823123382226
+      ],
+      "eps_optimal_rate": 0.994823123382226,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.9887664060050715,
+        0.9980978792843267
+       ],
+       "proven_exact_hit": [
+        0.7917982516232869,
+        0.8373049233313974
+       ],
+       "possible_exact_hit": [
+        0.9887664060050715,
+        0.9980978792843267
+       ],
+       "proven_miss_beyond_eps": [
+        0.0019021207156732834,
+        0.011233593994928497
+       ]
+      },
+      "gap_lo": {
+       "n": 1159,
+       "mean": 0.0002144654970116728,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 0.0,
+       "max": 0.0414275851727548
+      },
+      "gap_hi": {
+       "n": 1159,
+       "mean": 0.00021446549701183715,
+       "median": 0.0,
+       "p90": 6.63873991941634e-16,
+       "p99": 2.943578468172249e-15,
+       "max": 0.041427585172757034
+      }
+     },
+     "exact_reference": {
+      "n": 1154,
+      "reference_shots": 1154,
+      "exact_hit": 1148,
+      "hit_rate": 0.9948006932409013,
+      "clopper_pearson_95": [
+       0.9887178826598367,
+       0.9980896278376749
+      ],
+      "gap": {
+       "n": 1154,
+       "mean": 0.00021539472360184472,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 0.0,
+       "max": 0.0414275851727548
+      }
+     },
+     "shots_with_cancelled_copies": 0
+    },
+    "bposd_component": {
+     "nontrivial": 1159,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1159,
+      "reference_shots": 1159,
+      "proven_exact_hit": 866,
+      "possible_exact_hit": 1058,
+      "proven_eps_optimal": 1058,
+      "proven_miss": 101,
+      "proven_miss_beyond_eps": 101,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.7471958584987057,
+       0.9128559102674719
+      ],
+      "eps_optimal_rate": 0.9128559102674719,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.8951198875412363,
+        0.9284610506433535
+       ],
+       "proven_exact_hit": [
+        0.7211349738080519,
+        0.771995724988934
+       ],
+       "possible_exact_hit": [
+        0.8951198875412363,
+        0.9284610506433535
+       ],
+       "proven_miss_beyond_eps": [
+        0.07153894935664648,
+        0.10488011245876376
+       ]
+      },
+      "gap_lo": {
+       "n": 1159,
+       "mean": 0.15723252005414,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 2.6345504279481173,
+       "max": 11.827391245082834
+      },
+      "gap_hi": {
+       "n": 1159,
+       "mean": 0.15723252005414018,
+       "median": 0.0,
+       "p90": 1.9930341011271024e-15,
+       "p99": 2.6345504279481173,
+       "max": 11.827391245082834
+      }
+     },
+     "exact_reference": {
+      "n": 1154,
+      "reference_shots": 1154,
+      "exact_hit": 1054,
+      "hit_rate": 0.9133448873483535,
+      "clopper_pearson_95": [
+       0.8956070394694425,
+       0.9289397645091517
+      ],
+      "gap": {
+       "n": 1154,
+       "mean": 0.15706277040258046,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 2.6345504279481173,
+       "max": 11.827391245082834
+      }
+     },
+     "shots_with_cancelled_copies": 188
+    },
+    "belief_matching": {
+     "nontrivial": 1159,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1159,
+      "reference_shots": 1159,
+      "proven_exact_hit": 910,
+      "possible_exact_hit": 1104,
+      "proven_eps_optimal": 1104,
+      "proven_miss": 55,
+      "proven_miss_beyond_eps": 55,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.7851596203623814,
+       0.9525452976704055
+      ],
+      "eps_optimal_rate": 0.9525452976704055,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.9386762721423241,
+        0.9640536624433527
+       ],
+       "proven_exact_hit": [
+        0.7603741132318682,
+        0.808488592002373
+       ],
+       "possible_exact_hit": [
+        0.9386762721423241,
+        0.9640536624433527
+       ],
+       "proven_miss_beyond_eps": [
+        0.03594633755664739,
+        0.06132372785767595
+       ]
+      },
+      "gap_lo": {
+       "n": 1159,
+       "mean": 0.07974590711280724,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 2.8048764502373533,
+       "max": 6.869693353452029
+      },
+      "gap_hi": {
+       "n": 1159,
+       "mean": 0.07974590711280741,
+       "median": 0.0,
+       "p90": 8.881784197001252e-16,
+       "p99": 2.8048764502373533,
+       "max": 6.869693353452029
+      }
+     },
+     "exact_reference": {
+      "n": 1154,
+      "reference_shots": 1154,
+      "exact_hit": 1099,
+      "hit_rate": 0.9523396880415944,
+      "clopper_pearson_95": [
+       0.9384125217523162,
+       0.9638970445265843
+      ],
+      "gap": {
+       "n": 1154,
+       "mean": 0.08009142664102564,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 2.8048764502373533,
+       "max": 6.869693353452029
+      }
+     },
+     "shots_with_cancelled_copies": 0
+    }
+   }
+  },
+  {
+   "distance": 5,
+   "rounds": 5,
+   "p": 0.005,
+   "seed": 4108105,
+   "shots": 2000,
+   "nontrivial": 1979,
+   "graph_edges": 502,
+   "component_columns": 3706,
+   "merged_weight_max_relative_difference": 5.101430601912953e-16,
+   "reference": {
+    "epsilon_accepted": 1978,
+    "epsilon_status": {
+     "EPSILON_OPTIMAL": 898,
+     "EXACT_OPTIMAL": 1080,
+     "NOT_PROVEN": 1
+    },
+    "exact_checker_accepted": 1918
+   },
+   "bposd_settings": {
+    "bposd_merged": {
+     "ms_scaling_factor": "0.625",
+     "bp_method": "minimum_sum",
+     "schedule": "parallel",
+     "osd_method": "OSD_CS",
+     "osd_order": "5",
+     "max_iter": "30",
+     "columns": 502
+    },
+    "bposd_component": {
+     "ms_scaling_factor": "1.0",
+     "bp_method": "minimum_sum",
+     "schedule": "parallel",
+     "osd_method": "OSD_CS",
+     "osd_order": "5",
+     "max_iter": "30",
+     "columns": 3706
+    }
+   },
+   "seconds": 55.98896530014463,
+   "per_shot": "evidence/gap_distribution_v4/prereg_2026-11-03/per_shot_d5.jsonl.gz",
+   "per_shot_sha256": "d3f35939a020c2d5fe75a8dd890abc6fa9bc92755fa6853b4e95b6f20250b87f",
+   "decoders": {
+    "bposd_merged": {
+     "nontrivial": 1979,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1978,
+      "reference_shots": 1978,
+      "proven_exact_hit": 1070,
+      "possible_exact_hit": 1953,
+      "proven_eps_optimal": 1963,
+      "proven_miss": 25,
+      "proven_miss_beyond_eps": 15,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.5409504550050556,
+       0.987360970677452
+      ],
+      "eps_optimal_rate": 0.9924165824064712,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.9875231055374466,
+        0.995749587910015
+       ],
+       "proven_exact_hit": [
+        0.5186900789072115,
+        0.5630892590927923
+       ],
+       "possible_exact_hit": [
+        0.9813985021411794,
+        0.9918044404512182
+       ],
+       "proven_miss_beyond_eps": [
+        0.00425041208998495,
+        0.012476894462553425
+       ]
+      },
+      "gap_lo": {
+       "n": 1978,
+       "mean": 0.004224524900365912,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 8.881784197001252e-16,
+       "max": 3.1533572095438043
+      },
+      "gap_hi": {
+       "n": 1978,
+       "mean": 0.00422452490036726,
+       "median": 0.0,
+       "p90": 4.362276019547352e-15,
+       "p99": 1.424974826908068e-14,
+       "max": 3.1533572095438043
+      }
+     },
+     "exact_reference": {
+      "n": 1918,
+      "reference_shots": 1918,
+      "exact_hit": 1898,
+      "hit_rate": 0.9895724713242962,
+      "clopper_pearson_95": [
+       0.9839412654410674,
+       0.9936192869430321
+      ],
+      "gap": {
+       "n": 1918,
+       "mean": 0.003468763291315569,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 7.371880883510393e-16,
+       "max": 3.1533572095438043
+      }
+     },
+     "shots_with_cancelled_copies": 0
+    },
+    "bposd_component": {
+     "nontrivial": 1979,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1978,
+      "reference_shots": 1978,
+      "proven_exact_hit": 950,
+      "possible_exact_hit": 1680,
+      "proven_eps_optimal": 1689,
+      "proven_miss": 298,
+      "proven_miss_beyond_eps": 289,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.48028311425682507,
+       0.8493427704752275
+      ],
+      "eps_optimal_rate": 0.8538928210313448,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.8375504728926382,
+        0.8691781604508585
+       ],
+       "proven_exact_hit": [
+        0.4580559756394826,
+        0.5025687853009642
+       ],
+       "possible_exact_hit": [
+        0.8328093206909747,
+        0.8648330732379514
+       ],
+       "proven_miss_beyond_eps": [
+        0.1308218395491415,
+        0.1624495271073618
+       ]
+      },
+      "gap_lo": {
+       "n": 1978,
+       "mean": 0.14814551884353072,
+       "median": 0.0,
+       "p90": 0.4714901533763836,
+       "p99": 1.9577963487639307,
+       "max": 6.5530638521739
+      },
+      "gap_hi": {
+       "n": 1978,
+       "mean": 0.14814551884353208,
+       "median": 4.440892098500626e-16,
+       "p90": 0.47149015337638456,
+       "p99": 1.957796348763934,
+       "max": 6.5530638521739
+      }
+     },
+     "exact_reference": {
+      "n": 1918,
+      "reference_shots": 1918,
+      "exact_hit": 1635,
+      "hit_rate": 0.8524504692387904,
+      "clopper_pearson_95": [
+       0.835780117988586,
+       0.8680349573182236
+      ],
+      "gap": {
+       "n": 1918,
+       "mean": 0.14652190505129384,
+       "median": 0.0,
+       "p90": 0.471400408933873,
+       "p99": 1.9423612341995502,
+       "max": 6.5530638521739
+      }
+     },
+     "shots_with_cancelled_copies": 417
+    },
+    "belief_matching": {
+     "nontrivial": 1979,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1978,
+      "reference_shots": 1978,
+      "proven_exact_hit": 963,
+      "possible_exact_hit": 1688,
+      "proven_eps_optimal": 1694,
+      "proven_miss": 290,
+      "proven_miss_beyond_eps": 284,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.48685540950455003,
+       0.8533872598584429
+      ],
+      "eps_optimal_rate": 0.8564206268958544,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.8401866608335185,
+        0.8715898740087354
+       ],
+       "proven_exact_hit": [
+        0.4646090042241099,
+        0.5091408361530829
+       ],
+       "possible_exact_hit": [
+        0.8370234272780226,
+        0.8686956249515954
+       ],
+       "proven_miss_beyond_eps": [
+        0.12841012599126456,
+        0.15981333916648152
+       ]
+      },
+      "gap_lo": {
+       "n": 1978,
+       "mean": 0.20030382429782295,
+       "median": 0.0,
+       "p90": 0.3699536340332162,
+       "p99": 3.7068464437171444,
+       "max": 16.871804028332065
+      },
+      "gap_hi": {
+       "n": 1978,
+       "mean": 0.20030382429782428,
+       "median": 3.8485448186464483e-16,
+       "p90": 0.36995363403322395,
+       "p99": 3.7068464437171476,
+       "max": 16.87180402833207
+      }
+     },
+     "exact_reference": {
+      "n": 1918,
+      "reference_shots": 1918,
+      "exact_hit": 1644,
+      "hit_rate": 0.8571428571428571,
+      "clopper_pearson_95": [
+       0.8406762668933155,
+       0.8725088167999324
+      ],
+      "gap": {
+       "n": 1918,
+       "mean": 0.19177599665079423,
+       "median": 0.0,
+       "p90": 0.3582931689797775,
+       "p99": 3.6987491930136116,
+       "max": 11.510271061061484
+      }
+     },
+     "shots_with_cancelled_copies": 0
+    }
+   }
+  },
+  {
+   "distance": 7,
+   "rounds": 7,
+   "p": 0.005,
+   "seed": 4108107,
+   "shots": 2000,
+   "nontrivial": 2000,
+   "graph_edges": 1558,
+   "component_columns": 11974,
+   "merged_weight_max_relative_difference": 5.070589343732116e-16,
+   "reference": {
+    "epsilon_accepted": 1996,
+    "epsilon_status": {
+     "EPSILON_OPTIMAL": 1878,
+     "EXACT_OPTIMAL": 118,
+     "NOT_PROVEN": 4
+    },
+    "exact_checker_accepted": 1282
+   },
+   "bposd_settings": {
+    "bposd_merged": {
+     "ms_scaling_factor": "0.625",
+     "bp_method": "minimum_sum",
+     "schedule": "parallel",
+     "osd_method": "OSD_CS",
+     "osd_order": "5",
+     "max_iter": "30",
+     "columns": 1558
+    },
+    "bposd_component": {
+     "ms_scaling_factor": "1.0",
+     "bp_method": "minimum_sum",
+     "schedule": "parallel",
+     "osd_method": "OSD_CS",
+     "osd_order": "5",
+     "max_iter": "30",
+     "columns": 11974
+    }
+   },
+   "seconds": 619.9104695001151,
+   "per_shot": "evidence/gap_distribution_v4/prereg_2026-11-03/per_shot_d7.jsonl.gz",
+   "per_shot_sha256": "e9b34b5211bd7bd4ca6a721d49a0f0583171d8c67b2f5d47fa0138b9d14b3375",
+   "decoders": {
+    "bposd_merged": {
+     "nontrivial": 2000,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1996,
+      "reference_shots": 1996,
+      "proven_exact_hit": 117,
+      "possible_exact_hit": 1886,
+      "proven_eps_optimal": 1910,
+      "proven_miss": 110,
+      "proven_miss_beyond_eps": 86,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.05861723446893788,
+       0.9448897795591182
+      ],
+      "eps_optimal_rate": 0.9569138276553106,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.9470602481845515,
+        0.9653946977311098
+       ],
+       "proven_exact_hit": [
+        0.04871606422090249,
+        0.06983819883016111
+       ],
+       "possible_exact_hit": [
+        0.9339567001467697,
+        0.9544913936343707
+       ],
+       "proven_miss_beyond_eps": [
+        0.034605302268890255,
+        0.052939751815448494
+       ]
+      },
+      "gap_lo": {
+       "n": 1996,
+       "mean": 0.033122060378794935,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 1.0349154827991685,
+       "max": 4.0176999358871255
+      },
+      "gap_hi": {
+       "n": 1996,
+       "mean": 0.03312206037880581,
+       "median": 1.011075404260225e-14,
+       "p90": 2.1207069389491905e-14,
+       "p99": 1.0349154827991853,
+       "max": 4.017699935887152
+      }
+     },
+     "exact_reference": {
+      "n": 1282,
+      "reference_shots": 1282,
+      "exact_hit": 1236,
+      "hit_rate": 0.9641185647425897,
+      "clopper_pearson_95": [
+       0.9524272090737335,
+       0.9736128305794898
+      ],
+      "gap": {
+       "n": 1282,
+       "mean": 0.016519462220799558,
+       "median": 0.0,
+       "p90": 0.0,
+       "p99": 0.6356511890552742,
+       "max": 2.7622629118193855
+      }
+     },
+     "shots_with_cancelled_copies": 0
+    },
+    "bposd_component": {
+     "nontrivial": 2000,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1996,
+      "reference_shots": 1996,
+      "proven_exact_hit": 94,
+      "possible_exact_hit": 1569,
+      "proven_eps_optimal": 1586,
+      "proven_miss": 427,
+      "proven_miss_beyond_eps": 410,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.047094188376753505,
+       0.7860721442885772
+      ],
+      "eps_optimal_rate": 0.7945891783567134,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.7761883650984025,
+        0.812120382215025
+       ],
+       "proven_exact_hit": [
+        0.03822181856217372,
+        0.057325266510138105
+       ],
+       "possible_exact_hit": [
+        0.7674178840634335,
+        0.8038821633657838
+       ],
+       "proven_miss_beyond_eps": [
+        0.187879617784975,
+        0.2238116349015975
+       ]
+      },
+      "gap_lo": {
+       "n": 1996,
+       "mean": 0.18487917937341336,
+       "median": 0.0,
+       "p90": 0.4680765079160094,
+       "p99": 2.6184398341598203,
+       "max": 12.384265666218292
+      },
+      "gap_hi": {
+       "n": 1996,
+       "mean": 0.18487917937342424,
+       "median": 1.170908772467264e-14,
+       "p90": 0.4680765079160234,
+       "p99": 2.618439834159842,
+       "max": 12.384265666218324
+      }
+     },
+     "exact_reference": {
+      "n": 1282,
+      "reference_shots": 1282,
+      "exact_hit": 1053,
+      "hit_rate": 0.8213728549141965,
+      "clopper_pearson_95": [
+       0.799286053298923,
+       0.8419747980883981
+      ],
+      "gap": {
+       "n": 1282,
+       "mean": 0.12328515425179044,
+       "median": 0.0,
+       "p90": 0.32275750462167435,
+       "p99": 1.7689578209530916,
+       "max": 7.685596515880116
+      }
+     },
+     "shots_with_cancelled_copies": 126
+    },
+    "belief_matching": {
+     "nontrivial": 2000,
+     "syndrome_inconsistent": 0,
+     "epsilon_reference": {
+      "n": 1996,
+      "reference_shots": 1996,
+      "proven_exact_hit": 82,
+      "possible_exact_hit": 1229,
+      "proven_eps_optimal": 1243,
+      "proven_miss": 767,
+      "proven_miss_beyond_eps": 753,
+      "undecided_by_eps": 0,
+      "hit_rate_interval": [
+       0.041082164328657314,
+       0.6157314629258517
+      ],
+      "eps_optimal_rate": 0.622745490981964,
+      "clopper_pearson_95": {
+       "proven_eps_optimal": [
+        0.6010634039725851,
+        0.6440663344082826
+       ],
+       "proven_exact_hit": [
+        0.032804788558625245,
+        0.05073937081533771
+       ],
+       "possible_exact_hit": [
+        0.5939842398426809,
+        0.6371381032249015
+       ],
+       "proven_miss_beyond_eps": [
+        0.35593366559171735,
+        0.3989365960274149
+       ]
+      },
+      "gap_lo": {
+       "n": 1996,
+       "mean": 0.6065960737017951,
+       "median": 0.0,
+       "p90": 2.1539152139792366,
+       "p99": 5.886578684813418,
+       "max": 11.729891691892483
+      },
+      "gap_hi": {
+       "n": 1996,
+       "mean": 0.6065960737018059,
+       "median": 1.4797030601815638e-14,
+       "p90": 2.1539152139792375,
+       "p99": 5.886578684813428,
+       "max": 11.729891691892494
+      }
+     },
+     "exact_reference": {
+      "n": 1282,
+      "reference_shots": 1282,
+      "exact_hit": 843,
+      "hit_rate": 0.6575663026521061,
+      "clopper_pearson_95": [
+       0.630862486581671,
+       0.6835454178840226
+      ],
+      "gap": {
+       "n": 1282,
+       "mean": 0.5194327445292992,
+       "median": 0.0,
+       "p90": 1.8845212343345956,
+       "p99": 5.341111605766978,
+       "max": 11.729891691892483
+      }
+     },
+     "shots_with_cancelled_copies": 0
+    }
+   }
+  }
+ ],
+ "scoring": "candidate selections projected onto graph edges mod 2; costs in exact rationals of the binary64 weights; gap interval [max(0, g), g + eps(J)] against the epsilon reference",
+ "preregistration": "docs/PREREG_gap_distribution_2026-11-03.md"
+}

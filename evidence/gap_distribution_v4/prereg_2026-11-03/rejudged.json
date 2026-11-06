@@ -1,0 +1,47 @@
+{
+ "schema": "oneq-gap-distribution-rejudge/1",
+ "run": {
+  "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+  "uncommitted_changes": false,
+  "sha256": {
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "experiments/m0_prior_art/gap_distribution.py": "9338073a78c7163e770547d989f614fb1013cf0ac3e0246f30fe147164420d78"
+  }
+ },
+ "rows": [
+  {
+   "distance": 3,
+   "nontrivial": 1159,
+   "identical": 1159,
+   "different": 0,
+   "first_difference": null
+  },
+  {
+   "distance": 5,
+   "nontrivial": 1979,
+   "identical": 1979,
+   "different": 0,
+   "first_difference": null
+  },
+  {
+   "distance": 7,
+   "nontrivial": 2000,
+   "identical": 2000,
+   "different": 0,
+   "first_difference": null
+  }
+ ],
+ "all_identical": true,
+ "head": {
+  "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+  "uncommitted_changes_in_judged_files": true,
+  "sha256": {
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_epsilon.py": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "experiments/m0_prior_art/gap_distribution_rejudge.py": "f177144515f2aba7994b66964ca8ccad833daebbafd470cdf19b3b34d69ee694"
+  }
+ }
+}

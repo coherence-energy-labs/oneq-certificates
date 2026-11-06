@@ -1,0 +1,180 @@
+{
+ "m": 7,
+ "d": 128,
+ "backend": "ibm_kingston",
+ "snapshot_sha256": "21454e60322b1f060e7e6631e6374dfcbab7f173735cde8c8dbdba6f85798351",
+ "calibrated_utc": "2026-10-15 08:50:45-04:00",
+ "noise": {
+  "cz_factor": 1.1471954127995831,
+  "sx_factor": 0.5,
+  "idle": true,
+  "readout": true,
+  "idle_factor": 0.5,
+  "readout_factor": 0.5
+ },
+ "layout": [
+  75,
+  59,
+  73,
+  53,
+  90,
+  98,
+  94,
+  92,
+  72,
+  79,
+  55,
+  89,
+  111,
+  95,
+  91,
+  71,
+  93,
+  54
+ ],
+ "layout_proxy": -0.7160476283959982,
+ "layout_mean_cz": 65.4,
+ "layout_candidates": 40,
+ "units_per_stratum": 8,
+ "trajectories": 30,
+ "F_e_ideal": 0.815741050977879,
+ "F_avg_ideal": 0.8771607006519192,
+ "F_avg_pred": 0.8011346668727104,
+ "F_avg_se": 0.006072778419940161,
+ "F_e_pred": 0.7017020003090657,
+ "F_e_se": 0.009109167629910242,
+ "margin_pred": -0.04829799969093429,
+ "strata": {
+  "kept_kept|s0|0|0": {
+   "weight": 0.11484871210729847,
+   "units": 8,
+   "mean_loss": 0.22330575819244505,
+   "se_loss": 0.01904509352659791,
+   "traj_se": 0.004278910094452281,
+   "mean_cz": 54.125,
+   "max_cz": 72,
+   "mean_duration_s": 5.1665e-06
+  },
+  "kept_kept|s0|1|0": {
+   "weight": 0.11484871210729847,
+   "units": 8,
+   "mean_loss": -0.014857517368414959,
+   "se_loss": 0.0025756685305550462,
+   "traj_se": 0.0014348281509358606,
+   "mean_cz": 47.875,
+   "max_cz": 73,
+   "mean_duration_s": 4.876e-06
+  },
+  "kept_kept|s1|0|0": {
+   "weight": 0.010151287892701534,
+   "units": 8,
+   "mean_loss": -0.05457706817781986,
+   "se_loss": 0.0057970978091838755,
+   "traj_se": 0.006756614446206726,
+   "mean_cz": 77.0,
+   "max_cz": 77,
+   "mean_duration_s": 6.397999999999998e-06
+  },
+  "kept_kept|s1|1|0": {
+   "weight": 0.010151287892701534,
+   "units": 8,
+   "mean_loss": 0.31284406278551435,
+   "se_loss": 0.040689166104719066,
+   "traj_se": 0.006918494579300517,
+   "mean_cz": 77.0,
+   "max_cz": 77,
+   "mean_duration_s": 6.365999999999998e-06
+  },
+  "kept_erased|s0|0|0": {
+   "weight": 0.211043626763282,
+   "units": 8,
+   "mean_loss": 0.22266260928265746,
+   "se_loss": 0.024787582844064272,
+   "traj_se": 0.005880964033793101,
+   "mean_cz": 50.25,
+   "max_cz": 62,
+   "mean_duration_s": 5.350499999999999e-06
+  },
+  "kept_erased|s0|0|1": {
+   "weight": 0.01865379745131493,
+   "units": 8,
+   "mean_loss": 0.03316193754558171,
+   "se_loss": 0.06485728465283679,
+   "traj_se": 0.006355784997896951,
+   "mean_cz": 46.375,
+   "max_cz": 60,
+   "mean_duration_s": 5.191499999999999e-06
+  },
+  "kept_erased|s0|1|0": {
+   "weight": 0.211043626763282,
+   "units": 8,
+   "mean_loss": -0.014507669661307062,
+   "se_loss": 0.00359772569514807,
+   "traj_se": 0.0012871751350874584,
+   "mean_cz": 53.5,
+   "max_cz": 63,
+   "mean_duration_s": 5.9219999999999985e-06
+  },
+  "kept_erased|s0|1|1": {
+   "weight": 0.01865379745131493,
+   "units": 8,
+   "mean_loss": -0.02296722047993659,
+   "se_loss": 0.004872902472602649,
+   "traj_se": 0.0001733366651581882,
+   "mean_cz": 48.375,
+   "max_cz": 60,
+   "mean_duration_s": 5.147e-06
+  },
+  "kept_erased|s1|0|0": {
+   "weight": 0.01865379745131493,
+   "units": 8,
+   "mean_loss": -0.07146831824182238,
+   "se_loss": 0.01199973609132984,
+   "traj_se": 0.00763476012761339,
+   "mean_cz": 70.0,
+   "max_cz": 70,
+   "mean_duration_s": 6.277999999999998e-06
+  },
+  "kept_erased|s1|0|1": {
+   "weight": 0.0016487783340881402,
+   "units": 8,
+   "mean_loss": -0.05598289614690749,
+   "se_loss": 0.009430177382060648,
+   "traj_se": 0.0053575977560587585,
+   "mean_cz": 70.0,
+   "max_cz": 70,
+   "mean_duration_s": 6.331499999999999e-06
+  },
+  "kept_erased|s1|1|0": {
+   "weight": 0.01865379745131493,
+   "units": 8,
+   "mean_loss": 0.3273908612143629,
+   "se_loss": 0.03363958577587303,
+   "traj_se": 0.006074184545399719,
+   "mean_cz": 70.0,
+   "max_cz": 70,
+   "mean_duration_s": 6.278999999999998e-06
+  },
+  "kept_erased|s1|1|1": {
+   "weight": 0.0016487783340881402,
+   "units": 8,
+   "mean_loss": -0.0038170342049993616,
+   "se_loss": 0.1122120468306376,
+   "traj_se": 0.005433206201101927,
+   "mean_cz": 70.0,
+   "max_cz": 70,
+   "mean_duration_s": 6.345499999999998e-06
+  },
+  "erased_erased": {
+   "weight": 0.25,
+   "units": 24,
+   "mean_loss": 0.0026760205608106938,
+   "se_loss": 0.0,
+   "traj_se": 0.0,
+   "mean_cz": 0.0,
+   "max_cz": 0,
+   "mean_duration_s": 2.312e-06
+  }
+ },
+ "seconds": 820.3747005462646
+}

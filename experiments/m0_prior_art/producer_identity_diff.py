@@ -43,9 +43,14 @@ def _shots(path: pathlib.Path) -> dict:
 
 
 def main() -> int:
+    global IDENT, OUT
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=3)
+    ap.add_argument("--tag", default=None, help="diff producer_identity_willow_<tag>.json into ..._diff_<tag>.json")
     a = ap.parse_args()
+    if a.tag:
+        IDENT = ROOT / "evidence" / f"producer_identity_willow_{a.tag}.json"
+        OUT = ROOT / "evidence" / f"producer_identity_willow_diff_{a.tag}.json"
     import epsilon_rerun as er
     ident = json.loads(IDENT.read_text(encoding="utf-8"))
     for p, h in ident["head"]["sha256"].items():

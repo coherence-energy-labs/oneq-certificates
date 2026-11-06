@@ -1,0 +1,18 @@
+=== n = 17: F = 0.7502033361, budget delta = 4.065e-04, encoder 592 CZ (compiled + statevector-verified (err 1.1e-15)), decoder E 466.3 / worst 759
+  RANDOMIZED channels + measurement-based D~                 CZ E   1121.9 worst   1455  eps   7.07  factor     17387 (worst     22549)  meas E 34.0
+  RANDOMIZED channels + measurement-free D~                  CZ E   1155.9 worst   1523  eps   7.28  factor     17914 (worst     23603)  meas E 17.0
+  RANDOMIZED channels + paper D~ (coherent untwist)          CZ E   1259.4 worst   1710  eps   7.93  factor     19518 (worst     26501)  meas E 25.5
+  COHERENT (Stinespring) channels + measurement-based D~     CZ E   1612.8 worst   1931  eps  10.16  factor     24996 (worst     29927)  meas E 51.0
+  COHERENT (Stinespring) channels + paper D~                 CZ E   1740.3 worst   2186  eps  10.96  factor     26972 (worst     33878)  meas E 42.5
+  previous floor ((n-1) CZ, encoder only): factor 248
+  sampled_shots: {"count": 20, "logical_cz_mean": 1115.6, "logical_cz_sd": 214.0814896494471, "logical_2q_depth_mean": 565.75, "measurements_mean": 36.0, "routed_cz_mean": 3347.65, "routed_cz_sem": 110.3844543545779, "routed_over_logical_mean": 3.0306819743937767, "routed_depth_mean": 5300.45, "routed_2q_depth_mean": 1707.75, "routed_infeasibility_factor": 51881.65743078438}
+  sampled_shots_lnn: {"count": 20, "logical_cz_mean": 1520.6, "logical_cz_sd": 214.0814896494471, "logical_2q_depth_mean": 662.55, "measurements_mean": 36.0, "routed_cz_mean": 2815.2, "routed_cz_sem": 113.22429068004799, "routed_over_logical_mean": 1.8413187504009731, "routed_depth_mean": 3993.95, "routed_2q_depth_mean": 1160.5, "routed_infeasibility_factor": 43629.78268311925}
+=== n = 24: F = 0.7510307345, budget delta = 2.057e-03, encoder 1173 CZ (compiled + statevector-verified (err 3.1e-16)), decoder E 739.6 / worst 1742
+  RANDOMIZED channels + measurement-based D~                 CZ E   2001.5 worst   3061  eps  12.61  factor      6129 (worst      9374)  meas E 47.6
+  RANDOMIZED channels + measurement-free D~                  CZ E   2049.5 worst   3157  eps  12.91  factor      6276 (worst      9668)  meas E 23.6
+  RANDOMIZED channels + paper D~ (coherent untwist)          CZ E   2195.6 worst   3421  eps  13.83  factor      6724 (worst     10476)  meas E 35.6
+  COHERENT (Stinespring) channels + measurement-based D~     CZ E   2694.6 worst   3733  eps  16.98  factor      8252 (worst     11432)  meas E 71.6
+  COHERENT (Stinespring) channels + paper D~                 CZ E   2874.6 worst   4093  eps  18.11  factor      8803 (worst     12534)  meas E 59.6
+  previous floor ((n-1) CZ, encoder only): factor 70
+  sampled_shots: {"count": 20, "logical_cz_mean": 2029.3, "logical_cz_sd": 178.29133461837117, "logical_2q_depth_mean": 810.4, "measurements_mean": 50.8, "routed_cz_mean": 6620.7, "routed_cz_sem": 111.72911555703774, "routed_over_logical_mean": 3.267082928960904, "routed_depth_mean": 8413.85, "routed_2q_depth_mean": 2774.0, "routed_infeasibility_factor": 20275.069677243733}
+  sampled_shots_lnn: {"count": 20, "logical_cz_mean": 2854.3, "logical_cz_sd": 178.2913346183712, "logical_2q_depth_mean": 938.0, "measurements_mean": 50.8, "routed_cz_mean": 5406.9, "routed_cz_sem": 112.51486217618681, "routed_over_logical_mean": 1.8916297374812938, "routed_depth_mean": 6342.25, "routed_2q_depth_mean": 1889.45, "routed_infeasibility_factor": 16557.958257871393}

@@ -1,0 +1,69 @@
+{
+ "schema": "oneq.superactivation.ppt-relaxation-exact/1",
+ "sdp": "F_PPT(N, 2) of ppt_relaxation_probe.py (Leung-Matthews), flag-block form",
+ "claim": "an exact feasible point with value 1 - 2^-(n+1) for every p, n = 1, 2, both channels; the matching upper bound is proved in the paper",
+ "rows": [
+  {
+   "n": 1,
+   "feasible": true,
+   "first_violation": null,
+   "value": "3/4",
+   "value_independent_of_p": true,
+   "equals_1_minus_2^-(n+1)": true,
+   "channel": "flagged channel N~_p",
+   "probe_measured": 0.7499999975087579,
+   "probe_minus_exact": -2.4912421014988695e-09
+  },
+  {
+   "n": 1,
+   "feasible": true,
+   "first_violation": null,
+   "value": "3/4",
+   "value_independent_of_p": true,
+   "equals_1_minus_2^-(n+1)": true,
+   "channel": "50% erasure channel",
+   "probe_measured": 0.7499999981809178,
+   "probe_minus_exact": -1.8190822181907151e-09
+  },
+  {
+   "n": 2,
+   "feasible": true,
+   "first_violation": null,
+   "value": "7/8",
+   "value_independent_of_p": true,
+   "equals_1_minus_2^-(n+1)": true,
+   "channel": "flagged channel N~_p",
+   "probe_measured": 0.8749999895696158,
+   "probe_minus_exact": -1.0430384222992473e-08
+  },
+  {
+   "n": 2,
+   "feasible": true,
+   "first_violation": null,
+   "value": "7/8",
+   "value_independent_of_p": true,
+   "equals_1_minus_2^-(n+1)": true,
+   "channel": "50% erasure channel",
+   "probe_measured": 0.8749999991546283,
+   "probe_minus_exact": -8.453716615619555e-10
+  }
+ ],
+ "control_kept_block_without_one_half": {
+  "feasible": false,
+  "first_violation": {
+   "pattern": "10",
+   "rho1-W>=0": false,
+   "rho1-MW^T>=0": false,
+   "rho1+MW^T>=0": false
+  }
+ },
+ "verdict": "EXACT",
+ "provenance": {
+  "code_git_blobs": {
+   "experiments/superactivation/ppt_relaxation_exact.py": "bfc65b2d23a40dc98982dbf90a14a66361bfae06",
+   "experiments/superactivation/ppt_relaxation_probe.py": "8dcdf5bcfd14f36e9a5b465c07c8a1895e015537"
+  },
+  "python": "3.14.3",
+  "sympy": "1.14.0"
+ }
+}

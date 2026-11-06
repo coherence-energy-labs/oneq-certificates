@@ -1,0 +1,398 @@
+{
+ "schema": "oneq-qldpc-scaling-prereg/1",
+ "preregistration": "docs/PREREG_qldpc_scaling_2026-11-03.md",
+ "seed_domain": "oneq-qldpc-scaling-prereg-2026-11-03",
+ "smoke": false,
+ "configurations": {
+  "1.0": {
+   "bp_method": "ms",
+   "schedule": "parallel",
+   "osd_method": "osd_cs",
+   "osd_order": 5,
+   "ms_scaling_factor": 1.0
+  },
+  "0.625": {
+   "bp_method": "ms",
+   "schedule": "parallel",
+   "osd_method": "osd_cs",
+   "osd_order": 5,
+   "ms_scaling_factor": 0.625
+  }
+ },
+ "datasets": {
+  "uniform_p01": {
+   "dataset": "uniform_p01",
+   "seed": 7388119315214903760,
+   "sampled": 1315,
+   "trivial": 315,
+   "nontrivial": 1000,
+   "receipts": 1000,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 1000,
+    "tree": 0
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 995,
+     "tier1_single_dual": 995,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 5,
+     "not_a_correction": 0,
+     "logical_errors": 3
+    },
+    "0.625": {
+     "optimum_hit": 999,
+     "tier1_single_dual": 999,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 1,
+     "not_a_correction": 0,
+     "logical_errors": 1
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 1,
+    "hit_at_0.625_only": 5,
+    "exact_two_sided_mcnemar_p": 0.21875
+   },
+   "paired_logical_error_secondary": {
+    "error_at_1.0_only": 3,
+    "error_at_0.625_only": 1,
+    "exact_two_sided_mcnemar_p": 0.625
+   },
+   "receipt_answer_logical_errors": 0,
+   "seconds": 14.4,
+   "records_sha256": "64d0a127bc9a6213ab5c2e129b38f4c60f7df317109361c6a4cd1b877c7cbad6"
+  },
+  "uniform_p02": {
+   "dataset": "uniform_p02",
+   "seed": 2358906921348550124,
+   "sampled": 1055,
+   "trivial": 55,
+   "nontrivial": 1000,
+   "receipts": 1000,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 1000,
+    "tree": 0
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 954,
+     "tier1_single_dual": 954,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 46,
+     "not_a_correction": 0,
+     "logical_errors": 40
+    },
+    "0.625": {
+     "optimum_hit": 994,
+     "tier1_single_dual": 994,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 6,
+     "not_a_correction": 0,
+     "logical_errors": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 3,
+    "hit_at_0.625_only": 43,
+    "exact_two_sided_mcnemar_p": 4.6219383875722997e-10
+   },
+   "paired_logical_error_secondary": {
+    "error_at_1.0_only": 40,
+    "error_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 1.8189894035458565e-12
+   },
+   "receipt_answer_logical_errors": 0,
+   "seconds": 22.4,
+   "records_sha256": "fcc434c45d8084154ddc1230ed3c34854803a739054aadf0390801ff2231200b"
+  },
+  "hetero_p02": {
+   "dataset": "hetero_p02",
+   "seed": 2499531330981900147,
+   "sampled": 1026,
+   "trivial": 26,
+   "nontrivial": 1000,
+   "receipts": 1000,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 1000,
+    "tree": 0
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 996,
+     "tier1_single_dual": 996,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 4,
+     "not_a_correction": 0,
+     "logical_errors": 1
+    },
+    "0.625": {
+     "optimum_hit": 994,
+     "tier1_single_dual": 994,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 6,
+     "not_a_correction": 0,
+     "logical_errors": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 4,
+    "hit_at_0.625_only": 2,
+    "exact_two_sided_mcnemar_p": 0.6875
+   },
+   "paired_logical_error_secondary": {
+    "error_at_1.0_only": 1,
+    "error_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 1.0
+   },
+   "receipt_answer_logical_errors": 0,
+   "seconds": 59.6,
+   "records_sha256": "2a944dc7ce4cc27f0cda71815e5e76c779c50280ed7d871cf057e250fe795300"
+  },
+  "phenom_p01": {
+   "dataset": "phenom_p01",
+   "seed": 5791936648250179652,
+   "sampled": 500,
+   "trivial": 0,
+   "nontrivial": 500,
+   "receipts": 500,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 500,
+    "tree": 0
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 500,
+     "tier1_single_dual": 500,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 0,
+     "not_a_correction": 0
+    },
+    "0.625": {
+     "optimum_hit": 498,
+     "tier1_single_dual": 498,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 2,
+     "not_a_correction": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 2,
+    "hit_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 0.5
+   },
+   "seconds": 115.4,
+   "records_sha256": "1c43b9275c7c505f4cb34fb535d82f4bf762af337acf901ba7950639dbb42d44"
+  },
+  "phenom_p02": {
+   "dataset": "phenom_p02",
+   "seed": 2997173273735429858,
+   "sampled": 500,
+   "trivial": 0,
+   "nontrivial": 500,
+   "receipts": 500,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 500,
+    "tree": 0
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 496,
+     "tier1_single_dual": 496,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 4,
+     "not_a_correction": 0
+    },
+    "0.625": {
+     "optimum_hit": 494,
+     "tier1_single_dual": 494,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 6,
+     "not_a_correction": 0
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 5,
+    "hit_at_0.625_only": 3,
+    "exact_two_sided_mcnemar_p": 0.7265625
+   },
+   "seconds": 245.1,
+   "records_sha256": "08a8faec4e6ae984f0b5fdcebf55c3a68e92e1dcd8e56b8c78a4dcfee2cf76f2",
+   "code_sha256": {
+    "experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py": "1da3e1c05777b3e7e12afe870cb0aeceb44979ec190676cb822db9456168ef74",
+    "src/oneq/qldpc_check.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+    "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+    "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+    "tools/external/tree_checker_b.py": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f"
+   },
+   "deviation": "run after DEVIATION 1 of docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md: the phenomenological datasets use the lazy-separation LP"
+  },
+  "xsector_p02": {
+   "dataset": "xsector_p02",
+   "seed": 339979895904008218,
+   "sampled": 1056,
+   "trivial": 56,
+   "nontrivial": 1000,
+   "receipts": 1000,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 1000,
+    "tree": 0
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 936,
+     "tier1_single_dual": 936,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 64,
+     "not_a_correction": 0,
+     "logical_errors": 58
+    },
+    "0.625": {
+     "optimum_hit": 995,
+     "tier1_single_dual": 995,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 5,
+     "not_a_correction": 0,
+     "logical_errors": 3
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 0,
+    "hit_at_0.625_only": 59,
+    "exact_two_sided_mcnemar_p": 3.469446951953614e-18
+   },
+   "paired_logical_error_secondary": {
+    "error_at_1.0_only": 56,
+    "error_at_0.625_only": 1,
+    "exact_two_sided_mcnemar_p": 8.049116928532385e-16
+   },
+   "receipt_answer_logical_errors": 1,
+   "seconds": 20.2,
+   "records_sha256": "2c53c40eabdcb6f8a61f7e51d25169def32aa190b57296650ed97ea00cf4beaa",
+   "code_sha256": {
+    "experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py": "1da3e1c05777b3e7e12afe870cb0aeceb44979ec190676cb822db9456168ef74",
+    "src/oneq/qldpc_check.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+    "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+    "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+    "tools/external/tree_checker_b.py": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f"
+   },
+   "deviation": "run after DEVIATION 1 of docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md: the phenomenological datasets use the lazy-separation LP"
+  },
+  "stress_p05": {
+   "dataset": "stress_p05",
+   "seed": 9135337716753873663,
+   "sampled": 1002,
+   "trivial": 2,
+   "nontrivial": 1000,
+   "receipts": 1000,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 982,
+    "tree": 18
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 381,
+     "tier1_single_dual": 381,
+     "optimum_on_branching_tree": 0,
+     "miss_heavier": 619,
+     "not_a_correction": 0,
+     "logical_errors": 595
+    },
+    "0.625": {
+     "optimum_hit": 989,
+     "tier1_single_dual": 973,
+     "optimum_on_branching_tree": 16,
+     "miss_heavier": 11,
+     "not_a_correction": 0,
+     "logical_errors": 31
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 3,
+    "hit_at_0.625_only": 611,
+    "exact_two_sided_mcnemar_p": 1.1349384047131384e-177
+   },
+   "paired_logical_error_secondary": {
+    "error_at_1.0_only": 564,
+    "error_at_0.625_only": 0,
+    "exact_two_sided_mcnemar_p": 3.312168642111238e-170
+   },
+   "receipt_answer_logical_errors": 26,
+   "seconds": 2009.5,
+   "records_sha256": "d5ce447165e557c6319e159b4e0955609347fcdad7fb94d63a5bd90ffb6dfa43",
+   "code_sha256": {
+    "experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py": "1da3e1c05777b3e7e12afe870cb0aeceb44979ec190676cb822db9456168ef74",
+    "src/oneq/qldpc_check.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+    "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+    "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+    "tools/external/tree_checker_b.py": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f"
+   },
+   "deviation": "run after DEVIATION 1 of docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md: the phenomenological datasets use the lazy-separation LP"
+  },
+  "bb_refsched": {
+   "dataset": "bb_refsched",
+   "seed": 458719843,
+   "sampled": 501,
+   "trivial": 1,
+   "nontrivial": 500,
+   "receipts": 500,
+   "unresolved": 0,
+   "receipt_kinds": {
+    "flat": 490,
+    "tree": 10
+   },
+   "per_configuration": {
+    "1.0": {
+     "optimum_hit": 415,
+     "tier1_single_dual": 407,
+     "optimum_on_branching_tree": 8,
+     "miss_heavier": 85,
+     "not_a_correction": 0,
+     "observable_agreement": 500
+    },
+    "0.625": {
+     "optimum_hit": 486,
+     "tier1_single_dual": 478,
+     "optimum_on_branching_tree": 8,
+     "miss_heavier": 14,
+     "not_a_correction": 0,
+     "observable_agreement": 500
+    }
+   },
+   "paired_optimum_hit": {
+    "hit_at_1.0_only": 6,
+    "hit_at_0.625_only": 77,
+    "exact_two_sided_mcnemar_p": 8.445814568882953e-17
+   },
+   "seconds": 1043.1,
+   "records_sha256": "f02bcc72a819b36741bda1299062fe57dd81f571225541b9700a2428d3966b4e",
+   "code_sha256": {
+    "experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py": "1da3e1c05777b3e7e12afe870cb0aeceb44979ec190676cb822db9456168ef74",
+    "src/oneq/qldpc_check.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+    "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+    "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+    "tools/external/tree_checker_b.py": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f"
+   },
+   "deviation": "run after DEVIATION 1 of docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md: the phenomenological datasets use the lazy-separation LP"
+  }
+ },
+ "environment": {
+  "python": "3.14.3",
+  "ldpc": "2.4.1",
+  "numpy": "2.3.5"
+ },
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py": "842b465f085f735e805c9a9e1609b6ca625294d3021ba7ea87d83ce9e5a6d632",
+  "src/oneq/qldpc_check.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+  "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+  "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "tools/external/tree_checker_b.py": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f"
+ }
+}

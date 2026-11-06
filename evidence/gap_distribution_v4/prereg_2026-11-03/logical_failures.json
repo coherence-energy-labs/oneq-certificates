@@ -1,0 +1,65 @@
+{
+ "schema": "oneq-gap-logical-failures/1",
+ "run": {
+  "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+  "uncommitted_changes": false,
+  "sha256": {
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/matching_cert_epsilon.py": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "experiments/m0_prior_art/gap_distribution.py": "9338073a78c7163e770547d989f614fb1013cf0ac3e0246f30fe147164420d78"
+  }
+ },
+ "rows": [
+  {
+   "distance": 3,
+   "nontrivial": 1159,
+   "true_flips": 187,
+   "logical_failures": {
+    "pymatching": 28,
+    "bposd_merged": 28,
+    "bposd_component": 32,
+    "belief_matching": 29
+   },
+   "assumption_checked": {
+    "components_checked": 556,
+    "label_mismatches": 0,
+    "detector_free_components_flipping_an_observable": 0
+   }
+  },
+  {
+   "distance": 5,
+   "nontrivial": 1979,
+   "true_flips": 443,
+   "logical_failures": {
+    "pymatching": 27,
+    "bposd_merged": 26,
+    "bposd_component": 26,
+    "belief_matching": 12
+   },
+   "assumption_checked": {
+    "components_checked": 3706,
+    "label_mismatches": 0,
+    "detector_free_components_flipping_an_observable": 0
+   }
+  },
+  {
+   "distance": 7,
+   "nontrivial": 2000,
+   "true_flips": 732,
+   "logical_failures": {
+    "pymatching": 15,
+    "bposd_merged": 16,
+    "bposd_component": 18,
+    "belief_matching": 7
+   },
+   "assumption_checked": {
+    "components_checked": 11974,
+    "label_mismatches": 0,
+    "detector_free_components_flipping_an_observable": 0
+   }
+  }
+ ],
+ "rule": "failure = observable parity of the decoder's projected edge set != the shot's observable_flip; edge observables from PyMatching's graph of the run's own circuit; nontrivial shots only",
+ "belief_matching_settings": "BeliefMatching(dem, max_bp_iters=20) (gap_distribution.py)"
+}

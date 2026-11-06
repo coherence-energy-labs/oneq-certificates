@@ -71,6 +71,10 @@ def _detex(s: str) -> str:
 
 def norm_text(s: str) -> str:
     s = html.unescape(re.sub(r"<[^>]+>", " ", s))
+    # A SPACING accent (category Sk, e.g. U+00B8 in Crossref's "Badzia" U+00B8 "g") decomposes under NFKD into a
+    # SPACE plus a combining mark, so the name read "badzia g" and the correct "Badzi{\k{a}}g" was refused
+    # (2026-11-03). Non-ASCII spacing accents are dropped first; ASCII ^ and ` are left as they were.
+    s = "".join(c for c in s if not (ord(c) > 127 and unicodedata.category(c) == "Sk"))
     s = unicodedata.normalize("NFKD", _detex(s))
     s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
@@ -173,6 +177,48 @@ def fetch_github(url: str) -> dict:
             "readme_words": " ".join(sorted(set(norm_text(text).split())))}
 
 
+GITHUB_COMMIT_FILE = re.compile(r"https://github\.com/([\w.-]+)/([\w.-]+)/blob/([0-9a-f]{40})/([\w./\-]+)")
+
+
+def fetch_github_commit_file(url: str) -> dict:
+    """A file of a public repository at a pinned commit that no release carries (2026-11-03, paper 3: Pan's research
+    records E-037 and E-043 are on his main branch after release v2.0). The file must exist at that commit; the
+    entry's year is the commit's; the repository's README AT THAT COMMIT must name every cited author."""
+    owner, repo, sha, path = GITHUB_COMMIT_FILE.fullmatch(url).groups()
+    commit = json.loads(_get(f"https://api.github.com/repos/{owner}/{repo}/commits/{sha}"))
+    blob = json.loads(_get(f"https://api.github.com/repos/{owner}/{repo}/contents/{path}?ref={sha}"))
+    readme = json.loads(_get(f"https://api.github.com/repos/{owner}/{repo}/readme?ref={sha}"))
+    import base64
+    text = base64.b64decode(readme["content"]).decode("utf-8", "replace")
+    body = base64.b64decode(blob.get("content", "")).decode("utf-8", "replace")
+    heading = next((ln.strip() for ln in body.splitlines() if ln.strip()), "")
+    date = commit["commit"]["committer"]["date"]
+    return {"source": "github-commit", "commit": commit["sha"], "date": date, "year": int(date[:4]),
+            "path": path, "blob": blob.get("sha"), "heading": heading,
+            "readme_words": " ".join(sorted(set(norm_text(text).split())))}
+
+
+# A record's own identifier in a title ("E-037"): the token an entry's (possibly translated) title must share with the
+# file's first line, since a translated title cannot be compared with its source word for word.
+RECORD_ID = re.compile(r"\b[A-Z]{1,3}-\d{2,4}\b")
+
+
+PYPI_PROJECT = re.compile(r"https://pypi\.org/project/([\w.-]+)/?")
+
+
+def fetch_pypi(url: str) -> dict:
+    """A package's own requested citations: every BibTeX block in its PyPI project description (the README).
+
+    Software released on PyPI with no DOI, arXiv id or GitHub release (2026-11-03: ldpc, whose repository has no
+    releases) is held to the authors' own statement of how to cite it, field by field."""
+    name = PYPI_PROJECT.fullmatch(url).group(1)
+    info = json.loads(_get(f"https://pypi.org/pypi/{name}/json"))["info"]
+    blocks = parse_bib((info.get("description") or "").replace("\r\n", "\n"))
+    return {"source": "pypi", "project": name, "latest_version": info.get("version"),
+            "attributions": [{k: v for k, v in b.items() if k in ("_type", "title", "author", "year", "url")}
+                             for b in blocks.values()]}
+
+
 def fetch_arxiv(eprint: str) -> dict:
     page = _get("https://arxiv.org/abs/" + eprint).decode("utf-8", "replace")
 
@@ -258,19 +304,70 @@ def compare(key: str, e: dict, snap: dict) -> list[str]:
         if collab is not None or missing or not fams:
             errs.append(f"{key}: author(s) {missing or fams} not named in the repository README")
         return errs
+    if "doi" not in e and "eprint" not in e and GITHUB_COMMIT_FILE.fullmatch(e.get("url", "")):
+        # A file at a pinned commit: it existed there, the year is the commit's, and the README at that commit names
+        # every cited author (the same authorship rule as a release)
+        s = snap.get("github_commit")
+        if not s:
+            return errs + [f"{key}: no fetched record for {e['url']}"]
+        _, _, owner_repo_sha, url_path = GITHUB_COMMIT_FILE.fullmatch(e["url"]).groups()
+        if s.get("commit") != owner_repo_sha or not s.get("blob"):
+            errs.append(f"{key}: the file is not recorded at commit {owner_repo_sha}")
+        if s.get("path") != url_path:
+            errs.append(f"{key}: url path {url_path!r} != the fetched file {s.get('path')!r}")
+        # the title may be a translation (it must then say so); it must carry the record's own identifier, as the
+        # file's first line does, and nothing else of that form
+        ids_title = set(RECORD_ID.findall(e.get("title", "").replace("{", "").replace("}", "")))
+        ids_head = set(RECORD_ID.findall(s.get("heading", "")))
+        if not ids_head or ids_title != ids_head:
+            errs.append(f"{key}: title identifiers {sorted(ids_title)} != the file heading's {sorted(ids_head)}")
+        if any(ord(ch) >= 0x2E80 for ch in s.get("heading", "")) and "translat" not in e.get("note", "").lower():
+            errs.append(f"{key}: the file's heading is not in English; the entry's note must say the title is translated")
+        if int(e["year"]) != s["year"]:
+            errs.append(f"{key}: year {e['year']} != commit {s['year']}")
+        words = set(s["readme_words"].split())
+        missing = [f for f in fams if f not in words]
+        if collab is not None or missing or not fams:
+            errs.append(f"{key}: author(s) {missing or fams} not named in the repository README at that commit")
+        return errs
+    if "doi" not in e and "eprint" not in e and PYPI_PROJECT.fullmatch(e.get("url", "")):
+        # Software on PyPI: the entry must BE one of the citations the package's README asks for -- same url, title,
+        # year and authors -- since the README is the authors' statement of how the work is to be cited.
+        s = snap.get("pypi")
+        if not s:
+            return errs + [f"{key}: no fetched record for {e['url']}"]
+        same_url = [a for a in s["attributions"] if a.get("url", "").rstrip("/") == e["url"].rstrip("/")]
+        if not same_url:
+            return errs + [f"{key}: the {s['project']} README asks to be cited with no entry at {e['url']}"]
+        a = same_url[0]
+        if norm_text(e.get("title", "")) != norm_text(a.get("title", "")):
+            errs.append(f"{key}: title {e.get('title')!r} != the README's {a.get('title')!r}")
+        if str(e.get("year")) != str(a.get("year")):
+            errs.append(f"{key}: year {e.get('year')} != the README's {a.get('year')}")
+        authors_match(bib_authors(a.get("author", ""))[0], "the README's citation")
+        return errs
     if "doi" not in e and "eprint" not in e:
-        errs.append(f"{key}: no doi, eprint or GitHub release -- nothing to verify it against")
+        errs.append(f"{key}: no doi, eprint, GitHub release or PyPI project -- nothing to verify it against")
     return errs
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fetch", action="store_true")
+    ap.add_argument("--fetch-new", action="store_true",
+                    help="fetch only entries the snapshot lacks, leaving every other record as it was fetched (refs.bib "
+                         "is shared by several manuscripts; a full re-fetch rewrites their records too)")
     a = ap.parse_args()
     entries = parse_bib(BIB.read_text(encoding="utf-8"))
-    if a.fetch:
-        snapshot = {"fetched": _dt.date.today().isoformat(), "entries": {}}
-        for key, e in entries.items():
+    if a.fetch or a.fetch_new:
+        if a.fetch:
+            snapshot = {"fetched": _dt.date.today().isoformat(), "entries": {}}
+            todo = entries
+        else:
+            snapshot = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
+            todo = {k: e for k, e in entries.items() if k not in snapshot["entries"]}
+            snapshot.setdefault("fetched_later", {}).update({k: _dt.date.today().isoformat() for k in todo})
+        for key, e in todo.items():
             rec = {}
             if "doi" in e:
                 rec["doi"] = fetch_doi(e["doi"])
@@ -278,6 +375,10 @@ def main() -> int:
                 rec["arxiv"] = fetch_arxiv(e["eprint"])
             if "doi" not in e and "eprint" not in e and GITHUB_RELEASE.fullmatch(e.get("url", "")):
                 rec["github"] = fetch_github(e["url"])
+            if "doi" not in e and "eprint" not in e and GITHUB_COMMIT_FILE.fullmatch(e.get("url", "")):
+                rec["github_commit"] = fetch_github_commit_file(e["url"])
+            if "doi" not in e and "eprint" not in e and PYPI_PROJECT.fullmatch(e.get("url", "")):
+                rec["pypi"] = fetch_pypi(e["url"])
             snapshot["entries"][key] = rec
             print(f"  fetched {key}", flush=True)
         # newline="\n": the repository pins *.json to LF, and Windows text

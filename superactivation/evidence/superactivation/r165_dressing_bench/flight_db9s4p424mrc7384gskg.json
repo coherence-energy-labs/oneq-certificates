@@ -1,0 +1,360 @@
+{
+ "schema": "oneq.hw.campaign.flight_record/1",
+ "composite_qpy_sha256": "02cf6c44738dec54d2080c62eb59d1d598c76c9c36bb08ebffbcbdee55cc32db",
+ "n_pubs": 7,
+ "pubs": [
+  {
+   "index": 0,
+   "name": "ro_all0",
+   "registers": {
+    "c": {
+     "key": "0000__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 2000,
+     "shape": [
+      2000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  },
+  {
+   "index": 1,
+   "name": "ro_all1",
+   "registers": {
+    "c": {
+     "key": "0001__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 2000,
+     "shape": [
+      2000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  },
+  {
+   "index": 2,
+   "name": "bench_d0",
+   "registers": {
+    "c": {
+     "key": "0002__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 4000,
+     "shape": [
+      4000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  },
+  {
+   "index": 3,
+   "name": "bench_d16",
+   "registers": {
+    "c": {
+     "key": "0003__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 4000,
+     "shape": [
+      4000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  },
+  {
+   "index": 4,
+   "name": "bench_d48",
+   "registers": {
+    "c": {
+     "key": "0004__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 4000,
+     "shape": [
+      4000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  },
+  {
+   "index": 5,
+   "name": "ro_end0",
+   "registers": {
+    "c": {
+     "key": "0005__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 2000,
+     "shape": [
+      2000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  },
+  {
+   "index": 6,
+   "name": "ro_end1",
+   "registers": {
+    "c": {
+     "key": "0006__c",
+     "kind": "iq",
+     "num_bits": 23,
+     "num_shots": 2000,
+     "shape": [
+      2000,
+      23
+     ],
+     "stored": "float32 (shots, clbits, re/im)"
+    }
+   },
+   "metadata": {
+    "circuit_metadata": {},
+    "num_randomizations": 8,
+    "compilation": {
+     "scheduler_timing": null,
+     "stretch_values": null
+    }
+   }
+  }
+ ],
+ "execution_spans": [
+  {
+   "start": "2026-10-17T18:46:01.124773",
+   "stop": "2026-10-17T18:46:06.791465",
+   "seconds": 5.666692,
+   "kind": "TwirledSliceSpanV2",
+   "pubs": {
+    "2": 4000,
+    "3": 4000,
+    "4": 4000
+   },
+   "slices": {
+    "2": [
+     [
+      8,
+      500
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      500,
+      null
+     ]
+    ],
+    "3": [
+     [
+      8,
+      500
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      500,
+      null
+     ]
+    ],
+    "4": [
+     [
+      8,
+      500
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      500,
+      null
+     ]
+    ]
+   }
+  },
+  {
+   "start": "2026-10-17T18:46:06.796768",
+   "stop": "2026-10-17T18:46:09.786832",
+   "seconds": 2.990064,
+   "kind": "TwirledSliceSpanV2",
+   "pubs": {
+    "0": 2000,
+    "1": 2000,
+    "5": 2000,
+    "6": 2000
+   },
+   "slices": {
+    "1": [
+     [
+      8,
+      250
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      250,
+      null
+     ]
+    ],
+    "0": [
+     [
+      8,
+      250
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      250,
+      null
+     ]
+    ],
+    "5": [
+     [
+      8,
+      250
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      250,
+      null
+     ]
+    ],
+    "6": [
+     [
+      8,
+      250
+     ],
+     true,
+     [
+      0,
+      8,
+      null
+     ],
+     [
+      0,
+      250,
+      null
+     ]
+    ]
+   }
+  }
+ ],
+ "spans_cover_every_shot": true,
+ "result_metadata": {
+  "version": 2
+ },
+ "job_metrics": {
+  "caller": "qiskit_ibm_runtime~sampler.py",
+  "qiskit_version": "qiskit_ibm_runtime-0.50.0,qiskit-2.5.2*,qiskit_aer-0.17.2",
+  "timestamps": {
+   "created": "2026-10-17T18:45:56.769204Z",
+   "finished": "2026-10-17T18:46:12.96937Z",
+   "running": "2026-10-17T18:45:58.549544Z"
+  },
+  "usage": {
+   "qpu_charge_time_seconds": 8,
+   "value": 0.117833,
+   "unit": "resource_units",
+   "status": "complete",
+   "details": [
+    {
+     "value": 0.117833,
+     "unit": "resource_units",
+     "metric": {
+      "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+      "value": 8
+     }
+    }
+   ]
+  },
+  "circuits_execution_time_ns": 5257807360
+ }
+}

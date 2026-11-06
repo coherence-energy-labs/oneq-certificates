@@ -1,0 +1,4 @@
+V^dag (s2_first) generic   : CZ  44   ||U - V^dag||_max = 6.33e-14
+V^dag (s2_first) structured: CZ  17   ||U - V^dag||_max = 3.09e-15
+V^dag (s1_first) generic   : CZ  44   ||U - V^dag||_max = 6.33e-14
+V^dag (s1_first) structured: CZ  17   ||U - V^dag||_max = 3.09e-15

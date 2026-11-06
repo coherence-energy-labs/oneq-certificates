@@ -34,6 +34,7 @@ import numpy as np
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import bb_circuits as bc  # noqa: E402
+import serialization as ser  # noqa: E402
 
 
 def mechanisms(circuit):
@@ -141,7 +142,8 @@ def export(circuit_kind: str, basis: str, rounds: int, out: pathlib.Path, *, l: 
     shifts = bc.translations(bc.group_kind(circuit_kind), l, m)
     orb, reps = orbits(mech, coords, shifts, l, m)
     assert observables_affine(mech, coords, shifts, l, m), "observables are not affine under a declared translation"
-    with open(out, "w") as f:
+    # ASCII, CRLF on every platform: the archived models' bytes, which run records bind by sha256 (serialization.py)
+    with ser.open_model(out) as f:
         f.write(f"{len(coords)} {len(mech)} {dem.num_observables} {len(reps)} {l} {m}\n")
         for (dets, obs), o in zip(mech, orb):
             mask = sum(1 << x for x in obs)

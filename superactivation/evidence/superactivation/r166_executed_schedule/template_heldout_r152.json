@@ -1,0 +1,73 @@
+{
+ "schema": "oneq.r166.template_heldout/1",
+ "label": "EXPLORATORY -- outside every preregistered verdict",
+ "r152_job": "db9c50oc77vs73817rog",
+ "traj": 24,
+ "measured": {
+  "r146": 0.6167117524746097,
+  "r147": 0.6272772705949263
+ },
+ "variants": {
+  "V3c + dressing x1.54 (R165, the best before R166)": {
+   "params": {
+    "twirl": "active-accum",
+    "dressing_factor": 1.54
+   },
+   "r146": 0.6394411935150406,
+   "r146_miss": -0.022729441040430842,
+   "r147": 0.6628365489783214,
+   "r147_miss": -0.03555927838339512,
+   "residual": {
+    "main": -0.03418734844249334,
+    "twin_inline": -0.034358496848196016,
+    "twin_static": -0.00034493041759064286
+   }
+  },
+  "V3c + template, no dressing": {
+   "params": {
+    "twirl_template": true
+   },
+   "r146": 0.6504859654127111,
+   "r146_miss": -0.033774212938101345,
+   "r147": 0.664159759237948,
+   "r147_miss": -0.03688248864302168,
+   "residual": {
+    "main": -0.03558956126995677,
+    "twin_inline": -0.03508309270426457,
+    "twin_static": -0.0013658246874129407
+   }
+  },
+  "V3c + template + dressing x2 (two sx per layer, as scheduled)": {
+   "params": {
+    "twirl_template": true,
+    "twirl": "active-accum",
+    "dressing_factor": 2.0
+   },
+   "r146": 0.6224671146186171,
+   "r146_miss": -0.005755362144007403,
+   "r147": 0.6548375001156643,
+   "r147_miss": -0.027560229520738,
+   "residual": {
+    "main": -0.024140038973919836,
+    "twin_inline": -0.024334296681265126,
+    "twin_static": 0.0216571232367136
+   }
+  },
+  "V3c + template + dressing x1.54": {
+   "params": {
+    "twirl_template": true,
+    "twirl": "active-accum",
+    "dressing_factor": 1.54
+   },
+   "r146": 0.6288318819352214,
+   "r146_miss": -0.012120129460611695,
+   "r147": 0.6561116938315756,
+   "r147_miss": -0.02883442323664931,
+   "residual": {
+    "main": -0.026658541779509864,
+    "twin_inline": -0.0286982870492805,
+    "twin_static": 0.015238893994103594
+   }
+  }
+ }
+}

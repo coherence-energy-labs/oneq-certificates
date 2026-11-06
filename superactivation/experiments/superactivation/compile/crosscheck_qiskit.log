@@ -1,0 +1,3 @@
+encoder (all-to-all) n=17: qiskit Statevector error 1.13e-15
+encoder (nearest-neighbour) n=17: qiskit Statevector error 9.35e-16
+per-use block (randomized P/A, measurement-free D~) vs N~: qiskit DensityMatrix Choi trace distance 9.79e-16

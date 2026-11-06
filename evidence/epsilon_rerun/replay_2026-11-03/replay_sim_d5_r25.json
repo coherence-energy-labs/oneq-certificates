@@ -1,0 +1,69 @@
+{
+ "kind": "COMPLETE",
+ "battery_per_chunk": 1,
+ "head": {
+  "tool": "tools/replay_epsilon_receipts.py",
+  "commit": "0a4ba9d8508b8a0a054d9a1c03706a8aa1e9dd33",
+  "repository": "present",
+  "uncommitted_changes_in_judged_files": true,
+  "sha256": {
+   "tools/replay_epsilon_receipts.py": "d2e48f4c05391f05d26615b42b922cee44f3b50b5093e278c8c66a16b88c87ec",
+   "src/oneq/matching_cert_epsilon.py": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8",
+   "src/oneq/matching_cert.py": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+   "src/oneq/forgeries.py": "0283d4ca7c1298a0d4e2da05586cca412c304302c1229b68a454def38695bd1a"
+  },
+  "timestamp": "2026-11-05T20:30:57+00:00",
+  "python": "3.14.3",
+  "jobs": 2,
+  "sample": null,
+  "battery": 1,
+  "forgeries": 1,
+  "partial": false,
+  "seed": 20260914
+ },
+ "results": [
+  {
+   "config": "sim_d5_r25",
+   "chunks": 4000,
+   "complete_plan": true,
+   "nontrivial": 1000000,
+   "receipts_rechecked": 1000000,
+   "full": true,
+   "instance_sha256": "24224894eb37e7b340150b252496eea863a24ae624daa34acd198fd7f7d62ea6",
+   "battery": {
+    "boundary_attempts": 3999,
+    "boundary_just_outside_refused": 3999,
+    "boundary_just_inside_accepted": 4000,
+    "substituted_graph_refused": 4000,
+    "boundary_excess_over_eps_max_max": 1.3321061313099315e-15
+   },
+   "substituted_graph": {
+    "config": "heldout_d3_at_q4_5_X_r50",
+    "instance_sha256": "cf65f124b8e1724b4f79556b9fb46b0f4565e932f17b5d249626c2010bd819dd"
+   },
+   "forgery_battery": {
+    "receipts_per_chunk": 1,
+    "refusals_by_class_and_verdict": {
+     "E_dropped_edge:INVALID_INPUT": 4000,
+     "F_duplicated_edge:INVALID_INPUT": 4000,
+     "I_mismatched_pair:INVALID_INPUT": 4000,
+     "D_spurious_cycle:NOT_PROVEN": 4000,
+     "G_dual_inflated_to_meet_a_worse_primal:NOT_PROVEN": 4000,
+     "H_negative_dual_hides_inflation:INVALID_INPUT": 4000,
+     "M_doubled_edge:INVALID_INPUT": 4000,
+     "M_doubled_edge_dual_inflated:INVALID_INPUT": 4000,
+     "M_doubled_edge_negative_dual:INVALID_INPUT": 4000,
+     "N_nan_dual:INVALID_INPUT": 4000,
+     "N_inf_dual:INVALID_INPUT": 4000,
+     "P_parity_not_T_prime_odd:INVALID_INPUT": 4000
+    },
+    "parity_adversary": {
+     "attempted": 4000,
+     "accepted_by_parity_blind_check_epsilon": 4000,
+     "accepted_by_parity_blind_verify_b": 4000,
+     "accepted_by_both_parity_blind_copies": 4000
+    }
+   }
+  }
+ ]
+}

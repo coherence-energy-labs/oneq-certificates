@@ -1,0 +1,59 @@
+{
+ "d": 16,
+ "p": 0.2,
+ "certified_lower_bound": "[0.7425152433357074110854699699743923237435 +/- 3.79e-41]",
+ "certified_lower_bound_float": 0.7425152433357074,
+ "exceeds_three_quarters": false,
+ "certified_margin_lower_bound": -0.007484756664292589,
+ "pair_float_fidelity": 0.7425152433357086,
+ "encoder_trace_excess": 0.0,
+ "max_decoder_trace_excess": 3.4236384584173033e-15,
+ "grid_bits": 96,
+ "precision_bits": 256,
+ "psd_by_construction": true,
+ "seconds": 3.62,
+ "code": "two_use_code_famA_d16.npy",
+ "code_sha256": "3becc2479f60ea0dfb69ba4f5ceb1ebf3bf56741b8b53007408e64b01d6fd5fb",
+ "code_columns": [
+  [
+   [
+    0.4999999999999999,
+    0.0
+   ],
+   [
+    0.4999999999999999,
+    0.0
+   ]
+  ],
+  [
+   [
+    0.3237070363046807,
+    0.3810692255310576
+   ],
+   [
+    0.3237070363046807,
+    -0.3810692255310576
+   ]
+  ],
+  [
+   [
+    0.4999999999999999,
+    0.0
+   ],
+   [
+    -0.4999999999999999,
+    0.0
+   ]
+  ],
+  [
+   [
+    0.3237070363046807,
+    0.3810692255310576
+   ],
+   [
+    -0.3237070363046807,
+    0.3810692255310576
+   ]
+  ]
+ ]
+}

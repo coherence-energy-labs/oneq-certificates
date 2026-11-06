@@ -1,0 +1,40 @@
+{
+  "prereg": "PREREG_superactivation_hw_floor_2026-10-12.md",
+  "prereg_sha256": "b37938fd9c5f66c8c63a6e39e34c956f0dd5dfbadec487d4eeb3d7dac25a68b8",
+  "backend": "ibm_kingston",
+  "layout": [
+    148,
+    149
+  ],
+  "shots": 4000,
+  "circuit_names": [
+    "pauli_I_ZZ",
+    "pauli_I_XX",
+    "pauli_I_YY",
+    "pauli_X_ZZ",
+    "pauli_X_XX",
+    "pauli_X_YY",
+    "pauli_Y_ZZ",
+    "pauli_Y_XX",
+    "pauli_Y_YY",
+    "pauli_Z_ZZ",
+    "pauli_Z_XX",
+    "pauli_Z_YY",
+    "depth_2_ZZ",
+    "depth_2_XX",
+    "depth_2_YY",
+    "depth_4_ZZ",
+    "depth_4_XX",
+    "depth_4_YY",
+    "depth_8_ZZ",
+    "depth_8_XX",
+    "depth_8_YY",
+    "cal_00",
+    "cal_01",
+    "cal_10",
+    "cal_11"
+  ],
+  "job_id": "db6pkeqmb58s738c6h80",
+  "submitted_utc": "2026-10-13T02:41:00Z",
+  "quota_remaining_before_s": 202
+}

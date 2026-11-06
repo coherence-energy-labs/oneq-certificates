@@ -1,0 +1,22 @@
+{
+ "n": 24,
+ "certified_lower_bound": "[0.7510307336871027075601755187307555185209 +/- 4.66e-41]",
+ "certified_lower_bound_float": 0.7510307336871027,
+ "exceeds_three_quarters": true,
+ "certified_margin_lower_bound": 0.0010307336871027075,
+ "fidelity_ball": "[0.751030733687102707560175518731 +/- 2.45e-31]",
+ "encoder_trace_excess": 1.4551919768822909e-09,
+ "max_decoder_trace_excess": 1.1645191755338402e-10,
+ "blocks_proved_positive_definite": 326,
+ "grid_bits": 96,
+ "precision_bits": 256,
+ "eta": 5.820766091346741e-11,
+ "seconds": 23.8,
+ "imported_theorems": [
+  "arXiv 2604.27042 Prop. 1: F_c((P x A)^n, 2) >= F_c(N~^n, 2)",
+  "arXiv 2604.27042 Result 1: F_c(P^n, 2) <= 1/2 and F_c(A^n, 2) <= 3/4 for every n"
+ ],
+ "float_fidelity_compiled_code": 0.7510307344745433,
+ "what": "isometric encoder (polar of top eigenvector) + minimum-rank restricted decoders (|0> on S-perp)",
+ "seconds_total": 108.8
+}

@@ -34,7 +34,7 @@ def main():
     stubs = pathlib.Path(tempfile.mkdtemp(prefix="m2026_stubs_"))
     for name, text in mva.STUBS.items():
         (stubs / name).parent.mkdir(parents=True, exist_ok=True)
-        (stubs / name).write_text(text)
+        (stubs / name).write_text(text, encoding="utf-8", newline="\n")  # temporary stubs; LF (serialization.py)
     sys.path[:0] = [str(stubs), str(pathlib.Path(a.clone).resolve())]
     from morphing_qec_circuits.bb_params import BBParams
 

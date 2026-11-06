@@ -1,0 +1,22 @@
+{
+ "schema": "oneq-epsilon-receipt-archive/1",
+ "config": "samedev_d7_X_r30",
+ "archive": "samedev_d7_X_r30.tar",
+ "sha256": "522f1aeb363fd40b0fa216df7c669c8f834190f326a3cda0a9701ed5dc43693e",
+ "bytes": 1269760,
+ "members": 7,
+ "chunks_index_sha256": "c82b498c8f72547130e3a7bf2c0c2713363df6adec2b39cf0d9ab235715eddf2",
+ "extract_to": "the repository root (members are data/epsilon_receipts/<config>/chunk_*.jsonl.gz)",
+ "then": "python tools/replay_epsilon_receipts.py --config samedev_d7_X_r30 --jobs 8 --partial",
+ "partial": true,
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "why_partial": "the run was stopped by its preregistered rule; these are every chunk it completed"
+}

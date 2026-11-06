@@ -1,0 +1,31 @@
+{
+ "F_e_asc": 0.7679757664667595,
+ "sd_asc": 3.8031311560957404e-17,
+ "F_e_frm": 0.7679757664667595,
+ "sd_frm": 3.8031311560957404e-17,
+ "delta": 0.0,
+ "frame_units": 130,
+ "sd_paired": 0.0,
+ "z": NaN,
+ "units": 195,
+ "sd_unpaired": 5.378439660434264e-17,
+ "paired_mean_score_delta": 0.0,
+ "verdicts": {
+  "sd_used": 0.0,
+  "sd_rule": "max(paired shot sd, frame-counting sd)",
+  "z": NaN,
+  "V1": false,
+  "V1_null": false,
+  "V1_neg": false,
+  "V4_projection_band": {
+   "lo": 0.03,
+   "hi": 0.047,
+   "inside_2sd": false
+  },
+  "V2_drift": {
+   "r152_F_e": 0.6272772705949263,
+   "asc_minus_r152": 0.14069849587183314,
+   "within_2sd": false
+  }
+ }
+}

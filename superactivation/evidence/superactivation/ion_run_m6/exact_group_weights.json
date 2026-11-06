@@ -1,0 +1,121 @@
+{
+ "6": {
+  "W": {
+   "ee_const": 0.16666666666666677,
+   "ee_x/high": 0.06687242798353908,
+   "ee_x/low": 0.016460905349794237,
+   "kept/high": 0.35648148148148134,
+   "kept/low": 0.39351851851851816
+  },
+  "draws_per_cell": 20,
+  "method": "exact_group_weights: a unit's group is a function of (stratum, input); every cell checked on fresh label draws"
+ },
+ "7": {
+  "W": {
+   "ee_const": 0.1666666666666668,
+   "ee_x/high": 0.07089746836579004,
+   "ee_x/low": 0.012435864967543286,
+   "kept/high": 0.3614649494763982,
+   "kept/low": 0.3885350505236022
+  },
+  "draws_per_cell": 8,
+  "method": "exact_group_weights: a unit's group is a function of (stratum, input); every cell checked on fresh label draws"
+ },
+ "8": {
+  "W": {
+   "ee_const": 0.16666666666666663,
+   "ee_x/high": 0.07410611303344869,
+   "ee_x/low": 0.00922722029988466,
+   "kept/high": 0.3651960784313725,
+   "kept/low": 0.3848039215686273
+  },
+  "draws_per_cell": 8,
+  "method": "exact_group_weights: a unit's group is a function of (stratum, input); every cell checked on fresh label draws"
+ },
+ "8:both": {
+  "W": {
+   "ee_const": 0.16666666666666666,
+   "ee_x/high": 0.07410611303344868,
+   "ee_x/low": 0.009227220299884658,
+   "kept/high": 0.3651960784313726,
+   "kept/low": 0.3848039215686274
+  },
+  "W_exact": {
+   "ee_const": [
+    1,
+    6
+   ],
+   "ee_x/high": [
+    257,
+    3468
+   ],
+   "ee_x/low": [
+    8,
+    867
+   ],
+   "kept/high": [
+    149,
+    408
+   ],
+   "kept/low": [
+    157,
+    408
+   ]
+  },
+  "W_exact_by_basis": {
+   "ee_const": {
+    "Y": [
+     1,
+     12
+    ],
+    "Z": [
+     1,
+     12
+    ]
+   },
+   "ee_x/high": {
+    "X": [
+     257,
+     3468
+    ]
+   },
+   "ee_x/low": {
+    "X": [
+     8,
+     867
+    ]
+   },
+   "kept/high": {
+    "X": [
+     49,
+     408
+    ],
+    "Y": [
+     49,
+     408
+    ],
+    "Z": [
+     1,
+     8
+    ]
+   },
+   "kept/low": {
+    "X": [
+     53,
+     408
+    ],
+    "Y": [
+     53,
+     408
+    ],
+    "Z": [
+     1,
+     8
+    ]
+   }
+  },
+  "draws_per_cell": 8,
+  "method": "exact_group_weights: a unit's group is a function of (stratum, input); every cell checked on fresh label draws",
+  "rounding": "W is the exact rational weight rounded UP to a double for high groups, down for low ones"
+ }
+}

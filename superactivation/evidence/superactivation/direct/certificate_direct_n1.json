@@ -1,0 +1,18 @@
+{
+ "n": 1,
+ "certified_lower_bound": "[0.6627576287052041755964249421129688520544 +/- 2.17e-41]",
+ "certified_lower_bound_float": 0.6627576287052042,
+ "exceeds_three_quarters": false,
+ "fidelity_ball": "[0.662757628705204175596424942113 +/- 3.12e-32]",
+ "encoder_trace_excess": 9.94496398859601e-16,
+ "max_decoder_trace_excess": 8.77892596442353e-15,
+ "grid_bits": 96,
+ "precision_bits": 256,
+ "seconds": 0.0,
+ "psd_by_construction": true,
+ "encoder": "direct_encoder_n1.npy",
+ "encoder_sha256": "8d12321d576039235e6e8101142c6e3612a915c99eb9016e4d8ed2b42074afcf",
+ "decoders": "certificate_direct_n1_decoders.npz",
+ "decoders_sha256": "140fb89b4da5e14c86d693e526ac196e5f7864c7a3b4989fa6616bedbcec71d8",
+ "pair_float_fidelity": 0.662757628705209
+}

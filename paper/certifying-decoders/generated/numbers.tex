@@ -13,20 +13,23 @@
 \newcommand{\AuditOracleMaxDelta}{\ensuremath{2.7\times 10^{-15}}}
 \newcommand{\AuditOracleN}{1{,}399}
 \newcommand{\AuditRuleTerm}{\ensuremath{1.4\times 10^{-7}}}
-\newcommand{\CICtrlHi}{5.78}
+\newcommand{\CICtrlHi}{4.72}
 \newcommand{\CICtrlLo}{0}
-\newcommand{\CIFaBaseHi}{0.721}
-\newcommand{\CIFaBaseLo}{0.00329}
-\newcommand{\CIFaFullHi}{0.478}
+\newcommand{\CIFaBaseHi}{0.722}
+\newcommand{\CIFaBaseLo}{0.00328}
+\newcommand{\CIFaFullHi}{0.389}
 \newcommand{\CIFaFullLo}{0}
-\newcommand{\CIFaStaleHi}{0.117}
-\newcommand{\CIFaStaleLo}{0.00394}
+\newcommand{\CIFaStaleHi}{0.129}
+\newcommand{\CIFaStaleLo}{0.00432}
+\newcommand{\CertMeasBoundForgeries}{122{,}767}
 \newcommand{\CertMeasCertified}{40{,}963}
 \newcommand{\CertMeasDemErrors}{1{,}517}
 \newcommand{\CertMeasDevices}{2}
 \newcommand{\CertMeasEdgesHi}{573}
 \newcommand{\CertMeasEdgesLo}{168}
+\newcommand{\CertMeasEpsAccepted}{40{,}979}
 \newcommand{\CertMeasErrors}{17}
+\newcommand{\CertMeasForgeries}{462{,}794}
 \newcommand{\CertMeasHeldOut}{70{,}000}
 \newcommand{\CertMeasNontrivial}{40{,}979}
 \newcommand{\CertMeasRatio}{89}
@@ -40,6 +43,7 @@
 \newcommand{\CertifyRefusedN}{4}
 \newcommand{\CertifyRefusedSharePct}{1.5}
 \newcommand{\CheckExponent}{1.076}
+\newcommand{\CheckMsMean}{7.4}
 \newcommand{\CheckMsMedian}{7}
 \newcommand{\CheckMsPNinetyNine}{17}
 \newcommand{\CheckOverCertifyPct}{24}
@@ -53,7 +57,7 @@
 \newcommand{\CostCpuLoadPct}{70}
 \newcommand{\CostP}{0.005}
 \newcommand{\CostRatioBatch}{3{,}200}
-\newcommand{\CostRatioCheckBatch}{430}
+\newcommand{\CostRatioCheckBatch}{450}
 \newcommand{\CostRatioPerShot}{400}
 \newcommand{\CostShots}{2{,}000}
 \newcommand{\DecodeUsBatch}{16.4}
@@ -72,6 +76,7 @@
 \newcommand{\DetDefectNonDefectiveFlagged}{0}
 \newcommand{\DetDefectNotProven}{0}
 \newcommand{\DetDefectProven}{1{,}312}
+\newcommand{\DetStaleAcceptable}{5{,}600}
 \newcommand{\DetStaleControlFalseAlarms}{1}
 \newcommand{\DetStaleControlSuboptimal}{0}
 \newcommand{\DetStaleCorrections}{6{,}147}
@@ -88,6 +93,8 @@
 \newcommand{\DetStaleExcessHiThree}{0.64}
 \newcommand{\DetStaleExcessLoOneFive}{0.13}
 \newcommand{\DetStaleExcessLoThree}{0.39}
+\newcommand{\DetStaleFalseAlarmDistinct}{1}
+\newcommand{\DetStaleFalseAlarmWhere}{on a single base shot, the one that also raised the false alarm of the drift-1.0 control}
 \newcommand{\DetStaleFalseAlarms}{2}
 \newcommand{\DetStaleProven}{547}
 \newcommand{\DetStaleSuboptimal}{547}
@@ -125,6 +132,10 @@
 \newcommand{\EpsSimChunkRetries}{0}
 \newcommand{\EpsSimExact}{8{,}628}
 \newcommand{\EpsSimForgeries}{8{,}000{,}001}
+\newcommand{\EpsSimForgeriesBound}{1}
+\newcommand{\EpsSimForgeriesDoubled}{3{,}000{,}000}
+\newcommand{\EpsSimForgeriesNonFinite}{2{,}000{,}000}
+\newcommand{\EpsSimForgeriesSyndrome}{3{,}000{,}000}
 \newcommand{\EpsSimForgeryClasses}{9}
 \newcommand{\EpsSimLargestEps}{\ensuremath{6.2\times 10^{-12}}}
 \newcommand{\EpsSimNontrivial}{1{,}000{,}000}
@@ -132,6 +143,8 @@
 \newcommand{\EpsSimNotProvenPct}{0.19}
 \newcommand{\EpsSimShots}{1{,}000{,}000}
 \newcommand{\EpsSubstitutedRefused}{4{,}800}
+\newcommand{\EpsVectorClasses}{51}
+\newcommand{\EpsVectors}{153}
 \newcommand{\FaultCorpus}{4{,}924}
 \newcommand{\FaultsAll}{4{,}861}
 \newcommand{\FaultsAllCertCaught}{4{,}861}
@@ -149,20 +162,109 @@
 \newcommand{\FreshSimN}{10{,}000}
 \newcommand{\FreshSimNotProven}{19}
 \newcommand{\FreshSimPct}{99.81}
-\newcommand{\GapBmPNinetyNine}{1.5 / 3.0 / 4.9}
-\newcommand{\GapBposdExactHi}{81}
-\newcommand{\GapBposdExactLo}{72}
-\newcommand{\GapBposdMax}{148}
-\newcommand{\GapBposdPNinetyNine}{38 / 61 / 52}
-\newcommand{\GapExactRuleBposdExact}{81.5 / 72.3 / 77.1}
-\newcommand{\GapExactRuleCertified}{227 / 383 / 253}
-\newcommand{\GapExactRuleNontrivial}{230 / 395 / 400}
-\newcommand{\GapShotsPerDistance}{400}
+\newcommand{\FuzzCases}{89{,}984}
+\newcommand{\FuzzClassesBefore}{20}
+\newcommand{\FuzzDisagreementsBefore}{34{,}894}
+\newcommand{\FuzzValidCases}{14{,}812}
+\newcommand{\GapBmEpsOptPct}{95.25 / 85.64 / 62.27}
+\newcommand{\GapBmExactSubsetHitPct}{95.23 / 85.71 / 65.75}
+\newcommand{\GapBmMax}{16.9}
+\newcommand{\GapBmPNinetyNine}{2.8 / 3.7 / 5.9}
+\newcommand{\GapComponentCancelled}{188 / 417 / 126}
+\newcommand{\GapComponentEpsOptPct}{91.28 / 85.38 / 79.45}
+\newcommand{\GapComponentExactSubsetHitPct}{91.33 / 85.24 / 82.13}
+\newcommand{\GapComponentMax}{12.4}
+\newcommand{\GapComponentPNinetyNine}{2.6 / 2.0 / 2.6}
+\newcommand{\GapEpsRef}{1{,}159 / 1{,}978 / 1{,}996}
+\newcommand{\GapExactRef}{1{,}154 / 1{,}918 / 1{,}282}
+\newcommand{\GapLogicalBm}{29 / 12 / 7}
+\newcommand{\GapLogicalComponent}{32 / 26 / 18}
+\newcommand{\GapLogicalMerged}{28 / 26 / 16}
+\newcommand{\GapLogicalPm}{28 / 27 / 15}
+\newcommand{\GapMergeRelDiff}{\ensuremath{5.1\times 10^{-16}}}
+\newcommand{\GapMergedEpsOptPct}{99.48 / 99.24 / 95.69}
+\newcommand{\GapMergedExactSubsetHitPct}{99.48 / 98.95 / 96.41}
+\newcommand{\GapMergedMax}{4.0}
+\newcommand{\GapMergedPNinetyNine}{0.0 / 0.0 / 1.0}
+\newcommand{\GapNontrivial}{1{,}159 / 1{,}979 / 2{,}000}
+\newcommand{\GapOrigMaxCopies}{15}
+\newcommand{\GapOrigNegExact}{11}
+\newcommand{\GapOrigOverFigTotal}{149}
+\newcommand{\GapOrigOverTableV}{41 / 92 / 25}
+\newcommand{\GapOrigOverTableVTotal}{158}
+\newcommand{\GapOrigOvercountHi}{146.31}
+\newcommand{\GapOrigOvercountLo}{7.62}
+\newcommand{\GapOrigPublishedExactPct}{81.3 / 72.7 / 74.3}
+\newcommand{\GapOrigPublishedMax}{148}
+\newcommand{\GapOrigPublishedPNinetyNine}{38 / 61 / 52}
+\newcommand{\GapOrigRefFigTotal}{863}
+\newcommand{\GapOrigRefTableV}{230 / 392 / 378}
+\newcommand{\GapOrigRefTableVTotal}{1{,}000}
+\newcommand{\GapOrigRescoredExactPct}{89.5 / 87.2 / 74.8}
+\newcommand{\GapOrigRescoredMax}{20.7}
+\newcommand{\GapOrigRescoredPNinetyNine}{2.6 / 2.6 / 1.7}
+\newcommand{\GapOrigTolTiny}{17}
+\newcommand{\GapOrigTrueZeroTableVTotal}{95}
+\newcommand{\GapRejudged}{5{,}138}
+\newcommand{\GapRunCommit}{70b3c4d8}
+\newcommand{\GapSeeds}{4108103, 4108105 and 4108107}
+\newcommand{\GapShotsPerDistance}{2{,}000}
 \newcommand{\GrowthDSevenCertified}{31/120}
 \newcommand{\GrowthSpeedupHi}{64}
 \newcommand{\GrowthSpeedupLo}{17}
+\newcommand{\HoDSevenAbstract}{at least 99.62\% of 800 at distance 7 in the chunks a preregistered budget completed}
+\newcommand{\HoDSevenAccepted}{800}
+\newcommand{\HoDSevenArms}{2}
+\newcommand{\HoDSevenAtLeastPct}{99.62}
+\newcommand{\HoDSevenChunks}{43}
+\newcommand{\HoDSevenChunksPlanned}{240}
+\newcommand{\HoDSevenCoreHours}{40.0}
+\newcommand{\HoDSevenDevAccepted}{650}
+\newcommand{\HoDSevenDevArms}{2}
+\newcommand{\HoDSevenDevExact}{3}
+\newcommand{\HoDSevenDevLargestEps}{\ensuremath{1.1\times 10^{-12}}}
+\newcommand{\HoDSevenDevN}{650}
+\newcommand{\HoDSevenDevNotProven}{0}
+\newcommand{\HoDSevenDevPct}{100.000}
+\newcommand{\HoDSevenDevUpper}{0.460}
+\newcommand{\HoDSevenDevWorstN}{700}
+\newcommand{\HoDSevenDevWorstUpper}{8.96}
+\newcommand{\HoDSevenDispatched}{46}
+\newcommand{\HoDSevenExact}{0}
+\newcommand{\HoDSevenForgeries}{23{,}650}
+\newcommand{\HoDSevenLargestEps}{\ensuremath{3.2\times 10^{-12}}}
+\newcommand{\HoDSevenMarkers}{42}
+\newcommand{\HoDSevenN}{800}
+\newcommand{\HoDSevenNotProven}{0}
+\newcommand{\HoDSevenOutcome}{not rejected}
+\newcommand{\HoDSevenPct}{100.000}
+\newcommand{\HoDSevenPreDeviationChunks}{4}
+\newcommand{\HoDSevenPrefixN}{700}
+\newcommand{\HoDSevenPrefixNotProven}{0}
+\newcommand{\HoDSevenReading}{The preregistered one-sided test of the held-out 50-round not-proven rate against the same-producer development rate does not reject it (one-sided $p=1.00$; the 10-round bracket gives $p=1.00$); the preregistration prescribes no further reading for this case.}
+\newcommand{\HoDSevenRecordedDevUpper}{0.00630}
+\newcommand{\HoDSevenReplayForgeries}{516}
+\newcommand{\HoDSevenReplayReceipts}{2{,}150}
+\newcommand{\HoDSevenState}{stopped by its preregistered 40 core-hour rule}
+\newcommand{\HoDSevenTenAccepted}{700}
+\newcommand{\HoDSevenTenArms}{2}
+\newcommand{\HoDSevenTenExact}{93}
+\newcommand{\HoDSevenTenLargestEps}{\ensuremath{1.2\times 10^{-13}}}
+\newcommand{\HoDSevenTenN}{700}
+\newcommand{\HoDSevenTenNotProven}{0}
+\newcommand{\HoDSevenTenPct}{100.000}
+\newcommand{\HoDSevenTenTestP}{1.00}
+\newcommand{\HoDSevenTenUpper}{0.428}
+\newcommand{\HoDSevenTenWorstN}{700}
+\newcommand{\HoDSevenTenWorstUpper}{0.428}
+\newcommand{\HoDSevenTestP}{1.00}
+\newcommand{\HoDSevenUnfinishedChunks}{3}
+\newcommand{\HoDSevenUnfinishedShots}{150}
+\newcommand{\HoDSevenUpper}{0.374}
+\newcommand{\HoDSevenWorstN}{900}
+\newcommand{\HoDSevenWorstUpper}{13.0}
 \newcommand{\HoWAccepted}{19{,}909}
-\newcommand{\HoWCIHi}{99.63}
+\newcommand{\HoWCIHi}{99.64}
 \newcommand{\HoWCILo}{99.44}
 \newcommand{\HoWDFiveAccepted}{9{,}909}
 \newcommand{\HoWDFiveExact}{206}
@@ -192,7 +294,7 @@
 \newcommand{\HwFinalPct}{99.69}
 \newcommand{\HwForgeries}{1{,}951{,}060}
 \newcommand{\HwGenFiveXPct}{98.16}
-\newcommand{\HwGenFiveZPct}{98.21}
+\newcommand{\HwGenFiveZPct}{98.20}
 \newcommand{\HwGenFourForgeries}{751{,}060}
 \newcommand{\HwGenFourNontrivial}{119{,}384}
 \newcommand{\HwGenFourPct}{98.52}
@@ -210,9 +312,9 @@
 \newcommand{\HwGenSixZNontrivial}{50{,}000}
 \newcommand{\HwGenSixZPct}{99.998}
 \newcommand{\HwGenSixZResidualGap}{0.11}
-\newcommand{\HwGenThreePct}{96.04}
+\newcommand{\HwGenThreePct}{96.03}
 \newcommand{\HwGenTwoMinConfig}{800}
-\newcommand{\HwGenTwoPct}{93.09}
+\newcommand{\HwGenTwoPct}{93.08}
 \newcommand{\HwResidualDetectorsX}{91}
 \newcommand{\HwResidualDetectorsZ}{127}
 \newcommand{\HwResidualRounds}{200}
@@ -222,7 +324,7 @@
 \newcommand{\IbmCertified}{2{,}296}
 \newcommand{\IbmEpsAccepted}{2{,}296}
 \newcommand{\IbmEpsExact}{2{,}257}
-\newcommand{\IbmEpsForgeries}{15{,}819}
+\newcommand{\IbmEpsForgeries}{21{,}169}
 \newcommand{\IbmMsPerShot}{2.15}
 \newcommand{\IbmNontrivial}{2{,}296}
 \newcommand{\IbmPreregPrefix}{0a3607c9}
@@ -233,10 +335,55 @@
 \newcommand{\IdentDevStatusChanged}{1}
 \newcommand{\IdentFreshChunks}{40}
 \newcommand{\IdentHeldChunks}{80}
+\newcommand{\JsReplayConfigs}{8}
+\newcommand{\JsReplayReceipts}{48{,}969}
 \newcommand{\LpDSevenCertified}{113/120}
-\newcommand{\MutEpsEquivalent}{4}
-\newcommand{\MutEpsKilled}{93}
-\newcommand{\MutEpsRun}{97}
+\newcommand{\MutEpsEquivalent}{3}
+\newcommand{\MutEpsKilled}{106}
+\newcommand{\MutEpsRun}{109}
+\newcommand{\NdCallRatioHi}{8.2}
+\newcommand{\NdCallRatioLo}{6.6}
+\newcommand{\NdGridOnRawEpsMaxAll}{\ensuremath{1.9\times 10^{-4}}}
+\newcommand{\NdGridOnRawProvenTotal}{0}
+\newcommand{\NdIntShots}{6{,}000}
+\newcommand{\NdRawEpsMaxAll}{\ensuremath{3.6\times 10^{-5}}}
+\newcommand{\NdRawProvenTotal}{3}
+\newcommand{\NdRescaleRatioHi}{12.8}
+\newcommand{\NdRescaleRatioLo}{11.0}
+\newcommand{\NdSimCheckMs}{6.6}
+\newcommand{\NdSimConvertUs}{196}
+\newcommand{\NdSimDecodeUs}{24}
+\newcommand{\NdSimDualConvUs}{183}
+\newcommand{\NdSimDualUs}{108}
+\newcommand{\NdSimGridBits}{19}
+\newcommand{\NdSimGridOnRawEpsMedian}{\ensuremath{2.6\times 10^{-5}}}
+\newcommand{\NdSimN}{2{,}000}
+\newcommand{\NdSimPlainUs}{23}
+\newcommand{\NdSimRawEpsMax}{\ensuremath{1.3\times 10^{-5}}}
+\newcommand{\NdSimRawEpsMedian}{\ensuremath{4.0\times 10^{-6}}}
+\newcommand{\NdSimRawProven}{3}
+\newcommand{\NdWFiveCheckMs}{8.7}
+\newcommand{\NdWFiveConvertUs}{286}
+\newcommand{\NdWFiveDecodeUs}{35}
+\newcommand{\NdWFiveDualUs}{143}
+\newcommand{\NdWFiveGridBits}{18}
+\newcommand{\NdWFiveGridOnRawEpsMedian}{\ensuremath{5.0\times 10^{-5}}}
+\newcommand{\NdWFiveN}{2{,}000}
+\newcommand{\NdWFiveRawEpsMax}{\ensuremath{2.0\times 10^{-5}}}
+\newcommand{\NdWFiveRawEpsMedian}{\ensuremath{1.0\times 10^{-5}}}
+\newcommand{\NdWFiveRawProven}{0}
+\newcommand{\NdWSevenCheckMs}{20.0}
+\newcommand{\NdWSevenConvertUs}{558}
+\newcommand{\NdWSevenDecodeUs}{75}
+\newcommand{\NdWSevenDualConvUs}{518}
+\newcommand{\NdWSevenDualUs}{270}
+\newcommand{\NdWSevenGridBits}{18}
+\newcommand{\NdWSevenGridOnRawEpsMedian}{\ensuremath{1.1\times 10^{-4}}}
+\newcommand{\NdWSevenN}{2{,}000}
+\newcommand{\NdWSevenPlainUs}{78}
+\newcommand{\NdWSevenRawEpsMax}{\ensuremath{3.6\times 10^{-5}}}
+\newcommand{\NdWSevenRawEpsMedian}{\ensuremath{2.0\times 10^{-5}}}
+\newcommand{\NdWSevenRawProven}{0}
 \newcommand{\OracleAgree}{870}
 \newcommand{\OracleBeaten}{0}
 \newcommand{\OracleRoundsFive}{25}
@@ -246,8 +393,13 @@
 \newcommand{\OracleShotsFive}{300}
 \newcommand{\OracleShotsSeven}{200}
 \newcommand{\OracleShotsThree}{370}
+\newcommand{\ReplayForgeries}{59{,}224}
+\newcommand{\ReplayForgeriesBound}{10{,}034}
+\newcommand{\ReplayParity}{4{,}920}
+\newcommand{\ReplayParityFool}{4{,}920}
+\newcommand{\ReplayStrict}{every}
 \newcommand{\SimCertified}{997{,}594}
-\newcommand{\SimCertifiedPct}{99.76}
+\newcommand{\SimCertifiedPct}{99.75}
 \newcommand{\SimDetectors}{600}
 \newcommand{\SimEdges}{2{,}742}
 \newcommand{\SimFailedChunks}{265}

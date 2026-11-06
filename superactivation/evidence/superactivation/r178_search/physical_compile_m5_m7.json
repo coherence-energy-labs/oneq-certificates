@@ -1,0 +1,672 @@
+{
+  "schema": "oneq.r178.physical_compile_audit/1",
+  "class_": "OFFLINE FAKE BACKEND ROUTING; NO QPU EXECUTION OR FIDELITY",
+  "backend": "FakeKingston",
+  "optimizer": "qiskit transpile level 1, seed 178 (not global layout optimal)",
+  "decoder": "one-CZ pair basis, physically faithful two P and two A instances",
+  "separate_channel_execution": true,
+  "quantum_use_count": 2,
+  "results": {
+    "5": {
+      "rows": [
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 59,
+          "native_gates": {
+            "sx": 142,
+            "rz": 99,
+            "cz": 77,
+            "measure": 8,
+            "x": 1
+          },
+          "cz": 77,
+          "sx": 142,
+          "reset": 0,
+          "input_label_sha256": "5852cff1b8852b1e324d46e2c657d62f677e9cddc61d2f3fc26ab1b28e94eca3"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 62,
+          "native_gates": {
+            "sx": 143,
+            "rz": 99,
+            "cz": 77,
+            "measure": 8,
+            "reset": 6,
+            "x": 1
+          },
+          "cz": 77,
+          "sx": 143,
+          "reset": 6,
+          "input_label_sha256": "4e19f258503c0fda076805112194adcb16d9e308581843ae99cff996f76d72a5"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 9,
+          "transpiled_depth": 46,
+          "native_gates": {
+            "sx": 103,
+            "rz": 72,
+            "cz": 56,
+            "reset": 12,
+            "measure": 2
+          },
+          "cz": 56,
+          "sx": 103,
+          "reset": 12,
+          "input_label_sha256": "56f78fc5634bbb0d1506ce4564bc03c0b3e23ff49518fb6120d1f84efbe356f6"
+        },
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 12,
+          "transpiled_depth": 69,
+          "native_gates": {
+            "sx": 167,
+            "cz": 93,
+            "rz": 91,
+            "measure": 8,
+            "x": 4
+          },
+          "cz": 93,
+          "sx": 167,
+          "reset": 0,
+          "input_label_sha256": "2a6f4fee76eb4e94c21a7497bdbaa3bd4034ed5a4aac865fdc98136a6fb07ee1"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 12,
+          "transpiled_depth": 72,
+          "native_gates": {
+            "sx": 168,
+            "cz": 93,
+            "rz": 91,
+            "measure": 8,
+            "reset": 6,
+            "x": 4
+          },
+          "cz": 93,
+          "sx": 168,
+          "reset": 6,
+          "input_label_sha256": "d37a97b6e93f3f186b4db5984b199d21325239b78ea859834ffa9240e2bb16a1"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 11,
+          "transpiled_depth": 67,
+          "native_gates": {
+            "sx": 143,
+            "cz": 81,
+            "rz": 67,
+            "reset": 12,
+            "x": 3,
+            "measure": 2
+          },
+          "cz": 81,
+          "sx": 143,
+          "reset": 12,
+          "input_label_sha256": "8f4b7fb7596169153d56bce92c7da6c39f507cc30248a0bfd53697e4a63a1943"
+        },
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 96,
+          "native_gates": {
+            "sx": 207,
+            "cz": 116,
+            "rz": 95,
+            "measure": 8,
+            "x": 7
+          },
+          "cz": 116,
+          "sx": 207,
+          "reset": 0,
+          "input_label_sha256": "73390eeae04908756a0f1ca721f872e66e1f9cdf972a4741a3bd38d67e1f7a71"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 96,
+          "native_gates": {
+            "sx": 208,
+            "cz": 116,
+            "rz": 95,
+            "measure": 8,
+            "x": 7,
+            "reset": 6
+          },
+          "cz": 116,
+          "sx": 208,
+          "reset": 6,
+          "input_label_sha256": "15d618b6d6f5ac53544ca45bb0144ac142ca41e6b7279dd9c0316b1f5b53f45c"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 5,
+          "logical_qubits": 24,
+          "physical_qubits": 156,
+          "logical_depth": 11,
+          "transpiled_depth": 125,
+          "native_gates": {
+            "sx": 187,
+            "cz": 104,
+            "rz": 67,
+            "reset": 12,
+            "x": 5,
+            "measure": 2
+          },
+          "cz": 104,
+          "sx": 187,
+          "reset": 12,
+          "input_label_sha256": "182197adeb9171692d79eed970dee9527bf4fcafd8f666dd28bd3218658f05e8"
+        }
+      ],
+      "seconds": 0.6975582999875769,
+      "minimum_native_cz": 56,
+      "maximum_native_cz": 116,
+      "mean_native_cz": 90.33333333333333
+    },
+    "6": {
+      "rows": [
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 14,
+          "transpiled_depth": 85,
+          "native_gates": {
+            "sx": 203,
+            "rz": 117,
+            "cz": 108,
+            "measure": 9,
+            "x": 1
+          },
+          "cz": 108,
+          "sx": 203,
+          "reset": 0,
+          "input_label_sha256": "da2312973dd17a7599bf00ad42d1fbe776aac54b16ac0c733c9c57275da7456d"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 14,
+          "transpiled_depth": 85,
+          "native_gates": {
+            "sx": 204,
+            "rz": 117,
+            "cz": 108,
+            "measure": 9,
+            "reset": 7,
+            "x": 1
+          },
+          "cz": 108,
+          "sx": 204,
+          "reset": 7,
+          "input_label_sha256": "2fb3384f679ffe2352206c1ca33f517c3e76dec974f598906d298ea263321427"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 10,
+          "transpiled_depth": 63,
+          "native_gates": {
+            "sx": 111,
+            "rz": 85,
+            "cz": 59,
+            "reset": 14,
+            "measure": 2
+          },
+          "cz": 59,
+          "sx": 111,
+          "reset": 14,
+          "input_label_sha256": "66a0fefd6a78eaaf02e6249c8f9ca53c49071471eeb2406d024497234c93bd57"
+        },
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 11,
+          "transpiled_depth": 64,
+          "native_gates": {
+            "sx": 158,
+            "rz": 103,
+            "cz": 91,
+            "measure": 9,
+            "x": 7
+          },
+          "cz": 91,
+          "sx": 158,
+          "reset": 0,
+          "input_label_sha256": "4af02aef8eedac1b5c555a1ace8829b39f2168e0896de49cfc77b2b5d9d15682"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 12,
+          "transpiled_depth": 64,
+          "native_gates": {
+            "sx": 159,
+            "rz": 103,
+            "cz": 91,
+            "measure": 9,
+            "reset": 7,
+            "x": 7
+          },
+          "cz": 91,
+          "sx": 159,
+          "reset": 7,
+          "input_label_sha256": "80b39c9d72ab768bcd5206686fb333a64aa856a7ffe97c24db40e81631a652e5"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 12,
+          "transpiled_depth": 43,
+          "native_gates": {
+            "sx": 113,
+            "rz": 79,
+            "cz": 63,
+            "reset": 14,
+            "x": 3,
+            "measure": 2
+          },
+          "cz": 63,
+          "sx": 113,
+          "reset": 14,
+          "input_label_sha256": "0fa6f9ca053a409f0e64a38c694abce37ee9638252c16fa1e469fa020ed6292a"
+        },
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 14,
+          "transpiled_depth": 139,
+          "native_gates": {
+            "sx": 256,
+            "cz": 142,
+            "rz": 110,
+            "measure": 9,
+            "x": 3
+          },
+          "cz": 142,
+          "sx": 256,
+          "reset": 0,
+          "input_label_sha256": "9643f10cbc5df349e7212d545dd1172fc165be0efaa61aff27d8a3653fc34e21"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 14,
+          "transpiled_depth": 140,
+          "native_gates": {
+            "sx": 257,
+            "cz": 142,
+            "rz": 110,
+            "measure": 9,
+            "reset": 7,
+            "x": 3
+          },
+          "cz": 142,
+          "sx": 257,
+          "reset": 7,
+          "input_label_sha256": "224860d077477ff256d64088827a6acb11df95b28c35bd9843d1b0e284969195"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 6,
+          "logical_qubits": 28,
+          "physical_qubits": 156,
+          "logical_depth": 12,
+          "transpiled_depth": 98,
+          "native_gates": {
+            "sx": 193,
+            "cz": 111,
+            "rz": 74,
+            "reset": 14,
+            "x": 6,
+            "measure": 2
+          },
+          "cz": 111,
+          "sx": 193,
+          "reset": 14,
+          "input_label_sha256": "a16664da09b697816f8f689d787b98edacdefd2eb2f203befedd0d491bfbdd51"
+        }
+      ],
+      "seconds": 0.23914269998203963,
+      "minimum_native_cz": 59,
+      "maximum_native_cz": 142,
+      "mean_native_cz": 101.66666666666667
+    },
+    "7": {
+      "rows": [
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 14,
+          "transpiled_depth": 124,
+          "native_gates": {
+            "sx": 234,
+            "cz": 128,
+            "rz": 126,
+            "measure": 10,
+            "x": 1
+          },
+          "cz": 128,
+          "sx": 234,
+          "reset": 0,
+          "input_label_sha256": "c45307b2facb489cced5b33ba3e633bfa3e9668cdcbd6a53fd32c240d7338a22"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 14,
+          "transpiled_depth": 124,
+          "native_gates": {
+            "sx": 235,
+            "cz": 128,
+            "rz": 126,
+            "measure": 10,
+            "reset": 8,
+            "x": 1
+          },
+          "cz": 128,
+          "sx": 235,
+          "reset": 8,
+          "input_label_sha256": "fe1e53ac5971f057228a1f0d3165d57757b2daedac2799f41bf1bd07c53fe8d9"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s0",
+            "s0"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 10,
+          "transpiled_depth": 64,
+          "native_gates": {
+            "sx": 180,
+            "cz": 99,
+            "rz": 93,
+            "reset": 16,
+            "measure": 2
+          },
+          "cz": 99,
+          "sx": 180,
+          "reset": 16,
+          "input_label_sha256": "ec1b8b3c73a204d74c43e548679121988bcb5652e9751e19fc6fd2f43a820358"
+        },
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 12,
+          "transpiled_depth": 74,
+          "native_gates": {
+            "sx": 179,
+            "rz": 119,
+            "cz": 99,
+            "measure": 10,
+            "x": 5
+          },
+          "cz": 99,
+          "sx": 179,
+          "reset": 0,
+          "input_label_sha256": "bc14794900d74743b3935567883accf089ec0ab548474b12681a38e76c852a81"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 75,
+          "native_gates": {
+            "sx": 179,
+            "rz": 119,
+            "cz": 99,
+            "measure": 10,
+            "reset": 8,
+            "x": 5
+          },
+          "cz": 99,
+          "sx": 179,
+          "reset": 8,
+          "input_label_sha256": "08ba898c86216dbb565de77669f4204dbb30724ef61ad6c8eb2230411f44ab8a"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s0",
+            "s1"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 107,
+          "native_gates": {
+            "sx": 173,
+            "cz": 100,
+            "rz": 89,
+            "reset": 16,
+            "x": 6,
+            "measure": 2
+          },
+          "cz": 100,
+          "sx": 173,
+          "reset": 16,
+          "input_label_sha256": "8e4cb8d3f629c7f9368ddf13eaac4c384f3f1f1228a90926dfd5beb6551b2dc6"
+        },
+        {
+          "branch": "kept_kept",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 15,
+          "transpiled_depth": 135,
+          "native_gates": {
+            "sx": 324,
+            "cz": 183,
+            "rz": 126,
+            "measure": 10,
+            "x": 6
+          },
+          "cz": 183,
+          "sx": 324,
+          "reset": 0,
+          "input_label_sha256": "9feaa2b9ec38156e03ad9b7ea060ae8521c9a9d72b8d8c3a42ca69087bdcdba3"
+        },
+        {
+          "branch": "kept_erased",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 15,
+          "transpiled_depth": 135,
+          "native_gates": {
+            "sx": 325,
+            "cz": 183,
+            "rz": 126,
+            "measure": 10,
+            "reset": 8,
+            "x": 6
+          },
+          "cz": 183,
+          "sx": 325,
+          "reset": 8,
+          "input_label_sha256": "5274ec7745c8d2c6e55246dfd625c21556d01f54b58afd15ba8b769d80fb9639"
+        },
+        {
+          "branch": "erased_erased",
+          "sectors": [
+            "s1",
+            "s1"
+          ],
+          "m": 7,
+          "logical_qubits": 32,
+          "physical_qubits": 156,
+          "logical_depth": 13,
+          "transpiled_depth": 113,
+          "native_gates": {
+            "sx": 218,
+            "cz": 130,
+            "rz": 84,
+            "reset": 16,
+            "x": 6,
+            "measure": 2
+          },
+          "cz": 130,
+          "sx": 218,
+          "reset": 16,
+          "input_label_sha256": "c2ddd2039f7028b0f08404032ef3352b5d0bb381d003a8c02340fd8637d64290"
+        }
+      ],
+      "seconds": 0.2513701999851037,
+      "minimum_native_cz": 99,
+      "maximum_native_cz": 183,
+      "mean_native_cz": 127.66666666666667
+    }
+  },
+  "logical_claim_is_not_a_hardware_fidelity": true
+}

@@ -1,0 +1,2987 @@
+{
+  "schema": "oneq.r178.r147_mc_replay/1",
+  "evidence": "OFFLINE independent simulation seeds; no QPU or new prospective holdout",
+  "source_job": "db9c50oc77vs73817rog",
+  "model": "V3c with R166 twirl template AND pulse dressing",
+  "trajectory_budget_per_unit": 24,
+  "simulation_seed_root": 179,
+  "no_fit_to_R147": true,
+  "units": 227,
+  "group_summaries": {
+    "main": {
+      "n": 195,
+      "mean_signed_residual": 0.005936652661934902,
+      "independent_mc_se_of_group_mean": 0.001894922091961496
+    },
+    "twin_inline": {
+      "n": 16,
+      "mean_signed_residual": 0.014590755664682997,
+      "independent_mc_se_of_group_mean": 0.00570005495647952
+    },
+    "twin_static": {
+      "n": 16,
+      "mean_signed_residual": 0.022355603721116418,
+      "independent_mc_se_of_group_mean": 0.003837450540907884
+    }
+  },
+  "src_sha256": {
+    "src/oneq/hw/noise.py": "85a27b37ae369f555850856f595a14ebbe9b761b13c5af89d89e2faf39cc997b",
+    "src/oneq/hw/engine.py": "3dbcdcfa3c89f5fa0eaa5a2bc5012a8bfb9c196d1de7016b0bd0b8513a46eade",
+    "experiments/superactivation/shield_family/r152_posthoc.py": "7ebb71f6dce50ac6d91318bfde36dc1f68c19a54d846c911fdfb137b82b4fd2b",
+    "experiments/superactivation/shield_family/hw_dynamic_run.py": "22e3f7a6f948632bad5e5af188f05a73b9c750629d7bde8e01661fc36770cc7c"
+  },
+  "elapsed_seconds": 168.86395590001484,
+  "rows": [
+    {
+      "name": "m000__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.71,
+      "prediction": 1.9047703436584822,
+      "mc_se": 5.337361065282326e-05,
+      "shot_mean_minus_prediction": -0.19477034365848223,
+      "trajectory_seed": [
+        179,
+        0
+      ]
+    },
+    {
+      "name": "m001__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.69,
+      "prediction": 1.6495936376169058,
+      "mc_se": 0.029049537005491146,
+      "shot_mean_minus_prediction": 0.04040636238309414,
+      "trajectory_seed": [
+        179,
+        1
+      ]
+    },
+    {
+      "name": "m002__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.72,
+      "prediction": 1.6503426351250003,
+      "mc_se": 0.036481542028491604,
+      "shot_mean_minus_prediction": 0.06965736487499963,
+      "trajectory_seed": [
+        179,
+        2
+      ]
+    },
+    {
+      "name": "m003__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.655,
+      "prediction": 1.7111328015698026,
+      "mc_se": 0.04152724913639447,
+      "shot_mean_minus_prediction": -0.056132801569802604,
+      "trajectory_seed": [
+        179,
+        3
+      ]
+    },
+    {
+      "name": "m004__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.85,
+      "prediction": 1.9019116981700563,
+      "mc_se": 5.62383192409425e-07,
+      "shot_mean_minus_prediction": -0.05191169817005625,
+      "trajectory_seed": [
+        179,
+        4
+      ]
+    },
+    {
+      "name": "m005__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.895,
+      "prediction": 1.8764425078833418,
+      "mc_se": 0.03156222314984841,
+      "shot_mean_minus_prediction": 0.018557492116658247,
+      "trajectory_seed": [
+        179,
+        5
+      ]
+    },
+    {
+      "name": "m006__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.815,
+      "prediction": 1.701574419634934,
+      "mc_se": 0.018120383257995913,
+      "shot_mean_minus_prediction": 0.11342558036506589,
+      "trajectory_seed": [
+        179,
+        6
+      ]
+    },
+    {
+      "name": "m007__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.745,
+      "prediction": 1.7004993168570044,
+      "mc_se": 0.021082840114488185,
+      "shot_mean_minus_prediction": 0.04450068314299571,
+      "trajectory_seed": [
+        179,
+        7
+      ]
+    },
+    {
+      "name": "m008__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.79,
+      "prediction": 1.8748931749619009,
+      "mc_se": 0.016506652544281068,
+      "shot_mean_minus_prediction": -0.08489317496190085,
+      "trajectory_seed": [
+        179,
+        8
+      ]
+    },
+    {
+      "name": "m009__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.595,
+      "prediction": 1.6439087945710378,
+      "mc_se": 0.018704878790038078,
+      "shot_mean_minus_prediction": -0.048908794571037806,
+      "trajectory_seed": [
+        179,
+        9
+      ]
+    },
+    {
+      "name": "m010__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.74,
+      "prediction": 1.9006169237227817,
+      "mc_se": 0.000348700173970932,
+      "shot_mean_minus_prediction": -0.1606169237227817,
+      "trajectory_seed": [
+        179,
+        10
+      ]
+    },
+    {
+      "name": "m011__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.885,
+      "prediction": 1.905636602821935,
+      "mc_se": 0.0005514674426892987,
+      "shot_mean_minus_prediction": -0.020636602821934913,
+      "trajectory_seed": [
+        179,
+        11
+      ]
+    },
+    {
+      "name": "m012__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.665,
+      "prediction": 1.6875770981816354,
+      "mc_se": 0.023754394260981592,
+      "shot_mean_minus_prediction": -0.022577098181635336,
+      "trajectory_seed": [
+        179,
+        12
+      ]
+    },
+    {
+      "name": "m013__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.685,
+      "prediction": 1.6297462535517968,
+      "mc_se": 0.049663566163976214,
+      "shot_mean_minus_prediction": 0.055253746448203245,
+      "trajectory_seed": [
+        179,
+        13
+      ]
+    },
+    {
+      "name": "m014__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.72,
+      "prediction": 1.6335130294624933,
+      "mc_se": 0.04445032286410449,
+      "shot_mean_minus_prediction": 0.08648697053750665,
+      "trajectory_seed": [
+        179,
+        14
+      ]
+    },
+    {
+      "name": "m015__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.75,
+      "prediction": 1.6422998537482643,
+      "mc_se": 0.044341390131673916,
+      "shot_mean_minus_prediction": 0.10770014625173574,
+      "trajectory_seed": [
+        179,
+        15
+      ]
+    },
+    {
+      "name": "m016__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.88,
+      "prediction": 1.902787319943204,
+      "mc_se": 1.0173165427761867e-16,
+      "shot_mean_minus_prediction": -0.022787319943204043,
+      "trajectory_seed": [
+        179,
+        16
+      ]
+    },
+    {
+      "name": "m017__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.76,
+      "prediction": 1.7104009333301535,
+      "mc_se": 0.033148200479567874,
+      "shot_mean_minus_prediction": 0.04959906666984648,
+      "trajectory_seed": [
+        179,
+        17
+      ]
+    },
+    {
+      "name": "m018__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.885,
+      "prediction": 1.901029996573527,
+      "mc_se": 3.8506992660421595e-05,
+      "shot_mean_minus_prediction": -0.016029996573526883,
+      "trajectory_seed": [
+        179,
+        18
+      ]
+    },
+    {
+      "name": "m019__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.68,
+      "prediction": 1.5860288023369196,
+      "mc_se": 0.048167409426084724,
+      "shot_mean_minus_prediction": 0.09397119766308037,
+      "trajectory_seed": [
+        179,
+        19
+      ]
+    },
+    {
+      "name": "m020__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.87,
+      "prediction": 1.9080127826092586,
+      "mc_se": 0.0005159155797176173,
+      "shot_mean_minus_prediction": -0.038012782609258444,
+      "trajectory_seed": [
+        179,
+        20
+      ]
+    },
+    {
+      "name": "m021__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.58,
+      "prediction": 1.6676129946606524,
+      "mc_se": 0.015812783068969084,
+      "shot_mean_minus_prediction": -0.08761299466065231,
+      "trajectory_seed": [
+        179,
+        21
+      ]
+    },
+    {
+      "name": "m022__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.73,
+      "prediction": 1.6517460324143067,
+      "mc_se": 0.021263740107744983,
+      "shot_mean_minus_prediction": 0.07825396758569325,
+      "trajectory_seed": [
+        179,
+        22
+      ]
+    },
+    {
+      "name": "m023__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.71,
+      "prediction": 1.6718716593795022,
+      "mc_se": 0.022987377647340303,
+      "shot_mean_minus_prediction": 0.03812834062049775,
+      "trajectory_seed": [
+        179,
+        23
+      ]
+    },
+    {
+      "name": "m024__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.69,
+      "prediction": 1.6581990329891856,
+      "mc_se": 0.032026528584589445,
+      "shot_mean_minus_prediction": 0.03180096701081436,
+      "trajectory_seed": [
+        179,
+        24
+      ]
+    },
+    {
+      "name": "m025__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.72,
+      "prediction": 1.9005930549206207,
+      "mc_se": 0.0003798693181106726,
+      "shot_mean_minus_prediction": -0.18059305492062072,
+      "trajectory_seed": [
+        179,
+        25
+      ]
+    },
+    {
+      "name": "m026__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.735,
+      "prediction": 1.8574048845131632,
+      "mc_se": 0.030232594049515518,
+      "shot_mean_minus_prediction": -0.12240488451316311,
+      "trajectory_seed": [
+        179,
+        26
+      ]
+    },
+    {
+      "name": "m027__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.815,
+      "prediction": 1.6979373342768933,
+      "mc_se": 0.034696135534349276,
+      "shot_mean_minus_prediction": 0.11706266572310664,
+      "trajectory_seed": [
+        179,
+        27
+      ]
+    },
+    {
+      "name": "m028__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.645,
+      "prediction": 1.5957645223042949,
+      "mc_se": 0.031103652117258084,
+      "shot_mean_minus_prediction": 0.04923547769570513,
+      "trajectory_seed": [
+        179,
+        28
+      ]
+    },
+    {
+      "name": "m029__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.77,
+      "prediction": 1.6574793744622751,
+      "mc_se": 0.0405856880688669,
+      "shot_mean_minus_prediction": 0.1125206255377249,
+      "trajectory_seed": [
+        179,
+        29
+      ]
+    },
+    {
+      "name": "m030__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.89,
+      "prediction": 1.8618552842771685,
+      "mc_se": 0.04071807680999384,
+      "shot_mean_minus_prediction": 0.028144715722831393,
+      "trajectory_seed": [
+        179,
+        30
+      ]
+    },
+    {
+      "name": "m031__kept_kept|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.79,
+      "prediction": 1.8986136739276458,
+      "mc_se": 6.702736703937273e-05,
+      "shot_mean_minus_prediction": -0.10861367392764576,
+      "trajectory_seed": [
+        179,
+        31
+      ]
+    },
+    {
+      "name": "m032__kept_kept|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|1|0",
+      "measured": 0.01,
+      "prediction": 0.04181910494443896,
+      "mc_se": 0.03690667583179006,
+      "shot_mean_minus_prediction": -0.03181910494443896,
+      "trajectory_seed": [
+        179,
+        32
+      ]
+    },
+    {
+      "name": "m033__kept_kept|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|1|0",
+      "measured": 0.015,
+      "prediction": 0.029552023274742385,
+      "mc_se": 0.01749149057503973,
+      "shot_mean_minus_prediction": -0.014552023274742386,
+      "trajectory_seed": [
+        179,
+        33
+      ]
+    },
+    {
+      "name": "m034__kept_kept|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|1|0",
+      "measured": 0.015,
+      "prediction": 0.011906899720357494,
+      "mc_se": 4.046117015194696e-05,
+      "shot_mean_minus_prediction": 0.003093100279642505,
+      "trajectory_seed": [
+        179,
+        34
+      ]
+    },
+    {
+      "name": "m035__kept_kept|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s0|1|0",
+      "measured": 0.04,
+      "prediction": 0.03423057842965718,
+      "mc_se": 0.030293812743002937,
+      "shot_mean_minus_prediction": 0.005769421570342818,
+      "trajectory_seed": [
+        179,
+        35
+      ]
+    },
+    {
+      "name": "m036__kept_kept|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|0|0",
+      "measured": 0.09,
+      "prediction": 0.13450814828203214,
+      "mc_se": 0.02167142308098565,
+      "shot_mean_minus_prediction": -0.044508148282032145,
+      "trajectory_seed": [
+        179,
+        36
+      ]
+    },
+    {
+      "name": "m037__kept_kept|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|0|0",
+      "measured": 0.06,
+      "prediction": 0.09983024903045862,
+      "mc_se": 0.03489453192997514,
+      "shot_mean_minus_prediction": -0.03983024903045862,
+      "trajectory_seed": [
+        179,
+        37
+      ]
+    },
+    {
+      "name": "m038__kept_kept|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|0|0",
+      "measured": 0.055,
+      "prediction": 0.11170144740323046,
+      "mc_se": 0.024974664360210536,
+      "shot_mean_minus_prediction": -0.05670144740323046,
+      "trajectory_seed": [
+        179,
+        38
+      ]
+    },
+    {
+      "name": "m039__kept_kept|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|0|0",
+      "measured": 0.125,
+      "prediction": 0.118971895838793,
+      "mc_se": 0.010888348070946408,
+      "shot_mean_minus_prediction": 0.0060281041612069985,
+      "trajectory_seed": [
+        179,
+        39
+      ]
+    },
+    {
+      "name": "m040__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.59,
+      "prediction": 1.6136040786192232,
+      "mc_se": 0.041931857702562164,
+      "shot_mean_minus_prediction": -0.02360407861922309,
+      "trajectory_seed": [
+        179,
+        40
+      ]
+    },
+    {
+      "name": "m041__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.205,
+      "prediction": 1.1376152690809351,
+      "mc_se": 0.01521945157561103,
+      "shot_mean_minus_prediction": 0.06738473091906494,
+      "trajectory_seed": [
+        179,
+        41
+      ]
+    },
+    {
+      "name": "m042__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.305,
+      "prediction": 1.127633166772965,
+      "mc_se": 0.020736947659991983,
+      "shot_mean_minus_prediction": 0.17736683322703484,
+      "trajectory_seed": [
+        179,
+        42
+      ]
+    },
+    {
+      "name": "m043__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.67,
+      "prediction": 1.5948224716356232,
+      "mc_se": 0.043833828627639716,
+      "shot_mean_minus_prediction": 0.07517752836437674,
+      "trajectory_seed": [
+        179,
+        43
+      ]
+    },
+    {
+      "name": "m044__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.125,
+      "prediction": 1.145046366778531,
+      "mc_se": 0.01869768409817561,
+      "shot_mean_minus_prediction": -0.02004636677853111,
+      "trajectory_seed": [
+        179,
+        44
+      ]
+    },
+    {
+      "name": "m045__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.58,
+      "prediction": 1.6140929928310235,
+      "mc_se": 0.04175814803305718,
+      "shot_mean_minus_prediction": -0.034092992831023405,
+      "trajectory_seed": [
+        179,
+        45
+      ]
+    },
+    {
+      "name": "m046__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.25,
+      "prediction": 1.1149870029801434,
+      "mc_se": 0.019750547952514845,
+      "shot_mean_minus_prediction": 0.13501299701985658,
+      "trajectory_seed": [
+        179,
+        46
+      ]
+    },
+    {
+      "name": "m047__kept_kept|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_kept|s1|1|0",
+      "measured": 1.31,
+      "prediction": 1.1632880533640675,
+      "mc_se": 0.0157432836331278,
+      "shot_mean_minus_prediction": 0.14671194663593257,
+      "trajectory_seed": [
+        179,
+        47
+      ]
+    },
+    {
+      "name": "m048__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.58,
+      "prediction": 1.598369666669702,
+      "mc_se": 0.031903404832045755,
+      "shot_mean_minus_prediction": -0.018369666669701967,
+      "trajectory_seed": [
+        179,
+        48
+      ]
+    },
+    {
+      "name": "m049__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.925,
+      "prediction": 1.909861465990857,
+      "mc_se": 9.830876864479832e-17,
+      "shot_mean_minus_prediction": 0.015138534009143001,
+      "trajectory_seed": [
+        179,
+        49
+      ]
+    },
+    {
+      "name": "m050__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.75,
+      "prediction": 1.909662549595806,
+      "mc_se": 0.00011193596359331228,
+      "shot_mean_minus_prediction": -0.15966254959580595,
+      "trajectory_seed": [
+        179,
+        50
+      ]
+    },
+    {
+      "name": "m051__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.88,
+      "prediction": 1.911456141003499,
+      "mc_se": 7.462733289923949e-17,
+      "shot_mean_minus_prediction": -0.03145614100349903,
+      "trajectory_seed": [
+        179,
+        51
+      ]
+    },
+    {
+      "name": "m052__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.675,
+      "prediction": 1.5842843892645966,
+      "mc_se": 0.04290359679334049,
+      "shot_mean_minus_prediction": 0.09071561073540346,
+      "trajectory_seed": [
+        179,
+        52
+      ]
+    },
+    {
+      "name": "m053__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.73,
+      "prediction": 1.676717122224615,
+      "mc_se": 0.03824122882403377,
+      "shot_mean_minus_prediction": 0.053282877775384874,
+      "trajectory_seed": [
+        179,
+        53
+      ]
+    },
+    {
+      "name": "m054__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.65,
+      "prediction": 1.6808442151519896,
+      "mc_se": 0.03191297017441492,
+      "shot_mean_minus_prediction": -0.03084421515198965,
+      "trajectory_seed": [
+        179,
+        54
+      ]
+    },
+    {
+      "name": "m055__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.59,
+      "prediction": 1.5830052071213316,
+      "mc_se": 0.043341232957286376,
+      "shot_mean_minus_prediction": 0.006994792878668443,
+      "trajectory_seed": [
+        179,
+        55
+      ]
+    },
+    {
+      "name": "m056__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.88,
+      "prediction": 1.8692175513685023,
+      "mc_se": 0.038125452406869945,
+      "shot_mean_minus_prediction": 0.010782448631497576,
+      "trajectory_seed": [
+        179,
+        56
+      ]
+    },
+    {
+      "name": "m057__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.755,
+      "prediction": 1.8818923828221619,
+      "mc_se": 0.016239475493802575,
+      "shot_mean_minus_prediction": -0.12689238282216198,
+      "trajectory_seed": [
+        179,
+        57
+      ]
+    },
+    {
+      "name": "m058__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.745,
+      "prediction": 1.6681772095572753,
+      "mc_se": 0.046187918245677924,
+      "shot_mean_minus_prediction": 0.07682279044272478,
+      "trajectory_seed": [
+        179,
+        58
+      ]
+    },
+    {
+      "name": "m059__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.765,
+      "prediction": 1.676253000908979,
+      "mc_se": 0.03540366682226062,
+      "shot_mean_minus_prediction": 0.0887469990910208,
+      "trajectory_seed": [
+        179,
+        59
+      ]
+    },
+    {
+      "name": "m060__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.68,
+      "prediction": 1.6591738658607993,
+      "mc_se": 0.040501247597872686,
+      "shot_mean_minus_prediction": 0.020826134139200647,
+      "trajectory_seed": [
+        179,
+        60
+      ]
+    },
+    {
+      "name": "m061__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.705,
+      "prediction": 1.717183834562711,
+      "mc_se": 0.030729115348889852,
+      "shot_mean_minus_prediction": -0.012183834562710993,
+      "trajectory_seed": [
+        179,
+        61
+      ]
+    },
+    {
+      "name": "m062__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.645,
+      "prediction": 1.6521147600249166,
+      "mc_se": 0.015514865297597073,
+      "shot_mean_minus_prediction": -0.007114760024916622,
+      "trajectory_seed": [
+        179,
+        62
+      ]
+    },
+    {
+      "name": "m063__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.705,
+      "prediction": 1.6994386899710088,
+      "mc_se": 0.013524490199146897,
+      "shot_mean_minus_prediction": 0.005561310028991295,
+      "trajectory_seed": [
+        179,
+        63
+      ]
+    },
+    {
+      "name": "m064__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.895,
+      "prediction": 1.8769577608283299,
+      "mc_se": 0.033871608474178035,
+      "shot_mean_minus_prediction": 0.018042239171670138,
+      "trajectory_seed": [
+        179,
+        64
+      ]
+    },
+    {
+      "name": "m065__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.87,
+      "prediction": 1.906588890467238,
+      "mc_se": 1.3303068065263172e-16,
+      "shot_mean_minus_prediction": -0.03658889046723779,
+      "trajectory_seed": [
+        179,
+        65
+      ]
+    },
+    {
+      "name": "m066__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.905,
+      "prediction": 1.9113682738298339,
+      "mc_se": 0.00041894870996404414,
+      "shot_mean_minus_prediction": -0.006368273829833848,
+      "trajectory_seed": [
+        179,
+        66
+      ]
+    },
+    {
+      "name": "m067__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.675,
+      "prediction": 1.68833576363398,
+      "mc_se": 0.043126469472054556,
+      "shot_mean_minus_prediction": -0.013335763633979925,
+      "trajectory_seed": [
+        179,
+        67
+      ]
+    },
+    {
+      "name": "m068__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.71,
+      "prediction": 1.8540022037188106,
+      "mc_se": 0.03010814608203865,
+      "shot_mean_minus_prediction": -0.14400220371881067,
+      "trajectory_seed": [
+        179,
+        68
+      ]
+    },
+    {
+      "name": "m069__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.695,
+      "prediction": 1.6653854442116014,
+      "mc_se": 0.04773337359348933,
+      "shot_mean_minus_prediction": 0.029614555788398667,
+      "trajectory_seed": [
+        179,
+        69
+      ]
+    },
+    {
+      "name": "m070__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.69,
+      "prediction": 1.6501822113217581,
+      "mc_se": 0.015380219745485157,
+      "shot_mean_minus_prediction": 0.03981778867824182,
+      "trajectory_seed": [
+        179,
+        70
+      ]
+    },
+    {
+      "name": "m071__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.695,
+      "prediction": 1.691121155323313,
+      "mc_se": 0.027915300243638985,
+      "shot_mean_minus_prediction": 0.0038788446766870877,
+      "trajectory_seed": [
+        179,
+        71
+      ]
+    },
+    {
+      "name": "m072__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.745,
+      "prediction": 1.6670537537381322,
+      "mc_se": 0.023621513298193127,
+      "shot_mean_minus_prediction": 0.07794624626186786,
+      "trajectory_seed": [
+        179,
+        72
+      ]
+    },
+    {
+      "name": "m073__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.66,
+      "prediction": 1.6811391129892395,
+      "mc_se": 0.04418075489846966,
+      "shot_mean_minus_prediction": -0.02113911298923954,
+      "trajectory_seed": [
+        179,
+        73
+      ]
+    },
+    {
+      "name": "m074__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.9,
+      "prediction": 1.9111100638370007,
+      "mc_se": 8.396161559901745e-17,
+      "shot_mean_minus_prediction": -0.01111006383700075,
+      "trajectory_seed": [
+        179,
+        74
+      ]
+    },
+    {
+      "name": "m075__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.93,
+      "prediction": 1.9109136643688915,
+      "mc_se": 0.0006042060882185678,
+      "shot_mean_minus_prediction": 0.019086335631108398,
+      "trajectory_seed": [
+        179,
+        75
+      ]
+    },
+    {
+      "name": "m076__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.77,
+      "prediction": 1.6831628891273298,
+      "mc_se": 0.02525766596008402,
+      "shot_mean_minus_prediction": 0.08683711087267021,
+      "trajectory_seed": [
+        179,
+        76
+      ]
+    },
+    {
+      "name": "m077__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.665,
+      "prediction": 1.902001228782912,
+      "mc_se": 0.009698496864667658,
+      "shot_mean_minus_prediction": -0.23700122878291197,
+      "trajectory_seed": [
+        179,
+        77
+      ]
+    },
+    {
+      "name": "m078__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.63,
+      "prediction": 1.7133483638088685,
+      "mc_se": 0.01946475858860709,
+      "shot_mean_minus_prediction": -0.08334836380886856,
+      "trajectory_seed": [
+        179,
+        78
+      ]
+    },
+    {
+      "name": "m079__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.785,
+      "prediction": 1.9083985158355108,
+      "mc_se": 0.0001397735349851019,
+      "shot_mean_minus_prediction": -0.12339851583551087,
+      "trajectory_seed": [
+        179,
+        79
+      ]
+    },
+    {
+      "name": "m080__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.675,
+      "prediction": 1.6740887603395844,
+      "mc_se": 0.028466951274242692,
+      "shot_mean_minus_prediction": 0.0009112396604156192,
+      "trajectory_seed": [
+        179,
+        80
+      ]
+    },
+    {
+      "name": "m081__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.7,
+      "prediction": 1.8719337960360176,
+      "mc_se": 0.025156958158884267,
+      "shot_mean_minus_prediction": -0.17193379603601766,
+      "trajectory_seed": [
+        179,
+        81
+      ]
+    },
+    {
+      "name": "m082__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.655,
+      "prediction": 1.6625061429581407,
+      "mc_se": 0.04011293303237157,
+      "shot_mean_minus_prediction": -0.007506142958140671,
+      "trajectory_seed": [
+        179,
+        82
+      ]
+    },
+    {
+      "name": "m083__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.75,
+      "prediction": 1.7096926405898942,
+      "mc_se": 0.024308403905979086,
+      "shot_mean_minus_prediction": 0.04030735941010577,
+      "trajectory_seed": [
+        179,
+        83
+      ]
+    },
+    {
+      "name": "m084__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.755,
+      "prediction": 1.7179918727360965,
+      "mc_se": 0.023966415829993,
+      "shot_mean_minus_prediction": 0.037008127263903345,
+      "trajectory_seed": [
+        179,
+        84
+      ]
+    },
+    {
+      "name": "m085__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.645,
+      "prediction": 1.5083955383589658,
+      "mc_se": 0.06231950454228943,
+      "shot_mean_minus_prediction": 0.13660446164103424,
+      "trajectory_seed": [
+        179,
+        85
+      ]
+    },
+    {
+      "name": "m086__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.705,
+      "prediction": 1.6458435258212896,
+      "mc_se": 0.047469548979909744,
+      "shot_mean_minus_prediction": 0.059156474178710505,
+      "trajectory_seed": [
+        179,
+        86
+      ]
+    },
+    {
+      "name": "m087__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.64,
+      "prediction": 1.6923284933729088,
+      "mc_se": 0.02321756898182997,
+      "shot_mean_minus_prediction": -0.0523284933729089,
+      "trajectory_seed": [
+        179,
+        87
+      ]
+    },
+    {
+      "name": "m088__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.885,
+      "prediction": 1.8663555609011067,
+      "mc_se": 0.040475760229181,
+      "shot_mean_minus_prediction": 0.01864443909889335,
+      "trajectory_seed": [
+        179,
+        88
+      ]
+    },
+    {
+      "name": "m089__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.78,
+      "prediction": 1.6496192355771697,
+      "mc_se": 0.018320238646409436,
+      "shot_mean_minus_prediction": 0.1303807644228303,
+      "trajectory_seed": [
+        179,
+        89
+      ]
+    },
+    {
+      "name": "m090__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.745,
+      "prediction": 1.6334189029555102,
+      "mc_se": 0.0516074938231933,
+      "shot_mean_minus_prediction": 0.11158109704448993,
+      "trajectory_seed": [
+        179,
+        90
+      ]
+    },
+    {
+      "name": "m091__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.555,
+      "prediction": 1.598861332184256,
+      "mc_se": 0.025353852109853182,
+      "shot_mean_minus_prediction": -0.04386133218425603,
+      "trajectory_seed": [
+        179,
+        91
+      ]
+    },
+    {
+      "name": "m092__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.86,
+      "prediction": 1.9050232390498403,
+      "mc_se": 0.000854069214516187,
+      "shot_mean_minus_prediction": -0.04502323904984018,
+      "trajectory_seed": [
+        179,
+        92
+      ]
+    },
+    {
+      "name": "m093__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.705,
+      "prediction": 1.6730764555339237,
+      "mc_se": 0.029151581924681657,
+      "shot_mean_minus_prediction": 0.03192354446607637,
+      "trajectory_seed": [
+        179,
+        93
+      ]
+    },
+    {
+      "name": "m094__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.89,
+      "prediction": 1.8710399101872788,
+      "mc_se": 0.037138481213197246,
+      "shot_mean_minus_prediction": 0.018960089812721126,
+      "trajectory_seed": [
+        179,
+        94
+      ]
+    },
+    {
+      "name": "m095__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.77,
+      "prediction": 1.8687033939691018,
+      "mc_se": 0.023154789329718994,
+      "shot_mean_minus_prediction": -0.09870339396910177,
+      "trajectory_seed": [
+        179,
+        95
+      ]
+    },
+    {
+      "name": "m096__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.685,
+      "prediction": 1.663432533406557,
+      "mc_se": 0.028211433933264654,
+      "shot_mean_minus_prediction": 0.021567466593443108,
+      "trajectory_seed": [
+        179,
+        96
+      ]
+    },
+    {
+      "name": "m097__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.925,
+      "prediction": 1.911440987301952,
+      "mc_se": 5.645871249359173e-17,
+      "shot_mean_minus_prediction": 0.013559012698048045,
+      "trajectory_seed": [
+        179,
+        97
+      ]
+    },
+    {
+      "name": "m098__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.685,
+      "prediction": 1.6819833125338817,
+      "mc_se": 0.0315465196435461,
+      "shot_mean_minus_prediction": 0.003016687466118384,
+      "trajectory_seed": [
+        179,
+        98
+      ]
+    },
+    {
+      "name": "m099__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.695,
+      "prediction": 1.6776710398513475,
+      "mc_se": 0.03421259960188255,
+      "shot_mean_minus_prediction": 0.017328960148652595,
+      "trajectory_seed": [
+        179,
+        99
+      ]
+    },
+    {
+      "name": "m100__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.655,
+      "prediction": 1.6778021269588204,
+      "mc_se": 0.019182872753822015,
+      "shot_mean_minus_prediction": -0.022802126958820335,
+      "trajectory_seed": [
+        179,
+        100
+      ]
+    },
+    {
+      "name": "m101__kept_erased|s0|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.625,
+      "prediction": 1.6495972772366103,
+      "mc_se": 0.021667604901559036,
+      "shot_mean_minus_prediction": -0.024597277236610315,
+      "trajectory_seed": [
+        179,
+        101
+      ]
+    },
+    {
+      "name": "m102__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.07,
+      "prediction": 0.06757575815323191,
+      "mc_se": 0.0008492251080581944,
+      "shot_mean_minus_prediction": 0.0024242418467680937,
+      "trajectory_seed": [
+        179,
+        102
+      ]
+    },
+    {
+      "name": "m103__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.06,
+      "prediction": 0.10740300720622195,
+      "mc_se": 0.03913807214879019,
+      "shot_mean_minus_prediction": -0.04740300720622195,
+      "trajectory_seed": [
+        179,
+        103
+      ]
+    },
+    {
+      "name": "m104__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.705,
+      "prediction": 1.7423872241798026,
+      "mc_se": 0.031203607000954644,
+      "shot_mean_minus_prediction": -0.03738722417980256,
+      "trajectory_seed": [
+        179,
+        104
+      ]
+    },
+    {
+      "name": "m105__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.185,
+      "prediction": 0.06750776119142873,
+      "mc_se": 2.480276767401367e-18,
+      "shot_mean_minus_prediction": 0.11749223880857126,
+      "trajectory_seed": [
+        179,
+        105
+      ]
+    },
+    {
+      "name": "m106__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.305,
+      "prediction": 0.26332261446565564,
+      "mc_se": 0.022265910065817317,
+      "shot_mean_minus_prediction": 0.04167738553434436,
+      "trajectory_seed": [
+        179,
+        106
+      ]
+    },
+    {
+      "name": "m107__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.045,
+      "prediction": 0.1019834299205107,
+      "mc_se": 0.03634471452127396,
+      "shot_mean_minus_prediction": -0.0569834299205107,
+      "trajectory_seed": [
+        179,
+        107
+      ]
+    },
+    {
+      "name": "m108__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.48,
+      "prediction": 0.31115176289803925,
+      "mc_se": 0.0263923128853671,
+      "shot_mean_minus_prediction": 0.16884823710196073,
+      "trajectory_seed": [
+        179,
+        108
+      ]
+    },
+    {
+      "name": "m109__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.69,
+      "prediction": 1.6692994117827262,
+      "mc_se": 0.023083790094790602,
+      "shot_mean_minus_prediction": 0.02070058821727372,
+      "trajectory_seed": [
+        179,
+        109
+      ]
+    },
+    {
+      "name": "m110__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.225,
+      "prediction": 0.35906045428397027,
+      "mc_se": 0.04985182615745629,
+      "shot_mean_minus_prediction": -0.13406045428397026,
+      "trajectory_seed": [
+        179,
+        110
+      ]
+    },
+    {
+      "name": "m111__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.725,
+      "prediction": 1.7014388135801426,
+      "mc_se": 0.025981019049641476,
+      "shot_mean_minus_prediction": 0.023561186419857494,
+      "trajectory_seed": [
+        179,
+        111
+      ]
+    },
+    {
+      "name": "m112__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.215,
+      "prediction": 0.2782964415711918,
+      "mc_se": 0.03274709511358975,
+      "shot_mean_minus_prediction": -0.06329644157119182,
+      "trajectory_seed": [
+        179,
+        112
+      ]
+    },
+    {
+      "name": "m113__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.655,
+      "prediction": 1.580255278862565,
+      "mc_se": 0.059241184239106855,
+      "shot_mean_minus_prediction": 0.07474472113743502,
+      "trajectory_seed": [
+        179,
+        113
+      ]
+    },
+    {
+      "name": "m114__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.04,
+      "prediction": 0.06422992227567673,
+      "mc_se": 0.001026363670685856,
+      "shot_mean_minus_prediction": -0.024229922275676725,
+      "trajectory_seed": [
+        179,
+        114
+      ]
+    },
+    {
+      "name": "m115__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.79,
+      "prediction": 1.6546705686840384,
+      "mc_se": 0.024408147306431156,
+      "shot_mean_minus_prediction": 0.13532943131596165,
+      "trajectory_seed": [
+        179,
+        115
+      ]
+    },
+    {
+      "name": "m116__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.305,
+      "prediction": 0.3381555614619086,
+      "mc_se": 0.023467092158562852,
+      "shot_mean_minus_prediction": -0.03315556146190862,
+      "trajectory_seed": [
+        179,
+        116
+      ]
+    },
+    {
+      "name": "m117__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.34,
+      "prediction": 0.32997835238741613,
+      "mc_se": 0.04194911889793126,
+      "shot_mean_minus_prediction": 0.010021647612583895,
+      "trajectory_seed": [
+        179,
+        117
+      ]
+    },
+    {
+      "name": "m118__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.295,
+      "prediction": 0.3155516320435344,
+      "mc_se": 0.02057819067931335,
+      "shot_mean_minus_prediction": -0.02055163204353444,
+      "trajectory_seed": [
+        179,
+        118
+      ]
+    },
+    {
+      "name": "m119__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.325,
+      "prediction": 0.2800856170669927,
+      "mc_se": 0.013550447898460029,
+      "shot_mean_minus_prediction": 0.04491438293300731,
+      "trajectory_seed": [
+        179,
+        119
+      ]
+    },
+    {
+      "name": "m120__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.06,
+      "prediction": 0.06666333070914222,
+      "mc_se": 0.00079068230422278,
+      "shot_mean_minus_prediction": -0.006663330709142226,
+      "trajectory_seed": [
+        179,
+        120
+      ]
+    },
+    {
+      "name": "m121__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.755,
+      "prediction": 1.7129900625607912,
+      "mc_se": 0.039699863485864795,
+      "shot_mean_minus_prediction": 0.04200993743920867,
+      "trajectory_seed": [
+        179,
+        121
+      ]
+    },
+    {
+      "name": "m122__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.82,
+      "prediction": 1.75347857495487,
+      "mc_se": 0.006170587736153189,
+      "shot_mean_minus_prediction": 0.06652142504513003,
+      "trajectory_seed": [
+        179,
+        122
+      ]
+    },
+    {
+      "name": "m123__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.66,
+      "prediction": 1.6247444437656613,
+      "mc_se": 0.04101201961125169,
+      "shot_mean_minus_prediction": 0.035255556234338625,
+      "trajectory_seed": [
+        179,
+        123
+      ]
+    },
+    {
+      "name": "m124__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.245,
+      "prediction": 0.07095159544343245,
+      "mc_se": 0.000496266016214777,
+      "shot_mean_minus_prediction": 0.17404840455656756,
+      "trajectory_seed": [
+        179,
+        124
+      ]
+    },
+    {
+      "name": "m125__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.19,
+      "prediction": 0.11240332048451755,
+      "mc_se": 0.028179131172864427,
+      "shot_mean_minus_prediction": 0.07759667951548245,
+      "trajectory_seed": [
+        179,
+        125
+      ]
+    },
+    {
+      "name": "m126__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.645,
+      "prediction": 1.6479349368649798,
+      "mc_se": 0.048318961404952836,
+      "shot_mean_minus_prediction": -0.002934936864979809,
+      "trajectory_seed": [
+        179,
+        126
+      ]
+    },
+    {
+      "name": "m127__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.755,
+      "prediction": 1.6779765573322574,
+      "mc_se": 0.013636311271512373,
+      "shot_mean_minus_prediction": 0.07702344266774253,
+      "trajectory_seed": [
+        179,
+        127
+      ]
+    },
+    {
+      "name": "m128__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.035,
+      "prediction": 0.07019848484554184,
+      "mc_se": 9.983494011123255e-18,
+      "shot_mean_minus_prediction": -0.03519848484554183,
+      "trajectory_seed": [
+        179,
+        128
+      ]
+    },
+    {
+      "name": "m129__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.26,
+      "prediction": 0.24264524882594465,
+      "mc_se": 0.012463744840777703,
+      "shot_mean_minus_prediction": 0.017354751174055355,
+      "trajectory_seed": [
+        179,
+        129
+      ]
+    },
+    {
+      "name": "m130__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.065,
+      "prediction": 0.1092037745237174,
+      "mc_se": 0.03952016614044402,
+      "shot_mean_minus_prediction": -0.044203774523717404,
+      "trajectory_seed": [
+        179,
+        130
+      ]
+    },
+    {
+      "name": "m131__kept_erased|s0|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.665,
+      "prediction": 1.6325260152589454,
+      "mc_se": 0.046461066190195716,
+      "shot_mean_minus_prediction": 0.03247398474105467,
+      "trajectory_seed": [
+        179,
+        131
+      ]
+    },
+    {
+      "name": "m132__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.01,
+      "prediction": 0.04171045848077676,
+      "mc_se": 0.037166612329679716,
+      "shot_mean_minus_prediction": -0.031710458480776756,
+      "trajectory_seed": [
+        179,
+        132
+      ]
+    },
+    {
+      "name": "m133__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.01,
+      "prediction": 0.004148181047224931,
+      "mc_se": 0.0002463023696198731,
+      "shot_mean_minus_prediction": 0.005851818952775069,
+      "trajectory_seed": [
+        179,
+        133
+      ]
+    },
+    {
+      "name": "m134__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.02,
+      "prediction": 0.01549143416827213,
+      "mc_se": 0.0036483359076024094,
+      "shot_mean_minus_prediction": 0.00450856583172787,
+      "trajectory_seed": [
+        179,
+        134
+      ]
+    },
+    {
+      "name": "m135__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.01,
+      "prediction": 0.012435989600119523,
+      "mc_se": 4.264427866979294e-05,
+      "shot_mean_minus_prediction": -0.002435989600119523,
+      "trajectory_seed": [
+        179,
+        135
+      ]
+    },
+    {
+      "name": "m136__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.01,
+      "prediction": 0.012574195038748574,
+      "mc_se": 2.5715453951985784e-05,
+      "shot_mean_minus_prediction": -0.0025741950387485734,
+      "trajectory_seed": [
+        179,
+        136
+      ]
+    },
+    {
+      "name": "m137__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.025,
+      "prediction": 0.011732304949580342,
+      "mc_se": 2.9615593053469316e-05,
+      "shot_mean_minus_prediction": 0.01326769505041966,
+      "trajectory_seed": [
+        179,
+        137
+      ]
+    },
+    {
+      "name": "m138__kept_erased|s0|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|0",
+      "measured": 0.005,
+      "prediction": 0.004014806540379575,
+      "mc_se": 1.435372269632802e-09,
+      "shot_mean_minus_prediction": 0.0009851934596204247,
+      "trajectory_seed": [
+        179,
+        138
+      ]
+    },
+    {
+      "name": "m139__kept_erased|s0|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|1",
+      "measured": 0.025,
+      "prediction": 0.03051432787962475,
+      "mc_se": 0.01873562473066708,
+      "shot_mean_minus_prediction": -0.0055143278796247475,
+      "trajectory_seed": [
+        179,
+        139
+      ]
+    },
+    {
+      "name": "m140__kept_erased|s0|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|1",
+      "measured": 0.025,
+      "prediction": 0.032262058912147215,
+      "mc_se": 0.019808598435508914,
+      "shot_mean_minus_prediction": -0.007262058912147214,
+      "trajectory_seed": [
+        179,
+        140
+      ]
+    },
+    {
+      "name": "m141__kept_erased|s0|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|1",
+      "measured": 0.015,
+      "prediction": 0.012177557002347007,
+      "mc_se": 3.854585043130121e-05,
+      "shot_mean_minus_prediction": 0.002822442997652993,
+      "trajectory_seed": [
+        179,
+        141
+      ]
+    },
+    {
+      "name": "m142__kept_erased|s0|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s0|1|1",
+      "measured": 0.025,
+      "prediction": 0.012619536454687727,
+      "mc_se": 2.9182754617071016e-05,
+      "shot_mean_minus_prediction": 0.012380463545312274,
+      "trajectory_seed": [
+        179,
+        142
+      ]
+    },
+    {
+      "name": "m143__kept_erased|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|0",
+      "measured": 0.11,
+      "prediction": 0.11493497269182079,
+      "mc_se": 0.04132234084847724,
+      "shot_mean_minus_prediction": -0.004934972691820791,
+      "trajectory_seed": [
+        179,
+        143
+      ]
+    },
+    {
+      "name": "m144__kept_erased|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|0",
+      "measured": 0.09,
+      "prediction": 0.09739384375850746,
+      "mc_se": 0.015834980977998733,
+      "shot_mean_minus_prediction": -0.007393843758507462,
+      "trajectory_seed": [
+        179,
+        144
+      ]
+    },
+    {
+      "name": "m145__kept_erased|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|0",
+      "measured": 0.07,
+      "prediction": 0.14965591829033553,
+      "mc_se": 0.047010115334951745,
+      "shot_mean_minus_prediction": -0.07965591829033553,
+      "trajectory_seed": [
+        179,
+        145
+      ]
+    },
+    {
+      "name": "m146__kept_erased|s1|0|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|0",
+      "measured": 0.075,
+      "prediction": 0.07656298248341303,
+      "mc_se": 0.017255141979166472,
+      "shot_mean_minus_prediction": -0.0015629824834130362,
+      "trajectory_seed": [
+        179,
+        146
+      ]
+    },
+    {
+      "name": "m147__kept_erased|s1|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|1",
+      "measured": 0.085,
+      "prediction": 0.16362178285702983,
+      "mc_se": 0.03279444159959109,
+      "shot_mean_minus_prediction": -0.07862178285702982,
+      "trajectory_seed": [
+        179,
+        147
+      ]
+    },
+    {
+      "name": "m148__kept_erased|s1|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|1",
+      "measured": 0.095,
+      "prediction": 0.13256612821358216,
+      "mc_se": 0.028013641607729164,
+      "shot_mean_minus_prediction": -0.037566128213582156,
+      "trajectory_seed": [
+        179,
+        148
+      ]
+    },
+    {
+      "name": "m149__kept_erased|s1|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|1",
+      "measured": 0.09,
+      "prediction": 0.09283921306612622,
+      "mc_se": 0.018691834200724528,
+      "shot_mean_minus_prediction": -0.0028392130661262227,
+      "trajectory_seed": [
+        179,
+        149
+      ]
+    },
+    {
+      "name": "m150__kept_erased|s1|0|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|0|1",
+      "measured": 0.085,
+      "prediction": 0.07830668926493142,
+      "mc_se": 0.0008002353212432697,
+      "shot_mean_minus_prediction": 0.006693310735068583,
+      "trajectory_seed": [
+        179,
+        150
+      ]
+    },
+    {
+      "name": "m151__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.305,
+      "prediction": 1.1235388139110445,
+      "mc_se": 0.020705520472410366,
+      "shot_mean_minus_prediction": 0.18146118608895545,
+      "trajectory_seed": [
+        179,
+        151
+      ]
+    },
+    {
+      "name": "m152__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.7,
+      "prediction": 1.6713186735545982,
+      "mc_se": 0.04208364479549767,
+      "shot_mean_minus_prediction": 0.028681326445401778,
+      "trajectory_seed": [
+        179,
+        152
+      ]
+    },
+    {
+      "name": "m153__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.18,
+      "prediction": 1.1315369273213813,
+      "mc_se": 0.020014746294219607,
+      "shot_mean_minus_prediction": 0.0484630726786186,
+      "trajectory_seed": [
+        179,
+        153
+      ]
+    },
+    {
+      "name": "m154__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.245,
+      "prediction": 1.128793367496004,
+      "mc_se": 0.021946250342392174,
+      "shot_mean_minus_prediction": 0.1162066325039961,
+      "trajectory_seed": [
+        179,
+        154
+      ]
+    },
+    {
+      "name": "m155__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.225,
+      "prediction": 1.1427958164829977,
+      "mc_se": 0.011337970348511734,
+      "shot_mean_minus_prediction": 0.08220418351700243,
+      "trajectory_seed": [
+        179,
+        155
+      ]
+    },
+    {
+      "name": "m156__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.58,
+      "prediction": 1.6517669361050515,
+      "mc_se": 0.036080727474549656,
+      "shot_mean_minus_prediction": -0.07176693610505147,
+      "trajectory_seed": [
+        179,
+        156
+      ]
+    },
+    {
+      "name": "m157__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.235,
+      "prediction": 1.139772485797091,
+      "mc_se": 0.017743730283177554,
+      "shot_mean_minus_prediction": 0.09522751420290909,
+      "trajectory_seed": [
+        179,
+        157
+      ]
+    },
+    {
+      "name": "m158__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.635,
+      "prediction": 1.690399997482611,
+      "mc_se": 0.026763909731052794,
+      "shot_mean_minus_prediction": -0.05539999748261093,
+      "trajectory_seed": [
+        179,
+        158
+      ]
+    },
+    {
+      "name": "m159__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.655,
+      "prediction": 1.718480503032402,
+      "mc_se": 0.028580104452292837,
+      "shot_mean_minus_prediction": -0.06348050303240194,
+      "trajectory_seed": [
+        179,
+        159
+      ]
+    },
+    {
+      "name": "m160__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.625,
+      "prediction": 1.670554882176161,
+      "mc_se": 0.04241489566268304,
+      "shot_mean_minus_prediction": -0.045554882176161104,
+      "trajectory_seed": [
+        179,
+        160
+      ]
+    },
+    {
+      "name": "m161__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.275,
+      "prediction": 1.1555869514083155,
+      "mc_se": 0.020016003499259753,
+      "shot_mean_minus_prediction": 0.11941304859168445,
+      "trajectory_seed": [
+        179,
+        161
+      ]
+    },
+    {
+      "name": "m162__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.66,
+      "prediction": 1.7116331794502235,
+      "mc_se": 0.03475058859548017,
+      "shot_mean_minus_prediction": -0.05163317945022361,
+      "trajectory_seed": [
+        179,
+        162
+      ]
+    },
+    {
+      "name": "m163__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.69,
+      "prediction": 1.690833297764349,
+      "mc_se": 0.02635696743613551,
+      "shot_mean_minus_prediction": -0.0008332977643490391,
+      "trajectory_seed": [
+        179,
+        163
+      ]
+    },
+    {
+      "name": "m164__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.63,
+      "prediction": 1.6903061290372114,
+      "mc_se": 0.02673742571017807,
+      "shot_mean_minus_prediction": -0.06030612903721155,
+      "trajectory_seed": [
+        179,
+        164
+      ]
+    },
+    {
+      "name": "m165__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.685,
+      "prediction": 1.6124434008127815,
+      "mc_se": 0.047872251712621154,
+      "shot_mean_minus_prediction": 0.07255659918721857,
+      "trajectory_seed": [
+        179,
+        165
+      ]
+    },
+    {
+      "name": "m166__kept_erased|s1|1|0",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|0",
+      "measured": 1.635,
+      "prediction": 1.7387138884039417,
+      "mc_se": 0.021053115729579346,
+      "shot_mean_minus_prediction": -0.10371388840394169,
+      "trajectory_seed": [
+        179,
+        166
+      ]
+    },
+    {
+      "name": "m167__kept_erased|s1|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|1",
+      "measured": 0.135,
+      "prediction": 0.08441358467657324,
+      "mc_se": 0.0004912851059422143,
+      "shot_mean_minus_prediction": 0.05058641532342677,
+      "trajectory_seed": [
+        179,
+        167
+      ]
+    },
+    {
+      "name": "m168__kept_erased|s1|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|1",
+      "measured": 0.205,
+      "prediction": 0.09565982756584969,
+      "mc_se": 0.0002729576674356374,
+      "shot_mean_minus_prediction": 0.1093401724341503,
+      "trajectory_seed": [
+        179,
+        168
+      ]
+    },
+    {
+      "name": "m169__kept_erased|s1|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|1",
+      "measured": 0.205,
+      "prediction": 0.11277291236817172,
+      "mc_se": 0.0012130364159325072,
+      "shot_mean_minus_prediction": 0.09222708763182827,
+      "trajectory_seed": [
+        179,
+        169
+      ]
+    },
+    {
+      "name": "m170__kept_erased|s1|1|1",
+      "kind": "main",
+      "stratum": "kept_erased|s1|1|1",
+      "measured": 1.305,
+      "prediction": 1.150455819980923,
+      "mc_se": 0.014009560276281724,
+      "shot_mean_minus_prediction": 0.154544180019077,
+      "trajectory_seed": [
+        179,
+        170
+      ]
+    },
+    {
+      "name": "e000__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999999,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 1.1102230246251565e-16,
+      "trajectory_seed": [
+        179,
+        171
+      ]
+    },
+    {
+      "name": "e001__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999998,
+      "mc_se": 5.116866961995248e-20,
+      "shot_mean_minus_prediction": 2.220446049250313e-16,
+      "trajectory_seed": [
+        179,
+        172
+      ]
+    },
+    {
+      "name": "e002__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999999,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 1.1102230246251565e-16,
+      "trajectory_seed": [
+        179,
+        173
+      ]
+    },
+    {
+      "name": "e003__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.5,
+      "mc_se": 5.634983184262384e-20,
+      "shot_mean_minus_prediction": 0.0,
+      "trajectory_seed": [
+        179,
+        174
+      ]
+    },
+    {
+      "name": "e004__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.5,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 0.0,
+      "trajectory_seed": [
+        179,
+        175
+      ]
+    },
+    {
+      "name": "e005__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999997,
+      "mc_se": 3.731858779536471e-20,
+      "shot_mean_minus_prediction": 2.7755575615628914e-16,
+      "trajectory_seed": [
+        179,
+        176
+      ]
+    },
+    {
+      "name": "e006__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.49999999999999994,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 5.551115123125783e-17,
+      "trajectory_seed": [
+        179,
+        177
+      ]
+    },
+    {
+      "name": "e007__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.49999999999999983,
+      "mc_se": 1.4927435118145885e-20,
+      "shot_mean_minus_prediction": 1.6653345369377348e-16,
+      "trajectory_seed": [
+        179,
+        178
+      ]
+    },
+    {
+      "name": "e008__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.9375,
+      "prediction": 0.9760661798696708,
+      "mc_se": 0.0003142309798365236,
+      "shot_mean_minus_prediction": -0.038566179869670814,
+      "trajectory_seed": [
+        179,
+        179
+      ]
+    },
+    {
+      "name": "e009__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.0575,
+      "prediction": 0.0246051464663495,
+      "mc_se": 0.00030525444235066725,
+      "shot_mean_minus_prediction": 0.0328948535336505,
+      "trajectory_seed": [
+        179,
+        180
+      ]
+    },
+    {
+      "name": "e010__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.0725,
+      "prediction": 0.02447948199922485,
+      "mc_se": 0.0003108266752240553,
+      "shot_mean_minus_prediction": 0.04802051800077514,
+      "trajectory_seed": [
+        179,
+        181
+      ]
+    },
+    {
+      "name": "e011__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.9425,
+      "prediction": 0.9759391685633565,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": -0.03343916856335649,
+      "trajectory_seed": [
+        179,
+        182
+      ]
+    },
+    {
+      "name": "e012__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.9275,
+      "prediction": 0.975898755685278,
+      "mc_se": 0.0003141008221553365,
+      "shot_mean_minus_prediction": -0.04839875568527796,
+      "trajectory_seed": [
+        179,
+        183
+      ]
+    },
+    {
+      "name": "e013__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.0525,
+      "prediction": 0.024060831436643504,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 0.028439168563356494,
+      "trajectory_seed": [
+        179,
+        184
+      ]
+    },
+    {
+      "name": "e014__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.055,
+      "prediction": 0.024187015489272018,
+      "mc_se": 0.0003143719767106863,
+      "shot_mean_minus_prediction": 0.030812984510727982,
+      "trajectory_seed": [
+        179,
+        185
+      ]
+    },
+    {
+      "name": "e015__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.95,
+      "prediction": 0.9757724690765888,
+      "mc_se": 0.00031560245531055077,
+      "shot_mean_minus_prediction": -0.02577246907658881,
+      "trajectory_seed": [
+        179,
+        186
+      ]
+    },
+    {
+      "name": "e016__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999998,
+      "mc_se": 5.876937082954055e-20,
+      "shot_mean_minus_prediction": 2.220446049250313e-16,
+      "trajectory_seed": [
+        179,
+        187
+      ]
+    },
+    {
+      "name": "e017__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.5,
+      "mc_se": 5.634983184262384e-20,
+      "shot_mean_minus_prediction": 0.0,
+      "trajectory_seed": [
+        179,
+        188
+      ]
+    },
+    {
+      "name": "e018__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999998,
+      "mc_se": 4.837041814650539e-20,
+      "shot_mean_minus_prediction": 2.220446049250313e-16,
+      "trajectory_seed": [
+        179,
+        189
+      ]
+    },
+    {
+      "name": "e019__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.49999999999999983,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 1.6653345369377348e-16,
+      "trajectory_seed": [
+        179,
+        190
+      ]
+    },
+    {
+      "name": "e020__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999998,
+      "mc_se": 4.287579309416041e-20,
+      "shot_mean_minus_prediction": 2.220446049250313e-16,
+      "trajectory_seed": [
+        179,
+        191
+      ]
+    },
+    {
+      "name": "e021__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.49999999999999983,
+      "mc_se": 0.0,
+      "shot_mean_minus_prediction": 1.6653345369377348e-16,
+      "trajectory_seed": [
+        179,
+        192
+      ]
+    },
+    {
+      "name": "e022__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.4999999999999998,
+      "mc_se": 4.0880464699516476e-20,
+      "shot_mean_minus_prediction": 2.220446049250313e-16,
+      "trajectory_seed": [
+        179,
+        193
+      ]
+    },
+    {
+      "name": "e023__erased_erased",
+      "kind": "main",
+      "stratum": "erased_erased",
+      "measured": 0.5,
+      "prediction": 0.5,
+      "mc_se": 5.73299023921654e-20,
+      "shot_mean_minus_prediction": 0.0,
+      "trajectory_seed": [
+        179,
+        194
+      ]
+    },
+    {
+      "name": "t00_inline__m003",
+      "kind": "twin_inline",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.575,
+      "prediction": 1.6315027210155844,
+      "mc_se": 0.03351044004691032,
+      "shot_mean_minus_prediction": -0.0565027210155844,
+      "trajectory_seed": [
+        179,
+        195
+      ]
+    },
+    {
+      "name": "t00_static__m003",
+      "kind": "twin_static",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.49,
+      "prediction": 1.3302295667233712,
+      "mc_se": 0.016286937298602536,
+      "shot_mean_minus_prediction": 0.15977043327662876,
+      "trajectory_seed": [
+        179,
+        196
+      ]
+    },
+    {
+      "name": "t01_inline__m007",
+      "kind": "twin_inline",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.74,
+      "prediction": 1.6577001471152621,
+      "mc_se": 0.01658355487471508,
+      "shot_mean_minus_prediction": 0.08229985288473785,
+      "trajectory_seed": [
+        179,
+        197
+      ]
+    },
+    {
+      "name": "t01_static__m007",
+      "kind": "twin_static",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.555,
+      "prediction": 1.4006763787607708,
+      "mc_se": 0.008855628941052464,
+      "shot_mean_minus_prediction": 0.15432362123922916,
+      "trajectory_seed": [
+        179,
+        198
+      ]
+    },
+    {
+      "name": "t02_inline__m010",
+      "kind": "twin_inline",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.745,
+      "prediction": 1.8359183127884917,
+      "mc_se": 0.021701621214348005,
+      "shot_mean_minus_prediction": -0.0909183127884916,
+      "trajectory_seed": [
+        179,
+        199
+      ]
+    },
+    {
+      "name": "t02_static__m010",
+      "kind": "twin_static",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.715,
+      "prediction": 1.7985464990450415,
+      "mc_se": 0.025182229032737626,
+      "shot_mean_minus_prediction": -0.08354649904504141,
+      "trajectory_seed": [
+        179,
+        200
+      ]
+    },
+    {
+      "name": "t03_inline__m012",
+      "kind": "twin_inline",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.6,
+      "prediction": 1.614439359213254,
+      "mc_se": 0.025737791571253926,
+      "shot_mean_minus_prediction": -0.0144393592132539,
+      "trajectory_seed": [
+        179,
+        201
+      ]
+    },
+    {
+      "name": "t03_static__m012",
+      "kind": "twin_static",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.26,
+      "prediction": 1.2506922228055537,
+      "mc_se": 0.004676484325888551,
+      "shot_mean_minus_prediction": 0.00930777719444631,
+      "trajectory_seed": [
+        179,
+        202
+      ]
+    },
+    {
+      "name": "t04_inline__m016",
+      "kind": "twin_inline",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.855,
+      "prediction": 1.859242939658385,
+      "mc_se": 1.1512332026462317e-16,
+      "shot_mean_minus_prediction": -0.004242939658384959,
+      "trajectory_seed": [
+        179,
+        203
+      ]
+    },
+    {
+      "name": "t04_static__m016",
+      "kind": "twin_static",
+      "stratum": "kept_kept|s0|0|0",
+      "measured": 1.745,
+      "prediction": 1.831598128606075,
+      "mc_se": 0.019403265154209735,
+      "shot_mean_minus_prediction": -0.08659812860607485,
+      "trajectory_seed": [
+        179,
+        204
+      ]
+    },
+    {
+      "name": "t05_inline__m051",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.9,
+      "prediction": 1.8676502461857651,
+      "mc_se": 5.028093315741479e-17,
+      "shot_mean_minus_prediction": 0.03234975381423477,
+      "trajectory_seed": [
+        179,
+        205
+      ]
+    },
+    {
+      "name": "t05_static__m051",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.705,
+      "prediction": 1.8154284618594176,
+      "mc_se": 0.02388019898500534,
+      "shot_mean_minus_prediction": -0.11042846185941757,
+      "trajectory_seed": [
+        179,
+        206
+      ]
+    },
+    {
+      "name": "t06_inline__m055",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.66,
+      "prediction": 1.5929829275651923,
+      "mc_se": 0.037079813357601306,
+      "shot_mean_minus_prediction": 0.06701707243480759,
+      "trajectory_seed": [
+        179,
+        207
+      ]
+    },
+    {
+      "name": "t06_static__m055",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.505,
+      "prediction": 1.3292984926458165,
+      "mc_se": 0.011647629804313343,
+      "shot_mean_minus_prediction": 0.17570150735418344,
+      "trajectory_seed": [
+        179,
+        208
+      ]
+    },
+    {
+      "name": "t07_inline__m062",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.585,
+      "prediction": 1.6211801670177364,
+      "mc_se": 0.017139340744280248,
+      "shot_mean_minus_prediction": -0.03618016701773641,
+      "trajectory_seed": [
+        179,
+        209
+      ]
+    },
+    {
+      "name": "t07_static__m062",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.45,
+      "prediction": 1.3446879734029666,
+      "mc_se": 0.0076829696466748625,
+      "shot_mean_minus_prediction": 0.10531202659703331,
+      "trajectory_seed": [
+        179,
+        210
+      ]
+    },
+    {
+      "name": "t08_inline__m063",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.665,
+      "prediction": 1.6489944179844895,
+      "mc_se": 0.013556162065928117,
+      "shot_mean_minus_prediction": 0.0160055820155105,
+      "trajectory_seed": [
+        179,
+        211
+      ]
+    },
+    {
+      "name": "t08_static__m063",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.475,
+      "prediction": 1.3706288652532934,
+      "mc_se": 0.005340295866238131,
+      "shot_mean_minus_prediction": 0.10437113474670667,
+      "trajectory_seed": [
+        179,
+        212
+      ]
+    },
+    {
+      "name": "t09_inline__m064",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.895,
+      "prediction": 1.8334397954918937,
+      "mc_se": 0.033876488246919655,
+      "shot_mean_minus_prediction": 0.061560204508106287,
+      "trajectory_seed": [
+        179,
+        213
+      ]
+    },
+    {
+      "name": "t09_static__m064",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.765,
+      "prediction": 1.8037123145311853,
+      "mc_se": 0.019294540069597476,
+      "shot_mean_minus_prediction": -0.0387123145311854,
+      "trajectory_seed": [
+        179,
+        214
+      ]
+    },
+    {
+      "name": "t10_inline__m072",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.735,
+      "prediction": 1.6720178321353911,
+      "mc_se": 0.024103443662937905,
+      "shot_mean_minus_prediction": 0.06298216786460897,
+      "trajectory_seed": [
+        179,
+        215
+      ]
+    },
+    {
+      "name": "t10_static__m072",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.245,
+      "prediction": 1.2395470421026096,
+      "mc_se": 0.005214551300735094,
+      "shot_mean_minus_prediction": 0.005452957897390531,
+      "trajectory_seed": [
+        179,
+        216
+      ]
+    },
+    {
+      "name": "t11_inline__m079",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.735,
+      "prediction": 1.8386645732565157,
+      "mc_se": 0.01793048402135395,
+      "shot_mean_minus_prediction": -0.10366457325651557,
+      "trajectory_seed": [
+        179,
+        217
+      ]
+    },
+    {
+      "name": "t11_static__m079",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.76,
+      "prediction": 1.8132146235506506,
+      "mc_se": 0.018926813847185146,
+      "shot_mean_minus_prediction": -0.05321462355065054,
+      "trajectory_seed": [
+        179,
+        218
+      ]
+    },
+    {
+      "name": "t12_inline__m081",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.795,
+      "prediction": 1.84748110122939,
+      "mc_se": 0.017309528231128385,
+      "shot_mean_minus_prediction": -0.05248110122938998,
+      "trajectory_seed": [
+        179,
+        219
+      ]
+    },
+    {
+      "name": "t12_static__m081",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.75,
+      "prediction": 1.7914018959210596,
+      "mc_se": 0.02669169563282768,
+      "shot_mean_minus_prediction": -0.041401895921059584,
+      "trajectory_seed": [
+        179,
+        220
+      ]
+    },
+    {
+      "name": "t13_inline__m099",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.735,
+      "prediction": 1.692211269786678,
+      "mc_se": 0.014836703319463938,
+      "shot_mean_minus_prediction": 0.04278873021332208,
+      "trajectory_seed": [
+        179,
+        221
+      ]
+    },
+    {
+      "name": "t13_static__m099",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|0",
+      "measured": 1.305,
+      "prediction": 1.2399478533013475,
+      "mc_se": 0.005464599698944599,
+      "shot_mean_minus_prediction": 0.06505214669865245,
+      "trajectory_seed": [
+        179,
+        222
+      ]
+    },
+    {
+      "name": "t14_inline__m118",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.295,
+      "prediction": 0.26989294456765134,
+      "mc_se": 0.0168461431283163,
+      "shot_mean_minus_prediction": 0.025107055432348646,
+      "trajectory_seed": [
+        179,
+        223
+      ]
+    },
+    {
+      "name": "t14_static__m118",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 0.8,
+      "prediction": 0.6920748385438023,
+      "mc_se": 0.005643847573911428,
+      "shot_mean_minus_prediction": 0.1079251614561978,
+      "trajectory_seed": [
+        179,
+        224
+      ]
+    },
+    {
+      "name": "t15_inline__m121",
+      "kind": "twin_inline",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.845,
+      "prediction": 1.643229154353392,
+      "mc_se": 0.03286591475123918,
+      "shot_mean_minus_prediction": 0.20177084564660808,
+      "trajectory_seed": [
+        179,
+        225
+      ]
+    },
+    {
+      "name": "t15_static__m121",
+      "kind": "twin_static",
+      "stratum": "kept_erased|s0|0|1",
+      "measured": 1.135,
+      "prediction": 1.2506251834091764,
+      "mc_se": 0.008266856606545676,
+      "shot_mean_minus_prediction": -0.11562518340917638,
+      "trajectory_seed": [
+        179,
+        226
+      ]
+    }
+  ]
+}

@@ -496,8 +496,18 @@ def main():
                    three_colour_every_T=three_colour_every_T_claim(), bb72=bb72_claim(), morph72=morph72_claim(),
                    morph144=morph144_claim(), morph2026=morph2026_claim(), trusted_base=dem_claim())
     out = EVID / "results.json"
-    out.write_text(json.dumps(results, indent=1) + "\n")
+    write_results(out, results)
     print(f"wrote {out}")
+
+
+def write_results(out: pathlib.Path, results: dict) -> None:
+    """UTF-8 JSON with LF line ends on every platform -- the released bytes (serialization.py). The text-mode write
+    this replaces produced CRLF on Windows, so a results.json regenerated there no longer matched the release's
+    SHA256SUMS although its content was the same (found 2026-11-03)."""
+    if str(HERE) not in sys.path:
+        sys.path.insert(0, str(HERE))
+    import serialization as ser
+    ser.write_json_lf(out, results, indent=1)
 
 
 if __name__ == "__main__":

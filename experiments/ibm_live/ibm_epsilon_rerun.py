@@ -74,11 +74,17 @@ def fetch() -> int:
 
 
 def main() -> int:
+    global OUT, RECEIPTS
     ap = argparse.ArgumentParser()
     ap.add_argument("--fetch", action="store_true")
+    ap.add_argument("--tag", default=None,
+                    help="write <job>.epsilon_<tag>.json and its receipts beside, never over, the cited record")
     a = ap.parse_args()
     if a.fetch:
         return fetch()
+    if a.tag:
+        OUT = EV / f"{JOB}.epsilon_{a.tag}.json"
+        RECEIPTS = EV / f"{JOB}.epsilon_receipts_{a.tag}.jsonl.gz"
     import pymatching
     from oneq.certifying_decoder import BOUNDARY, CertifyingDecoder
     from oneq.forgeries import assert_all_false, forgeries
@@ -163,6 +169,8 @@ def main() -> int:
            "receipts_sha256": hashlib.sha256(body).hexdigest(),
            "head": {"commit": git("rev-parse", "HEAD"),
                     "uncommitted_changes_in_src_oneq": bool(git("status", "--porcelain", "--", "src/oneq")),
+                    # the files that decided it -- another lane's uncommitted module elsewhere in src/oneq is not one
+                    "uncommitted_changes_in_judged_files": bool(git("status", "--porcelain", "--", *JUDGED)),
                     "sha256": {p: hashlib.sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
                                for p in JUDGED}}}
     OUT.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8", newline="\n")

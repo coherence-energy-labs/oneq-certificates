@@ -99,6 +99,15 @@ def check(receipt_path: pathlib.Path = RECEIPT, root: pathlib.Path = LEAN) -> li
     return bad
 
 
+def write_receipt(receipt: dict, path: pathlib.Path | None = None) -> None:
+    """UTF-8 JSON with LF line ends on every platform, the released bytes (serialization.py); the text-mode write it
+    replaces produced CRLF on Windows."""
+    if str(HERE) not in sys.path:
+        sys.path.insert(0, str(HERE))
+    import serialization as ser
+    ser.write_json_lf(path or RECEIPT, receipt, indent=1)
+
+
 def build(where: pathlib.Path) -> int:
     if where.exists():
         shutil.rmtree(where)
@@ -115,7 +124,7 @@ def build(where: pathlib.Path) -> int:
     receipt = dict(project="lean/CertR198", build_exit=b.returncode or a.returncode, sources=sources(where),
                    theorems=theorems, lean=(where / "lean-toolchain").read_text().strip(),
                    axiom_check_lines=len(theorems))
-    RECEIPT.write_text(json.dumps(receipt, indent=1) + "\n")
+    write_receipt(receipt)
     print(f"receipt: {len(theorems)} theorems, build exit {receipt['build_exit']} -> {RECEIPT}")
     return 0 if not check() else 1
 

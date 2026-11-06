@@ -1,0 +1,66 @@
+[
+  {
+    "n": 17,
+    "encoder": "encoder_n17_seesaw.npy",
+    "encoder_sha256": "ff8879f81f7d9cdc0436f150a3dcfea85a9c16f57b8c1e20288c20b0b62ca435",
+    "F_exact_decoders": 0.7502033338948578,
+    "margin": 0.00020333389485782671,
+    "seconds": 69.4
+  },
+  {
+    "n": 18,
+    "encoder": "encoder_n18_seesaw.npy",
+    "encoder_sha256": "a15ef4e221630d9f66b1c34208c0e293be6839f06b9ea5e01b0d638108858246",
+    "F_exact_decoders": 0.7503786522884296,
+    "margin": 0.00037865228842959286,
+    "seconds": 79.7
+  },
+  {
+    "n": 19,
+    "encoder": "encoder_n19_seesaw.npy",
+    "encoder_sha256": "09fcb82797f8302f539c717ef82e1afac1a1233f16799ec1c008e05edc1e1d9b",
+    "F_exact_decoders": 0.7505299143567566,
+    "margin": 0.0005299143567566444,
+    "seconds": 75.7
+  },
+  {
+    "n": 20,
+    "encoder": "encoder_n20_seesaw.npy",
+    "encoder_sha256": "0f34c2cb4dec98e97a080a79e2fc8b18557b152972528ecb8cb0349940be1d4c",
+    "F_exact_decoders": 0.7506549826203347,
+    "margin": 0.0006549826203346987,
+    "seconds": 91.2
+  },
+  {
+    "n": 21,
+    "encoder": "encoder_n21_seesaw.npy",
+    "encoder_sha256": "cba332122726a9261b77abe0ece53d40d7541dec7d3ef3083042c168a414a90c",
+    "F_exact_decoders": 0.750763797506744,
+    "margin": 0.0007637975067440461,
+    "seconds": 109.8
+  },
+  {
+    "n": 22,
+    "encoder": "encoder_n22_seesaw.npy",
+    "encoder_sha256": "072dd134ec1bd5cfbd3863ffef2c6f31592802c6c8567d6eef0c4b13d820a170",
+    "F_exact_decoders": 0.7508611201355022,
+    "margin": 0.0008611201355022136,
+    "seconds": 143.9
+  },
+  {
+    "n": 23,
+    "encoder": "encoder_n23_seesaw.npy",
+    "encoder_sha256": "002b2838dc27dcbc7ba9885566e11bc04ddff04c17eea5f7661a857e5899f807",
+    "F_exact_decoders": 0.7509495678698589,
+    "margin": 0.0009495678698588916,
+    "seconds": 205.5
+  },
+  {
+    "n": 24,
+    "encoder": "encoder_n24_seesaw.npy",
+    "encoder_sha256": "ab765c5a3112ee36ac7970a193e872fb2ce75f65b20bd46e5b618152461a2ca6",
+    "F_exact_decoders": 0.7510307332499885,
+    "margin": 0.0010307332499884803,
+    "seconds": 231.5
+  }
+]

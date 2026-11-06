@@ -1,25 +1,96 @@
 {
-  "schema": "oneq-certificate-conformance-result/1",
-  "vectors": 56,
+  "schema": "oneq-certificate-conformance-result/2",
+  "generated_by": "tools/write_cert_conformance.py",
+  "supersedes": "evidence/cert_conformance_2026-08-01.json",
+  "vectors": 59,
   "expected_accept": 8,
-  "expected_refuse": 48,
-  "agree": "conformance: 56/56 agree",
+  "expected_refuse": 51,
+  "agree": "conformance: 59/59 agree",
   "javascript_exit": 0,
+  "all_agree": true,
+  "harness_can_fail": true,
+  "exact_certificate": {
+    "vectors": 59,
+    "expected_accept": 8,
+    "expected_refuse": 51,
+    "python_agree": 59,
+    "python_disagree": [],
+    "javascript_line": "conformance: 59/59 agree",
+    "javascript_agree": 59,
+    "javascript_total": 59,
+    "javascript_exit": 0,
+    "node": "v24.18.0",
+    "vectors_file": "conformance/cert_vectors.json"
+  },
+  "epsilon_claim": {
+    "vectors": 153,
+    "classes": 51,
+    "by_status": {
+      "EPSILON_OPTIMAL": 16,
+      "EXACT_OPTIMAL": 16,
+      "INVALID_INPUT": 108,
+      "NOT_PROVEN": 13
+    },
+    "check_epsilon_agree": 153,
+    "verify_b_agree": 153,
+    "javascript_agree": 153,
+    "disagreements": [],
+    "vectors_file": "conformance/epsilon_vectors.json",
+    "vectors_generated_by": "tools/fuzz_epsilon_checkers.py --write-vectors (seed 20261103, 3 per class)"
+  },
+  "harness_bent_copies": {
+    "exact_flipped_vector": "tiny-0-genuine",
+    "exact_python_agree": 58,
+    "exact_javascript_line": "conformance: 58/59 agree",
+    "exact_javascript_exit": 1,
+    "epsilon_flipped_vector": "base#0",
+    "epsilon_agree": [
+      152,
+      152,
+      152
+    ],
+    "epsilon_vectors": 153
+  },
   "implementations": [
     {
+      "claim": "exact",
       "lang": "python",
-      "file": "src/oneq/matching_cert.py + cert_format.py",
-      "runtime": "3.14.3"
+      "file": "src/oneq/matching_cert.py + src/oneq/cert_format.py",
+      "runtime": "3.14.3",
+      "independence": "the reference: src/oneq/matching_cert.py with the document reader src/oneq/cert_format.py"
     },
     {
+      "claim": "exact",
       "lang": "javascript",
       "file": "verifier-js/verify-certificate.mjs",
       "runtime": "v24.18.0",
-      "dependencies": "none (node built-ins only)"
+      "dependencies": "none (node built-ins only)",
+      "independence": "PARTLY independent. Written from the specification in JavaScript with node built-ins only (7a5a3cff, 2026-07-31): its parser, graph binding, T-join test and T'-oddness test. NOT independent: its acceptance step, ported from the Python checker and kept identical to it -- the exact lattice rule (888b7454, 2026-08-04), then the dual repair and its spread-absorb and multi-start variants, written into both languages in the same commits (6b3a146d, e0767dc7, 900d6471, 2026-08-05). The two shared a misreading of boundary edge keys until 56dce450 (2026-08-18). Agreement on the ported step is one implementation agreeing with itself."
+    },
+    {
+      "claim": "epsilon",
+      "lang": "python",
+      "file": "src/oneq/matching_cert_epsilon.py (check_epsilon)",
+      "runtime": "3.14.3",
+      "independence": "the reference: src/oneq/matching_cert_epsilon.check_epsilon (exact rationals)"
+    },
+    {
+      "claim": "epsilon",
+      "lang": "python",
+      "file": "tools/replay_epsilon_receipts.py (verify_b)",
+      "runtime": "3.14.3",
+      "independence": "a second verifier in the SAME language, by the same project, in scaled-integer arithmetic (tools/replay_epsilon_receipts.verify_b). It shares the receipt loader with check_epsilon, so it cannot expose a misreading in that loader; before 2026-11-03 both Python verifiers shared several (the pre-fix fuzz record, evidence/epsilon_checker_fuzz.json)."
+    },
+    {
+      "claim": "epsilon",
+      "lang": "javascript",
+      "file": "verifier-js/verify-epsilon.mjs",
+      "runtime": "v24.18.0",
+      "dependencies": "none (node built-ins only)",
+      "independence": "an independent READING, not independent authorship. verifier-js/verify-epsilon.mjs was written on 2026-11-03 by a fresh AI agent from paper 1's Secs. II-IV and a brief giving the wire format and the kinds of malformed input the differential fuzzer would send; the brief's author had read the Python checkers. The writing agent had file-system access: it was TOLD not to open the Python sources and REPORTED that it did not; the file list released with the brief (docs/reviews/JS_EPSILON_BRIEF_2026-11-03.md) is the coordinator's summary of that report, not a log. It is the same project's work."
     }
   ],
-  "what_agreement_means": "two implementations written from the spec in different languages, sharing no code, reach the same verdict on every vector. One implementation passing its own tests is not evidence.",
-  "divergence_this_found": "Python deserialised a repeated dual member set into a dict (last value wins) while the JavaScript summed the array: objective 2.0 and ACCEPT against 2.4 and refuse, on identical bytes. Neither reading was right; both now refuse, and the case is a permanent vector.",
-  "why_mostly_refusals": "a suite where everything verifies would not notice a checker that accepts everything -- the failure that matters, since such a checker is worthless and looks perfect",
-  "harness_can_fail": "proven: corrupting one dual value drops the count (tests/test_cert_conformance.py)"
+  "what_agreement_means": "every implementation returns the recorded verdict on every vector. Agreement is not correctness: it is the absence of a misreading that the implementations do NOT share. For the exact claim the JavaScript checker's acceptance step was ported from the Python one, so on that step agreement is not independent evidence; its parser, graph binding and T-join tests are. For the epsilon claim the two Python verifiers share a loader and a language, and the JavaScript one is an independent reading by the same project.",
+  "divergence_this_found": "exact (2026-07-31): Python deserialised a repeated dual member set into a dict (last value wins) while the JavaScript summed the array -- objective 2.0 and ACCEPT against 2.4 and refuse on identical bytes; both now refuse and the case is a vector. epsilon (2026-11-03): 20 classes of malformed input split the implementations, every one rooted in the Python readers (evidence/epsilon_checker_fuzz.json); fixed, every class is a vector (evidence/epsilon_checker_fuzz_after_fix.json).",
+  "why_mostly_refusals": "a suite where everything verifies would not notice a checker that accepts everything -- the failure that matters, since such a checker is worthless and looks perfect"
 }

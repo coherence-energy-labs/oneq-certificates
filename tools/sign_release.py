@@ -22,9 +22,24 @@ from oneq.passport import mint, verify  # noqa: E402
 
 KEY_PATH = pathlib.Path(os.environ.get(
     "ONEQ_ISSUER_KEY", pathlib.Path.home() / ".oneq" / "oneq-issuer.key"))
-ARCHIVE = ROOT / "release" / "oneq-certifying-decoder.tar.gz"
-STATEMENT = ROOT / "release" / "oneq-certifying-decoder" / \
-    "in-toto-statement.json"
+#: The release's bundles, by name -> the directory each is minted to and archived under. ONE release tag carries both
+#: (2026-11-03): the decoder bundle and paper 4's superactivation bundle, each signed on its own. Held equal to the
+#: builder's BUNDLES by tests/test_two_bundle_release.py (this file ships in both bundles; the builder in one).
+BUNDLE_DIRS = {"certifying-decoder": "oneq-certifying-decoder", "superactivation": "oneq-superactivation"}
+
+
+def release_paths(bundle: str = "certifying-decoder", root: pathlib.Path = ROOT) -> dict[str, pathlib.Path]:
+    """The archive, its minted statement and its signature document, for one bundle."""
+    if bundle not in BUNDLE_DIRS:
+        raise ValueError(f"no bundle named {bundle!r}; the bundles are {sorted(BUNDLE_DIRS)}")
+    d = BUNDLE_DIRS[bundle]
+    return {"dir": d, "archive": root / "release" / f"{d}.tar.gz",
+            "statement": root / "release" / d / "in-toto-statement.json",
+            "signature": root / "release" / f"{d}.tar.gz.sig.json"}
+
+
+ARCHIVE = release_paths()["archive"]
+STATEMENT = release_paths()["statement"]
 
 
 def release_core(commit: str, archive_name: str, archive_sha: str,
@@ -50,24 +65,30 @@ def release_core(commit: str, archive_name: str, archive_sha: str,
             "statement_sha256": statement_sha}
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    ap = argparse.ArgumentParser(description="sign one bundle of the release")
+    ap.add_argument("--bundle", choices=sorted(BUNDLE_DIRS), default="certifying-decoder")
+    a = ap.parse_args(argv)
+    paths = release_paths(a.bundle)
+    archive, statement = paths["archive"], paths["statement"]
     raw = KEY_PATH.read_bytes().strip()
     seed = bytes.fromhex(raw.decode()) if len(raw) == 64 else raw
-    sha = hashlib.sha256(ARCHIVE.read_bytes()).hexdigest()
-    stmt = json.loads(STATEMENT.read_text(encoding="utf-8"))
+    sha = hashlib.sha256(archive.read_bytes()).hexdigest()
+    stmt = json.loads(statement.read_text(encoding="utf-8"))
     import subprocess
     commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
                             capture_output=True, timeout=30
                             ).stdout.decode().strip()
-    core = release_core(commit, ARCHIVE.name, sha,
+    core = release_core(commit, archive.name, sha,
                         len(stmt.get("subject", [])),
-                        hashlib.sha256(STATEMENT.read_bytes()).hexdigest())
+                        hashlib.sha256(statement.read_bytes()).hexdigest())
     p = mint(core, private_key_bytes=seed)
     out = {**core, "digest": p["digest"], "pubkey": p["pubkey"],
            "sig_alg": p["sig_alg"], "signature": p["signature"],
            "note": ("binds the archive to the issuer; does NOT make any "
                     "number true -- authenticity beside the witnesses")}
-    dest = ROOT / "release" / "oneq-certifying-decoder.tar.gz.sig.json"
+    dest = paths["signature"]
     dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
     v = verify(p)                       # Verdict dataclass (read from source)
     checks = v.checks

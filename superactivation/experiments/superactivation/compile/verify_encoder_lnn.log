@@ -1,0 +1,3 @@
+small n: worst err 5.72e-15, all nearest-neighbour True, CZ == formula True (2s)
+n=17: LNN encoder err 9.43e-16  CZ 997 (formula 997)  nearest-neighbour True  -> heavy-hex path routed CZ 997, depth 1472 (2q 304)  (16s)
+PASS True

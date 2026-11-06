@@ -1,0 +1,295 @@
+{
+ "eps_per_cz": 0.0063,
+ "blocks": {
+  "R_opt": {
+   "cz_expected": 3.621320343559643,
+   "cz_worst": 6,
+   "meas_expected": 1.0,
+   "ff_expected": 1.0,
+   "per_draw_cz": [
+    4,
+    3,
+    4,
+    3,
+    3,
+    2,
+    3,
+    2,
+    6,
+    3,
+    6,
+    3
+   ]
+  },
+  "R_coherentD": {
+   "cz_expected": 5.621320343559641,
+   "cz_worst": 10,
+   "meas_expected": 0.0,
+   "ff_expected": 0.0,
+   "per_draw_cz": [
+    8,
+    3,
+    8,
+    3,
+    7,
+    2,
+    7,
+    2,
+    10,
+    3,
+    10,
+    3
+   ]
+  },
+  "R_paper": {
+   "cz_expected": 11.707106781186548,
+   "cz_worst": 21,
+   "meas_expected": 0.5,
+   "ff_expected": 0.5,
+   "per_draw_cz": [
+    21,
+    3,
+    21,
+    3,
+    20,
+    2,
+    20,
+    2,
+    21,
+    3,
+    21,
+    3
+   ]
+  },
+  "C_opt": {
+   "cz_expected": 32.5,
+   "cz_worst": 34,
+   "meas_expected": 2.0,
+   "ff_expected": 1
+  },
+  "C_paper": {
+   "cz_expected": 40.0,
+   "cz_worst": 49,
+   "meas_expected": 1.5,
+   "ff_expected": 1
+  }
+ },
+ "n": {
+  "17": {
+   "F_code_float": 0.7502033361426964,
+   "F_code_certified_lower": 0.7502033355603701,
+   "budget_delta": 0.0004065058065682762,
+   "encoder_cz": 592,
+   "encoder_source": "compiled + statevector-verified (err 1.1e-15)",
+   "decoder_cz_expected": 466.3425939534717,
+   "decoder_cz_worst": 759,
+   "profiles": {
+    "RANDOMIZED channels + measurement-based D~": {
+     "cz_expected": 1121.9050397939855,
+     "cz_worst": 1455,
+     "share": {
+      "encoder": 0.5276738930673744,
+      "channel_uses": 0.05487313422873882,
+      "decoder": 0.41567029063271327,
+      "bell": 0.0017826820711735625
+     },
+     "eps_first_order": 7.068001750702108,
+     "infeasibility_factor": 17387.209817173854,
+     "infeasibility_factor_worst": 22549.493394408393,
+     "mid_circuit_measurements_expected": 33.951499938964844
+    },
+    "RANDOMIZED channels + measurement-free D~": {
+     "cz_expected": 1155.9050397939855,
+     "cz_worst": 1523,
+     "share": {
+      "encoder": 0.5121527976947924,
+      "channel_uses": 0.08267326687800046,
+      "decoder": 0.4034436894890492,
+      "bell": 0.0017302459381580825
+     },
+     "eps_first_order": 7.282201750702108,
+     "infeasibility_factor": 17914.139559723604,
+     "infeasibility_factor_worst": 23603.352879507896,
+     "mid_circuit_measurements_expected": 16.951499938964844
+    },
+    "RANDOMIZED channels + paper D~ (coherent untwist)": {
+     "cz_expected": 1259.3634092336429,
+     "cz_worst": 1710,
+     "share": {
+      "encoder": 0.47007876809780286,
+      "channel_uses": 0.15803287106878938,
+      "decoder": 0.37030025688713153,
+      "bell": 0.001588103946276361
+     },
+     "eps_first_order": 7.93398947817195,
+     "infeasibility_factor": 19517.53050011936,
+     "infeasibility_factor_worst": 26501.466463531513,
+     "mid_circuit_measurements_expected": 25.451499938964844
+    },
+    "COHERENT (Stinespring) channels + measurement-based D~": {
+     "cz_expected": 1612.8425939534718,
+     "cz_worst": 1931,
+     "share": {
+      "encoder": 0.36705379819419526,
+      "channel_uses": 0.34256287753765685,
+      "decoder": 0.28914327765262693,
+      "bell": 0.0012400466155209299
+     },
+     "eps_first_order": 10.160908341906872,
+     "infeasibility_factor": 24995.72743544626,
+     "infeasibility_factor_worst": 29926.509790104887,
+     "mid_circuit_measurements_expected": 50.951499938964844
+    },
+    "COHERENT (Stinespring) channels + paper D~": {
+     "cz_expected": 1740.3425939534718,
+     "cz_worst": 2186,
+     "share": {
+      "encoder": 0.3401629093356702,
+      "channel_uses": 0.39072766612881044,
+      "decoder": 0.2679602255174934,
+      "bell": 0.001149199018025913
+     },
+     "eps_first_order": 10.964158341906872,
+     "infeasibility_factor": 26971.713970007822,
+     "infeasibility_factor_worst": 33878.48285922801,
+     "mid_circuit_measurements_expected": 42.451499938964844
+    }
+   },
+   "previous_floor_factor_(n-1)CZ": 247.96693767047032,
+   "sampled_shots": {
+    "count": 20,
+    "logical_cz_mean": 1115.6,
+    "logical_cz_sd": 214.0814896494471,
+    "logical_2q_depth_mean": 565.75,
+    "measurements_mean": 36.0,
+    "routed_cz_mean": 3347.65,
+    "routed_cz_sem": 110.3844543545779,
+    "routed_over_logical_mean": 3.0306819743937767,
+    "routed_depth_mean": 5300.45,
+    "routed_2q_depth_mean": 1707.75,
+    "routed_infeasibility_factor": 51881.65743078438
+   },
+   "sampled_shots_lnn": {
+    "count": 20,
+    "logical_cz_mean": 1520.6,
+    "logical_cz_sd": 214.0814896494471,
+    "logical_2q_depth_mean": 662.55,
+    "measurements_mean": 36.0,
+    "routed_cz_mean": 2815.2,
+    "routed_cz_sem": 113.22429068004799,
+    "routed_over_logical_mean": 1.8413187504009731,
+    "routed_depth_mean": 3993.95,
+    "routed_2q_depth_mean": 1160.5,
+    "routed_infeasibility_factor": 43629.78268311925
+   }
+  },
+  "24": {
+   "F_code_float": 0.7510307344745404,
+   "F_code_certified_lower": 0.7510307336871027,
+   "budget_delta": 0.0020572264689583185,
+   "encoder_cz": 1173,
+   "encoder_source": "compiled + statevector-verified (err 3.1e-16)",
+   "decoder_cz_expected": 739.6274462470042,
+   "decoder_cz_worst": 1742,
+   "profiles": {
+    "RANDOMIZED channels + measurement-based D~": {
+     "cz_expected": 2001.5391344924356,
+     "cz_worst": 3061,
+     "share": {
+      "encoder": 0.5860489958880857,
+      "channel_uses": 0.04342242764464913,
+      "decoder": 0.3695293454427331,
+      "bell": 0.0009992310245321154
+     },
+     "eps_first_order": 12.609696547302343,
+     "infeasibility_factor": 6129.464469552199,
+     "infeasibility_factor_worst": 9373.931499998955,
+     "mid_circuit_measurements_expected": 47.64413470029832
+    },
+    "RANDOMIZED channels + measurement-free D~": {
+     "cz_expected": 2049.5391344924356,
+     "cz_worst": 3157,
+     "share": {
+      "encoder": 0.5723237874599019,
+      "channel_uses": 0.06582537799593761,
+      "decoder": 0.3608750054095315,
+      "bell": 0.0009758291346289887
+     },
+     "eps_first_order": 12.912096547302344,
+     "infeasibility_factor": 6276.458495034051,
+     "infeasibility_factor_worst": 9667.919550962657,
+     "mid_circuit_measurements_expected": 23.644134700298324
+    },
+    "RANDOMIZED channels + paper D~ (coherent untwist)": {
+     "cz_expected": 2195.5980089954815,
+     "cz_worst": 3421,
+     "share": {
+      "encoder": 0.5342508032864653,
+      "channel_uses": 0.12796994786719876,
+      "decoder": 0.33686833528574506,
+      "bell": 0.0009109135605907338
+     },
+     "eps_first_order": 13.832267456671532,
+     "infeasibility_factor": 6723.745618378872,
+     "infeasibility_factor_worst": 10476.386691112844,
+     "mid_circuit_measurements_expected": 35.64413470029832
+    },
+    "COHERENT (Stinespring) channels + measurement-based D~": {
+     "cz_expected": 2694.627446247004,
+     "cz_worst": 3733,
+     "share": {
+      "encoder": 0.43531064067269076,
+      "channel_uses": 0.2894648761506384,
+      "decoder": 0.27448226554551536,
+      "bell": 0.000742217631155483
+     },
+     "eps_first_order": 16.976152911356127,
+     "infeasibility_factor": 8251.961156202722,
+     "infeasibility_factor_worst": 11431.847856744886,
+     "mid_circuit_measurements_expected": 71.64413470029832
+    },
+    "COHERENT (Stinespring) channels + paper D~": {
+     "cz_expected": 2874.627446247004,
+     "cz_worst": 4093,
+     "share": {
+      "encoder": 0.40805287708896704,
+      "channel_uses": 0.3339563188451904,
+      "decoder": 0.25729506173491506,
+      "bell": 0.00069574233092748
+     },
+     "eps_first_order": 18.110152911356128,
+     "infeasibility_factor": 8803.188751759668,
+     "infeasibility_factor_worst": 12534.303047858777,
+     "mid_circuit_measurements_expected": 59.64413470029832
+    }
+   },
+   "previous_floor_factor_(n-1)CZ": 70.4346372100542,
+   "sampled_shots": {
+    "count": 20,
+    "logical_cz_mean": 2029.3,
+    "logical_cz_sd": 178.29133461837117,
+    "logical_2q_depth_mean": 810.4,
+    "measurements_mean": 50.8,
+    "routed_cz_mean": 6620.7,
+    "routed_cz_sem": 111.72911555703774,
+    "routed_over_logical_mean": 3.267082928960904,
+    "routed_depth_mean": 8413.85,
+    "routed_2q_depth_mean": 2774.0,
+    "routed_infeasibility_factor": 20275.069677243733
+   },
+   "sampled_shots_lnn": {
+    "count": 20,
+    "logical_cz_mean": 2854.3,
+    "logical_cz_sd": 178.2913346183712,
+    "logical_2q_depth_mean": 938.0,
+    "measurements_mean": 50.8,
+    "routed_cz_mean": 5406.9,
+    "routed_cz_sem": 112.51486217618681,
+    "routed_over_logical_mean": 1.8916297374812938,
+    "routed_depth_mean": 6342.25,
+    "routed_2q_depth_mean": 1889.45,
+    "routed_infeasibility_factor": 16557.958257871393
+   }
+  }
+ }
+}

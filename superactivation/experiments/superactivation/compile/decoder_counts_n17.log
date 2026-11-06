@@ -1,0 +1,53 @@
+n=17 k= 0: cz best per b [596] (1s)
+n=17 k= 1: cz best per b [660, 660] (1s)
+n=17 k= 2: cz best per b [759, 759, 759] (1s)
+n=17 k= 3: cz best per b [749, 749, 749, 749] (2s)
+n=17 k= 4: cz best per b [748, 748, 748, 748, 748] (3s)
+n=17 k= 5: cz best per b [701, 701, 701, 701, 701, 701] (6s)
+n=17 k= 6: cz best per b [656, 656, 656, 656, 656, 656, 656] (11s)
+n=17 k= 7: cz best per b [617, 617, 617, 617, 617, 617, 617, 617] (14s)
+n=17 k= 8: cz best per b [581, 581, 581, 581, 581, 581, 581, 581, 581] (17s)
+n=17 k= 9: cz best per b [550, 550, 550, 550, 550, 550, 550, 550, 550, 550] (20s)
+n=17 k=10: cz best per b [184, 184, 184, 184, 184, 184, 184, 184, 184, 184, 184] (21s)
+n=17 k=11: cz best per b [161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161] (23s)
+n=17 k=12: cz best per b [141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141, 141] (23s)
+n=17 k=13: cz best per b [126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126, 126] (24s)
+n=17 k=14: cz best per b [33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 33, 33] (24s)
+n=17 k=15: cz best per b [26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26] (24s)
+n=17 k=16: cz best per b [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4] (24s)
+n=17 k=17: cz best per b [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] (24s)
+{
+ "n": 17,
+ "sum_weights": 1.0000000000000002,
+ "F_witness_float": 0.7502033338948578,
+ "F_isometric_encoder_witness_decoders": 0.750203336142696,
+ "F_isometric_encoder_restricted_decoders": 0.7502033361426964,
+ "encoder_info": {
+  "eig_top": 1.9999171375172164,
+  "eig_second": 8.284847388679878e-05,
+  "polar_singular_values": [
+   0.9999792851452503,
+   0.9999792831842124
+  ],
+  "||X - X_iso||_max": 1.1341764044295676e-05
+ },
+ "decoder_cz_expected": 466.3428163188028,
+ "decoder_cz_worst": 759,
+ "decoder_cz_worst_branch": [
+  2,
+  0
+ ],
+ "decoder_cz_best": 0,
+ "decoder_measurements_expected": 16.951499938964844,
+ "decoder_measurements_worst": 17,
+ "decoder_feedforward_1q_expected": 74.99056243896486,
+ "decoder_qubits_max": 19,
+ "components_expected": {
+  "U_dag_cz": 120.99998474121097,
+  "givens_cz": 1.8435134887695317,
+  "unary_to_binary_cz": 14.841674804687504,
+  "phase_fix_cz": 11.406570434570316,
+  "dec_unitary_cz": 317.2510728495645
+ },
+ "seconds": 24.3
+}

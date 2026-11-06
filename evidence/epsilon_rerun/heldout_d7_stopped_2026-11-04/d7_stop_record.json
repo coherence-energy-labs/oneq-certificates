@@ -1,0 +1,95 @@
+{
+ "schema": "oneq-heldout-d7-stop/2",
+ "rule": "docs/PREREG_heldout_d7_2026-11-03.md, Stopping rule, with the order of docs/PREREG_heldout_d7_2026-11-03_DEVIATIONS.md (deviation 1)",
+ "reason": "40.0 core-hours reached (3 workers x 13.33 h wall since the original start)",
+ "start": "2026-11-03T14:35:29",
+ "stopped": "2026-11-04T03:55:29",
+ "core_hours": 40.0,
+ "runner_pid": 11476,
+ "worker_pids": [
+  53712,
+  42352,
+  50808
+ ],
+ "taskkill_exit": 0,
+ "taskkill_out": "SUCCESS: The process with PID 53712 (child process of PID 11476) has been terminated.\nSUCCESS: The process with PID 42352 (child process of PID 11476) has been terminated.\nSUCCESS: The process with PID 50808 (child process of PID 11476) has been terminated.\nSUCCESS: The process with PID 11476 (child process of PID 52748) has been terminated.",
+ "processes_left": [],
+ "completed_chunks": {
+  "heldout_d7_X_r50": 10,
+  "heldout_d7_X_r10": 7,
+  "samedev_d7_X_r30": 7,
+  "heldout_d7_Z_r50": 6,
+  "heldout_d7_Z_r10": 7,
+  "samedev_d7_Z_r30": 6
+ },
+ "completed_seeds": {
+  "heldout_d7_X_r50": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   10,
+   11
+  ],
+  "heldout_d7_X_r10": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "samedev_d7_X_r30": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "heldout_d7_Z_r50": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "heldout_d7_Z_r10": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "samedev_d7_Z_r30": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ "dispatched_unfinished": {
+  "heldout_d7_X_r50": [
+   9
+  ],
+  "heldout_d7_Z_r50": [
+   7
+  ],
+  "samedev_d7_Z_r30": [
+   7
+  ]
+ },
+ "index_unchanged_by_the_stop": true,
+ "note": "chunks in dispatched_unfinished were being computed at the stop and are not in the sample"
+}

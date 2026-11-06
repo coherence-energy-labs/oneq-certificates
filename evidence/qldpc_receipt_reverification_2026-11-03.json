@@ -1,0 +1,49 @@
+{
+ "schema": "oneq-qldpc-receipt-reverification/1",
+ "date": "2026-11-03",
+ "why": "the input-domain contract changed the qLDPC checkers; the pins in evidence/qldpc_heldout_addendum.json, evidence/qldpc_tree_corpus.json and docs/evidence_annotations.json move to the new bytes on this record, with their previous values kept beside them",
+ "replay": {
+  "manifest": "evidence/receipt_manifest.json",
+  "manifest_sha256": "aca2030645e639c30e2cf37b83a0e072d87fc45fd748a695b1fe16fc654bd6c9",
+  "pinned_in_replay_tool": "aca2030645e639c30e2cf37b83a0e072d87fc45fd748a695b1fe16fc654bd6c9",
+  "complete": true,
+  "receipts_passed_by_cohort": {
+   "heldout_flat": 2002,
+   "heldout_tree": 17,
+   "dev_tree": 19,
+   "dev_refsched_tree": 4
+  },
+  "receipts_passed": 2042,
+  "each_checked_by": "flat: check_qldpc_exact and the reference checker; tree: check_qldpc_bnb and tree checker B"
+ },
+ "javascript_third_checkers": {
+  "qldpc_js_agreement.json": {
+   "checker": "verifier-js/verify-qldpc-flat.mjs",
+   "checker_sha256": "fcaad17b67678bb5bcc5e74a34bcfea343bc2a5facf94abdab423965e5f273d8",
+   "stored_accepted": 2002,
+   "planted_defects_refused": 104
+  },
+  "qldpc_tree_js_agreement.json": {
+   "checker": "verifier-js/verify-qldpc-tree.mjs",
+   "checker_sha256": "324c7290806c27e3f11e61c764dac7b3dd229b8a1bd4ac60b599a3b97829f165",
+   "stored_accepted": 40,
+   "planted_defects_refused": 55
+  }
+ },
+ "input_domain_vectors": {
+  "file": "conformance/qldpc_input_domain_vectors.json",
+  "vectors": 87,
+  "sha256": "a44dbdcff58dac33e120d2f06aa70e3a26704c9aaf3de75edadf102e81219ad4",
+  "run_by": "tests/test_qldpc_input_domain.py"
+ },
+ "not_covered": "the 20 paired-stress trees of evidence/qldpc_tree_corpus.json: not stored (only their syndromes and candidates, evidence/qldpc_paired_bd_closure.json), so not re-verified here; their checker-B counts in that file were measured with the previous checker",
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_receipt_reverification.py": "be651906b98859ec275fc423e95a422eecc4ae1359b7cdff172e8c0289495328",
+  "src/oneq/qldpc_check.py": "59773707a8b85046f66149434aea9907b0990f7a70b873ab79be4234a1a51b25",
+  "tools/external/exact_lp_certificate_reference.py": "f260294977aa2459110e0551d9c8b8bea3d5e13e84859b373a64cee26e21b0cd",
+  "tools/external/tree_checker_b.py": "1e250b841568973afcb8ad092a4dac0434794b6f8b0133a3c15824bf68bcb64f",
+  "verifier-js/verify-qldpc-flat.mjs": "fcaad17b67678bb5bcc5e74a34bcfea343bc2a5facf94abdab423965e5f273d8",
+  "verifier-js/verify-qldpc-tree.mjs": "324c7290806c27e3f11e61c764dac7b3dd229b8a1bd4ac60b599a3b97829f165",
+  "tools/replay_receipts.py": "4e0adf38bd900540f6396988329d90ba430c430553e04bee272c85d1559d0c74"
+ }
+}

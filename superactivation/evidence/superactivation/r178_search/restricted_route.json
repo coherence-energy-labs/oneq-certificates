@@ -1,0 +1,326 @@
+{
+  "schema": "oneq.r178.restricted_physical_routing/1",
+  "evidence": "ARCHIVED DEVICE CALIBRATION + QISKIT COMPILATION; not a provider job",
+  "backend": "ibm_kingston",
+  "snapshot_sha256": "1a058f46e1a3cf8c901bb4176470ed0867ef2562362118789c76dca74e5c7423",
+  "policy": {
+    "max_readout": 0.05,
+    "max_readout_any": 0.15,
+    "min_t1": 2e-05,
+    "min_t2": 2e-05,
+    "max_sx": 0.002,
+    "max_cz": 0.01
+  },
+  "admissible_connected_qubits": 136,
+  "fixed_probe_count": 18,
+  "transpiler_seed_count": 2,
+  "noise_proxy": "ONE_Q no-error log likelihood, NOT F_e or F_avg",
+  "rows": [
+    {
+      "m": 5,
+      "branch": "kept_kept",
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "logical_qubits": 24,
+      "seed": 0,
+      "native_cz": 45,
+      "native_sx": 92,
+      "physical_depth": 47,
+      "no_error_log_proxy": -1.2350114226374125,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "kept_erased",
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "logical_qubits": 24,
+      "seed": 0,
+      "native_cz": 45,
+      "native_sx": 92,
+      "physical_depth": 47,
+      "no_error_log_proxy": -1.313422344204286,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "erased_erased",
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "logical_qubits": 24,
+      "seed": 0,
+      "native_cz": 49,
+      "native_sx": 93,
+      "physical_depth": 44,
+      "no_error_log_proxy": -1.3478337570535113,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "kept_kept",
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "logical_qubits": 24,
+      "seed": 1,
+      "native_cz": 50,
+      "native_sx": 101,
+      "physical_depth": 51,
+      "no_error_log_proxy": -1.2474328257890963,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "kept_erased",
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "logical_qubits": 24,
+      "seed": 1,
+      "native_cz": 50,
+      "native_sx": 101,
+      "physical_depth": 52,
+      "no_error_log_proxy": -1.291752299158623,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "erased_erased",
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "logical_qubits": 24,
+      "seed": 1,
+      "native_cz": 52,
+      "native_sx": 104,
+      "physical_depth": 56,
+      "no_error_log_proxy": -1.6009933620902528,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "kept_kept",
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "logical_qubits": 24,
+      "seed": 1,
+      "native_cz": 88,
+      "native_sx": 154,
+      "physical_depth": 59,
+      "no_error_log_proxy": -2.4320576052176746,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "kept_erased",
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "logical_qubits": 24,
+      "seed": 1,
+      "native_cz": 88,
+      "native_sx": 154,
+      "physical_depth": 59,
+      "no_error_log_proxy": -2.593732284270597,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 5,
+      "branch": "erased_erased",
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "logical_qubits": 24,
+      "seed": 1,
+      "native_cz": 65,
+      "native_sx": 124,
+      "physical_depth": 63,
+      "no_error_log_proxy": -1.6151191940706628,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "kept_kept",
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 83,
+      "native_sx": 160,
+      "physical_depth": 77,
+      "no_error_log_proxy": -2.329656085202833,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "kept_erased",
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 83,
+      "native_sx": 161,
+      "physical_depth": 77,
+      "no_error_log_proxy": -2.4320748823090534,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "erased_erased",
+      "sectors": [
+        "s0",
+        "s0"
+      ],
+      "logical_qubits": 32,
+      "seed": 1,
+      "native_cz": 74,
+      "native_sx": 138,
+      "physical_depth": 49,
+      "no_error_log_proxy": -2.6115663891736904,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "kept_kept",
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 76,
+      "native_sx": 148,
+      "physical_depth": 56,
+      "no_error_log_proxy": -1.9651034672521503,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "kept_erased",
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 76,
+      "native_sx": 148,
+      "physical_depth": 57,
+      "no_error_log_proxy": -2.2123895941602947,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "erased_erased",
+      "sectors": [
+        "s0",
+        "s1"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 83,
+      "native_sx": 149,
+      "physical_depth": 58,
+      "no_error_log_proxy": -2.5914409225747588,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "kept_kept",
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 156,
+      "native_sx": 287,
+      "physical_depth": 142,
+      "no_error_log_proxy": -4.872683500819569,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "kept_erased",
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "logical_qubits": 32,
+      "seed": 0,
+      "native_cz": 156,
+      "native_sx": 287,
+      "physical_depth": 142,
+      "no_error_log_proxy": -5.006320588209636,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    },
+    {
+      "m": 7,
+      "branch": "erased_erased",
+      "sectors": [
+        "s1",
+        "s1"
+      ],
+      "logical_qubits": 32,
+      "seed": 1,
+      "native_cz": 133,
+      "native_sx": 233,
+      "physical_depth": 73,
+      "no_error_log_proxy": -4.124727802961086,
+      "healthy_policy_admitted": true,
+      "missing_policy_gates": [],
+      "score_is_not_entanglement_fidelity": true
+    }
+  ]
+}

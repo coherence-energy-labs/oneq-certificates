@@ -31,6 +31,16 @@ plt.rcParams.update({
 META = {"CreationDate": None, "Producer": None, "Creator": None}
 
 
+def legend_pct(rate: float) -> str:
+    """A rate in a figure, printed as the text prints rates: rounded DOWN (make_numbers.PF), one decimal. Fig. 3's
+    legend printed 79.5 and 95.7 for 79.45% and 95.69% while the text says every rate is rounded down (final referee,
+    2026-11-03)."""
+    import sys
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from make_numbers import PF
+    return PF(rate, 1)
+
+
 def _load(name: str) -> dict:
     return json.loads((EV / name).read_text(encoding="utf-8"))
 
@@ -90,32 +100,41 @@ def generation_ladder() -> pathlib.Path:
 
 
 def gap_tails() -> pathlib.Path:
-    """P(gap > g) on shots whose MWPM correction the exact checker proved.
+    """P(excess > g) on the preregistered gap run (docs/PREREG_gap_distribution_2026-11-03.md), per decoder.
 
-    The curve starts at the fraction of shots with a nonzero gap; the rest of
-    the mass sits at exactly zero, which a log axis cannot show, so it is
-    stated in the legend."""
-    doc = _load("gap_distribution_exact_rule.json")
-    fig, axes = plt.subplots(1, 2, figsize=(COLUMN_IN, 2.0), sharey=True)
+    The excess is the UPPER end of the exact interval [max(0, w(K) - w(J)), w(K) - w(J) + eps(J)] against PyMatching's
+    epsilon-certified correction J. Shots proven within eps_max = 1e-6 of optimal sit at the left, which a log axis
+    cannot show, so their share is stated in the legend."""
+    import gzip
+    from fractions import Fraction
+    run = "gap_distribution_v4/prereg_2026-11-03"
+    doc = _load(f"{run}/summary.json")
+    arms = (("bposd_merged", "BP-OSD, merged"), ("belief_matching", "belief-matching"),
+            ("bposd_component", "BP-OSD, components"))
+    fig, axes = plt.subplots(1, 3, figsize=(2 * COLUMN_IN, 2.0), sharey=True)
     colours = {3: "#3182bd", 5: "#31a354", 7: "#d62728"}
-    for ax, dec, title in ((axes[0], "bp_osd", "BP-OSD"),
-                           (axes[1], "belief_matching", "belief-matching")):
+    for ax, (arm, title) in zip(axes, arms):
         for row in doc["rows"]:
-            g = np.array(row["decoders"][dec]["per_shot_gap_vs_proven_optimum"])
+            recs = [json.loads(x) for x in gzip.decompress((ROOT / row["per_shot"]).read_bytes()).decode().splitlines()]
+            g = np.array([float(Fraction(r[arm]["gap_hi"])) for r in recs if r["ref_eps"]["accepted"]])
             n = g.size
-            pos = np.sort(g[g > 1e-9])
+            pos = np.sort(g[g > 1e-6])
             k = pos.size
-            xs = np.concatenate(([pos[0] / 3], pos))
-            ys = np.concatenate(([k / n], (k - np.arange(1, k + 1)) / n))
-            ax.step(xs[:-1], ys[:-1], where="post", color=colours[row["distance"]],
-                    label=f"d={row['distance']}: {100 * (1 - k / n):.0f}% zero")
+            share = row["decoders"][arm]["epsilon_reference"]["eps_optimal_rate"]
+            lbl = f"d={row['distance']}: {legend_pct(share)}%"
+            if k:
+                xs = np.concatenate(([pos[0] / 3], pos))
+                ys = np.concatenate(([k / n], (k - np.arange(1, k + 1)) / n))
+                ax.step(xs[:-1], ys[:-1], where="post", color=colours[row["distance"]], label=lbl)
+            else:
+                ax.plot([], [], color=colours[row["distance"]], label=lbl)
         ax.set_xscale("log")
         ax.set_yscale("log")
         ax.set_title(title, fontsize=8)
         ax.set_xlabel("excess weight $g$")
         ax.grid(True, which="major", lw=0.3, alpha=0.5)
-        ax.legend(frameon=False, loc="lower left", handlelength=1.2)
-    axes[0].set_ylabel("fraction with gap $> g$")
+        ax.legend(frameon=False, loc="lower left", handlelength=1.2, fontsize=6)
+    axes[0].set_ylabel("fraction with excess $> g$")
     fig.tight_layout(pad=0.3)
     path = OUT / "gap_tails.pdf"
     fig.savefig(path, metadata=META)

@@ -1,0 +1,7 @@
+(a,b)=(5,6) symmetric seed 0.7465807992; perturbed start 0.7314787518
+   step 25: F = 0.7468312720  (gain over symmetric +0.000250)
+   step 50: F = 0.7470850098  (gain over symmetric +0.000504)
+   step 75: F = 0.7473148383  (gain over symmetric +0.000734)
+   step 100: F = 0.7474600219  (gain over symmetric +0.000879)
+   step 125: F = 0.7475507627  (gain over symmetric +0.000970)
+   step 150: F = 0.7476069528  (gain over symmetric +0.001026)

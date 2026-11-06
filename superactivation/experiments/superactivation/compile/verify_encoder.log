@@ -1,0 +1,8 @@
+part A ('be', 'be'): worst err 1.33e-14  cz(n=7) compiled 114 formula 114  (1s)
+part A ('givens', 'mux5'): worst err 1.76e-14  cz(n=7) compiled 87 formula 87  (1s)
+part A ('givens', 'num4'): worst err 2.32e-14  cz(n=7) compiled 72 formula 72  (1s)
+part B ('be', 'be'): worst statevector error 7.22e-15  (1s)
+part B ('givens', 'mux5'): worst statevector error 3.48e-15  (1s)
+part B ('givens', 'num4'): worst statevector error 5.14e-15  (2s)
+part C n=17: err 1.13e-15  CZ 592 (W 80 + U 512)  depth 820 2q-depth 173  (12s)
+PASS A True  PASS B True  PASS C True

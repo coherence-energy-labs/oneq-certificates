@@ -1,0 +1,2 @@
+n=17: float F 0.750203336143  certified lower bound 0.750203335560  exceeds 3/4: True  margin >= 2.0334e-04  (22.6s)
+n=24: float F 0.751030734475  certified lower bound 0.751030733687  exceeds 3/4: True  margin >= 1.0307e-03  (108.8s)

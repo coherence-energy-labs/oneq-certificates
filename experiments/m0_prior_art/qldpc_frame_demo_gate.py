@@ -172,7 +172,9 @@ def main() -> int:
                 r = check_qldpc_bnb(checks=aug, weights=wx, syndrome=asyn,
                                     error_support=(), tree=tree,
                                     bound_only_threshold=U)
-                proven = bool(r.accepted)
+                # bound-only: LOWER_BOUND_PROVEN, never an optimum
+                proven = bool(r.accepted and r.checks.get("status")
+                              == "LOWER_BOUND_PROVEN")
             if proven:
                 determinate += 1
                 continue

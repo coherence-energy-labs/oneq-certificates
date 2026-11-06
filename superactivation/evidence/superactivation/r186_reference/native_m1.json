@@ -1,0 +1,27 @@
+{
+  "archived_calibration_source_sha256": "c737c1b3ca2e8be999de5ee2d61e27f379c7792745f5985ea9c067ae95c48fbb",
+  "backend": "ibm_kingston",
+  "both_decoders_routed_on_same_native_backend": false,
+  "comparisons": {
+    "cz1": {
+      "accepted": false,
+      "no_native_gate_resource_claim": true,
+      "reason": "ScheduleError: gate if_else is not in the ISA basis (transpile to cz/rz/sx/x first)",
+      "source_channel_sha256": "105a8aed8bc3d580cca0299fe317e9d1aa93133ee7fd6a854a6b20bfb1250bc4"
+    },
+    "cz2": {
+      "accepted": false,
+      "no_native_gate_resource_claim": true,
+      "reason": "ScheduleError: gate if_else is not in the ISA basis (transpile to cz/rz/sx/x first)",
+      "source_channel_sha256": "105a8aed8bc3d580cca0299fe317e9d1aa93133ee7fd6a854a6b20bfb1250bc4"
+    }
+  },
+  "evidence_class": "ARCHIVED CALIBRATION + OFFLINE FAKEKINGSTON COMPILATION",
+  "m": 1,
+  "no_hardware_capacity_claim": true,
+  "no_new_IBM_job": true,
+  "physical_Bell_output_CZ1_CZ2_contrast_only_if_routed": false,
+  "same_physical_P_randomizers": true,
+  "schema": "oneq.r186.native_operational_decoder_pilot/1",
+  "snapshot_sha256": "1a058f46e1a3cf8c901bb4176470ed0867ef2562362118789c76dca74e5c7423"
+}

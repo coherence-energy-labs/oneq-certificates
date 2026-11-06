@@ -1,0 +1,72 @@
+{
+ "schema": "oneq.r167.global_stall_heldout/1",
+ "label": "EXPLORATORY -- outside every preregistered verdict",
+ "r152_job": "db9c50oc77vs73817rog",
+ "traj": 24,
+ "measured_r147": 0.6272772705949263,
+ "model": {
+  "quasistatic": "coherent",
+  "twirl": "active-accum",
+  "dressing_factor": 1.54,
+  "base": "V3c"
+ },
+ "variants": {
+  "R163 hold only, L = 0.65 us (assumed)": {
+   "r147": 0.6628365489783214,
+   "r147_miss": -0.03555927838339512,
+   "residual": {
+    "main": -0.03418734844249334,
+    "twin_inline": -0.034358496848196016,
+    "twin_static": -0.00034493041759064286
+   }
+  },
+  "global stall L = 0.0 us": {
+   "stall_dt": 0,
+   "circuits": 292,
+   "qubits_delayed_mean": 9.602739726027398,
+   "r147": 0.652560384446192,
+   "r147_miss": -0.025283113851265693,
+   "residual": {
+    "main": -0.019782149892537473,
+    "twin_inline": -0.01605945480604179,
+    "twin_static": -0.00034493041759064286
+   }
+  },
+  "global stall L = 0.39 us": {
+   "stall_dt": 96,
+   "circuits": 292,
+   "qubits_delayed_mean": 9.602739726027398,
+   "r147": 0.6497279502317814,
+   "r147_miss": -0.022450679636855098,
+   "residual": {
+    "main": -0.01838961340065265,
+    "twin_inline": -0.018560570341545964,
+    "twin_static": -0.00034493041759064286
+   }
+  },
+  "global stall L = 0.85 us": {
+   "stall_dt": 208,
+   "circuits": 292,
+   "qubits_delayed_mean": 9.602739726027398,
+   "r147": 0.646006809110206,
+   "r147_miss": -0.018729538515279698,
+   "residual": {
+    "main": -0.00979251018749595,
+    "twin_inline": 0.0009344864688971069,
+    "twin_static": -0.00034493041759064286
+   }
+  },
+  "global stall L = 2.19 us": {
+   "stall_dt": 544,
+   "circuits": 292,
+   "qubits_delayed_mean": 9.602739726027398,
+   "r147": 0.623047266409348,
+   "r147_miss": 0.004230004185578284,
+   "residual": {
+    "main": 0.018693752157374472,
+    "twin_inline": 0.08342648816992985,
+    "twin_static": -0.00034493041759064286
+   }
+  }
+ }
+}

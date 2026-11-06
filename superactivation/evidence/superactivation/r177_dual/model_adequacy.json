@@ -1,0 +1,67 @@
+{
+  "aggregate": {
+    "r146": {
+      "improvement_in_abs_miss": 0.0024524170946411683,
+      "measured": 0.6167117524746097,
+      "new_abs_miss": 0.003302945049366235,
+      "new_miss_in_measured_sd": 0.39320774397217084,
+      "new_prediction": 0.6134088074252435,
+      "old_abs_miss": 0.005755362144007403,
+      "old_prediction": 0.6224671146186171,
+      "sd_source": "R146 diagnostic or R147 stratified control-variate, NOT model Monte Carlo SD"
+    },
+    "r147": {
+      "improvement_in_abs_miss": 0.02650676945136543,
+      "measured": 0.6272772705949263,
+      "new_abs_miss": 0.0010534600693725693,
+      "new_miss_in_measured_sd": 0.16524134684813918,
+      "new_prediction": 0.6262238105255538,
+      "old_abs_miss": 0.027560229520738,
+      "old_prediction": 0.6548375001156643,
+      "sd_source": "R146 diagnostic or R147 stratified control-variate, NOT model Monte Carlo SD"
+    }
+  },
+  "aggregate_improvement_reproduced": true,
+  "all_subgroups_closed": false,
+  "evidence_class": "ARCHIVED REPLAY/SHOT-ONLY SUBGROUP DIAGNOSTIC",
+  "independent_model_mc_uncertainty_available": false,
+  "inputs": {
+    "model_sha256": "a29beecee97f565162646b882ccf852e1d610c10a65a5cf53e5689002ff1b869",
+    "r152": "C:\\Users\\Josh\\Projects\\_worktrees\\ONE_Q-R177\\evidence\\superactivation\\campaign_r152\\20261017T003152Z\\result_db9c50oc77vs73817rog.json",
+    "r152_sha256": "e2af87b3aa3dff5de3addf99540770395dd56f66d4907839cd04b35df84531d5"
+  },
+  "next_falsifier": "Re-run predictor with disjoint random streams / higher trajectory count; report MC and shot errors separately, then test new calibration windows. Do not refit R147 on itself.",
+  "no_fit_on_r146_r147_claim": "reported by producer, not independently proven by this numerical check",
+  "schema": "oneq.r177.model_adequacy/1",
+  "subgroup_shot_only_concern": true,
+  "subgroups": {
+    "main": {
+      "additional_model_sd_needed_for_2sigma": 0.002559622917646354,
+      "familywise_upper_p_if_gaussian": 0.006457925348064615,
+      "requires_uncertainty_estimate": true,
+      "shot_only_flags_1pct_familywise": true,
+      "shot_only_sd": 0.0022,
+      "shot_only_z": 3.0683224857370677,
+      "signed_miss": 0.006750309468621549
+    },
+    "twin_inline": {
+      "additional_model_sd_needed_for_2sigma": 0.0,
+      "familywise_upper_p_if_gaussian": 0.28366294100118916,
+      "requires_uncertainty_estimate": true,
+      "shot_only_flags_1pct_familywise": false,
+      "shot_only_sd": 0.0084,
+      "shot_only_z": 1.6718479250701062,
+      "signed_miss": 0.014043522570588891
+    },
+    "twin_static": {
+      "additional_model_sd_needed_for_2sigma": 0.0032678784310526472,
+      "familywise_upper_p_if_gaussian": 0.1086134124547492,
+      "requires_uncertainty_estimate": true,
+      "shot_only_flags_1pct_familywise": false,
+      "shot_only_sd": 0.0105,
+      "shot_only_z": 2.094623541389025,
+      "signed_miss": 0.021993547184584766
+    }
+  },
+  "verdict": "AGGREGATE_BETTER; SUBGROUP_NOT_CERTIFIED"
+}

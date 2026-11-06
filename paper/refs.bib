@@ -254,6 +254,15 @@
   archivePrefix = {arXiv},
 }
 
+@misc{roffe2022ldpc,
+  author = {Roffe, Joschka},
+  title = {{LDPC: Python tools for low density parity check codes}},
+  howpublished = {\url{https://pypi.org/project/ldpc/}},
+  url = {https://pypi.org/project/ldpc/},
+  year = {2022},
+  note = {Version 2.4.1 used here},
+}
+
 @article{poulin2008iterative,
   author = {David Poulin and Yeojin Chung},
   title = {On the iterative decoding of sparse quantum codes},
@@ -543,12 +552,15 @@
 }
 
 % Paper 3 (circuit distance), added 2026-10-26 from the arXiv abstract pages' citation metadata.
+% Pinned to v2 (2026-09-14, "Corrected figures in Appendix H"): its Fig. 12 -- the cycle paper 3 transcribes -- states
+% every CNOT, preparation and measurement time; v1's Fig. 12 has other labels and no preparation or measurement times.
 @misc{strikis2026high,
   author = {Armands Strikis and Dan E. Browne and Michael E. Beverland},
   title = {High-performance syndrome extraction circuits for quantum codes},
   year = {2026},
-  eprint = {2603.05481},
+  eprint = {2603.05481v2},
   archivePrefix = {arXiv},
+  note = {v2, 2026-09-14},
 }
 
 @article{shaw2024lowering,
@@ -564,20 +576,24 @@
   archivePrefix = {arXiv},
 }
 
+% Pinned to v2 (2026-04-20, "Fixed typos and corrected an error in Section 6.3.2"); Def. 10, Prop. 1, Fig. 25 and
+% App. C.4, the items paper 3 cites, are numbered the same in v1 and v2 (checked 2026-11-03).
 @misc{shaw2026optimising,
   author = {Mackenzie H. Shaw and Barbara M. Terhal},
   title = {Optimising Quantum Error Correction Using Morphing Circuits},
   year = {2026},
-  eprint = {2604.09797},
+  eprint = {2604.09797v2},
   archivePrefix = {arXiv},
+  note = {v2, 2026-04-20},
 }
 
 @misc{webster2026distance,
   author = {Mark Webster and Abraham Jacob and Oscar Higgott},
   title = {{Distance-Finding} Algorithms for Quantum Codes and Circuits},
   year = {2026},
-  eprint = {2603.22532},
+  eprint = {2603.22532v2},
   archivePrefix = {arXiv},
+  note = {v2, 2026-08-14},
 }
 
 @inproceedings{liu2026alphasyndrome,
@@ -603,16 +619,18 @@
   author = {Shoham Jacoby and Alex Retzker and Fernando Pastawski},
   title = {Stairway Codes: Floquetifying Bivariate Bicycle Codes and Beyond},
   year = {2026},
-  eprint = {2603.00228},
+  eprint = {2603.00228v1},
   archivePrefix = {arXiv},
+  note = {v1, 2026-02-27},
 }
 
 @misc{chen2026satqldpc,
   author = {Yu-Fang Chen and Jafari, Seyed Mohammad Reza and Ching-Yi Lai},
   title = {{SAT}, {MaxSAT}, and {SMT} for {QLDPC} Distance Computation: A Large-Scale Empirical Study},
   year = {2026},
-  eprint = {2606.12445},
+  eprint = {2606.12445v1},
   archivePrefix = {arXiv},
+  note = {v1, 2026-05-29},
 }
 
 @inproceedings{demoura2021lean4,
@@ -652,20 +670,75 @@
   url = {https://github.com/GavinNull/gross-code-distance-12/releases/tag/v2.0},
 }
 
+% Pan's released research record (external audit 2, finding F11). The two audit files are byte-identical in the trees
+% of release v1.0 (commit 1ba1efa2, published 2026-10-20 17:36 UTC) and v2.0 (commit 5ae848ab, 2026-10-24 00:09 UTC):
+% git blobs eab30a71 (E-017) and 25afd539 (E-019). The url is the earlier release, which carries them.
+@misc{pan2026e017,
+  author = {Guancheng Pan},
+  title = {Audit {E-017}: the {Shaw--Terhal} morphing circuit on [[144,12,12]], claimed circuit distance 12},
+  howpublished = {research record \texttt{research/audits/2026-10-08-E-017.md} of \url{https://github.com/GavinNull/gross-code-distance-12}, in releases v1.0 (2026-10-20) and v2.0 (commit 5ae848ab, 2026-10-24)},
+  year = {2026},
+  url = {https://github.com/GavinNull/gross-code-distance-12/releases/tag/v1.0},
+}
+
+@misc{pan2026e019,
+  author = {Guancheng Pan},
+  title = {Audit {E-019}: circuit distances of 80 {Shaw--Terhal} morphing circuits},
+  howpublished = {research record \texttt{research/audits/2026-10-08-E-019.md} of \url{https://github.com/GavinNull/gross-code-distance-12}, in releases v1.0 (2026-10-20) and v2.0 (commit 5ae848ab, 2026-10-24)},
+  year = {2026},
+  url = {https://github.com/GavinNull/gross-code-distance-12/releases/tag/v1.0},
+}
+
+% Pan's research records on IBM's depth-8 cycle, on his main branch AFTER release v2.0 (in no release as of
+% 2026-11-03; main HEAD then 41c8f978, 2026-11-01). E-037: 88 VeriPB certificates, no undetectable logical of weight
+% <= 9 for every R = 1..12, both bases, SD6 and a model rebuilt from IBM's decoder_setup.py (a strengthened formula;
+% the strengthening rests on a written argument). E-043: d_circ = 10 for every R, from his bulk criterion with two
+% uncertified solvers, a direct search to R = 3 and a persistence argument. Final referee of 2026-11-03, N1.
+@misc{pan2026e037,
+  author = {Guancheng Pan},
+  title = {Audit {E-037}: certificates of circuit-distance lower bounds for {IBM}'s depth-8 circuits (gross [[144,12,12]], [[108,8,10]])},
+  howpublished = {research record \texttt{research/audits/2026-10-26-E-037.md} on the main branch of \url{https://github.com/GavinNull/gross-code-distance-12}, commit 34ffcb14 (2026-10-25), after release v2.0},
+  year = {2026},
+  url = {https://github.com/GavinNull/gross-code-distance-12/blob/34ffcb140e76bec35430429957c6fed7d51e74e7/research/audits/2026-10-26-E-037.md},
+  note = {title translated from the Chinese heading},
+}
+
+@misc{pan2026e043,
+  author = {Guancheng Pan},
+  title = {Audit {E-043}: completing Table {I}; ``certification'' for every {$R$} of {IBM}'s two depth-8 circuits in {$T(8)$}, and three new circuits},
+  howpublished = {research record \texttt{research/audits/2026-10-31-E-043.md} on the main branch of \url{https://github.com/GavinNull/gross-code-distance-12}, commit 18e47dae (2026-10-31), after release v2.0},
+  year = {2026},
+  url = {https://github.com/GavinNull/gross-code-distance-12/blob/18e47dae3076138503fba99220c357db5087ffc5/research/audits/2026-10-31-E-043.md},
+  note = {title translated from the Chinese heading, whose ``certification'' (renzheng) of the every-$R$ step produces no proof log},
+}
+
+% App. C (v2): a Shaw--Terhal morphing idling circuit "is believed to have circuit distance 12"; the basis of the
+% belief is not stated (their Monte Carlo simulation is of its logical error rate).
+@misc{wills2026concatenating,
+  author = {Adam Wills and Michael E. Beverland and Lev S. Bishop and Jay M. Gambetta and Patrick Rall and Vikesh Siddhu and Andrew W. Cross},
+  title = {Concatenating Algebraic Codes over High-Rate Quantum {LDPC} Codes},
+  year = {2026},
+  eprint = {2605.21898v2},
+  archivePrefix = {arXiv},
+  note = {v2, 2026-06-23},
+}
+
 @misc{huang2025veriqec,
   author = {Qifan Huang and Li Zhou and Wang Fang and Mengyu Zhao and Mingsheng Ying},
   title = {Efficient Formal Verification of Quantum Error Correcting Programs},
   year = {2025},
-  eprint = {2504.07732},
+  eprint = {2504.07732v3},
   archivePrefix = {arXiv},
+  note = {v3, 2025-10-29},
 }
 
 @misc{an2026certificate,
   author = {Shuoming An and Fusheng Yang},
   title = {Quantum error-correcting code parameters, checkable by a certificate of provable size},
   year = {2026},
-  eprint = {2610.03214},
+  eprint = {2610.03214v2},
   archivePrefix = {arXiv},
+  note = {v2, 2026-10-05},
 }
 
 @inproceedings{wetzler2014drattrim,
@@ -728,4 +801,263 @@
   pages = {296--317},
   year = {1995},
   doi = {10.1137/S0097539793242618},
+}
+
+% ------------------------------------------- superactivation (paper 4)
+% Fetched 2026-11-03: arXiv abstract pages' citation metadata, Crossref by DOI. Two DOIs printed in the
+% bibliography of arXiv:2604.27042v2 (Berta et al.; Cubitt, Chen and Harrow) do not resolve at Crossref; the
+% DOIs below are the ones the arXiv records carry, and they do. Crossref titles Horodecki et al. 1999
+% "... and quasidistillation" (not "... and fidelity", as that bibliography has it).
+
+@misc{parentin2026onset,
+  author = {Marco Parentin and Bjarne Bergh and Nilanjana Datta and Mark M. Wilde},
+  title = {Onset of superactivation of quantum capacity},
+  year = {2026},
+  eprint = {2604.27042},
+  archivePrefix = {arXiv},
+}
+
+@misc{bergh2026permutation,
+  author = {Bjarne Bergh and Marco Parentin},
+  title = {Permutation Invariant Optimization Problems in Quantum Information Theory: A Framework for Channel Fidelity and Beyond},
+  year = {2026},
+  eprint = {2604.27040},
+  archivePrefix = {arXiv},
+}
+
+@article{smith2008quantum,
+  author = {Graeme Smith and Jon Yard},
+  title = {Quantum Communication with Zero-Capacity Channels},
+  journal = {Science},
+  volume = {321},
+  number = {5897},
+  pages = {1812--1815},
+  year = {2008},
+  doi = {10.1126/science.1162242},
+  eprint = {0807.4935},
+  archivePrefix = {arXiv},
+}
+
+@article{cubitt2015unbounded,
+  author = {Toby Cubitt and David Elkouss and William Matthews and Maris Ozols and David P{\'e}rez-Garc{\'i}a and Sergii Strelchuk},
+  title = {Unbounded number of channel uses may be required to detect quantum capacity},
+  journal = {Nature Communications},
+  volume = {6},
+  pages = {6739},
+  year = {2015},
+  doi = {10.1038/ncomms7739},
+  eprint = {1408.5115},
+  archivePrefix = {arXiv},
+}
+
+@article{smith2011gaussian,
+  author = {Graeme Smith and John A. Smolin and Jon Yard},
+  title = {Quantum communication with {Gaussian} channels of zero quantum capacity},
+  journal = {Nature Photonics},
+  volume = {5},
+  number = {10},
+  pages = {624--627},
+  year = {2011},
+  doi = {10.1038/nphoton.2011.203},
+  eprint = {1102.4580},
+  archivePrefix = {arXiv},
+}
+
+@article{brandao2012noise,
+  author = {Fernando G. S. L. Brand{\~a}o and Jonathan Oppenheim and Sergii Strelchuk},
+  title = {When Does Noise Increase the Quantum Capacity?},
+  journal = {Physical Review Letters},
+  volume = {108},
+  number = {4},
+  pages = {040501},
+  year = {2012},
+  doi = {10.1103/PhysRevLett.108.040501},
+  eprint = {1107.4385},
+  archivePrefix = {arXiv},
+}
+
+@article{leung2015power,
+  author = {Debbie Leung and William Matthews},
+  title = {On the Power of {PPT}-Preserving and Non-Signalling Codes},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {61},
+  number = {8},
+  pages = {4486--4499},
+  year = {2015},
+  doi = {10.1109/TIT.2015.2439953},
+  eprint = {1406.7142},
+  archivePrefix = {arXiv},
+}
+
+@article{horodecki1998mixed,
+  author = {Micha{\l} Horodecki and Pawe{\l} Horodecki and Ryszard Horodecki},
+  title = {Mixed-State Entanglement and Distillation: Is there a ``Bound'' Entanglement in Nature?},
+  journal = {Physical Review Letters},
+  volume = {80},
+  number = {24},
+  pages = {5239--5242},
+  year = {1998},
+  doi = {10.1103/PhysRevLett.80.5239},
+}
+
+@article{horodecki1999general,
+  author = {Micha{\l} Horodecki and Pawe{\l} Horodecki and Ryszard Horodecki},
+  title = {General teleportation channel, singlet fraction, and quasidistillation},
+  journal = {Physical Review A},
+  volume = {60},
+  number = {3},
+  pages = {1888--1898},
+  year = {1999},
+  doi = {10.1103/PhysRevA.60.1888},
+}
+
+@article{horodecki2005secure,
+  author = {Karol Horodecki and Micha{\l} Horodecki and Pawe{\l} Horodecki and Jonathan Oppenheim},
+  title = {Secure Key from Bound Entanglement},
+  journal = {Physical Review Letters},
+  volume = {94},
+  number = {16},
+  pages = {160502},
+  year = {2005},
+  doi = {10.1103/PhysRevLett.94.160502},
+}
+
+@article{horodecki2008low,
+  author = {Karol Horodecki and {\L}ukasz Pankowski and Micha{\l} Horodecki and Pawe{\l} Horodecki},
+  title = {Low-Dimensional Bound Entanglement With One-Way Distillable Cryptographic Key},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {54},
+  number = {6},
+  pages = {2621--2625},
+  year = {2008},
+  doi = {10.1109/TIT.2008.921709},
+  eprint = {quant-ph/0506203},
+  archivePrefix = {arXiv},
+}
+
+@article{badziag2014bound,
+  author = {Piotr Badzi{\k{a}}g and Karol Horodecki and Micha{\l} Horodecki and Justin Jenkinson and Stanis{\l}aw J. Szarek},
+  title = {Bound entangled states with extremal properties},
+  journal = {Physical Review A},
+  volume = {90},
+  number = {1},
+  pages = {012301},
+  year = {2014},
+  doi = {10.1103/PhysRevA.90.012301},
+  eprint = {1309.7992},
+  archivePrefix = {arXiv},
+}
+
+@article{johnson2013compatible,
+  author = {Peter D. Johnson and Lorenza Viola},
+  title = {Compatible quantum correlations: Extension problems for {Werner} and isotropic states},
+  journal = {Physical Review A},
+  volume = {88},
+  number = {3},
+  pages = {032323},
+  year = {2013},
+  doi = {10.1103/PhysRevA.88.032323},
+}
+
+@article{kaur2019extendibility,
+  author = {Eneet Kaur and Siddhartha Das and Mark M. Wilde and Andreas Winter},
+  title = {Extendibility Limits the Performance of Quantum Processors},
+  journal = {Physical Review Letters},
+  volume = {123},
+  number = {7},
+  pages = {070502},
+  year = {2019},
+  doi = {10.1103/PhysRevLett.123.070502},
+}
+
+@article{reimpell2005iterative,
+  author = {M. Reimpell and R. F. Werner},
+  title = {Iterative Optimization of Quantum Error Correcting Codes},
+  journal = {Physical Review Letters},
+  volume = {94},
+  number = {8},
+  pages = {080501},
+  year = {2005},
+  doi = {10.1103/PhysRevLett.94.080501},
+}
+
+@article{berta2022semidefinite,
+  author = {Mario Berta and Francesco Borderi and Omar Fawzi and Volkher B. Scholz},
+  title = {Semidefinite programming hierarchies for constrained bilinear optimization},
+  journal = {Mathematical Programming},
+  volume = {194},
+  pages = {781--829},
+  year = {2022},
+  doi = {10.1007/s10107-021-01650-1},
+  eprint = {1810.12197},
+  archivePrefix = {arXiv},
+}
+
+@misc{duan2009superactivation,
+  author = {Runyao Duan},
+  title = {Super-Activation of Zero-Error Capacity of Noisy Quantum Channels},
+  year = {2009},
+  eprint = {0906.2527},
+  archivePrefix = {arXiv},
+}
+
+@article{cubitt2011superactivation,
+  author = {Toby S. Cubitt and Jianxin Chen and Aram W. Harrow},
+  title = {Superactivation of the Asymptotic Zero-Error Classical Capacity of a Quantum Channel},
+  journal = {IEEE Transactions on Information Theory},
+  volume = {57},
+  number = {12},
+  pages = {8114--8126},
+  year = {2011},
+  doi = {10.1109/TIT.2011.2169109},
+  eprint = {0906.2547},
+  archivePrefix = {arXiv},
+}
+
+@misc{wu2025quantum,
+  author = {Peixue Wu and Yunkai Wang},
+  title = {Quantum capacity amplification via privacy},
+  year = {2025},
+  eprint = {2510.04527},
+  archivePrefix = {arXiv},
+}
+
+@misc{zhu2026incapacity,
+  author = {Chengkai Zhu and Xin Wang},
+  title = {Quantum incapacity from observable shadows},
+  year = {2026},
+  eprint = {2607.24693},
+  archivePrefix = {arXiv},
+}
+
+@misc{zhu2026private,
+  author = {Chengkai Zhu and Xin Wang},
+  title = {Private communication via zero-private-capacity quantum channels},
+  year = {2026},
+  eprint = {2609.10520},
+  archivePrefix = {arXiv},
+}
+
+@misc{g2026private,
+  author = {{Uthirakalyani G} and Pritam Halder and David Elkouss},
+  title = {Private communication from {Pauli} channels with no privacy},
+  year = {2026},
+  eprint = {2609.20133},
+  archivePrefix = {arXiv},
+}
+
+@misc{khanian2026permutation,
+  author = {Khanian, Zahra Baghali and Debbie Leung and Graeme Smith},
+  title = {From Permutation Symmetry to Communication Bounds and Additivity},
+  year = {2026},
+  eprint = {2610.02176},
+  archivePrefix = {arXiv},
+}
+
+@misc{bhargava2026noise,
+  author = {Deepika Bhargava and Arijit Chatterjee and Vishal Varma and T. S. Mahesh},
+  title = {Noise cancellation by superposition of channels and superactivation of quantum capacity: Experimental realization by {NMR}},
+  year = {2026},
+  eprint = {2606.10744},
+  archivePrefix = {arXiv},
 }

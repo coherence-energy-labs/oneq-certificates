@@ -1,0 +1,50 @@
+   compiled-vs-formula CZ mismatches at k=0: 0 of 4
+n=3 k=0: worst Choi distance over modes/branches 9.1e-14 (1s)
+   compiled-vs-formula CZ mismatches at k=1: 0 of 8
+n=3 k=1: worst Choi distance over modes/branches 2.8e-14 (1s)
+   compiled-vs-formula CZ mismatches at k=2: 0 of 12
+n=3 k=2: worst Choi distance over modes/branches 5.9e-15 (1s)
+   compiled-vs-formula CZ mismatches at k=3: 0 of 16
+n=3 k=3: worst Choi distance over modes/branches 9.8e-16 (1s)
+n=3: module F = 0.649380957128  end-to-end circuits |dF|: full 5.3e-15 restricted 3.2e-15 compressed 2.8e-15 restricted_min 3.2e-15 compressed_min 2.8e-15  (1s)
+   compiled-vs-formula CZ mismatches at k=0: 0 of 4
+n=4 k=0: worst Choi distance over modes/branches 1.3e-13 (3s)
+   compiled-vs-formula CZ mismatches at k=1: 0 of 8
+n=4 k=1: worst Choi distance over modes/branches 8.9e-14 (3s)
+   compiled-vs-formula CZ mismatches at k=2: 0 of 12
+n=4 k=2: worst Choi distance over modes/branches 3.7e-14 (4s)
+   compiled-vs-formula CZ mismatches at k=3: 0 of 16
+n=4 k=3: worst Choi distance over modes/branches 4.5e-15 (4s)
+   compiled-vs-formula CZ mismatches at k=4: 0 of 20
+n=4 k=4: worst Choi distance over modes/branches 2.6e-15 (4s)
+n=4: module F = 0.665432843776  end-to-end circuits |dF|: full 4.8e-15 restricted 4.8e-15 compressed 3.8e-15 restricted_min 4.8e-15 compressed_min 3.8e-15  (4s)
+   compiled-vs-formula CZ mismatches at k=0: 0 of 4
+n=5 k=0: worst Choi distance over modes/branches 5.5e-13 (17s)
+   compiled-vs-formula CZ mismatches at k=1: 0 of 8
+n=5 k=1: worst Choi distance over modes/branches 1.4e-13 (21s)
+   compiled-vs-formula CZ mismatches at k=2: 0 of 12
+n=5 k=2: worst Choi distance over modes/branches 5.2e-14 (21s)
+   compiled-vs-formula CZ mismatches at k=3: 0 of 16
+n=5 k=3: worst Choi distance over modes/branches 4.8e-14 (22s)
+   compiled-vs-formula CZ mismatches at k=4: 0 of 20
+n=5 k=4: worst Choi distance over modes/branches 7.3e-15 (22s)
+   compiled-vs-formula CZ mismatches at k=5: 0 of 24
+n=5 k=5: worst Choi distance over modes/branches 1.1e-15 (22s)
+n=5: module F = 0.649709828272  end-to-end circuits |dF|: full 1.1e-14 restricted 9.2e-15 compressed 6.2e-15 restricted_min 9.2e-15 compressed_min 6.2e-15  (22s)
+   compiled-vs-formula CZ mismatches at k=0: 0 of 4
+n=6 k=0: worst Choi distance over modes/branches 6.0e-13 (299s)
+   compiled-vs-formula CZ mismatches at k=1: 0 of 8
+n=6 k=1: worst Choi distance over modes/branches 1.6e-13 (308s)
+   compiled-vs-formula CZ mismatches at k=2: 0 of 12
+n=6 k=2: worst Choi distance over modes/branches 1.6e-13 (315s)
+   compiled-vs-formula CZ mismatches at k=3: 0 of 16
+n=6 k=3: worst Choi distance over modes/branches 1.4e-12 (316s)
+   compiled-vs-formula CZ mismatches at k=4: 0 of 20
+n=6 k=4: worst Choi distance over modes/branches 3.3e-14 (316s)
+   compiled-vs-formula CZ mismatches at k=5: 0 of 24
+n=6 k=5: worst Choi distance over modes/branches 6.5e-15 (316s)
+   compiled-vs-formula CZ mismatches at k=6: 0 of 28
+n=6 k=6: worst Choi distance over modes/branches 1.7e-15 (317s)
+n=6: module F = 0.655997266461  end-to-end circuits |dF|: full 1.3e-14 restricted 1.2e-14 compressed 1.1e-14 restricted_min 1.2e-14 compressed_min 1.1e-14  (318s)
+compiled CZ == component formula for every branch/mode: True
+PASS branches True  PASS end-to-end True

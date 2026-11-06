@@ -44,10 +44,59 @@ def I(n: int) -> str:
     return f"{int(n):,}".replace(",", "{,}")
 
 
+# ROUNDING RULE (final referee of paper 2, 2026-11-03). A printed number may not say more than the evidence: a point
+# percentage and a LOWER bound are floored at the last shown digit (PF), an UPPER bound is ceilinged (PC), a printed
+# range floors its low end and ceilings its high end, and a bound written with significant digits rounds away from
+# the inside (BOUND). The upper bound 1 - 0.05^(1/149) = 1.9905% had been floored to 1.99%, below the bound it states.
 def PF(x: float, k: int = 2) -> str:
-    """Percentage, floored at k decimals."""
+    """Percentage, floored at k decimals: a point estimate or a LOWER bound."""
     v = math.floor(100 * x * 10 ** k + 1e-9) / 10 ** k
     return f"{v:.{k}f}"
+
+
+def PC(x: float, k: int = 2) -> str:
+    """Percentage, ceilinged at k decimals: an UPPER bound, which must never print below the value it bounds."""
+    v = math.ceil(100 * x * 10 ** k - 1e-9) / 10 ** k
+    return f"{v:.{k}f}"
+
+
+def _sig(x: float, k: int, rounding: str) -> tuple:
+    """(mantissa, exponent) of x at k significant digits under a decimal rounding mode, computed on x's exact
+    binary value, so a half-way case is not decided by a float artefact."""
+    from decimal import Decimal
+    d = Decimal(x)
+    e = d.adjusted()
+    unit = Decimal(1).scaleb(1 - k)
+    m = d.scaleb(-e).quantize(unit, rounding=rounding)
+    if m >= 10:
+        m, e = (m / 10).quantize(unit, rounding=rounding), e + 1
+    return m, e
+
+
+def _sig_text(m, e: int) -> str:
+    if e < -3:
+        return rf"\ensuremath{{{m:f}\times 10^{{{e}}}}}"
+    return f"{m.scaleb(e).normalize():f}"
+
+
+def BOUND(x: float, side: str, k: int = 2) -> str:
+    """A stated bound at k significant digits, rounded AWAY from the inside: an upper bound ('ceil') never prints
+    below its value and a lower bound ('floor') never above it; scientific notation below 10^-3."""
+    from decimal import ROUND_CEILING, ROUND_FLOOR
+    if side not in ("ceil", "floor"):
+        raise ValueError(f"a bound rounds 'ceil' or 'floor', not {side!r}")
+    if x <= 0:
+        return "0"
+    return _sig_text(*_sig(x, k, ROUND_CEILING if side == "ceil" else ROUND_FLOOR))
+
+
+def PVAL(p: float) -> str:
+    """An exact p-value as a point value: three significant digits, half-up on the exact binary value (so 0.0625
+    prints 0.0625, never 0.062), '1' for 1, and two significant digits in scientific notation below 10^-3."""
+    from decimal import ROUND_HALF_UP
+    if p >= 1:
+        return "1"
+    return _sig_text(*_sig(p, 2 if p < 1e-3 else 3, ROUND_HALF_UP))
 
 
 def SCI(x: float, k: int = 1) -> str:
@@ -77,11 +126,17 @@ def build() -> dict[str, str]:
     rs = J("heldout_qldpc_bb_refsched_gate.json")
     tot_n = tot_cert = tot_flat = tot_bd = tot_ref = 0
     lines = [r"\begin{tabular}{@{}lrrrrrrrl@{}}", r"\toprule",
-             r"dataset & sampled & tier 0 & $N$ & tier 1 & tier 2 & BD & certified & 95\% lower \\",
+             r"dataset & sampled & tier 0 & $N$ & tier 1 & tier 2 & branching & certified & 95\% lower \\",
              r"\midrule"]
+    # the tier columns are WHAT THE RECEIPT PROVES (qldpc_tier_by_receipt.py; Sec. III): one dual on BP-OSD's own
+    # answer, one dual on a replacement, or a branching tree -- not the producer's route (adjudication P2-02)
+    rt_ho = J("qldpc_tier_by_receipt.json")["heldout"]
     for k in RUNG_ORDER:
         r = rungs[k]
         bd = r["exact_certified"] - r["tier1"] - r["tier2"]
+        q = rt_ho[k]
+        need(q["N"] == r["nontrivial"] and q.get("tier1", 0) + q.get("tier2", 0) + q.get("branching_bp_optimal", 0)
+             + q.get("branching_repair", 0) == r["exact_certified"], f"{k}: receipt tiers do not reconcile")
         if k == "bb_refsched" and bd != rs["tierBD"]:
             raise SystemExit("reference-schedule tier BD disagrees between artifacts")
         if r["exact_certified"] != r["nontrivial"]:
@@ -93,7 +148,8 @@ def build() -> dict[str, str]:
         tot_ref += r["ref_agreed"]
         lines.append(
             rf"{RUNG_LABEL[k]} & {I(r.get('sampled', r.get('shots')))} & {I(r['trivial_tier0'])} & {I(r['nontrivial'])} & "
-            rf"{I(r['tier1'])} & {I(r['tier2'])} & {I(bd)} & {I(r['exact_certified'])} & "
+            rf"{I(q.get('tier1', 0))} & {I(q.get('tier2', 0))} & "
+            rf"{I(q.get('branching_bp_optimal', 0) + q.get('branching_repair', 0))} & {I(r['exact_certified'])} & "
             rf"$\ge {PF(cp_lower(r['exact_certified'], r['nontrivial']))}\%$ \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     files["tab_heldout.tex"] = "\n".join(lines) + "\n"
@@ -135,9 +191,10 @@ def build() -> dict[str, str]:
     if of != rs["nontrivial"]:
         raise SystemExit("observable agreement is not over the nontrivial shots")
     M["HoRefschedObsAgree"] = I(agreed)
-    # zero observed disagreements in N: one-sided 95% UPPER bound, ceilinged
+    # zero observed disagreements in N: one-sided 95% upper bound 1 - 0.05^(1/N). An UPPER bound, so CEILINGED
+    # (PC): flooring it, as the first revision did, printed 1.99% for a bound of 1.9905% -- below the bound it states
     if agreed == of:
-        M["HoRefschedObsUpperPct"] = f"{math.ceil(100 * (1 - 0.05 ** (1 / of)) * 100) / 100:.2f}"
+        M["HoRefschedObsUpperPct"] = PC(1 - 0.05 ** (1 / of))
     # BP-OSD's OWN outcome on the same shots (audit F-18), derived from the records by
     # tools/bposd_circuit_outcome.py; it must describe these records and this summary
     bo = J("bposd_circuit_outcome.json")
@@ -254,13 +311,14 @@ def build() -> dict[str, str]:
         return f"{a['as_run']['hits']}\\,[{a['hits_min']}--{a['hits_max']}]"
 
     inst = [r"\begin{tabular}{@{}lcccccccccc@{}}", r"\toprule",
-            r" & \multicolumn{5}{c}{tier 1 (flat route)} & \multicolumn{5}{c}{optimum hit} \\",
+            r" & \multicolumn{5}{c}{tier 1 (one dual)} & \multicolumn{5}{c}{optimum hit} \\",
             r"\cmidrule(lr){2-6}\cmidrule(l){7-11}",
             r"$p$ & A$^\dagger$ & B$^\dagger$ & C & A$_s$ & B$_s$ & A$^\dagger$ & B$^\dagger$ & C & A$_s$ & B$_s$ \\",
             r"\midrule"]
     for lvl in ("p=0.01", "p=0.02", "p=0.03", "p=0.05", "p=0.07"):
         v = sb[lvl]
-        t1 = " & ".join([str(v["configs"][c]["tier1"]) for c in order] + [str(scl[lvl][c]["tier1"]) for c in ("A_s", "B_s")])
+        rtl = J("qldpc_tier_by_receipt.json")["strong_baseline"][lvl]   # tier 1 by the receipt, Sec. III
+        t1 = " & ".join(str(rtl[c]["tier1"]) for c in ("A", "B", "C", "A_s", "B_s"))
         oh = " & ".join([ohr(lvl, "A"), ohr(lvl, "B"), str(v["configs"][order[2]]["optimum_hit"])]
                         + [str(scl[lvl][c]["optimum_hit"]) for c in ("A_s", "B_s")])
         inst.append(rf"{lvl[2:]} & {t1} & {oh} \\")
@@ -604,6 +662,16 @@ def build() -> dict[str, str]:
     M["JsTreeDefects"] = I(jt["planted_defects"])
     M["JsTreeDefectClasses"] = I(len(jt["planted_by_class"]))
 
+    # ------------------------------------------------ 2026-11-03 adjudication: receipt-defined tiers, all-8 post hoc,
+    #                                                  the P2/P3 mechanism equality, the scale probe with trees
+    _receipt_tiers(M, files, tot_n, tier1)
+    _posthoc_all8(M, files)
+    _p3_equality(M)
+    _scale_trees(M)
+    _datasets(files)
+    _prereg(M, files)
+    _reverification(M)
+
     # ------------------------------------------------ operator mutation score of the checker's tests
     mu = J("mutation_score/qldpc_check.json")
 
@@ -622,11 +690,369 @@ def build() -> dict[str, str]:
     M["MutQEquivalent"] = I(mu["equivalent_declared"])
 
     body = ["% GENERATED by paper/tools/make_numbers_qldpc.py from evidence/ -- do not edit.",
-            "% Percentages are floored at the last shown digit."]
+            "% Point percentages and lower bounds are floored at the last shown digit; upper bounds are ceilinged."]
     for k in sorted(M):
         body.append(rf"\newcommand{{\{k}}}{{{M[k]}}}")
     files["numbers.tex"] = "\n".join(body) + "\n"
     return files
+
+
+def need(cond: bool, msg: str) -> None:
+    """A generated number is printed only if the evidence still says what the text will say about it."""
+    if not cond:
+        raise SystemExit(f"need: {msg}")
+
+
+def _fresh(doc: dict, what: str) -> None:
+    """Every file an artifact names in code_sha256 must still hash to it: stale evidence cannot be typeset."""
+    import hashlib
+    for rel, h in doc.get("code_sha256", {}).items():
+        need(hashlib.sha256((ROOT / rel).read_bytes()).hexdigest() == h,
+             f"{what}: {rel} changed since the artifact was produced; re-run its script")
+
+
+CONFIG_WORD = {"A": "A", "B": "B", "C": "C", "A_s": "As", "B_s": "Bs"}
+RUNG_WORD = {"uniform_p01": "UniOne", "uniform_p02": "UniTwo", "hetero_p02": "Hetero", "phenom_p01": "PhenOne",
+             "phenom_p02": "PhenTwo", "xsector_p02": "Xsec", "stress_p05": "Stress", "bb_refsched": "Circuit"}
+LEVEL_WORD = {"p=0.01": "One", "p=0.02": "Two", "p=0.03": "Three", "p=0.05": "Five", "p=0.07": "Seven"}
+
+
+def _receipt_tiers(M: dict, files: dict, tot_n: int, recorded_tier1: int) -> None:
+    """Tiers by what the receipt proves (experiments/m0_prior_art/qldpc_tier_by_receipt.py), Sec. III's rule."""
+    d = J("qldpc_tier_by_receipt.json")
+    _fresh(d, "qldpc_tier_by_receipt")
+    ho, t = d["heldout"], d["heldout_totals"]
+    need(list(ho) == RUNG_ORDER, "receipt tiers: held-out dataset order")
+    need(t["N"] == tot_n, "receipt tiers: shot total differs from the campaign's")
+    need(t["tier1"] + t["tier2"] + t["branching_bp_optimal"] + t["branching_repair"] == t["N"],
+         "receipt tiers do not partition the held-out shots")
+    need(t["single_dual_attaining"] + t["single_dual_lattice"] == t["tier1"] + t["tier2"],
+         "every single-dual decision is attaining or lattice")
+    need(t["tier1"] >= recorded_tier1, "a receipt-defined tier 1 can only add to the producer's")
+    M["RtHoTierOne"] = I(t["tier1"])
+    M["RtHoTierTwo"] = I(t["tier2"])
+    M["RtHoSingleDual"] = I(t["tier1"] + t["tier2"])
+    M["RtHoSingleDualPct"] = PF((t["tier1"] + t["tier2"]) / t["N"])
+    M["RtHoSingleAttaining"] = I(t["single_dual_attaining"])
+    M["RtHoSingleLattice"] = I(t["single_dual_lattice"])
+    M["RtHoBranching"] = I(t["branching_bp_optimal"] + t["branching_repair"])
+    M["RtHoBranchingBpOptimal"] = I(t["branching_bp_optimal"])
+    M["RtHoBpOptimal"] = I(t["tier1"] + t["branching_bp_optimal"])
+    M["RtHoTierOneAddedBySecThree"] = I(t["tier1"] - recorded_tier1)
+    lines = [r"\begin{tabular}{@{}lrrrrrr@{}}", r"\toprule",
+             r"dataset & $N$ & tier 1 & tier 2 & single dual: $L=U$ / lattice & branching: BP-OSD optimal / heavier \\",
+             r"\midrule"]
+    for k in RUNG_ORDER:
+        r = ho[k]
+        lines.append(rf"{RUNG_LABEL[k]} & {I(r['N'])} & {I(r.get('tier1', 0))} & {I(r.get('tier2', 0))} & "
+                     rf"{I(r.get('single_dual_attaining', 0))} / {I(r.get('single_dual_lattice', 0))} & "
+                     rf"{I(r.get('branching_bp_optimal', 0))} / {I(r.get('branching_repair', 0))} \\")
+    lines += [r"\bottomrule", r"\end{tabular}"]
+    files["tab_heldout_receipt.tex"] = "\n".join(lines) + "\n"
+    sb = d["strong_baseline"]
+    # compact: the levels where the producer's label and the receipt's tier differ; the others are checked equal
+    rows_ = [r"\begin{tabular}{@{}llrrr@{}}", r"\toprule",
+             r"$p$ & config. & tier 1, producer & tier 1, receipt & optimum hit \\", r"\midrule"]
+    for lvl, word in LEVEL_WORD.items():
+        for cfg, cw in CONFIG_WORD.items():
+            v = sb[lvl][cfg]
+            need(v["tier1"] >= v["recorded_tier1"], f"{lvl} {cfg}: receipt tier 1 below the recorded one")
+            need(v["optimum_hit"] == v["tier1"] + v.get("branching_bp_optimal", 0), f"{lvl} {cfg}: hit split")
+            M[f"Rt{word}TierOne{cw}"] = I(v["tier1"])
+            M[f"Rt{word}OptHit{cw}"] = I(v["optimum_hit"])
+            if lvl in ("p=0.01", "p=0.02", "p=0.03"):
+                need(v["tier1"] == v["recorded_tier1"], f"{lvl} {cfg}: the compact table says the labels agree here")
+                continue
+            label = cfg.replace("_s", "$_s$")
+            rows_.append(rf"{lvl.split('=')[1]} & {label} & {I(v['recorded_tier1'])} & {I(v['tier1'])} & "
+                         rf"{I(v['optimum_hit'])} \\")
+    rows_ += [r"\bottomrule", r"\end{tabular}"]
+    files["tab_instrument_receipt.tex"] = "\n".join(rows_) + "\n"
+
+
+def _reverification(M: dict) -> None:
+    """The newest re-verification record (qldpc_receipt_reverification.py --out), the one the current checker pins
+    rest on: the shared input-domain vectors it names and the zero-multiplier census of the stored corpora."""
+    import hashlib
+    add = J("qldpc_heldout_addendum.json")
+    rel = add["tree_checker_b_previous_pins"][-1]["reverification_record"]
+    rec = json.loads((ROOT / rel).read_text(encoding="utf-8"))
+    _fresh(rec, rel)
+    need(rec["code_sha256"]["tools/external/tree_checker_b.py"] == add["tree_checker_b_sha256"],
+         f"{rel} does not name the tree checker the addendum pins")
+    need(rec["replay"]["complete"] and rec["replay"]["receipts_passed"] == 2042, f"{rel}: replay incomplete")
+    pre = rec["prereg_campaign_receipts"]
+    need(all(v["both_checkers_accept"] == v["receipts"] for v in pre.values()), f"{rel}: a campaign receipt refused")
+    need(rec["strong_baseline_replay"].startswith("STRONG-BASELINE REPLAY PASSED"), f"{rel}: strong baseline replay")
+    vec = rec["input_domain_vectors"]
+    need(hashlib.sha256((ROOT / vec["file"]).read_bytes()).hexdigest() == vec["sha256"],
+         f"{rel}: the shared vector file changed since the record")
+    M["DomainVectors"] = I(vec["vectors"])
+    z = rec["zero_multiplier_facets_in_stored_receipts"]
+    M["ZeroMultFacets"] = I(sum(v["zero_multiplier_facets"] for v in z.values()))
+    M["ZeroMultReceipts"] = I(sum(v["receipts_with_one"] for v in z.values()))
+
+
+def _posthoc_all8(M: dict, files: dict) -> None:
+    """All eight held-out datasets re-decoded at scaling 1.0 and 0.625 (POST HOC; qldpc_heldout_scaled_posthoc_all8)."""
+    d = J("qldpc_heldout_scaled_posthoc_all8.json")
+    _fresh(d, "qldpc_heldout_scaled_posthoc_all8")
+    need("NOT preregistered" in d["post_hoc"], "the all-8 re-decode must carry its post-hoc label")
+    need(list(d["rungs"]) == RUNG_ORDER, "all-8 re-decode: dataset order")
+    lines = [r"\begin{tabular}{@{}lrrrrrl@{}}", r"\toprule",
+             r"dataset & $N$ & hit, 1.0 & hit, 0.625 & 1.0 only & 0.625 only & McNemar $p$ \\", r"\midrule"]
+    tot = {"1.0": 0, "0.625": 0}
+    for k in RUNG_ORDER:
+        r = d["rungs"][k]
+        need(all(r["controls"].values()), f"{k}: a control of the all-8 re-decode failed")
+        need(all(r["alpha"][a]["lighter_than_receipt"] == 0 for a in ("1.0", "0.625")),
+             f"{k}: a decoder answer lighter than a receipt")
+        need(r["alpha"]["1.0"]["optimum_hit"] == r["recorded_optimum_hits"], f"{k}: control hits differ")
+        h1, hs = r["alpha"]["1.0"]["optimum_hit"], r["alpha"]["0.625"]["optimum_hit"]
+        pr = r["paired_optimum_hit"]
+        need(h1 - pr["hit_at_1.0_only"] == hs - pr["hit_at_0.625_only"], f"{k}: paired counts do not reconcile")
+        tot["1.0"] += h1
+        tot["0.625"] += hs
+        w = RUNG_WORD[k]
+        M[f"Pa{w}N"] = I(r["shots"])
+        M[f"Pa{w}HitUnscaled"] = I(h1)
+        M[f"Pa{w}HitScaled"] = I(hs)
+        M[f"Pa{w}UnscaledOnly"] = I(pr["hit_at_1.0_only"])
+        M[f"Pa{w}ScaledOnly"] = I(pr["hit_at_0.625_only"])
+        ptxt = PVAL(pr["exact_two_sided_mcnemar_p"])
+        lines.append(rf"{RUNG_LABEL[k]} & {I(r['shots'])} & {I(h1)} & {I(hs)} & {I(pr['hit_at_1.0_only'])} & "
+                     rf"{I(pr['hit_at_0.625_only'])} & {ptxt} \\")
+    lines += [r"\bottomrule", r"\end{tabular}"]
+    files["tab_posthoc_all8.tex"] = "\n".join(lines) + "\n"
+    need(tot == {k: v for k, v in d["totals_per_alpha"].items()}, "all-8 totals do not reconcile")
+    M["PaShots"] = I(d["shots_total"])
+    M["PaHitUnscaled"] = I(tot["1.0"])
+    M["PaHitScaled"] = I(tot["0.625"])
+    M["PaMissUnscaled"] = I(d["shots_total"] - tot["1.0"])
+    M["PaMissScaled"] = I(d["shots_total"] - tot["0.625"])
+    worse = [k for k in RUNG_ORDER if d["rungs"][k]["alpha"]["0.625"]["optimum_hit"]
+             < d["rungs"][k]["alpha"]["1.0"]["optimum_hit"]]
+    M["PaDatasetsScaledFewer"] = I(len(worse))
+
+
+def _p3_equality(M: dict) -> None:
+    """Paper 2's circuit model against paper 3's IBM model at T = 3 (qldpc_refsched_p3_equality.py)."""
+    d = J("qldpc_refsched_p3_equality.json")
+    _fresh(d, "qldpc_refsched_p3_equality")
+    for key in ("mechanisms_p2_observable", "mechanisms_13_observables"):
+        need(d[key]["relation"] == "equal" and d[key]["P2_only"] == 0 and d[key]["P3_only"] == 0,
+             f"P2/P3 equality: {key} is no longer equal")
+    need(d["stored_model"]["sha256"] == d["stored_model"]["manifest_sha256"], "P3 stored model hash")
+    need(d["stored_model"]["mechanisms_vs_p2_with_p3_observables"]["relation"] == "equal", "P3 stored model")
+    need(d["detectors"]["alignment_is_a_bijection_onto_p3_z_type"], "detector alignment")
+    w = d["witness"]
+    need(w["zero_syndrome_and_flips_p2_observable"] and w["no_9_column_subset_does_both"], "the weight-10 witness")
+    M["EqMechanisms"] = I(d["mechanisms_p2_observable"]["P2"])
+    M["EqMechanismsPthree"] = I(d["mechanisms_p2_observable"]["P3"])
+    M["EqWitnessWeight"] = I(w["weight"])
+
+
+def _scale_trees(M: dict) -> None:
+    """The fixed-point scale probe with exact receipts and tree closure (qldpc_scale_probe_trees.py)."""
+    p = EV / "qldpc_scale_robustness_trees.json"
+    if not p.is_file():
+        raise SystemExit("need: evidence/qldpc_scale_robustness_trees.json -- run "
+                         "experiments/m0_prior_art/qldpc_scale_probe_trees.py")
+    d = json.loads(p.read_text(encoding="utf-8"))
+    _fresh(d, "qldpc_scale_probe_trees")
+    sc = d["scales"]
+    need(list(sc) == ["1000", "10000", "100000"], "scale probe: scales")
+    M["ScaleTreesCertified"] = " / ".join(I(sc[s]["certified_exact"]) for s in sc)
+    M["ScaleTreesShots"] = I(300)
+    M["ScaleTreesSupportChanges"] = I(sum(sc[s]["selected_correction_changes_vs_1000"] for s in sc))
+    M["ScaleTreesRouteChanges"] = I(sum(sc[s]["route_changes_vs_1000"] for s in sc))
+    M["ScaleTreesTreeShots"] = " / ".join(I(len(sc[s]["tree_shots"])) for s in sc)
+
+
+DATASET_ROWS = {   # dataset -> (instance, check matrix, fault model, decoder prior, objective)
+    "uniform_p01": ("bb144_z_code_capacity", r"$H_Z$", r"i.i.d.\ $X$", r"$p$", "unit"),
+    "uniform_p02": ("bb144_z_code_capacity", r"$H_Z$", r"i.i.d.\ $X$", r"$p$", "unit"),
+    "hetero_p02": ("bb144_z_code_capacity", r"$H_Z$", r"independent $X$, $p_i\sim 0.02\,U(\tfrac12,2)$",
+                   r"$p_i$", "integer"),
+    "phenom_p01": ("bb144_phenom_r4", r"spacetime $H_Z$", r"i.i.d.\ data and measurement", r"$p$", "integer"),
+    "phenom_p02": ("bb144_phenom_r4", r"spacetime $H_Z$", r"i.i.d.\ data and measurement", r"$p$", "integer"),
+    "xsector_p02": ("bb144_x_code_capacity", r"$H_X$", r"i.i.d.\ $Z$", r"$p$", "unit"),
+    "stress_p05": ("bb144_z_code_capacity", r"$H_Z$", r"i.i.d.\ $X$", r"$p$", "unit"),
+    "bb_refsched": ("bb144_refsched_r3_p002", "DEM", r"circuit-level, idles unfaulted", "DEM", "integer"),
+}
+
+
+def _datasets(files: dict) -> None:
+    """Table I: what every dataset IS -- matrix, size, fault model, decoder prior -- read from the persisted instances."""
+    lines = [r"\begin{tabular}{@{}llrlll@{}}", r"\toprule",
+             r"dataset & check matrix & rows $\times$ columns & fault model & prior & objective \\", r"\midrule"]
+    for k in RUNG_ORDER:
+        inst, hname, fault, prior, obj = DATASET_ROWS[k]
+        d = J(f"instances/{inst}.json")
+        lines.append(rf"{RUNG_LABEL[k]} & {hname} & {I(len(d['checks']))} $\times$ {I(d['n_variables'])} & {fault} & "
+                     rf"{prior} & {obj} \\")
+    lines += [r"\bottomrule", r"\end{tabular}"]
+    files["tab_datasets.tex"] = "\n".join(lines) + "\n"
+
+
+def _prereg(M: dict, files: dict) -> None:
+    """The preregistered comparison of the two scaling settings (docs/PREREG_qldpc_scaling_2026-11-03.md)."""
+    import hashlib
+    import importlib.util
+    p = EV / "qldpc_scaling_prereg" / "summary.json"
+    need(p.is_file(), "the preregistered campaign has not been run: evidence/qldpc_scaling_prereg/summary.json")
+    d = json.loads(p.read_text(encoding="utf-8"))
+    spec = importlib.util.spec_from_file_location(
+        "qldpc_scaling_prereg_campaign", ROOT / "experiments" / "m0_prior_art" / "qldpc_scaling_prereg_campaign.py")
+    run = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(run)
+    prereg = (ROOT / "docs" / "PREREG_qldpc_scaling_2026-11-03.md").read_text(encoding="utf-8")
+    need(not d["smoke"] and d["seed_domain"] == run.SEED_DOMAIN, "prereg summary is a smoke run or another domain")
+    for rel, h in d["code_sha256"].items():
+        need(f"`{rel}` | {h} |" in prereg, f"prereg: {rel} ran under bytes the preregistration does not pin")
+    need(list(d["datasets"]) == list(run.DATASETS), "prereg: datasets missing or out of the preregistered order")
+    # a dataset run after a recorded deviation carries its own bytes: the checkers and producer must still be the
+    # pinned ones, and the runner's must be the one the deviation record names
+    devs = (ROOT / "docs" / "PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md").read_text(encoding="utf-8")
+    deviated = 0
+    for k, s in d["datasets"].items():
+        if "code_sha256" not in s:
+            continue
+        need("deviation" in s, f"prereg {k}: ran under other bytes with no recorded deviation")
+        deviated += 1
+        for rel, h in s["code_sha256"].items():
+            ok = (f"`{rel}` | {h} |" in prereg) or (rel.endswith("qldpc_scaling_prereg_campaign.py") and h in devs)
+            need(ok, f"prereg {k}: {rel} ran under bytes neither the preregistration nor its deviations name")
+    M["PrDeviatedDatasets"] = I(deviated)
+    M["PrCommittedDatasets"] = I(len(d["datasets"]) - deviated)
+    # DEVIATION 1 gave the phenomenological datasets the lazy LP; the text says exactly one of them ran after it
+    lazy = [k for k, s in d["datasets"].items() if run.DATASETS[k][1] == "phenom" and "code_sha256" in s]
+    need(lazy == ["phenom_p02"] and "code_sha256" not in d["datasets"]["phenom_p01"],
+         f"prereg: the phenomenological datasets run on the lazy LP are {lazy}; the text says phenom_p02 alone")
+    for k, s in d["datasets"].items():
+        M[f"Pr{RUNG_WORD[k]}FlatReceipts"] = I(s["receipt_kinds"]["flat"])
+        M[f"Pr{RUNG_WORD[k]}TreeReceipts"] = I(s["receipt_kinds"]["tree"])
+        need(s["receipt_kinds"]["flat"] + s["receipt_kinds"]["tree"] == s["receipts"], f"prereg {k}: receipt kinds")
+    # the preregistered split of every hit (single dual / branching tree) is printed beside the hit count, and every
+    # miss is split into heavier answers and non-corrections (final referee, m1: print the preregistered analyses)
+    lines = [r"\begin{tabular}{@{}lrrrrrrl@{}}", r"\toprule",
+             r"dataset & $N$ & unresolved & hit (tree), 1.0 & hit (tree), 0.625 & 1.0 only & 0.625 only & "
+             r"McNemar $p$ \\",
+             r"\midrule"]
+    sec = [r"\begin{tabular}{@{}lrrrrlr@{}}", r"\toprule",
+           r"dataset & errors, 1.0 & errors, 0.625 & 1.0 only & 0.625 only & McNemar $p$ & receipt answer \\",
+           r"\midrule"]
+    more = fewer = same = unresolved = shots = not_corr = 0
+    primary, secondary = {}, {}
+    for k, s in d["datasets"].items():
+        need(s["seed"] == run.seed_for(run.SEED_DOMAIN, k) and str(s["seed"]) in prereg, f"prereg {k}: seed")
+        need(s["nontrivial"] == run.DATASETS[k][5], f"prereg {k}: shot count is not the preregistered one")
+        rec = EV / "qldpc_scaling_prereg" / f"{k}.jsonl.gz"
+        need(hashlib.sha256(rec.read_bytes()).hexdigest() == s["records_sha256"], f"prereg {k}: records altered")
+        need(s["receipts"] + s["unresolved"] == s["nontrivial"], f"prereg {k}: receipts do not reconcile")
+        c1, c2 = s["per_configuration"]["1.0"], s["per_configuration"]["0.625"]
+        for c in (c1, c2):
+            need(c["optimum_hit"] == c["tier1_single_dual"] + c["optimum_on_branching_tree"], f"prereg {k}: hits")
+            need(c["optimum_hit"] + c["miss_heavier"] + c["not_a_correction"] == s["receipts"], f"prereg {k}: split")
+        pr = s["paired_optimum_hit"]
+        need(c1["optimum_hit"] - pr["hit_at_1.0_only"] == c2["optimum_hit"] - pr["hit_at_0.625_only"],
+             f"prereg {k}: paired counts")
+        more += c2["optimum_hit"] > c1["optimum_hit"]
+        fewer += c2["optimum_hit"] < c1["optimum_hit"]
+        same += c2["optimum_hit"] == c1["optimum_hit"]
+        unresolved += s["unresolved"]
+        shots += s["nontrivial"]
+        w = RUNG_WORD[k]
+        M[f"Pr{w}N"] = I(s["nontrivial"])
+        M[f"Pr{w}HitUnscaled"] = I(c1["optimum_hit"])
+        M[f"Pr{w}HitScaled"] = I(c2["optimum_hit"])
+        M[f"Pr{w}UnscaledOnly"] = I(pr["hit_at_1.0_only"])
+        M[f"Pr{w}ScaledOnly"] = I(pr["hit_at_0.625_only"])
+        pv = pr["exact_two_sided_mcnemar_p"]
+        need(abs(pv - run.mcnemar(pr["hit_at_1.0_only"], pr["hit_at_0.625_only"])) <= 1e-12 * max(pv, 1e-300),
+             f"prereg {k}: the stored McNemar p is not the exact test of its own counts")
+        primary[k] = (pv, c1["optimum_hit"], c2["optimum_hit"])
+        ptxt = PVAL(pv)
+        M[f"Pr{w}McNemar"] = ptxt
+        M[f"Pr{w}TreeUnscaled"] = I(c1["optimum_on_branching_tree"])
+        M[f"Pr{w}TreeScaled"] = I(c2["optimum_on_branching_tree"])
+        not_corr += c1["not_a_correction"] + c2["not_a_correction"]
+        lines.append(rf"{RUNG_LABEL[k]} & {I(s['nontrivial'])} & {I(s['unresolved'])} & "
+                     rf"{I(c1['optimum_hit'])} ({I(c1['optimum_on_branching_tree'])}) & "
+                     rf"{I(c2['optimum_hit'])} ({I(c2['optimum_on_branching_tree'])}) & "
+                     rf"{I(pr['hit_at_1.0_only'])} & {I(pr['hit_at_0.625_only'])} & {ptxt} \\")
+        if "logical_errors" in c1:
+            le = s["paired_logical_error_secondary"]
+            need(c1["logical_errors"] - le["error_at_1.0_only"] == c2["logical_errors"] - le["error_at_0.625_only"],
+                 f"prereg {k}: paired logical errors do not reconcile")
+            lp = le["exact_two_sided_mcnemar_p"]
+            need(abs(lp - run.mcnemar(le["error_at_1.0_only"], le["error_at_0.625_only"])) <= 1e-12 * max(lp, 1e-300),
+                 f"prereg {k}: the stored logical McNemar p is not the exact test of its own counts")
+            secondary[k] = (lp, c1["logical_errors"], c2["logical_errors"])
+            M[f"Pr{w}LogUnscaled"] = I(c1["logical_errors"])
+            M[f"Pr{w}LogScaled"] = I(c2["logical_errors"])
+            M[f"Pr{w}LogUnscaledOnly"] = I(le["error_at_1.0_only"])
+            M[f"Pr{w}LogScaledOnly"] = I(le["error_at_0.625_only"])
+            M[f"Pr{w}LogMcNemar"] = PVAL(lp)
+            M[f"Pr{w}LogReceipt"] = I(s["receipt_answer_logical_errors"])
+            sec.append(rf"{RUNG_LABEL[k]} & {I(c1['logical_errors'])} & {I(c2['logical_errors'])} & "
+                       rf"{I(le['error_at_1.0_only'])} & {I(le['error_at_0.625_only'])} & {PVAL(lp)} & "
+                       rf"{I(s['receipt_answer_logical_errors'])} \\")
+        if "observable_agreement" in c1:
+            M[f"Pr{w}ObsUnscaled"] = I(c1["observable_agreement"])
+            M[f"Pr{w}ObsScaled"] = I(c2["observable_agreement"])
+    lines += [r"\bottomrule", r"\end{tabular}"]
+    sec += [r"\bottomrule", r"\end{tabular}"]
+    files["tab_prereg.tex"] = "\n".join(lines) + "\n"
+    files["tab_prereg_logical.tex"] = "\n".join(sec) + "\n"
+    M["PrShots"] = I(shots)
+    M["PrUnresolved"] = I(unresolved)
+    M["PrDatasets"] = I(len(d["datasets"]))
+    M["PrScaledMore"] = I(more)
+    M["PrScaledFewer"] = I(fewer)
+    M["PrScaledSame"] = I(same)
+    M["PrNotCorrection"] = I(not_corr)
+    # WHAT THE EIGHT TESTS SUPPORT (final referee, MAJOR 1). The preregistration reports them uncorrected; the text
+    # adds, as a qualifier it labels as not preregistered, which of them survive a Bonferroni correction over all
+    # eight (p < 0.05/8), and calls the rest indistinguishable at this size, never a difference "the other way".
+    # The text names the datasets of each group, so the groups are pinned here.
+    alpha = 0.05 / len(primary)
+    sig = {k for k, (p, _, _) in primary.items() if p < alpha}
+    sig_more = {k for k in sig if primary[k][2] > primary[k][1]}
+    indist = set(primary) - sig
+    need(sig_more == sig == {"uniform_p02", "xsector_p02", "stress_p05", "bb_refsched"},
+         f"prereg: the significant datasets are now {sorted(sig)} (scaled more: {sorted(sig_more)}); the text names four")
+    need(indist == {"uniform_p01", "hetero_p02", "phenom_p01", "phenom_p02"}, "prereg: the indistinguishable four moved")
+    diffs = [abs(primary[k][2] - primary[k][1]) for k in indist]
+    need(primary["uniform_p01"][2] > primary["uniform_p01"][1]
+         and all(primary[k][2] < primary[k][1] for k in ("hetero_p02", "phenom_p01", "phenom_p02")),
+         "prereg: the point estimates of the indistinguishable four changed direction; the text says which way")
+    need(all(primary[k][1] - primary[k][2] == 2 for k in ("hetero_p02", "phenom_p01", "phenom_p02")),
+         "prereg: the text says the scaled setting finds two fewer on hetero and on each phenomenological dataset")
+    need(not_corr == 0, "prereg: the text says every miss is a heavier correction")
+    need(all((M[f"Pr{RUNG_WORD[k]}TreeUnscaled"], M[f"Pr{RUNG_WORD[k]}TreeScaled"]) == ("0", "0")
+             for k in primary if k not in ("stress_p05", "bb_refsched")),
+         "prereg: the text says no hit outside stress and circuit is on a branching tree")
+    M["PrSigMore"] = I(len(sig_more))
+    M["PrIndist"] = I(len(indist))
+    M["PrSigMaxP"] = BOUND(max(primary[k][0] for k in sig), "ceil", 1)        # 'p <=' : an upper bound
+    M["PrIndistMinP"] = BOUND(min(primary[k][0] for k in indist), "floor", 2)  # 'p >=' : a lower bound
+    M["PrIndistDiffMin"] = I(min(diffs))
+    M["PrIndistDiffMax"] = I(max(diffs))
+    # the secondary logical-error tests: which differences are significant at the UNCORRECTED 0.05 the text and the
+    # Table V caption state, and -- so that the choice of criterion cannot be what makes them so -- the same set under
+    # Bonferroni over the five; and that the scaled setting's count is the lower one on every code-capacity dataset
+    lsig = {k for k, (p, _, _) in secondary.items() if p < 0.05}
+    lsig_bonf = {k for k, (p, _, _) in secondary.items() if p < 0.05 / len(secondary)}
+    need(lsig == lsig_bonf == {"uniform_p02", "xsector_p02", "stress_p05"}
+         and set(secondary) - lsig == {"uniform_p01", "hetero_p02"},
+         f"prereg: the significant logical-error differences are now {sorted(lsig)} (uncorrected) and "
+         f"{sorted(lsig_bonf)} (Bonferroni); the text names three, the same under both")
+    need(all(c2 < c1 for (_, c1, c2) in secondary.values()), "prereg: scaled no longer has fewer logical errors "
+                                                              "on every code-capacity dataset")
+    M["PrLogDatasets"] = I(len(secondary))
+    M["PrLogSig"] = I(len(lsig))
+    M["PrLogSigMaxP"] = BOUND(max(secondary[k][0] for k in lsig), "ceil", 1)
 
 
 def main() -> int:

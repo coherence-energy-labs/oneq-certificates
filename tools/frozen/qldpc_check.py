@@ -19,7 +19,7 @@ from __future__ import annotations
 import operator
 from dataclasses import dataclass, field
 from fractions import Fraction
-from math import lcm
+from math import isfinite, lcm
 
 
 @dataclass(frozen=True)
@@ -144,8 +144,11 @@ def _accumulate_facet_duals(facet_duals, supports, syn, m, primal, tol):
         if y < -tol:
             return None, QldpcCheckResult(False, f"negative facet dual y={y}",
                                           primal_weight=primal)
-        if y == 0.0:
-            continue
+        # A ZERO MULTIPLIER IS SKIPPED ONLY AFTER ITS FACET IS VALIDATED (final
+        # referee, 2026-11-03): skipping first let a listed facet naming row
+        # 999, a one-row combination or a variable outside its check through
+        # unread, so a malformed certificate was accepted -- by six of seven
+        # implementations. Every listed facet is a claim; it is checked.
         resolved, err = _resolve_facet_check(j, supports, syn, m, primal)
         if err is not None:
             return None, err
@@ -164,6 +167,8 @@ def _accumulate_facet_duals(facet_duals, supports, syn, m, primal, tol):
                 False, f"facet ({jdisp},{sorted(Fs)}) listed twice: ambiguous",
                 primal_weight=primal)
         seen.add(key)
+        if y == 0.0:                        # validated above; contributes nothing
+            continue
         # SIGNS, DERIVED AND THEN CAUGHT WRONG ANYWAY. For
         #     min w.x   s.t.  A x <= b,  0 <= x <= 1
         # the dual constraint at variable i is  -(A^T y)_i - mu_i <= w_i and
@@ -324,6 +329,9 @@ def check_qldpc(*, checks, weights, syndrome, cert: QldpcCertificate,
     against the pre-split bytes over a shape-varied corpus, comparing the
     verdict, the reason string, the primal weight and the dual bound.
     """
+    dom = _domain_refusal(checks, weights, cert=cert, screen=True)
+    if dom is not None:
+        return QldpcCheckResult(False, dom)
     parts, err = _validate_instance(checks, weights, syndrome, tol)
     if err is not None:
         return err
@@ -446,8 +454,8 @@ def _exact_facet_scan(supports, syn, w, facet_duals):
         y = _exact_rational(y, "facet dual y")
         if y < 0:
             return None, 0, "negative facet dual"
-        if y == 0:
-            continue
+        # a zero multiplier is skipped only AFTER the facet is validated (see
+        # _accumulate_facet_duals): every listed facet is a claim, and checked
         Fs = frozenset(int(i) for i in F)
         if isinstance(j, (tuple, list, frozenset)):
             rows = tuple(sorted({int(r) for r in j}))
@@ -474,12 +482,28 @@ def _exact_facet_scan(supports, syn, w, facet_duals):
         if key in seen:
             return None, 0, f"facet ({jname},{sorted(Fs)}) listed twice"
         seen.add(key)
+        if y == 0:                          # validated above; contributes nothing
+            continue
         for i in sup:
             load[i] = load.get(i, Fraction(0)) + (-y if i in Fs else y)
         by += y * (1 - len(Fs))
+    # THE SLACK SUM RUNS OVER EVERY WEIGHTED VARIABLE, NOT ONLY THE LOADED
+    # ONES. An unloaded variable has t_i = 0, so its slack is max(0, -w_i):
+    # zero for any w_i >= 0, which is why summing over `load` alone looked
+    # equivalent -- and was, for every caller that refused negative weights.
+    # check_qldpc does not: _validate_instance admits w_i >= -tol, and
+    # _exact_optimality widens that weight to an exact negative rational.
+    # Witness (2026-09-22): checks {0,1}, syndrome 1, w = {0: 1, 1: 1,
+    # 2: -1e-10}, error {0}, y = 1 on the empty facet. The loaded-only sum
+    # gave L = 1 = weight, and check_qldpc returned OPTIMAL with
+    # exact_gap_zero -- but {0, 2} is a correction of weight 1 - 1e-10.
+    # Summed over every variable, L <= weight(e) holds for ANY real w; that
+    # is the statement proved in Lean (OneqCert.safe_bound_le_weight), so
+    # this bound's soundness no longer rests on a precondition enforced by
+    # somebody else.
     z_total = Fraction(0)
-    for i, t in load.items():
-        slack = t - w.get(i, Fraction(0))
+    for i in load.keys() | w.keys():
+        slack = load.get(i, Fraction(0)) - w.get(i, Fraction(0))
         if slack > 0:
             z_total += slack
     return by - z_total, len(seen), None
@@ -643,7 +667,24 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
     so the recursion below is only the tree walk: branching is disjoint
     by construction, and what makes a LEAF sound is stated separately
     from what makes the WALK sound.
+
+    BOUND-ONLY MODE ANSWERS A DIFFERENT QUESTION, AND SAYS SO. With
+    `bound_only_threshold=T` there is no candidate: acceptance proves that
+    every solution of the system weighs more than T, nothing else. Until
+    2026-11-03 it returned "EXACT-OPTIMAL" with primal weight T + 1/D -- on
+    a system whose optimum is 2, "objective 1"; on an infeasible system, a
+    finite objective (external audit 2, finding F07). It now returns status
+    LOWER_BOUND_PROVEN, the threshold and the lattice-rounded bound
+    (floor(T*D) + 1)/D, and no primal weight. docs/QLDPC_RECEIPT_INPUT_DOMAIN.md
+    section 4.
     """
+    dom = _domain_refusal(checks, weights, candidate=error_support, tree=tree)
+    if dom is not None:
+        return QldpcCheckResult(False, dom)
+    if bound_only_threshold is not None and len(tuple(error_support)) != 0:
+        return QldpcCheckResult(
+            False, "INPUT DOMAIN: bound-only mode takes no candidate "
+                   "(error_support must be empty)")
     m = len(checks)
     supports, dup_err = _canonical_supports(checks)
     if dup_err:
@@ -665,6 +706,23 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
         if err is not None:
             return err
 
+        bound_only = bound_only_threshold is not None
+        # THE ROOT GUARD. A root leaf fixes nothing, so its bound is a flat
+        # bound on the whole instance: L <= OPT <= U for any valid dual and a
+        # verified-feasible candidate. L > U can only mean a broken bound, and
+        # is refused as an instrument failure -- as check_qldpc_exact does, as
+        # verify-qldpc-tree.mjs does at depth 0, and as paper 2 states. (In
+        # bound-only mode U is T + 1/D, not a feasible weight: no guard.)
+        if (not bound_only and isinstance(tree, (tuple, list))
+                and len(tree) == 2 and tree[0] == "bound"):
+            L_root, root_err = _exact_safe_dual_bound(supports, syn, w,
+                                                      tree[1])
+            if root_err is None and L_root > U:
+                return QldpcCheckResult(
+                    False, f"IMPOSSIBLE: root bound {L_root} exceeds the "
+                           f"weight {U} of a verified-feasible candidate "
+                           f"-- an instrument failure, never a proof",
+                    primal_weight=float(U), dual_bound=float(L_root))
         ctx = (w, supports, syn, m, U, step, [int(max_nodes)])
         try:
             fail = _bnb_walk(tree, frozenset(), frozenset(), ctx)
@@ -672,14 +730,31 @@ def check_qldpc_bnb(*, checks, weights, syndrome, error_support,
             fail = "tree deeper than the recursion limit: refused"
         if fail is not None:
             return QldpcCheckResult(False, f"TREE REFUSED: {fail}",
-                                    primal_weight=float(U))
+                                    primal_weight=(None if bound_only
+                                                   else float(U)))
+        if bound_only:
+            T = U - step
+            lower = Fraction((T * D).__floor__() + 1, D)
+            return QldpcCheckResult(
+                True, f"LOWER_BOUND_PROVEN BY BRANCH DUALS: every leaf "
+                      f"crosses the threshold {T} in exact arithmetic, so "
+                      f"every solution of the system weighs at least "
+                      f"{lower}; no candidate was checked, so no optimum, "
+                      f"primal weight or feasibility is claimed",
+                checks={"status": "LOWER_BOUND_PROVEN", "exact": True,
+                        "bnb": True, "lattice_denominator": D,
+                        "threshold": {"num": T.numerator,
+                                      "den": T.denominator},
+                        "lower_bound": {"num": lower.numerator,
+                                        "den": lower.denominator},
+                        "feasibility": "not established"})
         return QldpcCheckResult(
             True, "EXACT-OPTIMAL BY BRANCH DUALS: every leaf of the "
                   "branch tree crosses the lattice level below the "
                   "candidate in exact arithmetic -- minimum weight "
                   "proven with no solver and no trust",
             primal_weight=float(U),
-            checks={"exact": True, "bnb": True,
+            checks={"status": "EXACT_OPTIMAL", "exact": True, "bnb": True,
                     "lattice_denominator": D,
                     "objective": {"num": U.numerator,
                                   "den": U.denominator}})
@@ -693,6 +768,8 @@ def _binary_syndrome(syndrome):
     malformed instance is refused, never reinterpreted. Returns (syn, error)."""
     syn = []
     for j, b in enumerate(syndrome):
+        if isinstance(b, bool):             # an int subclass, not a GF(2) entry
+            return None, f"syndrome[{j}] is a boolean, not an integer"
         try:
             v = operator.index(b)
         except TypeError:
@@ -721,6 +798,150 @@ def _canonical_supports(checks):
                           f"indices: ambiguous GF(2) semantics, refused")
         sups.append(fs)
     return sups, None
+
+
+# ------------------------------------------------------------------ the domain
+# docs/QLDPC_RECEIPT_INPUT_DOMAIN.md is the contract; this is its Python half.
+# THE DEFECT IT CLOSES (external audit 2, F05/F06, adjudicated 2026-11-03):
+# every index below was read with bare int(), a lossy coercion -- int(0.9) is
+# 0, int(True) is 1, int("1") is 1 -- and check entries were never compared
+# with the variable set, so a malformed instance was certified as if it were
+# a different, well-formed one. Validation happens once, at the entry points,
+# BEFORE any coercion; the int() calls further in then change no value.
+
+class _OutOfDomain(ValueError):
+    """An input outside docs/QLDPC_RECEIPT_INPUT_DOMAIN.md."""
+
+
+def _domain_int(v, what: str) -> int:
+    """An exact integer, or a refusal. operator.index admits exactly the
+    types that ARE integers -- int and NumPy integer scalars -- and refuses
+    float (even 1.0), str and numpy.bool_; Python's bool is an int subclass
+    and is refused by name."""
+    if isinstance(v, bool):
+        raise _OutOfDomain(f"{what} {v!r} is a boolean, not an integer")
+    try:
+        return operator.index(v)
+    except TypeError:
+        raise _OutOfDomain(f"{what} {v!r} is not an integer") from None
+
+
+def _domain_real(v, what: str) -> None:
+    """The float screen's numeric domain: a finite real, never bool or str."""
+    if isinstance(v, (bool, str, bytes)) or type(v).__name__ in ("bool", "bool_") \
+            or not hasattr(v, "__float__"):
+        raise _OutOfDomain(f"{what} {v!r} is not a real number")
+    if not isfinite(float(v)):
+        raise _OutOfDomain(f"{what} {v!r} is not finite")
+
+
+def _domain_list(v, what: str) -> list:
+    if isinstance(v, (str, bytes)) or not hasattr(v, "__iter__"):
+        raise _OutOfDomain(f"{what} is not a list")
+    return list(v)
+
+
+def _domain_rows(spec, what: str, *, count: bool) -> None:
+    """A single check index, or a GF(2) combination of >= 2 distinct rows.
+    `count=False` where the caller's own check already refuses a short
+    combination (facets: "is not >=2 valid rows") -- a second copy of a rule
+    would leave the first one dead."""
+    if isinstance(spec, (tuple, list, frozenset, set)):
+        rows = [_domain_int(r, f"{what} row") for r in spec]
+        if count and len(rows) < 2:
+            raise _OutOfDomain(f"{what} {list(spec)!r} combines fewer than two "
+                               f"rows; a single row is written as an integer")
+        if len(set(rows)) != len(rows):
+            raise _OutOfDomain(f"{what} {rows} repeats a row")
+    else:
+        _domain_int(spec, f"{what} row")
+
+
+def _domain_facet(f, screen: bool) -> None:
+    if not (isinstance(f, (tuple, list)) and len(f) == 3):
+        raise _OutOfDomain(f"facet dual {f!r} is not (check, F, y)")
+    j, F, y = f
+    _domain_rows(j, "facet", count=False)
+    Fl = [_domain_int(i, "facet F entry") for i in _domain_list(F, "facet F")]
+    if len(set(Fl)) != len(Fl):
+        raise _OutOfDomain(f"facet F {Fl} repeats a variable")
+    if screen:
+        _domain_real(y, "facet dual y")
+
+
+def _domain_tree(tree) -> None:
+    """Types of every index in a branch tree (iterative: no recursion limit).
+    Shape errors are left to _bnb_walk, which names them."""
+    stack = [tree]
+    while stack:
+        node = stack.pop()
+        if not (isinstance(node, (tuple, list)) and node):
+            continue
+        kind = node[0]
+        if kind == "branch" and len(node) == 4:
+            _domain_int(node[1], "branch variable")
+            stack.extend((node[2], node[3]))
+        elif kind == "bound" and len(node) == 2:
+            for f in _domain_list(node[1], "bound leaf duals"):
+                _domain_facet(f, screen=False)
+        elif kind == "infeasible" and len(node) == 2:
+            _domain_rows(node[1], "infeasible leaf", count=True)
+
+
+def _domain_refusal(checks, weights, *, cert=None, candidate=None, tree=None,
+                    screen: bool = False):
+    """None if (H, w, witness) lies in the declared domain, else the refusal.
+
+    Checked here: integer types everywhere an index is meant; weight keys
+    non-negative integers; every check entry a variable that has a weight;
+    no variable repeated in the candidate or in a facet's F; combined rows
+    distinct and at least two; and, for the float screen only, finite real
+    weights and multipliers (the exact paths refuse non-rationals by type in
+    _exact_rational). Everything else -- syndrome, duplicate check entries,
+    unknown candidate variables, ranges of rows -- keeps its existing check
+    and its existing words."""
+    try:
+        if not hasattr(weights, "items"):
+            raise _OutOfDomain("weights must map variable index -> weight")
+        variables = set()
+        for i, v in weights.items():
+            k = _domain_int(i, "weight key")
+            if k < 0:
+                raise _OutOfDomain(f"weight key {k} is negative")
+            variables.add(k)
+            if screen:
+                _domain_real(v, f"w[{k}]")
+        for j, c in enumerate(_domain_list(checks, "checks")):
+            for i in _domain_list(c, f"check {j}"):
+                k = _domain_int(i, f"check {j} entry")
+                if k not in variables:
+                    raise _OutOfDomain(f"check {j} names variable {k}, which "
+                                       f"has no weight")
+        if cert is not None:
+            candidate = cert.error_support
+        if candidate is not None:
+            seen: set = set()
+            for i in _domain_list(candidate, "candidate"):
+                k = _domain_int(i, "candidate entry")
+                if k in seen:
+                    raise _OutOfDomain(f"candidate lists variable {k} twice")
+                seen.add(k)
+        if cert is not None:
+            for f in _domain_list(cert.facet_duals, "facet duals"):
+                _domain_facet(f, screen)
+            bx = cert.box_duals
+            for b in (list(bx.items()) if hasattr(bx, "items")
+                      else _domain_list(bx, "box duals")):
+                if not (isinstance(b, (tuple, list)) and len(b) == 2):
+                    raise _OutOfDomain(f"box dual {b!r} is not (i, mu)")
+                _domain_int(b[0], "box dual index")
+                if screen:
+                    _domain_real(b[1], "box dual mu")
+        if tree is not None:
+            _domain_tree(tree)
+    except _OutOfDomain as exc:
+        return f"INPUT DOMAIN: {exc} (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md)"
+    return None
 
 
 def _exact_rational(v, name: str) -> Fraction:
@@ -767,6 +988,9 @@ def check_qldpc_exact(*, checks, weights, syndrome, cert: QldpcCertificate,
     The facet rule itself is NOT written here -- it lives once, in
     _exact_facet_scan, shared with the branch-and-bound leaf checker.
     """
+    dom = _domain_refusal(checks, weights, cert=cert)
+    if dom is not None:
+        return QldpcCheckResult(False, dom)
     m = len(checks)
     supports, dup_err = _canonical_supports(checks)
     if dup_err:
@@ -827,7 +1051,8 @@ def _exact_verdict(L, U, w, facets_used):
                   "tolerance anywhere",
             primal_weight=float(U), dual_bound=float(L),
             gap=float(U - L),
-            checks={"exact": True, "lattice_denominator": D,
+            checks={"status": "EXACT_OPTIMAL", "exact": True,
+                    "lattice_denominator": D,
                     "facets_real": facets_used,
                     "bound": {"num": L.numerator, "den": L.denominator},
                     "objective": {"num": U.numerator,

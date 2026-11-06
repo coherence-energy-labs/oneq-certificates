@@ -1,10 +1,18 @@
-\begin{tabular}{@{}lccccc@{}}
+\begin{tabular}{@{}llrcccccc@{}}
 \toprule
- & certified & BP-OSD & \multicolumn{3}{c}{gap} \\
- & shots & exact & median & p99 & max \\
+ & & & \multicolumn{2}{c}{proven within $\varepsilon_{\max}$ of optimal} & proven miss & \multicolumn{3}{c}{excess (upper end)} \\
+$d$ & decoder & $N$ & \% & 95\% interval & beyond $\varepsilon_{\max}$ & median & p99 & max \\
 \midrule
-$d=3$ & 230 & 81.3\% & 0.0 & 38.1 & 68.0 \\
-$d=5$ & 392 & 72.7\% & 0.0 & 60.8 & 148.0 \\
-$d=7$ & 378 & 74.3\% & 0.0 & 52.2 & 78.7 \\
+$3$ & BP-OSD, merged, $s=0.625$ & 1{,}159 & 99.48 & 98.87--99.81 & 6 & 0.00 & 0.00 & 0.04 \\
+ & BP-OSD, components, $s=1$ & 1{,}159 & 91.28 & 89.51--92.85 & 101 & 0.00 & 2.63 & 11.83 \\
+ & belief-matching & 1{,}159 & 95.25 & 93.86--96.41 & 55 & 0.00 & 2.80 & 6.87 \\
+\addlinespace
+$5$ & BP-OSD, merged, $s=0.625$ & 1{,}978 & 99.24 & 98.75--99.58 & 15 & 0.00 & 0.00 & 3.15 \\
+ & BP-OSD, components, $s=1$ & 1{,}978 & 85.38 & 83.75--86.92 & 289 & 0.00 & 1.96 & 6.55 \\
+ & belief-matching & 1{,}978 & 85.64 & 84.01--87.16 & 284 & 0.00 & 3.71 & 16.87 \\
+\addlinespace
+$7$ & BP-OSD, merged, $s=0.625$ & 1{,}996 & 95.69 & 94.70--96.54 & 86 & 0.00 & 1.03 & 4.02 \\
+ & BP-OSD, components, $s=1$ & 1{,}996 & 79.45 & 77.61--81.22 & 410 & 0.00 & 2.62 & 12.38 \\
+ & belief-matching & 1{,}996 & 62.27 & 60.10--64.41 & 753 & 0.00 & 5.89 & 11.73 \\
 \bottomrule
 \end{tabular}

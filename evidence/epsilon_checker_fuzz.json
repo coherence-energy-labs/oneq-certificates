@@ -1,0 +1,3954 @@
+{
+ "schema": "oneq-epsilon-checker-fuzz/1",
+ "seed": 20261103,
+ "base_cases": 2000,
+ "cases": 89984,
+ "implementations": {
+  "py_a": "check_epsilon via tools/replay_epsilon_receipts.py",
+  "py_b": "verify_b (tools/replay_epsilon_receipts.py)",
+  "js": "verifier-js/verify-epsilon.mjs (written from docs/reviews/JS_EPSILON_BRIEF_2026-11-03.md)"
+ },
+ "valid_domain_cases": 14812,
+ "valid_domain_disagreements": 0,
+ "per_class": {
+  "base": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "graph:boundary_first_edge": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "graph:parallel_edge_heavier": {
+   "disagree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 102
+  },
+  "graph:parallel_edge_lighter": {
+   "disagree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 1210,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 35,
+   "status:NOT_PROVEN|NOT_PROVEN|INVALID_INPUT": 755
+  },
+  "graph:self_loop": {
+   "disagree": 2000,
+   "status:INVALID_INPUT|EXACT_OPTIMAL|INVALID_INPUT": 1898,
+   "status:INVALID_INPUT|EPSILON_OPTIMAL|INVALID_INPUT": 102
+  },
+  "hex:decimal_not_hex": {
+   "disagree": 1883,
+   "status:NOT_PROVEN|NOT_PROVEN|INVALID_INPUT": 1706,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 172,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 5
+  },
+  "hex:json_number_not_string": {
+   "disagree": 1883,
+   "status:HARNESS_RAISED|HARNESS_RAISED|INVALID_INPUT": 1883
+  },
+  "hex:non_canonical_spelling": {
+   "agree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1781,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "hex:not_binary64_extra_digits": {
+   "disagree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 1781,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 102
+  },
+  "hex:overflow": {
+   "disagree": 1883,
+   "status:HARNESS_RAISED|HARNESS_RAISED|INVALID_INPUT": 1883
+  },
+  "hex:subnormal_weight": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 790,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1087,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 123
+  },
+  "id:boolean_in_correction": {
+   "agree": 1689,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1689,
+   "disagree": 311,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 16,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 295
+  },
+  "id:boolean_in_set": {
+   "agree": 1379,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1304,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 75,
+   "disagree": 504,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 477,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 27
+  },
+  "id:boolean_in_syndrome": {
+   "agree": 689,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 652,
+   "disagree": 1311,
+   "status:INVALID_INPUT|EPSILON_OPTIMAL|INVALID_INPUT": 65,
+   "status:INVALID_INPUT|EXACT_OPTIMAL|INVALID_INPUT": 1246,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 37
+  },
+  "id:fractional_in_correction": {
+   "disagree": 2000,
+   "status:EXACT_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 1898,
+   "status:EPSILON_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 102
+  },
+  "id:fractional_in_set": {
+   "disagree": 1704,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 1604,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 100,
+   "agree": 179,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 177,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 2
+  },
+  "id:fractional_in_syndrome": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:integral_float_in_correction": {
+   "disagree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 102
+  },
+  "id:string_in_correction": {
+   "disagree": 2000,
+   "status:HARNESS_RAISED|HARNESS_RAISED|INVALID_INPUT": 2000
+  },
+  "id:unknown_fired_detector": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "id:unknown_vertex_in_set": {
+   "disagree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|INVALID_INPUT": 1781,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|INVALID_INPUT": 102
+  },
+  "negative:dual": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "negative:weight": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "nonfinite:dual_-inf": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "nonfinite:dual_inf": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "nonfinite:dual_nan": {
+   "agree": 1883,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1883
+  },
+  "nonfinite:weight_-inf": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "nonfinite:weight_inf": {
+   "disagree": 2000,
+   "status:HARNESS_RAISED|HARNESS_RAISED|INVALID_INPUT": 2000
+  },
+  "nonfinite:weight_nan": {
+   "disagree": 2000,
+   "status:HARNESS_RAISED|HARNESS_RAISED|INVALID_INPUT": 2000
+  },
+  "repeat:correction_edge_twice": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "repeat:correction_edge_twice_reversed": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "repeat:set_listed_twice_other_value": {
+   "disagree": 1883,
+   "status:NOT_PROVEN|INVALID_INPUT|INVALID_INPUT": 1870,
+   "status:EXACT_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 13
+  },
+  "repeat:set_listed_twice_permuted": {
+   "disagree": 1883,
+   "status:EXACT_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 1781,
+   "status:EPSILON_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 102
+  },
+  "repeat:set_listed_twice_same_value": {
+   "disagree": 1883,
+   "status:EXACT_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 1781,
+   "status:EPSILON_OPTIMAL|INVALID_INPUT|INVALID_INPUT": 102
+  },
+  "syndrome:boundary_in_syndrome": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "syndrome:detector_fired_twice": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "syndrome:entry_2_not_fired": {
+   "agree": 606,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 606
+  },
+  "trap:boundary_side_parity_{B,t}": {
+   "agree": 1111,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1111
+  },
+  "trap:empty_set": {
+   "agree": 2000,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 2000
+  },
+  "trap:pair_of_fired": {
+   "agree": 1420,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1420
+  },
+  "trap:set_with_no_T_vertex": {
+   "agree": 1790,
+   "status:INVALID_INPUT|INVALID_INPUT|INVALID_INPUT": 1790
+  },
+  "valid:empty_packing": {
+   "agree": 2000,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 117
+  },
+  "valid:eps_max_equals_epsilon": {
+   "agree": 102,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "valid:eps_max_one_unit_above": {
+   "agree": 102,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "valid:eps_max_one_unit_below": {
+   "agree": 102,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 102
+  },
+  "valid:negative_zero_value": {
+   "agree": 1883,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1883
+  },
+  "valid:packing_scaled_down": {
+   "agree": 1883,
+   "status:NOT_PROVEN|NOT_PROVEN|NOT_PROVEN": 1883
+  },
+  "valid:packing_scaled_up_overload": {
+   "agree": 1883,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1023,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 860
+  },
+  "valid:packing_tiny_shortfall": {
+   "agree": 1883,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 1883
+  },
+  "valid:reversed_edge_orientation_in_correction": {
+   "agree": 2000,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 1898,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 102
+  },
+  "valid:zero_valued_set": {
+   "agree": 974,
+   "status:EXACT_OPTIMAL|EXACT_OPTIMAL|EXACT_OPTIMAL": 922,
+   "status:EPSILON_OPTIMAL|EPSILON_OPTIMAL|EPSILON_OPTIMAL": 52
+  }
+ },
+ "disagreeing_classes": [
+  "graph:parallel_edge_heavier",
+  "graph:parallel_edge_lighter",
+  "graph:self_loop",
+  "hex:decimal_not_hex",
+  "hex:json_number_not_string",
+  "hex:not_binary64_extra_digits",
+  "hex:overflow",
+  "id:boolean_in_correction",
+  "id:boolean_in_set",
+  "id:boolean_in_syndrome",
+  "id:fractional_in_correction",
+  "id:fractional_in_set",
+  "id:integral_float_in_correction",
+  "id:string_in_correction",
+  "id:unknown_vertex_in_set",
+  "nonfinite:weight_inf",
+  "nonfinite:weight_nan",
+  "repeat:set_listed_twice_other_value",
+  "repeat:set_listed_twice_permuted",
+  "repeat:set_listed_twice_same_value"
+ ],
+ "examples": {
+  "repeat:set_listed_twice_same_value": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ],
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ],
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "repeat:set_listed_twice_other_value": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ],
+      [
+       [
+        0
+       ],
+       "0x1.0p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "NOT_PROVEN",
+     "1080083428036641/4503599627370496",
+     "9053015733546975/4503599627370496"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "NOT_PROVEN",
+     "1080083428036641/4503599627370496",
+     "9053015733546975/4503599627370496"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ],
+      [
+       [
+        2
+       ],
+       "0x1.0p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "NOT_PROVEN",
+     "16286848166826223/2251799813685248",
+     "8990885288228771/2251799813685248"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "NOT_PROVEN",
+     "16286848166826223/2251799813685248",
+     "8990885288228771/2251799813685248"
+    ]
+   }
+  ],
+  "repeat:set_listed_twice_permuted": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ],
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ],
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "nonfinite:weight_inf": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "inf"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "inf"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   }
+  ],
+  "nonfinite:weight_nan": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "nan"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "nan"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "ValueError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   }
+  ],
+  "graph:parallel_edge_heavier": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ],
+      [
+       0,
+       -1,
+       "0x1.a000000000000p+1"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ],
+      [
+       0,
+       -1,
+       "0x1.9d3cc3efdf29ap+2"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "graph:parallel_edge_lighter": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ],
+      [
+       -1,
+       0,
+       "0x1.2000000000000p+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/8"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/8"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/8"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ],
+      [
+       -1,
+       0,
+       "0x1.5d3cc3efdf29ap+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "graph:self_loop": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ],
+      [
+       -1,
+       -1,
+       "0x1.0p+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ],
+      [
+       -1,
+       -1,
+       "0x1.0p+0"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   }
+  ],
+  "id:fractional_in_correction": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0.9,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1.9,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "id:integral_float_in_correction": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0.0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1.0,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "id:string_in_correction": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       "0",
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       "1",
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "id:fractional_in_set": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0.9
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2.9
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   }
+  ],
+  "id:unknown_vertex_in_set": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0,
+        8
+       ],
+       "0x1.7595214394084p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2,
+        11
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "hex:not_binary64_extra_digits": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.75952143940841p-2"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf48781p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "hex:decimal_not_hex": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0.36482669806446943"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "NOT_PROVEN",
+     "5504777772486373/36028797018963968",
+     "75560015520182555/36028797018963968"
+    ],
+    "py_b_replay": [
+     "NOT_PROVEN",
+     "5504777772486373/36028797018963968",
+     "75560015520182555/36028797018963968"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "NOT_PROVEN",
+     "5504777772486373/36028797018963968",
+     "75560015520182555/36028797018963968"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "7.357813533353799"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "NOT_PROVEN",
+     "335405755201107/2251799813685248",
+     "24942327699853887/2251799813685248"
+    ],
+    "py_b_replay": [
+     "NOT_PROVEN",
+     "335405755201107/2251799813685248",
+     "24942327699853887/2251799813685248"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "NOT_PROVEN",
+     "335405755201107/2251799813685248",
+     "24942327699853887/2251799813685248"
+    ]
+   }
+  ],
+  "hex:overflow": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       "0x1.0p+2000"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "OverflowError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "OverflowError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "HARNESS_RAISED",
+     "OverflowError",
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.0p+2000"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "OverflowError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "OverflowError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "HARNESS_RAISED",
+     "OverflowError",
+     null
+    ]
+   }
+  ],
+  "hex:json_number_not_string": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.2000000000000p+1"
+      ],
+      [
+       0,
+       1,
+       "0x1.8000000000000p+0"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "fired": [
+      0
+     ],
+     "correction": [
+      [
+       0,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        0
+       ],
+       0.36482669806446943
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.e29ab7af1afdfp+0"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EXACT_OPTIMAL",
+     "0",
+     "9/4"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       7.357813533353799
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "py_b_replay": [
+     "HARNESS_RAISED",
+     "TypeError",
+     null
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   }
+  ],
+  "id:boolean_in_correction": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      1,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       true,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       1,
+       "0x1.8c35d1d482fc5p+0"
+      ],
+      [
+       0,
+       3,
+       "0x1.dc6f85a486dcap+2"
+      ],
+      [
+       1,
+       -1,
+       "0x1.e000000000000p+1"
+      ],
+      [
+       1,
+       2,
+       "0x1.d1148c559aff9p-2"
+      ],
+      [
+       2,
+       -1,
+       "0x1.6d63f03328012p+2"
+      ],
+      [
+       2,
+       4,
+       "0x0.0p+0"
+      ],
+      [
+       3,
+       4,
+       "0x1.0000000000000p-2"
+      ]
+     ],
+     "fired": [
+      4
+     ],
+     "correction": [
+      [
+       true,
+       -1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "duals": [
+      [
+       [
+        -1
+       ],
+       "0x1.3407a8a071e1cp+1"
+      ],
+      [
+       [
+        -1,
+        0
+       ],
+       "0x1.57f0aebf1c3c7p+0"
+      ],
+      [
+       [
+        -1,
+        1
+       ],
+       "0x1.a22918ab35ff2p-3"
+      ],
+      [
+       [
+        2,
+        4
+       ],
+       "0x1.0000000000000p-2"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EPSILON_OPTIMAL",
+     "187259039088684105/502256139683575387019615357894656",
+     "527893797753009480255213984703113/125564034920893846754903839473664"
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "187259039088684105/502256139683575387019615357894656",
+     "527893797753009480255213984703113/125564034920893846754903839473664"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "EPSILON_OPTIMAL",
+     "187259039088684105/502256139683575387019615357894656",
+     "527893797753009480255213984703113/125564034920893846754903839473664"
+    ]
+   }
+  ],
+  "id:boolean_in_syndrome": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.5d3cc3efdf29ap+2"
+      ],
+      [
+       0,
+       1,
+       "0x0.0p+0"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19fa3c5bcab3p+2"
+      ],
+      [
+       0,
+       3,
+       "0x1.1b98e25464754p+3"
+      ],
+      [
+       1,
+       4,
+       "0x1.a000000000000p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x1.fe6fb79a86449p+2"
+      ],
+      [
+       3,
+       4,
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       4,
+       -1,
+       "0x1.ef1299bd237a3p+1"
+      ]
+     ],
+     "fired": [
+      true,
+      2,
+      4
+     ],
+     "correction": [
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        2
+       ],
+       "0x1.d6e66abbf4878p+2"
+      ],
+      [
+       [
+        4
+       ],
+       "0x1.8aef770e23d77p+1"
+      ],
+      [
+       [
+        -1
+       ],
+       "0x1.3c4a66f48de8cp-1"
+      ],
+      [
+       [
+        3,
+        4
+       ],
+       "0x1.51088f1dc2890p-3"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_b_replay": [
+     "EPSILON_OPTIMAL",
+     "13/71837536242311756",
+     "226986261650126183171963636850155/20220468840755607860434159271936"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.360e835a7625bp+2"
+      ],
+      [
+       0,
+       1,
+       "0x1.07ec3673cdcdep+3"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19a2c5c644a3p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x0.0p+0"
+      ],
+      [
+       2,
+       3,
+       "0x1.e1ad97a163f9bp+2"
+      ],
+      [
+       3,
+       -1,
+       "0x1.98e2af1b62a9bp+1"
+      ]
+     ],
+     "fired": [
+      0,
+      true,
+      3
+     ],
+     "correction": [
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        1
+       ],
+       "0x1.07ec3673cdcdep+3"
+      ],
+      [
+       [
+        3
+       ],
+       "0x1.98e2af1b62a9bp+1"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "25765098885324307/2251799813685248"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   }
+  ],
+  "id:boolean_in_set": [
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.360e835a7625bp+2"
+      ],
+      [
+       0,
+       1,
+       "0x1.07ec3673cdcdep+3"
+      ],
+      [
+       0,
+       2,
+       "0x1.e19a2c5c644a3p+1"
+      ],
+      [
+       2,
+       -1,
+       "0x0.0p+0"
+      ],
+      [
+       2,
+       3,
+       "0x1.e1ad97a163f9bp+2"
+      ],
+      [
+       3,
+       -1,
+       "0x1.98e2af1b62a9bp+1"
+      ]
+     ],
+     "fired": [
+      0,
+      1,
+      3
+     ],
+     "correction": [
+      [
+       0,
+       1
+      ],
+      [
+       3,
+       -1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        true
+       ],
+       "0x1.07ec3673cdcdep+3"
+      ],
+      [
+       [
+        3
+       ],
+       "0x1.98e2af1b62a9bp+1"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "25765098885324307/2251799813685248"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "25765098885324307/2251799813685248"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   },
+   {
+    "case": {
+     "edges": [
+      [
+       0,
+       -1,
+       "0x1.f40d15b344a99p+2"
+      ],
+      [
+       0,
+       1,
+       "0x1.afc7539608f03p+2"
+      ],
+      [
+       1,
+       -1,
+       "0x1.bbad5c090df87p+2"
+      ]
+     ],
+     "fired": [
+      0,
+      1
+     ],
+     "correction": [
+      [
+       0,
+       1
+      ]
+     ],
+     "duals": [
+      [
+       [
+        true
+       ],
+       "0x1.afc7539608f03p+2"
+      ]
+     ],
+     "eps_max": "1/1000000"
+    },
+    "py_a_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "7595929798479619/1125899906842624"
+    ],
+    "py_b_replay": [
+     "EXACT_OPTIMAL",
+     "0",
+     "7595929798479619/1125899906842624"
+    ],
+    "js": [
+     "INVALID_INPUT",
+     null,
+     null
+    ],
+    "py_a_raw": [
+     "INVALID_INPUT",
+     null,
+     null
+    ]
+   }
+  ]
+ },
+ "real_receipts_js_vs_recorded": {
+  "sim_d5_r25": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "fresh_sim_d5_r25": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "willow_d3_at_q4_5_X_r13": {
+   "chunks": 4,
+   "receipts": 990,
+   "identical_status_epsilon_bound": 990,
+   "mismatches": []
+  },
+  "willow_d5_at_q8_7_Z_r30": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "willow_d7_at_q6_7_X_r30": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "willow_d7_at_q6_7_Z_r30": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "heldout_d3_at_q4_5_Z_r50": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  },
+  "heldout_d5_at_q8_7_X_r50": {
+   "chunks": 4,
+   "receipts": 1000,
+   "identical_status_epsilon_bound": 1000,
+   "mismatches": []
+  }
+ }
+}

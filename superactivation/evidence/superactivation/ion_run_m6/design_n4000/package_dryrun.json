@@ -1,0 +1,42 @@
+[
+ {
+  "device": "spec:helios_1",
+  "arm": "exec",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 2000,
+  "certified_F_e_median": 0.7608531905866047,
+  "certified_F_e_p05": 0.7559839648932902
+ },
+ {
+  "device": "spec:helios_1",
+  "arm": "barriers",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 1737,
+  "certified_F_e_median": 0.7536659073056189,
+  "certified_F_e_p05": 0.7484147322961499
+ },
+ {
+  "device": "spec:h2_2_mem56",
+  "arm": "exec",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 1979,
+  "certified_F_e_median": 0.757515590533764,
+  "certified_F_e_p05": 0.7520929023277236
+ },
+ {
+  "device": "spec:h2_2_mem56",
+  "arm": "barriers",
+  "units": 4000,
+  "delta": 0.00135,
+  "reps": 2000,
+  "clears": 1464,
+  "certified_F_e_median": 0.7519084887164025,
+  "certified_F_e_p05": 0.7464587775015058
+ }
+]

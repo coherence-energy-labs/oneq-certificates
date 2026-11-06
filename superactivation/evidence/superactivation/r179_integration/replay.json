@@ -1,0 +1,27 @@
+{
+  "R147_prospective_hardware_test_completed": false,
+  "R147_retrospective_residual_fully_explained": false,
+  "R175_original_and_corrected_verdict_preserved": true,
+  "R175_real_hardware_shots_replayed": 16000,
+  "R177_candidate_source_bytes_checked": 4,
+  "R177_numerical_array_clean_clone_fix_present": true,
+  "R178_rigorous_channel_code_certificates": 6,
+  "R178_two_channel_identical_QPY_pilots_verified": true,
+  "evidence": "OFFLINE ARCHIVE/EXACT MATHEMATICS/PHYSICAL COMPILATION; no new IBM QPU job",
+  "integrated_checkers_sha256": {
+    "r175": "ac79a0b3b204db22114355340f268d820fdef9b1f1f7e32b39f942449c31e0d0",
+    "r177": "93697f572511298d776e49686a5e35cadb00a0157077d1850f08b764261eb0da",
+    "r178": "facde77696c7f9d819a40cfda4bb49522b67c3d4193fea6c23967893195e883b"
+  },
+  "missing_prior_artifacts_shipped": [
+    "evidence/superactivation/r177_dual/encoder_m5_s177.npy",
+    "evidence/superactivation/r177_dual/encoder_m5_s178.npy",
+    "evidence/superactivation/r178_search/pilot_m5.qpy",
+    "evidence/superactivation/r178_search/pilot_m7.qpy"
+  ],
+  "physical_superactivation_demonstrated_on_IBM": false,
+  "real_IBM_credits_spent_during_integration": 0,
+  "release_wall_126_gates_passed": false,
+  "schema": "oneq.r179.unified_research_verification/1",
+  "verdict": "R175_R177_R178_VERIFIABLE_TOGETHER"
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/claude/one_q/experiments/superactivation/general_codes/r178_n14_threegroup.py", line 210, in <module>
+    sys.exit(main(sys.argv[1:]))
+             ~~~~^^^^^^^^^^^^^^
+  File "/home/claude/one_q/experiments/superactivation/general_codes/r178_n14_threegroup.py", line 204, in main
+    run_family(ms, float(argv[argv.index("--minutes") + 1]) if "--minutes" in argv else 20.0, "--resume" in argv)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/one_q/experiments/superactivation/general_codes/r178_n14_threegroup.py", line 167, in run_family
+    X77 = np.load(OUTD / "X_7_7.npy")
+  File "/home/claude/venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/claude/one_q/evidence/superactivation/r178_n14/X_7_7.npy'
+peak rss 0.01 GB, exit 1

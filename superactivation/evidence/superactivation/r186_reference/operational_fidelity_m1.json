@@ -1,0 +1,126 @@
+{
+  "Bob_recovery_is_a_real_conditional_quantum_output": true,
+  "actual_reference_entangled_input": true,
+  "circuit_generation": {
+    "1": {
+      "clbits": 5,
+      "exact_simulated": true,
+      "gates": {
+        "ch": 1,
+        "cx": 9,
+        "cz": 2,
+        "h": 7,
+        "if_else": 4,
+        "measure": 5,
+        "p": 1,
+        "reset": 2,
+        "s": 1,
+        "x": 1
+      },
+      "modeled_qpu_fidelity": null,
+      "one_u_per_channel": 2,
+      "physical_erasure_register_reset": true,
+      "qubits": 9
+    },
+    "2": {
+      "clbits": 6,
+      "exact_simulated": false,
+      "gates": {
+        "ch": 2,
+        "cx": 12,
+        "cz": 4,
+        "h": 9,
+        "if_else": 6,
+        "measure": 6,
+        "p": 1,
+        "reset": 3,
+        "s": 2,
+        "x": 1
+      },
+      "modeled_qpu_fidelity": null,
+      "one_u_per_channel": 2,
+      "physical_erasure_register_reset": true,
+      "qubits": 13
+    },
+    "5": {
+      "clbits": 9,
+      "exact_simulated": false,
+      "gates": {
+        "ch": 5,
+        "cx": 21,
+        "cz": 10,
+        "h": 15,
+        "if_else": 12,
+        "measure": 9,
+        "p": 1,
+        "reset": 6,
+        "s": 5,
+        "x": 1
+      },
+      "modeled_qpu_fidelity": null,
+      "one_u_per_channel": 2,
+      "physical_erasure_register_reset": true,
+      "qubits": 25
+    },
+    "7": {
+      "clbits": 11,
+      "exact_simulated": false,
+      "gates": {
+        "ch": 7,
+        "cx": 27,
+        "cz": 14,
+        "h": 19,
+        "if_else": 16,
+        "measure": 11,
+        "p": 1,
+        "reset": 8,
+        "s": 7,
+        "x": 1
+      },
+      "modeled_qpu_fidelity": null,
+      "one_u_per_channel": 2,
+      "physical_erasure_register_reset": true,
+      "qubits": 33
+    }
+  },
+  "dimension_m": 1,
+  "dynamic_conditionals_examined": 360.0,
+  "erased_branch_weights": {
+    "erased_erased": 0.25,
+    "kept_erased": 0.5,
+    "kept_kept": 0.25
+  },
+  "established_exact_closed_form": 0.6072330470336311,
+  "every_sample_executes_two_physical_P_unitary_choices": true,
+  "evidence_class": "EXACT STATEVECTOR BRANCH SIMULATION; NO QPU MEASUREMENT",
+  "exact_dynamic_circuits": 108,
+  "independent_P_pair_choices": 36,
+  "no_estimated_hardware_fidelity_gain": true,
+  "no_new_IBMQ_job": true,
+  "not_a_zero_quantum_capacity_physical_certificate": true,
+  "observable_importance_weighting_used": false,
+  "one_CZ_operational_decoder": {
+    "F_e": 0.6072330470336305,
+    "exact_dynamic_circuits": 108,
+    "new_hardware_demonstrated": false,
+    "per_pair_two_CZ_decoder": false,
+    "physically_adaptive_shield_measurement": true,
+    "worst_disagreement_with_legacy_trace_oracle": 2.220446049250313e-16
+  },
+  "operational_decoder": "cz2",
+  "operational_entanglement_fidelity": 0.6072330470336305,
+  "per_branch_entanglement_fidelity": {
+    "erased_erased": 0.25735931288071456,
+    "kept_erased": 0.5857864376269042,
+    "kept_kept": 0.9999999999999986
+  },
+  "schema": "oneq.r186.operational_reference_entanglement_oracle/1",
+  "source_sha256": {
+    "experiments/superactivation/shield_family/hardware_design.py": "630ecd584ab470b941818b56c5dd57069bf169480aa5bbbfbacdf0752466ed44",
+    "experiments/superactivation/shield_family/lean_protocol.py": "8bebc6184da26ed9b3a6f0e3402bb1c9d68db0c2edbb2935c6bb93063d61d055",
+    "experiments/superactivation/shield_family/r186_exact_dynamic.py": "651befeb3641e64d79b864bc18164250ec0282cd24fe906bf5faab86929f8cd9",
+    "experiments/superactivation/shield_family/r186_reference_decoder.py": "ae66c62eaadf93b532c48c4443dd9098b9f9d633c20408722094fa1822156ec3"
+  },
+  "valid_only_with_ideal_PPT_decomposition": true,
+  "worst_disagreement_with_separate_trace_oracle": 3.3306690738754696e-16
+}

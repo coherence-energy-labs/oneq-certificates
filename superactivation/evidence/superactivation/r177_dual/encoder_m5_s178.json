@@ -1,0 +1,19 @@
+{
+  "schema": "oneq.r177.encoder_search/1",
+  "evidence": "RESEARCH/SIMULATED; no physical QPU and no strict proof",
+  "m": 5,
+  "shield_dim": 32,
+  "p": 0.15022110482233483,
+  "seed": 178,
+  "restarts": 30,
+  "steps": 25,
+  "reference_closed_fidelity": 0.7679757664667596,
+  "reference_numerical": 0.767975766466759,
+  "candidate_numerical": 0.7679988017770951,
+  "independent_decoder_replay": 0.7679988017770948,
+  "gain_over_closed": 2.303531033520656e-05,
+  "min_eigenvalue": -2.1849740830980588e-16,
+  "trace_preservation_max_error": 6.661338147750939e-16,
+  "matrix_sha256": "858b195353bb82e9463b6511fb028d4471b0b097d131a4158a27fed9e14f225c",
+  "algorithm": "onset_vs_p.best(n=2), CPTP Choi, deterministic rng; nonconvex heuristic"
+}

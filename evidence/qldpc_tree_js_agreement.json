@@ -1,9 +1,9 @@
 {
  "schema": "oneq-qldpc-tree-js-agreement/1",
  "checker": "verifier-js/verify-qldpc-tree.mjs",
- "checker_sha256": "700de312361a87e981761cd0210bce722667a91cf0afbba70d7d5ae189b9c212",
+ "checker_sha256": "93590e118643e65284b74d04efe643bdae9f56363eae0461914b616a99ec5949",
  "node": "v24.18.0",
- "manifest_sha256": "23e336ca38bb403f4c4238e98ded481e9febd80fa037156cdd866774e5147aa4",
+ "manifest_sha256": "07138cde8b8799e2ff65b77c2bba234ffe6190b92a60c355bfdd8b648f55b449",
  "trees": 40,
  "trees_by_cohort": {
   "heldout_tree": 17,
@@ -12,8 +12,8 @@
  },
  "trees_accepted": 40,
  "synthetic_receipts_accepted": 2,
- "planted_defects": 55,
- "planted_defects_refused_for_their_reason": 55,
+ "planted_defects": 74,
+ "planted_defects_refused_for_their_reason": 74,
  "planted_by_class": {
   "candidate_extra_variable": 5,
   "syndrome_bit_dropped": 5,
@@ -26,6 +26,10 @@
   "facet_wrong_parity": 5,
   "negative_multiplier": 5,
   "row_out_of_range": 5,
+  "zero_multiplier_row_out_of_range": 5,
+  "zero_multiplier_facet_on_fixed_variable": 4,
+  "zero_multiplier_facet_wrong_parity": 5,
+  "zero_multiplier_facet_listed_twice": 5,
   "infeasible_leaf_support_not_empty": 1,
   "infeasible_leaf_even_parity": 1,
   "lattice_boundary_leaf": 1,

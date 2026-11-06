@@ -151,7 +151,7 @@ Paulis).
 | **H1** involutive layers | in every `G_{r,k}`, distinct pairs use distinct qubits | schedule | a layer reusing a qubit |
 | **H2** all measured, all reset | `M^X_r u M^Z_r = R` disjointly, r = 0, 1 | schedule | one right qubit never measured |
 | **H3** trackability | for every `S^X_h`, every `S^Z_g`, every `L_k`, r = 0, 1: `supp F_r(O) n R` lies in `M^{type(O)}_r` | schedule + code | a contracted qubit moved to the other basis |
-| **PAL** palindrome | for r = 0, 1: images (Lemma 2) of `N_exp(r, j)` equal those of `N_con(r, 2-j)`, j = 0, 1, 2; images of `N_reset(r)` equal those of `N_meas(r)` | C_2 (round 0: a = 1, c = 0; round 1: a = 0, c = 1) | expansion not the reverse of the contraction |
+| **PAL** palindrome (mid-cycle IMAGES, not raw channels) | for r = 0, 1: the mid-cycle images (Lemma 2) of the components of `N_exp(r, j)` equal those of `N_con(r, 2-j)`, j = 0, 1, 2, as sets; the images of `N_reset(r)` equal those of `N_meas(r)` | C_2 (round 0: a = 1, c = 0; round 1: a = 0, c = 1) | expansion not the reverse of the contraction |
 | PAL root | each layer's noise set is invariant under conjugation by that layer | C_2 | one layer's noise keeps only X on controls |
 | **BND** boundaries | images of `N_prep` lie among those of `N_reset(1)`; images of `N_ro` after a round with `c(T-1) = r` lie among those of `N_meas(r)` | C_1, C_2 | correlated two-qubit readout flips |
 | **PURE** pure parts | at every location: if A is a component and `pi(A) != I`, then `pi(A)` is a component, where `pi(A)` is the `f_b`-part of A (X part in memory-Z, Z part in memory-X) | C_1, C_2 | one location loses its pure component |
@@ -321,6 +321,21 @@ non-identity Paulis of each of its pairs and fixes the single-qubit Paulis off G
   `Phi_{r,k-1}(N(G_{r,k})) = Phi_{r,k-1}(G_{r,k}(N(G_{r,k}))) = Phi_{r,k}(N(G_{r,k}))`, which is the image set of the
   contraction location after `G_{r,k}`.
 - Reset and measurement noise of parity r are the same Pauli set, with the same map `Phi_{r,2}`.
+
+*PAL is a condition on IMAGES; equal raw noise is not enough (external audit 2, finding F08, 2026-11-03).* The
+expansion location after `G_{r,k}` sees the remaining expansion layers only, the contraction location after `G_{r,k}`
+is pulled back through `G_{r,k}` itself as well, so the same raw channel at the two locations has images that differ
+by one conjugation by `G_{r,k}`. PAL root (each layer's noise set invariant under that layer) is exactly what makes
+them agree, and the depolarizing channels of the lane satisfy it. A raw condition does not: put an independent
+`X_ERROR` on the 12 qubits of one weight-12 X logical of the mid-cycle code after `G_{0,0}` of the `morph72` circuit,
+in the contraction and in the mirrored expansion slot, and nothing else. The raw channels of the mirrored layers are
+then equal, but 8 of those qubits are controls of `G_{0,0}`, so the images differ. The 1-round model has 12
+mechanisms of detector rank 12 and no solution; the 2-round model has a weight-12 solution (the expansion flips of
+round 1, which sit at a mid-cycle point and form the logical). `fold_uniform.check_PAL` reports PAL and PAL root FAILED
+on that noise, so the image condition excludes it. Held by
+`tests/test_r198_p3_audit_fixes.py::test_raw_mirrored_noise_is_not_enough_and_the_image_condition_refuses_it`.
+Placing the same raw channel at time-mirrored slots instead (after `G_{0,k}` in the contraction, after `G_{0,k+1}` in
+the expansion) gives equal images, and there the 2-round model has no solution either.
 
 *Why BND holds for the lane's noise.* The prep and readout flips `f_b` on L are among the DEPOLARIZE1 components on L
 in the reset (respectively measurement) phase, with the same map.

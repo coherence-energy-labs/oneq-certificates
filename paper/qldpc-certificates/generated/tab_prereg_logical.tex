@@ -1,0 +1,11 @@
+\begin{tabular}{@{}lrrrrlr@{}}
+\toprule
+dataset & errors, 1.0 & errors, 0.625 & 1.0 only & 0.625 only & McNemar $p$ & receipt answer \\
+\midrule
+uniform, $p=0.01$ & 3 & 1 & 3 & 1 & 0.625 & 0 \\
+uniform, $p=0.02$ & 40 & 0 & 40 & 0 & \ensuremath{1.8\times 10^{-12}} & 0 \\
+heterogeneous, $p=0.02$ & 1 & 0 & 1 & 0 & 1 & 0 \\
+X-sector, $p=0.02$ & 58 & 3 & 56 & 1 & \ensuremath{8.0\times 10^{-16}} & 1 \\
+stress, $p=0.05$ & 595 & 31 & 564 & 0 & \ensuremath{3.3\times 10^{-170}} & 26 \\
+\bottomrule
+\end{tabular}

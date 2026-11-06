@@ -1,0 +1,4 @@
+n=4 restart 0: F = 0.7213721069 (encoder-step linear value 0.7213663276)
+n=4 restart 1: F = 0.7209066984 (encoder-step linear value 0.7209030869)
+n=4 restart 2: F = 0.7211566767 (encoder-step linear value 0.7211534310)
+n=4 best F = 0.7213721069; encoder state top eigenvalues [1. 0. 0.]

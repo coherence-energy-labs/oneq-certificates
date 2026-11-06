@@ -2258,7 +2258,7 @@ MUTANTS: tuple[Mutant, ...] = (
         # the headline number intact.
         "M42-battery-drops-the-stealth-attacks",
         "the strictly-suboptimal (syndrome-consistent) attacks stop being generated",
-        '        if _odd(cand) == T and sum(W[k] for k in cand) > primal + 1e-9:',
+        '        if _odd(cand) == T and _exact_weight(W, cand) > primal_x + EXCESS_MARGIN:',
         '        if False:',
         "test_the_battery_still_contains_the_hardest_attack_class",
         "forgeries",

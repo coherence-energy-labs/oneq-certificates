@@ -116,8 +116,44 @@ FROZEN_SHA256 = {
     # whose BAD list is chosen so each entry reads as [1] under the old
     # masking -- the control proves the certificate is otherwise good, so
     # a refusal can only come from the domain check.
+    #
+    # RE-FROZEN 2026-11-03 (protocol option 2; behaviour: the qLDPC
+    # input-domain contract, docs/QLDPC_RECEIPT_INPUT_DOMAIN.md, and the
+    # bound-only result, both out of external audit 2 of release
+    # v2026.11.03, findings F05-F07). Measured on this gate's corpus (1,500
+    # cases, seed 20260804) against the previous snapshot: 1,481
+    # divergences; 123 verdict flips, EVERY one ACCEPT -> REFUSE on input
+    # outside the declared domain (a candidate listing a variable twice,
+    # read as a set: 48; a boolean syndrome entry: 30; a string check index
+    # read through int(): 45); ZERO flips REFUSE -> ACCEPT. Of the rest,
+    # 141 are bound-only acceptances in both whose result moved from
+    # "EXACT-OPTIMAL", primal T+1/D to LOWER_BOUND_PROVEN with no primal
+    # (F07), 468 are malformed inputs the old snapshot RAISED on and the
+    # live checker refuses, and 749 are refusals in both for a reason
+    # that moved (the domain check now answers first). The corpus's
+    # bound-only call now passes no candidate, as every caller does, and
+    # its single-row infeasible leaves are written as integers, as the
+    # producer writes them. Pinned by tests/test_qldpc_input_domain.py
+    # (87 vectors through all seven implementations).
+    #
+    # RE-FROZEN 2026-11-03, second time (protocol option 2; behaviour: the
+    # final referee of paper 2, MAJOR 2 -- a facet with multiplier 0 was
+    # SKIPPED BEFORE IT WAS VALIDATED, so [999, [], 0, 1] or a repeated
+    # facet rode along unread). Previous snapshot 59773707... Measured on
+    # this gate's corpus (1,500 cases, seed 20260804): 26 divergences, all
+    # in the facet-validation section; 5 verdict flips, EVERY one
+    # ACCEPT -> REFUSE on a malformed facet whose multiplier is 0 (screen:
+    # 2 even-parity F, 2 F outside its check; exact: 1 F outside its
+    # check); ZERO flips REFUSE -> ACCEPT. The other 21 are refusals in
+    # both whose reason moved, because the zero-multiplier facet is now
+    # read first: 7 check index out of range, 6 repeated facet, 6 F
+    # outside its check, 2 even parity. The corpus had been producing
+    # these malformed zero-multiplier facets all along; a frozen-vs-live
+    # gate cannot see a defect both copies share. Pinned by
+    # tests/test_qldpc_input_domain.py (109 vectors; v075-v094 are the
+    # zero-multiplier ones, flat and at tree depth 1).
     "qldpc_check.py":
-        "2580ac1f14a97f54a2436b411dbe15609cc69b3bab4848d38a08d7dc7a22eee0",
+        "51940b3712a830895cbffa3516c81ba57836d470dbe52085219e581709c15ecc",
     "tjoin_exact.py":
         "9d326865e47f16556ab64cd7469cafd2939e85abebec785f71321f3c9717e9ac",
     # RE-FROZEN 2026-10-18 (protocol option 2; behaviour landed in the merge of the cloud campaign, 5f6b39ba,
@@ -582,15 +618,15 @@ def _forced_tree_cases(rng: random.Random):
            ("branch", i, ("branch", i, good, good), good),
            "rebranch-on-fixed-var")
     yield (checks, w, syn, e, U,
-           ("branch", j, ("infeasible", (1,)), good),
+           ("branch", j, ("infeasible", 1), good),
            "infeasible-xor-nonempty")
     yield (checks, w, syn, e, U,
-           ("branch", j, ("infeasible", (2,)), good),
+           ("branch", j, ("infeasible", 2), good),
            "infeasible-even-parity")
     yield (checks, w, syn, e, U,
            ("branch", len(w) + 40, good, good), "branch-unknown-var")
     yield (checks, w, syn, e, U,
-           ("branch", j, ("infeasible", (99,)), good),
+           ("branch", j, ("infeasible", 99), good),
            "infeasible-bad-row-index")
     yield (checks, w, syn, e, U, ("bound", ()), "bound-leaf-uncrossed")
 
@@ -1100,8 +1136,11 @@ def run_corpus(frozen, live, cases: int, seed: int, verbose: bool = False,
                                       "live": list(map(str, b))})
                 # bound-only mode: leaves must prove min > T, the shape
                 # frame determinacy and the distance certificate rely on.
+                # No candidate: those callers pass none, and since the
+                # input-domain contract (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md,
+                # 2026-11-03) a candidate here is refused, not ignored.
                 ka = dict(checks=checks, weights=wi, syndrome=syn_b,
-                          error_support=e_sup, tree=tree,
+                          error_support=(), tree=tree,
                           bound_only_threshold=U - 1)
                 a = _call(frozen, "check_qldpc_bnb", **ka)
                 b = _call(live, "check_qldpc_bnb", **ka)

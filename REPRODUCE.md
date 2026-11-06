@@ -11,10 +11,14 @@ versions should work; version differences that change results are
 themselves worth reporting.
 
 ```
-pip install -e ".[dev,qpu,sat,science]"
+python -m pip install -r requirements.txt
 ```
 
-That is the same line CI runs, plus the two optional-solver extras. The
+`requirements.txt` pins the environment of record and ships in the release
+bundle, which carries no `pyproject.toml`: the line this replaced,
+`pip install -e ".[dev,qpu,sat,science]"`, could not run from the bundle
+(2026-11-03). In the development repository the editable install still
+works and is what CI runs. The
 Qiskit SDK is needed for offline frozen-circuit and fake-backend tests;
 installing it does not authorize or execute a provider job. The
 previous instruction here named five packages by hand and omitted
@@ -75,6 +79,8 @@ place them in `data/epsilon_receipts_archive/`, and from the repository root run
 python tools/pack_epsilon_receipts.py --verify       # archive hashes, then every member
 tar -xf data/epsilon_receipts_archive/<config>.tar   # once per configuration
 python tools/replay_epsilon_receipts.py --jobs 8     # two verifiers, every receipt
+# the held-out d=7 arms were stopped by their preregistered budget and have no summary; replay what they completed:
+python tools/replay_epsilon_receipts.py --partial --jobs 8 --config heldout_d7_X_r50 heldout_d7_X_r10 samedev_d7_X_r30 heldout_d7_Z_r50 heldout_d7_Z_r10 samedev_d7_Z_r30
 ```
 
 ## 2. Re-run the frozen held-out campaign end to end (~2 minutes)

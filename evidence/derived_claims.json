@@ -50,6 +50,7 @@
   "certify_cost_refused_over_accepted_median_2sf": 13,
   "producer_identity_development_nontrivial": 79384,
   "certify_cost_check_median_over_batch_2sf": 430,
+  "certify_cost_check_mean_over_batch_2sf": 450,
   "certify_cost_refused_median_ms_2sf": 400,
   "cp_exact_lb_n296": 98.99,
   "cp_exact_lb_n470": 99.36,
@@ -134,5 +135,12 @@
   "eps_replay_substituted_graph_refused": 4800,
   "dem_morph2026_models": 210,
   "dem_morph2026_mechanisms_min": 180,
-  "dem_morph2026_mechanisms_max": 12624
+  "dem_morph2026_mechanisms_max": 12624,
+  "p1_cert_measured_forgeries_refused_by_bound": 122767,
+  "p1_epsilon_fuzz_disagreements_before_fix": 34894,
+  "p1_js_epsilon_replayed_receipts": 48969,
+  "p1_strict_replay_forgeries": 59224,
+  "p1_strict_replay_forgeries_refused_by_bound": 10034,
+  "p1_strict_replay_parity_forgeries": 4920,
+  "p1_strict_replay_parity_accepted_by_blind_copies": 4920
 }

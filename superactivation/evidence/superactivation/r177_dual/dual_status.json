@@ -1,0 +1,34 @@
+{
+  "IBM_shots_spent_for_this_report": 0,
+  "files_sha256": {
+    "ideal_frontier.json": "924cb05b2141b9dd47beba3d8b0c462c0125651bfddd818e7572e516379c2b49",
+    "model_adequacy.json": "7a6b7227d8bd71dca17e6b38b18ff1ef0773b9a7c4e56ccfa9c4b37bfd39f4b1",
+    "paired_faithful_m5.json": "9d9c36b1ba339847059236e0680736ecc505c0b6fae91397985b432d5da808c5",
+    "paired_faithful_m7.json": "024a647f849880a2a8e12806c7d0215f2176e157c48b9d69c17fb2d46813474d",
+    "six_state_power_m5.json": "9d030d03fd2ae00e9a55ae2fdf5756d74b708c9c1777adb3ed3d8a15b32d35a3"
+  },
+  "implementation_sources_sha256": {
+    "src/oneq/hw/logical_frontier.py": "ca862cd8794a8cb253438047e79a2754a4d6cf1a593a2f06d2a0dd83f7c8e0b6",
+    "src/oneq/hw/paired_shot_bounds.py": "d6f1df9251bea02a3f9de3b05d195c3f4b2180c4729e3e3ce37430f44245fc79",
+    "src/oneq/hw/paired_six_state.py": "b22efa67edc68959cebd844b3f8cc84f5fbc1c66dca228328693482c4fd60f52",
+    "src/oneq/hw/quantum_witness.py": "298635ee10beb0f7fb07132d8ada24c7a44184975ef5a4583e5fd9cde2376526",
+    "tools/r177_dual_report.py": "57b893188af5d3b75a46cb679190bd4177d398665a0367911964731b2c4bde7f",
+    "tools/r177_model_adequacy.py": "fa8ca7902eb935637c7d301dc6f7f06778e8c6ce0fed15da4c4e185d46985067"
+  },
+  "independent_r147_subgroup_shot_only_z": 3.0683224857370677,
+  "no_physical_quantum_superactivation_claim": true,
+  "no_remote_quantum_transfer_claim": true,
+  "original_model_source": "evidence/hw/model_regression.json",
+  "original_model_source_sha256": "a29beecee97f565162646b882ccf852e1d610c10a65a5cf53e5689002ff1b869",
+  "preregistered_new_ibm_jobs": 0,
+  "proposal_not_frozen_provider_QPY": true,
+  "schema": "oneq.r177.dual_status/1",
+  "simulated_encoder_candidates_sha256": {
+    "encoder_m5_s177.json": "ec7a8a20eb3d06d33ff8bc92729e25d04cfeae1858fd34cabef9f8df33f3a16f",
+    "encoder_m5_s177.npy": "591347cf1b5a4987418d87b470c9b7a80579e67689009e018813b4f920eb5aab",
+    "encoder_m5_s178.json": "fcf5075caa331f6d921b38575463078ab788c6a39baaf94d73908acdbe0c105e",
+    "encoder_m5_s178.npy": "858b195353bb82e9463b6511fb028d4471b0b097d131a4158a27fed9e14f225c"
+  },
+  "status_problem_1": "AGGREGATE_R147_REPLAYED; MAIN_SUBGROUP_MC_UNCERTAINTY_UNRESOLVED",
+  "status_problem_2": "ANALYTIC_IDEAL_MARGIN + PHYSICALLY_FAITHFUL_SIX_STATE_DESIGN; NO_HARDWARE_ADVANTAGE"
+}

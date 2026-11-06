@@ -1,0 +1,106 @@
+{
+ "schema": "oneq.superactivation.reduction-dense-check/1",
+ "claim": "the group reduction (Dicke splitting identity, support, branch states, fidelity) equals the dense 2^n construction",
+ "tolerance_exact_quantities": 1e-12,
+ "tolerance_fidelity": 1e-12,
+ "flip_probability": 0.41421356237309515,
+ "cases": [
+  {
+   "case": "random two-group code, a = 5, b = 7, every flag pattern",
+   "groups": [
+    5,
+    7
+   ],
+   "n": 12,
+   "encoder": "twogroup.random_encoder, numpy default_rng(12)",
+   "decoders": "twogroup.decode, 60 power-iteration steps",
+   "flag_patterns_checked": 4096,
+   "max_identity_deviation": 8.881784197001252e-16,
+   "max_residual_outside_symmetric": 1.6653345369377348e-16,
+   "max_state_deviation": 1.0408340855860843e-16,
+   "fidelity_dense_all_patterns": 0.5528149470501884,
+   "fidelity_reduction": 0.5528149470501884,
+   "fidelity_abs_difference": 0.0,
+   "seconds": 111.6
+  },
+  {
+   "case": "certified two-group witness a7_b8 (n = 15)",
+   "groups": [
+    7,
+    8
+   ],
+   "n": 15,
+   "certificate": "general_codes/certificate_twogroup_a7_b8.json",
+   "witness_sha256": "83b00e93301edcf401917f38ebfee4f341bf662ad2597b1d8aea11f9219baab5",
+   "decoders_sha256": "c48d20c8867a189e68d86bf0936b53e4caaf967c45d55e758c3b41ec6ae24fe2",
+   "placements_per_branch": "first positions and seeded random positions in each group",
+   "random_seed": 15,
+   "max_identity_deviation": 1.887379141862766e-15,
+   "max_residual_outside_symmetric": 1.1102230246251565e-16,
+   "max_state_deviation": 3.608224830031759e-16,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7500784437427233,
+   "fidelity_recorded_pair": 0.7500784437427231,
+   "fidelity_abs_difference": 1.1102230246251565e-16,
+   "seconds": 42.3
+  },
+  {
+   "case": "certified two-group witness a8_b8 (n = 16)",
+   "groups": [
+    8,
+    8
+   ],
+   "n": 16,
+   "certificate": "general_codes/certificate_twogroup_a8_b8.json",
+   "witness_sha256": "d78b7bd665af4a229bd3d654673c669d9d4e2e6474cf82b16249ac9994555f15",
+   "decoders_sha256": "5a005164fb54c6deef040040024e9ee79c5166cdc3fa2b4f6edcade17fdb47b1",
+   "placements_per_branch": "first positions and seeded random positions in each group",
+   "random_seed": 15,
+   "max_identity_deviation": 2.7755575615628914e-15,
+   "max_residual_outside_symmetric": 1.942890293094024e-16,
+   "max_state_deviation": 5.828670879282072e-16,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7503771821179982,
+   "fidelity_recorded_pair": 0.750377182117998,
+   "fidelity_abs_difference": 2.220446049250313e-16,
+   "seconds": 97.1
+  },
+  {
+   "case": "certified symmetric witness (n = 17)",
+   "groups": [
+    17
+   ],
+   "n": 17,
+   "certificate": "certificate_n17.json",
+   "witness_sha256": "d582e592b049e7aa9b524b8dad933382e4d8e91eef06de991ffdcf969a198006",
+   "placements_per_branch": "first positions and seeded random positions",
+   "random_seed": 17,
+   "max_identity_deviation": 7.771561172376096e-15,
+   "max_residual_outside_symmetric": 1.6653345369377348e-16,
+   "max_state_deviation": 2.942091015256665e-15,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7502033338948578,
+   "fidelity_recorded_pair": 0.7502033338948578,
+   "fidelity_abs_difference": 0.0,
+   "seconds": 8.7
+  }
+ ],
+ "negative_controls": {
+  "amplitude_perturbed_1e-6_identity_deviation": 4.4721359548915984e-07,
+  "flip_probability_perturbed_1e-6_state_deviation": 1.766690978233232e-08
+ },
+ "verdict": "AGREE",
+ "seconds_total": 259.8,
+ "provenance": {
+  "code_git_blobs": {
+   "experiments/superactivation/general_codes/verify_reduction_dense.py": "b1df8a0284f22159393eca3ef45344fc12816fff",
+   "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+   "experiments/superactivation/general_codes/twogroup_certificate.py": "5fbc7decb2cb537091eae1c6e050ce16e9b55532",
+   "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2",
+   "src/oneq/superactivation_certificate.py": "aa9efe4c3412dbfc8cfbba917da4e45245603f98"
+  },
+  "python": "3.14.3",
+  "numpy": "2.3.5",
+  "platform": "Windows-11-10.0.26200-SP0"
+ }
+}

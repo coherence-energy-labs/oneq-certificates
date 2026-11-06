@@ -1,0 +1,40 @@
+{
+ "schema": "oneq.r172.dd_heldout/1",
+ "label": "EXPLORATORY -- outside every preregistered verdict",
+ "r152_job": "db9c50oc77vs73817rog",
+ "traj": 24,
+ "measured_r147": 0.6272772705949263,
+ "model": "V3c, compiled pulses (client-twirl arm)",
+ "variants": {
+  "no DD": {
+   "r147": 0.668672538255338,
+   "residual": {
+    "main": -0.04371317795226974,
+    "twin_inline": -0.044352921455002185,
+    "twin_static": -0.022265464883124156
+   },
+   "waits_decoupled": 0,
+   "gain_vs_no_dd": 0.0
+  },
+  "X-X echo in waits >= 0.5 us": {
+   "r147": 0.6692868258679341,
+   "residual": {
+    "main": -0.04349370728729517,
+    "twin_inline": -0.04137020528444282,
+    "twin_static": -0.022265464883124156
+   },
+   "waits_decoupled": 3207,
+   "gain_vs_no_dd": 0.0006142876125960761
+  },
+  "X-X echo in waits >= 1.0 us": {
+   "r147": 0.6692868258679341,
+   "residual": {
+    "main": -0.04349370728729517,
+    "twin_inline": -0.04137020528444282,
+    "twin_static": -0.022265464883124156
+   },
+   "waits_decoupled": 3207,
+   "gain_vs_no_dd": 0.0006142876125960761
+  }
+ }
+}

@@ -24,6 +24,12 @@ each leaf either exhibits a parity-infeasible row combination of its
 reduced instance, or carries facet duals whose safe-dual bound L
 satisfies W_fixed1 + L > U - 1/D (D = lcm of weight denominators; here
 weights are ints so D = 1). Exit 0 accept, 2 refuse, 1 malformed.
+
+Input domain: docs/QLDPC_RECEIPT_INPUT_DOMAIN.md, the contract all seven
+qLDPC checkers implement (vectors: conformance/qldpc_input_domain_vectors.json).
+Every integer slot holds a JSON integer literal; syndrome entries are exactly
+0 or 1; a combined row list has at least two distinct rows; multipliers are in
+lowest terms with den >= 1; a root bound above U is refused.
 """
 from __future__ import annotations
 
@@ -52,19 +58,39 @@ def _exact_int(v, what: str) -> int:
     the untrusted-input boundary -- which is the only boundary an
     independent checker has, and therefore the one place it cannot afford
     to be relaxed.
+
+    INPUT-DOMAIN CONTRACT 2026-11-03 (docs/QLDPC_RECEIPT_INPUT_DOMAIN.md):
+    an integer slot holds a JSON integer literal and nothing else. A float
+    is refused even when integral: the JavaScript checkers cannot tell
+    `1.0` from `1` without reading the token, so the one policy all seven
+    implementations can enforce is "the token is an integer literal", and
+    json.loads hands this file a float for every other token.
     """
     if isinstance(v, bool):
         refuse(f"{what} is a boolean, not an integer: {v!r}")
     if isinstance(v, int):
         return v
     if isinstance(v, float):
-        if v != v or v in (float("inf"), float("-inf")):
-            refuse(f"{what} is not finite: {v!r}")
-        if v != int(v):
-            refuse(f"{what} is not an integer: {v!r} -- refusing rather "
-                   f"than truncating to {int(v)}")
-        return int(v)
+        refuse(f"{what} is not an integer literal: {v!r}")
     refuse(f"{what} is not a number: {v!r}")
+
+
+def _rows(spec, m: int, what: str) -> list[int]:
+    """A single row (an integer), or a GF(2) combination: a list of at least
+    two distinct rows. A one-element list is refused, because a single row
+    is written as an integer (the contract, section 3)."""
+    if isinstance(spec, list):
+        rows = [_exact_int(r, f"{what} row") for r in spec]
+        if len(rows) < 2:
+            refuse(f"{what} combines fewer than two rows: {spec!r}")
+        if len(set(rows)) != len(rows):
+            refuse(f"duplicate row in {what} combination")
+    else:
+        rows = [_exact_int(spec, f"{what} row")]
+    for r in rows:
+        if not (0 <= r < m):
+            refuse(f"{what} row out of range: {r}")
+    return rows
 
 
 def _index(v, n: int, what: str) -> int:
@@ -80,6 +106,8 @@ def _index(v, n: int, what: str) -> int:
 
 def main(path: str) -> int:
     doc = json.loads(open(path, encoding="utf-8").read())
+    if not isinstance(doc.get("weights"), list):
+        refuse("weights is not a list")
     nvar = len(doc["weights"])
     checks = [tuple(_index(i, nvar, f"check {j} index") for i in c)
               for j, c in enumerate(doc["checks"])]
@@ -90,8 +118,14 @@ def main(path: str) -> int:
          enumerate(doc["weights"])]
     if any(v < 0 for v in w):
         refuse("negative weight")
-    syn = [_exact_int(b, f"syndrome[{i}]") & 1 for i, b in
+    # A GF(2) entry is exactly 0 or 1. This line read `_exact_int(b) & 1`
+    # until 2026-11-03, so a syndrome entry 2 was read as 0 and -1 as 1 and
+    # the malformed instance certified (external audit 2, finding F05).
+    syn = [_exact_int(b, f"syndrome[{i}]") for i, b in
            enumerate(doc["syndrome"])]
+    for i, b in enumerate(syn):
+        if b not in (0, 1):
+            refuse(f"syndrome[{i}] = {b} is not 0 or 1")
     if len(syn) != len(checks):
         refuse("syndrome length mismatch")
     cand = sorted(_index(i, nvar, "candidate index")
@@ -119,27 +153,27 @@ def main(path: str) -> int:
             if not (isinstance(entry, list) and len(entry) == 4):
                 refuse("malformed dual entry")
             rows, F, num, den = entry
-            if not isinstance(num, int) or not isinstance(den, int) \
-                    or den <= 0:
-                refuse("non-integer rational")
+            num = _exact_int(num, "multiplier numerator")
+            den = _exact_int(den, "multiplier denominator")
+            if den <= 0:
+                refuse("non-integer rational: denominator must be >= 1")
+            if gcd(abs(num), den) != 1:
+                refuse(f"multiplier {num}/{den} is not in lowest terms")
             y = Fraction(num, den)
             if y < 0:
                 refuse("negative multiplier")
-            if y == 0:
-                continue
-            rlist = ([int(r) for r in rows] if isinstance(rows, list)
-                     else [int(rows)])
-            if len(set(rlist)) != len(rlist):
-                refuse("duplicate row in combination")
-            if any(not (0 <= r < len(checks)) for r in rlist):
-                refuse("row out of range")
+            # a zero multiplier is skipped only AFTER the facet is validated
+            # (final referee, 2026-11-03): every listed facet is checked
+            rlist = _rows(rows, len(checks), "facet")
             sup: set = set()
             par = 0
             for r in rlist:
                 s2, p2 = reduced(r, fix)
                 sup ^= set(s2)
                 par ^= p2
-            Fs = set(int(i) for i in F)
+            if not isinstance(F, list):
+                refuse("F is not a list")
+            Fs = set(_index(i, nvar, "F index") for i in F)
             if len(Fs) != len(F):
                 refuse("duplicate F index")
             if not Fs <= sup:
@@ -150,6 +184,8 @@ def main(path: str) -> int:
             if key in seen:
                 refuse("duplicate facet")
             seen.add(key)
+            if y == 0:                      # validated above; adds nothing
+                continue
             for i in sup:
                 load[i] = load.get(i, Fraction(0)) + \
                     (-y if i in Fs else y)
@@ -173,20 +209,19 @@ def main(path: str) -> int:
         if kind == "branch":
             if len(node) != 4:
                 refuse("malformed branch")
-            k = int(node[1])
+            k = _exact_int(node[1], "branch variable")
             if k in fix or not (0 <= k < len(w)):
                 refuse(f"bad branch variable {k}")
             walk(node[2], {**fix, k: 0})
             walk(node[3], {**fix, k: 1})
             return
         if kind == "infeasible":
-            rlist = ([int(r) for r in node[1]]
-                     if isinstance(node[1], list) else [int(node[1])])
+            if len(node) != 2:
+                refuse("malformed infeasible leaf")
+            rlist = _rows(node[1], len(checks), "infeasible leaf")
             sup: set = set()
             par = 0
             for r in rlist:
-                if not (0 <= r < len(checks)):
-                    refuse("infeasible row out of range")
                 s2, p2 = reduced(r, fix)
                 sup ^= set(s2)
                 par ^= p2
@@ -199,7 +234,17 @@ def main(path: str) -> int:
             if len(node) != 2:
                 refuse("malformed bound leaf")
             W1 = sum(w[i] for i, a in fix.items() if a == 1)
+            if not isinstance(node[1], list):
+                refuse("bound leaf duals are not a list")
             L = leaf_bound(node[1], fix)
+            # THE ROOT GUARD (2026-11-03). With nothing fixed the leaf bound
+            # is a flat bound on the whole instance, and L <= OPT <= U for a
+            # valid dual and a verified-feasible candidate: L > U is a broken
+            # bound, refused as an instrument failure -- as the flat checkers
+            # and verify-qldpc-tree.mjs (depth 0) refuse it.
+            if not fix and L > U:
+                refuse(f"VERIFIER FAILURE: root bound {L} exceeds the weight "
+                       f"{U} of a valid correction")
             if not (W1 + L > U - step):
                 refuse(f"leaf bound {W1}+{L} fails vs {U}-{step}")
             return

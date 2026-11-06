@@ -15,9 +15,21 @@ Labs), whose LaTeX sources are in `paper/`:
   certificates in `evidence/circuit_distance_exact/`, and the Lean development
   of its checker's calculus in `lean/CertR198/`
 
+The same release tag carries a second, separately signed bundle,
+`oneq-superactivation`: a manuscript on superactivation of quantum capacity,
+a different line of work that shares no evidence with this one. In the public
+repository it is the subdirectory `superactivation/`, a complete tree of its
+own with its own `SHA256SUMS`, `AUDIT.md` and `README.md`; its commands run
+from inside it (`cd superactivation`), and nothing in this tree's `SHA256SUMS`,
+tests or commands reaches into it.
+
+Install the pinned Python dependencies first:
+
+    python -m pip install -r requirements.txt
+
 Every number in all three papers is a macro generated from the evidence in this
-tree. Regenerate them and rebuild the PDFs (needs Python and a TeX
-distribution with REVTeX 4.2; paper 3's generator also needs Stim and NumPy):
+tree. Regenerate them and rebuild the PDFs (a TeX distribution with REVTeX 4.2
+is also needed):
 
     python paper/tools/make_numbers.py
     python paper/tools/make_numbers_qldpc.py
@@ -68,7 +80,7 @@ checks a signed release against the issuer pinned in `ISSUERS.json`: put the thr
 
     node verifier-js/verify-certificate.mjs --conformance conformance/cert_vectors.json
 
-56 vectors must agree. **48 of them are refusals** — documents that a sound
+59 vectors must agree. **51 of them are refusals** — documents that a sound
 checker must reject. A suite where everything verifies would not notice a
 checker that accepts everything, which is the failure that matters, because
 such a checker is worthless and looks perfect.
@@ -85,7 +97,7 @@ is not evidence.
 | `certification_semantics_audit.json` | what that rule proved: the producing code of each headline artifact, re-run on seeded samples, every accepted certificate analysed in exact rational arithmetic — all admissible, largest proven slack far below 1e-6 | not the per-shot slack of the full runs, whose certificates were not stored; and not EXACT optimality, which today's stricter checker measures separately |
 | `google_generation_history.json` | the Willow certified rate by producer generation, read from the objects each generation wrote | generations 2 and 3 ran partial coverage; their aggregates weight configurations unequally |
 | `gap_distribution_exact_rule.json` | the gap experiment re-run under the exact checker, with per-shot gaps | a different certified subset from `gap_distribution.json`; both are shipped so the difference is visible |
-| `cert_conformance.json` | two independent checkers agree 56/56 | agreement is not correctness — it is the absence of a *shared* misunderstanding |
+| `cert_conformance.json` | two independent checkers agree 59/59 | agreement is not correctness — it is the absence of a *shared* misunderstanding |
 | `decoder_mutation_gate_d*.json` | syndrome consistency catches 0 of the syndrome-consistent fault class; the certificate catches all of it | output mutation models wrong answers, not crashes, hangs or memory errors |
 | `epsilon_rerun/<config>/summary.json` | the scale runs repeated under the epsilon checker (exact rationals, eps_max = 1e-6) with every receipt kept: proven-within-epsilon, exact and not-proven counts, largest proven slack, forgeries | the receipts are a separate archive; `replay_<config>.json` records a complete two-verifier replay of them |
 | `detection_outcomes/d*.json` | seeded faults and a stale calibration judged against the exact optimum: outcome states, false-alarm base rates, discordant logical cells | the stale-calibration result is objective mismatch against a supplied reference model; it cannot say which model describes a device |

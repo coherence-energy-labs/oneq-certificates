@@ -34,7 +34,7 @@ def compare(clone: pathlib.Path) -> list[dict]:
     stubs = pathlib.Path(tempfile.mkdtemp(prefix="r198_stubs_"))
     for name, text in STUBS.items():
         (stubs / name).parent.mkdir(parents=True, exist_ok=True)
-        (stubs / name).write_text(text)
+        (stubs / name).write_text(text, encoding="utf-8", newline="\n")  # temporary stubs; LF (serialization.py)
     sys.path[:0] = [str(stubs), str(clone), str(HERE)]
     from morphing_qec_circuits.bb_params import BBParams
 

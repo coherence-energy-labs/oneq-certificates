@@ -16,9 +16,10 @@ WHAT IS CHECKED (names as in FOLD_PROOF.md, section 2):
   H2   for each r, the right qubits are split exactly into M^X_r and M^Z_r (all measured, all reset)
   H3   every stabilizer generator (both types) and every memory logical, carried through F_r, has its right
        support inside the qubits measured in its own basis in round r (trackability)
-  PAL  palindrome: for each r the mid-cycle images of the expansion noise of F_r^-1 equal those of the
-       contraction noise of F_r, layer by layer, and the reset noise equals the measurement noise; with ROOT, the
-       reason: every layer's noise set is invariant under that layer
+  PAL  palindrome: for each r the MID-CYCLE IMAGES of the expansion noise of F_r^-1 equal those of the
+       contraction noise of F_r, layer by layer, and the images of the reset noise equal those of the measurement
+       noise; with ROOT, the reason: every layer's noise set is invariant under that layer. Equal RAW channels on
+       mirrored layers do not suffice (FOLD_PROOF.md, after Lemma 4; tests/test_r198_p3_audit_fixes.py)
   BND  boundary: prep images lie among the round-0 reset images, readout images among the measurement images of
        the same parity
   PURE every noise location that holds a Pauli A with nonzero memory part pi(A) also holds pi(A)
@@ -777,7 +778,10 @@ def verdict(res: dict) -> bool:
 def summary(res: dict) -> str:
     lines = [f"== {res['circuit']} memory-{res['basis']} (hom {res['hom']}, n = {res['n']}) -- {res['seconds']} s"]
     for k, v in res["hypotheses"].items():
-        extra = f" (root: layer invariance {'holds' if v['root_layer_invariance'] else 'FAILS'})" if k == "PAL" else ""
+        # PAL is checked on MID-CYCLE IMAGES (FOLD_PROOF.md section 2); equal raw channels on mirrored layers are not
+        # enough (FOLD_PROOF.md, after Lemma 4), so the output names what was compared
+        extra = (f" (mid-cycle images of mirrored layers; root: each layer's noise invariant under that layer "
+                 f"{'holds' if v['root_layer_invariance'] else 'FAILS'})") if k == "PAL" else ""
         lines.append(f"  {k:<5} {'PASS' if v['holds'] else 'FAIL'}{extra}")
     for k, v in res["derived"].items():
         lines.append(f"  {k:<10} {'PASS' if v['holds'] else 'FAIL'}")

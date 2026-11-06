@@ -11,8 +11,23 @@
 // alternative optima as forgeries. Every one of those was a misreading of the
 // PROBLEM, not a typo -- and a port would have inherited all four.
 //
-// So nothing here is ported. No shared library, no npm packages, Node
-// built-ins only. It reads the spec, not the Python.
+// WHAT IS INDEPENDENT AND WHAT IS NOT (settled from git history, 2026-11-03,
+// after external review 1 found this header contradicting the comment above
+// toDyadic). The first version (7a5a3cff, 2026-07-31) was written from the
+// spec with no shared code: the hex-float reader, canonical JSON, the graph
+// fingerprint, the T-join test and the T'-oddness test still are. The
+// repeated-set rule (ab2834bd) came from THIS file's reading. The
+// exact-arithmetic acceptance step was NOT written from the spec: the lattice
+// rule was ported from the Python checker on 2026-08-04 (888b7454), and the
+// dual repair that replaced it -- shed, absorb, verify, the spread absorb and
+// the four spend orders -- was written into both languages in the same commits
+// (6b3a146d, e0767dc7, 900d6471, 2026-08-05), deliberately identical so the
+// two repair the same way. And the two files shared at least one misreading:
+// boundary-first edge keys did not canonicalise in either until 56dce450
+// (2026-08-18). No shared library, no npm packages, Node built-ins only; but
+// the acceptance step is a port, and agreement with the Python on it is not
+// independent evidence. The epsilon-checker written from the spec alone, by an
+// agent without the Python, is verify-epsilon.mjs.
 //
 //   node verify-certificate.mjs cert.json --graph graph.json
 //   node verify-certificate.mjs --conformance vectors.json

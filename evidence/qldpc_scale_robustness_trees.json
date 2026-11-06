@@ -1,0 +1,58 @@
+{
+ "schema": "oneq-qldpc-scale-robustness-trees/1",
+ "dataset": "DEVELOPMENT heterogeneous rung: H_Z of the [[144,12,12]] code, p_i = 0.02 * U(0.5, 2) from seed 4242, 300 nontrivial syndromes from seed 2101 -- the same instance and shots as qldpc_scale_probe.py, not the held-out heterogeneous rung",
+ "decoder": "ldpc BpOsdDecoder, error_channel p_i, 30 iterations, min-sum (scaling 1.0), parallel, OSD-CS 5",
+ "ldpc": "2.4.1",
+ "scales": {
+  "1000": {
+   "certified_exact": 300,
+   "by_route": {
+    "flat_bposd": 297,
+    "flat_primal": 2,
+    "tree": 1
+   },
+   "tree_shots": {
+    "71": 29
+   },
+   "route_changes_vs_1000": 0,
+   "selected_correction_changes_vs_1000": 0,
+   "weights_sha256": "c2d00f179c80c7d4d9688df3b134094e06fd561021ba3904a1f5a2210c15bbc3"
+  },
+  "10000": {
+   "certified_exact": 300,
+   "by_route": {
+    "flat_bposd": 297,
+    "flat_primal": 2,
+    "tree": 1
+   },
+   "tree_shots": {
+    "71": 27
+   },
+   "route_changes_vs_1000": 0,
+   "selected_correction_changes_vs_1000": 0,
+   "weights_sha256": "d4c95a6eebffaec3b54d0b1ce63625667a848fc71a09b6f96a87935c4c229531"
+  },
+  "100000": {
+   "certified_exact": 300,
+   "by_route": {
+    "flat_bposd": 297,
+    "flat_primal": 2,
+    "tree": 1
+   },
+   "tree_shots": {
+    "71": 27
+   },
+   "route_changes_vs_1000": 0,
+   "selected_correction_changes_vs_1000": 0,
+   "weights_sha256": "e69667177924223d710673a652d469a078e0c93c123534c9e74f11c747d29bc9"
+  }
+ },
+ "route_change_detail": [],
+ "all_certified_at_every_scale": true,
+ "seconds": 207.7,
+ "code_sha256": {
+  "experiments/m0_prior_art/qldpc_scale_probe_trees.py": "566398405671e671add34a18a220387fe64a4512bab58f604f911b9bda717e8c",
+  "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c",
+  "src/oneq/qldpc_check.py": "51940b3712a830895cbffa3516c81ba57836d470dbe52085219e581709c15ecc"
+ }
+}

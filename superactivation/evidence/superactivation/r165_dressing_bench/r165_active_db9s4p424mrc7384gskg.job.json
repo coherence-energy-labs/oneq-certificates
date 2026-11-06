@@ -1,0 +1,38 @@
+{
+ "tag": "r165_active",
+ "job_id": "db9s4p424mrc7384gskg",
+ "backend": "ibm_kingston",
+ "submitted_utc": "2026-10-17T18:45:56+00:00",
+ "submit_called_utc": "2026-10-17T18:45:55.670264+00:00",
+ "quota_remaining_before_s": 78.0,
+ "estimated_cost_s": 8.54,
+ "prereg": "C:\\Users\\Josh\\Projects\\ONE_Q\\docs\\PREREG_r165_dressing_bench.md",
+ "prereg_sha256": "1fc5294c30d2cc0c3402f3f05d5c33b08f9455c2767a1ecb6a06bc56aa1046e5",
+ "qpy_sha256": "02cf6c44738dec54d2080c62eb59d1d598c76c9c36bb08ebffbcbdee55cc32db",
+ "circuit_order": [
+  "ro_all0",
+  "ro_all1",
+  "bench_d0",
+  "bench_d16",
+  "bench_d48",
+  "ro_end0",
+  "ro_end1"
+ ],
+ "shots": {
+  "ro_all0": 2000,
+  "ro_all1": 2000,
+  "bench_d0": 4000,
+  "bench_d16": 4000,
+  "bench_d48": 4000,
+  "ro_end0": 2000,
+  "ro_end1": 2000
+ },
+ "twirl_randomizations": 8,
+ "extra": {},
+ "meas_type": "kerneled",
+ "iq_calibration": [
+  "ro_all0",
+  "ro_all1"
+ ],
+ "twirl_strategy": "active"
+}

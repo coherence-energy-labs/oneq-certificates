@@ -1,0 +1,83 @@
+{
+ "schema": "oneq.r165.dressing_heldout/1",
+ "label": "EXPLORATORY -- outside every preregistered verdict",
+ "r152_job": "db9c50oc77vs73817rog",
+ "traj": 24,
+ "measured": {
+  "r146": 0.6167117524746097,
+  "r147": 0.6272772705949263
+ },
+ "variants": {
+  "V3c (twirl off)": {
+   "params": {},
+   "r146": 0.667379185902927,
+   "r146_miss": -0.050667433428317254,
+   "r147": 0.668672538255338,
+   "r147_miss": -0.04139526766041168,
+   "residual": {
+    "main": -0.04371317795226974,
+    "twin_inline": -0.044352921455002185,
+    "twin_static": -0.022265464883124156
+   }
+  },
+  "+ dressing x1 (R163)": {
+   "params": {
+    "twirl": "active-accum"
+   },
+   "r146": 0.6478049665026049,
+   "r146_miss": -0.031093214027995142,
+   "r147": 0.664911251290067,
+   "r147_miss": -0.03763398069514068,
+   "residual": {
+    "main": -0.03789062456060092,
+    "twin_inline": -0.03224212062010352,
+    "twin_static": -0.003811385309057856
+   }
+  },
+  "+ dressing x1.54 (R165, 132 ns inverted)": {
+   "params": {
+    "twirl": "active-accum",
+    "dressing_factor": 1.54
+   },
+   "r146": 0.6394411935150406,
+   "r146_miss": -0.022729441040430842,
+   "r147": 0.6628365489783214,
+   "r147_miss": -0.03555927838339512,
+   "residual": {
+    "main": -0.03418734844249334,
+    "twin_inline": -0.034358496848196016,
+    "twin_static": -0.00034493041759064286
+   }
+  },
+  "+ dressing x1.75 (R165, 100 ns inverted)": {
+   "params": {
+    "twirl": "active-accum",
+    "dressing_factor": 1.75
+   },
+   "r146": 0.6369525859815439,
+   "r146_miss": -0.020240833506934175,
+   "r147": 0.6603453085125834,
+   "r147_miss": -0.03306803791765711,
+   "residual": {
+    "main": -0.03251114542439849,
+    "twin_inline": -0.03225216670085666,
+    "twin_static": -0.0010134982850228888
+   }
+  },
+  "+ dressing x2 (a fixed two-sx dressing)": {
+   "params": {
+    "twirl": "active-accum",
+    "dressing_factor": 2.0
+   },
+   "r146": 0.6325678672127888,
+   "r146_miss": -0.01585611473817905,
+   "r147": 0.661444880691147,
+   "r147_miss": -0.03416761009622071,
+   "residual": {
+    "main": -0.03170547583130569,
+    "twin_inline": -0.0362759329007514,
+    "twin_static": 0.012866850307422996
+   }
+  }
+ }
+}

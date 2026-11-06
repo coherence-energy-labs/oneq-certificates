@@ -1,0 +1,76 @@
+{
+ "schema": "oneq.ion_sequential/1",
+ "looks": [
+  500,
+  1000,
+  1500,
+  2000,
+  3000,
+  4000,
+  5000,
+  6000,
+  7000,
+  8000
+ ],
+ "claim_delta": 2.8665157187919455e-07,
+ "delta_per_look": 2.8665157187919455e-07,
+ "batches": [
+  [
+   0,
+   500
+  ],
+  [
+   500,
+   1000
+  ],
+  [
+   1000,
+   1500
+  ],
+  [
+   1500,
+   2000
+  ],
+  [
+   2000,
+   3000
+  ],
+  [
+   3000,
+   4000
+  ],
+  [
+   4000,
+   5000
+  ],
+  [
+   5000,
+   6000
+  ],
+  [
+   6000,
+   7000
+  ],
+  [
+   7000,
+   8000
+  ]
+ ],
+ "alpha_split": "none: the betting test is anytime-valid (Ville), so every look uses the whole delta",
+ "seed": 203,
+ "rule": "betting",
+ "units": 8000,
+ "requested_units": 8000,
+ "design_qpy_sha256": "6977035cb08d1740dbd66e8c954ce7c789823df383a53a529bb1e4caf815246e",
+ "time_profile": {
+  "uniform": false,
+  "reason": "640 ee_x/high units do not tile 8000 units into equal blocks"
+ },
+ "pi_rare": 0.08,
+ "bets": [
+  0.3,
+  0.5,
+  0.8
+ ],
+ "labels_sha256": "0d9f6eda02e92943ae7130c3720d60b4eaa79c6ff574a1cfcaa29962e153fcfd"
+}

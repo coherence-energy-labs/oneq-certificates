@@ -1,0 +1,22 @@
+{
+  "n": 20,
+  "certified_lower_bound": "[0.7506549819500652349137851243630950923780 +/- 2.09e-41]",
+  "certified_lower_bound_float": 0.7506549819500652,
+  "exceeds_three_quarters": true,
+  "certified_margin_lower_bound": 0.0006549819500652349,
+  "fidelity_ball": "[0.750654981950065234913785124363 +/- 9.52e-32]",
+  "encoder_trace_excess": 1.2223608602905927e-09,
+  "max_decoder_trace_excess": 1.1642844403424862e-10,
+  "blocks_proved_positive_definite": 232,
+  "grid_bits": 96,
+  "precision_bits": 256,
+  "eta": 5.820766091346741e-11,
+  "seconds": 10.5,
+  "imported_theorems": [
+    "arXiv 2604.27042 Prop. 1: F_c((P x A)^n, 2) >= F_c(N~^n, 2)",
+    "arXiv 2604.27042 Result 1: F_c(P^n, 2) <= 1/2 and F_c(A^n, 2) <= 3/4 for every n"
+  ],
+  "float_fidelity": 0.7506549826203347,
+  "witness": "witness_n20.npz",
+  "witness_sha256": "692250e2762557ba7cac83bfca0ddead3dd328bdfcef4926676eff5db225d00e"
+}

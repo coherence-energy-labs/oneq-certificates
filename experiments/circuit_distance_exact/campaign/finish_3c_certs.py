@@ -57,7 +57,9 @@ def main():
     text = "".join(json.dumps({k: (PAT.sub("<work>/", v) if isinstance(v, str) else v) for k, v in best[c].items()})
                    + "\n" for c in need)
     assert "Users" not in text
-    (REC / "3c_shift_certificates_w10.jsonl").write_text(text)
+    # UTF-8, CRLF on every platform: the archived record's bytes, which a release statement pins (serialization.py)
+    import serialization as ser  # noqa: E402  (LANE is on sys.path)
+    ser.write_text_crlf(REC / "3c_shift_certificates_w10.jsonl", text)
     subprocess.run([sys.executable, str(LANE / "collect_results.py")], check=True)
     claim = json.loads((ROOT / "evidence" / "circuit_distance_exact" / "results.json").read_text())["three_colour_every_T"]
     print("evidence_class:", claim["evidence_class"])

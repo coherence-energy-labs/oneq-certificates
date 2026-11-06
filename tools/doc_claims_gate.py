@@ -65,8 +65,12 @@ def doc_files(root=None):
     was shared and the CORPUS was not. It is shared now.
     """
     root = ROOT if root is None else root
+    # JUDGED ON THE PARTS BELOW THE ROOT. Testing the absolute path meant a
+    # checkout that itself lives under a directory named `.build` or `release`
+    # -- the pre-push hook's clean checkouts do -- excluded every document,
+    # scanned 0 and passed: a gate that could not fail (2026-11-03).
     return [p for p in root.rglob("*.md")
-            if not any(x in p.parts for x in _NOT_LIVE_PROSE)]
+            if not any(x in p.relative_to(root).parts for x in _NOT_LIVE_PROSE)]
 
 
 def ground_truth() -> dict:
@@ -749,6 +753,12 @@ def main() -> int:
     # reached 466, so a leftover COPY of two documents reddened a gate about
     # the repository's own prose.
     docs = doc_files()
+    if not docs:
+        # An empty corpus is a refusal, never a pass: zero documents scanned
+        # has zero mismatches whatever the prose says.
+        print(f"DOC-CLAIMS GATE: REFUSED -- 0 documents found under {ROOT}; a gate "
+              f"that judges nothing cannot pass")
+        return 2
     bad, scoped = scan(truth, docs)
 
     print("DOC-CLAIMS GATE -- headlines recomputed from the artifacts\n")

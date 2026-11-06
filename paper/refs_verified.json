@@ -1,5 +1,5 @@
 {
- "fetched": "2026-11-02",
+ "fetched": "2026-11-03",
  "entries": {
   "edmonds1965paths": {
    "doi": {
@@ -2066,6 +2066,519 @@
     "issue": "2",
     "page": "296-317"
    }
+  },
+  "parentin2026onset": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Onset of superactivation of quantum capacity",
+    "authors": [
+     "Parentin",
+     "Bergh",
+     "Datta",
+     "Wilde"
+    ],
+    "year": 2026
+   }
+  },
+  "bergh2026permutation": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Permutation Invariant Optimization Problems in Quantum Information Theory: A Framework for Channel Fidelity and Beyond",
+    "authors": [
+     "Bergh",
+     "Parentin"
+    ],
+    "year": 2026
+   }
+  },
+  "smith2008quantum": {
+   "doi": {
+    "source": "crossref",
+    "title": "Quantum Communication with Zero-Capacity Channels",
+    "authors": [
+     "Smith",
+     "Yard"
+    ],
+    "year": 2008,
+    "volume": "321",
+    "issue": "5897",
+    "page": "1812-1815"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Quantum Communication With Zero-Capacity Channels",
+    "authors": [
+     "Smith",
+     "Yard"
+    ],
+    "year": 2008
+   }
+  },
+  "cubitt2015unbounded": {
+   "doi": {
+    "source": "crossref",
+    "title": "Unbounded number of channel uses may be required to detect quantum capacity",
+    "authors": [
+     "Cubitt",
+     "Elkouss",
+     "Matthews",
+     "Ozols",
+     "Pérez-García",
+     "Strelchuk"
+    ],
+    "year": 2015,
+    "volume": "6",
+    "issue": "1",
+    "page": "6739"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Unbounded number of channel uses are required to see quantum capacity",
+    "authors": [
+     "Cubitt",
+     "Elkouss",
+     "Matthews",
+     "Ozols",
+     "Perez-Garcia",
+     "Strelchuk"
+    ],
+    "year": 2014
+   }
+  },
+  "smith2011gaussian": {
+   "doi": {
+    "source": "crossref",
+    "title": "Quantum communication with Gaussian channels of zero quantum capacity",
+    "authors": [
+     "Smith",
+     "Smolin",
+     "Yard"
+    ],
+    "year": 2011,
+    "volume": "5",
+    "issue": "10",
+    "page": "624-627"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Gaussian bosonic synergy: quantum communication via realistic channels of zero quantum capacity",
+    "authors": [
+     "Smith",
+     "Smolin",
+     "Yard"
+    ],
+    "year": 2011
+   }
+  },
+  "brandao2012noise": {
+   "doi": {
+    "source": "crossref",
+    "title": "When Does Noise Increase the Quantum Capacity?",
+    "authors": [
+     "Brandão",
+     "Oppenheim",
+     "Strelchuk"
+    ],
+    "year": 2012,
+    "volume": "108",
+    "issue": "4",
+    "page": "040501"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "When does noise increase the quantum capacity?",
+    "authors": [
+     "Brandão",
+     "Oppenheim",
+     "Strelchuk"
+    ],
+    "year": 2011
+   }
+  },
+  "leung2015power": {
+   "doi": {
+    "source": "crossref",
+    "title": "On the Power of PPT-Preserving and Non-Signalling Codes",
+    "authors": [
+     "Leung",
+     "Matthews"
+    ],
+    "year": 2015,
+    "volume": "61",
+    "issue": "8",
+    "page": "4486-4499"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "On the power of PPT-preserving and non-signalling codes",
+    "authors": [
+     "Leung",
+     "Matthews"
+    ],
+    "year": 2014
+   }
+  },
+  "horodecki1998mixed": {
+   "doi": {
+    "source": "crossref",
+    "title": "Mixed-State Entanglement and Distillation: Is there a “Bound” Entanglement in Nature?",
+    "authors": [
+     "Horodecki",
+     "Horodecki",
+     "Horodecki"
+    ],
+    "year": 1998,
+    "volume": "80",
+    "issue": "24",
+    "page": "5239-5242"
+   }
+  },
+  "horodecki1999general": {
+   "doi": {
+    "source": "crossref",
+    "title": "General teleportation channel, singlet fraction, and quasidistillation",
+    "authors": [
+     "Horodecki",
+     "Horodecki",
+     "Horodecki"
+    ],
+    "year": 1999,
+    "volume": "60",
+    "issue": "3",
+    "page": "1888-1898"
+   }
+  },
+  "horodecki2005secure": {
+   "doi": {
+    "source": "crossref",
+    "title": "Secure Key from Bound Entanglement",
+    "authors": [
+     "Horodecki",
+     "Horodecki",
+     "Horodecki",
+     "Oppenheim"
+    ],
+    "year": 2005,
+    "volume": "94",
+    "issue": "16",
+    "page": "160502"
+   }
+  },
+  "johnson2013compatible": {
+   "doi": {
+    "source": "crossref",
+    "title": "Compatible quantum correlations: Extension problems for Werner and isotropic states",
+    "authors": [
+     "Johnson",
+     "Viola"
+    ],
+    "year": 2013,
+    "volume": "88",
+    "issue": "3",
+    "page": "032323"
+   }
+  },
+  "kaur2019extendibility": {
+   "doi": {
+    "source": "crossref",
+    "title": "Extendibility Limits the Performance of Quantum Processors",
+    "authors": [
+     "Kaur",
+     "Das",
+     "Wilde",
+     "Winter"
+    ],
+    "year": 2019,
+    "volume": "123",
+    "issue": "7",
+    "page": "070502"
+   }
+  },
+  "reimpell2005iterative": {
+   "doi": {
+    "source": "crossref",
+    "title": "Iterative Optimization of Quantum Error Correcting Codes",
+    "authors": [
+     "Reimpell",
+     "Werner"
+    ],
+    "year": 2005,
+    "volume": "94",
+    "issue": "8",
+    "page": "080501"
+   }
+  },
+  "berta2022semidefinite": {
+   "doi": {
+    "source": "crossref",
+    "title": "Semidefinite programming hierarchies for constrained bilinear optimization",
+    "authors": [
+     "Berta",
+     "Borderi",
+     "Fawzi",
+     "Scholz"
+    ],
+    "year": 2022,
+    "volume": "194",
+    "issue": "1-2",
+    "page": "781-829"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Semidefinite programming hierarchies for constrained bilinear optimization",
+    "authors": [
+     "Berta",
+     "Borderi",
+     "Fawzi",
+     "Scholz"
+    ],
+    "year": 2018
+   }
+  },
+  "duan2009superactivation": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Super-Activation of Zero-Error Capacity of Noisy Quantum Channels",
+    "authors": [
+     "Duan"
+    ],
+    "year": 2009
+   }
+  },
+  "cubitt2011superactivation": {
+   "doi": {
+    "source": "crossref",
+    "title": "Superactivation of the Asymptotic Zero-Error Classical Capacity of a Quantum Channel",
+    "authors": [
+     "Cubitt",
+     "Chen",
+     "Harrow"
+    ],
+    "year": 2011,
+    "volume": "57",
+    "issue": "12",
+    "page": "8114-8126"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Superactivation of the Asymptotic Zero-Error Classical Capacity of a Quantum Channel",
+    "authors": [
+     "Cubitt",
+     "Chen",
+     "Harrow"
+    ],
+    "year": 2009
+   }
+  },
+  "wu2025quantum": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Quantum capacity amplification via privacy",
+    "authors": [
+     "Wu",
+     "Wang"
+    ],
+    "year": 2025
+   }
+  },
+  "zhu2026incapacity": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Quantum incapacity from observable shadows",
+    "authors": [
+     "Zhu",
+     "Wang"
+    ],
+    "year": 2026
+   }
+  },
+  "zhu2026private": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Private communication via zero-private-capacity quantum channels",
+    "authors": [
+     "Zhu",
+     "Wang"
+    ],
+    "year": 2026
+   }
+  },
+  "g2026private": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Private communication from Pauli channels with no privacy",
+    "authors": [
+     "G",
+     "Halder",
+     "Elkouss"
+    ],
+    "year": 2026
+   }
+  },
+  "khanian2026permutation": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "From Permutation Symmetry to Communication Bounds and Additivity",
+    "authors": [
+     "Khanian",
+     "Leung",
+     "Smith"
+    ],
+    "year": 2026
+   }
+  },
+  "bhargava2026noise": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Noise cancellation by superposition of channels and superactivation of quantum capacity: Experimental realization by NMR",
+    "authors": [
+     "Bhargava",
+     "Chatterjee",
+     "Varma",
+     "Mahesh"
+    ],
+    "year": 2026
+   }
+  },
+  "pan2026e017": {
+   "github": {
+    "source": "github",
+    "year": 2026,
+    "release": "v1.0 — Interleaving recovers the full circuit distance of bivariate-bicycle codes",
+    "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
+   }
+  },
+  "pan2026e019": {
+   "github": {
+    "source": "github",
+    "year": 2026,
+    "release": "v1.0 — Interleaving recovers the full circuit distance of bivariate-bicycle codes",
+    "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
+   }
+  },
+  "wills2026concatenating": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Concatenating Algebraic Codes over High-Rate Quantum LDPC Codes",
+    "authors": [
+     "Wills",
+     "Beverland",
+     "Bishop",
+     "Gambetta",
+     "Rall",
+     "Siddhu",
+     "Cross"
+    ],
+    "year": 2026
+   }
+  },
+  "roffe2022ldpc": {
+   "pypi": {
+    "source": "pypi",
+    "project": "ldpc",
+    "latest_version": "2.4.1",
+    "attributions": [
+     {
+      "_type": "software",
+      "author": "Roffe, Joschka",
+      "title": "{LDPC: Python tools for low density parity check codes}",
+      "url": "https://pypi.org/project/ldpc/",
+      "year": "2022"
+     },
+     {
+      "_type": "article",
+      "title": "Decoding across the quantum low-density parity-check code landscape",
+      "url": "http://dx.doi.org/10.1103/PhysRevResearch.2.043423",
+      "author": "Roffe, Joschka and White, David R. and Burton, Simon and Campbell, Earl",
+      "year": "2020"
+     }
+    ]
+   }
+  },
+  "pan2026e037": {
+   "github_commit": {
+    "source": "github-commit",
+    "commit": "34ffcb140e76bec35430429957c6fed7d51e74e7",
+    "date": "2026-10-25T21:39:52Z",
+    "year": 2026,
+    "path": "research/audits/2026-10-26-E-037.md",
+    "blob": "40b609739b433a6ba7ba5710bfda3d89db390ef1",
+    "heading": "# 审计 E-037：IBM 深度 8 电路（gross [[144,12,12]]、[[108,8,10]]）电路距离下界的证书",
+    "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
+   }
+  },
+  "pan2026e043": {
+   "github_commit": {
+    "source": "github-commit",
+    "commit": "18e47dae3076138503fba99220c357db5087ffc5",
+    "date": "2026-10-31T08:55:19Z",
+    "year": 2026,
+    "path": "research/audits/2026-10-31-E-043.md",
+    "blob": "609cca0f7f45f1e93205c095d9cd3c05d5d01210",
+    "heading": "# 审计：E-043（表 I 补全：IBM 深度 8 两电路进入 T(8) 的任意 R 认证，g9_d11、b9_d9、b10_d9 三个新电路）",
+    "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
+   }
+  },
+  "horodecki2008low": {
+   "doi": {
+    "source": "crossref",
+    "title": "Low-Dimensional Bound Entanglement With One-Way Distillable Cryptographic Key",
+    "authors": [
+     "Horodecki",
+     "Pankowski",
+     "Horodecki",
+     "Horodecki"
+    ],
+    "year": 2008,
+    "volume": "54",
+    "issue": "6",
+    "page": "2621-2625"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Low dimensional bound entanglement with one-way distillable cryptographic key",
+    "authors": [
+     "Horodecki",
+     "Pankowski",
+     "Horodecki",
+     "Horodecki"
+    ],
+    "year": 2005
+   }
+  },
+  "badziag2014bound": {
+   "doi": {
+    "source": "crossref",
+    "title": "Bound entangled states with extremal properties",
+    "authors": [
+     "Badzia¸g",
+     "Horodecki",
+     "Horodecki",
+     "Jenkinson",
+     "Szarek"
+    ],
+    "year": 2014,
+    "volume": "90",
+    "issue": "1",
+    "page": "012301"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Bound entangled states with extremal properties",
+    "authors": [
+     "Badziag",
+     "Horodecki",
+     "Horodecki",
+     "Jenkinson",
+     "Szarek"
+    ],
+    "year": 2013
+   }
   }
+ },
+ "fetched_later": {
+  "roffe2022ldpc": "2026-11-03",
+  "horodecki2008low": "2026-11-03",
+  "badziag2014bound": "2026-11-03"
  }
 }

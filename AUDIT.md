@@ -25,7 +25,7 @@ defending it, or an honest record of where it stops.
 **From the signed tarball alone** — no repository, no network:
 
 ```
-sha256sum -c SHA256SUMS                                    # 2257 files
+sha256sum -c SHA256SUMS                                    # 2460 files
 node verifier-js/verify-certificate.mjs      --conformance conformance/cert_vectors.json           # 56/56, 48 refusals
 python tools/external/exact_lp_certificate_reference.py --self-test
 python tools/recheck_all.py                                # complete pinned replay: 2,042 receipts

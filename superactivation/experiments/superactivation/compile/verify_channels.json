@@ -1,0 +1,691 @@
+{
+ "rows": [
+  {
+   "name": "P coherent Stinespring, gate-by-gate select phase",
+   "choi_trace_dist_raw": 1.485792468432671e-15,
+   "choi_trace_dist_compiled": 1.2556490882588615e-14,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "sx": 54,
+     "rz": 48,
+     "cz": 26,
+     "x": 1
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "P coherent Stinespring, phase-polynomial select (AAM)",
+   "choi_trace_dist_raw": 8.766238272204864e-15,
+   "choi_trace_dist_compiled": 8.60052510760442e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 37,
+     "sx": 37,
+     "cz": 20,
+     "x": 2
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "P randomized (6 unitaries, classical seed)",
+   "choi_trace_dist_raw": 5.360630966617863e-16,
+   "choi_trace_dist_compiled": 7.675868774398206e-16,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "cz": 1
+    },
+    {
+     "cz": 1,
+     "rz": 1
+    },
+    {
+     "x": 1
+    },
+    {
+     "rz": 2,
+     "x": 1
+    },
+    {
+     "cz": 1,
+     "rz": 2,
+     "x": 1
+    },
+    {
+     "cz": 1,
+     "rz": 2,
+     "x": 1
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "P coherent via generic Isometry synthesis",
+   "choi_trace_dist_raw": 3.286714194871633e-14,
+   "choi_trace_dist_compiled": 4.393386504758139e-14,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 198,
+     "sx": 192,
+     "cz": 104,
+     "x": 56
+    }
+   ],
+   "note": "comparison only"
+  },
+  {
+   "name": "A coherent (Toffoli move)",
+   "choi_trace_dist_raw": 0.0,
+   "choi_trace_dist_compiled": 3.8051615406992875e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 31,
+     "sx": 27,
+     "cz": 15
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "A coherent (relative-phase Toffoli move)",
+   "choi_trace_dist_raw": 0.0,
+   "choi_trace_dist_compiled": 3.712790720288175e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 27,
+     "sx": 23,
+     "cz": 9
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block COHERENT channels, D~=paper (U on s2_first)",
+   "choi_trace_dist_raw": 2.3314683517128287e-15,
+   "choi_trace_dist_compiled": 8.493206138382448e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 68,
+     "sx": 65,
+     "cz": 31,
+     "x": 2,
+     "measure": 1,
+     "cond:x": 10,
+     "cond:rz": 36,
+     "cond:sx": 33,
+     "cond:cz": 18,
+     "cond:reset": 3,
+     "cond:measure": 1,
+     "cond:feedforward_blocks": 1,
+     "feedforward_blocks": 1
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block RANDOMIZED channels, D~=paper (U on s2_first)",
+   "choi_trace_dist_raw": 2.388447200120525e-15,
+   "choi_trace_dist_compiled": 2.0426811833019746e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 41,
+     "sx": 38,
+     "cz": 21,
+     "x": 10,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 40,
+     "sx": 38,
+     "cz": 21,
+     "x": 10,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 40,
+     "sx": 38,
+     "cz": 20,
+     "x": 8,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 40,
+     "sx": 38,
+     "cz": 20,
+     "x": 8,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 9,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 42,
+     "sx": 38,
+     "cz": 21,
+     "x": 11,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    },
+    {
+     "rz": 42,
+     "sx": 38,
+     "cz": 21,
+     "x": 11,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block COHERENT channels, D~=paper (U on s1_first)",
+   "choi_trace_dist_raw": 2.3314683517128287e-15,
+   "choi_trace_dist_compiled": 8.493206138382448e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 68,
+     "sx": 65,
+     "cz": 31,
+     "x": 2,
+     "measure": 1,
+     "cond:x": 10,
+     "cond:rz": 36,
+     "cond:sx": 33,
+     "cond:cz": 18,
+     "cond:reset": 3,
+     "cond:measure": 1,
+     "cond:feedforward_blocks": 1,
+     "feedforward_blocks": 1
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block RANDOMIZED channels, D~=paper (U on s1_first)",
+   "choi_trace_dist_raw": 2.388447200120525e-15,
+   "choi_trace_dist_compiled": 2.0426811833019746e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 41,
+     "sx": 38,
+     "cz": 21,
+     "x": 10,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 40,
+     "sx": 38,
+     "cz": 21,
+     "x": 10,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 40,
+     "sx": 38,
+     "cz": 20,
+     "x": 8,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 40,
+     "sx": 38,
+     "cz": 20,
+     "x": 8,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 9,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 42,
+     "sx": 38,
+     "cz": 21,
+     "x": 11,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    },
+    {
+     "rz": 42,
+     "sx": 38,
+     "cz": 21,
+     "x": 11,
+     "reset": 3,
+     "measure": 1,
+     "cond:x": 1,
+     "feedforward_blocks": 1
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block COHERENT channels, D~=opt",
+   "choi_trace_dist_raw": 8.439913105418353e-16,
+   "choi_trace_dist_compiled": 7.300422309433154e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 68,
+     "sx": 65,
+     "cz": 31,
+     "x": 2,
+     "measure": 1,
+     "cond:rz": 11,
+     "cond:sx": 10,
+     "cond:cz": 3,
+     "cond:x": 2,
+     "cond:reset": 3,
+     "cond:measure": 2,
+     "cond:feedforward_blocks": 2,
+     "feedforward_blocks": 1
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block RANDOMIZED channels, D~=opt",
+   "choi_trace_dist_raw": 6.242901335459973e-16,
+   "choi_trace_dist_compiled": 8.135641019150646e-16,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 9,
+     "sx": 9,
+     "cz": 4,
+     "x": 1,
+     "reset": 3,
+     "measure": 2,
+     "cond:sx": 2,
+     "cond:rz": 3,
+     "cond:x": 1,
+     "feedforward_blocks": 2
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 8,
+     "sx": 9,
+     "cz": 4,
+     "x": 1,
+     "reset": 3,
+     "measure": 2,
+     "cond:sx": 2,
+     "cond:rz": 3,
+     "cond:x": 1,
+     "feedforward_blocks": 2
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 6,
+     "sx": 8,
+     "cz": 3,
+     "reset": 3,
+     "measure": 2,
+     "cond:sx": 2,
+     "cond:rz": 3,
+     "cond:x": 1,
+     "feedforward_blocks": 2
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 9,
+     "sx": 8,
+     "cz": 3,
+     "reset": 3,
+     "measure": 2,
+     "cond:sx": 2,
+     "cond:rz": 3,
+     "cond:x": 1,
+     "feedforward_blocks": 2
+    },
+    {
+     "rz": 9,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 13,
+     "sx": 11,
+     "cz": 6,
+     "x": 2,
+     "reset": 3,
+     "measure": 2,
+     "cond:sx": 2,
+     "cond:rz": 3,
+     "cond:x": 1,
+     "feedforward_blocks": 2
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    },
+    {
+     "rz": 13,
+     "sx": 11,
+     "cz": 6,
+     "x": 2,
+     "reset": 3,
+     "measure": 2,
+     "cond:sx": 2,
+     "cond:rz": 3,
+     "cond:x": 1,
+     "feedforward_blocks": 2
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block COHERENT channels, D~=coherent",
+   "choi_trace_dist_raw": 7.139671321685753e-16,
+   "choi_trace_dist_compiled": 7.731068180140227e-15,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 68,
+     "sx": 65,
+     "cz": 31,
+     "x": 2,
+     "measure": 1,
+     "cond:rz": 16,
+     "cond:sx": 13,
+     "cond:cz": 7,
+     "cond:x": 3,
+     "cond:reset": 3,
+     "feedforward_blocks": 1
+    }
+   ],
+   "note": ""
+  },
+  {
+   "name": "block RANDOMIZED channels, D~=coherent",
+   "choi_trace_dist_raw": 6.242901335459973e-16,
+   "choi_trace_dist_compiled": 9.447027335802502e-16,
+   "pass": true,
+   "compiled_counts": [
+    {
+     "rz": 15,
+     "sx": 14,
+     "cz": 8,
+     "x": 4,
+     "reset": 3
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 14,
+     "sx": 14,
+     "cz": 8,
+     "x": 4,
+     "reset": 3
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 16,
+     "sx": 13,
+     "cz": 7,
+     "x": 2,
+     "reset": 3
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 15,
+     "sx": 13,
+     "cz": 7,
+     "x": 2,
+     "reset": 3
+    },
+    {
+     "rz": 9,
+     "sx": 5,
+     "cz": 2,
+     "reset": 3,
+     "x": 1
+    },
+    {
+     "rz": 18,
+     "sx": 16,
+     "cz": 10,
+     "x": 5,
+     "reset": 3
+    },
+    {
+     "rz": 7,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    },
+    {
+     "rz": 19,
+     "sx": 16,
+     "cz": 10,
+     "x": 5,
+     "reset": 3
+    },
+    {
+     "rz": 8,
+     "sx": 5,
+     "cz": 3,
+     "reset": 3,
+     "x": 2
+    }
+   ],
+   "note": ""
+  }
+ ],
+ "summary": {
+  "E~ CZ": 2,
+  "P coherent CZ (gate-by-gate select)": 26,
+  "P coherent CZ (phase-polynomial select, used in blocks)": 20,
+  "P coherent CZ (generic Isometry)": 104,
+  "P randomized CZ per unitary": [
+   1,
+   1,
+   0,
+   0,
+   1,
+   1
+  ],
+  "P randomized expected CZ": 0.7071067811865476,
+  "A coherent CZ (Toffoli move)": 15,
+  "A coherent CZ (rccx move)": 9,
+  "D^0 paper: compiled counts": {
+   "rz": 36,
+   "sx": 33,
+   "x": 9,
+   "cz": 18,
+   "reset": 3,
+   "measure": 1,
+   "cond:x": 1,
+   "feedforward_blocks": 1
+  },
+  "D^0 paper: CZ": 18,
+  "D^0 opt: compiled counts": {
+   "rz": 8,
+   "sx": 8,
+   "cz": 3,
+   "x": 1,
+   "reset": 3,
+   "measure": 2,
+   "cond:sx": 2,
+   "cond:rz": 3,
+   "cond:x": 1,
+   "feedforward_blocks": 2
+  },
+  "D^0 opt: CZ": 3,
+  "D^0 coherent: compiled counts": {
+   "rz": 16,
+   "sx": 13,
+   "cz": 7,
+   "x": 3,
+   "reset": 3
+  },
+  "D^0 coherent: CZ": 7,
+  "D^1 CZ": 0
+ },
+ "tol": 1e-09
+}

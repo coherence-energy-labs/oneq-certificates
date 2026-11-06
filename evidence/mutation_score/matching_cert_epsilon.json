@@ -1,10 +1,11 @@
 {
  "schema": "oneq-mutation-score/1",
  "target": "src/oneq/matching_cert_epsilon.py",
- "target_sha256": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+ "digest_domain": "sha256-lf",
+ "target_sha256": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8",
  "tests": {
-  "tests/test_matching_cert_epsilon.py": "aee2f86aef8963f73b598cedc9397e949b7a955c30c336f2834d519dd5c3946c",
-  "tests/test_replay_epsilon_receipts.py": "19f2651c3b7f3435e12b75d616c6e5a814ac548d470d0057a485c93d78e120a6"
+  "tests/test_matching_cert_epsilon.py": "cf7d6b00a09b106fa63b262af6809a1bb7f9fa48adb0225540fd6e0f0998032b",
+  "tests/test_replay_epsilon_receipts.py": "3a4f9190c62fee20381bfd6bb8ed54872c9d7e760db200b9e25fb8b6c6e44718"
  },
  "copied": [
   "conftest.py",
@@ -12,7 +13,11 @@
   "src",
   "tools",
   "conformance",
-  "experiments/m0_prior_art"
+  "experiments/m0_prior_art",
+  "evidence/epsilon_rerun/replay_2026-11-03",
+  "evidence/epsilon_rerun/heldout_d7_Z_r50",
+  "evidence/instances/matching_heldout_d7_Z_r50.json",
+  "data/epsilon_receipts/heldout_d7_Z_r50"
  ],
  "operators": [
   "AOR",
@@ -24,38 +29,38 @@
   "ROR",
   "UOD"
  ],
- "sites": 97,
- "mutants_run": 97,
+ "sites": 109,
+ "mutants_run": 109,
  "unsplicable": 0,
- "killed": 93,
- "survived": 4,
+ "killed": 106,
+ "survived": 3,
  "timeout": 0,
- "score_killed_over_run": 0.9587628865979382,
- "equivalent_declared": 4,
+ "score_killed_over_run": 0.9724770642201835,
+ "equivalent_declared": 3,
  "score_excluding_equivalents": 1.0,
  "by_operator": {
   "CRP": {
-   "killed": 22,
+   "killed": 25,
    "survived": 0,
    "timeout": 0
   },
   "ROR": {
-   "killed": 20,
-   "survived": 3,
+   "killed": 26,
+   "survived": 2,
    "timeout": 0
   },
   "NEG": {
-   "killed": 27,
+   "killed": 31,
    "survived": 0,
    "timeout": 0
   },
   "UOD": {
-   "killed": 6,
+   "killed": 5,
    "survived": 0,
    "timeout": 0
   },
   "LCR": {
-   "killed": 5,
+   "killed": 6,
    "survived": 0,
    "timeout": 0
   },
@@ -79,9 +84,9 @@
   {
    "operator": "ROR",
    "kind": "Compare",
-   "lineno": 84,
+   "lineno": 92,
    "col": 21,
-   "end_lineno": 84,
+   "end_lineno": 92,
    "end_col": 37,
    "detail": "LtE->Lt",
    "index": 0,
@@ -90,24 +95,11 @@
    "equivalent": "(u, v) and (v, u) compare equal only when u == v, and both branches then return the same tuple, so the mutant agrees with the original on every input."
   },
   {
-   "operator": "ROR",
-   "kind": "Compare",
-   "lineno": 99,
-   "col": 25,
-   "end_lineno": 99,
-   "end_col": 34,
-   "detail": "Lt->LtE",
-   "index": 0,
-   "original": "if k not in W or wf < W[k]:",
-   "mutant": "if k not in W or (wf <= W[k]):",
-   "equivalent": "the mutant replaces a stored parallel-edge weight by an equal weight only when wf == W[k], which stores the same value."
-  },
-  {
    "operator": "AOR",
    "kind": "BinOp",
-   "lineno": 131,
+   "lineno": 154,
    "col": 25,
-   "end_lineno": 131,
+   "end_lineno": 154,
    "end_col": 42,
    "detail": "Add->Sub",
    "index": 0,
@@ -118,9 +110,9 @@
   {
    "operator": "ROR",
    "kind": "Compare",
-   "lineno": 161,
+   "lineno": 186,
    "col": 11,
-   "end_lineno": 161,
+   "end_lineno": 186,
    "end_col": 19,
    "detail": "Gt->GtE",
    "index": 0,
@@ -130,11 +122,9 @@
   }
  ],
  "baseline_seconds": [
-  2.95,
-  2.89
+  7.85,
+  7.65
  ],
- "wall_seconds": 87.1,
- "command": "python tools/mutation_score.py src/oneq/matching_cert_epsilon.py --tests tests/test_matching_cert_epsilon.py tests/test_replay_epsilon_receipts.py --workers 2 --equivalents evidence/mutation_score/matching_cert_epsilon.equivalents.json",
- "digest_domain": "sha256-lf",
- "digest_domain_note": "2026-09-15: pins re-recorded from working-tree bytes to CRLF-normalised bytes (what git stores). Each file was verified to be the bytes the score was measured on and, normalised, the blob at HEAD, so the score is unchanged."
+ "wall_seconds": 97.7,
+ "command": "python tools/mutation_score.py src/oneq/matching_cert_epsilon.py --tests tests/test_matching_cert_epsilon.py tests/test_replay_epsilon_receipts.py --copy evidence/epsilon_rerun/replay_2026-11-03 evidence/epsilon_rerun/heldout_d7_Z_r50 evidence/instances/matching_heldout_d7_Z_r50.json data/epsilon_receipts/heldout_d7_Z_r50 --workers 2 --equivalents evidence/mutation_score/matching_cert_epsilon.equivalents.json --out evidence/mutation_score/matching_cert_epsilon.json"
 }

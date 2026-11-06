@@ -1,0 +1,242 @@
+{
+  "entries": {
+    ".claude/agent-memory/adversary/MEMORY.md": {
+      "bytes": 1812,
+      "import_sha256": "2c6e3b43bc90343be1e45ca57f9c3fe766ba6b2cd3dfea6dcd6c78299d2c78de",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "2c6e3b43bc90343be1e45ca57f9c3fe766ba6b2cd3dfea6dcd6c78299d2c78de"
+    },
+    ".claude/agent-memory/adversary/r147_v4_dynamic_vs_static_attack.md": {
+      "bytes": 2177,
+      "import_sha256": "b4f9932ca6da124e7a7e666cc6cea7eef3313fde8c8cbcf5fff8508401de3719",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "b4f9932ca6da124e7a7e666cc6cea7eef3313fde8c8cbcf5fff8508401de3719"
+    },
+    ".claude/agent-memory/adversary/r152_xs_zz_crosstalk_claim.md": {
+      "bytes": 2889,
+      "import_sha256": "2eeccf24f6db37ab91a2f9806bd55e14217195c0d42716c946888f82c3588e84",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "2eeccf24f6db37ab91a2f9806bd55e14217195c0d42716c946888f82c3588e84"
+    },
+    ".claude/agent-memory/adversary/r170_bar_11_16_ladder_claim.md": {
+      "bytes": 3510,
+      "import_sha256": "f0de5628a630fadacdccf3c8183e9add32778e8ee33891822a1869fb2eb7c5d8",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "f0de5628a630fadacdccf3c8183e9add32778e8ee33891822a1869fb2eb7c5d8"
+    },
+    ".claude/agent-memory/adversary/r183_frame_law_and_raw_readout_claims.md": {
+      "bytes": 4770,
+      "import_sha256": "f563bedda77377758e9968061ce3518a64653711399864550904273566edb894",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "f563bedda77377758e9968061ce3518a64653711399864550904273566edb894"
+    },
+    ".claude/agent-memory/adversary/r191_pcft_circuit_distance_claims.md": {
+      "bytes": 3033,
+      "import_sha256": "1de65eed491a5a7f2040c5aebc053a2bcb3d5eafc7e9ceba6f81d4fdfc2417c3",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "1de65eed491a5a7f2040c5aebc053a2bcb3d5eafc7e9ceba6f81d4fdfc2417c3"
+    },
+    ".claude/agent-memory/adversary/r198_fold_uniform_every_T_claim.md": {
+      "bytes": 2265,
+      "import_sha256": "7211a43816ebc21da9e4ec7a965763b0cdd5153f0e88262e7a46dd0366ec285c",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "7211a43816ebc21da9e4ec7a965763b0cdd5153f0e88262e7a46dd0366ec285c"
+    },
+    ".claude/agent-memory/adversary/r198_morph144_every_T_claim.md": {
+      "bytes": 2475,
+      "import_sha256": "0c40baa70de8c16f0df5e51df52a2921b2e6d64613d442ba88d4d647a5cc0306",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "0c40baa70de8c16f0df5e51df52a2921b2e6d64613d442ba88d4d647a5cc0306"
+    },
+    ".claude/agent-memory/adversary/r201_ion_sequential_certificate_claim.md": {
+      "bytes": 3848,
+      "import_sha256": "2da6f04a68aed7fb632c8885abdca037a9c5c953313db2cb78c1448114b90561",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "2da6f04a68aed7fb632c8885abdca037a9c5c953313db2cb78c1448114b90561"
+    },
+    ".claude/agent-memory/adversary/r202_block_order_certificate_claim.md": {
+      "bytes": 3630,
+      "import_sha256": "ebb223e36b46a984b12fc0ef43af16679112c3ad8219c6d327d998cb0e111755",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "ebb223e36b46a984b12fc0ef43af16679112c3ad8219c6d327d998cb0e111755"
+    },
+    ".claude/agent-memory/adversary/r203_betting_certificate_claim.md": {
+      "bytes": 3088,
+      "import_sha256": "3def674f56a000572b31c3e7337c02a50b7d84eabcb34e8aaee10a34a191880f",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "3def674f56a000572b31c3e7337c02a50b7d84eabcb34e8aaee10a34a191880f"
+    },
+    ".claude/agent-memory/adversary/window_uniform_every_T_claim.md": {
+      "bytes": 2808,
+      "import_sha256": "482551af5906959a5ea0515027369a69c2d9861cd377325d012a3485c52c578c",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "482551af5906959a5ea0515027369a69c2d9861cd377325d012a3485c52c578c"
+    },
+    ".claude/agent-memory/recursive-researcher/MEMORY.md": {
+      "bytes": 315,
+      "import_sha256": "ab10ffe8f5db5e9372b98ded5a5442d433aabd692a76eef22e73a275c89e5bf3",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "ab10ffe8f5db5e9372b98ded5a5442d433aabd692a76eef22e73a275c89e5bf3"
+    },
+    ".claude/agent-memory/recursive-researcher/r170_erasure_bar.md": {
+      "bytes": 2333,
+      "import_sha256": "79aea3db82d1baaba587f3b93284277ca7b542e13a8cdcb04c8d59a5abc9f028",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "79aea3db82d1baaba587f3b93284277ca7b542e13a8cdcb04c8d59a5abc9f028"
+    },
+    ".claude/agent-memory/recursive-researcher/r186_faithful_requirements.md": {
+      "bytes": 2435,
+      "import_sha256": "79d7a3186e85b42dd226d1c823fd49448e008bee720e17cf639c10b1691b772f",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "79d7a3186e85b42dd226d1c823fd49448e008bee720e17cf639c10b1691b772f"
+    },
+    "docs/outreach/quantinuum_startup_partner_application_2026-10-18.md": {
+      "bytes": 17787,
+      "import_sha256": "80e669bc3791dcf661c42a6d9730b3ebcaee2b9f94959af08db415894062ec1e",
+      "is_byte_identical_to_source": false,
+      "source_sha256": "d20c0ee13bf093c22658a3af5491b7d6dbd6d7c60b822b872d6dcdb1d0b9845b"
+    },
+    "evidence/hw/snapshots/ibm_kingston_202610161513360.json": {
+      "bytes": 32369,
+      "import_sha256": "5cf2e0afc7ab5aa744a939f90b2b976410d0644911fb44d74232a807d96ba642",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "5cf2e0afc7ab5aa744a939f90b2b976410d0644911fb44d74232a807d96ba642"
+    },
+    "evidence/hw/snapshots/usage_20261016T193642Z.json": {
+      "bytes": 246,
+      "import_sha256": "e17582914a783798888eb6a9005668aaf94a21b5e61041a82c558900c4906041",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "e17582914a783798888eb6a9005668aaf94a21b5e61041a82c558900c4906041"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/asc.json": {
+      "bytes": 203876,
+      "import_sha256": "affc4ed4c6152d6c77d3f3ab837253f85e1281ee63d2ff2e4ea0212be76bb8fd",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "affc4ed4c6152d6c77d3f3ab837253f85e1281ee63d2ff2e4ea0212be76bb8fd"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/asc.qpy": {
+      "bytes": 2367777,
+      "import_sha256": "9e2057388ad3ca6a3593fb536b401ebfef224dae99da1a0fc5bfb557c8ef0eef",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "9e2057388ad3ca6a3593fb536b401ebfef224dae99da1a0fc5bfb557c8ef0eef"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/composite.json": {
+      "bytes": 150208,
+      "import_sha256": "5424bcc200b4261b3fc7832e63deda710089afd2ce48771b2cb224ab840dcb43",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "5424bcc200b4261b3fc7832e63deda710089afd2ce48771b2cb224ab840dcb43"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/composite.qpy": {
+      "bytes": 3839820,
+      "import_sha256": "f8861de5d7ab3059a2a22fe02aa351928ec6d70bcbd645a40fca7f1e16a91196",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "f8861de5d7ab3059a2a22fe02aa351928ec6d70bcbd645a40fca7f1e16a91196"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/frm.json": {
+      "bytes": 172735,
+      "import_sha256": "4aabd1e705854f64f5fbb62c0f1c81ba1023e6ce083f17d048efd95d85e6b5e6",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "4aabd1e705854f64f5fbb62c0f1c81ba1023e6ce083f17d048efd95d85e6b5e6"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/frm.qpy": {
+      "bytes": 1470438,
+      "import_sha256": "60cb598e6d40d5b760756fca0aa33b83e03c1961f73b0b1c0abf77e7b46b1778",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "60cb598e6d40d5b760756fca0aa33b83e03c1961f73b0b1c0abf77e7b46b1778"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/r147.json": {
+      "bytes": 280051,
+      "import_sha256": "1e58323af1a896f3f784854594ea8e1464774ddb9f52159f43b137c6ce6a70ed",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "1e58323af1a896f3f784854594ea8e1464774ddb9f52159f43b137c6ce6a70ed"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/r147.pred.qpy": {
+      "bytes": 4070984,
+      "import_sha256": "6aade87168c4d5e39e6d14162bc6e6551ea6a8b66fa837050f17cc9ce34f785c",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "6aade87168c4d5e39e6d14162bc6e6551ea6a8b66fa837050f17cc9ce34f785c"
+    },
+    "evidence/superactivation/r183_frame_ab/20261019T032044Z/r147.qpy": {
+      "bytes": 2775888,
+      "import_sha256": "4afcad8a6e37eaf738cffdbf2109273421d66a729adb6b29a8ae543db65fb4a3",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "4afcad8a6e37eaf738cffdbf2109273421d66a729adb6b29a8ae543db65fb4a3"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/asc.json": {
+      "bytes": 204368,
+      "import_sha256": "855fff85da3265913aa5b9c13c64a802585c073bedb052dd758f0e9cba103f2a",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "855fff85da3265913aa5b9c13c64a802585c073bedb052dd758f0e9cba103f2a"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/asc.qpy": {
+      "bytes": 2405959,
+      "import_sha256": "96980095d2b1a8393eada9af3b50f297276ea67fa4a8a1b15f424badc2889949",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "96980095d2b1a8393eada9af3b50f297276ea67fa4a8a1b15f424badc2889949"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/composite.json": {
+      "bytes": 150224,
+      "import_sha256": "77947c5c920f9680e4cbd1f2267a58bb4252106ad4a7ee0e2c74b8102ec419f9",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "77947c5c920f9680e4cbd1f2267a58bb4252106ad4a7ee0e2c74b8102ec419f9"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/composite.qpy": {
+      "bytes": 3875397,
+      "import_sha256": "1039fc31c76dac33d73a752ff146ba8e6bf7da8c0a1850d2b1d288e7d4dd4a2f",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "1039fc31c76dac33d73a752ff146ba8e6bf7da8c0a1850d2b1d288e7d4dd4a2f"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/dryrun_composite.json": {
+      "bytes": 653,
+      "import_sha256": "d9e6508d0fb3ea533ef0b00edc8115af2732fccade5f37f388cb018b2f66f7f8",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "d9e6508d0fb3ea533ef0b00edc8115af2732fccade5f37f388cb018b2f66f7f8"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/frm.json": {
+      "bytes": 173177,
+      "import_sha256": "d8569b50413f2d7bc728b689f396f71db9401af7b4f90e3f8872a0d6516e5374",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "d8569b50413f2d7bc728b689f396f71db9401af7b4f90e3f8872a0d6516e5374"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/frm.qpy": {
+      "bytes": 1467833,
+      "import_sha256": "29d13d979f6156e18d78ad894be044588b9904854ed89616eb0da8bdaf8bbc52",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "29d13d979f6156e18d78ad894be044588b9904854ed89616eb0da8bdaf8bbc52"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/r147.json": {
+      "bytes": 280574,
+      "import_sha256": "956b0ba5b01130577d9479027ed16b001c267305c844a67e094f40312ef05403",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "956b0ba5b01130577d9479027ed16b001c267305c844a67e094f40312ef05403"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/r147.pred.qpy": {
+      "bytes": 4070984,
+      "import_sha256": "0e873d0e5fc43acd2887bc21c7e10d6dd22f796aa95f33ceeb8b96f8cdc9057b",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "0e873d0e5fc43acd2887bc21c7e10d6dd22f796aa95f33ceeb8b96f8cdc9057b"
+    },
+    "evidence/superactivation/r183_frame_ab/fake_20261019T030642Z/r147.qpy": {
+      "bytes": 2822083,
+      "import_sha256": "bb18a9e70a60ad21e6ac6e9ede35f456074f036796e4da6319469304909deae9",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "bb18a9e70a60ad21e6ac6e9ede35f456074f036796e4da6319469304909deae9"
+    },
+    "experiments/superactivation/shield_family/.claude/agent-memory/adversary/MEMORY.md": {
+      "bytes": 158,
+      "import_sha256": "b35e39583ad706c6854eb1765c6319730f455f7de84103353817745dce1962b5",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "b35e39583ad706c6854eb1765c6319730f455f7de84103353817745dce1962b5"
+    },
+    "experiments/superactivation/shield_family/.claude/agent-memory/adversary/superactivation_witness_attacks.md": {
+      "bytes": 1740,
+      "import_sha256": "0c958947d3a60e68049ea9de27f821d29fdc6a233372c794b54cce90871f7ffb",
+      "is_byte_identical_to_source": true,
+      "source_sha256": "0c958947d3a60e68049ea9de27f821d29fdc6a233372c794b54cce90871f7ffb"
+    }
+  },
+  "note": "Items under fake are adversarial/historical, not device evidence. Quantinuum letter is a superseded archive.",
+  "schema": "oneq.archival_import_of_existing_uncommitted_files.v1",
+  "source_checkout": "ONE_Q main worktree tracked edit and specific untracked file paths",
+  "status": "PRESERVED_PROVENANCE_NOT_NEW_SCIENTIFIC_RESULT"
+}

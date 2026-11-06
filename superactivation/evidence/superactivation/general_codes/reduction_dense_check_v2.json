@@ -1,0 +1,264 @@
+{
+ "schema": "oneq.superactivation.reduction-dense-check/2",
+ "claim": "the group reduction (Dicke splitting identity, support, branch states, fidelity), the certifiers' own selection matrices and coefficients at every group size a committed certificate uses, and the certifiers end to end, agree with the dense 2^n construction",
+ "supersedes": "reduction_dense_check.json (schema 1: the float reduction only)",
+ "tolerance_exact_quantities": 1e-12,
+ "tolerance_fidelity": 1e-12,
+ "radius_cap": 1e-70,
+ "flip_probability": 0.41421356237309515,
+ "cases": [
+  {
+   "case": "random two-group code, a = 5, b = 7, every flag pattern",
+   "groups": [
+    5,
+    7
+   ],
+   "n": 12,
+   "encoder": "twogroup.random_encoder, numpy default_rng(12)",
+   "decoders": "twogroup.decode, 60 power-iteration steps",
+   "flag_patterns_checked": 4096,
+   "max_identity_deviation": 8.881784197001252e-16,
+   "max_certifier_selection_deviation": 8.881784197001252e-16,
+   "max_certifier_selection_radius": 3.299757054278887e-77,
+   "max_residual_outside_symmetric": 1.6653345369377348e-16,
+   "max_state_deviation": 1.0408340855860843e-16,
+   "fidelity_dense_all_patterns": 0.5528149470501884,
+   "fidelity_reduction": 0.5528149470501884,
+   "fidelity_abs_difference": 0.0,
+   "seconds": 148.8
+  },
+  {
+   "case": "certified two-group witness a2_b2 (n = 4)",
+   "groups": [
+    2,
+    2
+   ],
+   "n": 4,
+   "certificate": "general_codes/certificate_twogroup_a2_b2.json",
+   "witness_sha256": "4c9069ca80fd4c06a707640f4b8c040b84dc912c48570246866a3110f51e2e15",
+   "decoders_sha256": "5fc396114c699a5d5f02880dc69c47ac95e6c283e681e3079d8c897a1b99717f",
+   "placements_per_branch": "first positions and seeded random positions in each group",
+   "random_seed": 15,
+   "max_identity_deviation": 4.440892098500626e-16,
+   "max_certifier_selection_deviation": 4.440892098500626e-16,
+   "max_certifier_selection_radius": 1.6531471023456511e-77,
+   "max_residual_outside_symmetric": 2.220446049250313e-16,
+   "max_state_deviation": 1.1102230246251565e-16,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.720308926509565,
+   "fidelity_recorded_pair": 0.7203089265095654,
+   "fidelity_abs_difference": 3.3306690738754696e-16,
+   "seconds": 0.0
+  },
+  {
+   "case": "certified two-group witness a4_b4 (n = 8)",
+   "groups": [
+    4,
+    4
+   ],
+   "n": 8,
+   "certificate": "general_codes/certificate_twogroup_a4_b4.json",
+   "witness_sha256": "45a0bf23ff17a1a8a76813b4659253771e88d6e287ade0140020ed4bedf899a1",
+   "decoders_sha256": "a608f97c9b0f43dc94684c66342f32f073948cebe23e6be4788f66f23bb020d8",
+   "placements_per_branch": "first positions and seeded random positions in each group",
+   "random_seed": 15,
+   "max_identity_deviation": 7.771561172376096e-16,
+   "max_certifier_selection_deviation": 7.771561172376096e-16,
+   "max_certifier_selection_radius": 2.359445132849435e-77,
+   "max_residual_outside_symmetric": 1.942890293094024e-16,
+   "max_state_deviation": 1.8041124150158794e-16,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7415171768564592,
+   "fidelity_recorded_pair": 0.741517176856459,
+   "fidelity_abs_difference": 2.220446049250313e-16,
+   "seconds": 0.2
+  },
+  {
+   "case": "certified two-group witness a7_b8 (n = 15)",
+   "groups": [
+    7,
+    8
+   ],
+   "n": 15,
+   "certificate": "general_codes/certificate_twogroup_a7_b8.json",
+   "witness_sha256": "83b00e93301edcf401917f38ebfee4f341bf662ad2597b1d8aea11f9219baab5",
+   "decoders_sha256": "c48d20c8867a189e68d86bf0936b53e4caaf967c45d55e758c3b41ec6ae24fe2",
+   "placements_per_branch": "first positions and seeded random positions in each group",
+   "random_seed": 15,
+   "max_identity_deviation": 1.887379141862766e-15,
+   "max_certifier_selection_deviation": 1.887379141862766e-15,
+   "max_certifier_selection_radius": 3.1828608633434255e-77,
+   "max_residual_outside_symmetric": 1.1102230246251565e-16,
+   "max_state_deviation": 3.608224830031759e-16,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7500784437427233,
+   "fidelity_recorded_pair": 0.7500784437427231,
+   "fidelity_abs_difference": 1.1102230246251565e-16,
+   "seconds": 56.5
+  },
+  {
+   "case": "certified two-group witness a8_b8 (n = 16)",
+   "groups": [
+    8,
+    8
+   ],
+   "n": 16,
+   "certificate": "general_codes/certificate_twogroup_a8_b8.json",
+   "witness_sha256": "d78b7bd665af4a229bd3d654673c669d9d4e2e6474cf82b16249ac9994555f15",
+   "decoders_sha256": "5a005164fb54c6deef040040024e9ee79c5166cdc3fa2b4f6edcade17fdb47b1",
+   "placements_per_branch": "first positions and seeded random positions in each group",
+   "random_seed": 15,
+   "max_identity_deviation": 2.7755575615628914e-15,
+   "max_certifier_selection_deviation": 2.7755575615628914e-15,
+   "max_certifier_selection_radius": 2.991452528017699e-77,
+   "max_residual_outside_symmetric": 1.942890293094024e-16,
+   "max_state_deviation": 5.828670879282072e-16,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7503771821179982,
+   "fidelity_recorded_pair": 0.750377182117998,
+   "fidelity_abs_difference": 2.220446049250313e-16,
+   "seconds": 139.0
+  },
+  {
+   "case": "certified symmetric witness (n = 17)",
+   "groups": [
+    17
+   ],
+   "n": 17,
+   "certificate": "certificate_n17.json",
+   "witness_sha256": "d582e592b049e7aa9b524b8dad933382e4d8e91eef06de991ffdcf969a198006",
+   "placements_per_branch": "first positions and seeded random positions",
+   "random_seed": 17,
+   "max_identity_deviation": 7.771561172376096e-15,
+   "max_certifier_selection_deviation": 7.771561172376096e-15,
+   "max_certifier_selection_radius": 1.4570898324221956e-77,
+   "max_residual_outside_symmetric": 1.6653345369377348e-16,
+   "max_state_deviation": 2.942091015256665e-15,
+   "max_placement_dependence": 0.0,
+   "fidelity_dense_stored_decoders": 0.7502033338948578,
+   "fidelity_recorded_pair": 0.7502033338948578,
+   "fidelity_abs_difference": 0.0,
+   "seconds": 12.1
+  },
+  {
+   "case": "certified symmetric witness (n = 20), slices counted over all 2^n strings",
+   "groups": [
+    20
+   ],
+   "n": 20,
+   "certificate": "certificate_n20.json",
+   "witness_sha256": "692250e2762557ba7cac83bfca0ddead3dd328bdfcef4926676eff5db225d00e",
+   "placements_per_branch": "first positions and seeded random positions",
+   "random_seed": 20,
+   "flagged_strings_checked": 4194302,
+   "max_identity_deviation": 2.220446049250313e-16,
+   "max_certifier_selection_deviation": 2.220446049250313e-16,
+   "max_certifier_selection_radius": 1.4458761082450193e-77,
+   "max_residual_outside_symmetric": 4.965068306494546e-17,
+   "states_and_fidelity": "not formed at this n (2^n too large); the slices are counted instead",
+   "seconds": 13.4
+  },
+  {
+   "case": "certified symmetric witness (n = 24), slices counted over all 2^n strings",
+   "groups": [
+    24
+   ],
+   "n": 24,
+   "certificate": "certificate_n24.json",
+   "witness_sha256": "16429c881131cff35428a5200cc36d7ff7d337f3e58e823f024047f0c0e2b7d2",
+   "placements_per_branch": "first positions and seeded random positions",
+   "random_seed": 24,
+   "flagged_strings_checked": 67108862,
+   "max_identity_deviation": 2.220446049250313e-16,
+   "max_certifier_selection_deviation": 2.220446049250313e-16,
+   "max_certifier_selection_radius": 1.4503379291243711e-77,
+   "max_residual_outside_symmetric": 4.532466518368395e-17,
+   "states_and_fidelity": "not formed at this n (2^n too large); the slices are counted instead",
+   "seconds": 289.4
+  }
+ ],
+ "certifier_coefficients": {
+  "group_sizes_up_to": 24,
+  "coefficients_compared": 5525,
+  "strings_enumerated": 33554431,
+  "max_deviation": 1.9407666661649795e-15,
+  "deviation_scale": "per string, i.e. divided by C(k, a)",
+  "max_radius_absolute": 4.330961582118038e-70,
+  "max_radius": 1.601594575948295e-76,
+  "radius_scale": "per string, as the deviation"
+ },
+ "certifier_end_to_end": [
+  {
+   "certificate": "general_codes/certificate_twogroup_a2_b2.json",
+   "n": 4,
+   "certified_now": "[0.7203089262084322467573558623273521217406 +/- 1.37e-41]",
+   "certified_committed": "[0.7203089262084322467573558623273521217406 +/- 1.37e-41]",
+   "reproduces_committed_bound": true,
+   "fidelity_dense": 0.720308926509565,
+   "dense_minus_bound": 3.0113278537413635e-10,
+   "seconds": 0.2
+  },
+  {
+   "certificate": "general_codes/certificate_twogroup_a4_b4.json",
+   "n": 8,
+   "certified_now": "[0.7415171760839822183015398419637407972205 +/- 3.65e-41]",
+   "certified_committed": "[0.7415171760839822183015398419637407972205 +/- 3.65e-41]",
+   "reproduces_committed_bound": true,
+   "fidelity_dense": 0.7415171768564592,
+   "dense_minus_bound": 7.724769712780244e-10,
+   "seconds": 10.7
+  },
+  {
+   "certificate": "certificate_n17.json",
+   "n": 17,
+   "certified_now": "[0.7502033333125405600728696549135273479207 +/- 3.68e-41]",
+   "certified_committed": "[0.7502033333125405600728696549135273479207 +/- 3.68e-41]",
+   "reproduces_committed_bound": true,
+   "fidelity_dense": 0.7502033338948578,
+   "dense_minus_bound": 5.823173054864128e-10,
+   "seconds": 4.8
+  },
+  {
+   "certificate": "certificate_n20.json",
+   "n": 20,
+   "certified_now": "[0.7506549819500652349137851243630950923780 +/- 2.09e-41]",
+   "certified_committed": "[0.7506549819500652349137851243630950923780 +/- 2.09e-41]",
+   "reproduces_committed_bound": true,
+   "fidelity_recorded": 0.7506549826203347,
+   "recorded_minus_bound": 6.702695065641251e-10,
+   "seconds": 11.8
+  },
+  {
+   "certificate": "certificate_n24.json",
+   "n": 24,
+   "certified_now": "[0.7510307324625590584081037600048580023015 +/- 1.64e-41]",
+   "certified_committed": "[0.7510307324625590584081037600048580023015 +/- 1.64e-41]",
+   "reproduces_committed_bound": true,
+   "fidelity_recorded": 0.7510307332499885,
+   "recorded_minus_bound": 7.87429454973676e-10,
+   "seconds": 33.7
+  }
+ ],
+ "negative_controls": {
+  "relative_size": 1e-06,
+  "identity_comparator_expectation_perturbed_identity_deviation": 4.4721359548915984e-07,
+  "state_producing_module_perturbed_state_deviation": 8.428547975877776e-09,
+  "dense_flip_probability_perturbed_state_deviation": 1.766690978233232e-08,
+  "certifier_selection_midpoint_perturbed_deviation": 5.477225573091715e-07
+ },
+ "verdict": "AGREE",
+ "seconds_total": 878.4,
+ "peak_memory_mb": 2054,
+ "provenance": {
+  "code_git_blobs": {
+   "experiments/superactivation/general_codes/verify_reduction_dense.py": "ccc736f336e2835ebb3f19a8fb03071365565a4c",
+   "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+   "experiments/superactivation/general_codes/twogroup_certificate.py": "5fbc7decb2cb537091eae1c6e050ce16e9b55532",
+   "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2",
+   "src/oneq/superactivation_certificate.py": "aa9efe4c3412dbfc8cfbba917da4e45245603f98"
+  },
+  "python": "3.14.3",
+  "numpy": "2.3.5",
+  "platform": "Windows-11-10.0.26200-SP0"
+ }
+}

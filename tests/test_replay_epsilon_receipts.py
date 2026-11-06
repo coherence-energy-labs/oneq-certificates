@@ -219,3 +219,120 @@ def test_verifier_b_agrees_with_check_epsilon_and_is_sound_on_random_instances()
             assert w - opt <= b[1]
         seen.add(a.status)
     assert {"EXACT_OPTIMAL", "NOT_PROVEN"} <= seen
+
+
+def test_the_substitution_attack_replays_against_a_different_graph(monkeypatch):
+    """2026-11-03: the attack took the first OTHER configuration in sorted order. Once fresh_sim_d5_r25 (which
+    re-samples sim_d5_r25's circuit, so it is the same graph) was merged, it came first, and the strict replay of
+    sim_d5_r25 "accepted" 4,000 substituted graphs that were its own graph -- a check that could not fail."""
+    shas = {"fresh_sim": "g1", "sim": "g1", "willow": "g2", "solo": "g3"}
+    monkeypatch.setattr(R, "_instance", lambda name: ([], shas[name]))
+    merged = sorted(shas)                                            # fresh_sim, sim, solo, willow
+    assert R.substitute_for("sim", merged) == "solo"                 # not fresh_sim: that is the same graph
+    assert R.substitute_for("fresh_sim", merged) == "solo"           # not sim, for the same reason
+    assert R.substitute_for("willow", merged) == "fresh_sim"
+    assert R.substitute_for("sim", ["fresh_sim", "sim"]) is None     # no other graph: no attack, not a fake one
+
+
+def test_the_real_simulation_configurations_share_a_graph_and_are_never_each_others_substitute():
+    real = sorted(p.parent.name for p in R.INDEX.glob("*/summary.json"))
+    if not {"sim_d5_r25", "fresh_sim_d5_r25"} <= set(real):
+        pytest.skip("the simulation reruns are not merged here")
+    assert R._instance("sim_d5_r25")[1] == R._instance("fresh_sim_d5_r25")[1]
+    for n in real:
+        other = R.substitute_for(n, real)
+        assert other is not None and R._instance(other)[1] != R._instance(n)[1], n
+
+
+def test_the_replay_battery_runs_the_parity_adversary_on_real_receipts():
+    """2026-11-03 (final referee, minor 5): the T'-oddness adversary ran only in a sampled unit test. It is now part
+    of the replay's forgery battery: each attacked receipt gets a heavier correction 'proven' by sets that are not
+    T'-odd, which a checker without the parity test would accept and both verifiers refuse as invalid input."""
+    # 1. the shipped strict-replay records: every configuration's parity forgeries were real (accepted by both
+    #    parity-blind copies) and refused by the real verifiers as invalid input
+    recs = sorted((ROOT / "evidence" / "epsilon_rerun" / "replay_2026-11-03").glob("replay_*.json"))
+    assert len(recs) >= 18, "missing: evidence/epsilon_rerun/replay_2026-11-03/replay_*.json (18 records)"
+    for p in recs:
+        fb = json.loads(p.read_text(encoding="utf-8"))["results"][0]["forgery_battery"]
+        pa = fb["parity_adversary"]
+        assert pa["attempted"] > 0 and pa["accepted_by_both_parity_blind_copies"] == pa["attempted"], p.name
+        assert fb["refusals_by_class_and_verdict"].get("P_parity_not_T_prime_odd:INVALID_INPUT") == pa["attempted"]
+    # 2. the battery run live, on the released configuration with the fewest receipts among those whose receipts are
+    #    on disk. ANY released configuration serves: a reader unpacks one of their choosing from
+    #    data/epsilon_receipts_archive/<config>.tar (REPRODUCE.md), and the release rehearsal unpacks one, so a fixed
+    #    list of three (2026-11-05, first version) failed every reader who had unpacked a different one. The archive
+    #    pin says whether the configuration is a stopped run's partial plan.
+    present = []
+    for pin in sorted((ROOT / "evidence" / "epsilon_rerun").glob("*/archive.json")):
+        idx = pin.parent / "chunks.jsonl"
+        if not idx.is_file():
+            continue
+        rows = [json.loads(x) for x in idx.read_text(encoding="utf-8").splitlines() if x.strip()]
+        if rows and all((ROOT / r["receipts_file"]).is_file() for r in rows):
+            present.append((sum(int(r.get("shots", 0)) for r in rows), len(rows), pin.parent.name,
+                            bool(json.loads(pin.read_text(encoding="utf-8")).get("partial", False))))
+    assert present, ("missing: no released configuration's receipts are under data/epsilon_receipts/ (unpack one "
+                     "data/epsilon_receipts_archive/<config>.tar with tools/pack_epsilon_receipts.py)")
+    _shots, _chunks, name, partial = min(present)
+    res = R.replay_config(name, sample=1, battery=0, forgeries=1, rng=random.Random(7), partial=partial,
+                          eps_max="1/1000000" if partial else None)
+    fb = res["forgery_battery"]
+    assert fb["refusals_by_class_and_verdict"].get("P_parity_not_T_prime_odd:INVALID_INPUT", 0) >= 1
+    assert fb["parity_adversary"]["attempted"] == fb["refusals_by_class_and_verdict"][
+        "P_parity_not_T_prime_odd:INVALID_INPUT"]
+    # REAL is decided by running parity-blind copies of both verifiers (final referee, 2026-11-03): the old counter,
+    # `blind_bound >= heavy_w - eps_max`, counted forgeries a parity-blind checker refuses as VERIFIER_FAILURE
+    pa = fb["parity_adversary"]
+    assert "would_fool_a_parity_blind_checker" not in pa
+    assert pa["accepted_by_both_parity_blind_copies"] == pa["accepted_by_parity_blind_check_epsilon"] == \
+        pa["accepted_by_parity_blind_verify_b"] == pa["attempted"]
+    assert not any(k.startswith("diag:") for k in fb["refusals_by_class_and_verdict"])
+
+
+def test_partial_plan_mode_replays_what_a_stopped_run_completed(tmp_path, monkeypatch):
+    """A run stopped by its preregistered budget (the held-out d=7 sample, 2026-11-04) has no summary.json, so the
+    ordinary replay cannot start; the partial-plan mode replays every verified chunk the index holds, says so, and
+    reports the totals from the index. It is not a licence to skip a chunk that failed its hash."""
+    root, idx, rows = _build(tmp_path, monkeypatch, chunks=3)
+    (idx / "summary.json").unlink()
+    (idx / "chunks.jsonl").write_text("\n".join(json.dumps(r) for r in rows[:2]) + "\n")   # chunk 3 never finished
+    with pytest.raises(FileNotFoundError):
+        R.replay_config("toy")
+    with pytest.raises(R.ReplayError, match="needs eps_max"):
+        R.replay_config("toy", partial=True)
+    res = R.replay_config("toy", partial=True, eps_max=str(EPS))
+    assert res["partial"] is True and res["complete_plan"] is False and res["seeds"] == [1, 2]
+    assert res["receipts_rechecked"] == 6 == res["nontrivial"] and res["chunks"] == 2
+    assert res["status"] == {"EXACT_OPTIMAL": 2, "EPSILON_OPTIMAL": 2, "NOT_PROVEN": 2, "TRIVIAL": 2}
+    # a chunk whose receipts no longer hash to the index is not silently dropped from a partial plan
+    rp = root / rows[1]["receipts_file"]
+    rp.write_bytes(gzip.compress(gzip.decompress(rp.read_bytes()) + b" "))
+    res2 = R.replay_config("toy", partial=True, eps_max=str(EPS))
+    assert res2["seeds"] == [1]                       # the superseded row is excluded, and the result says so
+    (idx / "chunks.jsonl").write_text("")
+    with pytest.raises(R.ReplayError, match="no verified chunk"):
+        R.replay_config("toy", partial=True, eps_max=str(EPS))
+
+
+def test_a_replay_record_names_the_tool_and_verifiers_that_wrote_it(tmp_path, monkeypatch):
+    """Every record the tool writes carries a head: the tool's and the verifiers' bytes, the commit, a timestamp and the
+    run's arguments (2026-11-05: the 18 strict-replay records had none, unlike every other evidence writer)."""
+    import hashlib
+    _build(tmp_path, monkeypatch, chunks=2)
+    out = tmp_path / "rec.json"
+    monkeypatch.setattr(sys, "argv", ["replay", "--config", "toy", "--json", str(out), "--jobs", "1"])
+    assert R.main() == 0
+    doc = json.loads(out.read_text(encoding="utf-8"))
+    h = doc["head"]
+    assert h["tool"] == "tools/replay_epsilon_receipts.py" and set(h["sha256"]) == set(R.JUDGED_FILES)
+    tool = ROOT / "tools" / "replay_epsilon_receipts.py"       # the tool's own repository, not the toy data root
+    assert h["sha256"]["tools/replay_epsilon_receipts.py"] == hashlib.sha256(
+        tool.read_bytes().replace(bytes([13, 10]), bytes([10]))).hexdigest()
+    assert h["timestamp"].endswith("+00:00") and h["jobs"] == 1 and h["partial"] is False
+    assert "uncommitted_changes_in_judged_files" in h
+    if (ROOT / ".git").exists():
+        assert len(h["commit"]) == 40 and h["repository"] == "present"
+    else:                        # a reader's extracted bundle: the bytes are pinned above, the commit cannot be
+        import warnings
+        warnings.warn("no repository here: the record's commit was not compared (bytes verified by sha256)")
+        assert h["commit"] is None and h["repository"].startswith("absent")
