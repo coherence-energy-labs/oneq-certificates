@@ -648,12 +648,12 @@
   }
  ],
  "verdict": "EXACT",
- "seconds": 1.2,
+ "seconds": 1.1,
  "provenance": {
   "code_git_blobs": {
    "experiments/superactivation/ppt_relaxation_fullspace.py": "e0f098bb275f0db7124d383b7f3726bbc1ac3752",
    "experiments/superactivation/ppt_relaxation_probe.py": "8dcdf5bcfd14f36e9a5b465c07c8a1895e015537",
-   "experiments/superactivation/shield_family/ppt_family.py": "49f4dd41182928066bc941bd8afe8da3c2515116"
+   "experiments/superactivation/shield_family/ppt_family.py": "1f9508fa279d90eed28b064b86c7d3551c2e7f9a"
   },
   "python": "3.14.3",
   "ported_from": "an independent adversarial check of Proposition 11 (s1_exact.py, 2026-11-03)"

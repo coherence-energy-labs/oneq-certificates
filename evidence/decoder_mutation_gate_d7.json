@@ -29,7 +29,7 @@
       "certificate_caught": 300,
       "truly_defective": 300
     },
-    "M7_added_cycle_STEALTH": {
+    "M7_disjoint_cycle_STEALTH": {
       "n": 300,
       "syndrome_caught": 0,
       "certificate_caught": 300,

@@ -32,8 +32,11 @@ BINDINGS checked before any number is used:
   * every certificate a claim names was VERIFIED on the very model (sha256) its search ran on;
   * the two shipped CDP5 proofs and their models hash to the manifest, and those models are the certified ones.
 
-ROUNDING. Times and sizes are rounded to the digit shown. A printed RANGE encloses the data: the low end is
-floored and the high end ceilinged. Counts and distances are exact.
+ROUNDING, one rule, which the paper states (Sec. IX; external audit 4, X6): times, sizes and ratios computed here are
+rounded to the nearest value at the digit shown, except that a printed MAXIMUM ("up to", "at most") is rounded up
+(up()) and a printed RANGE encloses the data, its low end rounded down and its high end up (enclose(), down()).
+Counts, weights and distances are exact. The few figures read from the lane's prose (the Lean kernel's cost) are
+as those documents state them.
 """
 
 from __future__ import annotations
@@ -59,11 +62,17 @@ STANDARD_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 # 2026-11-03; docs/PAPER3_LITERATURE_SEARCH.md.
 PAN_E019_MORPH72 = 6
 PAN_E017_MORPH144 = 12
-# IBM's depth-8 gross cycle in Pan's records on his main branch after v2.0: E-037 (commit 34ffcb14, 2026-10-25), 88
+# IBM's depth-8 gross cycle in Pan's records on his main branch after v2.0: E-037 (commit 34ffcb14, 2026-10-25 21:39
+# UTC = 2026-10-26 05:39 in the commit's own UTC+8, the date in the record's file name), 88
 # VeriPB certificates of "no undetectable logical of weight <= 9" for R = 1..12; E-043 (commit 18e47dae, 2026-10-31),
 # d_circ = 10 for every R (bulk criterion with two uncertified solvers, direct search R <= 3, persistence). Read
 # 2026-11-03 at main HEAD 41c8f978; docs/PAPER3_LITERATURE_SEARCH.md.
 PAN_E043_IBM = 10
+# The three-colour cycle (Fig. 12 of 2603.05481) in Pan's released manuscript (release v2.0, release/arxiv/main.tex
+# lines 260-265, read 2026-11-03): d_circ = 11 for every R under SD6, from the reduction of Strikis, Browne and
+# Beverland (Prop. 3, Cor. 1) and d_ext = 11 by two exhaustive searches. Table I's prior-value column names it
+# (external audit 4, 2.2); it must equal ours. docs/PAPER3_LITERATURE_SEARCH.md.
+PAN_V2_TC = 11
 NUMBER_WORDS = {"two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 
 
@@ -156,6 +165,16 @@ def enclose(lo: float, hi: float, k: int) -> tuple[str, str]:
     return f"{math.floor(lo * f + 1e-9) / f:.{k}f}", f"{math.ceil(hi * f - 1e-9) / f:.{k}f}"
 
 
+def up(x: float, k: int) -> str:
+    """A maximum ("up to", "at most") rounded UP at k decimals, so the printed bound still holds."""
+    return enclose(x, x, k)[1]
+
+
+def down(x: float, k: int) -> str:
+    """The low end of a printed range rounded DOWN at k decimals."""
+    return enclose(x, x, k)[0]
+
+
 def hours(seconds: float) -> str:
     return f"{seconds / 3600:.1f}"
 
@@ -229,6 +248,9 @@ def build() -> dict[str, str]:
     def put(name: str, value, source: str) -> None:
         need(re.fullmatch(r"[A-Za-z]+", name) is not None, f"macro name {name} must be letters only")
         need(name not in M, f"macro {name} defined twice")
+        # a source is a repository-relative name: an absolute path is this machine's, and a copy regenerates another
+        need(isinstance(source, str) and re.match(r"[A-Za-z]:|/", source) is None,
+             f"macro {name}'s source is not a repository-relative name: {source!r}")
         M[name] = (str(value), source)
 
     res = J(EV / "results.json")
@@ -264,12 +286,14 @@ def build() -> dict[str, str]:
     put("ArxSTb", st.group(2), "RESULTS.md: the 2026 section heading")
     put("STbAppendix", RX(r'"we did not check the circuit-level distance" \(its App\. ([A-Z]\.\d+)\)', results_md,
                           "RESULTS.md, the 2026 quotation").group(1), "RESULTS.md: the 2026 section")
-    put("STbDef", RX(r"searches its Def\. (\d+) tree circuits", results_md, "RESULTS.md, Def.").group(1),
-        "RESULTS.md: the 2026 section")
+    tdef = RX(r"searches its homomorphism-based circuits \(Def\. (\d+)\), each fixed by one contraction tree "
+              r"\(Sec\. (\d+\.\d+)\)", results_md, "RESULTS.md, Def. and contraction trees")
+    put("STbDef", tdef.group(1), "RESULTS.md: the 2026 section")
+    put("STbTreeSec", tdef.group(2), "RESULTS.md: the 2026 section (contraction trees)")
     put("STbProp", RX(r"arXiv 2604\.09797, Prop\. (\d+)", results_md, "RESULTS.md, rule F").group(1),
         "RESULTS.md: rule F")
-    put("STbFig", RX(r"the paper's Fig\. (\d+) code family", results_md, "RESULTS.md, Fig. 25").group(1),
-        "RESULTS.md: the 2026 table")
+    put("STbFig", RX(r"a degree-4 morphing point in the paper's Fig\. (\d+), read off its k = \d+ panel", results_md,
+                     "RESULTS.md, Fig. 25").group(1), "RESULTS.md: the 2026 table")
     sta = RX(r"Morphing circuit of Shaw & Terhal \((\d{4}\.\d{5})\)", results_md, "RESULTS.md, morphing row")
     put("ArxSTa", sta.group(1), "RESULTS.md: results table")
     need(f"morphing circuit of {sta.group(1)}" in res["morph72"]["claim"], "the morphing source differs between "
@@ -572,7 +596,7 @@ def build() -> dict[str, str]:
          "the determinism runs do not show proofs with trace bits regenerated identically at another thread count")
     eq_bits = [c for c in cells if c["proof_equal"] and c["trace_bits"] > 0]
     put("RecertDetCells", len(det_ok), "records/recert_determinism.jsonl")
-    put("RecertDetMaxMB", f"{max(d['proof_bytes'] for d in det_ok) / 1e6:.0f}", "records/recert_determinism.jsonl")
+    put("RecertDetMaxMB", up(max(d["proof_bytes"] for d in det_ok) / 1e6, 0), "records/recert_determinism.jsonl")
     put("RecertDetThreads", " and ".join(str(t) for t in sorted({d["threads"] for d in det_ok})),
         "records/recert_determinism.jsonl")
     # every proof that does not ship has been produced twice, bit for bit: by the record's run (proof_equal) or by a
@@ -663,7 +687,7 @@ def build() -> dict[str, str]:
         *rec_rows, r"\bottomrule", r"\end{tabular}"]) + "\n"
     put("RecertCampaignThreads", rm["campaign_threads"], src)
     put("RecertProofEqualBits", len(eq_bits), src)
-    put("RecertProofEqualMaxMB", f"{max(c['proof_bytes'] for c in eq_bits) / 1e6:.0f}", src)
+    put("RecertProofEqualMaxMB", up(max(c["proof_bytes"] for c in eq_bits) / 1e6, 0), src)
     put("RecertZeroBits", sum(c["trace_bits"] == 0 for c in cells), src)
     put("RecertMorphCells", sum(c["family"].startswith("morph") for c in cells), src)
     put("RecertMorphZeroBits", sum(c["family"].startswith("morph") and c["trace_bits"] == 0 for c in cells), src)
@@ -708,10 +732,10 @@ def build() -> dict[str, str]:
     # checking cost, from the campaign's own checker runs at its thread count: the large proofs take minutes to
     # hours each, the shipped ones about a second at most
     big = [c["checker_s"] for c in regen]
-    put("RecertBigCheckMinMin", f"{min(big) / 60:.1f}", src)
-    put("RecertBigCheckMaxH", f"{max(big) / 3600:.1f}", src)
+    put("RecertBigCheckMinMin", down(min(big) / 60, 1), src)    # a printed range, widened outward
+    put("RecertBigCheckMaxH", up(max(big) / 3600, 1), src)
     put("RecertBigCheckHours", f"{sum(big) / 3600:.1f}", src)
-    put("RecertSmallCheckMaxS", f"{max(c['checker_s'] for c in cells if c['shipped']):.1f}", src)
+    put("RecertSmallCheckMaxS", up(max(c["checker_s"] for c in cells if c["shipped"]), 1), src)   # "at most"
     # and a reader's route actually run: proofs downloaded from the release, verified, extracted and checked again
     runs = [J(p) for p in sorted((RR / "asset_checks").glob("*.json"))]
     rows = [r for run in runs for r in run["rows"]]
@@ -729,6 +753,23 @@ def build() -> dict[str, str]:
     need(all(m != "CDP5" for m in magics), "a reproduced earlier proof is CDP5; the text says an earlier language")
     put("RecertOldMagic", ", ".join(m for m in magics), "records/recert_old_prover.jsonl")
     put("RecertOldCommits", ", ".join(rf"\texttt{{{c[:8]}}}" for c in commits), "records/recert_old_prover.jsonl")
+    # Those commits are of the development repository, whose history is not public (the public repository's is
+    # squashed; external audit 4, R1 / X3). What is public is the source that ran, shipped as old_provers/, and it must
+    # be the bytes every reproduction row pins (prover_source_sha256_git), read as git stores them (LF).
+    need(len(commits) == 1, "the text names one development commit; the reproductions name another number")
+    olds = []
+    for c in commits:
+        pins = {o["prover_source_sha256_git"] for o in old_rows if o["commit"] == c}
+        # its own name: this loop once reused `src`, the re-certification manifest's name that the memory range below
+        # cites, and wrote this file's ABSOLUTE path into numbers.tex (found by the v2026.11.07.1 trial rehearsal)
+        prover_src = LANE / "old_provers" / f"cdist_prove_{c}.c"
+        need(len(pins) == 1 and prover_src.is_file()
+             and hashlib.sha256(prover_src.read_bytes().replace(b"\r\n", b"\n")).hexdigest() in pins,
+             f"the shipped prover of commit {c} is missing or is not the source its reproduction rows pin")
+        olds.append(prover_src.relative_to(ROOT).as_posix())
+    put("RecertOldSource", ", ".join(r"\texttt{" + p.replace("_", r"\_").replace("/", r"/\allowbreak ") + "}"
+                                     for p in olds), "experiments/circuit_distance_exact/old_provers/ "
+                                                     "(sha256 = records/recert_old_prover.jsonl)")
     # later re-certification of both T = 2 models in CDP5
     perf = J(EV / "r206_performance.json")
     pc = {c["name"]: c for c in perf["cases"]}
@@ -840,6 +881,36 @@ def build() -> dict[str, str]:
     put("TcWitDirectHi", tc_dir[1], "records/window_uniform_run.jsonl (3c WITNESS direct)")
     put("TcFir", one((wu[("3c", b)][h]["mem"]["minimal"] for b in "ZX" for h in ("FIR", "END")), "3c FIR/END"),
         "records/window_uniform_run.jsonl (3c FIR / END minimal)")
+    # The window formula's start index j_s and threshold T_0 = j_s + U, U = max(h, e) + 1, per model (external audit 4,
+    # 2.3 and 2.16: the paper printed T_0 = 1 + U, the projected value, and called the full model's start "a later
+    # block" for both circuits). The identities' h, e are those of each model's row set (memory-type rows projected,
+    # all rows full). The witnesses' every-T placement must be the full model's T_0: an IBM end-type witness lies in
+    # tau_T(End) for every T >= T_0, and a 3-colour start-type one, placed at T_0, lies wholly in the start part S
+    # (a mechanism in an interior translate tau_i(I), i >= j_s, would need T >= j_s + 1 + U = T_0 + 1).
+    T0 = {}
+    for kind in ("ibm", "3c"):
+        for model, rows in (("projected", "mem"), ("full", "all")):
+            fs = [wu[(kind, b)]["FORMULA"][model] for b in "ZX"]
+            for b, f in zip("ZX", fs):
+                hh, ee = wu[(kind, b)]["FIR"][rows]["minimal"], wu[(kind, b)]["END"][rows]["minimal"]
+                need(f["holds"] and (f["h"], f["e"]) == (hh, ee) and f["U"] == max(hh, ee) + 1
+                     and f["T0"] == f["j_s"] + f["U"], f"{kind} {b} {model}: the formula's T_0 is not j_s + U")
+            T0[(kind, model)] = one(((f["j_s"], f["T0"]) for f in fs), f"{kind} {model} (j_s, T_0) per basis")
+        # the text gives one h = e per circuit "for both models": the two row sets' minimal h and e must agree
+        one((wu[(kind, b)][hy][rows]["minimal"] for b in "ZX" for hy in ("FIR", "END") for rows in ("mem", "all")),
+            f"{kind}: FIR / END minimal over both bases and both row sets")
+    need(T0[("ibm", "projected")][0] == T0[("3c", "projected")][0] == T0[("ibm", "full")][0] == 1
+         and T0[("3c", "full")][0] == 2, "the start indices changed: the text says 1, except 2 for the full "
+                                         "three-colour model")
+    need(T0[("ibm", "projected")][1] == T0[("ibm", "full")][1] == ibm_tmin == one((w["every_T_from"] for w in iw),
+                                                                                  "IBM witness from"),
+         "IBM's thresholds and its witness placement are not all the claimed first T")
+    need(T0[("3c", "full")][1] == one((w["every_T_from"] for w in tw3), "3c witness from"),
+         "the 3-colour witnesses are not placed at the full model's threshold (so not wholly in its start part)")
+    put("IbmTzero", T0[("ibm", "full")][1], "records/window_uniform_run.jsonl (ibm FORMULA T0, both models)")
+    put("TcTzeroProj", T0[("3c", "projected")][1], "records/window_uniform_run.jsonl (3c FORMULA projected T0)")
+    put("TcTzeroFull", T0[("3c", "full")][1], "records/window_uniform_run.jsonl (3c FORMULA full T0)")
+    put("TcJsFull", T0[("3c", "full")][0], "records/window_uniform_run.jsonl (3c FORMULA full j_s)")
 
     # -------------------------------------------- the window theorem's machine side
     need(all(not any(r["CONTROLS"].values()) for r in wu.values()), "a window-theorem control passed")
@@ -993,6 +1064,35 @@ def build() -> dict[str, str]:
     need(twc and not any(r["projected_undetectable_logical_at_T"] or r["full_dem_pure_lift_undetectable_logical_at_T"]
                          for r in twc), "the twin-witness control (one mechanism dropped) does not fail")
     put("FoldTwinT", one((r["T"] for r in tw), "twin T"), "records/fold_uniform_witness_twin_T32.jsonl")
+    # The ten 2026 standard schedules (Table II) are built by a second builder, morph2026.morphing_cycle_from, which
+    # FOLD_PROOF.md Appendix C reads; fold_uniform.py checks the theorem's hypotheses on each one's own circuit and
+    # identifies that circuit with the template (external audit 4, finding 2.15: the record had T = 1-4, 9, 16 only).
+    # Every standard-schedule target, both bases, one contiguous run of T from 1, every comparison agreeing, every
+    # hypothesis holding, every control failing; and the count FOLD_PROOF.md section 5 quotes is the record's.
+    tg26 = J(LANE / "morph2026_targets.json")
+    std26 = sorted(k for k, t in tg26.items() if t["kind"] == "std")
+    f26 = JL("morph2026_fold_uniform.jsonl")
+    need(sorted((r["circuit"], r["basis"]) for r in f26) == sorted((c, b) for c in std26 for b in "ZX")
+         and all(r["hom"] == "x" for r in f26), "the 2026 fold runs do not cover every standard target and basis once")
+    t26 = one((tuple(sorted(t["T"] for t in r["template"] + r["fresh"])) for r in f26), "2026 template T per run")
+    need(t26 == tuple(range(1, len(t26) + 1)), "the 2026 template T are not every T from 1 up")
+    need(all(t["agrees"] and t["symptom_formula_mismatches"] == 0 for r in f26 for t in r["template"] + r["fresh"]),
+         "a 2026 template comparison failed")
+    need(all(all(h["holds"] for h in r["hypotheses"].values()) and r["hypotheses"]["PAL"]["root_layer_invariance"]
+             and all(v["holds"] for v in r["derived"].values()) and r["info"]["holds"] for r in f26),
+         "a 2026 fold hypothesis fails")
+    c26 = one((len(r["controls"]) for r in f26), "2026 fold control count")
+    need(c26 >= 18 and not any(v for r in f26 for v in r["controls"].values()), "a 2026 fold control passed")
+    comp26 = sum(t["components"] for r in f26 for t in r["template"] + r["fresh"])
+    need(int(RX(r"no mismatch in ([\d,]+) components", fold_md, "FOLD_PROOF.md, 2026 components").group(1)
+             .replace(",", "")) == comp26, "FOLD_PROOF.md's 2026 component count is not the record's")
+    lay26 = {r["code"]: r["layers"] for r in JL("morph2026_campaign.jsonl") if r["kind"] == "info"}
+    need(set(std26) <= set(lay26), "a standard 2026 target has no campaign info row")
+    put("MorphLayers", one((lay26[c] for c in std26), "layers of the standard 2026 schedules"),
+        "records/morph2026_campaign.jsonl (info rows: layers; fold_uniform.py requires this L in H1)")
+    put("MtwoTplTmax", t26[-1], "records/morph2026_fold_uniform.jsonl")
+    put("MtwoTplComponents", SCI(comp26), "records/morph2026_fold_uniform.jsonl")
+    put("MtwoFoldControls", c26, "records/morph2026_fold_uniform.jsonl")
 
     # -------------------------------------------- trusted base
     tb = res["trusted_base"]
@@ -1264,20 +1364,25 @@ def build() -> dict[str, str]:
     put("PanXTmax", max(ph["rounds"]), "records/pan_crosscheck.jsonl")
 
     # -------------------------------------------- tables
-    need(int(m72_d) == PAN_E019_MORPH72 and int(m144_d) == PAN_E017_MORPH144 and int(ibm_d) == PAN_E043_IBM,
-         "our morphing distances differ from the values Pan's records report; the text says they agree")
+    need(int(m72_d) == PAN_E019_MORPH72 and int(m144_d) == PAN_E017_MORPH144 and int(ibm_d) == PAN_E043_IBM
+         and int(tc_d) == PAN_V2_TC,
+         "our distances differ from the values Pan's records and manuscript report; the text says they agree")
     G = code_tex(*gross)
     tab_summary = "\n".join([
         r"\begin{tabular}{@{}llccccc@{}}", r"\toprule",
-        r"circuit & code (mid-cycle) & prior value & $d_{\mathrm{circ}}$ (Z / X) & lower bound certified & "
-        r"witness verified & holds for \\", r"\midrule",
-        # Pan's records on his main branch after v2.0 (final referee of 2026-11-03, N1): certificates for R <= 12
-        # (E-037), every R by an argument without certificates (E-043)
+        # two-line headers for the two widest heads, so the prior-value column has room for two values
+        r"circuit & code (mid-cycle) & prior value & $d_{\mathrm{circ}}$ (Z / X) & "
+        r"\begin{tabular}[b]{@{}c@{}}lower bound\\ certified\end{tabular} & "
+        r"\begin{tabular}[b]{@{}c@{}}witness\\ verified\end{tabular} & holds for \\", r"\midrule",
+        # Pan's records on his main branch after v2.0 (final referee of 2026-11-03, N1; literature search of
+        # 2026-11-07): certificates for R <= 12 (E-037), every R under SD6 (E-043) and in his re-implementation of
+        # IBM's fault model (E-045)
         rf"IBM depth-{lit_depth}~\cite{{bravyi2024high}} & ${G}$ & $\le {q.group(1)}$; "
-        rf"{PAN_E043_IBM}~\cite{{pan2026e037,pan2026e043}} & {ibm_d} / {ibm_d} & "
+        rf"{PAN_E043_IBM}~\cite{{pan2026e037,pan2026e043,pan2026e045}} & {ibm_d} / {ibm_d} & "
         rf"$T={ibm_t_lo},\dots,{ibm_t_hi}$ & $T={ibm_dir[0]},\dots,{ibm_dir[1]}$ & $T\ge {ibm_tmin}$ \\",
-        rf"three-colour & ${G}$ & {q.group(3)} (conj.) & {tc_d} / {tc_d} & $T={tc_s_lo},\dots,{tc_s_hi}$ & "
-        rf"$T={tc_e_lo},\dots,{tc_e_hi}$ & $T\ge {tc_tmin}$ \\",
+        # the source's conjecture, then the value of Pan's released manuscript for every number of rounds
+        rf"three-colour & ${G}$ & {q.group(3)} (conj.); {PAN_V2_TC}~\cite{{pan2026interleaving}} & {tc_d} / {tc_d} & "
+        rf"$T={tc_s_lo},\dots,{tc_s_hi}$ & $T={tc_e_lo},\dots,{tc_e_hi}$ & $T\ge {tc_tmin}$ \\",
         # prior value: the source paper's bound, then the value Pan's released research record reports (by exhaustive
         # search and fold checks, no certificate; external audit 2, F11). Pan's values are typed from his records
         # E-019 Sec. 2.1 and E-017 Sec. 8 (read 2026-11-03), and must equal ours: a disagreement is a refusal.

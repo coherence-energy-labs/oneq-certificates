@@ -8,8 +8,10 @@ with a fresh generation.
 
 Writes paper/qldpc-certificates/generated/{numbers,tab_*}.tex.
 
-PERCENTAGES ARE FLOORED at the last shown digit, never rounded up -- the
-convention paper 2 states (Sec. on statistics) and its rates depend on.
+THE ROUNDING RULE paper 2 states in its Reproducibility section (external audit 4, X6), and every site below
+follows: point percentages and lower bounds are floored at the last shown digit, upper bounds ceilinged, a range
+rounded outward unless its ends are entries of a table it quotes, and every other value (timings, ratios, p-values,
+a largest discrepancy) rounded to the nearest value at the digits shown.
 """
 
 from __future__ import annotations
@@ -221,7 +223,7 @@ def build() -> dict[str, str]:
     expect_p = 2 * 0.5 ** (t["bp_wrong_pipeline_correct"] + t["bp_correct_pipeline_wrong"])
     if t["bp_correct_pipeline_wrong"] == 0 and not math.isclose(t["mcnemar_exact_two_sided_p"], expect_p, rel_tol=1e-9):
         raise SystemExit("McNemar value disagrees with 2*(1/2)^discordant")
-    M["HoStressMcNemar"] = SCI(t["mcnemar_exact_two_sided_p"])
+    M["HoStressMcNemar"] = PVAL(t["mcnemar_exact_two_sided_p"])
     # tree statistics over EVERY stored tree (17 held-out + 23 development), with
     # the definitions qldpc_heldout_addendum.py used, checked against its 36-tree record
     def _nodes(t):
@@ -271,6 +273,7 @@ def build() -> dict[str, str]:
     if dsz:
         M["DevMaxFacets"] = I(max(s["max_facets"] for s in dsz))
         M["DevMaxNumBits"] = I(max(s["max_num_bits"] for s in dsz))
+    _dev_export(M, ex)
 
     # ------------------------------------------------ strong baseline (v3: every proof retained and replayed)
     sbd = J("qldpc_strong_baseline_v3.json")
@@ -325,12 +328,13 @@ def build() -> dict[str, str]:
     inst += [r"\bottomrule", r"\end{tabular}"]
     files["tab_instrument.tex"] = "\n".join(inst) + "\n"
     f5i, f7i = sb["p=0.05"], sb["p=0.07"]
-    M["StrongFiveOptHitStated"] = f"{f5i['configs'][order[0]]['optimum_hit_rate']:.1f}"
-    M["StrongFiveOptHitStrongest"] = f"{f5i['configs'][order[2]]['optimum_hit_rate']:.1f}"
-    M["StrongSevenTierOneStated"] = f"{f7i['configs'][order[0]]['tier1_rate']:.1f}"
-    M["StrongSevenTierOneStrongest"] = f"{f7i['configs'][order[2]]['tier1_rate']:.1f}"
-    M["StrongSevenOptHitStated"] = f"{f7i['configs'][order[0]]['optimum_hit_rate']:.1f}"
-    M["StrongSevenOptHitStrongest"] = f"{f7i['configs'][order[2]]['optimum_hit_rate']:.1f}"
+    # point percentages (the artifact stores them in percent), floored like every other (rounding rule, top of file)
+    M["StrongFiveOptHitStated"] = PF(f5i['configs'][order[0]]['optimum_hit_rate'] / 100, 1)
+    M["StrongFiveOptHitStrongest"] = PF(f5i['configs'][order[2]]['optimum_hit_rate'] / 100, 1)
+    M["StrongSevenTierOneStated"] = PF(f7i['configs'][order[0]]['tier1_rate'] / 100, 1)
+    M["StrongSevenTierOneStrongest"] = PF(f7i['configs'][order[2]]['tier1_rate'] / 100, 1)
+    M["StrongSevenOptHitStated"] = PF(f7i['configs'][order[0]]['optimum_hit_rate'] / 100, 1)
+    M["StrongSevenOptHitStrongest"] = PF(f7i['configs'][order[2]]['optimum_hit_rate'] / 100, 1)
     M["StrongSevenOptHitNotTierOne"] = I(f7i["configs"][order[2]]["optimum_hit_not_tier1"])
     if any(v["configs"][c]["tier1_not_optimum_hit"] for v in sb.values() for c in order):
         raise SystemExit("strong baseline: a tier-1 answer that is not an optimum hit; the text says none exists")
@@ -341,6 +345,11 @@ def build() -> dict[str, str]:
     M["StrongTreeBytesMax"] = I(max(v["reference"]["trees"]["bytes_max"] or 0 for v in sb.values()))
     M["StrongReplayDecisions"] = I(rp["decisions"])
     M["StrongReplayProofChecks"] = I(rp["proof_checks"])
+    # the text explains why the checks outnumber the proofs (one check per distinct proof and answer; a flat
+    # certificate proves every answer of the optimal weight) -- external audit 4, item 3.5
+    need(rp["proofs"] == sbd["proofs"]["flat"] + sbd["proofs"]["tree"] and rp["proofs"] < rp["proof_checks"]
+         < rp["decisions"] and "distinct (proof, candidate) pairs" in rp["note"],
+         "strong-baseline replay: the text's account of proof checks against proofs and decisions no longer holds")
     lines = [r"\begin{tabular}{@{}lccccc@{}}", r"\toprule",
              r" & fixed & receipt pipeline & BP-OSD & \multicolumn{2}{c}{C: pipeline vs reference} \\",
              r"$p$ & reference & A$^\dagger$ / B$^\dagger$ / C & A$^\dagger$ / B$^\dagger$ / C / A$_s$ / B$_s$ & other optimum & other frame \\",
@@ -371,8 +380,8 @@ def build() -> dict[str, str]:
     M["StrongSevenOtherFrame"] = I(f7["configs"][strongest]["pipeline_vs_reference_frame_differs"])
     M["StrongFiveOtherOptimum"] = I(f5["configs"][strongest]["pipeline_vs_reference_different_optimum"])
     M["StrongFiveOtherFrame"] = I(f5["configs"][strongest]["pipeline_vs_reference_frame_differs"])
-    M["StrongFiveTierOneStated"] = f"{f5['configs'][order[0]]['tier1_rate']:.1f}"
-    M["StrongFiveTierOneStrongest"] = f"{f5['configs'][strongest]['tier1_rate']:.1f}"
+    M["StrongFiveTierOneStated"] = PF(f5['configs'][order[0]]['tier1_rate'] / 100, 1)
+    M["StrongFiveTierOneStrongest"] = PF(f5['configs'][strongest]['tier1_rate'] / 100, 1)
     M["StrongTreesSeven"] = I(f7["reference"]["by_tier"]["tierBD"])
     M["StrongTreesFive"] = I(f5["reference"]["by_tier"]["tierBD"])
     M["ScaledAlpha"] = str(sc["configs"]["A_s"]["ms_scaling_factor"])
@@ -380,10 +389,10 @@ def build() -> dict[str, str]:
     for tag, lvl in (("Five", "p=0.05"), ("Seven", "p=0.07")):
         for cfg in ("A", "B"):
             s = scl[lvl][f"{cfg}_s"]
-            M[f"Strong{tag}OptHitScaled{cfg}"] = f"{s['optimum_hit_rate']:.1f}"
+            M[f"Strong{tag}OptHitScaled{cfg}"] = PF(s['optimum_hit_rate'] / 100, 1)
             M[f"Strong{tag}BpScaled{cfg}"] = I(s["bp_osd_logical_errors"])
-            M[f"Strong{tag}TierOneScaled{cfg}"] = f"{s['tier1_rate']:.1f}"
-    M["StrongFiveOptHitStatedB"] = f"{f5['configs'][order[1]]['optimum_hit_rate']:.1f}"
+            M[f"Strong{tag}TierOneScaled{cfg}"] = PF(s['tier1_rate'] / 100, 1)
+    M["StrongFiveOptHitStatedB"] = PF(f5['configs'][order[1]]['optimum_hit_rate'] / 100, 1)
     M["StrongFiveBpStated"] = I(f5["configs"][order[0]]["bp_osd_logical_errors"])
     M["StrongFiveBpStatedB"] = I(f5["configs"][order[1]]["bp_osd_logical_errors"])
     M["StrongSevenBpStated"] = I(f7["configs"][order[0]]["bp_osd_logical_errors"])
@@ -464,7 +473,7 @@ def build() -> dict[str, str]:
     st = hp["rungs"]["stress_p05"]
     M["HoPostStressPairScaledWrong"] = I(st["paired_scaled_wrong_pipeline_ok"])
     M["HoPostStressPairPipeWrong"] = I(st["paired_scaled_ok_pipeline_wrong"])
-    M["HoPostStressMcNemar"] = f"{st['mcnemar_scaled_vs_pipeline_two_sided_p']:.2f}"
+    M["HoPostStressMcNemar"] = PVAL(st['mcnemar_scaled_vs_pipeline_two_sided_p'])
 
     # ONE-NODE TREES (second referee, M1): the producer files a shot "BD" whenever the LP primal is fractional, even
     # when its root dual alone closes; how many trees are one node, and how many optimal BP-OSD answers they certify.
@@ -501,7 +510,7 @@ def build() -> dict[str, str]:
         M[f"Strong{tag}BranchedC"] = I(c["optimal_on_tree_shot"] - c["root_dual_accepts"])
         M[f"Strong{tag}TierOneRuleC"] = I(cfg_c["tier1"] + c["root_dual_accepts"])
         n_c = cfg_c["tier1"] + cfg_c["tier2"] + cfg_c["tierBD"] + cfg_c["unresolved"]
-        M[f"Strong{tag}TierOneRuleRateC"] = f"{100 * (cfg_c['tier1'] + c['root_dual_accepts']) / n_c:.1f}"
+        M[f"Strong{tag}TierOneRuleRateC"] = PF((cfg_c['tier1'] + c['root_dual_accepts']) / n_c, 1)
     # the same count for B (as run) and the scaled arms at p = 0.07 (third referee, minor 9)
     r7 = rd["strong_baseline"]["p=0.07"]
     for tag, key, rec in (("B", "strong_100_osdcs10", sb["p=0.07"]["configs"][order[1]]),
@@ -570,7 +579,8 @@ def build() -> dict[str, str]:
     M["DiscFaultWeight"] = I(ds["fault_weight"])
     en = J("qldpc_ensembles.json")
     M["EnsLazyCodes"] = I(en["lazy_vs_enum"]["codes"])
-    M["EnsLazyWorst"] = SCI(en["lazy_vs_enum"]["worst_abs_diff"])
+    # "agreed to within" is an UPPER bound: SCI's nearest rounding printed 4.4e-16 for 4.44e-16 (external audit 4, X6)
+    M["EnsLazyWorst"] = BOUND(en["lazy_vs_enum"]["worst_abs_diff"], "ceil", 2)
     M["EnsLadderCodes"] = I(en["ladder_vs_bruteforce"]["codes"])
     M["EnsBaseTight"] = I(en["ladder_vs_bruteforce"]["base_lp_tight"])
     M["EnsCutsTight"] = I(en["ladder_vs_bruteforce"]["with_cuts_tight"])
@@ -589,7 +599,7 @@ def build() -> dict[str, str]:
 
     cd = J("qldpc_circuit_distance.json")
     M["DistUpper"] = I(cd["upper_bound"]["value"])
-    M["DistFlatBound"] = f"{cd['flat_lower_bound']['lp_bound']:.1f}"
+    M["DistFlatBound"] = f"{math.floor(cd['flat_lower_bound']['lp_bound'] * 10 + 1e-9) / 10:.1f}"   # a lower bound
     M["DistNodeBudget"] = I(cd["lower_bound_attempt"]["max_nodes_budget"])
 
     lazy, full = J("qldpc_circuit_gate_lazy.json"), J("qldpc_circuit_gate.json")
@@ -666,6 +676,13 @@ def build() -> dict[str, str]:
     #                                                  the P2/P3 mechanism equality, the scale probe with trees
     _receipt_tiers(M, files, tot_n, tier1)
     _posthoc_all8(M, files)
+    # Sec. VI A calls the equality of two totals a coincidence of counts: the post-hoc optimum hits at 0.625 and the
+    # flat receipts. It is one only while the totals agree and the per-dataset counts do not (external audit 4, 3.4)
+    pa = J("qldpc_heldout_scaled_posthoc_all8.json")["rungs"]
+    hit_k = [pa[k]["alpha"]["0.625"]["optimum_hit"] for k in RUNG_ORDER]
+    flat_k = [rungs[k]["tier1"] + rungs[k]["tier2"] for k in RUNG_ORDER]
+    need(sum(hit_k) == tot_flat and hit_k != flat_k,
+         "the scaled optimum hits and the flat receipts are no longer equal in total only; reword Sec. VI A")
     _p3_equality(M)
     _scale_trees(M)
     _datasets(files)
@@ -691,7 +708,8 @@ def build() -> dict[str, str]:
     M["MutQEquivalent"] = I(mu["equivalent_declared"])
 
     body = ["% GENERATED by paper/tools/make_numbers_qldpc.py from evidence/ -- do not edit.",
-            "% Point percentages and lower bounds are floored at the last shown digit; upper bounds are ceilinged."]
+            "% Point percentages and lower bounds are floored at the last shown digit; upper bounds are ceilinged; a range"
+            " is rounded outward unless it quotes table entries; every other value is rounded to the nearest."]
     for k in sorted(M):
         body.append(rf"\newcommand{{\{k}}}{{{M[k]}}}")
     files["numbers.tex"] = "\n".join(body) + "\n"
@@ -702,6 +720,44 @@ def need(cond: bool, msg: str) -> None:
     """A generated number is printed only if the evidence still says what the text will say about it."""
     if not cond:
         raise SystemExit(f"need: {msg}")
+
+
+def _dev_export(M: dict, ex: dict) -> None:
+    """The development datasets' flat certificates, regenerated and judged by the Lean checker.
+
+    The originals were checked when produced and not stored. tools/export_p2_certificates.py re-ran their producer,
+    required every regenerated per-shot record to equal the committed one except the certificate hash, and stored the
+    regenerated certificates; tools/check_lean_certificate.py ran the Lean checker on them. The text says exactly what
+    those two records say, so each number here is read from them and checked against the stored file itself."""
+    import gzip
+    import hashlib
+    exp, lean = J("p2_certificates_export.json"), J("lean_safe_bound.json")
+    per = {k: r["exact_certified"] for k, r in ex["rungs"].items()}
+    need(exp["schema"] == "oneq.p2.certificate-export.v1", "dev export: schema")
+    need(exp["per_rung"] == per and exp["certificates"] == sum(per.values()),
+         "dev export: the regenerated certificates are not the development flat certificates, dataset by dataset")
+    need(exp["records_identical_except_certificate_hash"] is True,
+         "dev export: a regenerated record differs from the committed one beyond its certificate hash")
+    drift = exp["certificate_hash_drift"]
+    need(drift["count"] == len(drift["shots"]) == len(set(drift["shots"])) < exp["certificates"],
+         "dev export: the list of certificates whose hash moved")
+    payload = gzip.decompress((EV / "p2_certificates.jsonl.gz").read_bytes())
+    need(hashlib.sha256(payload).hexdigest() == exp["content_sha256"] == lean["corpus"]["certificates_sha256"]
+         and len([x for x in payload.decode("utf-8").splitlines() if x.strip()]) == exp["certificates"],
+         "dev export: the stored certificates are not the ones the export wrote and the Lean checker judged")
+    c, f = lean["corpus"], lean["corpus"]["forgeries"]
+    need(lean["build_exit"] == 0 and c["exe_exit"] == 0 and c["accepted"] == exp["certificates"]
+         and c["refused"] == 0 and c["malformed"] == 0, "dev export: the Lean checker did not accept every certificate")
+    need(f["accepted"] == 0 and f["malformed"] == 0 and f["refused"] == f["total"] > 0,
+         "dev export: the Lean checker accepted a forgery")
+    need("OneqCert.Cert.accept_sound" in lean["theorems"]
+         and all(set(v) <= {"propext", "Classical.choice", "Quot.sound"} for v in lean["theorems"].values()),
+         "dev export: the soundness theorem is missing or rests on a nonstandard axiom")
+    M["DevExportCerts"] = I(exp["certificates"])
+    M["DevExportDrift"] = I(drift["count"])
+    M["DevExportSameHash"] = I(exp["certificates"] - drift["count"])
+    M["DevLeanAccepted"] = I(c["accepted"])
+    M["DevLeanForgeries"] = I(f["total"])
 
 
 def _fresh(doc: dict, what: str) -> None:
@@ -848,6 +904,11 @@ def _p3_equality(M: dict) -> None:
     need(d["detectors"]["alignment_is_a_bijection_onto_p3_z_type"], "detector alignment")
     w = d["witness"]
     need(w["zero_syndrome_and_flips_p2_observable"] and w["no_9_column_subset_does_both"], "the weight-10 witness")
+    # the transfer of the companion's bound needs the declared observable to be one of the companion's twelve (or a
+    # non-zero combination of them) on every mechanism; the text says it is the first (external audit 4, item 3.7)
+    ob = d["observables"]
+    need(ob["p3"] == 12 and ob["p2"] == 1 and ob["p2_logical_is_p3_observable"] == [0] and ob["p2_logical_matches_logical_z"],
+         "P2/P3 equality: the declared observable is no longer the companion model's first observable")
     M["EqMechanisms"] = I(d["mechanisms_p2_observable"]["P2"])
     M["EqMechanismsPthree"] = I(d["mechanisms_p2_observable"]["P3"])
     M["EqWitnessWeight"] = I(w["weight"])
@@ -1085,6 +1146,21 @@ def MS(seconds: float) -> str:
     return f"{ms:.1f}" if ms < 10 else I(int(round(ms)))
 
 
+def MS_BOUND(seconds: float, side: str) -> str:
+    """A latency in MS's digits, rounded DOWN ('floor', a range's low end) or UP ('ceil', a range's high end or an
+    'at most'), so the printed value never lies inside the bound it states. A ceiling that reaches the next magnitude
+    (0.9996 ms -> 1.000) is printed in that magnitude's digits, as MS would print the exact value."""
+    if side not in ("floor", "ceil"):
+        raise ValueError(f"a latency bound rounds 'floor' or 'ceil', not {side!r}")
+    ms = 1000 * seconds
+    k = 3 if ms < 1 else 1 if ms < 10 else 0
+    f = 10 ** k
+    v = (math.floor(ms * f + 1e-9) if side == "floor" else math.ceil(ms * f - 1e-9)) / f
+    if v < 1:
+        return f"{v:.3f}"
+    return f"{v:.1f}" if v < 10 else I(int(v))
+
+
 def _prereg_costs(M: dict, files: dict) -> None:
     """Costs of the preregistered campaign (external audit 3, paper A): production latency per receipt from the
     timed re-run (experiments/m0_prior_art/qldpc_scaling_prereg_timed_rerun.py), checking latency per receipt from
@@ -1174,6 +1250,8 @@ def _prereg_costs(M: dict, files: dict) -> None:
     M["PcBnbNodes"] = I(lim["bnb_max_nodes"])
     M["PcBnbDepth"] = I(lim["bnb_max_depth"])
     M["PcTreeBTimeout"] = I(lim["tree_checker_b_timeout_s"])
+    # these two ranges quote the smallest and largest MEDIAN CELLS of Table costs, so they print as the table does
+    # (MS, nearest); a range of values the table does not show is rounded outward (MS_BOUND), like every other range
     med = [prod[k]["median"] for k in names]
     M["PcProdMedLo"], M["PcProdMedHi"] = MS(min(med)), MS(max(med))
     cmed = [both[k]["median"] for k in names]
@@ -1183,7 +1261,7 @@ def _prereg_costs(M: dict, files: dict) -> None:
     pc = [_nearest_rank(chk["series"][k]["production_checker_s"])["median"] for k in names]
     sc = [_nearest_rank(chk["series"][k]["second_checker_s"])["median"] for k in names]
     need(all(b > a for a, b in zip(pc, sc)), "costs: the text says the second checker is the larger share everywhere")
-    M["PcProdCheckerMedLo"], M["PcProdCheckerMedHi"] = MS(min(pc)), MS(max(pc))
+    M["PcProdCheckerMedLo"], M["PcProdCheckerMedHi"] = MS_BOUND(min(pc), "floor"), MS_BOUND(max(pc), "ceil")
     worst = max(names, key=lambda k: prod[k]["max"])
     M["PcProdMaxMs"] = MS(prod[worst]["max"])
     M["PcProdMaxWhere"] = RUNG_PLAIN[worst]
@@ -1210,12 +1288,13 @@ def _prereg_costs(M: dict, files: dict) -> None:
     # decoding both settings, per shot: its largest per-dataset median (BP-OSD's cost, not the receipt's)
     dec = [_nearest_rank([a + b for a, b in zip(docs[k]["shots"]["wall_s"]["decode_1.0"],
                                                 docs[k]["shots"]["wall_s"]["decode_0.625"])])["median"] for k in names]
-    M["PcDecodeMedMaxMs"] = MS(max(dec))
+    M["PcDecodeMedMaxMs"] = MS_BOUND(max(dec), "ceil")          # "a median of at most ... ms": an upper bound
     M["PcCpuName"] = re.sub(r"\((R|TM)\)", "", env[0]["cpu_name"]).replace("  ", " ").strip()
     M["PcLogicalCpus"] = I(env[0]["logical_cpus"])
     cw = [r["cpu_over_wall"] for r in runs]
     need(all(0.5 < x <= 1.05 for x in cw), "costs: a run used more or less than about one core; the text says one")
-    M["PcCpuWallLo"], M["PcCpuWallHi"] = f"{min(cw):.2f}", f"{max(cw):.2f}"
+    M["PcCpuWallLo"], M["PcCpuWallHi"] = (f"{math.floor(min(cw) * 100 + 1e-9) / 100:.2f}",   # a range: outward
+                                          f"{math.ceil(max(cw) * 100 - 1e-9) / 100:.2f}")
     box = [e["box_cpu_utilisation_during_run"] for e in env]
     M["PcBoxLo"], M["PcBoxHi"] = str(math.floor(100 * min(box))), str(math.ceil(100 * max(box)))
     peak = math.ceil(max(e["peak_working_set_bytes"] for e in env) / 2 ** 20)

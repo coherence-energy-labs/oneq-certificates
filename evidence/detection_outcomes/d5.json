@@ -83,18 +83,6 @@
     "not_proven_on_defective": 0,
     "mean_excess_of_suboptimal": 0.0
    },
-   "M5_equal_weight_alternative": {
-    "n": 12,
-    "defective": 0,
-    "invalid": 0,
-    "certified": 12,
-    "proven_suboptimal": 0,
-    "not_proven": 0,
-    "false_alarms": 0,
-    "missed": 0,
-    "not_proven_on_defective": 0,
-    "mean_excess_of_suboptimal": 0.0
-   },
    "M6_truncated_path": {
     "n": 259,
     "defective": 259,
@@ -107,7 +95,7 @@
     "not_proven_on_defective": 0,
     "mean_excess_of_suboptimal": 0.0
    },
-   "M7_added_cycle_STEALTH": {
+   "M7_disjoint_cycle_STEALTH": {
     "n": 300,
     "defective": 300,
     "invalid": 0,
@@ -117,7 +105,7 @@
     "false_alarms": 0,
     "missed": 0,
     "not_proven_on_defective": 0,
-    "mean_excess_of_suboptimal": 9.269968738561966
+    "mean_excess_of_suboptimal": 10.508676081265598
    },
    "M9_detour_STEALTH": {
     "n": 288,
@@ -149,7 +137,7 @@
     "n": 259,
     "truly_defective": 259
    },
-   "M7_added_cycle_STEALTH": {
+   "M7_disjoint_cycle_STEALTH": {
     "n": 300,
     "truly_defective": 300
    },
@@ -160,10 +148,6 @@
    "M4_stale_cache": {
     "n": 299,
     "truly_defective": 299
-   },
-   "M5_equal_weight_alternative": {
-    "n": 12,
-    "truly_defective": 0
    }
   },
   "oracle_failures": []
@@ -287,5 +271,5 @@
    }
   ]
  },
- "wall_seconds": 113.0
+ "wall_seconds": 96.1
 }

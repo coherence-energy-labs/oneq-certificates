@@ -12,7 +12,8 @@ networkx==3.6.1               # the exact tier (exact_decode, tjoin_exact)
 cryptography==50.0.0          # Ed25519: cert_format, passport, verify_release
 matplotlib==3.11.1            # paper/tools/make_figures.py
 qiskit==2.5.0                 # the IBM live lanes (rep_code_cert, ibm_epsilon_rerun, hardware_noise_floor)
-python-sat>=1.8               # paper 3's SAT tooling (experiments/circuit_distance_exact/tools_cde.py)
+python-sat==1.9.dev7          # paper 3's SAT tooling, pinned to the environment of record; PyPI serves only .dev releases
+                              # and ">=1.8" floated to the newest (1.9.dev21 on 2026-11-07), not the version that ran
 psutil>=5.9                   # cost measurements record their working sets
 pytest>=8
 #

@@ -15,7 +15,8 @@ INPUTS (all committed):
   evidence/superactivation/erasure_sensitivity.json, stored_maps_entrywise.json, ppt_relaxation_probe.json
   evidence/superactivation/direct/certificate_direct_n1.json (+ encoder and decoders)
   evidence/superactivation/shield_family/certificate_two_use_*.json, two_use_code_*.npy, rational_recovery_d*.json,
-        certificate_nuse_d*_n*.json (+ codes and decoders), phase_diagram.json
+        certificate_nuse_d*_n*.json (+ codes and decoders), phase_diagram.json, and onset_search/symmetric_d5.json
+        (the d = 5 row past n = 4, which phase_diagram.json binds by sha256; external audit 4, item 4.4)
   evidence/superactivation/general_codes/reduction_dense_check_v2.json   the group reduction, the certifiers' own
         ball-arithmetic selections and coefficients, and the certifiers end to end, against the dense 2^n
         construction (verify_reduction_dense.py; findings F1, N6, N7), bound to the bytes of the code that ran it;
@@ -48,8 +49,15 @@ The two-group and symmetric certificates (hours of exact arithmetic) are NOT re-
 witness and decoder bytes it proved, and tests/test_superactivation_twogroup.py and test_superactivation_certificate.py
 recompute the stored pairs.
 
-ROUNDING. A certified lower bound is printed TRUNCATED (it may only fall), a maximum residual is printed rounded UP,
-and a floating-point (uncertified) value is rounded half up and refused if the rounding moves it across 3/4.
+ROUNDING (the manuscript states this rule in its reproducibility section). Each number is rounded so that the
+sentence quoting it stays true: a certified lower bound, a margin or any "at least" is printed TRUNCATED (it may only
+fall); a maximum residual or deviation, and any "less than", "at most" or "up to", rounded UP; a range is enclosed
+outward (its low end truncated, its high end rounded up); a floating-point (uncertified) value is rounded half up and
+refused if the rounding moves it onto or across 3/4; exact rationals are printed exactly.
+
+THE SOURCE'S COMPILED TEXT ONLY. What arXiv 2604.27042's source holds inside a comment block is not in the paper its
+authors published: nothing from it is quoted or read here, and every section or equation number cited is the
+compiled one (external audit 4, items 4.1 and 4.9, 2026-11-07).
 """
 
 from __future__ import annotations
@@ -273,9 +281,11 @@ def build() -> dict[str, str]:
     put("PubN", pub_n, f"{LITERATURE}: arXiv 2604.27042's n* <= {pub_n}")
     put("PubF", rd(pub_f, 6), f"{LITERATURE}: the published n = {pub_n} code's fidelity in arXiv 2604.27042's "
                               f"ancillary data (fidelity_verified.npy, {anc.group(1)}), rounded half up")
-    # the paper's text prints it to five digits, "0.75013 > 3/4" (onset_superactivation.tex l.159, l.171;
-    # supplemental.tex l.2351 of the v2 source); the macro is that rounding, held to the ancillary value
-    put("PubFPrinted", rd(pub_f, 5), "arXiv 2604.27042v2 text, three places: the five-digit rounding of PubF")
+    # the paper's compiled text prints it to five digits, "0.75013 > 3/4", once (onset_superactivation.tex l. 159 of
+    # the v2 source; the other two lines that print it lie inside comment blocks, so they are not in the paper); the
+    # macro is that rounding, held to the ancillary value
+    put("PubFPrinted", rd(pub_f, 5), "arXiv 2604.27042v2, the compiled text's one printing: the five-digit rounding "
+                                     "of PubF")
     tg_src = TXT(TWOGROUP_PY)
     sym_tab = RX(r"SYM = \{(.*?)\}\n# \^ the authors' symmetric \(isometric-ansatz\) table, permqit ([0-9a-f]{10})",
                  tg_src, "the authors' symmetric table in twogroup.py")
@@ -441,8 +451,17 @@ def build() -> dict[str, str]:
     need(e2e_ns == [4, 8, 17, 20, 24], "the end-to-end runs are not at n = 4, 8 (two-group) and 17, 20, 24")
     put("RedEtoEFour", e2e_ns[0], src + ": certifier_end_to_end")
     put("RedEtoEEight", e2e_ns[1], src + ": certifier_end_to_end")
-    put("RedEtoEMax", sci(max(e2e_gap(e) for e in e2e), 1, ROUND_CEILING),
+    # three significant digits (external audit 4, item 4.6): Table II's ten digits of the same pair (the float rounded,
+    # the bound truncated) can differ by one unit more than the gap, which a two-digit "less than" then contradicted
+    worst = max(e2e, key=e2e_gap)
+    put("RedEtoEMax", sci(e2e_gap(worst), 2, ROUND_CEILING),
         src + ": largest fidelity of the stored pair minus its re-certified bound, rounded up")
+    put("RedEtoEMaxN", worst["n"], src + ": the n of that largest gap")
+    # the text: Table II shows this pair, the float rounded and the bound truncated to ten digits
+    need(worst["n"] in symlow, "the largest end-to-end gap is no longer at a symmetric certificate Table II shows")
+    printed = D(measured(curve_f[worst["n"]], 10, "e2e")) - D(lo(symlow[worst["n"]], 10))
+    need(abs(printed - D(repr(e2e_gap(worst)))) <= D("1.5e-10"),
+         "Table II's ten digits of the largest-gap pair are not within rounding of the gap")
     put("RedCtlExpect", sci(ctl[ctl_keys[0]], 1, ROUND_FLOOR), src + ": negative controls")
     put("RedCtlModule", sci(ctl[ctl_keys[1]], 1, ROUND_FLOOR), src + ": negative controls")
     put("RedCtlFlip", sci(ctl[ctl_keys[2]], 1, ROUND_FLOOR), src + ": negative controls")
@@ -580,7 +599,8 @@ def build() -> dict[str, str]:
              f"{ksrc} was produced by other bytes of {f}; re-run it")
     put("KrausDiff", sci(kdiff, 1, ROUND_CEILING), ksrc + ", rounded up")
     put("KrausEntries", ex["entries"], ksrc + ": exact_symbolic")
-    put("KrausTypoDiff", rd(kctl["smith_yard_original_M1_sign_typo_vs_family_d2"], 3), ksrc + ": controls")
+    # quoted as "by up to", so rounded up (it was rounded half up to 0.073 below a maximum of 0.0732...)
+    put("KrausTypoDiff", hi(kctl["smith_yard_original_M1_sign_typo_vs_family_d2"], 4), ksrc + ": controls, rounded up")
     put("KrausTypoUnequal", 256 - kctl[typo_key], ksrc + ": entries the exact check leaves unequal under the typo")
     put("KrausSwapUnequal", 256 - kctl[swap_key], ksrc + ": entries unequal with the formula's weights exchanged")
 
@@ -687,6 +707,18 @@ def build() -> dict[str, str]:
     put("FamAThirtyTwo", lo(la32, 10), "shield_family/certificate_two_use_famA_d32.json")
     put("ClosedThirtyTwo", rd(closed_form(p_of(32)), 7), "computed: the closed form at d = 32")
     put("FamAGain", sci(family_a(32) - closed_form(p_of(32)), 1, ROUND_HALF_UP), "computed: F_A* - closed form, d = 32")
+    # the text: eq. (10) holds for d <= 21 + 12 sqrt 3, where its optimal sin(Delta/2) is at most 1; beyond, the family's
+    # optimum is the closed form, which the formula exceeds (external audit 4, item 4.11), quoted at d = 64
+    d_opt = 21 + 12 * Decimal(3).sqrt()
+
+    def s_star(d: int) -> Decimal:                  # the maximizer of family A's concave F(s), s = sin(Delta/2)
+        p = p_of(d)
+        return 1 / (4 * p * ((1 - p) + p * (3 - 2 * p) ** 2)).sqrt()
+    need(all((s_star(d) <= 1) == (d <= d_opt) for d in range(2, 400)),
+         "family A's formula is no longer valid exactly for d <= 21 + 12 sqrt 3")
+    need(c64["d"] > d_opt and family_a(c64["d"]) > closed_form(p_of(c64["d"])),
+         "eq. (10) no longer exceeds the closed form at the d the text quotes")
+    put("FamASixtyFour", rd(family_a(c64["d"]), 5), "computed: eq. (10) at d = 64, outside its range")
 
     # -------------------------------------------- the onset table (R186 part 4, which corrects R142's)
     pd = J(SF / "phase_diagram.json")
@@ -728,7 +760,35 @@ def build() -> dict[str, str]:
     put("OnsetThreeHi", max(by_onset[3]), "shield_family/phase_diagram.json")
     need(pd["9"]["onset_upper_bound"] == 3 and pd["2"]["onset_upper_bound"] == pub_n
          and pd["2"]["family"] == "symmetric", "the table's d = 2 or d = 9 row changed")
-    need(pd["5"]["onset_upper_bound"] is None, "d = 5 is no longer undetermined")
+    # the d = 5 row past n = 4 (external audit 4, item 4.4): the original scan never reached it, and it was computed
+    # in 2026-11 by phase_diagram.py `symmetric`, the same function and parameters as the carried-forward symmetric
+    # rows, after re-running that function on every one of them; each entry is bound to that record by sha256
+    sym_search = "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)"
+    srec_path = SF / "onset_search" / "symmetric_d5.json"
+    srec, s_sha, row5 = J(srec_path), sha256(srec_path), pd["5"]
+    sym5 = {n: e for n, e in row5["entries"].items() if int(n) >= 5}
+    need(srec["schema"] == "oneq.superactivation.symmetric-onset/1" and srec["d"] == 5 and srec["search"] == sym_search
+         and srec["parameters"] == {"restarts": 3, "steps": 300, "seed": 13, "nmin": 5, "nmax": 17,
+                                    "stops_at_first_crossing": True},
+         "onset_search/symmetric_d5.json is not the original scan's search at d = 5")
+    need(sym5 and set(sym5) == set(srec["F"])
+         and all(e.get("record") == srec_path.name and e.get("record_sha256") == s_sha and row5["F"][n] == srec["F"][n]
+                 and e.get("search") == sym_search for n, e in sym5.items()),
+         "the d = 5 symmetric entries of phase_diagram.json are not the values of the record they name")
+    carried = {(dk, nk) for dk, r in pd.items() for nk, e in r["entries"].items()
+               if int(nk) >= 5 and e.get("search") == sym_search
+               and e.get("provenance", "").startswith("carried forward as recorded")}
+    redone = {(dk, nk): r for dk, rows in srec["reproduction"]["rows"].items() for nk, r in rows.items()}
+    # the text: the d = 5 search "first reproduced every other symmetric entry of the table ... bit for bit"
+    need(set(redone) == carried and srec["reproduction"]["reproduces"] and srec["reproduction"]["max_abs_difference"] == 0
+         and all(r["now"] == r["recorded"] == pd[dk]["F"][nk] for (dk, nk), r in redone.items()),
+         "the d = 5 search did not reproduce, bit for bit, every symmetric entry the table carries forward")
+    need(row5["onset_upper_bound"] == srec["onset_upper_bound"], "the d = 5 onset is not its record's")
+    # the text: "for larger n, at d = 3, ..., 6, from symmetric codes"
+    need(all(pd[str(d)].get("family") == "symmetric" and pd[str(d)].get("onset_class") == "MEASURED-float"
+             for d in (3, 4, 5, 6)), "the onsets at d = 3..6 are no longer floating-point symmetric codes")
+    put("SymReproCount", len(redone), "shield_family/onset_search/symmetric_d5.json: carried-forward symmetric entries "
+                                      "it re-ran, each to the last bit")
     need(len(seeds) == 1 and len(restarts) == 1, "the general searches do not share one seed and restart count")
     put("OnsetCertLo", min(certified_ds), "shield_family/phase_diagram.json: rows with onset_class CERTIFIED")
     put("OnsetCertHi", max(certified_ds), "shield_family/phase_diagram.json")
@@ -738,6 +798,16 @@ def build() -> dict[str, str]:
     put("SeedSpreadMax", sci(smax, 1, ROUND_CEILING), "shield_family/phase_diagram.json: max seed_spread, rounded up")
     put("SeedSpreadD", sd, "shield_family/phase_diagram.json: where the spread is largest")
     need(nlow[(8, 3)] < TQ, "the dark case's certified lower bound is no longer below 3/4")
+    # the text (external audit 4, item 4.2): the certifier did not fail there -- the best three-use code we found at
+    # d = 8 is itself below 3/4 in floating point, and its certificate lies just below that value
+    dark_float = D(nuse[(8, 3)]["pair_float_fidelity"])
+    need(pd["8"]["entries"]["3"].get("certificate") == "certificate_nuse_d8_n3.json"
+         and abs(pd["8"]["F"]["3"] - nuse[(8, 3)]["pair_float_fidelity"]) < 1e-12,
+         "certificate_nuse_d8_n3.json is no longer the best three-use code of the table at d = 8")
+    need(dark_float < TQ and 0 <= dark_float - nlow[(8, 3)] < D("1e-9"),
+         "at d = 8, n = 3 the code is no longer below 3/4 in floating point with its certified bound just below it")
+    put("DarkFloat", measured(nuse[(8, 3)]["pair_float_fidelity"], 7, "d = 8, n = 3"),
+        "certificate_nuse_d8_n3.json: pair_float_fidelity (float)")
     put("DarkF", lo(nlow[(8, 3)], 5), "certificate_nuse_d8_n3.json: certified lower bound (re-proved), truncated")
     put("DarkD", 8, "certificate_nuse_d8_n3.json: the code certified below 3/4")
     put("DarkN", 3, "certificate_nuse_d8_n3.json")
@@ -756,7 +826,6 @@ def build() -> dict[str, str]:
     small = {d: {int(n): v for n, v in pd[str(d)]["F"].items() if int(n) <= 4} for d in range(2, 7)}
     need(all(sorted(F) == [2, 3, 4] and all(v < 0.75 for v in F.values()) for F in small.values()),   # n = 1: Lemma 6
          "a code with n <= 4 at some d <= 6 now crosses 3/4, or an entry is missing")
-    put("FiveBest", measured(pd["5"]["F"]["4"], 4, "d = 5"), "shield_family/phase_diagram.json d = 5, n = 4 (float)")
     put("SixFour", measured(pd["6"]["F"]["4"], 4, "d = 6"), "shield_family/phase_diagram.json d = 6, n = 4 (float)")
 
     def onset_row(d: int) -> str:
@@ -854,14 +923,12 @@ def build() -> dict[str, str]:
     put("HwPred", rd(hr["analysis"]["predicted"]["F_e"], 3), "hw_run_m5/result_db8jpre94fic73etigpg.json")
     over = D(hr["analysis"]["predicted"]["F_e"]) - D(ms["F_e"])
     nsig = over / D(ms["sd_F_e"])
+    # the text (cut to two sentences by external audit 4, item 4.7): "\HwOverSigma standard errors below its model's
+    # prediction", and the ion margins "less than that model's miss"
     need(over > 0 and nsig > 3, "the model no longer over-predicts the device run by several standard errors")
-    put("HwOver", rd(over, 3), "hw_run_m5/result_db8jpre94fic73etigpg.json: predicted minus measured F_e")
-    put("HwOverSigma", rd(nsig, 1), "hw_run_m5/result_db8jpre94fic73etigpg.json: that difference over sd_F_e")
-    # the text: "On IBM heavy-hex devices our calibrated model predicts that no shield size we modelled reaches 3/4"
-    rq = J(EV / "r186_faithful_requirements" / "r186_summary.json")
-    hh = [r for r in rq["runs"].values() if r["device"].startswith("kingston_hh") or r["device"] == "spec:kingston_spec"]
-    need(rq["bar"] == 0.75 and len(hh) >= 8 and {r["m"] for r in hh} == {5, 6} and all(r["F_e"] < 0.75 for r in hh),
-         "the calibrated heavy-hex model now reaches 3/4 at some modelled shield size, or no longer covers m = 5, 6")
+    put("HwOverSigma", rd(nsig, 1), "hw_run_m5/result_db8jpre94fic73etigpg.json: predicted minus measured F_e, over "
+                                    "sd_F_e")
+    # the text: the projected ion margins are positive ("clear 3/4") and "less than that model's miss"
     pr = J(EV / "ion_run_m6" / "design_n2000" / "pass_rates.json")
     faithful = [dev["arms"][arm]["F_e_projected"] for dev in pr for arm in ("barriers", "exec")]
     mlo, mhi = D(min(faithful)) - TQ, D(max(faithful)) - TQ
@@ -871,15 +938,7 @@ def build() -> dict[str, str]:
     old = J(EV / "ion_run_m6" / "design_n2000" / "design.json")
     new = J(EV / "ion_run_m8_r224" / "design.json")
     seq = J(EV / "ion_run_m8_r224" / "sequential.json")
-    branches_old = {u["branch"] for u in old["units"]}
-    branches_new = {u["branch"] for u in new["units"]}
-    need("erased_kept" not in branches_old and "kept_erased" in branches_old,
-         "the first ion package is no longer the folded one the text describes")
-    need({"erased_kept", "kept_erased"} <= branches_new and new["erasure_orders"] == "both"
-         and new["erasure_marginals"] == {"use0": 0.5, "use1": 0.5, "both": 0.25},
-         "the re-frozen ion package does not sample both one-erased orders")
-    need(seq["rule"] == "betting_ad" and seq["units"] == len(new["units"]), "the re-frozen package's rule changed")
-    put("IonOldUnits", grouped(len(old["units"])), "ion_run_m6/design_n2000/design.json: units")
+    need(seq["units"] == len(new["units"]), "the frozen ion package's decision rule covers other circuits")
     put("IonOldD", old["d"], "ion_run_m6/design_n2000/design.json")
     put("IonUnits", grouped(len(new["units"])), "ion_run_m8_r224/design.json: units")
     put("IonD", new["d"], "ion_run_m8_r224/design.json")

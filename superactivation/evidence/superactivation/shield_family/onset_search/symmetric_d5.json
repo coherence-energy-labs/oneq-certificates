@@ -1,0 +1,226 @@
+{
+ "schema": "oneq.superactivation.symmetric-onset/1",
+ "d": 5,
+ "p": 0.3090169943749474,
+ "search": "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)",
+ "parameters": {
+  "restarts": 3,
+  "steps": 300,
+  "seed": 13,
+  "nmin": 5,
+  "nmax": 17,
+  "stops_at_first_crossing": true
+ },
+ "F": {
+  "5": 0.7445701623787992,
+  "6": 0.7488143324639187,
+  "7": 0.7516748401029377
+ },
+ "seconds": {
+  "5": 11.0,
+  "6": 15.0,
+  "7": 18.5
+ },
+ "onset_upper_bound": 7,
+ "class": "MEASURED-float",
+ "reproduction": {
+  "of": "every symmetric n >= 5 entry the table carries forward at d = 2, 3, 4, 6, 9",
+  "rows": {
+   "2": {
+    "5": {
+     "recorded": 0.7232085835002693,
+     "now": 0.7232085835002693,
+     "abs_difference": 0.0,
+     "seconds": 11.5
+    },
+    "6": {
+     "recorded": 0.7279757834603179,
+     "now": 0.7279757834603179,
+     "abs_difference": 0.0,
+     "seconds": 15.7
+    },
+    "7": {
+     "recorded": 0.7314810060723239,
+     "now": 0.7314810060723239,
+     "abs_difference": 0.0,
+     "seconds": 19.5
+    },
+    "8": {
+     "recorded": 0.7366277236630451,
+     "now": 0.7366277236630451,
+     "abs_difference": 0.0,
+     "seconds": 22.9
+    },
+    "9": {
+     "recorded": 0.7414140611918209,
+     "now": 0.7414140611918209,
+     "abs_difference": 0.0,
+     "seconds": 28.9
+    },
+    "10": {
+     "recorded": 0.7446745986167941,
+     "now": 0.7446745986167941,
+     "abs_difference": 0.0,
+     "seconds": 34.2
+    },
+    "11": {
+     "recorded": 0.746616768479121,
+     "now": 0.746616768479121,
+     "abs_difference": 0.0,
+     "seconds": 44.1
+    },
+    "12": {
+     "recorded": 0.7478949631512375,
+     "now": 0.7478949631512375,
+     "abs_difference": 0.0,
+     "seconds": 58.3
+    },
+    "13": {
+     "recorded": 0.7486243947714594,
+     "now": 0.7486243947714594,
+     "abs_difference": 0.0,
+     "seconds": 68.3
+    },
+    "14": {
+     "recorded": 0.7492066761036382,
+     "now": 0.7492066761036382,
+     "abs_difference": 0.0,
+     "seconds": 76.8
+    },
+    "15": {
+     "recorded": 0.7496145761723598,
+     "now": 0.7496145761723598,
+     "abs_difference": 0.0,
+     "seconds": 85.5
+    },
+    "16": {
+     "recorded": 0.7498427674154966,
+     "now": 0.7498427674154966,
+     "abs_difference": 0.0,
+     "seconds": 100.5
+    },
+    "17": {
+     "recorded": 0.7501663347463303,
+     "now": 0.7501663347463303,
+     "abs_difference": 0.0,
+     "seconds": 127.3
+    }
+   },
+   "3": {
+    "5": {
+     "recorded": 0.7313269987402427,
+     "now": 0.7313269987402427,
+     "abs_difference": 0.0,
+     "seconds": 10.5
+    },
+    "6": {
+     "recorded": 0.7358134341149533,
+     "now": 0.7358134341149533,
+     "abs_difference": 0.0,
+     "seconds": 12.3
+    },
+    "7": {
+     "recorded": 0.7389609719233924,
+     "now": 0.7389609719233924,
+     "abs_difference": 0.0,
+     "seconds": 15.6
+    },
+    "8": {
+     "recorded": 0.7411967065487048,
+     "now": 0.7411967065487048,
+     "abs_difference": 0.0,
+     "seconds": 20.0
+    },
+    "9": {
+     "recorded": 0.7458564436450836,
+     "now": 0.7458564436450836,
+     "abs_difference": 0.0,
+     "seconds": 24.9
+    },
+    "10": {
+     "recorded": 0.7490091670968623,
+     "now": 0.7490091670968623,
+     "abs_difference": 0.0,
+     "seconds": 32.0
+    },
+    "11": {
+     "recorded": 0.7509932420074528,
+     "now": 0.7509932420074528,
+     "abs_difference": 0.0,
+     "seconds": 39.9
+    }
+   },
+   "4": {
+    "5": {
+     "recorded": 0.7384478793688566,
+     "now": 0.7384478793688566,
+     "abs_difference": 0.0,
+     "seconds": 10.8
+    },
+    "6": {
+     "recorded": 0.7427818556780615,
+     "now": 0.7427818556780615,
+     "abs_difference": 0.0,
+     "seconds": 14.8
+    },
+    "7": {
+     "recorded": 0.7457440881463685,
+     "now": 0.7457440881463685,
+     "abs_difference": 0.0,
+     "seconds": 19.2
+    },
+    "8": {
+     "recorded": 0.7478331186211223,
+     "now": 0.7478331186211223,
+     "abs_difference": 0.0,
+     "seconds": 22.7
+    },
+    "9": {
+     "recorded": 0.7500942410719822,
+     "now": 0.7500942410719822,
+     "abs_difference": 0.0,
+     "seconds": 26.2
+    }
+   },
+   "6": {
+    "5": {
+     "recorded": 0.7498885892334133,
+     "now": 0.7498885892334133,
+     "abs_difference": 0.0,
+     "seconds": 10.3
+    },
+    "6": {
+     "recorded": 0.7540755886660532,
+     "now": 0.7540755886660532,
+     "abs_difference": 0.0,
+     "seconds": 13.4
+    }
+   },
+   "9": {
+    "5": {
+     "recorded": 0.7625162414366099,
+     "now": 0.7625162414366099,
+     "abs_difference": 0.0,
+     "seconds": 10.9
+    }
+   }
+  },
+  "max_abs_difference": 0.0,
+  "covers_every_carried_row": true,
+  "tolerance": 1e-09,
+  "reproduces": true
+ },
+ "code_version": {
+  "git_head": "8e66aff3965d72a02000052690ec6c9e8574aaa9",
+  "code_git_blobs": {
+   "experiments/superactivation/shield_family/phase_diagram.py": "ce809ada0d9ef1b698719f22ed71246529001a58",
+   "experiments/superactivation/shield_family/onset_vs_p.py": "e8a04d47a8b89ac0f4ddcf2b2c5f799709d0f87b",
+   "experiments/superactivation/general_codes/general_codes.py": "a17e18a19eaec2f04ebd1418f99a74e1f02949c5",
+   "experiments/superactivation/general_codes/twogroup.py": "96bbdf49d9e7305b1c7853e982106a0683299fff",
+   "src/oneq/superactivation.py": "8a18afbb19188b17c2542cb76921984d18be34c2"
+  },
+  "python": "3.14.3",
+  "numpy": "2.3.5"
+ },
+ "seconds_total": 1021.3
+}

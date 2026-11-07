@@ -2,15 +2,19 @@
 
 **Scope.** The two morphing memory experiments of the R198 lane (`bb_circuits.morphing_cycle`: `morph72`,
 `morph144`, homomorphism `x`), memory-Z and memory-X, in the lane's convention: noisy preparation and readout, the
-lane's derived detectors (no meta-checks), the same-type projection, and standard depolarizing circuit noise.
+lane's derived detectors (no meta-checks), the same-type projection, and standard depolarizing circuit noise; and,
+in the same convention, the ten standard-schedule circuits of `morph2026.py` (paper 3, Table II), built by
+`morph2026.morphing_cycle_from` (Appendix C, Corollary 4). The proof is written for contraction circuits of any
+number L >= 1 of involutive CNOT layers; every circuit it is applied to has L = 3.
 
 **Result.** Under six hypotheses on finite data that do not depend on T (section 2), Theorem 1 gives, for every
 T >= 1,
 
     d_circ(T) = d_proj(T) = d_proj(1) = d_circ(1).
 
-All six hypotheses are checked mechanically for both circuits, both bases and all three homomorphisms. For each
-hypothesis there is at least one doctored input that must fail it, and it does (section 5).
+All six hypotheses are checked mechanically for both circuits, both bases and all three homomorphisms, and for the
+ten 2026 standard schedules in both bases. For each hypothesis there is at least one doctored input that must fail
+it, and it does (section 5).
 
 **The proof is an explicit formula, not an induction on "the pattern continues".** Lemma 3 says that a fault whose
 mid-cycle image is the Pauli P at mid-cycle point t has projected symptom `(iota_t(sigma_S(P)), sigma_L(P))`:
@@ -25,7 +29,8 @@ map the adversary found empirically. Separately, `iota_0` is injective.
 With the lane's 1-round certificates and witnesses (Corollary 3):
 
 - the **[[144,12,12]] morphing circuit has d_circ = 12 for every T >= 1**, memory-Z and memory-X;
-- the [[72,12,6]] circuit has d_circ = 6 for every T >= 1.
+- the [[72,12,6]] circuit has d_circ = 6 for every T >= 1;
+- and (Corollary 4) each of the ten 2026 standard schedules has its 1-round distance for every T >= 1.
 
 **Evidence class.**
 
@@ -36,6 +41,11 @@ With the lane's 1-round certificates and witnesses (Corollary 3):
   the T = 1 certificates (`ccheck.c`, whose certificate calculus is PROVEN sound in Lean, `lean/CertR198`; the
   exporter's projection), and Appendix A's premise that the builder emits C_T for every T: a proof by reading the
   code, confirmed mechanically at 10 values of T up to 32 and, against stim alone, at 18 more (section 8).
+- **Corollary 4 (the ten 2026 standard schedules): PROVEN from MACHINE-CHECKED premises and one argued premise**,
+  the same shape: the hypotheses checked by `fold_uniform.py` (`records/morph2026_fold_uniform.jsonl`), the
+  campaign's certificates and witnesses (`records/morph2026_campaign.jsonl`), and Appendix C's premise that
+  `morph2026.morphing_cycle_from` emits C_T for every T: a proof by reading the code, confirmed mechanically at every
+  T = 1..32 for all ten circuits in both bases (section 5).
 
 The lane's previous phrase "MACHINE-CHECKED for T <= 13, DERIVED beyond" is retired for both morphing circuits.
 
@@ -47,7 +57,8 @@ The lane's previous phrase "MACHINE-CHECKED for T <= 13, DERIVED beyond" is reti
 Qubits `Q = L u R`, with `L = {0..n-1}` (data, "left") and `R = {n..2n-1}` ("right"); `n = lm` (72 or 144). Paulis
 are taken modulo phase: `P = X^x Z^z` with `x, z in F_2^Q`. The symplectic form `<P, P'> = x.z' + z.x' (mod 2)` is 1
 exactly when P and P' anticommute. A Pauli is X-type if z = 0 and Z-type if x = 0. For a qubit set S and a type
-`b in {X, Z}`, `b_S` is the b-type Pauli supported on S.
+`b in {X, Z}`, `b_S` is the b-type Pauli supported on S. (For the ten 2026 standard schedules of Appendix C,
+n = 42 or 48.)
 
 A CNOT layer G is a set of (control, target) pairs. If the qubits of distinct pairs are distinct (hypothesis H1), G
 is a unitary involution, and conjugation `G(P) := G P G` acts by `x_t <- x_t + x_c` and `z_c <- z_c + z_t` for every
@@ -58,20 +69,27 @@ pair. Two facts are used throughout:
 - **(SYM)** `<U(P), U(P')> = <P, P'>` for every Clifford U.
 
 ### 1.2 The finite data D
-- **Contraction circuits** `F_r = (G_{r,0}, G_{r,1}, G_{r,2})` for `r in {0,1}`. `F_r(P) := G_{r,2}(G_{r,1}(G_{r,0}(P)))`
-  is P carried forward through the contraction. Define `Phi_{r,k}(P) := G_{r,0}(G_{r,1}(...G_{r,k}(P)))` for
-  `k = -1, 0, 1, 2`, with `Phi_{r,-1} = id`. Under H1, `Phi_{r,2} = F_r^{-1}`.
+- **Contraction circuits** `F_r = (G_{r,0}, ..., G_{r,L-1})` for `r in {0,1}`: L >= 1 CNOT layers, the same L for
+  both parities. `F_r(P) := G_{r,L-1}(...G_{r,1}(G_{r,0}(P)))` is P carried forward through the contraction. Define
+  `Phi_{r,k}(P) := G_{r,0}(G_{r,1}(...G_{r,k}(P)))` for `k = -1, 0, ..., L-1`, with `Phi_{r,-1} = id`. Under H1,
+  `Phi_{r,L-1} = F_r^{-1}`. Nothing below depends on the value of L, only on each layer being an involution (H1);
+  the lane's two builders give L = 3 (`bb_circuits.morphing_schedule`: three layers; `morph2026.morphing_schedule`:
+  `max(|A|, |B|)` layers, 3 for all ten standard-schedule targets), and `fold_uniform.py` is written for L = 3 and
+  counts any other L as an H1 violation, so a circuit with another L cannot pass it and the machine-checked premises
+  are exactly those of L = 3.
 - **Measurement split** `R = M^X_r u M^Z_r`: the right qubits measured, and later reset, in X and in Z after `F_r`.
 - **Memory basis** b, with b' the other basis. The flip of b is `f_b` (X when b = Z, Z when b = X).
 - **Generators of the mid-cycle code.** `S^X_h` are the rows of H_X and `S^Z_g` the rows of H_Z, for `g, h in [n]`.
-  The memory-type generators are `S_g := S^b_g`. The memory logicals are `L_1..L_K` (K = 12): b-type, a basis of the
-  b-type logicals (`BB.logicals`, as the builder takes them).
+  The memory-type generators are `S_g := S^b_g`. The memory logicals are `L_1..L_K` (K = k: 12 for the lane's two codes,
+  6 for the c42 targets, 4 for the c48 targets): b-type, a basis of the b-type logicals (`BB.logicals`, or
+  `Code2BGA.logicals` for the 2026 targets, as the builder takes them).
 - **Splits.** For an operator O of type t and a parity r, by (CSS) `F_r(O) = O^r_R . O^r_L` with
   `O^r_R = t_{supp F_r(O) n R}` and `O^r_L = t_{supp F_r(O) n L}`.
 - **Contraction parities.** `Gamma_O := {r : O^r_L = I}`, the parities in which O contracts onto right qubits only.
 - **Noise.** The component sets placed at each location (section 1.3).
 
-In the lane, D comes from `bb_circuits.morphing_schedule` and `bb_circuits.BB`.
+In the lane, D comes from `bb_circuits.morphing_schedule` and `bb_circuits.BB`; for the ten 2026 standard schedules,
+from `morph2026.morphing_schedule` and `morph2026.Code2BGA`.
 
 ### 1.3 The circuit C_T
 Write `c(s) := s mod 2` (so `c(-1) = 1`). For T >= 1, C_T is:
@@ -80,14 +98,16 @@ Write `c(s) := s mod 2` (so `c(-1) = 1`). For T >= 1, C_T is:
 - **ROUND t = 0, ..., T-1**, with `a := c(t-1)` and `c := c(t)`:
   1. **Reset** `M^X_a` in the X basis and `M^Z_a` in the Z basis. Noise `N_reset(a)` (lane: Z_q for q in `M^X_a`,
      X_q for q in `M^Z_a`, DEPOLARIZE1 on L).
-  2. **Expansion.** For j = 0, 1, 2: apply `G_{a,2-j}`, then noise `N_exp(a, j)` (lane: `N(G_{a,2-j})`).
-  3. **Contraction.** For k = 0, 1, 2: apply `G_{c,k}`, then noise `N_con(c, k)` (lane: `N(G_{c,k})`).
+  2. **Expansion.** For j = 0, ..., L-1: apply `G_{a,L-1-j}`, then noise `N_exp(a, j)` (lane: `N(G_{a,L-1-j})`).
+  3. **Contraction.** For k = 0, ..., L-1: apply `G_{c,k}`, then noise `N_con(c, k)` (lane: `N(G_{c,k})`).
   4. **Measurement.** Noise `N_meas(c)`, then measure `M^X_c` in X and `M^Z_c` in Z. Lane placement: Z_q before
      the MX of `M^X_c`; X_q before the M of `M^Z_c` (which comes after the MX); DEPOLARIZE1 on L after both.
 - **READOUT.** Noise `N_ro` (lane: `f_b` on every q in L), then measure every q in L in the b basis.
 
 Here `N(G)` is DEPOLARIZE2 on every pair of G (its 15 non-identity two-qubit Paulis) plus DEPOLARIZE1 (X, Y, Z) on
-every qubit outside G. In both lane circuits every layer covers all 2n qubits, so there is no idle noise.
+every qubit outside G. In both lane circuits every layer covers all 2n qubits, so there is no idle noise. In the ten
+2026 standard schedules (Appendix C) B has two terms, so the middle layer of each contraction has n/2 pairs, covers n
+of the 2n qubits, and `N(G)` puts DEPOLARIZE1 on the other n; the other two layers cover all 2n.
 
 The **mid-cycle point** `mu_t` is between steps 2 and 3 of round t. Under H1 the expansion of round t is `F_a^{-1}`,
 the inverse of the contraction measured in round t-1. So around every measurement the circuit reads: contract
@@ -114,7 +134,9 @@ parity of outcomes of qubits measured in the b' basis.
 
 Appendix A proves, by reading the code, that `bb_circuits.morphing_cycle(kind, basis, T)` emits exactly C_T with these
 detectors for every T. `fold_uniform.py` confirms this instruction for instruction and detector for detector at
-T in {1, 2, 3, 4, 14, 15, 16, 17, 31, 32}.
+T in {1, 2, 3, 4, 14, 15, 16, 17, 31, 32}. Appendix C proves the same for `morph2026.morphing_cycle_from` on the
+standard schedules of `morph2026.morphing_schedule`, and `fold_uniform.py` confirms it for the ten 2026 targets at
+every T = 1..32.
 
 ### 1.5 Faults, symptoms, models, distances
 A **noise component** is a pair (location l, Pauli A) taken from the component set of the channel at l. Its
@@ -138,20 +160,25 @@ parts sum to 0 and whose observable parts do not sum to 0. Such a set is "undete
 infinity if none exists.
 
 `d_circ` counts DEM MECHANISMS; Shaw & Terhal count FAULTS. The two minima are equal here. A set of faults
-produces at most as many mechanisms as it has members (equal symptoms cancel in pairs). Conversely, a set of
-mechanisms is realized by at most as many faults: one component per mechanism, and two components at one location
-combine into their product, which that location's channel also contains, because every noise location is a single
-Pauli or a channel whose component set is closed under products (DEPOLARIZE1/2; the boundary flips are single
-Paulis).
+produces at most as many mechanisms as it has members (equal symptoms cancel in pairs). Conversely, a minimum-weight
+undetectable logical set of mechanisms is realized by at most as many faults, at most one per location (a location
+is one channel instance: one noise instruction acting on one qubit, or on one pair for DEPOLARIZE2): take one
+component per mechanism, and replace the components taken at one location by their product, whose symptom is the sum
+of theirs. That product is not the identity -- otherwise those members' symptoms would sum to zero and dropping them
+would leave a lighter undetectable logical set -- and it is a component of the same channel, because every noise
+location is either a single Pauli (one component, so at most one member comes from it) or a depolarizing channel,
+DEPOLARIZE1/2, whose components are all the non-identity Paulis on its qubits (the boundary flips are single Paulis).
+(The component set is NOT closed under products: X X = I. What the argument uses is that a non-identity product of
+components is a component.)
 
 ## 2. The hypotheses (finite, T-independent)
 
 | name | statement | read from | negative control (must fail; does) |
 |---|---|---|---|
-| **H1** involutive layers | in every `G_{r,k}`, distinct pairs use distinct qubits | schedule | a layer reusing a qubit |
+| **H1** involutive layers | in every `G_{r,k}`, distinct pairs use distinct qubits (the script also requires L = 3, which the proof does not) | schedule | a layer reusing a qubit |
 | **H2** all measured, all reset | `M^X_r u M^Z_r = R` disjointly, r = 0, 1 | schedule | one right qubit never measured |
 | **H3** trackability | for every `S^X_h`, every `S^Z_g`, every `L_k`, r = 0, 1: `supp F_r(O) n R` lies in `M^{type(O)}_r` | schedule + code | a contracted qubit moved to the other basis |
-| **PAL** palindrome (mid-cycle IMAGES, not raw channels) | for r = 0, 1: the mid-cycle images (Lemma 2) of the components of `N_exp(r, j)` equal those of `N_con(r, 2-j)`, j = 0, 1, 2, as sets; the images of `N_reset(r)` equal those of `N_meas(r)` | C_2 (round 0: a = 1, c = 0; round 1: a = 0, c = 1) | expansion not the reverse of the contraction |
+| **PAL** palindrome (mid-cycle IMAGES, not raw channels) | for r = 0, 1: the mid-cycle images (Lemma 2) of the components of `N_exp(r, j)` equal those of `N_con(r, L-1-j)`, j = 0, ..., L-1, as sets; the images of `N_reset(r)` equal those of `N_meas(r)` | C_2 (round 0: a = 1, c = 0; round 1: a = 0, c = 1) | expansion not the reverse of the contraction |
 | PAL root | each layer's noise set is invariant under conjugation by that layer | C_2 | one layer's noise keeps only X on controls |
 | **BND** boundaries | images of `N_prep` lie among those of `N_reset(1)`; images of `N_ro` after a round with `c(T-1) = r` lie among those of `N_meas(r)` | C_1, C_2 | correlated two-qubit readout flips |
 | **PURE** pure parts | at every location: if A is a component and `pi(A) != I`, then `pi(A)` is a component, where `pi(A)` is the `f_b`-part of A (X part in memory-Z, Z part in memory-X) | C_1, C_2 | one location loses its pure component |
@@ -230,11 +257,11 @@ its **image** `I(A)` at `mu_t` is:
 
 | phase | location | image |
 |---|---|---|
-| prep, reset | before round t's expansion, with a = c(t-1) | `Phi_{a,2}(A)`, i.e. forward through `F_a^{-1}` |
-| expansion | after expansion layer j (the layer `G_{a,2-j}`) | `Phi_{a,1-j}(A)`, forward through the remaining layers |
+| prep, reset | before round t's expansion, with a = c(t-1) | `Phi_{a,L-1}(A)`, i.e. forward through `F_a^{-1}` |
+| expansion | after expansion layer j (the layer `G_{a,L-1-j}`) | `Phi_{a,L-2-j}(A)`, forward through the remaining layers `G_{a,L-2-j}, ..., G_{a,0}` |
 | contraction | after `G_{c,k}` | `Phi_{c,k}(A)`, backward through `G_{c,k}, ..., G_{c,0}` |
-| measurement | round t, c = c(t) | `Phi_{c,2}(A)`, backward through all of `F_c` |
-| readout | c = c(T-1) | `Phi_{c,2}(A)`, backward through all of `F_c` |
+| measurement | round t, c = c(t) | `Phi_{c,L-1}(A)`, backward through all of `F_c` |
+| readout | c = c(T-1) | `Phi_{c,L-1}(A)`, backward through all of `F_c` |
 
 A at its location and `I(A)` at `mu_t` have the same symptom.
 
@@ -317,10 +344,11 @@ adds nothing new (BND: it lies inside `K_1`). Readout adds nothing new (BND: it 
 *Why PAL holds for the lane's noise (the root).* `N(G)` is invariant under conjugation by G: G permutes the 15
 non-identity Paulis of each of its pairs and fixes the single-qubit Paulis off G.
 
-- The expansion location after `G_{r,k}` (j = 2-k) has image set
+- The expansion location after `G_{r,k}` (j = L-1-k) has image set
   `Phi_{r,k-1}(N(G_{r,k})) = Phi_{r,k-1}(G_{r,k}(N(G_{r,k}))) = Phi_{r,k}(N(G_{r,k}))`, which is the image set of the
-  contraction location after `G_{r,k}`.
-- Reset and measurement noise of parity r are the same Pauli set, with the same map `Phi_{r,2}`.
+  contraction location after `G_{r,k}`. (This holds for idle DEPOLARIZE1 too: G fixes every Pauli on a qubit it does
+  not touch.)
+- Reset and measurement noise of parity r are the same Pauli set, with the same map `Phi_{r,L-1}`.
 
 *PAL is a condition on IMAGES; equal raw noise is not enough (external audit 2, finding F08, 2026-11-03).* The
 expansion location after `G_{r,k}` sees the remaining expansion layers only, the contraction location after `G_{r,k}`
@@ -427,6 +455,16 @@ So the whole T-round model, and its size, are functions of the 1-round model and
   `d_proj(1) >= 6`. The recorded weight-6 full witnesses at T = 2 give `d_proj(2) <= 6`, and (A) then gives
   `d_proj(1) <= 6`. So **d_circ(T) = 6 for every T >= 1**.
 
+**Corollary 4 (the ten 2026 standard schedules, paper 3 Table II).** For each standard-schedule target of
+`morph2026_targets.json` and each basis, let d be the weight the T = 1 search found (`records/morph2026_campaign.jsonl`,
+`kind = search`, `rounds = 1`). By Appendix C the builder's circuit is C_T for every T; `fold_uniform.py` finds H1-H3,
+PAL (with its root), BND and PURE on it (`records/morph2026_fold_uniform.jsonl`, all controls failing). The
+committed checker VERIFIED "no undetectable logical error of weight <= d-1" on the 1-round projected model, the same
+model (sha256) the search ran on, and again in the 2026-11-02 re-certification (`recert_20261102/manifest.json`):
+`d_proj(1) >= d`. The search's weight-d witness, lifted to the full 1-round DEM, is undetectable and logical there and
+no single deletion keeps it so: `d_circ(1) <= d`. By Theorem 1, **d_circ(T) = d for every T >= 1**, the value
+`results.json` -> `morph2026` states per target and basis.
+
 ## 5. The checks: `fold_uniform.py` (run log `records/fold_uniform_hom_x.jsonl`)
 
 `python fold_uniform.py --template-T 1 2 3 4 --fresh-T 14 15 16 17 31 32` (single core, 83 s) gives the
@@ -477,6 +515,18 @@ following for morph72 and morph144, memory-Z and memory-X:
 - **Other homomorphisms.** `--hom y` and `--hom xy`, at T = 1..4: **PASS**, with all 18 applicable controls failing
   as required (the two record controls apply to hom x only; `records/fold_uniform_hom_y.jsonl`,
   `fold_uniform_hom_xy.jsonl`). The theorem therefore covers all three morphing schedules, not only the lane's.
+- **The ten 2026 standard schedules** (`records/morph2026_fold_uniform.jsonl`; the command is in Appendix B; 20 runs,
+  398 s single core, re-run 2026-11-07): the same checks on each target's own circuit from
+  `morph2026.morphing_cycle_from` (Appendix C), homomorphism x. H1-H3, PAL with its root, BND, PURE, COV and TWIN:
+  **PASS** in all 20 runs; INFO holds; all 18 applicable controls fail as required in every run (the two record
+  controls do not apply: no per-T fold rows or exported models are archived for these codes; the COV control is the
+  code's other CNOT order, since Z_N has one homomorphism onto Z_2). **Template identification at every
+  T = 1, ..., 32**, both bases, all ten: skeleton, closed-form detectors and observables, other-type detectors on
+  other-basis records only, the pure lift, every image in K, the model equal to Corollary 2's union (5,418 projected
+  mechanisms at T = 32 for the 42-qubit codes, 6,192 for the 48-qubit ones), and every component's projected symptom
+  equal to Lemma 3's formula: no mismatch in 42,915,072 components. The record replaces the run of 2026-10-22, which
+  checked T = 1, 2, 3, 4, 9, 16 only; every other field of every row, and every one of those six template points, is
+  identical in the two runs.
 
 **Further corroboration, outside the theorem's premises:**
 
@@ -499,7 +549,8 @@ following for morph72 and morph144, memory-Z and memory-X:
 2. **b'-type generators start unknown.** The b'-type generators that contract in round 0 have no value at `mu_0`, so
    they lack a first detector, and their detectors do not telescope. This is why the fold is stated for the projected
    model. Part (C) reaches `d_circ` through PURE, not through the b'-detectors.
-3. **Meta-checks.** The lane omits the n - rank(H) = 6 meta-checks on round-0 b'-type outcomes
+3. **Meta-checks.** The lane omits the n - rank(H) = 6 meta-checks on round-0 b'-type outcomes (3 for the c42
+   targets, 2 for the c48 targets)
    (`tools_cde.deterministic_gap`). Adding them changes nothing:
    - they are parities of b'-basis records, so the pure lifts of (C) flip none of them;
    - extra detectors can only remove solutions from the lower bound.
@@ -531,7 +582,13 @@ following for morph72 and morph144, memory-Z and memory-X:
   nothing.
 - **Builder and template.** Theorem 1 is about C_T. It reads the builder only at T = 1 (where the hypotheses are read
   and the certified model is exported) and T = 2; both are checked mechanically. That `morphing_cycle` emits C_T for
-  every T is Appendix A, a proof by code reading, confirmed mechanically at 10 values of T up to 32.
+  every T is Appendix A, a proof by code reading, confirmed mechanically at 10 values of T up to 32. That
+  `morph2026.morphing_cycle_from` does so for the ten 2026 standard schedules is Appendix C, also a proof by code
+  reading, confirmed mechanically at every T = 1..32 for all ten in both bases. Neither reading is formalized, and
+  no human has checked either.
+- **The layer count.** The proof holds for any number L of involutive layers per contraction; the script that checks
+  the hypotheses is written for L = 3 and counts any other L as an H1 violation (a circuit with another L cannot
+  pass it), so every machine-checked premise is for L = 3, the L of every circuit the theorem is applied to.
 - **Corollary 3 inherits the trusted base of the T = 1 certificates**: the soundness of `ccheck.c` (its certificate
   calculus is PROVEN in Lean, `lean/CertR198`; that the C implements that calculus is argued, `SPEC.md` gap G1), the
   exporter's projection, and the witness verification. The audit re-exported all four 1-round models from `main`:
@@ -588,6 +645,16 @@ counting faults here; and Corollary 3's evidence class names Appendix A's code-r
 deleting preparation and readout noise leaves `Proj_T` unchanged (BND predicts it), and the small codes with d = 5
 and 6 at T >= 2 (an exact search too heavy in Python).
 
+## 9. Independent adversarial review of Appendix C and the any-L generalization (2026-11-07): CONFIRMED
+
+An AI agent that did not write Appendix C read it against `morph2026.py` and `bb_circuits.py`, and attacked the
+generalization of sections 1.2-1.3, Lemma 2 and PAL to L layers (idle noise included), section 1.5's
+mechanisms-versus-faults argument and Corollary 4's chain. It refuted nothing. Its seven narrower corrections are
+applied above: the detector step's wording (Appendix C), the authors' tie rule for a two-element list, the operator
+types `carry` is called with, the parity-1 logicals at T = 1 (whose H3 rests on `fold_uniform.check_H3`), the line
+numbers of the differences list, `Phi_{r,L-1}` in the PAL root, and the 2026 codes' n, k and meta-check counts. Its
+own runs are not archived, and nothing in this file rests on them. No human has read Appendix C.
+
 ## Appendix A: `bb_circuits.morphing_cycle` emits C_T for every T
 The code was read at blob `bfa38bb2`, lines 402-524.
 
@@ -626,7 +693,100 @@ python fold_uniform.py --template-T 1 2 3 4 --fresh-T 14 15 16 17 31 32   # exit
 python fold_uniform.py --hom y                                           # -> fold_uniform_hom_y.jsonl
 python fold_uniform.py --hom xy                                          # -> fold_uniform_hom_xy.jsonl
 python fold_twin.py --T 32                                               # -> fold_uniform_witness_twin_T32.jsonl
+python fold_uniform.py --circuit c42a c42a2 c42b c42b2 c48a c48a2 c48b c48b2 c48c c48c2 \
+    --template-T 1 2 3 4 --fresh-T 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32
+                                                                         # -> morph2026_fold_uniform.jsonl (Appendix C)
 python -m pytest ../../tests/test_r198_circuit_distance_exact.py -k fold  # light form + Corollary 2 vs stim
 ```
 From `experiments/circuit_distance_exact/`. The archived JSON rows are under
-`evidence/circuit_distance_exact/records/` as `fold_uniform_*.jsonl`.
+`evidence/circuit_distance_exact/records/` as `fold_uniform_*.jsonl` and `morph2026_fold_uniform.jsonl` (the JSON
+lines of each run's standard output).
+
+## Appendix C: `morph2026.morphing_cycle_from` emits C_T for every T (the 2026 standard schedules)
+Theorem 1 is about C_T. For the ten standard-schedule circuits of paper 3's Table II (`morph2026_targets.json`,
+kind `std`) the circuit is built by `morph2026.build`, which calls `morphing_cycle_from(code, gates, meas, basis, T)`
+with `(gates, meas) = morph2026.morphing_schedule(code, hom)`. Appendix A read the other builder; this appendix reads
+this one. That the two emit the same bytes on the lane's two codes (`same_as_lane`, T = 1, 2, held by
+`tests/test_r198_circuit_distance_exact.py`) says nothing about other codes, so the argument is made here directly.
+The code was read at blob `acc71e46` (commit `4b71754c`); line numbers are that blob's.
+
+**The schedule** (`morphing_schedule`, lines 151-196).
+
+- Lines 155-171: f(i, j) = (cx i + cy j) mod 2 must be a surjective homomorphism onto Z_2; in each of A and B exactly
+  one element takes the odd-one-out value of f (for a two-element list, the element with f = 0, the authors' tie
+  rule) and is swapped to the front.
+- Lines 172-174: `L = max(|A|, |B|)` layers per parity, the same L for r = 0 and r = 1 (both lists are created with
+  L entries); `gates[r][k]` is `G_{r,k}`. For the ten targets |A| = 3, |B| = 2, so L = 3 (recorded as `layers` in the
+  campaign's `info` rows).
+- Lines 176-190: for every left qubit g, with `rg = f(g)` and `rh = 1 - rg`: pairs `(g, right_g[k])` in layer k-1 of
+  parity rg for 1 <= k < |B|, pairs `(right_h[k], g)` in layer k-1 of parity rh for 1 <= k < |A|, and in the last
+  layer `(right_g[0], g)` (parity rg) and `(g, right_h[0])` (parity rh); `right_g[0]` is measured in X after
+  contraction rg and `right_h[0]` in Z after contraction rh. With |B| = 2 the middle layer gets only the A-side
+  pairs: n/2 pairs on n qubits, so the other n qubits idle there (section 1.3).
+- Lines 191-195, asserted for every built schedule: each layer is non-empty and uses each qubit at most once (H1), and
+  `sorted(M^X_r + M^Z_r)` is exactly the right block (H2: every right qubit measured exactly once per parity, in one
+  basis).
+
+**The data qubits** (`data_qubits`, lines 240-243): the qubits round r does not measure. By H2 this is the left
+block `{0, ..., n-1}` for both parities, in increasing order, so every `data_r[.]` below is the template's L.
+
+**The circuit** (`morphing_cycle_from`, lines 246-355).
+
+- Lines 253-260: `L = len(gates[0])`; the stabilizers are the rows of `Code2BGA.check_matrices()` (H_X = [A | B],
+  H_Z = [B^T | A^T], asserted to commute); the memory logicals are `Code2BGA.logicals` (BB.logicals' algorithm, with k
+  computed); `data_r[r] = data_qubits(r)`, asserted to have n elements each.
+- Lines 263-272, `carry`: `bc._contract(support, pauli, gates[r])` (bb_circuits lines 390-399) carries a support of
+  the operator's own type `pauli` (memory-type stabilizers and logicals, and also the other-type stabilizers, at lines
+  276, 289 and 323) through `gates[r][0], ..., gates[r][L-1]` in that order, X spreading control -> target and Z
+  target -> control: the support of `F_r(O)`. Line 267 asserts that it meets no qubit measured in the other basis;
+  `same` (line 268) is its intersection with the qubits measured in O's basis and `rest` (line 269) the remainder,
+  asserted inside `data_r[r]` (line 270). With H2, `same = supp O^r_R` and `rest = supp O^r_L`, and the assertions
+  are H3 for every (operator, parity) the builder carries. Cached per (operator, r): independent of T and of the
+  round. At T = 1 the builder carries the logicals in parity 0 only; Lemma 0's base case also needs H3 for them in
+  parity 1, which rests on `fold_uniform.check_H3` (every generator of both types and every logical, both parities).
+- Lines 274-277: every stabilizer contracts in exactly one parity (INFO; the proof does not use it).
+- Lines 285-287, PREP: R (memory-Z) or RX (memory-X) on `data_r[1]` = L, the flip noise X_ERROR / Z_ERROR on L
+  (tag `prep`), TICK.
+- Lines 289-291: `val[(b, g)] = {}` for the memory type; for the other type, `{}` if g contracts in parity 1 and
+  `None` (unknown) otherwise -- the same initialisation as bb_circuits line 458; `lval[k] = {}`.
+- Lines 292-335, the loop `for i in range(rounds)` with `prev, cur = (i-1) % 2, i % 2`:
+  - lines 294-299: RX on `M^X_prev` then Z_ERROR on it, R on `M^Z_prev` then X_ERROR on it, DEPOLARIZE1 on
+    `data_r[prev]` = L (all tagged `reset`), TICK -- step 1 of round i with `N_reset(prev)`;
+  - lines 300-308: the 2L layers `reversed(gates[prev]) + gates[cur]`, i.e. `G_{prev,L-1}, ..., G_{prev,0}` then
+    `G_{cur,0}, ..., G_{cur,L-1}`; each is CX on its pairs, DEPOLARIZE2 on the pairs, DEPOLARIZE1 on the idle qubits
+    when there are any, TICK; tagged `("exp", j)` for j < L and `("con", j - L)` -- steps 2 and 3 with
+    `N_exp(prev, j) = N(G_{prev,L-1-j})` and `N_con(cur, k) = N(G_{cur,k})`;
+  - lines 309-320: Z_ERROR on `M^X_cur`, MX on it, X_ERROR on `M^Z_cur`, M on it, DEPOLARIZE1 on `data_r[cur]` = L
+    (tagged `meas`); `rec[q]` is the record index of q's round-i outcome -- step 4 with `N_meas(cur)`;
+  - lines 321-331, detectors, for both types and every g: `now = val XOR {rec[q] : q in same}` (None stays None); if
+    `rest` is empty (`cur in Gamma_g`), DETECTOR(now) at coordinates (g, type, i) when `now` is known, and `val`
+    becomes `{}` in either case; otherwise `val = now`;
+  - lines 332-334: `lval[k] ^= {rec[q] : q in same(L_k, cur)}`; line 335: TICK.
+  The instructions of iteration i depend on i only through `(prev, cur)`, the record counter and the coordinate i,
+  and the detector targets through `val` and `lval`: this is the body of round i of C_T.
+- Lines 336-350, READOUT: the flip noise on `data_r[last]` = L (tag `readout`), then M or MX on it, in increasing
+  order, so q's readout record is `nmeas + q` (line 339 maps by position, which is q). For every memory-type g whose
+  `rest` in parity `last = (T-1) % 2` is non-empty, DETECTOR(`val[(b, g)]` XOR the readout records of `rest`) at
+  (g, b, T); then OBSERVABLE_INCLUDE(`lval[k]` XOR the readout records of `rest(L_k, last)`) for every k.
+
+**Invariant** (induction on i, exactly as in Appendix A): before iteration i, `val[(b, g)]` is the set of records of
+`m_s(S_g; c(s))` for s in (g's last checkpoint before i, i-1] (empty for i = 0), and `lval[k]` the set of records of
+`m_s(L_k; c(s))` for s <= i-1. So iteration i emits `D_{g,i}` exactly when `c(i) in Gamma_g`, the readout emits
+`D_{g,T}` exactly when `s_m != T-1` and then `Obs_k`, all as in section 1.4; and every other-type detector reads
+only records in `same` of an other-type operator, i.e. outcomes of qubits measured in the other basis -- the one
+property section 1.4 uses of them.
+
+**Differences from `bb_circuits.morphing_cycle`, and why none matters:** the layer count L in the stream and in the
+phase tags (lines 254, 303) instead of 3 -- the template of section 1.3 is written for any L; `data_r[r]` in place of
+`left` (lines 259, 260 (its assertion), 270, 285-286, 298, 320, 337-339) -- equal to L by H2; the readout record map
+by position (line 339) -- equal to `nmeas + q` because `data_r[last]` is `0, ..., n-1` in order; the code object
+(Code2BGA instead of BB) -- the same matrix construction and logical-basis algorithm; idle DEPOLARIZE1 inside a layer
+-- present in both builders' code, emitted here because the middle layer is half-covered, and part of `N(G)` as
+defined in section 1.3 (PAL root holds for it). Nothing that is emitted differs otherwise.
+
+So `morph2026.build(spec(name), basis, T)` is C_T, with the closed-form detectors and observables, for every T >= 1
+and every standard-schedule target. **Mechanical confirmation:** `fold_uniform.template_check` compares the
+instruction skeleton, the closed-form detectors and observables, the bases read by the other-type detectors, every
+component's projected symptom against Lemma 3's formula, and the model against Corollary 2's union, at every
+T = 1..32 for all ten targets in both bases (section 5, `records/morph2026_fold_uniform.jsonl`), each comparison with
+a control that must and does fail (the TEMPLATE controls of section 5, run on each target's own C_2).

@@ -10,6 +10,36 @@ a scandal — send it.
 
 ## Rounds and dates
 
+- **2026-11-07, after external audit 4 (`docs/reviews/EXTERNAL4_2026-11-07.md`, which numbers this paper "Paper
+  3").** No new search queries: the audit named prior work, and each item was read at its source before it was
+  cited or re-credited.
+  - **Neumaier, Shcherbina, "Safe bounds in linear and mixed-integer linear programming", Math. Program. 99, 283
+    (2004), doi:10.1007/s10107-003-0433-3.** Read in the authors' preprint (arnold-neumaier.at/ms/mip.pdf, dated
+    2003-04-01; the journal text is paywalled and was not read), Sec. 3: for an approximate dual y, the residual
+    r >= A^T y - c and upper bounds x <= xbar give c^T x >= y^T b - r_+^T xbar, evaluated with directed rounding.
+    Paper 2's Lemma 1 is that bound on the box [0,1]^n, evaluated in exact rationals. Now cited at the lemma and in
+    Sec. VIII.
+  - **Draper, Yedidia, Wang, "ML decoding via mixed-integer adaptive linear programming", ISIT 2007, 1656-1660,
+    doi:10.1109/ISIT.2007.4557459.** Read (MERL TR2007-022): adaptive LP; when it returns a pseudocodeword, an
+    integer constraint on the least certain symbol, the mixed-integer LP solved by GLPK; ML optimality rests on the
+    solver. The precursor of the branching tier; cited in Sec. VIII.
+  - **The separation rule (audit C1), re-credited.** Taghavi and Siegel (IEEE TIT 54, 2008; arXiv cs/0703123, read):
+    Theorem 1 (at most one violated facet per check), Algorithm 1 (sort, then nested odd prefixes, O(d_c) after the
+    sort), Lemma 1 (adaptive = full LP at convergence). The threshold rule paper 2 uses (F0 = {i in N(j): x_i > 1/2},
+    toggle the coordinate nearest 1/2) is Algorithm 2 of Taghavi, Shokrollahi, Siegel, IEEE TIT 57, 5960 (2011),
+    doi:10.1109/TIT.2011.2161920 (read, p. 5963), whose footnote 2 says Wadayama proposed an equivalent algorithm
+    independently, citing IEEE TIT 56, 4905 (2010), doi:10.1109/TIT.2010.2060030. That journal text is paywalled; the
+    procedure (IsFeasible: theta_l = [x_l > 1/2], flip argmin |2x_l - 1| when the parity is even) was read in its
+    preprint, arXiv:0705.3990 v1 (2007-05-28) and v2. All three now cited in Secs. V and VIII.
+  - **Re-checked, no change:** Gu and Soleimanifar's IEEE TIT 72(10), 7604-7618 (2026) by Crossref for
+    doi:10.1109/TIT.2026.3715538 (audit C7); the Zenodo record of Crocker (10.5281/zenodo.23452754) by the Zenodo
+    and DataCite APIs, title as cited (C9); Krishnamoorthy et al. arXiv:2608.25545 v1 re-read for C2 (three kinds
+    of certificate; "currently speculative" qualifies the annealer-as-oracle architecture; the WISH route validated
+    only on the d = 5 rotated surface code, Sec. 8.1).
+  - **Pan's release v2.0 (C6):** its manuscript (`release/arxiv/main.tex` at tag v2.0) is titled "Interleaving
+    recovers the full circuit distance of the gross and [[90,8,10]] bivariate-bicycle codes"; the shared entry
+    `pan2026interleaving` now carries that title.
+
 - **2026-11-06, after external audit 3 (which named arXiv:2610.28008).** The
   previous round was 2026-09-15, before that paper appeared (2026-10-20).
   Run 2026-11-07 04:00-04:20 UTC (2026-11-06 evening EST).

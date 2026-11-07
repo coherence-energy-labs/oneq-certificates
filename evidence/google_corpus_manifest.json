@@ -1,0 +1,406 @@
+{
+  "schema": "oneq-google-corpus-manifest/1",
+  "doi": "10.5281/zenodo.13273331",
+  "archive": "google_105Q_surface_code_d3_d5_d7.zip",
+  "archive_bytes": 5716907033,
+  "fetched_by": "HTTP range requests; the archive was never downloaded whole",
+  "integrity": "each member's CRC-32 was checked against the ZIP central directory on fetch; sha256 recorded here so a reader holding the full archive can confirm these are the same bytes",
+  "configurations": [
+    {
+      "distance": 3,
+      "patch": "d3_at_q4_5",
+      "basis": "X",
+      "rounds": 13,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 650000,
+          "sha256": "5db91dd8792f83e66920f2dc3bdf8c7f9ed527b9bc6c1189a76bb9b4a9208fb2",
+          "zip_crc32": 2853116329,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r13/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 241,
+          "sha256": "26ee4671f178797bbf1484b10a9d62fc5a80b7fb0921e8f3a66b0d17a5378172",
+          "zip_crc32": 567970153,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r13/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 62847,
+          "sha256": "c2ede0c5148f88daffb38d7b653ef3888e6fd5b69476e22b5b7e263295d18dd7",
+          "zip_crc32": 389997905,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r13/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "66bbf2c298a197632599e5f17a1db2fceb7e39c5f7865674f1e59276790effdf",
+          "zip_crc32": 1030254179,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r13/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 3,
+      "patch": "d3_at_q4_5",
+      "basis": "X",
+      "rounds": 30,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 1500000,
+          "sha256": "3c861ceb2d1f198ba167069dde368c59cf33bf5a590dfc1d37e2b0d0f9b86562",
+          "zip_crc32": 2159584262,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r30/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 241,
+          "sha256": "59d17e6b59dcd7322615ba14f877451545fe381dff719dce95053caa18f1c1f0",
+          "zip_crc32": 4211746042,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r30/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 157877,
+          "sha256": "71ad714e215668a496ebcccc3ea0023563755c32f33fc6630bd09cd355ba75ae",
+          "zip_crc32": 2692082554,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r30/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "34d9bfc974f07251401ecf4ed0080c25c4b58de1ae9efe567c73c903681acdd9",
+          "zip_crc32": 1498671478,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r30/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 3,
+      "patch": "d3_at_q4_5",
+      "basis": "Z",
+      "rounds": 13,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 650000,
+          "sha256": "b81b9fb3dd1a0eecb61bee08c76c54710ead3d26284bbb60a80c5ff91029a324",
+          "zip_crc32": 3943405869,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r13/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 241,
+          "sha256": "bc704f0c65fac7877cc061cf24d6278ef38bf39f221bf52307f2b45adc5d24b6",
+          "zip_crc32": 3556441641,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r13/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 62762,
+          "sha256": "037123105f225187b03e9054750a1665eea9e81d4d90cbd0fc2cd4884e8af0ac",
+          "zip_crc32": 2224713926,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r13/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "2fca88d51cbe495666a6af85e60012e7481fd56f2c6884e6a6998880e39b9e3d",
+          "zip_crc32": 1819914923,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r13/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 3,
+      "patch": "d3_at_q4_5",
+      "basis": "Z",
+      "rounds": 30,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 1500000,
+          "sha256": "4e6c0a05f239628555276c6c74709aca661fa5965d3492250f54a5f7149e9053",
+          "zip_crc32": 34117339,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r30/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 241,
+          "sha256": "e5494cc54ac9a21efec2f7fc98aa5ae051a7f664722f9aabc132e03494d64e20",
+          "zip_crc32": 153768890,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r30/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 157790,
+          "sha256": "38cc78ec76126ff30c35b48270c19763cfbfe1d44ea5c8c1dd39d6d5a02660ff",
+          "zip_crc32": 257224499,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r30/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "fd52268051ff89979ffbef0de264b451587a0404de7a3b9ab85e5ce6b0180cd7",
+          "zip_crc32": 965109317,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r30/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "patch": "d5_at_q8_7",
+      "basis": "X",
+      "rounds": 13,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 1950000,
+          "sha256": "867689f73f99af1a993063575da4cba23602103fb379f04ac23734c090706689",
+          "zip_crc32": 2997853444,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r13/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 515,
+          "sha256": "75145db9492ebaeb7d891923a85c1b0f1661876b8cc75765bab1d0cf08e706fc",
+          "zip_crc32": 4096795200,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r13/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 246743,
+          "sha256": "145fb430197f9e7557570a9e8af11a9aa831867bd03eef1e79b97fabdebbbefd",
+          "zip_crc32": 2605492725,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r13/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "9769445b151962e7969cdf0e31aebd3eac518cb559d1f21765cb9d3a3a087949",
+          "zip_crc32": 3759399160,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r13/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "patch": "d5_at_q8_7",
+      "basis": "X",
+      "rounds": 30,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 4500000,
+          "sha256": "90e27949e8b64f20f36a53f33c70d9284dc6ef97d6335c1df5b5080c0077da7e",
+          "zip_crc32": 2717995931,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r30/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 515,
+          "sha256": "2e6d01a1c35fa4d3190ff9d613810ccb50e583168a529108a077fdcaed65c117",
+          "zip_crc32": 1468462666,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r30/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 601125,
+          "sha256": "0bfd1f22fa31ffaff286d96b50a23c2291134adaf4fc9b9781b94855f0c90c0c",
+          "zip_crc32": 852758761,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r30/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "c179f8a7604107e8027e751f004dbffc4911e6d24553829b2f0d64d14af2cc7a",
+          "zip_crc32": 995964572,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r30/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "patch": "d5_at_q8_7",
+      "basis": "Z",
+      "rounds": 13,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 1950000,
+          "sha256": "ac7169fb63924c5a5bd7a3b59cc7d006605b631a280b5a16b3bfe89e2097cd96",
+          "zip_crc32": 4077689213,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r13/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 515,
+          "sha256": "2972525ae29982eeac2c72767a653181542cb726e65cc218ca1b745a51da3e84",
+          "zip_crc32": 3964782714,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r13/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 246685,
+          "sha256": "d1be0ee2a150e1148d733a79e903f804d180e6da8caed7acf256b215a159c500",
+          "zip_crc32": 3589037658,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r13/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "8fa089fdd6ecf0cef4e509cea61bb0f75724fb6b452e2b2906713f1aaaa59061",
+          "zip_crc32": 2389023886,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r13/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "patch": "d5_at_q8_7",
+      "basis": "Z",
+      "rounds": 30,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 4500000,
+          "sha256": "f78488c0413dedc6cd795466bd5034700426937d9af24ae7ea9aab88f7cae03c",
+          "zip_crc32": 3383074343,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r30/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 515,
+          "sha256": "00653472459763da993b0508cceb940b0eadf46eb85e88b61b10d4269187fa1b",
+          "zip_crc32": 1340546160,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r30/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 601067,
+          "sha256": "164fdb3e92e1688fac6cc4d9f2d23a1e77944895e6a9d0a6c5916d5862ce5c56",
+          "zip_crc32": 2596187160,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r30/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "b06bdaf4cb7412a8255b426519abc6480f282364a123f9026ec745e6d3abc5c0",
+          "zip_crc32": 408568468,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r30/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "patch": "d7_at_q6_7",
+      "basis": "X",
+      "rounds": 13,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 3900000,
+          "sha256": "75fb18c1ae9c8abf40fce2a6cb8f4d703673e09dc02c6d8d4fe7e011ea15ccef",
+          "zip_crc32": 1019653891,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r13/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 913,
+          "sha256": "a9a9f1754d952c15b662bab3f2236fccbc878912f67955875edec751194c2cf8",
+          "zip_crc32": 517542544,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r13/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 548707,
+          "sha256": "0c7493cd66fab76ea76b5782045d309aabd9d9097c966ac185c533eb7699f87d",
+          "zip_crc32": 3964811333,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r13/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "05a694d889256198fcb05b1b137fcc7552902f2e9006e5f6cb8d3c156a57151d",
+          "zip_crc32": 3923770880,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r13/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "patch": "d7_at_q6_7",
+      "basis": "X",
+      "rounds": 30,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 9000000,
+          "sha256": "c6de334aa5e44d0b7d40ba5b80c685860699cfbe6a8e13189e4fb0ebc8f63622",
+          "zip_crc32": 2899725241,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r30/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 913,
+          "sha256": "099518060c724abcbf69b20834b02365f4b7d54048c27ec7c235a40e8011b8ff",
+          "zip_crc32": 3352245891,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r30/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 1350829,
+          "sha256": "388e1ad0e1b41c659b58332c47d9290319b28cf34a272b968929124146d00bbf",
+          "zip_crc32": 276369148,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r30/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "04713ab04b61471f8cf33641ef82e3f0358031a6b9098d1f5d47482aa8c606d6",
+          "zip_crc32": 2149360965,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/X/r30/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "patch": "d7_at_q6_7",
+      "basis": "Z",
+      "rounds": 13,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 3900000,
+          "sha256": "f86765fa0e4a95a45ad3a16ec9a28b44a6f32656c6aa3c6897eae3391e3a9a2d",
+          "zip_crc32": 3703992356,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r13/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 913,
+          "sha256": "c42ff5a6538a762c514586fcebe4036bd989484995d1c110009e104e8e689f7a",
+          "zip_crc32": 421161440,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r13/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 548652,
+          "sha256": "0b9ee34d872856b73071a620d98374f073087cd950651659f1b6d5eebb51fb5f",
+          "zip_crc32": 1182611592,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r13/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "16d9999755a117987c03180c977a8f9b734a44c399456e88db52af33387fea67",
+          "zip_crc32": 3758156389,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r13/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "patch": "d7_at_q6_7",
+      "basis": "Z",
+      "rounds": 30,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 9000000,
+          "sha256": "b2b37c8fe2d816ec280c834fcb66d02b7bb6782943ace03b846d87702a6e12b9",
+          "zip_crc32": 358512069,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r30/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 913,
+          "sha256": "9280a03b612493ae75c9fe697c578ddd2493fd42dbf3ea3cd47d36c1a7ffe691",
+          "zip_crc32": 3222031859,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r30/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 1350772,
+          "sha256": "61b9da551185a85a16cff89efe894ce93b6916e8dcaaed136994a0ebf73da42b",
+          "zip_crc32": 2706636531,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r30/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "1bdc8bf71626d8666cef74b0626385f09fda1ca428224da822f55c4107c24e5e",
+          "zip_crc32": 902650284,
+          "member": "google_105Q_surface_code_d3_d5_d7/d7_at_q6_7/Z/r30/obs_flips_actual.b8"
+        }
+      }
+    }
+  ]
+}

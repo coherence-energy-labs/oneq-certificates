@@ -105,15 +105,51 @@ def _git_available() -> bool:
 NO_REPOSITORY: list = []
 
 
+def _has_commit(rev: str) -> bool:
+    """Whether commit `rev` is in THIS repository. A reader's extracted bundle has no repository; a clone of the public
+    repository has one whose squashed history lacks every commit of the private development repository (external
+    audit 4, R5: the earlier fallback tested only for a repository, so a public clone refused at 70b3c4d8). Either
+    way the commit cannot be opened, and only the shipped bytes can be compared with the record's pins."""
+    import subprocess
+    if not _git_available():
+        return False
+    r = subprocess.run(["git", "cat-file", "-e", f"{rev}^{{commit}}"], cwd=ROOT, capture_output=True)
+    if r.returncode == 0:
+        return True
+    if _has_commit_dev():
+        # the development repository lacks a commit a record names: that is an error in the record, never a fallback
+        raise SystemExit(f"commit {rev[:10]} is named by a record but is not in the development repository")
+    return False
+
+
+def _has_commit_dev() -> bool:
+    """This is the development repository: it holds 2008c81f, the commit the preregistered runs started from (Sec. VI
+    B), which no bundle and no clone of the public repository holds."""
+    import subprocess
+    r = subprocess.run(["git", "cat-file", "-e", "2008c81f6de5775ebdd0278bef7e2dc3619906fb^{commit}"], cwd=ROOT,
+                       capture_output=True)
+    return r.returncode == 0
+
+
+def pins_against_shipped_bytes(pins: dict[str, str], what: str, rev: str) -> None:
+    """The fallback when `rev` cannot be opened: each pinned file that ships with the same bytes is checked against its
+    pin here; one whose shipped bytes differ (changed after the run) is named, since only the development repository
+    holds the bytes that ran."""
+    same = [p for p, h in pins.items() if (ROOT / p).is_file() and _sha_lf((ROOT / p).read_bytes()) == h]
+    other = sorted(set(pins) - set(same))
+    NO_REPOSITORY.append(what)
+    print(f"NOTE: {what}: commit {rev[:10]} is not in this repository (a bundle, or a clone of the public repository, "
+          f"whose history is not the development repository's); {len(same)} of {len(pins)} pinned files ship with "
+          f"the recorded bytes" + (f", and the bytes that ran of {', '.join(other)} are not shipped" if other else ""))
+
+
 def judged_at_its_commit(doc: dict, what: str) -> None:
     """A run attributed to a clean commit: every judged file's recorded bytes are that commit's."""
     head = doc["head"]
     if head.get("uncommitted_changes", head.get("uncommitted_changes_in_src_oneq")):
         raise SystemExit(f"{what}: the run was not made at a clean commit")
-    if not _git_available():
-        NO_REPOSITORY.append(what)
-        print(f"NOTE: {what}: no repository here, so the recorded bytes could not be compared with commit "
-              f"{head['commit'][:10]}; they are pinned by sha256 in the record")
+    if not _has_commit(head["commit"]):
+        pins_against_shipped_bytes(head["sha256"], what, head["commit"])
         return
     for p, h in head["sha256"].items():
         if _committed_sha(p, head["commit"]) != h:
@@ -128,6 +164,30 @@ def need(cond: bool, msg: str) -> None:
     """A generated number is printed only if the evidence still says what the text will say about it."""
     if not cond:
         raise SystemExit(f"need: {msg}")
+
+
+#: The forgery battery before 2026-11-03: D, G and H appended one edge twice, so the epsilon-checker refused them as
+#: malformed input before any bound was computed; only A (every fired detector sent to the boundary, kept when
+#: strictly heavier) was a valid, syndrome-consistent edge set with a genuine packing.
+BATTERY_BEFORE_2026_11_03 = frozenset({"A_suboptimal", "D_spurious_cycle", "E_dropped_edge", "F_duplicated_edge",
+                                       "G_dual_inflated_to_meet_a_worse_primal", "H_negative_dual_hides_inflation",
+                                       "I_mismatched_pair", "N_nan_dual", "N_inf_dual"})
+#: The rebuilt battery adds the doubled-edge documents under their true name (src/oneq/forgeries.py); its D adds an
+#: even cycle disjoint from the correction and G inflates the genuine packing to D's weight, so A, D and G are valid
+#: edge sets with non-negative finite packings, refused only by the bound (H by the z >= 0 guard).
+BATTERY_REBUILT_EXTRA = frozenset({"M_doubled_edge", "M_doubled_edge_dual_inflated", "M_doubled_edge_negative_dual"})
+
+
+def forgeries_reaching_the_bound(by_class: dict, what: str) -> int:
+    """How many of a run's forgeries only weak duality could refuse (external audit 4, item 1.4), from its per-class
+    counts. The battery's version is read off its class set: the rebuilt one always adds the M_ classes."""
+    cls = set(by_class)
+    if cls <= BATTERY_BEFORE_2026_11_03:
+        return by_class.get("A_suboptimal", 0)
+    if cls & BATTERY_REBUILT_EXTRA and cls <= BATTERY_BEFORE_2026_11_03 | BATTERY_REBUILT_EXTRA:
+        return sum(by_class.get(c, 0) for c in ("A_suboptimal", "D_spurious_cycle",
+                                                 "G_dual_inflated_to_meet_a_worse_primal"))
+    raise SystemExit(f"{what}: forgery classes {sorted(cls)} are neither battery's; say which check refuses each")
 
 
 def P(x: float, k: int = 2) -> str:
@@ -404,6 +464,26 @@ def build() -> dict[str, str]:
     M["SimForgeriesAccepted"] = I(ms["forgeries_accepted"])
     M["SimFailedChunks"] = I(ms["failed_chunks"])
     M["SimShotsLostToChunks"] = I(ms["shots_lost_to_failed_chunks"])
+    # WHICH RUN LOST WHICH CHUNKS (external audit 4, 1.9: 74,250 / 265 is not a chunk size). The main run and its
+    # supplements had chunks of different sizes; each run's lost shots are a whole number of its own chunks.
+    runs = [J(n) for n in ms["constituent_artifacts"]]
+    need(ms["constituent_artifacts"][0] == "million_shot_gate_d5.json"
+         and sum(r["failed_chunks"] for r in runs) == ms["failed_chunks"]
+         and sum(r["shots_lost_to_failed_chunks"] for r in runs) == ms["shots_lost_to_failed_chunks"]
+         and sum(r["shots"] for r in runs) == ms["shots"],
+         "original simulation: the merged record is not the sum of its runs")
+    lost = [(r["failed_chunks"], r["shots_lost_to_failed_chunks"]) for r in runs if r["failed_chunks"]]
+    need(all(s % k == 0 for k, s in lost), "original simulation: a run's lost shots are not whole chunks")
+    main_k, main_s = runs[0]["failed_chunks"], runs[0]["shots_lost_to_failed_chunks"]
+    M["SimMainFailedChunks"], M["SimMainShotsLost"] = I(main_k), I(main_s)
+    M["SimMainChunkShots"] = I(main_s // main_k)
+    M["SimMainShots"] = I(runs[0]["shots"])
+    M["SimSupplements"] = I(len(runs) - 1)
+    sup = [(k, s // k) for k, s in lost[1:]]
+    M["SimSuppFailedList"] = " and ".join((f"{I(k)} chunks of {I(z)} shots" if i == 0 else f"{I(k)} of {I(z)}")
+                                          for i, (k, z) in enumerate(sup))
+    M["SimSuppShotsLost"] = I(sum(s for _k, s in lost[1:]))
+    need(len(sup) == 2, "original simulation: the text names the lost chunks of two supplements")
     ug = ms["uncertified_gap_merged"]
     M["SimGapMean"] = F(ug["nweighted_mean"])
     M["SimGapMax"] = F(ug["max_of_maxes"])
@@ -488,7 +568,7 @@ def build() -> dict[str, str]:
         d, basis, r = int(c.split("_")[0][1:]), c.split("_")[-2], int(c.split("_")[-1][1:])
         by.setdefault((d, r), {})[basis] = c
     lines = [r"\begin{tabular}{@{}lcccc@{}}", r"\toprule",
-             r"configuration & gen.~1 & gen.~2 & gen.~3 & gen.~4 \\",
+             r"distance, rounds & gen.~1 & gen.~2 & gen.~3 & gen.~4 \\",
              r"\midrule"]
     for (d, r), bases in sorted(by.items()):
         cells = []
@@ -632,6 +712,26 @@ def build() -> dict[str, str]:
         hw_eps = max(Fraction(wsum[c]["largest_accepted_epsilon"]) for c in wcfg)
         M["EpsHwLargestEps"] = SCI(float(hw_eps))
         M["EpsHwForgeries"] = I(agg(wcfg, "forgeries_attempted"))
+        need(all(sum(wsum[c]["forgeries_by_class"].values()) == wsum[c]["forgeries_attempted"] for c in wcfg),
+             "Willow rerun: a configuration's forgery classes do not add up to its total")
+        M["EpsHwForgeriesBound"] = I(sum(forgeries_reaching_the_bound(wsum[c]["forgeries_by_class"], f"willow_{c}")
+                                         for c in wcfg))
+        # WHY SO FEW REACH THE BOUND (external audit 4, 1.4): the cheapest-boundary forgery exists only on a shot whose
+        # every fired detector has its own boundary edge; on the distance-3 graphs every detector has one
+        def _bdet(nm):
+            e = J(f"instances/matching_{nm}.json")["edges"]
+            det = {x for u, v, _w in e for x in (u, v) if x >= 0}
+            return det, {u if v < 0 else v for u, v, _w in e if u < 0 or v < 0}
+        d3c = [c for c in wcfg if c.startswith("d3_")]
+        need(len(d3c) == 4 and all(a == b for a, b in (_bdet(f"willow_{c}") for c in d3c)),
+             "Willow: the text says every detector of the four distance-3 graphs has a boundary edge")
+        # the smallest share over the four, floored (their sums are in no artifact, claims_provenance_gate)
+        M["WThreeBoundaryMinPct"] = I(math.floor(100 * min(wsum[c]["forgeries_by_class"].get("A_suboptimal", 0)
+                                                           / wsum[c]["nontrivial"] for c in d3c)))
+        sd, sb = _bdet("sim_d5_r25")
+        M["SimBoundaryDetectors"] = I(len(sb))
+        need(len(sd) == int(M["SimDetectors"].replace("{,}", "")) and len(sb) < len(sd),
+             "simulation: the boundary-adjacent detectors are not a proper subset of its detectors")
         M["EpsHwGenFourPct"] = pct_floor(agg(g4c, "accepted") / agg(g4c, "nontrivial"))
         M["EpsHwGenSixPct"] = pct_floor(agg(g6c, "accepted") / agg(g6c, "nontrivial"), 3)
         # the headline mixes two producers (referee finding 3): their shot counts, so the abstract can say so
@@ -663,11 +763,17 @@ def build() -> dict[str, str]:
     M["HoWCILo"], M["HoWCIHi"] = enclose(100 * hp['cp95_two_sided'][0], 100 * hp['cp95_two_sided'][1], 2)
     M["HoWNotProven"] = I(sum(r["not_proven"] for r in ho["configurations"].values()))
     M["HoWForgeries"] = I(sum(r["forgeries_attempted"] for r in ho["configurations"].values()))
+    # the forgeries only the bound could refuse, per configuration's own summary (external audit 4, 1.4)
+    ho_cls = {nm: J(f"epsilon_rerun/{nm}/summary.json")["forgeries_by_class"] for nm in pre_cfgs}
+    need(all(sum(ho_cls[nm].values()) == ho["configurations"][nm]["forgeries_attempted"] for nm in pre_cfgs),
+         "held-out sample: a configuration's forgery classes do not add up to the pooled record's total")
+    M["HoWForgeriesBound"] = I(sum(forgeries_reaching_the_bound(ho_cls[nm], nm) for nm in pre_cfgs))
     if ho["forgeries_accepted_total"]:
         raise SystemExit("held-out sample: a forgery was accepted")
     # the identity run is re-made whenever a module it loads changes (2026-11-03: the battery and the checker's input
     # domain); until the re-run of record exists its numbers are pending, never read from a run of other bytes
     pid_tag = "2026-11-03"
+    ACC_ = ("EXACT_OPTIMAL", "EPSILON_OPTIMAL")
     pid_ok = (EV / f"producer_identity_willow_{pid_tag}.json").exists() and \
         (EV / f"producer_identity_willow_diff_{pid_tag}.json").exists()
     if pid_ok:
@@ -706,9 +812,27 @@ def build() -> dict[str, str]:
             if nt != sum(d["nontrivial"] for d in dev):
                 raise SystemExit("held-out comparison: today's development verdicts cover other shots")
             M[f"Dev{tag}{word}Pct"] = pct_floor(acc / nt)
+            # THE COUNTS THE COMPARISON USES (external audit 4, 1.3), beside Table III's for the same shots: they differ
+            # exactly by the verdicts the identity re-run changed in these configurations
+            # (printed as not-proven counts beside N: the accepted sums are in no artifact, claims_provenance_gate)
+            M[f"Dev{tag}{word}NotProven"], M[f"Dev{tag}{word}N"] = I(nt - acc), I(nt)
+            then = sum(d["accepted"] for d in dev)
+            moved = sum((d_["status_then"] in ACC_) - (d_["status_now"] in ACC_)
+                        for ch, c_ in pdiff["chunks"].items() if ch.split(":")[0] in
+                        {f"willow_{place}_{b}_r{rounds}" for b in ("X", "Z")} for d_ in c_["diffs"])
+            need(then - acc == moved, f"held-out comparison {place} r{rounds}: today's accepted count differs from Table "
+                                      f"III's by other than the verdicts the identity re-run changed")
+            need(sum(d["status"].get("NOT_PROVEN", 0) for d in dev) == nt - then,
+                 f"held-out comparison {place} r{rounds}: Table III's summaries are not accepted plus not proven")
+            M[f"Dev{tag}{word}TableNotProven"] = I(nt - then)
             if tag == "DFive":
                 # not proven per shot-round: the decline with rounds, normalised (second referee, M3)
                 M[f"DevDFive{word}NotProvenPerRound"] = f"{1e4 * (nt - acc) / (nt * int(rounds)):.1f}"
+    if pid_ok:
+        def _n(k):
+            return int(M[k].replace("{,}", ""))
+        need(sum(_n(f"DevDFive{w}NotProven") - _n(f"DevDFive{w}TableNotProven") for w in ("Thirteen", "Thirty")) == 1,
+             "held-out comparison: the text says one development verdict at distance 5 differs from Table III's")
     # THE SAME PRODUCER (second referee, M2), stated as measured: re-run with this tree's producer, every held-out
     # receipt file must come back byte for byte; the development files that do not are diffed shot by shot
     if not pid_ok:
@@ -818,6 +942,9 @@ def build() -> dict[str, str]:
     M["IbmEpsAccepted"] = I(ie["accepted"])
     M["IbmEpsExact"] = I(ie["status"].get("EXACT_OPTIMAL", 0))
     M["IbmEpsForgeries"] = I(ie["forgeries_attempted"])
+    need(sum(ie["forgeries_by_class"].values()) == ie["forgeries_attempted"],
+         "IBM epsilon re-certification: the forgery classes do not add up to the total")
+    M["IbmEpsForgeriesBound"] = I(forgeries_reaching_the_bound(ie["forgeries_by_class"], "IBM re-certification"))
 
     # ------------------------------------------------ seeded faults
     mut = [J(f"decoder_mutation_gate_d{d}.json") for d in (3, 5, 7)]
@@ -913,6 +1040,45 @@ def build() -> dict[str, str]:
     M["DetStealthProven"] = I(dsum(stealth, "proven_suboptimal"))
     M["DetControlN"] = I(dsum(ctrl, "n"))
     M["DetControlFlagged"] = I(dsum(ctrl, "false_alarms"))
+    # THE MUTATION CLASSES, each with its count (external audit 4, 1.11), held to the released corpus case by case. Until
+    # 2026-11-07 M7 appended one unused edge TWICE, which as an edge set -- the object a correction is (Sec. II) -- is
+    # the decoder's own correction: 601 cases were weighed as lists and called proven suboptimal. M7 now adds an even
+    # cycle disjoint from the correction, every mutant is the edge set it denotes, and one whose edge set equals the
+    # decoder's is never produced (decoder_mutation_gate.mutants); the corpus must show exactly that.
+    need(len({doc["seeded_faults"]["shots"] for doc in det.values()}) == 1, "detection: the shots per distance differ")
+    M["DetShotsPerDistance"] = I(det[3]["seeded_faults"]["shots"])
+    by_mut = Counter()
+    for name, t_ in muts:
+        by_mut[name.split("_")[0]] += t_["n"]
+    for code, word in (("M1", "One"), ("M2", "Two"), ("M3", "Three"), ("M4", "Four"), ("M6", "Six"), ("M7", "Seven"),
+                       ("M8", "Eight"), ("M9", "Nine")):
+        M[f"DetMut{word}"] = I(by_mut[code])
+    need(set(by_mut) == {"M1", "M2", "M3", "M4", "M6", "M7", "M8", "M9"}, "detection: the text lists eight classes")
+    rep = Counter()
+    for d in (3, 5, 7):
+        for x in J(f"seeded_fault_corpus_d{d}.json")["faults"]:
+            cr = json.loads(x["correction"]) if isinstance(x["correction"], str) else x["correction"]
+            keys = [tuple(sorted(int(v) for v in e)) for e in cr]
+            rep[(x["mutant"].split("_")[0], len(keys) != len(set(keys)), bool(x["defective"]))] += 1
+    need(not any(k[1] for k in rep), "seeded faults: a corpus case lists an edge twice; the text says every one is an "
+                                     "edge set")
+    need(all(k[2] for k in rep if k[0] in ("M7", "M8", "M9")) and
+         sum(v for k, v in rep.items() if k[0] == "M7") == by_mut["M7"] > 0,
+         "seeded faults: the text says every stealth case in the corpus is labelled defective, M7 among them")
+    need(sum(rep.values()) == int(M["FaultCorpus"].replace("{,}", "")), "seeded faults: the corpus is not the 9 classes")
+    need(dsum(stealth, "proven_suboptimal") == dsum(stealth, "n") and not dsum(stealth, "invalid"),
+         "seeded faults: the text says every syndrome-consistent heavier edge set was proven suboptimal")
+    need(dsum(stealth, "n") == by_mut["M7"] + by_mut["M8"] + by_mut["M9"], "seeded faults: the stealth classes are M7-M9")
+    need(all(name in ("M1_off_by_one_edge", "M2_greedy_boundary", "M3_dropped_edge", "M4_stale_cache",
+                      "M5_equal_weight_alternative", "M6_truncated_path", "M7_disjoint_cycle_STEALTH",
+                      "M8_boundary_pair_swap_STEALTH", "M9_detour_STEALTH") for name, _t in muts),
+         "seeded faults: a mutant class the text does not describe (the doubled-edge M7 was retired on 2026-11-07)")
+    # the text: every mutant is defective, the corpus is exactly those, and the equal-weight construction gave no
+    # correction other than the decoder's own (it was the decoder's correction on every shot it fired on)
+    need(dsum(defect, "n") == dsum(defect, "defective") == int(M["FaultCorpus"].replace("{,}", ""))
+         and not dsum(ctrl, "n") and not by_mut["M5"],
+         "seeded faults: the text says every mutant is defective, the corpus holds them all, and no equal-weight "
+         "alternative arose")
 
     srows = {(d, r["drift_factor"]): r for d, doc in det.items() for r in doc["stale_calibration"]["rows"]}
     swept = [k for k in srows if k[1] != 1.0]
@@ -973,6 +1139,8 @@ def build() -> dict[str, str]:
                       ("FaFull", dsum(clean_full, "false_alarms"), dsum(clean_full, "n") - dsum(clean_full, "defective")),
                       ("FaStale", dsum(so, "false_alarms"), stale_ok),
                       ("Ctrl", dsum(ctrl, "false_alarms"), dsum(ctrl, "n"))):
+        if not n:
+            continue                  # no case, no rate: since 2026-11-07 the equal-weight control yields none
         if k:
             lo, hi = cp(k, n)
             M[f"CI{tag}Lo"], M[f"CI{tag}Hi"] = SIG3(lo, "floor"), SIG3(hi, "ceil")
@@ -1020,10 +1188,10 @@ def build() -> dict[str, str]:
     def _blob(rev, path):
         return __import__("subprocess").run(["git", "rev-parse", f"{rev}:{path}"], cwd=ROOT, capture_output=True,
                                             text=True).stdout.strip()
-    if not _git_available():
+    if not (_has_commit("2008c81f") and _has_commit(gv["head"]["commit"])):
         NO_REPOSITORY.append("gap distribution start commit")
-        print("NOTE: gap distribution: no repository here, so the judged files could not be compared between the "
-              "start commit 2008c81f and the recorded one; the record pins them by sha256")
+        print("NOTE: gap distribution: commits 2008c81f and the recorded one are not in this repository, so the "
+              "judged files could not be compared between them; the record pins them by sha256")
     elif any(_blob("2008c81f", p) != _blob(gv["head"]["commit"], p) or not _blob("2008c81f", p)
              for p in gv["head"]["sha256"]):
         raise SystemExit("gap distribution: a judged file differs between the start commit and the recorded one")
@@ -1200,7 +1368,7 @@ def build() -> dict[str, str]:
             [x["nontrivial"] for x in lf["rows"]] != [r["nontrivial"] for r in gv["rows"]]:
         raise SystemExit("gap logical failures: not scored on the preregistered run's shots")
     runner_rel = "experiments/m0_prior_art/gap_distribution.py"
-    if _git_available():
+    if _has_commit(gv["head"]["commit"]):
         ran = __import__("subprocess").run(["git", "show", f"{gv['head']['commit']}:{runner_rel}"], cwd=ROOT,
                                            capture_output=True, text=True).stdout
         where = "the runner at the run's commit"
@@ -1210,8 +1378,8 @@ def build() -> dict[str, str]:
         ran = (ROOT / runner_rel).read_text(encoding="utf-8")
         same = _sha_lf((ROOT / runner_rel).read_bytes()) == gv["head"]["sha256"].get(runner_rel)
         NO_REPOSITORY.append("gap distribution runner at its commit")
-        print(f"NOTE: gap distribution: no repository here, so the runner at commit {gv['head']['commit'][:10]} could "
-              f"not be opened; belief-matching's setting is read from the shipped runner, whose bytes "
+        print(f"NOTE: gap distribution: commit {gv['head']['commit'][:10]} is not in this repository, so its runner "
+              f"could not be opened; belief-matching's setting is read from the shipped runner, whose bytes "
               f"{'are' if same else 'are NOT'} the run's (sha256 in the record)")
         where = "the shipped runner"
     if "BeliefMatching(dem, max_bp_iters=20)" not in ran:
@@ -1283,6 +1451,35 @@ def build() -> dict[str, str]:
         if I(two_sig(float(M[num]) * scale / float(M[den]))) != M[ratio]:
             raise SystemExit(f"cost: {ratio} = {M[ratio]} does not follow from the printed {num} / {den}")
     M["CostCpuLoadPct"] = f"{min(cc['machine']['cpu_percent_before'], cc['machine']['cpu_percent_after']):.0f}"
+    # THE SAME CALL IN THREE CONTEXTS (external audit 4, 1.1: the cost run's per-call decode, 132 us mean, and the
+    # native-dual arms', 17 us median, were set side by side as comparable). One run on the cost run's shots times the
+    # cost run's call right after a certification, the same call repeated at once, and the compiled graph's call the
+    # arms time; every ratio printed recomputes from the printed means, all of the same run.
+    cx = J("decode_call_context_d5_r25.json")
+    judged_by_this_tree(cx, "decode call context")
+    need((cx["seeds"], cx["shots"], cx["nontrivial"], cx["edges"], cx["detectors"])
+         == (cc["seeds"], cc["shots"], cc["nontrivial"], cc["edges"], cc["detectors"])
+         and cx["corrections_identical_across_arms"] == cx["nontrivial"] and "matched shot by shot" in cx["same_shots_as"],
+         "decode call context: not the cost run's shots, or the three calls returned different corrections")
+    du = cx["decode_per_call_us"]
+    for key, arm in (("After", "after_certification"), ("Repeated", "repeated"), ("Binding", "binding")):
+        M[f"DecodeCtx{key}UsMean"] = f"{du[arm]['mean']:.1f}" if du[arm]["mean"] < 100 else f"{du[arm]['mean']:.0f}"
+        M[f"DecodeCtx{key}UsMedian"] = f"{du[arm]['median']:.1f}" if du[arm]["median"] < 100 else \
+            f"{du[arm]['median']:.0f}"
+        M[f"DecodeCtx{key}Ratio"] = I(two_sig(cx["ratio_mean_certify_over_mean_decode"][arm]))
+    M["DecodeCtxCertifyMsMean"] = f"{cx['certify_ms']['mean']:.1f}"
+    for key in ("After", "Repeated", "Binding"):
+        need(I(two_sig(float(M["DecodeCtxCertifyMsMean"]) * 1000 / float(M[f"DecodeCtx{key}UsMean"])))
+             == M[f"DecodeCtx{key}Ratio"], f"decode call context: the {key} ratio does not follow from the printed means")
+    need(du["after_certification"]["median"] > du["repeated"]["median"] > du["binding"]["median"]
+         and du["after_certification"]["mean"] > du["repeated"]["mean"] > du["binding"]["mean"],
+         "decode call context: the text orders the three contexts by cost")
+    # the cost run's per-call mean is the after-certification context: it must sit nearer that arm than the others
+    need(abs(cc["decode_per_shot_us"]["mean"] - du["after_certification"]["mean"])
+         < abs(cc["decode_per_shot_us"]["mean"] - du["repeated"]["mean"]),
+         "decode call context: the cost run's per-call mean is not the after-certification context's")
+    M["DecodeCtxCpuLo"] = f"{min(cx['machine']['cpu_percent_before'], cx['machine']['cpu_percent_after']):.0f}"
+    M["DecodeCtxCpuHi"] = f"{max(cx['machine']['cpu_percent_before'], cx['machine']['cpu_percent_after']):.0f}"
     cs = J("checker_scaling.json")
     M["CheckExponent"] = F(cs["fit_time_vs_nnz"]["exponent"], 3)
     M["CheckRSquared"] = F(cs["fit_time_vs_nnz"]["r_squared"], 3)
@@ -1407,6 +1604,13 @@ def build() -> dict[str, str]:
                          f"record; refusals appear at rounds {cm['rounds_with_refusals']}")
     M["CertMeasRecords"] = I(cm["records"])
     M["CertMeasDevices"] = I(len(cm["devices"]))
+    # the processors named, with each one's records (external audit 4, 1.12)
+    per_dev = Counter(r["backend"] for r in cm_rows)
+    need(sorted(per_dev) == sorted(cm["devices"]) == cm_devices and sum(per_dev.values()) == cm["records"],
+         "certified measured lane: the records per device do not add up")
+    M["CertMeasDeviceList"] = " and ".join(
+        rf"\texttt{{{d.replace('_', chr(92) + '_')}}} ({I(per_dev[d])} record{'s' if per_dev[d] != 1 else ''})"
+        for d in sorted(per_dev, key=lambda d: (per_dev[d], d)))
     M["CertMeasCertified"] = I(cm["certified_under_measured"])
     M["CertMeasNontrivial"] = I(cm["nontrivial"])
     M["CertMeasRefused"] = I(cm["refused_under_measured"])
@@ -1445,11 +1649,16 @@ def build() -> dict[str, str]:
                                           sum(r["forgeries_by_class"].get(c, 0) for r in cmr["runs"]
                                               for c in ("A_suboptimal", "D_spurious_cycle",
                                                         "G_dual_inflated_to_meet_a_worse_primal")))
+    need(int(M["CertMeasBoundForgeries"].replace("{,}", "")) == sum(
+        forgeries_reaching_the_bound(r["forgeries_by_class"], r["record"]) for r in cmr["runs"]),
+         "measured-model receipts: the derived bound count is not the rebuilt battery's A + D + G")
 
     # ------------------------------- the forgery battery: which check refused each class
     if es is not None:
         fb = es["forgeries_by_class"]
-        M["EpsSimForgeriesBound"] = I(fb.get("A_suboptimal", 0))
+        M["EpsSimForgeriesBound"] = I(forgeries_reaching_the_bound(fb, "simulation rerun"))
+        need(fb.get("A_suboptimal", 0) == forgeries_reaching_the_bound(fb, "simulation rerun"),
+             "simulation rerun: the text says the one forgery that reached the bound was the cheapest-boundary one")
         M["EpsSimForgeriesDoubled"] = I(sum(fb.get(c, 0) for c in ("D_spurious_cycle",
                                                                       "G_dual_inflated_to_meet_a_worse_primal",
                                                                       "H_negative_dual_hides_inflation")))
@@ -1519,6 +1728,23 @@ def build() -> dict[str, str]:
     M["JsReplayReceipts"] = derived("p1_js_epsilon_replayed_receipts",
                                     sum(x["receipts"] for x in rr.values()) + t["nontrivial"])
     M["JsReplayConfigs"] = I(len(rr))
+    # WHAT THE JAVASCRIPT CHECKER REPLAYED (external audit 4, R4): the first chunks of each of these configurations, a
+    # sample, plus every receipt of Sec. VI E; never "the same files" as the Python replay
+    need(len({x["chunks"] for x in rr.values()}) == 1 and all(x["receipts"] <= 250 * x["chunks"] for x in rr.values()),
+         "fuzz: the text says the JavaScript replay read the same number of chunks of every configuration")
+    M["JsReplayChunksPerConfig"] = I(next(iter(rr.values()))["chunks"])
+    M["JsReplayMaxPerConfig"] = I(max(x["receipts"] for x in rr.values()))
+    M["JsReplayMeasured"] = I(t["nontrivial"])
+    # the release assets the Python replay reads: one archive per configuration, complete plans and the six stopped arms
+    arch = sorted(p.parent.name for p in (EV / "epsilon_rerun").glob("*/archive.json"))
+    arch_part = [n for n in arch if not (EV / "epsilon_rerun" / n / "summary.json").exists()]
+    need(len(arch_part) == 6 and all(n.startswith(("heldout_d7_", "samedev_d7_")) for n in arch_part)
+         and all((EV / "epsilon_rerun" / f"{n}" / "summary.json").exists() for n in arch if n not in arch_part),
+         "replay: the text says the release-asset archives are the complete configurations and the six d=7 arms")
+    M["ReplayArchives"] = I(len(arch))
+    M["ReplayArchivesComplete"] = I(len(arch) - len(arch_part))
+    need(len(arch) - len(arch_part) == len([p for p in (EV / "epsilon_rerun" / "replay_2026-11-03").glob("replay_*.json")]),
+         "replay: every complete configuration with an archive has its strict-replay record")
     ev = json.loads((ROOT / "conformance" / "epsilon_vectors.json").read_text(encoding="utf-8"))
     M["EpsVectors"] = I(len(ev["vectors"]))
     M["EpsVectorClasses"] = I(len(ev["classes"]))
@@ -1556,6 +1782,20 @@ def build() -> dict[str, str]:
                                         for s in ("EXACT_OPTIMAL", "EPSILON_OPTIMAL")))
     # ... and the two measurements the first record did not make (pymatching_native_dual_arms.py): the RAW dual checked
     # exactly against PyMatching's own integer weights, and the corrections of the two arms against the certified ones
+    # THE PATCH, counted from its bytes (external audit 4, R7: the text said "about 150 lines"; it adds 125): the file
+    # both records pin by sha256 (CRLF normalised), its added and removed lines read from its unified-diff hunks
+    patch_b = (ROOT / "third_party" / "pymatching_return_duals.patch").read_bytes()
+    for rec_ in ("pymatching_native_dual.json", "pymatching_native_dual_arms.json"):
+        need(J(rec_)["patch_sha256"] == _sha_lf(patch_b), f"native dual: {rec_} pins other bytes of the patch")
+    plines = patch_b.replace(b"\r\n", b"\n").decode("utf-8").split("\n")
+    files_ = [x for x in plines if x.startswith("+++ ")]
+    added = [x for x in plines if x.startswith("+") and not x.startswith("+++ ")]
+    removed = [x for x in plines if x.startswith("-") and not x.startswith("--- ")]
+    need(len(files_) == len([x for x in plines if x.startswith("--- ")]) == len([x for x in plines
+                                                                                 if x.startswith("diff ")]),
+         "native dual: the patch's file headers do not pair")
+    M["NdPatchAdded"], M["NdPatchRemoved"], M["NdPatchFiles"] = I(len(added)), I(len(removed)), I(len(files_))
+    need(not removed, "native dual: the text says the patch removes no line")
     na = J("pymatching_native_dual_arms.json")["configs"]
     if set(na) != set(nd):
         raise SystemExit("native dual: the two records do not cover the same configurations")
@@ -1699,6 +1939,8 @@ def build() -> dict[str, str]:
                 rr_f.update(fb["refusals_by_class_and_verdict"])
             M["HoDSevenReplayReceipts"] = I(sum(r["receipts_rechecked"] for r in res.values()))
             M["HoDSevenReplayForgeries"] = I(sum(rr_f.values()))
+            # refused by the bound: the verdict each forgery got in the replay, as the strict replay counts it
+            M["HoDSevenReplayForgeriesBound"] = I(sum(v for k, v in rr_f.items() if k.endswith(":NOT_PROVEN")))
             need(isinstance(rp.get("head"), dict) and "sha256" in rp["head"],
                  "held-out d=7: the replay record carries no head")
             if isinstance(rp.get("head"), dict) and "sha256" in rp["head"]:

@@ -19,7 +19,22 @@ oneq.superactivation, untouched by that bug) and are carried forward with their 
   python phase_diagram.py merge OUTDIR [--json PATH]
         rewrites the evidence table: n <= 4 from OUTDIR (the best polished seed, with the seed spread), n >= 5 kept as
         recorded, every value tagged with its search and evidence class; an onset at n <= 4 is CERTIFIED only when a
-        nuse_certificate.py record for that (d, n) exists beside the table and says so
+        nuse_certificate.py record for that (d, n) exists beside the table and says so. A ONE-SHOT migration: run on
+        its own output it would record post-fix values as "recorded_before_fix", so it is not re-run.
+
+The original scan never reached n >= 5 at d = 5 (the row was added by the general mode, n <= 4 only). Two modes fill
+such a row with the SAME function and parameters as the carried-forward symmetric rows (paper 4, Table III):
+
+  python phase_diagram.py symmetric D OUTDIR [--nmax N] [--check D1,D2,..]
+        first re-runs symmetric_best on every symmetric n >= 5 entry the table carries forward at the d in --check
+        (default: every row that has one, d = 2, 3, 4, 6, 9 today), which must reproduce it to REPRODUCE_TOL, and a
+        record that skipped a row does not count as reproducing; so that the new values come from the procedure
+        that made the old ones; then symmetric_best(n, p) for n = 5, 6, ... at shield dimension D, stopping at the first
+        n above 3/4 (or at --nmax, default 17, as the original scan); writes OUTDIR/symmetric_d{D}.json
+  python phase_diagram.py add-symmetric D OUTDIR [--json PATH]
+        writes that record's n >= 5 values into row D of the table, each entry naming the record and its sha256, and
+        the row's onset by the merge rule; refuses when the record did not reproduce the carried-forward rows, or when
+        row D already holds n >= 5 values or an onset. Every other row is left byte for byte.
 """
 from __future__ import annotations
 
@@ -234,7 +249,123 @@ def merge(outdir, table):
     return rows
 
 
+# ------------------------------------------------------------------------------------ symmetric mode (n >= 5, one d)
+
+#: the search the original scan ran for n >= 5 (onset() above), as the table names it
+SYMMETRIC_SEARCH = "phase_diagram.symmetric_best (Sym^n codes, power see-saw, 3 restarts x 300 steps, seed 13)"
+#: a re-run must give the carried-forward value to this (absolute): same seed, same code, so only BLAS rounding differs
+REPRODUCE_TOL = 1e-9
+
+
+def carried_symmetric(rows: dict, d: int) -> dict[int, float]:
+    """the n >= 5 values of row d that the table carries forward from the original scan"""
+    row = rows.get(str(d), {})
+    return {int(n): row["F"][n] for n, e in row.get("entries", {}).items()
+            if int(n) >= 5 and e.get("search") == SYMMETRIC_SEARCH
+            and e.get("provenance", "").startswith("carried forward as recorded")}
+
+
+def run_symmetric(d: int, outdir: pathlib.Path, table: pathlib.Path, nmax: int = 17, check=None) -> dict:
+    """check=None (the default): EVERY row the table carries symmetric entries for, so the reproduction cannot leave
+    one out (a hand-typed list (2, 3, 4, 6) missed d = 9's n = 5 entry, R142's old onset there, on the first run)"""
+    rows = json.loads(table.read_text(encoding="utf-8"))
+    every = tuple(sorted(int(dk) for dk in rows if carried_symmetric(rows, int(dk))))
+    check = every if check is None else tuple(check)
+    t_all = time.time()
+    repro, worst = {}, 0.0
+    for dc in check:
+        old = carried_symmetric(rows, dc)
+        if not old:
+            raise SystemExit(f"REFUSING: the table carries no symmetric n >= 5 entry at d = {dc} to reproduce")
+        pc = 1 / (math.sqrt(dc) + 1)
+        repro[str(dc)] = {}
+        for n, F_old in sorted(old.items()):
+            t0 = time.time()
+            F_now = symmetric_best(n, pc)
+            diff = abs(F_now - F_old)
+            worst = max(worst, diff)
+            repro[str(dc)][str(n)] = {"recorded": F_old, "now": F_now, "abs_difference": diff,
+                                      "seconds": round(time.time() - t0, 1)}
+            print(f"  reproduce d = {dc} n = {n}: recorded {F_old:.13f} now {F_now:.13f} (|diff| {diff:.1e})",
+                  flush=True)
+    p = 1 / (math.sqrt(d) + 1)
+    F, secs, n_star = {}, {}, None
+    for n in range(5, nmax + 1):
+        t0 = time.time()
+        F[str(n)] = symmetric_best(n, p)
+        secs[str(n)] = round(time.time() - t0, 1)
+        print(f"d = {d} n = {n}: F = {F[str(n)]:.13f} ({secs[str(n)]} s)", flush=True)
+        if F[str(n)] > 0.75:
+            n_star = n
+            break
+    rec = {"schema": "oneq.superactivation.symmetric-onset/1", "d": d, "p": p, "search": SYMMETRIC_SEARCH,
+           "parameters": {"restarts": 3, "steps": 300, "seed": 13, "nmin": 5, "nmax": nmax,
+                          "stops_at_first_crossing": True},
+           "F": F, "seconds": secs, "onset_upper_bound": n_star, "class": "MEASURED-float",
+           "reproduction": {"of": "every symmetric n >= 5 entry the table carries forward at d = "
+                                  + ", ".join(map(str, check)), "rows": repro, "max_abs_difference": worst,
+                            "covers_every_carried_row": set(check) >= set(every),
+                            "tolerance": REPRODUCE_TOL,
+                            "reproduces": worst <= REPRODUCE_TOL and set(check) >= set(every)},
+           "code_version": code_version(), "seconds_total": round(time.time() - t_all, 1)}
+    outdir.mkdir(parents=True, exist_ok=True)
+    (outdir / f"symmetric_d{d}.json").write_text(json.dumps(rec, indent=1) + "\n", encoding="utf-8", newline="\n")
+    print(f"d = {d}: n* <= {n_star}; reproduction max |diff| {worst:.1e} "
+          f"({'reproduces' if rec['reproduction']['reproduces'] else 'DOES NOT REPRODUCE'})", flush=True)
+    return rec
+
+
+def add_symmetric(d: int, outdir: pathlib.Path, table: pathlib.Path) -> dict:
+    path = outdir / f"symmetric_d{d}.json"
+    raw = path.read_bytes()
+    rec = json.loads(raw)
+    if rec.get("schema") != "oneq.superactivation.symmetric-onset/1" or rec.get("d") != d:
+        raise SystemExit(f"REFUSING: {path.name} is not a symmetric-onset record for d = {d}")
+    if rec["search"] != SYMMETRIC_SEARCH or not rec["reproduction"]["reproduces"]:
+        raise SystemExit(f"REFUSING: {path.name} did not reproduce the carried-forward rows with the same search")
+    raw_table = table.read_bytes()
+    rows = json.loads(raw_table.decode("utf-8"))
+    # evidence/ is stored byte for byte (.gitattributes: -text), and merge() wrote the table through Windows text mode,
+    # so it ends its lines in CRLF: keep whichever the file has, or every other row would change in its bytes
+    nl = "\r\n" if b"\r\n" in raw_table else "\n"
+    row = rows[str(d)]
+    if any(int(n) >= 5 for n in row["F"]) or row.get("onset_upper_bound") is not None:
+        raise SystemExit(f"REFUSING: row d = {d} already holds n >= 5 values or an onset")
+    sha = hashlib.sha256(raw).hexdigest()
+    for n_str, F in rec["F"].items():
+        row["F"][n_str] = F
+        row["entries"][n_str] = {
+            "search": SYMMETRIC_SEARCH, "provenance": f"computed by phase_diagram.py symmetric, recorded in "
+            f"{path.name} with the function and parameters of the rows carried forward from R142, which that run "
+            f"reproduces", "class": "MEASURED-float", "record": path.name, "record_sha256": sha}
+    row["F"] = dict(sorted(row["F"].items(), key=lambda kv: int(kv[0])))
+    cross = [int(n) for n, F in row["F"].items() if F > 0.75]
+    row["onset_upper_bound"] = min(cross) if cross else None
+    if cross:
+        row["family"] = "general" if min(cross) <= 4 else "symmetric"
+        row["onset_class"] = row["entries"][str(min(cross))]["class"]
+    table.write_bytes((json.dumps(rows, indent=1) + "\n").replace("\n", nl).encode("utf-8"))
+    print(f"d = {d}: n* <= {row['onset_upper_bound']} ({row.get('onset_class')}), from {path.name} ({sha[:12]})")
+    return row
+
+
 def main(argv) -> int:
+    if argv and argv[0] in ("symmetric", "add-symmetric"):
+        ap = argparse.ArgumentParser(prog="phase_diagram.py")
+        ap.add_argument("mode")
+        ap.add_argument("d", type=int)
+        ap.add_argument("outdir", type=pathlib.Path)
+        ap.add_argument("--nmax", type=int, default=17)
+        ap.add_argument("--check", default=None, help="the rows to reproduce (default: every row with carried "
+                                                      "symmetric entries; a narrower list is recorded as not covering)")
+        ap.add_argument("--json", type=pathlib.Path, default=EV / "phase_diagram.json")
+        a = ap.parse_args(argv)
+        if a.mode == "symmetric":
+            run_symmetric(a.d, a.outdir, a.json, a.nmax,
+                          None if a.check is None else tuple(int(x) for x in a.check.split(",")))
+        else:
+            add_symmetric(a.d, a.outdir, a.json)
+        return 0
     if argv and argv[0] in ("general", "merge"):
         ap = argparse.ArgumentParser(prog="phase_diagram.py")
         ap.add_argument("mode")

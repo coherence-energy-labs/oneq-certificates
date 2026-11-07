@@ -2499,7 +2499,7 @@
       "path": "docs/REVIEW_PACKET.md",
       "claims": [
         {
-          "line_hint": 40,
+          "line_hint": 48,
           "text": "1. **Build the PDFs yourself**, so you are reading what the artifacts say and not a stale copy:",
           "line_sha256": "e8b931b2ea955a2b6e4f12041a557dd7813154099a8b894c2c6de378db2af751",
           "class": "ESTATE-BUILT",

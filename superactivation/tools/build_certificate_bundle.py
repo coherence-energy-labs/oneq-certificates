@@ -329,6 +329,11 @@ CONTENTS = [
     ("lean/OneqCert/OneqCert/SafeBound.lean", "the odd-set facet inequality"),
     ("lean/OneqCert/OneqCert/WeakDuality.lean", "weak duality of the safe bound"),
     ("lean/OneqCert/OneqCert/Checker.lean", "the checker + accept_sound"),
+    # imported by OneqCert.lean and AxiomCheck.lean since 79e25a06 (2026-10-23) and hashed by the Lean gate, but not
+    # listed here until 2026-11-07: in the bundles minted after it (v2026.11.07 checked) the shipped lake project could
+    # not build and check_lean_certificate.py --check stopped on the missing file (tests/test_bundle_carries_the_
+    # papers_evidence.py now requires every file the Lean gate reads)
+    ("lean/OneqCert/OneqCert/Statements.lean", "accept_sound's statement, pinned"),
     ("lean/OneqCert/OneqCert/AxiomCheck.lean", "prints every theorem's axioms"),
     ("lean/OneqCert/Main.lean", "oneqcert-check: the binary"),
     ("tools/check_lean_certificate.py", "build, run, and gate the Lean receipt"),
@@ -420,6 +425,14 @@ CONTENTS = [
     ("experiments/m0_prior_art/gap_distribution_2x2_posthoc.py",
      "paper 1: the post hoc 2x2 of Sec. VIII's BP-OSD arms (representation x min-sum scaling)"),
     ("tests/test_gap_distribution_2x2_posthoc.py", "paper 1: the 2x2's scoring, reproduction gate and artifact"),
+    # named by paper 1's revision against external audit 4 (docs/reviews/EXTERNAL4_2026-11-07.md, items 1.1 and R4)
+    ("experiments/m0_prior_art/decode_call_context.py",
+     "paper 1 Sec. IX: the same PyMatching call timed in three contexts, why the two per-call figures differ"),
+    ("tests/test_decode_call_context.py", "paper 1: that run's arithmetic and its record"),
+    ("tests/test_certified_measured_receipts.py",
+     "paper 1 Sec. XI: re-decides a sample of Sec. VI E's tracked receipts with both verifiers in the reader's tree"),
+    ("tests/test_decoder_mutation_gate.py",
+     "paper 1 Sec. VII A: every seeded fault is an edge set that differs from the decoder's correction (2026-11-07)"),
     # ---- paper 2, revised against the same audits
     ("docs/PREREG_qldpc_scaling_2026-11-03.md", "paper 2: the scaling comparison's preregistration"),
     ("docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md", "paper 2: its deviations"),
@@ -448,6 +461,8 @@ CONTENTS = [
      "paper 2: that archive held to build(), and that replay held to its negative controls and to no producer"),
     ("tests/test_qldpc_scaling_prereg_timed_rerun.py",
      "paper 2: the cost records held to their own per-shot times and to the committed record files"),
+    ("tests/test_qldpc_generator_rounding.py",
+     "paper 2: the generator's one rounding rule, held on the numbers it prints (external audit 4, X6)"),
     # ---- paper 3
     ("docs/PAPER3_LITERATURE_SEARCH.md",
      "paper 3's literature searches: databases, dates, verbatim queries, what was not searched"),
@@ -540,6 +555,8 @@ CONTENTS += [(rel, "the 2026-11-02/03 review round the revised manuscripts answe
 # the third external audit (of v2026.11.05, all four manuscripts), which the next revision answers; it ships in both
 # bundles, since it reviews paper 4 too
 CONTENTS += [("docs/reviews/EXTERNAL3_2026-11-06.md", "the external audit of v2026.11.05 the revised manuscripts answer")]
+# and the fourth (also of v2026.11.05, all four manuscripts), which v2026.11.07.1 answers; both bundles, as the third
+CONTENTS += [("docs/reviews/EXTERNAL4_2026-11-07.md", "the external audit of v2026.11.05 the revised manuscripts answer")]
 
 # =====================================================================================================================
 # THE SECOND BUNDLE: PAPER 4 (superactivation in two channel uses), a separate quantum-capacity line.
@@ -560,7 +577,7 @@ _P4_SOURCES = [rel for rel in _tree_files(*P4_LANE_ROOTS, "src/oneq/superactivat
                                           # guard names any it reaches and this list lacks), and two tools it imports
                                           *_P4_HW, "tools/analyze_r158_independent.py",
                                           "tools/calibration_window.py", "docs/PAPER4_LITERATURE_SEARCH.md", "docs/reviews/PAPER4_REFEREE*_2026-11-03.md",
-                                          "docs/reviews/EXTERNAL3_2026-11-06.md")
+                                          "docs/reviews/EXTERNAL3_2026-11-06.md", "docs/reviews/EXTERNAL4_2026-11-07.md")
                if not _P4_SKIP.search(rel)]
 SUPERACTIVATION_CONTENTS = [(rel, "paper 4: lane code, records, certificates or tests") for rel in _P4_SOURCES]
 SUPERACTIVATION_CONTENTS += [(rel, "paper 4's manuscript source, regenerable from the evidence")
@@ -682,6 +699,7 @@ EVIDENCE = [
     "evidence/decode_vs_certify.json",
     "evidence/derived_claims.json",
     "evidence/lean_safe_bound.json",
+    "evidence/lean_safe_bound_mutants.json",    # the Lean gate's mutant drill, which --check reads (2026-11-07)
     "evidence/p2_certificates.jsonl.gz",
     "evidence/p2_certificates_export.json",
     # read by paper/tools/make_numbers*.py since the 2026-09-14 revisions
@@ -740,6 +758,20 @@ EVIDENCE = [
     "evidence/gap_distribution_v4/posthoc_2x2_2026-11-06/per_shot_d7.jsonl.gz",
     "evidence/stale_false_alarm_shots.json",
     "evidence/google_corpus_manifest_heldout_d7.json",
+    # NAMED BY PAPER 1'S PREREGISTRATIONS AND SEC. VI E, AND NOT SHIPPED until external audit 4 (R6, 2026-11-07): both
+    # Willow preregistrations name the corpus manifests (the first is byte-identical to the data/google_corpus/
+    # MANIFEST.json this builder already ships under the other name), and the measured-model lane certifies these six
+    # raw IBM records, which its record and its preregistration name
+    "evidence/google_corpus_manifest.json",
+    "evidence/google_corpus_manifest_heldout_r50.json",
+    "evidence/rep_d3_r13_kingston.json",
+    "evidence/rep_d3_r40_kingston.json",
+    "evidence/hardware_noise_floor_fez_d3_20k.json",
+    "evidence/rep_d3_r40_fez.json",
+    "evidence/rep_d5_r13_fez.json",
+    "evidence/rep_d3_r13_fez_nested.json",
+    # paper 1 Sec. IX: the PyMatching call timed in three contexts on the cost run's shots (external audit 4, 1.1)
+    "evidence/decode_call_context_d5_r25.json",
     # ---- paper 2, revised against the same audits
     "evidence/qldpc_heldout_scaled_posthoc_all8.json",
     "evidence/qldpc_refsched_p3_equality.json",
@@ -915,7 +947,7 @@ the recorded proof (`recert_old_prover.py`, `records/recert_old_prover.jsonl`).
 
 `recheck_all.py` is a complete replay: it checks every one of the 2,042
 receipts named by the pinned `evidence/receipt_manifest.json` (2,002 flat
-certificates and 40 branch-dual trees) with two independently written
+certificates and 40 branch-dual trees) with two separately written
 checkers, against the persisted instances and integer weight vectors, and
 FAILS if any receipt or bound file is missing, duplicated, unlisted or
 altered. It uses no solver, no producer and no rebuilt input. `replay_epsilon_receipts.py`
@@ -949,7 +981,7 @@ is not evidence.
 
 | file | claim | what it does NOT say |
 |---|---|---|
-| `million_shot_gate_d5_merged.json` | 10⁶ shots merged from four disjoint-seed runs, 99.76% accepted under the pre-audit tolerance rule, 6,000,002 forgeries, 0 accepted | nothing about hardware noise; and "certified" here means the pre-audit acceptance rule (float gap ≤ 1e-6) — see the next row |
+| `million_shot_gate_d5_merged.json` | 10⁶ shots merged from four disjoint-seed runs, 997,594 (99.75%, rounded down) accepted under the pre-audit tolerance rule, 6,000,002 forgeries, 0 accepted | nothing about hardware noise; and "certified" here means the pre-audit acceptance rule (float gap ≤ 1e-6) — see the next row |
 | `certification_semantics_audit.json` | what that rule proved: the producing code of each headline artifact, re-run on seeded samples, every accepted certificate analysed in exact rational arithmetic — all admissible, largest proven slack far below 1e-6 | not the per-shot slack of the full runs, whose certificates were not stored; and not EXACT optimality, which today's stricter checker measures separately |
 | `google_generation_history.json` | the Willow certified rate by producer generation, read from the objects each generation wrote | generations 2 and 3 ran partial coverage; their aggregates weight configurations unequally |
 | `gap_distribution_exact_rule.json` | the gap experiment re-run under the exact checker, with per-shot gaps | a different certified subset from `gap_distribution.json`; both are shipped so the difference is visible |
@@ -997,8 +1029,8 @@ it: quantum capacity, not error-correction decoding. It accompanies the
 manuscript by Josh Philbrick (Coherence Energy Labs), whose LaTeX source is in
 `paper/superactivation/`:
 
-* *Superactivation in two channel uses: exact certificates for a family of PPT
-  channels*
+* *Superactivation in two channel uses for private Horodecki channels with
+  large shields: exact certificates*
 
 The same release tag carries the decoder bundle (`oneq-certifying-decoder`,
 three manuscripts on certifying decoders). Each bundle is signed and
@@ -1343,6 +1375,42 @@ def advertised_scripts_missing(dest: pathlib.Path) -> list[str]:
     return sorted(missing)
 
 
+#: The repository directories a top-level document's backticked path can point into.
+_DOC_PATH_TOPS = ("docs/", "evidence/", "experiments/", "tools/", "src/", "tests/", "paper/", "verifier-js/",
+                  "conformance/", "lean/", "third_party/", "schemas/")
+
+
+def advertised_paths_missing(dest: pathlib.Path) -> list[str]:
+    """Backticked repository paths in the bundle's top-level documents that the bundle does not carry.
+
+    2026-11-07 (external audit 4, R8): AUDIT.md and REPRODUCE.md named seven files and directories the bundle never
+    shipped (old paper drafts, an evidence directory, two tools, an integration document), and nothing checked any
+    path that was not a `python x.py` command. A line that says the path is in the development repository is
+    exempt: it tells the reader where the thing is instead of promising it. Placeholders (<config>, DIR, *) match a
+    path segment.
+    """
+    shipped = {p.relative_to(dest).as_posix() for p in dest.rglob("*") if p.is_file()}
+    missing = set()
+    for doc in sorted(dest.glob("*.md")):
+        for line in doc.read_text(encoding="utf-8").splitlines():
+            if "development repository" in line:
+                continue
+            for raw in re.findall(r"`([^`\s]+)`", line) + re.findall(r"\]\(([^)\s#]+)", line):
+                q = raw.rstrip(".,;:)")
+                if not q.startswith(_DOC_PATH_TOPS):
+                    continue
+                if any(c in q for c in "*<>{}"):
+                    rx = re.sub(r"\\\*|<[^>]*>|\\\{[^}]*\\\}", "[^/]*", re.escape(q))
+                    hit = any(re.fullmatch(rx + "(/.*)?", f) for f in shipped)
+                elif q.endswith("/"):
+                    hit = any(f.startswith(q) for f in shipped)
+                else:
+                    hit = q in shipped or any(f.startswith(q + "/") for f in shipped)
+                if not hit:
+                    missing.add(f"{doc.name}: {q}")
+    return sorted(missing)
+
+
 def import_closure_gaps(dest: pathlib.Path, repo_root: pathlib.Path, repo_files: set[str],
                         declared: dict[str, str]) -> tuple[dict[str, list[str]], list[str]]:
     """Shipped Python files whose imports reach repository modules the bundle does not carry.
@@ -1649,6 +1717,10 @@ def main() -> int:
     if missing_scripts:
         print(f"REFUSING: shipped documents name scripts the bundle does not carry: {missing_scripts}",
               file=sys.stderr)
+        return 2
+    missing_paths = advertised_paths_missing(dest)
+    if missing_paths:
+        print(f"REFUSING: shipped documents name paths the bundle does not carry: {missing_paths}", file=sys.stderr)
         return 2
     listing = subprocess.run(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard"],
                              cwd=ROOT, capture_output=True, text=True, encoding="utf-8")

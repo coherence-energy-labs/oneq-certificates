@@ -98,6 +98,11 @@ class Judge:
 
     def outcome(self, fired, corr, opt, *, hard=False):
         keys = tuple(self.cd.key(e) for e in corr)
+        # A CORRECTION IS AN EDGE SET (2026-11-07): weighing a list that names an edge twice charged the edge twice and
+        # called the decoder's own correction "proven suboptimal" 601 times. decoder_mutation_gate.mutants now returns
+        # edge sets only; a list with a repeated edge reaching here is a harness defect, never an outcome.
+        if len(set(keys)) != len(keys):
+            raise SystemExit(f"a correction lists an edge twice ({len(keys) - len(set(keys))} repeats): not an edge set")
         if any(k not in self.WX for k in keys) or odd_set(keys) != set(fired):
             return {"state": "INVALID", "defective": True, "excess": None}
         excess = sum((self.WX[k] for k in keys), Fraction(0)) - opt

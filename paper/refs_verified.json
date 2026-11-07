@@ -2638,6 +2638,103 @@
     "heading": "# 审计 E-045：Tesseract CZ 编译 gross 电路的证书、IBM 12+2 模型的任意 R、d_circ 对 R 的单调性",
     "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
    }
+  },
+  "taghavi2011efficient": {
+   "doi": {
+    "source": "crossref",
+    "title": "Efficient Implementation of Linear Programming Decoding",
+    "authors": [
+     "Taghavi",
+     "Shokrollahi",
+     "Siegel"
+    ],
+    "year": 2011,
+    "volume": "57",
+    "issue": "9",
+    "page": "5960-5982"
+   }
+  },
+  "wadayama2010interior": {
+   "doi": {
+    "source": "crossref",
+    "title": "Interior Point Decoding for Linear Vector Channels Based on Convex Optimization",
+    "authors": [
+     "Wadayama"
+    ],
+    "year": 2010,
+    "volume": "56",
+    "issue": "10",
+    "page": "4905-4921"
+   }
+  },
+  "draper2007ml": {
+   "doi": {
+    "source": "crossref",
+    "title": "ML decoding via mixed-integer adaptive linear programming",
+    "authors": [
+     "Draper",
+     "Yedidia",
+     "Wang"
+    ],
+    "year": 2007,
+    "volume": null,
+    "issue": null,
+    "page": "1656-1660"
+   }
+  },
+  "neumaier2004safe": {
+   "doi": {
+    "source": "crossref",
+    "title": "Safe bounds in linear and mixed-integer linear programming",
+    "authors": [
+     "Neumaier",
+     "Shcherbina"
+    ],
+    "year": 2004,
+    "volume": "99",
+    "issue": "2",
+    "page": "283-296"
+   }
+  },
+  "kaur2021resource": {
+   "doi": {
+    "source": "crossref",
+    "title": "Resource theory of unextendibility and nonasymptotic quantum capacity",
+    "authors": [
+     "Kaur",
+     "Das",
+     "Wilde",
+     "Winter"
+    ],
+    "year": 2021,
+    "volume": "104",
+    "issue": "2",
+    "page": "022401"
+   },
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Resource theory of unextendibility and non-asymptotic quantum capacity",
+    "authors": [
+     "Kaur",
+     "Das",
+     "Wilde",
+     "Winter"
+    ],
+    "year": 2018
+   }
+  },
+  "kolmogorov2009blossom": {
+   "doi": {
+    "source": "crossref",
+    "title": "Blossom V: a new implementation of a minimum cost perfect matching algorithm",
+    "authors": [
+     "Kolmogorov"
+    ],
+    "year": 2009,
+    "volume": "1",
+    "issue": "1",
+    "page": "43-67"
+   }
   }
  },
  "fetched_later": {
@@ -2648,6 +2745,12 @@
   "hwang2026certified": "2026-11-06",
   "fregona2026dealing": "2026-11-06",
   "cheng2026certifying": "2026-11-06",
-  "pan2026e045": "2026-11-07"
+  "pan2026e045": "2026-11-07",
+  "taghavi2011efficient": "2026-11-07",
+  "wadayama2010interior": "2026-11-07",
+  "draper2007ml": "2026-11-07",
+  "neumaier2004safe": "2026-11-07",
+  "kaur2021resource": "2026-11-07",
+  "kolmogorov2009blossom": "2026-11-07"
  }
 }

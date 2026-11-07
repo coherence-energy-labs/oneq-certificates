@@ -1,7 +1,8 @@
 # What to audit, and where to attack it
 
-`REPRODUCE.md` tells you how to re-run this. This file tells you where
-it is most likely to be wrong, which is the more useful document.
+`REPRODUCE.md` tells you how to re-run this. This file tells you where it is most likely to be wrong, which is the
+more useful document. It covers the three manuscripts of this bundle (papers 1-3); paper 4 has its own bundle in
+`superactivation/`, with its own `AUDIT.md`.
 
 **Commit:** see `git rev-parse HEAD`; this file no longer pins one, because a hardcoded hash here went stale within a day (external audit 2026-08-04, finding 8)
 **Archive sha256:** regenerated on every build — read it from `release/oneq-certifying-decoder.tar.gz.sig.json`, never from this file (`release/oneq-certifying-decoder.tar.gz`, signature beside it)
@@ -10,13 +11,11 @@ it is most likely to be wrong, which is the more useful document.
 
 ## The claim, in one sentence
 
-A decoder can emit a **per-shot certificate that its correction is
-minimum-weight**, and a checker sharing no code with any solver can
-verify that certificate in exact arithmetic — so "trust the decoder" is
-replaced by "check the receipt".
+A decoder's correction, or a lower bound on a circuit's distance, can come with a **certificate** that a checker
+sharing no code with the producer verifies in exact arithmetic, so "trust the solver" is replaced by "check the
+receipt".
 
-Everything else in this repository is either evidence for that, a gate
-defending it, or an honest record of where it stops.
+Everything else in this bundle is either evidence for that, a gate defending it, or a record of where it stops.
 
 ---
 
@@ -25,214 +24,129 @@ defending it, or an honest record of where it stops.
 **From the signed tarball alone** — no repository, no network:
 
 ```
-sha256sum -c SHA256SUMS                                    # 2497 files
-node verifier-js/verify-certificate.mjs      --conformance conformance/cert_vectors.json           # 56/56, 48 refusals
+sha256sum -c SHA256SUMS                                    # 2515 files
+python -m pip install -r requirements.txt
+node verifier-js/verify-certificate.mjs      --conformance conformance/cert_vectors.json           # 59/59, 51 refusals
 python tools/external/exact_lp_certificate_reference.py --self-test
-python tools/recheck_all.py                                # complete pinned replay: 2,042 receipts
-python tools/replay_epsilon_receipts.py --jobs 8           # paper 1's rerun receipts (needs the archives)
+python tools/recheck_all.py                                # paper 2: complete pinned replay, 2,042 receipts
+python tools/replay_qldpc_scaling_campaign.py              # paper 2: the preregistered campaign, no producer
+python tools/replay_epsilon_receipts.py --jobs 8           # paper 1: needs the receipt archives (release assets)
 ```
 
-**With the full development repository**, `REPRODUCE.md` §3 adds the wall:
-every gate, the whole test suite and the mutation gate, with counts that
-`tools/doc_claims_gate.py` holds to the artifacts. None of it is needed for a
-verdict. The first block is the one that matters: it needs nothing from us.
+`python tools/verify_release.py --bundle certifying-decoder` checks the signature, the statement and the timestamps
+once the release files sit in `release/`. Paper 3's large proofs are release assets too:
+`python experiments/circuit_distance_exact/recert_assets.py verify --archives DIR --extract` checks them, and
+`... recert_assets.py check` runs the committed checker on them (hours). `REPRODUCE.md` gives every command.
 
-If any of those fails on a clean clone, stop and tell us — that failure
-is worth more than anything below. It has happened: the last audit pass
-was done by cloning this repository and following its own instructions,
-and **five defects** turned up that made the package work only on the
-author's machine (see `git log 9851c28 b36db59`).
+`REPRODUCE.md` §3 also describes the whole wall (every gate, the full test suite, the mutation gate). It needs the
+project's development repository, which is private; none of it is needed for a verdict. The first block is the one
+that matters: it needs nothing from us.
+
+If any of those fails on a clean copy, stop and tell us: that failure is worth more than anything below. It has
+happened. Auditors who cloned the public repository and followed its instructions have found commands that worked
+only on the author's machine, and each fix is recorded in the release notes of the release that made it.
 
 ---
 
-## What you actually have to read: 1,725 lines
+## What you actually have to read
 
-The entire trust argument rests on code you can read in an afternoon.
-Everything else can be wrong without the central claim being wrong.
+The trust argument rests on the checkers, not on the producers. These are the files whose correctness the papers'
+claims depend on:
 
-| file | lines | why it matters |
-|---|---|---|
-| `src/oneq/qldpc_check.py` | 685 | the qLDPC checker: flat, exact, and branch-dual tiers |
-| `src/oneq/matching_cert.py` | 441 | the MWPM checker |
-| `tools/external/exact_lp_certificate_reference.py` | 418 | independent checker, written from the written spec |
-| `tools/external/tree_checker_b.py` | 181 | independent tree checker, written from the schema |
+| file | what it decides |
+|---|---|
+| `src/oneq/matching_cert_epsilon.py` | paper 1: the ε-checker (`check_epsilon`), the decision behind every rate |
+| `tools/replay_epsilon_receipts.py` (`verify_b`) | paper 1: the second, separately written ε-verifier every receipt is replayed under |
+| `verifier-js/verify-epsilon.mjs` | paper 1: a third ε-checker in JavaScript, written by a separate agent from the paper and a logged brief |
+| `src/oneq/matching_cert.py` | paper 1: the exact checker, which repairs and re-verifies a dual |
+| `src/oneq/qldpc_check.py` | paper 2: the flat, exact and branch-dual tiers |
+| `tools/external/exact_lp_certificate_reference.py` | paper 2: the separately written flat checker, from the written specification |
+| `tools/external/tree_checker_b.py` | paper 2: the separately written tree checker, from the schema |
+| `experiments/circuit_distance_exact/ccheck.c` | paper 3: the certificate checker, whose calculus is proven sound in `lean/CertR198/` |
 
-**The property to test while reading:** the checkers import no producer,
-and re-derive everything from `(H, w, s)` and the certificate's own
-listed support. `tools/standards_gate.py` enforces the import direction
-by module graph. If you find any path where a checker consults a
-producer's opinion, the claim is broken.
+"Separately written" is the claim, not "independent": the authors of these files are one project, and paper 2 says
+so. **The property to test while reading:** a checker imports no producer and re-derives everything from its inputs
+and the certificate. In the development repository a gate enforces the import direction by module graph; from this
+bundle, `tests/test_replay_qldpc_scaling_campaign.py` checks it for paper 2's campaign replay in a fresh
+interpreter. If you find a path where a checker consults a producer's opinion, the claim is broken.
 
 ---
 
 ## Where to attack it
 
-These are the places we think are weakest. Attacking elsewhere is
-welcome, but start here.
+**1. Forge a certificate.** The forgery batteries are `src/oneq/forgeries.py` and the battery inside
+`tools/replay_epsilon_receipts.py`. `evidence/derived_claims.json` counts 7,951,062 forgeries attempted against the
+matching and qLDPC lanes and 9,629,829 against paper 1's ε-receipts, none accepted. Most forgeries are refused before
+any bound is computed, as malformed or invalid input; the ones that test weak duality are those that reach the bound,
+and the strict replay's records count them (`evidence/epsilon_rerun/replay_2026-11-03/`: 59,224 forgeries, 10,034
+refused by the bound, none accepted). The soundness argument is weak duality: any feasible dual is a lower bound.
+Attack the *checker's* implementation of it: sign conventions, the T-oddness test (the battery's parity forgeries are
+accepted by parity-blind copies of both verifiers and refused by the real ones), and above all **the dual repair** in
+`matching_cert._repair_and_verify`, which mutates the shipped dual before deciding. If you can make its shed and
+absorb steps construct a feasible attaining dual for a correction that is NOT optimal, the exact lane is broken. (LP
+duality says such a dual exists only when the correction is optimal, and step 3 re-verifies from scratch, but that
+is exactly the kind of confidence worth attacking.)
 
-**1. Forge a certificate.** `challenge/` contains the forgery
-corpus and a self-testing verifier. 7,951,062 forged certificates have
-been rejected and 0 accepted, so a single accepted forgery is a
-publishable refutation of the whole programme. The soundness argument is
-weak duality: any feasible dual is a lower bound. Attack the *checker's*
-implementation of it — sign conventions, the facet-parity rule, and above
-all **the dual repair** in `matching_cert._repair_and_verify`, which is
-the newest and most dangerous code here: it MUTATES the shipped dual
-before deciding. If you can make the shed/absorb steps construct a
-feasible attaining dual for a primal that is NOT optimal, the matching
-lane is broken. (We think you cannot — LP duality says such a dual exists
-only when the primal is optimal, and step 3 re-verifies from scratch —
-but that is exactly the kind of confidence worth attacking.)
+**2. Make the equivalence gates vacuous.** `tools/frozen/` holds byte-identical pre-refactor snapshots;
+`tools/checker_equivalence_gate.py` and `tools/producer_equivalence_gate.py` compare live code against them, and
+`--prove-sensitive` mutates the live checker and requires the gate to catch it. **If you can make a behavioural
+change that neither gate sees, the refactor guarantee is theatre.** One such hole was found this way and closed (a
+mutant that had drifted onto weaker coverage while still "passing").
 
-**2. Make the equivalence gates vacuous.** `tools/frozen/` holds
-byte-identical pre-refactor snapshots; two gates compare live code
-against them. Both have `--prove-sensitive`, which mutates the live
-checker and requires the gate to catch it. **If you can make a
-behavioural change that neither gate sees, the refactor guarantee is
-theatre.** One such hole was found this way and closed (a mutant that
-had drifted onto weaker coverage while still "passing").
+**3. Break a negative control.** Every replay and attack carries one that must succeed: the parity-blind copies must
+accept the parity forgeries, a correction with one edge dropped must be told apart from the certified one, a swapped
+input file must be refused by paper 2's replay for its own reason. A control that cannot fail would make its
+check dark; find one.
 
-**3. Break a negative control.** Every headline result carries one, and
-they are the load-bearing part:
-- A6 symmetry decoding: at `q=0.5` the side-channel bit is pure noise
-  and the result is **13.5× worse** than baseline. If that column can be
-  made to look good, the claim is an artifact of the extra constraint
-  rather than of information.
-- C2 mask flips: L2′ is 0% on *weight* faults by design. If it fires
-  there, it is a second copy of L2, not a complementary layer.
+**4. Paper 2's receipt corpus is complete, and replay fails if it is not.** `recheck_all.py` replays every one of the
+2,042 receipts named by the pinned `evidence/receipt_manifest.json` (2,002 flat certificates and 40 branch-dual
+trees: 17 held-out, 23 development) through two separately written checkers, against persisted instances and integer
+weight vectors, and fails on any missing, duplicated, unlisted or altered receipt or bound file (external audit
+2026-08-04, finding 7, and 2026-09-14, R-01/R-04: earlier releases re-checked 36 embedded trees and exited cleanly
+when files were absent).
 
-**4. The paper-2 receipt corpus is complete, and replay fails if it is not.**
-`recheck_all.py` replays every one of the 2,042 receipts named by the pinned
-`evidence/receipt_manifest.json` (2,002 flat certificates and 40 branch-dual
-trees: 17 held-out, 23 development) through two independently written
-checkers, against persisted instances and integer weight vectors, and fails on
-any missing, duplicated, unlisted or altered receipt or bound file. External
-audit 2026-08-04, finding 7, and 2026-09-14, R-01/R-04: earlier releases
-re-checked 36 embedded trees and exited cleanly when files were absent. Tree
-records elsewhere in the evidence that keep only tier and outcome cannot be
-re-checked from this bundle and support no claim in either paper.
-
-**5. Check the numbers we refused to produce.** Absence is a claim too:
-- C2's ~5,400 LUT figure is **unverified** — ABC will not complete in the
-  WASM yosys build (three flows tried). Run native yosys and tell us.
-- B-1's `ETA_MAX` formula is not stated in our spec, so we computed the
-  ceiling under three definitions rather than fitting one to reproduce
-  3.56. If a fourth defensible definition crosses the bar of 10, the
-  ABSTAIN is not robust and we want to know.
-
-**6. The preregistration.** `docs/HELD_OUT_PREDECLARATION.md` was
-written before the results. Seeds derive from the freeze commit sha at
-runtime. **The freeze commitment is self-referential** — our own sha, not
-an external public beacon — and that is disclosed as finding F4 in
-`docs/HELD_OUT_RESULTS.md`. It is the weakest link in the
-preregistration and we are not going to pretend otherwise.
+**5. The preregistrations.** `docs/HELD_OUT_PREDECLARATION.md`, `docs/PREREG_heldout_willow_2026-11-02.md`,
+`docs/PREREG_gap_distribution_2026-11-03.md`, `docs/PREREG_heldout_d7_2026-11-03.md`,
+`docs/PREREG_qldpc_scaling_2026-11-03.md` and `docs/PREREG_measured_model_program_2026-09-16.md`, each with its
+deviations file where there is one. They were committed and pushed to the project's development repository before
+their runs. That repository is private and the public history is squashed, so **a reader cannot check those
+timestamps, and git dates are set by the author anyway**: the claim rests on our word until a preregistration is
+anchored externally before its run, which none of these was. The held-out seeds derive from the freeze commit's sha,
+which is self-referential rather than an external beacon (finding F4 in `docs/HELD_OUT_RESULTS.md`). This is the
+weakest link of every preregistered result, and we are not going to pretend otherwise.
 
 ---
 
 ## READ THIS BEFORE QUOTING ANY CERTIFIED RATE
 
-Paper 1's rates are acceptances of `src/oneq/matching_cert_epsilon.py`, which
-decides a DECLARED claim: it scales the packing to feasibility, computes the
-correction's proven slack exactly in rational arithmetic, and accepts iff that
-slack is at most eps_max = 1e-6, returning EXACT_OPTIMAL, EPSILON_OPTIMAL,
-NOT_PROVEN, INVALID_INPUT or VERIFIER_FAILURE. The external audit of 2026-09-14
-showed that the original runs' tolerance rule (float gap <= 1e-6, no NaN guard)
-is not a proof; those runs were repeated under the epsilon checker with every
-receipt kept (`evidence/epsilon_rerun/`), and their original rates are
-historical. The exact checker described next is a separate, stricter
-measurement.
+Paper 1's rates are acceptances of `src/oneq/matching_cert_epsilon.py`, which decides a DECLARED claim: it scales the
+packing to feasibility, computes the correction's proven slack exactly in rational arithmetic, and accepts iff that
+slack is at most eps_max = 1e-6, returning EXACT_OPTIMAL, EPSILON_OPTIMAL, NOT_PROVEN, INVALID_INPUT or
+VERIFIER_FAILURE. The external audit of 2026-09-14 showed that the original runs' tolerance rule (float gap <= 1e-6,
+no NaN guard) is not a proof; those runs were repeated under the ε-checker with every receipt kept
+(`evidence/epsilon_rerun/`), and their original rates are historical. The exact checker described next is a
+separate, stricter measurement.
 
-The external audit of 2026-08-04 found that the MWPM checker accepted on
-a 1e-6 tolerance, which certified provably suboptimal corrections. That
-is fixed. **`matching_cert.check` now accepts only exact optimality, with
-no epsilon anywhere in the decision**, and it is exact with respect to the ORIGINAL IEEE double
-weights — nothing is quantised and no fixed-point vector is declared.
+The external audit of 2026-08-04 found that the matching checker accepted on a 1e-6 tolerance, which certified
+provably suboptimal corrections. That is fixed: **`matching_cert.check` accepts only exact optimality, with no epsilon
+anywhere in the decision**, exactly with respect to the original IEEE double weights. What is damaged is the shipped
+DUAL, a float rounding of an exact one, and rounding damage is repairable: the checker sheds any infeasibility
+(reducing a dual lowers the load on every edge of its cut and raises it nowhere), absorbs the shortfall into variables
+with slack across their whole cuts, then re-verifies feasibility, non-negativity and attainment from scratch in exact
+rational arithmetic.
 
-**A previous version of this section said the opposite and was wrong.**
-It claimed exact optimality was "unprovable in principle from float
-weights, by anyone", because the dyadic lattice step over doubles
-(~4.4e-16) is finer than the float error in the dual itself (~1e-15).
-The lattice argument really is useless here. The conclusion drawn from
-it was not: what is damaged is the shipped DUAL, which is a float
-rounding of an exact one, and rounding damage is REPAIRABLE.
+**Why this cannot be a tolerance in disguise, which is the thing to attack.** By LP duality a feasible dual attaining
+the correction's weight exists **if and only if** the correction is optimal. On a suboptimal correction the absorb
+step therefore cannot find the slack: forbidden by the theorem, not merely unlikely. The 2026-08-04 auditor's own
+witness (edges (0,1) = 1.0000005, 0-B = 1-B = 0.5, true optimum 1.0) is refused at scales 1e-9, 1 and 1e9
+(`tests/test_exact_dual_repair.py`; at scale 1 also `tests/test_audit_2026_08_04.py`), three points rather than every
+scale, which is what an exact rule should make unnecessary and an epsilon rule could not pass.
 
-    surface-d3-5   2.22e-16 SHORT of attaining
-    surface-d3-4   4.44e-16 OVER on edge (6,12) -- infeasible, which is why
-                   its objective exceeded its own primal
-
-So the checker now REPAIRS the dual and verifies the repair: shed any
-infeasibility (reducing a dual lowers load on every edge of its cut and
-raises it nowhere), absorb the shortfall into variables with slack across
-their whole cuts, then re-verify feasibility, non-negativity and
-attainment from scratch in exact rational arithmetic.
-
-**Why this cannot be a tolerance in disguise, which is the thing to
-attack.** By LP duality a feasible dual attaining U exists **if and only
-if** U is optimal. On a suboptimal primal the absorb step therefore
-provably cannot find the slack — forbidden by the theorem, not merely
-unlikely. The auditor's own witness (edges (0,1)=1.0000005, 0-B=1-B=0.5,
-true optimum 1.0) is refused at every scale from 1e-9 to 1e9. Attack this
-first; the repair is the most dangerous code in the tree, because a
-too-generous version stays green on every other test.
-
-### The rates, re-measured under the exact rule (2026-08-09)
-
-`evidence/corpus_exact/` -- every artifact carries its own sample size,
-tier stack (`oneq_escalate`), and forgery count. There is deliberately NO
-single aggregate: the table is the claim.
-
-| config | certified | rate | n | tier |
-|---|---|---|---|---|
-| d3_X_r13 | 9838/9841 | 99.97% | 10000 | full |
-| d3_X_r30 | 9989/9994 | 99.95% | 10000 | full |
-| d3_Z_r13 | 9558/9560 | 99.98% | 10000 | full |
-| d3_Z_r30 | 9986/9991 | 99.95% | 10000 | full |
-| d5_X_r13 | 9447/10000 | 94.47% | 10000 | full |
-| d5_X_r30 | 194/250 | 77.60% | 250* | full |
-| d5_Z_r13 | 9420/9998 | 94.22% | 10000 | full |
-| d5_Z_r30 | 276/375 | 73.60% | 375* | full |
-| d7_X_r13 | 437/500 | 87.40% | 500 | full |
-| d7_X_r30 | 406/5000 | 8.12% | 5000 | **BASE floor** |
-| d7_Z_r13 | 422/500 | 84.40% | 500 | full |
-| d7_Z_r30 | 76/1000 | 7.60% | 1000 | **BASE floor** |
-
-Forgeries: **0 accepted of 412,812 attempted**, at every size and tier.
-(*) surviving shots after memory-killed chunks; losses recorded in-band.
-
-**Read the two BASE-floor rows carefully -- they are the exhibit, not an
-embarrassment.** The full exact stack on d7xr30 graphs (~8,000 detectors)
-exceeded this workstation's compute at every sample size tried (10k, 2k,
-500, 150 -- all documented timeouts), so those rows show the BASE tier
-alone: 7.8%. The repo's gen-5 evidence reached 98%+ there with the full
-ladder -- the ladder is worth ~90 points at the hardest scale, and the
-exact tier's measured cost wall is the quantified motivation for the
-fixed-point bridge tier (quantized certification + certified robustness
-transfer), designed and scheduled.
-
-**Certify-or-repair, measured separately** (d5_X_r13, 1,000 shots): 94.8%
-certified as-decoded + 3.6% CERTIFIED REPAIRS (the decoder's answer
-provably suboptimal; the exactly-minimum correction shipped with proof,
-both weights on the receipt) = **98.40% cert-or-repaired**. Repairs are a
-separate column by construction -- blending them into "certified" would
-credit the decoder with answers it did not produce.
-
-**A known coverage gap, disclosed rather than found by you.** On
-`d3_at_q4_5_X_r13`, 24 of 9,841 nontrivial shots (0.24%) are refused even
-though the correction **is** exactly optimal. These are FALSE REFUSALS:
-`tools/exact_optimum_oracle.py` computes the true minimum-weight T-join
-in exact rational arithmetic — exact Dijkstra plus exhaustive pairing
-enumeration, sharing no code with the checker — and finds primal ==
-optimum. By LP duality an attaining dual therefore exists and the
-checker's greedy repair search fails to find it. Four deterministic spend
-orders are tried; the principled fix is exact re-optimisation over the
-dual support, which is not done.
-
-**The direction of that failure is the point.** A false refusal costs
-COVERAGE. A false ACCEPTANCE would refute the programme. Every defect
-found on 2026-08-05 pushed the checker toward refusing, and 0 of
-7,951,062 forgeries have ever been accepted. If you find the reverse —
-anything accepted that should not be — that is the finding that matters
-and we want it immediately.
+**The direction of the remaining failure is the point.** The exact checker also refuses some corrections that are
+exactly optimal, when its repair search does not find an attaining dual; paper 1's Sec. IV and Table I give how often.
+A false refusal costs coverage. A false acceptance would refute the programme. Every defect found so far pushed the
+checker toward refusing, and no forgery has ever been accepted. If you find the reverse, anything accepted that
+should not be, that is the finding that matters and we want it immediately.
 
 ---
 
@@ -240,24 +154,23 @@ and we want it immediately.
 
 Believing any of this depends on knowing what it excludes.
 
-- **No independent execution.** Everything ran on one workstation. Your
-  run is the first that changes that.
-- **The hardware leg WAS at zero; it is now measured, and the model is wrong by family.** Whether the *declared* noise model matches real hardware was untested until the 2026-09 campaign (ledger R19-R29): on seven IBM Heron repetition-code runs across two devices and three distances the calibration-derived DEM overstates the space-like family 7-38x, its logical errors are 89.8% spurious flips, and a model estimated from the syndromes themselves cuts its held-out errors 10.1x (474 -> 47). Google's shipped SI1000 prior on the public Willow corpus does NOT show the per-family overstatement (0.31-0.37), so it is IBM's pipeline as read by this instrument (R29). The remaining hardware gap is the A/E/B/Y error-budget ledger, which has still never been pointed at device shots.
-- **Benchmarks are recorded, not judged** — this machine measured 500%
-  timing spread, so every performance number is unjudged by our own gate.
-- **`ONE_Q_MAX`'s OS layer is design**, not code.
-- Prior art is adjacent and real: Wu et al. (arXiv:2508.04969) publish a
-  "Certifying Optimum" theorem for MWPM. What is new here is the qLDPC
-  ladder, the exact-rational tier, and the checkers.
+- **No independent execution, and no human specialist.** Everything ran on one workstation. The reviews so far are
+  AI agents that did not write the work under review and four external written audits, the last two of which state
+  that they were AI-assisted (`docs/reviews/`). No human expert has re-run the evidence or read paper 3's two
+  every-round hand proofs. Your run is the first that changes that.
+- **A certificate is about its declared model.** Whether a declared error model matches a device is a separate,
+  empirical question; paper 1's Sec. VI E measures one route (models estimated from the device's own syndromes).
+- **The preregistration timestamps are private** (attack 5 above).
+- Prior art is adjacent and real: Wu et al. (arXiv:2508.04969) give a decoder that emits a proximity bound with every
+  solution and certifies optimality when their certifiability condition holds. Each paper's related-work section says
+  what it adds and what it does not.
 
 ---
 
 ## What we are asking you to conclude
 
-Only what you verify. Every paper claim is indexed by artifact in
-`docs/PAPER2_QLDPC_DRAFT.md` §11 and `docs/PAPER_DRAFT.md` §9. **If a
-number in a paper does not fall out of a command in `REPRODUCE.md`, that
-is a defect and we want it named** — the provenance gate is supposed to
-make it impossible, and it has failed before.
+Only what you verify. Every claim of papers 1-3 is indexed by artifact and command in `docs/REVIEW_PACKET.md`. **If
+a number in a paper does not fall out of a command there or in `REPRODUCE.md`, that is a defect and we want it
+named**: the provenance gate is supposed to make it impossible, and it has failed before.
 
 A finding that kills a claim is worth more to us than a green run.

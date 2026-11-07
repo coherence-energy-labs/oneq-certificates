@@ -63,8 +63,38 @@ def odd_set(edges_used):
     return {n for n, c in deg.items() if c % 2 == 1}
 
 
+def edge_set(corr) -> list:
+    """A correction as the edge SET it denotes: an edge listed an even number of times cancels (a correction acts mod
+    2), one listed an odd number of times appears once, in the order of its first occurrence."""
+    count: dict = {}
+    for k in corr:
+        count[tuple(k)] = count.get(tuple(k), 0) + 1
+    return [k for k in count if count[k] % 2 == 1]
+
+
 def mutants(W, matched, fired, prev):
-    """Plausible decoder defects, as mutated OUTPUT."""
+    """Plausible decoder defects, as mutated OUTPUT -- every one an EDGE SET that differs from the decoder's.
+
+    THE RULE (2026-11-07, revising paper 1 against external audit 4). Until then M7 appended one unused edge TWICE.
+    As an edge set -- the object a correction is -- that is the decoder's own correction, so 601 "stealth defects"
+    were the genuine answer weighed as a list, the corpus labelled them defective, and the certificate's refusal of a
+    malformed list was counted as proving suboptimality. The forgery battery had the same construction until
+    2026-11-03. Now every mutant is returned as the edge set it denotes, and a mutant whose edge set EQUALS the
+    decoder's is not returned at all: it is neither a defect nor an alternative (the M5 control included, which on a
+    shot whose correction already sends every fired detector to the boundary was the decoder's own correction)."""
+    raw = _raw_mutants(W, matched, fired, prev)
+    own = frozenset(tuple(e) for e in edge_set(matched))
+    out = []
+    for name, mut in raw:
+        es = edge_set(mut)
+        if frozenset(es) != own:
+            out.append((name, es))
+    return out
+
+
+def _raw_mutants(W, matched, fired, prev):
+    """The constructions themselves, before the edge-set rule of `mutants`."""
+    from oneq.forgeries import spurious_cycle
     mset = [tuple(e) for e in matched]
     out = []
 
@@ -96,8 +126,14 @@ def mutants(W, matched, fired, prev):
         out.append(("M6_truncated_path", mset[:-2] + mset[-1:]))
 
     # ---- THE MUTANTS THAT MATTER: syndrome-consistent, strictly heavier ----
-    if alt and BOUNDARY not in alt:      # a doubled edge is a closed cycle
-        out.append(("M7_added_cycle_STEALTH", mset + [alt, alt]))
+    # M7: an even cycle edge-disjoint from the correction, added. It changes no vertex's parity, so the union is a
+    # syndrome-consistent edge set heavier by the cycle's weight (oneq.forgeries.spurious_cycle, the forgery battery's
+    # D since 2026-11-03). It replaces "one unused edge appended twice", which as an edge set was the correction itself.
+    cyc = spurious_cycle(W, mset)
+    if cyc is not None:
+        cand = sorted(set(mset) | set(cyc))
+        if odd_set(cand) == odd_set(mset) and sum(W[k] for k in cand) > sum(W[k] for k in mset) + 1e-9:
+            out.append(("M7_disjoint_cycle_STEALTH", cand))
 
     bpairs = [k for k in mset if BOUNDARY in k]
     if len(bpairs) >= 2:

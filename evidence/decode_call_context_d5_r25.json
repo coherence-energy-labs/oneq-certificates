@@ -1,0 +1,88 @@
+{
+ "schema": "oneq-decode-call-context/1",
+ "config": "sim_d5_r25",
+ "distance": 5,
+ "rounds": 25,
+ "p": 0.005,
+ "detectors": 600,
+ "edges": 2742,
+ "seeds": [
+  1,
+  8
+ ],
+ "shots": 2000,
+ "nontrivial": 2000,
+ "same_shots_as": "evidence/certify_cost_d5_r25.json (its seed plan) and data/epsilon_receipts/sim_d5_r25 (verdicts matched shot by shot)",
+ "arms": {
+  "after_certification": "Matching.decode_to_edges_array(dense detector row), the first call on the shot, right after the previous shot's certification and check",
+  "repeated": "the same call on the same row, again at once",
+  "binding": "Matching._matching_graph.decode_to_edges_array(fired detector indices, uint64), right after"
+ },
+ "corrections_identical_across_arms": 2000,
+ "decode_per_call_us": {
+  "after_certification": {
+   "n": 2000,
+   "median": 107.25005995482206,
+   "mean": 110.01090088393539,
+   "p90": 131.80007226765156,
+   "p99": 164.09996896982193,
+   "max": 2829.7000098973513
+  },
+  "repeated": {
+   "n": 2000,
+   "median": 30.099879950284958,
+   "mean": 31.884298543445766,
+   "p90": 42.999861761927605,
+   "p99": 67.30016320943832,
+   "max": 231.19989782571793
+  },
+  "binding": {
+   "n": 2000,
+   "median": 18.300022929906845,
+   "mean": 19.334248499944806,
+   "p90": 27.19997428357601,
+   "p99": 42.69997589290142,
+   "max": 117.79996566474438
+  }
+ },
+ "certify_ms": {
+  "n": 2000,
+  "median": 29.688850045204163,
+  "mean": 52.579003102029674,
+  "p90": 112.52589989453554,
+  "p99": 273.95469998009503,
+  "max": 548.5415000002831
+ },
+ "decode_batch_us_per_shot": 17.032100004144013,
+ "ratio_mean_certify_over_mean_decode": {
+  "after_certification": 477.94357358733026,
+  "repeated": 1649.0562911517454,
+  "binding": 2719.474879107909
+ },
+ "ratio_mean_certify_over_mean_batch_decode": 3087.0534513792713,
+ "ratio_median_after_over_median_repeated": 3.563139126533517,
+ "machine": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+  "logical_cpus": 24,
+  "python": "3.14.3",
+  "pymatching": "2.4.0",
+  "stim": "1.16.0",
+  "numpy": "2.3.5",
+  "threads_used": 1,
+  "cpu_percent_before": 42.6,
+  "cpu_percent_after": 73.6,
+  "note": "shared workstation: other jobs ran during the measurement (cpu_percent above)"
+ },
+ "head": {
+  "commit": "cd7eb134f19c267fa79c94ad3cb06fad44803f7f",
+  "uncommitted_changes_in_judged_files": true,
+  "sha256": {
+   "experiments/m0_prior_art/decode_call_context.py": "7aa3be1c0993b3e9c197a74d0493e20fab69c61b8422c37be6ad926a37b5095e",
+   "experiments/m0_prior_art/certify_cost.py": "505ed77b097fc4765b020191ca7c5c64bdbaa69c7112055095264a3f9aa7e422",
+   "experiments/m0_prior_art/epsilon_rerun.py": "8161638949d135893c2c78423bd99befb64807aef7f921ac49987aacc6e12cb5",
+   "src/oneq/certifying_decoder.py": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+   "src/oneq/matching_cert_epsilon.py": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8"
+  }
+ }
+}

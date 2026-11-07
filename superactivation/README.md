@@ -5,8 +5,8 @@ it: quantum capacity, not error-correction decoding. It accompanies the
 manuscript by Josh Philbrick (Coherence Energy Labs), whose LaTeX source is in
 `paper/superactivation/`:
 
-* *Superactivation in two channel uses: exact certificates for a family of PPT
-  channels*
+* *Superactivation in two channel uses for private Horodecki channels with
+  large shields: exact certificates*
 
 The same release tag carries the decoder bundle (`oneq-certifying-decoder`,
 three manuscripts on certifying decoders). Each bundle is signed and

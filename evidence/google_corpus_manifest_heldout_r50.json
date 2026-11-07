@@ -1,0 +1,142 @@
+{
+  "schema": "oneq-google-corpus-manifest/1",
+  "doi": "10.5281/zenodo.13273331",
+  "archive": "google_105Q_surface_code_d3_d5_d7.zip",
+  "archive_bytes": 5716907033,
+  "fetched_by": "HTTP range requests; the archive was never downloaded whole",
+  "integrity": "each member's CRC-32 was checked against the ZIP central directory on fetch; sha256 recorded here so a reader holding the full archive can confirm these are the same bytes",
+  "configurations": [
+    {
+      "distance": 3,
+      "patch": "d3_at_q4_5",
+      "basis": "X",
+      "rounds": 50,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 2500000,
+          "sha256": "3a0e835533483c957b33e8c1879bec62b2afa63b08d3b883df48b4013c098c3c",
+          "zip_crc32": 3326700655,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r50/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 241,
+          "sha256": "062b78b86f95160098c366b8cae263a4362024642a414144d84e7a9e4df4c009",
+          "zip_crc32": 2442672055,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r50/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 269757,
+          "sha256": "0d2a9515bc8dbacfa2a7aee003ea0ae95478e5846ecec3ed5ecfce9d2faa0a3d",
+          "zip_crc32": 2941707859,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r50/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "31815943b6165f147f4e009eb74136f1fdcbf0318d3074422dcd8723e5024c92",
+          "zip_crc32": 1938242453,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/X/r50/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 3,
+      "patch": "d3_at_q4_5",
+      "basis": "Z",
+      "rounds": 50,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 2500000,
+          "sha256": "99cab30af088b119114cef2a2da49abd634d4c9de4bfae88d31ee90498abd27b",
+          "zip_crc32": 4115427904,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r50/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 241,
+          "sha256": "a4d119188612822f42a9095c3339198f0b79347d751b0fd17182231079cbb865",
+          "zip_crc32": 1673019639,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r50/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 269670,
+          "sha256": "0938ac4cc594671bd95e80be63ae2195bc61587bea9811855cc4ee53e416548a",
+          "zip_crc32": 2875646616,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r50/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "4ea971fb18403af0b1d858c1745f9fe54d31bbfe838a6e606830eedf35ed2214",
+          "zip_crc32": 2570936674,
+          "member": "google_105Q_surface_code_d3_d5_d7/d3_at_q4_5/Z/r50/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "patch": "d5_at_q8_7",
+      "basis": "X",
+      "rounds": 50,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 7500000,
+          "sha256": "35d7c8eadc213fd3f7d7dc0ea513716e603f4aaf75fc19e51d4fa29674862ee3",
+          "zip_crc32": 331895643,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r50/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 515,
+          "sha256": "0c248431b825e4bd5141e9fd3e8640bd7c1f8ca0bbced3d4ed43be2240d2c0b8",
+          "zip_crc32": 4074127105,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r50/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 1028249,
+          "sha256": "bf1789f4aef4f700a540bb249db3f746f63894cc7cd3bec753fd8da3ebb9ed8e",
+          "zip_crc32": 977632549,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r50/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "900cdb16acd0d152713bf54555210f7c6028929545cf67dde76809efad3eeae3",
+          "zip_crc32": 1154258619,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/X/r50/obs_flips_actual.b8"
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "patch": "d5_at_q8_7",
+      "basis": "Z",
+      "rounds": 50,
+      "prior": "correlated_matching_decoder_with_si1000_prior",
+      "files": {
+        "detection_events.b8": {
+          "bytes": 7500000,
+          "sha256": "27bfb3224d49490e89e02c8cea6afeacc64b1980034f7f7b33d3b9db5871ce3c",
+          "zip_crc32": 1376137772,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r50/detection_events.b8"
+        },
+        "metadata.json": {
+          "bytes": 515,
+          "sha256": "390ddb6635cfe67bce6e0dce9fad495c61c735abe27bf890059bdb84db02cf6d",
+          "zip_crc32": 3937916219,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r50/metadata.json"
+        },
+        "error_model.dem": {
+          "bytes": 1028189,
+          "sha256": "a69bbb6e44d4ad65b9c30dd3e4022b66ea4d4c886b4106cabd335094efa4c2fb",
+          "zip_crc32": 2142562179,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r50/decoding_results/correlated_matching_decoder_with_si1000_prior/error_model.dem"
+        },
+        "obs_flips_actual.b8": {
+          "bytes": 50000,
+          "sha256": "f46006a838b37006a4ef0c56c3b9431523ad5cad49c4ee88c3c246a720622f90",
+          "zip_crc32": 1963803066,
+          "member": "google_105Q_surface_code_d3_d5_d7/d5_at_q8_7/Z/r50/obs_flips_actual.b8"
+        }
+      }
+    }
+  ]
+}

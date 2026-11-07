@@ -67,7 +67,7 @@ the recorded proof (`recert_old_prover.py`, `records/recert_old_prover.jsonl`).
 
 `recheck_all.py` is a complete replay: it checks every one of the 2,042
 receipts named by the pinned `evidence/receipt_manifest.json` (2,002 flat
-certificates and 40 branch-dual trees) with two independently written
+certificates and 40 branch-dual trees) with two separately written
 checkers, against the persisted instances and integer weight vectors, and
 FAILS if any receipt or bound file is missing, duplicated, unlisted or
 altered. It uses no solver, no producer and no rebuilt input. `replay_epsilon_receipts.py`
@@ -101,7 +101,7 @@ is not evidence.
 
 | file | claim | what it does NOT say |
 |---|---|---|
-| `million_shot_gate_d5_merged.json` | 10⁶ shots merged from four disjoint-seed runs, 99.76% accepted under the pre-audit tolerance rule, 6,000,002 forgeries, 0 accepted | nothing about hardware noise; and "certified" here means the pre-audit acceptance rule (float gap ≤ 1e-6) — see the next row |
+| `million_shot_gate_d5_merged.json` | 10⁶ shots merged from four disjoint-seed runs, 997,594 (99.75%, rounded down) accepted under the pre-audit tolerance rule, 6,000,002 forgeries, 0 accepted | nothing about hardware noise; and "certified" here means the pre-audit acceptance rule (float gap ≤ 1e-6) — see the next row |
 | `certification_semantics_audit.json` | what that rule proved: the producing code of each headline artifact, re-run on seeded samples, every accepted certificate analysed in exact rational arithmetic — all admissible, largest proven slack far below 1e-6 | not the per-shot slack of the full runs, whose certificates were not stored; and not EXACT optimality, which today's stricter checker measures separately |
 | `google_generation_history.json` | the Willow certified rate by producer generation, read from the objects each generation wrote | generations 2 and 3 ran partial coverage; their aggregates weight configurations unequally |
 | `gap_distribution_exact_rule.json` | the gap experiment re-run under the exact checker, with per-shot gaps | a different certified subset from `gap_distribution.json`; both are shipped so the difference is visible |

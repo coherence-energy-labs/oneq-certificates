@@ -4,13 +4,13 @@
     {
       "name": "AUDIT.md",
       "digest": {
-        "sha256": "a35b25772b0356945220ba5de54211e8a342ed9c56e759c19808730d66704cc1"
+        "sha256": "05e3c64c97231b4bb0509fac82b7893ada5964f843bb7f671476abfeaea606ef"
       }
     },
     {
       "name": "requirements.txt",
       "digest": {
-        "sha256": "aba21f1844bafa2cad338a7ab1e660fe72f57f800a1af84a5d891f66a6f55871"
+        "sha256": "b3c1a8bbd9f802abb755442b2f4498998fe913f0437526f2503b47eb58b796e8"
       }
     },
     {
@@ -22,13 +22,19 @@
     {
       "name": "docs/PAPER4_LITERATURE_SEARCH.md",
       "digest": {
-        "sha256": "1748db6e58218f237bb4dde99a38e4bae0cfc65669b9bb6a0eb7237eb6074231"
+        "sha256": "1cd9279907a6d620534c0d4bfd355ca6a952a14f66afe314c126979d9a9fe87a"
       }
     },
     {
       "name": "docs/reviews/EXTERNAL3_2026-11-06.md",
       "digest": {
         "sha256": "b0c6441e2d6475f5c6d46682d92e60c8e200d42eb81258f7d5f6b11a4bac9694"
+      }
+    },
+    {
+      "name": "docs/reviews/EXTERNAL4_2026-11-07.md",
+      "digest": {
+        "sha256": "ae960cc7dfa9acb92699c2cec827c735eaf3b4eb0503a3d9a82388f8e6961a7b"
       }
     },
     {
@@ -1744,7 +1750,7 @@
     {
       "name": "evidence/superactivation/ppt_relaxation_fullspace.json",
       "digest": {
-        "sha256": "226016a4db877aef016cbee5d453f95df2368742f49a415b66b8a5f853455875"
+        "sha256": "5c3573f2626d9ec4e601f8c0666f22216729635fffd9efde46d6945ff2db425a"
       }
     },
     {
@@ -4598,6 +4604,12 @@
       }
     },
     {
+      "name": "evidence/superactivation/shield_family/onset_search/symmetric_d5.json",
+      "digest": {
+        "sha256": "0f99df12f0db646c9755670992dbc885eb1932009f0662c2c284cd9cba6ab69e"
+      }
+    },
+    {
       "name": "evidence/superactivation/shield_family/p2_kraus_comparison.json",
       "digest": {
         "sha256": "2ce5fd403d1b278b431c49eb965f2e2a1086d441b50abafafb98cb0070ed2720"
@@ -4606,13 +4618,13 @@
     {
       "name": "evidence/superactivation/shield_family/p2_kraus_comparison_v2.json",
       "digest": {
-        "sha256": "12fe31000474a393cea18312fae7a50ea68362ad2b2da792ab1f9f68907fac39"
+        "sha256": "1ac44e9fafee751775ebe537195427324724807b8db662a9bd73aab5f78fc807"
       }
     },
     {
       "name": "evidence/superactivation/shield_family/phase_diagram.json",
       "digest": {
-        "sha256": "4f4fb121b13fb105349f682096a5b3f39817dbc6237e1998b7e7c1083ad679cf"
+        "sha256": "6dddea5b234dc504c901dcfd16c85d29947e92ad67642e95f38bd325797f5be8"
       }
     },
     {
@@ -5590,13 +5602,13 @@
     {
       "name": "experiments/superactivation/shield_family/phase_diagram.py",
       "digest": {
-        "sha256": "bc8f86c8de8511ebb2a6646fa015d081f891911f601789f1804b8fa6126aacd2"
+        "sha256": "ae4497a79b0e32e8a96707a1647bc7967d50fe4396cd5c134b1e1d6f9b272ce6"
       }
     },
     {
       "name": "experiments/superactivation/shield_family/ppt_family.py",
       "digest": {
-        "sha256": "f5b25ce5bf7a87854dad2530443b0633a349868128b4ab78b936dabad1f42351"
+        "sha256": "7f8125d3105a4c4521b054d4067636b5221f04c6d29e57fd936ea2f443d3929c"
       }
     },
     {
@@ -5920,19 +5932,19 @@
     {
       "name": "paper/refs.bib",
       "digest": {
-        "sha256": "fc5cee1fe47785127401b35f12b7ac3058019e37a8def2629cb60a15a5c3b265"
+        "sha256": "0c2d79863dde4cbbbbc7d6bc330b14af91cbbd25355e57c4cb6049427ace90b3"
       }
     },
     {
       "name": "paper/release.tex",
       "digest": {
-        "sha256": "25962c2330c143c67133dfff9a25a43ba6e20c65f3924e2ed8709dbd91c42970"
+        "sha256": "91fd800b68db3ea8aee3ccf248925e3530aca8d117ce07110d1c5b14144d59f3"
       }
     },
     {
       "name": "paper/superactivation/generated/numbers.tex",
       "digest": {
-        "sha256": "c53e9897e662b3f65b4c2f608f5fafe360f405de92abf13aa12fd85a325436ce"
+        "sha256": "7069beb294611eca368be0c599fd144fa1e7b72d568c113427adc9d4039eb9f7"
       }
     },
     {
@@ -5950,31 +5962,31 @@
     {
       "name": "paper/superactivation/generated/tab_onset.tex",
       "digest": {
-        "sha256": "755cb7c45ee129f5ece530bb4d9af3169c3fbb4e579ceaad00e865c9331078c0"
+        "sha256": "96c32db0196145a4bc92710772177ead13752f923ed8ecfa9368d47ad2008a04"
       }
     },
     {
       "name": "paper/superactivation/main.tex",
       "digest": {
-        "sha256": "5711f49ea3a52edf61f91d24fcfe2bf1d6cb6e7baa00173844cb422b4b0ce6e4"
+        "sha256": "ea8caac7fa2bee24a2051bcf035cf868d77d98816384c32297941eddedb511dd"
       }
     },
     {
       "name": "paper/tools/build.py",
       "digest": {
-        "sha256": "44267dc1c197a2898df94b72aae5fbb974a56230981ce89a7a32c57fc8244a53"
+        "sha256": "c03c0085d6789032b75041d01018ce72cddf771f9b991eb808d3316eace298d2"
       }
     },
     {
       "name": "paper/tools/make_numbers_superactivation.py",
       "digest": {
-        "sha256": "04e36bebe10b6a53eb565585633ec589621f8e34257fa098ca74d77aa05a18d0"
+        "sha256": "a7495800cd1f1768d388179af1fbc3803087bb2ce82f2f466f8c95a86f1b655b"
       }
     },
     {
       "name": "README.md",
       "digest": {
-        "sha256": "15732bbd5a5c1474d885ca9c965b333e6516b94cb4f740defdba5ea51bdafc2c"
+        "sha256": "b3996c32fe85923b31b6e80022e85a01d3260c2cbd4a75049672561e5a708849"
       }
     },
     {
@@ -6182,6 +6194,12 @@
       }
     },
     {
+      "name": "tests/test_superactivation_bundle_requirements.py",
+      "digest": {
+        "sha256": "5a1aff121fb32278b0fb044c518175575517895d03b77a925cd2dc930b7bd63d"
+      }
+    },
+    {
       "name": "tests/test_superactivation_certificate.py",
       "digest": {
         "sha256": "6d1f522ba60c55c8471f0e3face8e36043faca33c9a10c598018eb7553ac7660"
@@ -6202,7 +6220,7 @@
     {
       "name": "tests/test_superactivation_evidence_writers.py",
       "digest": {
-        "sha256": "a3d833be050c3c60eba12435df899b858311477b642374e23c37ea596a2a5519"
+        "sha256": "47c851f85f7f903b299074a6df33eda9bac0ba3adf419aaebcf4e86a7a8a7295"
       }
     },
     {
@@ -6286,7 +6304,7 @@
     {
       "name": "tools/build_certificate_bundle.py",
       "digest": {
-        "sha256": "b226a05f280a962ea17c2dd0f9f668a692428aa5416355cb9add965a88085694"
+        "sha256": "5d50e1367501eb2e892b8a9e5786af52f3937df82a33a96f8c4286d6f132f94b"
       }
     },
     {
@@ -6349,7 +6367,7 @@
         {
           "uri": "git+https://one-q.org/ONE_Q",
           "digest": {
-            "gitCommit": "a8ea65bb9e6db8177c6a094f9b7bfd45cfb8fda1"
+            "gitCommit": "e00a83e763bde442f929f7406de45b02b28990e2"
           }
         }
       ],
@@ -6371,7 +6389,7 @@
         "id": "https://one-q.org/local"
       },
       "metadata": {
-        "invocationId": "a8ea65bb9e6db8177c6a094f9b7bfd45cfb8fda1"
+        "invocationId": "e00a83e763bde442f929f7406de45b02b28990e2"
       }
     },
     "claims": {

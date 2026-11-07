@@ -1,13 +1,14 @@
 # Auditing the superactivation bundle
 
-This bundle (`oneq-superactivation`) carries one manuscript, *Superactivation in two channel uses: exact certificates
-for a family of PPT channels*, with every certificate, record and line of code its numbers come from. It is released
+This bundle (`oneq-superactivation`) carries one manuscript, *Superactivation in two channel uses for private
+Horodecki channels with large shields: exact certificates*, with every certificate, record and line of code its
+numbers come from. It is released
 beside the decoder bundle (`oneq-certifying-decoder`) under the same tag, and is signed and time-stamped on its own.
 
 ## 0. Is this the tree that was signed
 
 ```
-sha256sum -c SHA256SUMS                                    # 1057 files
+sha256sum -c SHA256SUMS                                    # 1060 files
 python tools/verify_release.py --bundle superactivation   # needs the three oneq-superactivation release assets in release/
 ```
 

@@ -13,8 +13,6 @@
 \newcommand{\AuditOracleMaxDelta}{\ensuremath{2.7\times 10^{-15}}}
 \newcommand{\AuditOracleN}{1{,}399}
 \newcommand{\AuditRuleTerm}{\ensuremath{1.4\times 10^{-7}}}
-\newcommand{\CICtrlHi}{4.72}
-\newcommand{\CICtrlLo}{0}
 \newcommand{\CIFaBaseHi}{0.722}
 \newcommand{\CIFaBaseLo}{0.00328}
 \newcommand{\CIFaFullHi}{0.389}
@@ -24,6 +22,7 @@
 \newcommand{\CertMeasBoundForgeries}{122{,}767}
 \newcommand{\CertMeasCertified}{40{,}963}
 \newcommand{\CertMeasDemErrors}{1{,}517}
+\newcommand{\CertMeasDeviceList}{\texttt{ibm\_kingston} (2 records) and \texttt{ibm\_fez} (4 records)}
 \newcommand{\CertMeasDevices}{2}
 \newcommand{\CertMeasEdgesHi}{573}
 \newcommand{\CertMeasEdgesLo}{168}
@@ -60,6 +59,18 @@
 \newcommand{\CostRatioCheckBatch}{450}
 \newcommand{\CostRatioPerShot}{400}
 \newcommand{\CostShots}{2{,}000}
+\newcommand{\DecodeCtxAfterRatio}{480}
+\newcommand{\DecodeCtxAfterUsMean}{110}
+\newcommand{\DecodeCtxAfterUsMedian}{107}
+\newcommand{\DecodeCtxBindingRatio}{2{,}700}
+\newcommand{\DecodeCtxBindingUsMean}{19.3}
+\newcommand{\DecodeCtxBindingUsMedian}{18.3}
+\newcommand{\DecodeCtxCertifyMsMean}{52.6}
+\newcommand{\DecodeCtxCpuHi}{74}
+\newcommand{\DecodeCtxCpuLo}{43}
+\newcommand{\DecodeCtxRepeatedRatio}{1{,}600}
+\newcommand{\DecodeCtxRepeatedUsMean}{31.9}
+\newcommand{\DecodeCtxRepeatedUsMedian}{30.1}
 \newcommand{\DecodeUsBatch}{16.4}
 \newcommand{\DecodeUsPerShot}{132}
 \newcommand{\DetCleanFalseAlarms}{1}
@@ -68,14 +79,23 @@
 \newcommand{\DetCleanPymAboveEps}{0}
 \newcommand{\DetCleanPymExcessPositive}{14}
 \newcommand{\DetControlFlagged}{0}
-\newcommand{\DetControlN}{62}
-\newcommand{\DetDefectAll}{4{,}862}
+\newcommand{\DetControlN}{0}
+\newcommand{\DetDefectAll}{5{,}030}
 \newcommand{\DetDefectInvalid}{3{,}549}
-\newcommand{\DetDefectN}{4{,}861}
-\newcommand{\DetDefectNonDefective}{1}
+\newcommand{\DetDefectN}{5{,}030}
+\newcommand{\DetDefectNonDefective}{0}
 \newcommand{\DetDefectNonDefectiveFlagged}{0}
 \newcommand{\DetDefectNotProven}{0}
-\newcommand{\DetDefectProven}{1{,}312}
+\newcommand{\DetDefectProven}{1{,}481}
+\newcommand{\DetMutEight}{3}
+\newcommand{\DetMutFour}{766}
+\newcommand{\DetMutNine}{708}
+\newcommand{\DetMutOne}{770}
+\newcommand{\DetMutSeven}{770}
+\newcommand{\DetMutSix}{587}
+\newcommand{\DetMutThree}{770}
+\newcommand{\DetMutTwo}{656}
+\newcommand{\DetShotsPerDistance}{300}
 \newcommand{\DetStaleAcceptable}{5{,}600}
 \newcommand{\DetStaleControlFalseAlarms}{1}
 \newcommand{\DetStaleControlSuboptimal}{0}
@@ -101,14 +121,26 @@
 \newcommand{\DetStaleSuboptimalOneFive}{110}
 \newcommand{\DetStaleSuboptimalThree}{271}
 \newcommand{\DetStaleSuboptimalTwo}{166}
-\newcommand{\DetStealthN}{1{,}312}
-\newcommand{\DetStealthProven}{1{,}312}
+\newcommand{\DetStealthN}{1{,}481}
+\newcommand{\DetStealthProven}{1{,}481}
+\newcommand{\DevDFiveThirteenN}{19{,}998}
+\newcommand{\DevDFiveThirteenNotProven}{46}
 \newcommand{\DevDFiveThirteenNotProvenPerRound}{1.8}
 \newcommand{\DevDFiveThirteenPct}{99.76}
+\newcommand{\DevDFiveThirteenTableNotProven}{46}
+\newcommand{\DevDFiveThirtyN}{20{,}000}
+\newcommand{\DevDFiveThirtyNotProven}{152}
 \newcommand{\DevDFiveThirtyNotProvenPerRound}{2.5}
 \newcommand{\DevDFiveThirtyPct}{99.24}
+\newcommand{\DevDFiveThirtyTableNotProven}{151}
+\newcommand{\DevDThreeThirteenN}{19{,}401}
+\newcommand{\DevDThreeThirteenNotProven}{1}
 \newcommand{\DevDThreeThirteenPct}{99.99}
+\newcommand{\DevDThreeThirteenTableNotProven}{1}
+\newcommand{\DevDThreeThirtyN}{19{,}985}
+\newcommand{\DevDThreeThirtyNotProven}{1}
 \newcommand{\DevDThreeThirtyPct}{99.99}
+\newcommand{\DevDThreeThirtyTableNotProven}{1}
 \newcommand{\EpsBoundaryInsideAccepted}{4{,}800}
 \newcommand{\EpsBoundaryRefused}{4{,}799}
 \newcommand{\EpsFewerConfigs}{2}
@@ -117,6 +149,7 @@
 \newcommand{\EpsHwAcceptedPct}{99.80}
 \newcommand{\EpsHwExact}{44{,}157}
 \newcommand{\EpsHwForgeries}{1{,}629{,}828}
+\newcommand{\EpsHwForgeriesBound}{37{,}218}
 \newcommand{\EpsHwGenFourNontrivial}{99{,}384}
 \newcommand{\EpsHwGenFourPct}{99.60}
 \newcommand{\EpsHwGenSixNontrivial}{100{,}000}
@@ -145,15 +178,15 @@
 \newcommand{\EpsSubstitutedRefused}{4{,}800}
 \newcommand{\EpsVectorClasses}{51}
 \newcommand{\EpsVectors}{153}
-\newcommand{\FaultCorpus}{4{,}924}
-\newcommand{\FaultsAll}{4{,}861}
-\newcommand{\FaultsAllCertCaught}{4{,}861}
+\newcommand{\FaultCorpus}{5{,}030}
+\newcommand{\FaultsAll}{5{,}030}
+\newcommand{\FaultsAllCertCaught}{5{,}030}
 \newcommand{\FaultsAllSyndromeCaught}{3{,}549}
-\newcommand{\FaultsAllSyndromePct}{73.0}
-\newcommand{\FaultsControl}{62}
+\newcommand{\FaultsAllSyndromePct}{70.5}
+\newcommand{\FaultsControl}{0}
 \newcommand{\FaultsControlFlagged}{0}
-\newcommand{\FaultsStealth}{1{,}312}
-\newcommand{\FaultsStealthCertCaught}{1{,}312}
+\newcommand{\FaultsStealth}{1{,}481}
+\newcommand{\FaultsStealthCertCaught}{1{,}481}
 \newcommand{\FaultsStealthSyndromeCaught}{0}
 \newcommand{\FreshSimAccepted}{9{,}981}
 \newcommand{\FreshSimCIHi}{99.89}
@@ -255,6 +288,7 @@
 \newcommand{\HoDSevenRecordedDevNotProven}{2}
 \newcommand{\HoDSevenRecordedDevUpper}{0.00630}
 \newcommand{\HoDSevenReplayForgeries}{516}
+\newcommand{\HoDSevenReplayForgeriesBound}{86}
 \newcommand{\HoDSevenReplayReceipts}{2{,}150}
 \newcommand{\HoDSevenState}{stopped by its preregistered 40 core-hour rule}
 \newcommand{\HoDSevenTenAccepted}{700}
@@ -295,6 +329,7 @@
 \newcommand{\HoWDThreeN}{10{,}000}
 \newcommand{\HoWDThreePct}{100.00}
 \newcommand{\HoWForgeries}{169{,}999}
+\newcommand{\HoWForgeriesBound}{9{,}999}
 \newcommand{\HoWLargestEps}{\ensuremath{2.0\times 10^{-12}}}
 \newcommand{\HoWNontrivial}{20{,}000}
 \newcommand{\HoWNotProven}{91}
@@ -344,6 +379,7 @@
 \newcommand{\IbmEpsAccepted}{2{,}296}
 \newcommand{\IbmEpsExact}{2{,}257}
 \newcommand{\IbmEpsForgeries}{21{,}169}
+\newcommand{\IbmEpsForgeriesBound}{4{,}748}
 \newcommand{\IbmMsPerShot}{2.15}
 \newcommand{\IbmNontrivial}{2{,}296}
 \newcommand{\IbmPreregPrefix}{0a3607c9}
@@ -354,7 +390,10 @@
 \newcommand{\IdentDevStatusChanged}{1}
 \newcommand{\IdentFreshChunks}{40}
 \newcommand{\IdentHeldChunks}{80}
+\newcommand{\JsReplayChunksPerConfig}{4}
 \newcommand{\JsReplayConfigs}{8}
+\newcommand{\JsReplayMaxPerConfig}{1{,}000}
+\newcommand{\JsReplayMeasured}{40{,}979}
 \newcommand{\JsReplayReceipts}{48{,}969}
 \newcommand{\LpDSevenCertified}{113/120}
 \newcommand{\MutEpsEquivalent}{3}
@@ -371,6 +410,9 @@
 \newcommand{\NdIntCheckMsHi}{14.6}
 \newcommand{\NdIntCheckMsLo}{5.1}
 \newcommand{\NdIntShots}{6{,}000}
+\newcommand{\NdPatchAdded}{125}
+\newcommand{\NdPatchFiles}{3}
+\newcommand{\NdPatchRemoved}{0}
 \newcommand{\NdRawEpsMaxAll}{\ensuremath{3.6\times 10^{-5}}}
 \newcommand{\NdRawProvenTotal}{3}
 \newcommand{\NdRescaleRatioHi}{12.8}
@@ -436,11 +478,14 @@
 \newcommand{\OracleShotsFive}{300}
 \newcommand{\OracleShotsSeven}{200}
 \newcommand{\OracleShotsThree}{370}
+\newcommand{\ReplayArchives}{24}
+\newcommand{\ReplayArchivesComplete}{18}
 \newcommand{\ReplayForgeries}{59{,}224}
 \newcommand{\ReplayForgeriesBound}{10{,}034}
 \newcommand{\ReplayParity}{4{,}920}
 \newcommand{\ReplayParityFool}{4{,}920}
 \newcommand{\ReplayStrict}{every}
+\newcommand{\SimBoundaryDetectors}{312}
 \newcommand{\SimCertified}{997{,}594}
 \newcommand{\SimCertifiedPct}{99.75}
 \newcommand{\SimDetectors}{600}
@@ -452,8 +497,15 @@
 \newcommand{\SimGapMean}{0.36}
 \newcommand{\SimGapMedianHi}{0.34}
 \newcommand{\SimGapMedianLo}{0.21}
+\newcommand{\SimMainChunkShots}{250}
+\newcommand{\SimMainFailedChunks}{150}
+\newcommand{\SimMainShots}{962{,}500}
+\newcommand{\SimMainShotsLost}{37{,}500}
 \newcommand{\SimShots}{1{,}000{,}000}
 \newcommand{\SimShotsLostToChunks}{74{,}250}
+\newcommand{\SimSuppFailedList}{99 chunks of 250 shots and 16 of 750}
+\newcommand{\SimSuppShotsLost}{36{,}750}
+\newcommand{\SimSupplements}{3}
 \newcommand{\SimUncertifiedPct}{0.24}
 \newcommand{\StaleCertCaughtTotal}{547}
 \newcommand{\StaleControlSuboptimal}{0}
@@ -470,3 +522,4 @@
 \newcommand{\StaleSyndromeCaughtTotal}{0}
 \newcommand{\TotalForgeries}{7{,}951{,}062}
 \newcommand{\TotalShots}{1{,}199{,}384}
+\newcommand{\WThreeBoundaryMinPct}{88}

@@ -72,22 +72,10 @@
     "mean_excess_of_suboptimal": 0.0
    },
    "M4_stale_cache": {
-    "n": 169,
+    "n": 168,
     "defective": 168,
     "invalid": 168,
-    "certified": 1,
-    "proven_suboptimal": 0,
-    "not_proven": 0,
-    "false_alarms": 0,
-    "missed": 0,
-    "not_proven_on_defective": 0,
-    "mean_excess_of_suboptimal": 0.0
-   },
-   "M5_equal_weight_alternative": {
-    "n": 50,
-    "defective": 0,
-    "invalid": 0,
-    "certified": 50,
+    "certified": 0,
     "proven_suboptimal": 0,
     "not_proven": 0,
     "false_alarms": 0,
@@ -107,17 +95,17 @@
     "not_proven_on_defective": 0,
     "mean_excess_of_suboptimal": 0.0
    },
-   "M7_added_cycle_STEALTH": {
-    "n": 1,
-    "defective": 1,
+   "M7_disjoint_cycle_STEALTH": {
+    "n": 170,
+    "defective": 170,
     "invalid": 0,
     "certified": 0,
-    "proven_suboptimal": 1,
+    "proven_suboptimal": 170,
     "not_proven": 0,
     "false_alarms": 0,
     "missed": 0,
     "not_proven_on_defective": 0,
-    "mean_excess_of_suboptimal": 9.269968738561966
+    "mean_excess_of_suboptimal": 10.574663059862106
    },
    "M8_boundary_pair_swap_STEALTH": {
     "n": 1,
@@ -153,16 +141,16 @@
     "n": 170,
     "truly_defective": 170
    },
-   "M5_equal_weight_alternative": {
-    "n": 50,
-    "truly_defective": 0
+   "M7_disjoint_cycle_STEALTH": {
+    "n": 170,
+    "truly_defective": 170
    },
    "M2_greedy_boundary": {
     "n": 120,
     "truly_defective": 120
    },
    "M4_stale_cache": {
-    "n": 169,
+    "n": 168,
     "truly_defective": 168
    },
    "M6_truncated_path": {
@@ -174,10 +162,6 @@
     "truly_defective": 120
    },
    "M8_boundary_pair_swap_STEALTH": {
-    "n": 1,
-    "truly_defective": 1
-   },
-   "M7_added_cycle_STEALTH": {
     "n": 1,
     "truly_defective": 1
    }
@@ -303,5 +287,5 @@
    }
   ]
  },
- "wall_seconds": 12.4
+ "wall_seconds": 11.0
 }

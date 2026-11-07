@@ -244,7 +244,8 @@ r >= 1 (interior by P2, r = T''-1 by P3_last, r = T'' by P3_final; for T'' = 1 o
 translate of a solution starting in round 1 of `M_{T-r1+1}`. If that model is beyond w+2, the solution touches only
 rounds <= w+1 <= (T-r1+1) - 2 and embeds into `M_{w+2}` as in (ii). Hence "NONE <= w starting in round 0 or 1 at
 T = 1..w+2" gives "NONE <= w at every T". The premise may be weakened to "no IRREDUCIBLE solution of weight <= w
-(no proper subset undetectable) starts in round 0 or 1", which is what the time-shift certificates state: X has
+(no NONEMPTY proper subset undetectable; equivalently, no proper subset a solution, the Lean `Irreducible`) starts
+in round 0 or 1", which is what the time-shift certificates state: X has
 minimum weight, so it is irreducible, and a translate of an irreducible set is irreducible (translation is a
 bijection of mechanisms and detectors), so every set this argument produces is irreducible.
 
@@ -265,8 +266,9 @@ bijection of mechanisms and detectors), so every set this argument produces is i
   both bases, re-proved and VERIFIED by the committed prover and checker in the 2026-11-02 re-certification
   (`recert_20261102/manifest.json`, every re-exported model byte-identical to its record's; models re-exported here
   also hash to the records at T = 1, 2, 6, 11, 12 and equal Theorem 1's model), + Lemma W(iii) with w = 10. Upper bound: every mechanism of the
-  recorded weight-11 full witness lies in S or in `tau_i(I)` of the full formula (start type), hence in `M_T` for
-  every T >= 4, and directly at T = 2..9. Hence d_circ(T) = 11 for every T >= 2, PROVEN from MACHINE-CHECKED
+  recorded weight-11 full witness lies in S of the full formula (start type; all eleven, in both bases -- none needs
+  an interior translate `tau_i(I)`), hence in `M_T` for every T >= T_0 = 4 (full model, j_s = 2), and directly at
+  T = 2..9. Hence d_circ(T) = 11 for every T >= 2, PROVEN from MACHINE-CHECKED
   premises.
 
 ## 5. The checks: `window_uniform.py`

@@ -236,6 +236,51 @@ def float_pileup(aux: str) -> list[str]:
             if k.startswith(("fig:", "tab:")) and p > last]
 
 
+#: Words with an fi/fl/ff ligature. A PDF whose fonts lack a Unicode map drops these letters from its text layer
+#: ("certificate" extracts as "certicate"), so search and copy fail although the page looks right (external audit 4,
+#: X1, 2026-11-07: every PDF of v2026.11.05 used 12-13 bitmap Type 3 fonts from T1 fontenc without lmodern).
+LIGATURE = re.compile(r"\b[A-Za-z]*(?:ffi|ffl|fi|fl|ff)[A-Za-z]*\b")
+
+
+def type3_fonts(pdffonts_out: str) -> list[str]:
+    """The names of the Type 3 (bitmap) fonts in `pdffonts` output (columns: name, type ..., the header ruled off)."""
+    lines = pdffonts_out.splitlines()
+    rule = next((i for i, ln in enumerate(lines) if ln.startswith("----")), None)
+    if rule is None:
+        return []
+    return [ln.split()[0] for ln in lines[rule + 1:] if " Type 3 " in f" {ln} "]
+
+
+def lost_ligatures(abstract: str, pdf_text: str, k: int = 12) -> list[str]:
+    """Ligature words of the abstract that the PDF's extracted text does not contain (up to `k` distinct words)."""
+    flat = re.sub(r"-\s*\n\s*", "", pdf_text)                        # undo hyphenation at line ends
+    flat = re.sub(r"\s+", " ", flat)
+    words = []
+    for w in LIGATURE.findall(abstract):
+        if w.lower() not in (x.lower() for x in words):
+            words.append(w)
+    return [w for w in words[:k] if re.search(r"\b" + re.escape(w) + r"\b", flat, re.I) is None]
+
+
+def text_layer_problems(pdf: pathlib.Path, abstract: str) -> tuple[list[str], str | None]:
+    """(problems, note): Type 3 fonts, and abstract words whose ligatures the text layer lost. The note says when
+    the poppler tools are absent, so a skipped check is announced, never silent."""
+    fonts, totext = shutil.which("pdffonts"), shutil.which("pdftotext")
+    if not (fonts and totext and pdf.exists()):
+        return [], "text-layer check NOT run (pdffonts/pdftotext not on PATH)"
+    probs = []
+    f = subprocess.run([fonts, str(pdf)], capture_output=True, text=True, encoding="utf-8", errors="replace")
+    t3 = type3_fonts(f.stdout)
+    if t3:
+        probs.append(f"{len(t3)} Type 3 (bitmap) font(s) without a reliable text layer: {', '.join(t3[:4])}")
+    t = subprocess.run([totext, "-enc", "UTF-8", str(pdf), "-"], capture_output=True, text=True, encoding="utf-8",
+                       errors="replace")
+    lost = lost_ligatures(abstract, t.stdout)
+    if lost:
+        probs.append(f"the PDF's text layer loses ligatures: {', '.join(lost[:6])} not found by pdftotext")
+    return probs, None
+
+
 def build(name: str, release: bool) -> int:
     src = PAPER / name
     main = src / "main.tex"
@@ -302,6 +347,10 @@ def build(name: str, release: bool) -> int:
         f"({len(abstract)} of {ARXIV_ABSTRACT_LIMIT} characters)\n{abstract}\n",
         encoding="utf-8")
     pdf = out / "main.pdf"
+    layer, note = text_layer_problems(pdf, abstract)
+    probs += layer
+    if note:
+        print("  NOTE", note)
     # TeX wraps its log at 79 characters, so on a long build path the count can start the next line (the release
     # rehearsal printed pages=? for paper 3 in C:\lq\rehearsal2\..., 2026-11-03)
     pages = re.search(r"Output written on .*?\(\s*(\d+)\s+pages?", log, re.S)

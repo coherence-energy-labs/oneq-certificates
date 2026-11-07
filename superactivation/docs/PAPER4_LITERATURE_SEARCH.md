@@ -92,13 +92,19 @@ to its source. No keyword search: the records were fetched by identifier and the
   d = 3) the two terms carry X1 from u^dagger and X2 from conj(u), and no single U among u, conj u, u^T, u^dagger
   reproduces it (differences > 1e-2). So for symmetric u, P_d is HPHH's state; for non-symmetric u it is a variant.
   [Too strong: that very u is locally equivalent to HPHH's state. Corrected in the next section.]
-- **PBDW (2604.27042v2).** The remark (`\begin{comment}` in supplemental.tex, near Lemma `choi-as-mixture`) places the
-  channel in "a broader family ... a d_s x d_s unitary u with unimodular entries"; they cite HPHH (`horodecki2008low`)
-  for private Horodecki channels. The text prints the published code's fidelity as "0.75013 > 3/4"
-  (onset_superactivation.tex l. 159, l. 171; supplemental.tex l. 2351); the ancillary `fidelity_verified.npy` holds
-  0.750131163826669. Their pre- and post-processing "is inspired by the argument in \cite{Smith2008}". The decoder for
-  k flagged uses is covariant under G_k = S_k x S_{n-k} (supplement, "Exploiting the Classical-Quantum Output
-  Structure").
+- **PBDW (2604.27042v2).** They cite HPHH (`horodecki2008low`) for private Horodecki channels. The compiled text
+  prints the published code's fidelity as "0.75013 > 3/4" once (onset_superactivation.tex l. 159);
+  the ancillary `fidelity_verified.npy` holds 0.750131163826669. Their pre- and post-processing "is inspired by the
+  argument in \cite{Smith2008}". The decoder for k flagged uses is covariant under G_k = S_k x S_{n-k}
+  (supplement Sec. S5.2.3, "Exploiting the Classical-Quantum Output Structure").
+  [2026-11-07, external audit 4, items 4.1 and 4.9. This entry first quoted a remark inside a `\begin{comment}` block
+  of the source, which the authors left out of their compiled paper, and the manuscript quoted it too; both quotations
+  are withdrawn, and nothing here or in the manuscript rests on that remark (`ppt_family.py`'s docstring, which
+  pointed at it by line, no longer does; the two records that pin that file's bytes were re-run and are unchanged
+  but for that pin). The same entry gave two more lines as
+  printing 0.75013; both lie inside comment blocks. Counting a commented-out section had also numbered S5.2.3 as
+  "S6.2.3" in the manuscript (the compiled headings, from the arXiv HTML of v2: S1-S5, with S5.2.3 the section named
+  here). Only the source's compiled text is read from now on.]
 - **Smith and Yard (0807.4935).** Their Theorem sends a purification of the PPT channel's input ensemble through a 50%
   erasure channel whose input dimension is the sum of the ensemble's ranks: the coupling of our Lemma 4's encoder.
 - **Bergh and Parentin (2604.27040v2, Sec. IV, remark `rem:general_group_invariance`).** The seesaw "extends to any
@@ -109,8 +115,8 @@ to its source. No keyword search: the records were fetched by identifier and the
 - P_d and its PPT point: HPHH (for symmetric u exactly; non-symmetric u is a variant). The "only if": HPHH for U = H
   and asserted for Hermitian W_U; new here for non-Hermitian twists (Fourier, d >= 3) and for the non-symmetric
   variant [the last clause withdrawn in the next section]. Theorem 3 is titled accordingly; the abstract, Intro item 2, Table I and the "Origin" paragraph credit HPHH
-  and Badziag et al. The complex-Hadamard condition is the published construction's |u_ij| = 1/sqrt d, not a
-  correction of ours; only the commented-out remark in PBDW's source says "unimodular".
+  and Badziag et al. The complex-Hadamard condition is the published construction's |u_ij| = 1/sqrt d (HPHH's
+  "unimodular" U, their Observation 1), not a correction of ours.
 - The coupling in Lemma 4: Smith and Yard; its decoder and the d = 2 statement: PBDW Prop. 1 (already credited).
 - The flagged channel N~: PBDW Prop. 1 (already credited).
 - The two-group form: the restriction to a product of symmetric groups is suggested by Bergh and Parentin for these
@@ -155,3 +161,39 @@ No new search; the same sources, re-read.
   not find it there.) The footnote concerns a channel covariant only under the subgroup; N~^{(x)n} is covariant under
   all of S_n, so the manuscript now says that two-group encoders are a choice of code family, not a symmetry of the
   channel, and quotes the footnote.
+
+## 2026-11-07, external audit 4 (items 4.1, 4.5, 4.9, 4.10, 4.11 and the optional Kaur et al.)
+
+No keyword search; records fetched by identifier into empty directories and read.
+
+| Query (verbatim) | Engine | What it returned that matters |
+|---|---|---|
+| `arxiv.org/e-print/2604.27042v2` | arXiv | sha256 a5c80fa27c47f8a7..., the pinned archive (unchanged since 2026-11-03). |
+| `arxiv.org/html/2604.27042v2` | arXiv | The compiled supplement's headings: S1-S5 only; S5.2.3 is "Exploiting the Classical-Quantum Output Structure". |
+| `arxiv.org/abs/2604.27042`, `.../2604.27040`, `.../2607.24693` (and each with its version) | arXiv | Latest versions v2, v2, v3; the versioned pages give the titles and authors refs.bib holds. |
+| `arxiv.org/pdf/2604.27040v2` | arXiv | p. 36: the Remark after Lemma IV.9 in Sec. IV.C (subsection "Permutation-Invariant Codes"), footnote 3. |
+| `arxiv.org/e-print/quant-ph/0506203v1` | arXiv | HPHH's only version (sha256 627f10d8...). |
+| `arxiv.org/pdf/1406.7142` | arXiv | Leung and Matthews, Corollary 4: objective Tr(N^T Lambda), constraint -rho (x) 1/K <= t_B[Lambda] <= rho (x) 1/K. |
+| `arxiv.org/abs/1803.10710`, `arxiv.org/pdf/1803.10710v3` | arXiv | Kaur, Das, Wilde, Winter, doi 10.1103/PhysRevA.104.022401 (Crossref title "...nonasymptotic quantum capacity"). |
+
+**Read:**
+- **PBDW, compiled text only.** Equations S2.20-S2.25 are K_1-K_6 and S2.26-S2.27 define M_0, M_1 (equations counted
+  from the source outside its comment blocks; S2.4-S2.17 are the Choi state). Fig. 2 (`seesaw_fidelity_with_
+  asymmetric.pdf`, rendered from the source): the unrestricted ("Standard Seesaw") curve lies above the symmetric one
+  at every n from 2 to 8, the last n it shows; the caption and text describe the curves but do not comment on the
+  comparison.
+- **HPHH (quant-ph/0506203v1).** Construction paragraph: X_1 = W_U/||W_U||, X_2 = W_U^Gamma/||W_U^Gamma|| (trace
+  norms), weights proportional to the two norms, the state "PPT invariant"; Observation 1: the ratio of the weights is
+  largest, sqrt d, for "unimodular" U (|u_ij| = 1/sqrt d); Observation 2: rho_H is extremal among PPT states, with the
+  argument after it (every other weight gives an NPT state; the same argument for Hermitian X = W_U when X or X^Gamma
+  has a positive eigenvalue). The manuscript now paraphrases these instead of quoting them.
+- **Leung and Matthews.** Their objective uses the transposed Choi matrix; the manuscript's Tr(J W) has the same value
+  because (W, rho) -> (W^T, rho^T) maps the feasible set onto itself, and the M-scaled PPT constraint is theirs.
+- **Kaur, Das, Wilde, Winter (PRA 104, 022401).** Their Corollary 2 (arXiv v3): for n uses of an antidegradable
+  channel interleaved with two-extendible channels, 1 - eps <= (M + 1)/(2M), i.e. entanglement fidelity at most 3/4
+  for a qubit (M = 2). Cited at the manuscript's Lemma 5 for the erasure channel's 3/4, which it extends to such
+  interleaved protocols. Their assisted bounds were not applied to the joint channel (the lower-bound question of
+  the manuscript's Sec. IX); nothing more is claimed from them.
+
+**What survives:** unchanged. No new prior result on the onset; the changes are in what the manuscript quotes and how
+it numbers its pointers.

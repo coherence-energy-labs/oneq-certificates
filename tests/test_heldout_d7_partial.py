@@ -20,6 +20,34 @@ sys.path.insert(0, str(ROOT / "experiments" / "m0_prior_art"))
 
 import heldout_d7_partial as hp                                    # noqa: E402
 
+#: The producer files whose shipped bytes differ from the held-out d=7 run's pins at 2008c81f: the epsilon-checker's
+#: input domain was made one policy on 2026-11-03, after the run's snapshot (paper 1, Appendix). Any other difference
+#: fails the test where the commits cannot be opened.
+CHANGED_SINCE_THE_RUN = ["src/oneq/matching_cert_epsilon.py"]
+
+#: A Clopper-Pearson bound read from a shipped record and recomputed on the reader's platform: SciPy's beta quantile
+#: can differ in the last bits between platforms (external audit 4, R5: 0.11365765860474604 on Windows against
+#: ...605 on another platform). 1e-12 relative is 4,500 to 9,000 units in the last place of a double, and nine orders
+#: of magnitude below the three significant figures the paper prints.
+CP_REL_TOL = 1e-12
+
+
+def _same_bound(recorded: float, recomputed: float) -> bool:
+    import math
+    return math.isclose(recorded, recomputed, rel_tol=CP_REL_TOL, abs_tol=0.0)
+
+
+def _has_commit(rev: str) -> bool:
+    """Whether commit `rev` is in this tree's own repository (False in an extracted bundle and in a public clone)."""
+    import subprocess
+    try:
+        top = subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=ROOT, capture_output=True, text=True)
+    except OSError:
+        return False
+    if top.returncode or pathlib.Path(top.stdout.strip()).resolve() != ROOT.resolve():
+        return False
+    return subprocess.run(["git", "cat-file", "-e", f"{rev}^{{commit}}"], cwd=ROOT, capture_output=True).returncode == 0
+
 
 def _chunk(root: pathlib.Path, arm: str, seed: int, status: dict, forg_acc: int = 0, corrupt: bool = False):
     body = (json.dumps({"seed": seed, "status": status}) + "\n").encode()
@@ -194,15 +222,27 @@ def test_the_real_report_pins_the_producer_and_its_records():
         pytest.skip("the held-out d=7 report is not here")
     doc = json.loads(p.read_text(encoding="utf-8"))
     h = doc["head"]
-    if (ROOT / ".git").exists():
-        for commit, files in ((h["producer"]["commit"], h["producer"]["sha256"]),
-                              (h["deviation"]["commit"], h["deviation"]["sha256"])):
+    pinned = ((h["producer"]["commit"], h["producer"]["sha256"]), (h["deviation"]["commit"], h["deviation"]["sha256"]))
+    if all(_has_commit(commit) for commit, _files in pinned):
+        for commit, files in pinned:
             for path, sha in files.items():
                 blob = subprocess.run(["git", "show", f"{commit}:{path}"], cwd=ROOT, capture_output=True).stdout
                 assert hashlib.sha256(blob.replace(b"\r\n", b"\n")).hexdigest() == sha, (commit, path)
-    else:                         # a reader's extracted bundle: the pins to 2008c81f / 4030f88d cannot be read
+    else:
+        # THE COMMITS ARE NOT HERE (external audit 4, R5): a reader's extracted bundle has no repository, and a clone of
+        # the public repository has one whose squashed history lacks every development commit -- the earlier version
+        # tested only for a .git and failed every public clone at 2008c81f. Decide on the bytes the bundle ships: every
+        # pinned file ships with its recorded bytes except the ones a later revision changed, and those are named here,
+        # so a change to any other producer file fails this test instead of passing it unread.
+        changed = sorted(path for _commit, files in pinned for path, sha in files.items()
+                         if hashlib.sha256((ROOT / path).read_bytes().replace(b"\r\n", b"\n")).hexdigest() != sha)
+        assert changed == CHANGED_SINCE_THE_RUN, (
+            f"the shipped bytes differ from the run's pins in {changed}; only {CHANGED_SINCE_THE_RUN} are known to "
+            "have changed since 2008c81f (the input domain fixed on 2026-11-03)")
         import warnings
-        warnings.warn("no repository here: the producer's and deviation's commit-pinned bytes were not compared")
+        warnings.warn(f"commits {h['producer']['commit'][:8]} and {h['deviation']['commit'][:8]} are not in this "
+                      f"repository: the pinned files were compared with the shipped bytes; {CHANGED_SINCE_THE_RUN} "
+                      "changed after the run, and its bytes that ran are in the development repository only")
     # the deviation's driver and watchdog ship as the bytes that ran: those are checked without git
     for path, sha in h["deviation"]["sha256"].items():
         assert hashlib.sha256((ROOT / path).read_bytes().replace(b"\r\n", b"\n")).hexdigest() == sha, path
@@ -222,6 +262,14 @@ def test_the_real_report_pins_the_producer_and_its_records():
         if on_disk:
             assert sorted(on_disk) == v["completed_seeds"], arm
     assert h["copied_from"]["index_receipts_and_instances_identical"] is True
+
+
+def test_the_cross_platform_tolerance_and_the_commit_probe_can_both_fail():
+    """The tolerance admits a last-bit difference and refuses a printed-digit one; the probe refuses a commit that
+    no repository holds (so the fallback above is reached in a public clone and never in the development tree)."""
+    assert _same_bound(0.11365765860474604, 0.11365765860474605)
+    assert not _same_bound(0.1136, 0.1137) and not _same_bound(0.0, 1e-300)
+    assert not _has_commit("0" * 40)
 
 
 def test_a_run_that_was_not_stopped_is_not_read(tmp_path):
@@ -257,7 +305,7 @@ def test_the_shipped_report_is_the_arithmetic_of_the_shipped_arm_records():
         assert c["accepted"] == tot.get("EXACT_OPTIMAL", 0) + tot.get("EPSILON_OPTIMAL", 0)
         assert c["not_proven"] == tot.get("NOT_PROVEN", 0) and c["exact_optimal"] == tot.get("EXACT_OPTIMAL", 0)
         assert c["forgeries_accepted"] == sum(sum(r["forgeries_accepted"].values()) for r in rows.values()) == 0
-        assert c["not_proven_upper_95_one_sided"] == hp.cp_upper_one_sided(c["not_proven"], c["nontrivial"])
+        assert _same_bound(c["not_proven_upper_95_one_sided"], hp.cp_upper_one_sided(c["not_proven"], c["nontrivial"]))
         unf = stop["dispatched_unfinished"].get(arm, [])
         assert v["dispatched_unfinished_seeds"] == unf and not set(unf) & set(rows)
         assert 0 < v["dispatched_unfinished_nontrivial"] <= 50 * len(unf) if unf else \
@@ -265,7 +313,7 @@ def test_the_shipped_report_is_the_arithmetic_of_the_shipped_arm_records():
         w = v["dispatched_worst_case"]
         assert w["nontrivial"] == c["nontrivial"] + v["dispatched_unfinished_nontrivial"]
         assert w["not_proven_or_unfinished"] == c["not_proven"] + v["dispatched_unfinished_nontrivial"]
-        assert w["upper_95_one_sided"] == hp.cp_upper_one_sided(w["not_proven_or_unfinished"], w["nontrivial"])
+        assert _same_bound(w["upper_95_one_sided"], hp.cp_upper_one_sided(w["not_proven_or_unfinished"], w["nontrivial"]))
         k = 0
         while (k + 1) in rows:
             k += 1
@@ -274,4 +322,4 @@ def test_the_shipped_report_is_the_arithmetic_of_the_shipped_arm_records():
         sel = [v for v in doc["arms"].values() if v["rounds"] == rr_]
         assert row["nontrivial"] == sum(v["completed"]["nontrivial"] for v in sel)
         assert row["not_proven"] == sum(v["completed"]["not_proven"] for v in sel)
-        assert row["not_proven_upper_95_one_sided"] == hp.cp_upper_one_sided(row["not_proven"], row["nontrivial"])
+        assert _same_bound(row["not_proven_upper_95_one_sided"], hp.cp_upper_one_sided(row["not_proven"], row["nontrivial"]))

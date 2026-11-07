@@ -1,5 +1,5 @@
-"""The private Horodecki PPT channels with shield dimension d (arXiv 2604.27042 source, l. 1258 -- a remark the authors
-COMMENTED OUT of the compiled paper, so here it is a claim to verify, not a premise).
+"""The private Horodecki PPT channels with shield dimension d (the construction of K. Horodecki, Pankowski, M. Horodecki
+and P. Horodecki, quant-ph/0506203; paper 4, Sec. IV), held here as a claim to verify, not a premise.
 
 Claimed: Smith-Yard's P (d = 2) is the smallest member of a family whose Choi state is
     Phi^P = p0 gamma^0 + p1 gamma^1,    p1 = 1/(sqrt d + 1),  p0 = sqrt d/(sqrt d + 1),

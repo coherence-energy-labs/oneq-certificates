@@ -5,7 +5,7 @@
  "target_sha256": "bc5277fd874e097b567d023139c800a210faae20aa0373f85ec2cf4fe32fbac8",
  "tests": {
   "tests/test_matching_cert_epsilon.py": "cf7d6b00a09b106fa63b262af6809a1bb7f9fa48adb0225540fd6e0f0998032b",
-  "tests/test_replay_epsilon_receipts.py": "3a4f9190c62fee20381bfd6bb8ed54872c9d7e760db200b9e25fb8b6c6e44718"
+  "tests/test_replay_epsilon_receipts.py": "d0f7d987378c686938b57600e7810f73bb932932da21b0d47b2b3da6ae9f9d32"
  },
  "copied": [
   "conftest.py",
@@ -122,9 +122,9 @@
   }
  ],
  "baseline_seconds": [
-  7.85,
-  7.65
+  13.91,
+  8.73
  ],
- "wall_seconds": 97.7,
+ "wall_seconds": 118.1,
  "command": "python tools/mutation_score.py src/oneq/matching_cert_epsilon.py --tests tests/test_matching_cert_epsilon.py tests/test_replay_epsilon_receipts.py --copy evidence/epsilon_rerun/replay_2026-11-03 evidence/epsilon_rerun/heldout_d7_Z_r50 evidence/instances/matching_heldout_d7_Z_r50.json data/epsilon_receipts/heldout_d7_Z_r50 --workers 2 --equivalents evidence/mutation_score/matching_cert_epsilon.equivalents.json --out evidence/mutation_score/matching_cert_epsilon.json"
 }

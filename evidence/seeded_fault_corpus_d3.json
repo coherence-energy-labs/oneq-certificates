@@ -42,7 +42,7 @@
   },
   {
    "shot": 3,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     5
    ],
@@ -50,12 +50,24 @@
     [
      5,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.5729813577993044,
+   "weight": 13.932989950630471,
    "reference_weight": 3.5729813577993044,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 4,
@@ -183,6 +195,46 @@
   },
   {
    "shot": 4,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    11,
+    17,
+    18,
+    19
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     19
+    ],
+    [
+     17,
+     -1
+    ],
+    [
+     18,
+     -1
+    ]
+   ],
+   "weight": 20.88767067274303,
+   "reference_weight": 10.527662079911865,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 4,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     11,
@@ -290,6 +342,36 @@
   },
   {
    "shot": 6,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    6
+   ],
+   "correction": [
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 15.724174894141658,
+   "reference_weight": 5.364166301310491,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 6,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     4,
@@ -370,14 +452,26 @@
   },
   {
    "shot": 10,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     7,
     14
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
      7,
+     -1
+    ],
+    [
+     9,
      -1
     ],
     [
@@ -385,10 +479,10 @@
      -1
     ]
    ],
-   "weight": 7.418594486710305,
+   "weight": 17.778603079541472,
    "reference_weight": 7.418594486710305,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 11,
@@ -463,6 +557,36 @@
   },
   {
    "shot": 11,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    8
+   ],
+   "correction": [
+    [
+     0,
+     8
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 11,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     0,
@@ -534,7 +658,7 @@
   },
   {
    "shot": 12,
-   "mutant": "M4_stale_cache",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     0,
     8
@@ -543,12 +667,24 @@
     [
      0,
      8
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 4.47530529569944,
+   "weight": 14.835313888530607,
    "reference_weight": 4.47530529569944,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 12,
@@ -620,20 +756,32 @@
   },
   {
    "shot": 13,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     12
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      12,
      -1
     ]
    ],
-   "weight": 3.3979917089550544,
+   "weight": 13.758000301786222,
    "reference_weight": 3.3979917089550544,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 20,
@@ -761,6 +909,46 @@
   },
   {
    "shot": 20,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    7,
+    10,
+    11,
+    14
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     -1
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 21.301722119165934,
+   "reference_weight": 10.941713526334766,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 20,
    "mutant": "M8_boundary_pair_swap_STEALTH",
    "syndrome": [
     7,
@@ -871,7 +1059,7 @@
   },
   {
    "shot": 21,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     2
    ],
@@ -879,12 +1067,24 @@
     [
      2,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.596203437900926,
+   "weight": 13.956212030732093,
    "reference_weight": 3.596203437900926,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 22,
@@ -1017,6 +1217,47 @@
   },
   {
    "shot": 22,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    5,
+    6,
+    9,
+    11
+   ],
+   "correction": [
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     11,
+     -1
+    ]
+   ],
+   "weight": 23.794886177423486,
+   "reference_weight": 12.23948043500737,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 22,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     1,
@@ -1104,7 +1345,7 @@
   },
   {
    "shot": 23,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     5
    ],
@@ -1112,12 +1353,24 @@
     [
      5,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.5729813577993044,
+   "weight": 13.932989950630471,
    "reference_weight": 3.5729813577993044,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 24,
@@ -1167,20 +1420,32 @@
   },
   {
    "shot": 24,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     9
    ],
    "correction": [
     [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
      9,
      -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 14.49681984853698,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 26,
@@ -1247,6 +1512,36 @@
    "weight": 2.941414106120864,
    "reference_weight": 3.9419313957423956,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 26,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    14
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -1319,20 +1614,32 @@
   },
   {
    "shot": 27,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     14
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      14,
      -1
     ]
    ],
-   "weight": 2.9414141061208645,
+   "weight": 13.301422698952031,
    "reference_weight": 2.9414141061208645,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 28,
@@ -1460,6 +1767,46 @@
   },
   {
    "shot": 28,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    8,
+    9,
+    16,
+    19
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     19,
+     -1
+    ]
+   ],
+   "weight": 22.221950479221178,
+   "reference_weight": 10.666544736805065,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 28,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     8,
@@ -1567,6 +1914,36 @@
   },
   {
    "shot": 31,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    8
+   ],
+   "correction": [
+    [
+     0,
+     8
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 31,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     0,
@@ -1635,7 +2012,7 @@
   },
   {
    "shot": 32,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     2
    ],
@@ -1643,12 +2020,24 @@
     [
      2,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.596203437900926,
+   "weight": 13.956212030732093,
    "reference_weight": 3.596203437900926,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 33,
@@ -1715,6 +2104,36 @@
    "weight": 3.596203437900926,
    "reference_weight": 5.364166301310491,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 33,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    11
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     11
+    ]
+   ],
+   "weight": 15.724174894141658,
+   "reference_weight": 5.364166301310491,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -1821,6 +2240,41 @@
    "weight": 5.364166301310491,
    "reference_weight": 8.032976078236038,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 34,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    2,
+    12
+   ],
+   "correction": [
+    [
+     1,
+     2
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     -1
+    ]
+   ],
+   "weight": 18.392984671067204,
+   "reference_weight": 8.032976078236038,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -1936,6 +2390,41 @@
    "weight": 8.032976078236038,
    "reference_weight": 9.497237155213789,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 37,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    15,
+    22
+   ],
+   "correction": [
+    [
+     5,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     15,
+     22
+    ]
+   ],
+   "weight": 19.857245748044956,
+   "reference_weight": 9.497237155213789,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -2095,6 +2584,46 @@
   },
   {
    "shot": 38,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3,
+    7,
+    14
+   ],
+   "correction": [
+    [
+     2,
+     -1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 21.3729314325524,
+   "reference_weight": 11.01292283972123,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 38,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -2193,7 +2722,7 @@
   },
   {
    "shot": 39,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     1,
     12
@@ -2204,14 +2733,26 @@
      -1
     ],
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      12,
      -1
     ]
    ],
-   "weight": 6.994195146855979,
+   "weight": 17.354203739687147,
    "reference_weight": 6.994195146855979,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 40,
@@ -2343,6 +2884,46 @@
   },
   {
    "shot": 40,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    10,
+    11,
+    14
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     11
+    ],
+    [
+     10,
+     -1
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 22.238570358061825,
+   "reference_weight": 11.878561765230659,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 40,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     9,
@@ -2450,6 +3031,36 @@
   },
   {
    "shot": 41,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    8,
+    16
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 41,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     8,
@@ -2535,6 +3146,36 @@
    "weight": 4.47530529569944,
    "reference_weight": 3.9419313957423956,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 44,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     17
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -2690,6 +3331,47 @@
   },
   {
    "shot": 46,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    5,
+    6,
+    9,
+    22
+   ],
+   "correction": [
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     22,
+     -1
+    ]
+   ],
+   "weight": 25.139268918998308,
+   "reference_weight": 13.583863176582193,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 46,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -2794,6 +3476,36 @@
    "weight": 13.583863176582193,
    "reference_weight": 5.924255797414483,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 50,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    7,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     18
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 16.28426439024565,
+   "reference_weight": 5.924255797414483,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -2945,6 +3657,47 @@
    "weight": 7.586247973791001,
    "reference_weight": 12.950414275101492,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 51,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    9,
+    10,
+    11,
+    12
+   ],
+   "correction": [
+    [
+     4,
+     12
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     11
+    ],
+    [
+     10,
+     -1
+    ]
+   ],
+   "weight": 23.310422867932658,
+   "reference_weight": 12.950414275101492,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -3119,6 +3872,47 @@
   },
   {
    "shot": 53,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    12,
+    13,
+    16,
+    18,
+    20
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     -1
+    ],
+    [
+     13,
+     18
+    ],
+    [
+     16,
+     20
+    ]
+   ],
+   "weight": 23.346268581070326,
+   "reference_weight": 12.98625998823916,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 53,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     12,
@@ -3223,6 +4017,36 @@
    "weight": 12.98625998823916,
    "reference_weight": 4.47530529569944,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 54,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    7,
+    15
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     15
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -3337,6 +4161,42 @@
   },
   {
    "shot": 55,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    6,
+    9,
+    10
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   "weight": 21.14554910659022,
+   "reference_weight": 9.590143364174104,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 55,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -3432,6 +4292,36 @@
    "weight": 9.590143364174104,
    "reference_weight": 4.47530529569944,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 56,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    16,
+    20
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     16,
+     20
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -3587,6 +4477,47 @@
   },
   {
    "shot": 57,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    6,
+    8,
+    9,
+    14
+   ],
+   "correction": [
+    [
+     2,
+     8
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 25.05615243495169,
+   "reference_weight": 13.500746692535575,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 57,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -3712,6 +4643,41 @@
   },
   {
    "shot": 58,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    7,
+    10
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.350805827035924,
+   "reference_weight": 7.543721817379713,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 58,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     6,
@@ -3789,20 +4755,32 @@
   },
   {
    "shot": 62,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     17
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      17,
      -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 13.301422698952031,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 63,
@@ -3961,6 +4939,53 @@
   },
   {
    "shot": 63,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    7,
+    10,
+    13,
+    14,
+    15,
+    16
+   ],
+   "correction": [
+    [
+     5,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     15
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     16
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 27.491998689494984,
+   "reference_weight": 17.13199009666382,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 63,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -4079,6 +5104,36 @@
   },
   {
    "shot": 65,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    10
+   ],
+   "correction": [
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 65,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -4181,6 +5236,41 @@
    "weight": 4.364308345462876,
    "reference_weight": 7.230576602428554,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 66,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3,
+    6
+   ],
+   "correction": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.037660612084768,
+   "reference_weight": 7.230576602428554,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -4304,6 +5394,42 @@
   },
   {
    "shot": 67,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    14,
+    17,
+    18,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     14,
+     17
+    ],
+    [
+     18,
+     21
+    ]
+   ],
+   "weight": 20.06830473943887,
+   "reference_weight": 9.708296146607703,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 67,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     14,
@@ -4394,7 +5520,7 @@
   },
   {
    "shot": 69,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     1,
     21
@@ -4405,14 +5531,26 @@
      -1
     ],
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      21,
      -1
     ]
    ],
-   "weight": 7.471770467875414,
+   "weight": 17.83177906070658,
    "reference_weight": 7.471770467875414,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 71,
@@ -4478,7 +5616,7 @@
   },
   {
    "shot": 71,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     5,
     21
@@ -4489,14 +5627,26 @@
      -1
     ],
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      21,
      -1
     ]
    ],
-   "weight": 7.448548387773794,
+   "weight": 17.808556980604962,
    "reference_weight": 7.448548387773794,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 73,
@@ -4584,6 +5734,41 @@
    "weight": 7.448548387773794,
    "reference_weight": 7.230576602428554,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 73,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3,
+    6
+   ],
+   "correction": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.037660612084768,
+   "reference_weight": 7.230576602428554,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -4682,6 +5867,36 @@
    "weight": 7.230576602428554,
    "reference_weight": 4.568606629593,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 78,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    20,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     20,
+     21
+    ]
+   ],
+   "weight": 14.928615222424167,
+   "reference_weight": 4.568606629593,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -4796,6 +6011,42 @@
   },
   {
    "shot": 80,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3,
+    6,
+    12
+   ],
+   "correction": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 20.16796475727209,
+   "reference_weight": 9.807956164440926,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 80,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -4874,7 +6125,7 @@
   },
   {
    "shot": 81,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     6
    ],
@@ -4882,12 +6133,24 @@
     [
      6,
      -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 14.748498115777076,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 86,
@@ -4949,12 +6212,24 @@
   },
   {
    "shot": 86,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     11,
     18
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      11,
      -1
@@ -4964,10 +6239,10 @@
      -1
     ]
    ],
-   "weight": 6.9709730667543575,
+   "weight": 17.330981659585525,
    "reference_weight": 6.9709730667543575,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 93,
@@ -5038,6 +6313,36 @@
    "weight": 6.9709730667543575,
    "reference_weight": 4.47530529569944,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 93,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    3,
+    7
+   ],
+   "correction": [
+    [
+     3,
+     7
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -5131,6 +6436,36 @@
   },
   {
    "shot": 97,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3
+   ],
+   "correction": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.649171089138857,
+   "reference_weight": 4.28916249630769,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 97,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -5220,6 +6555,36 @@
   },
   {
    "shot": 99,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    1
+   ],
+   "correction": [
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.99499296211215,
+   "reference_weight": 4.634984369280983,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 99,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     0,
@@ -5305,6 +6670,36 @@
    "weight": 4.634984369280983,
    "reference_weight": 4.364308345462876,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 100,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    13,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     21
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -5419,6 +6814,42 @@
   },
   {
    "shot": 101,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    15,
+    16,
+    18,
+    20
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     15,
+     18
+    ],
+    [
+     16,
+     20
+    ]
+   ],
+   "weight": 19.437621599789455,
+   "reference_weight": 9.077613006958288,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 101,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     15,
@@ -5518,6 +6949,36 @@
   },
   {
    "shot": 102,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     17
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 102,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     9,
@@ -5603,6 +7064,36 @@
    "weight": 3.9419313957423956,
    "reference_weight": 4.013266615991697,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 104,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    11,
+    19
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     19
+    ]
+   ],
+   "weight": 14.373275208822864,
+   "reference_weight": 4.013266615991697,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -5753,6 +7244,46 @@
   },
   {
    "shot": 105,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    5,
+    10,
+    21
+   ],
+   "correction": [
+    [
+     2,
+     10
+    ],
+    [
+     5,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     21,
+     -1
+    ]
+   ],
+   "weight": 22.172865326067836,
+   "reference_weight": 11.81285673323667,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 105,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -5877,6 +7408,41 @@
   },
   {
    "shot": 106,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    7,
+    9
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     -1
+    ]
+   ],
+   "weight": 20.509766503594996,
+   "reference_weight": 8.95436076117888,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 106,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     6,
@@ -5971,6 +7537,36 @@
    "weight": 8.95436076117888,
    "reference_weight": 4.47530529569944,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 107,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    3,
+    7
+   ],
+   "correction": [
+    [
+     3,
+     7
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -6081,6 +7677,42 @@
    "weight": 4.47530529569944,
    "reference_weight": 8.841488726052315,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 108,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    10,
+    14,
+    17,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     10,
+     18
+    ],
+    [
+     14,
+     17
+    ]
+   ],
+   "weight": 19.201497318883483,
+   "reference_weight": 8.841488726052315,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -6201,6 +7833,41 @@
   },
   {
    "shot": 112,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    14,
+    15,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     14,
+     -1
+    ],
+    [
+     15,
+     18
+    ]
+   ],
+   "weight": 17.90373041021088,
+   "reference_weight": 7.543721817379714,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 112,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     14,
@@ -6316,6 +7983,41 @@
   },
   {
    "shot": 113,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    10,
+    12
+   ],
+   "correction": [
+    [
+     5,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     -1
+    ]
+   ],
+   "weight": 18.870963285370888,
+   "reference_weight": 8.51095469253972,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 113,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -6414,6 +8116,36 @@
   },
   {
    "shot": 115,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    3,
+    7
+   ],
+   "correction": [
+    [
+     3,
+     7
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 115,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     3,
@@ -6503,6 +8235,36 @@
   },
   {
    "shot": 118,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    17,
+    19
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     17,
+     19
+    ]
+   ],
+   "weight": 15.724174894141658,
+   "reference_weight": 5.36416630131049,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 118,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     17,
@@ -6583,12 +8345,24 @@
   },
   {
    "shot": 119,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     8,
     9
    ],
    "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
     [
      8,
      -1
@@ -6598,10 +8372,10 @@
      -1
     ]
    ],
-   "weight": 7.418594486710303,
+   "weight": 18.974000229126418,
    "reference_weight": 7.418594486710303,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 120,
@@ -6672,6 +8446,36 @@
    "weight": 7.418594486710303,
    "reference_weight": 3.9419313957423956,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 120,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     17
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -6765,6 +8569,36 @@
   },
   {
    "shot": 121,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    12
+   ],
+   "correction": [
+    [
+     4,
+     12
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.373275208822864,
+   "reference_weight": 4.013266615991697,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 121,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     4,
@@ -6833,20 +8667,32 @@
   },
   {
    "shot": 122,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     19
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      19,
      -1
     ]
    ],
-   "weight": 3.2498253349847603,
+   "weight": 13.609833927815927,
    "reference_weight": 3.2498253349847603,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 123,
@@ -6934,6 +8780,41 @@
   },
   {
    "shot": 123,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    15,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     17
+    ],
+    [
+     15,
+     -1
+    ]
+   ],
+   "weight": 18.779120369163,
+   "reference_weight": 8.419111776331833,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 123,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     9,
@@ -7011,20 +8892,32 @@
   },
   {
    "shot": 124,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     12
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      12,
      -1
     ]
    ],
-   "weight": 3.3979917089550544,
+   "weight": 13.758000301786222,
    "reference_weight": 3.3979917089550544,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 125,
@@ -7112,6 +9005,41 @@
   },
   {
    "shot": 125,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    17,
+    18,
+    20
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     17,
+     -1
+    ],
+    [
+     18,
+     20
+    ]
+   ],
+   "weight": 19.91882388962435,
+   "reference_weight": 9.558815296793181,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 125,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     17,
@@ -7189,7 +9117,7 @@
   },
   {
    "shot": 127,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     3
    ],
@@ -7197,12 +9125,24 @@
     [
      3,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 4.289162496307691,
+   "weight": 14.649171089138857,
    "reference_weight": 4.289162496307691,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 131,
@@ -7269,6 +9209,36 @@
    "weight": 4.289162496307691,
    "reference_weight": 4.47530529569944,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 131,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    8
+   ],
+   "correction": [
+    [
+     0,
+     8
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -7341,20 +9311,32 @@
   },
   {
    "shot": 133,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     19
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      19,
      -1
     ]
    ],
-   "weight": 3.2498253349847603,
+   "weight": 13.609833927815927,
    "reference_weight": 3.2498253349847603,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 134,
@@ -7421,6 +9403,36 @@
    "weight": 3.2498253349847603,
    "reference_weight": 4.477180380589438,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 134,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    14,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     14,
+     17
+    ]
+   ],
+   "weight": 14.837188973420606,
+   "reference_weight": 4.477180380589438,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -7576,6 +9588,47 @@
   },
   {
    "shot": 137,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    8,
+    9,
+    13,
+    16,
+    21
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     21
+    ]
+   ],
+   "weight": 23.336433489699296,
+   "reference_weight": 11.78102774728318,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 137,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     8,
@@ -7663,20 +9716,32 @@
   },
   {
    "shot": 138,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     19
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      19,
      -1
     ]
    ],
-   "weight": 3.2498253349847603,
+   "weight": 13.609833927815927,
    "reference_weight": 3.2498253349847603,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 140,
@@ -7743,6 +9808,36 @@
    "weight": 3.2498253349847603,
    "reference_weight": 4.602307711258849,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 140,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    7,
+    10
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.962316304090017,
+   "reference_weight": 4.602307711258849,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -7832,6 +9927,36 @@
    "weight": 4.602307711258849,
    "reference_weight": 4.634984369280983,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 141,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    1
+   ],
+   "correction": [
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.99499296211215,
+   "reference_weight": 4.634984369280983,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -7942,6 +10067,41 @@
   },
   {
    "shot": 142,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    12,
+    13,
+    14
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     14
+    ],
+    [
+     13,
+     -1
+    ]
+   ],
+   "weight": 19.29715625194096,
+   "reference_weight": 8.937147659109794,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 142,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     12,
@@ -8036,6 +10196,36 @@
    "weight": 8.937147659109794,
    "reference_weight": 3.9419313957423956,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 143,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     17
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -8142,6 +10332,41 @@
    "weight": 3.9419313957423956,
    "reference_weight": 8.000299420213903,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 144,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    12,
+    15,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     -1
+    ],
+    [
+     15,
+     18
+    ]
+   ],
+   "weight": 18.36030801304507,
+   "reference_weight": 8.000299420213903,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -8301,6 +10526,46 @@
   },
   {
    "shot": 145,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    6,
+    13,
+    14
+   ],
+   "correction": [
+    [
+     1,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     -1
+    ]
+   ],
+   "weight": 21.47112478427379,
+   "reference_weight": 11.111116191442624,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 145,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     1,
@@ -8404,6 +10669,36 @@
    "weight": 11.111116191442624,
    "reference_weight": 5.057415052005651,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 147,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    22,
+    23
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     22,
+     23
+    ]
+   ],
+   "weight": 15.417423644836818,
+   "reference_weight": 5.057415052005651,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -8514,6 +10809,41 @@
   },
   {
    "shot": 149,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    13,
+    14,
+    16
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     16
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 17.90373041021088,
+   "reference_weight": 7.543721817379714,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 149,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     13,
@@ -8612,6 +10942,36 @@
   },
   {
    "shot": 150,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    8
+   ],
+   "correction": [
+    [
+     0,
+     8
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 150,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     0,
@@ -8701,6 +11061,36 @@
   },
   {
    "shot": 151,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    13
+   ],
+   "correction": [
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 151,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -8786,6 +11176,36 @@
    "weight": 4.364308345462876,
    "reference_weight": 4.477180380589438,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 152,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    14,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     14,
+     17
+    ]
+   ],
+   "weight": 14.837188973420606,
+   "reference_weight": 4.477180380589438,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -8892,6 +11312,41 @@
    "weight": 4.477180380589438,
    "reference_weight": 7.614133680447637,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 153,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    13,
+    19,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     21
+    ],
+    [
+     19,
+     -1
+    ]
+   ],
+   "weight": 17.974142273278805,
+   "reference_weight": 7.614133680447637,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -9007,6 +11462,41 @@
    "weight": 7.614133680447637,
    "reference_weight": 7.586247973791001,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 154,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    11,
+    18,
+    19
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     19
+    ],
+    [
+     18,
+     -1
+    ]
+   ],
+   "weight": 17.946256566622168,
+   "reference_weight": 7.586247973791001,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -9130,6 +11620,42 @@
   },
   {
    "shot": 155,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    15,
+    20,
+    21,
+    23
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     15,
+     23
+    ],
+    [
+     20,
+     21
+    ]
+   ],
+   "weight": 19.403920518123606,
+   "reference_weight": 9.04391192529244,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 155,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     15,
@@ -9220,12 +11746,24 @@
   },
   {
    "shot": 156,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     10,
     19
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      10,
      -1
@@ -9235,10 +11773,10 @@
      -1
     ]
    ],
-   "weight": 6.822806692784064,
+   "weight": 17.18281528561523,
    "reference_weight": 6.822806692784064,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 157,
@@ -9313,6 +11851,36 @@
   },
   {
    "shot": 157,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    2
+   ],
+   "correction": [
+    [
+     1,
+     2
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.99499296211215,
+   "reference_weight": 4.634984369280983,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 157,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     1,
@@ -9381,20 +11949,32 @@
   },
   {
    "shot": 158,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     9
    ],
    "correction": [
     [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
      9,
      -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 14.49681984853698,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 159,
@@ -9461,6 +12041,36 @@
    "weight": 2.941414106120864,
    "reference_weight": 5.5187936681332355,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 159,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    12
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 15.878802260964402,
+   "reference_weight": 5.5187936681332355,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -9611,6 +12221,46 @@
   },
   {
    "shot": 161,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    8,
+    16,
+    17
+   ],
+   "correction": [
+    [
+     2,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     17,
+     -1
+    ]
+   ],
+   "weight": 21.372931432552395,
+   "reference_weight": 11.012922839721229,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 161,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -9718,6 +12368,36 @@
   },
   {
    "shot": 162,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    13
+   ],
+   "correction": [
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 162,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -9803,6 +12483,36 @@
    "weight": 4.364308345462876,
    "reference_weight": 4.364308345462876,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 163,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    18,
+    22
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     18,
+     22
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -9896,6 +12606,36 @@
   },
   {
    "shot": 164,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    13,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     21
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 164,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     13,
@@ -9964,20 +12704,32 @@
   },
   {
    "shot": 165,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     21
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      21,
      -1
     ]
    ],
-   "weight": 3.8755670299744893,
+   "weight": 14.235575622805657,
    "reference_weight": 3.8755670299744893,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 166,
@@ -10110,6 +12862,47 @@
   },
   {
    "shot": 166,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    4,
+    5,
+    6,
+    14
+   ],
+   "correction": [
+    [
+     1,
+     5
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 21.9160736690212,
+   "reference_weight": 11.556065076190032,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 166,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     1,
@@ -10235,6 +13028,41 @@
   },
   {
    "shot": 167,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    5,
+    6
+   ],
+   "correction": [
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 19.29715625194096,
+   "reference_weight": 8.937147659109796,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 167,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     4,
@@ -10333,6 +13161,36 @@
   },
   {
    "shot": 168,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3
+   ],
+   "correction": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.649171089138857,
+   "reference_weight": 4.28916249630769,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 168,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -10413,7 +13271,7 @@
   },
   {
    "shot": 169,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     0,
     22
@@ -10424,41 +13282,23 @@
      -1
     ],
     [
-     22,
+     6,
      -1
-    ]
-   ],
-   "weight": 8.38152409522475,
-   "reference_weight": 8.38152409522475,
-   "syndrome_consistent": true,
-   "defective": false
-  },
-  {
-   "shot": 169,
-   "mutant": "M7_added_cycle_STEALTH",
-   "syndrome": [
-    0,
-    22
-   ],
-   "correction": [
+    ],
     [
-     0,
+     6,
+     9
+    ],
+    [
+     9,
      -1
     ],
     [
      22,
      -1
-    ],
-    [
-     0,
-     1
-    ],
-    [
-     0,
-     1
     ]
    ],
-   "weight": 17.651492833786715,
+   "weight": 18.741532688055916,
    "reference_weight": 8.38152409522475,
    "syndrome_consistent": true,
    "defective": true
@@ -10557,6 +13397,42 @@
   },
   {
    "shot": 170,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    10,
+    12,
+    18
+   ],
+   "correction": [
+    [
+     4,
+     12
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     10,
+     18
+    ]
+   ],
+   "weight": 18.73758355428574,
+   "reference_weight": 8.377574961454574,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 170,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     4,
@@ -10647,12 +13523,24 @@
   },
   {
    "shot": 171,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     8,
     9
    ],
    "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
     [
      8,
      -1
@@ -10662,10 +13550,10 @@
      -1
     ]
    ],
-   "weight": 7.418594486710303,
+   "weight": 18.974000229126418,
    "reference_weight": 7.418594486710303,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 172,
@@ -10740,6 +13628,36 @@
   },
   {
    "shot": 172,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    13,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     21
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 172,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     13,
@@ -10808,7 +13726,7 @@
   },
   {
    "shot": 173,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     4
    ],
@@ -10816,12 +13734,24 @@
     [
      4,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.2498253349847603,
+   "weight": 13.609833927815927,
    "reference_weight": 3.2498253349847603,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 175,
@@ -10871,20 +13801,32 @@
   },
   {
    "shot": 175,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     22
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      22,
      -1
     ]
    ],
-   "weight": 3.8755670299744884,
+   "weight": 14.235575622805655,
    "reference_weight": 3.8755670299744884,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 176,
@@ -10951,6 +13893,36 @@
    "weight": 3.8755670299744884,
    "reference_weight": 4.364308345462876,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 176,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    10,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     10,
+     18
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -11044,6 +14016,36 @@
   },
   {
    "shot": 177,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    11,
+    19
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     19
+    ]
+   ],
+   "weight": 14.373275208822864,
+   "reference_weight": 4.013266615991697,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 177,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     11,
@@ -11112,7 +14114,7 @@
   },
   {
    "shot": 187,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     2
    ],
@@ -11120,12 +14122,24 @@
     [
      2,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.596203437900926,
+   "weight": 13.956212030732093,
    "reference_weight": 3.596203437900926,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 188,
@@ -11209,6 +14223,41 @@
    "weight": 3.596203437900926,
    "reference_weight": 7.3057224515837405,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 188,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    10,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     10,
+     18
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.112806461239952,
+   "reference_weight": 7.3057224515837405,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -11311,6 +14360,36 @@
   },
   {
    "shot": 190,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    14
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     14
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 190,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     6,
@@ -11396,6 +14475,36 @@
    "weight": 3.9419313957423956,
    "reference_weight": 5.231115766018265,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 192,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    18,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     18,
+     21
+    ]
+   ],
+   "weight": 15.59112435884943,
+   "reference_weight": 5.231115766018265,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -11506,6 +14615,41 @@
   },
   {
    "shot": 194,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    7,
+    14,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     18
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.225678496366516,
+   "reference_weight": 8.865669903535348,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 194,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     7,
@@ -11583,20 +14727,32 @@
   },
   {
    "shot": 195,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     14
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      14,
      -1
     ]
    ],
-   "weight": 2.9414141061208645,
+   "weight": 13.301422698952031,
    "reference_weight": 2.9414141061208645,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 197,
@@ -11720,6 +14876,46 @@
    "weight": 6.5143954639201676,
    "reference_weight": 11.116703175179016,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 197,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    7,
+    10,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ],
+    [
+     18,
+     -1
+    ]
+   ],
+   "weight": 22.923787184835227,
+   "reference_weight": 11.116703175179016,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -11848,6 +15044,41 @@
   },
   {
    "shot": 200,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    7,
+    10
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.350805827035924,
+   "reference_weight": 7.543721817379713,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 200,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     6,
@@ -11925,20 +15156,32 @@
   },
   {
    "shot": 202,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     14
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      14,
      -1
     ]
    ],
-   "weight": 2.9414141061208645,
+   "weight": 13.301422698952031,
    "reference_weight": 2.9414141061208645,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 203,
@@ -11988,20 +15231,32 @@
   },
   {
    "shot": 203,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     12
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      12,
      -1
     ]
    ],
-   "weight": 3.3979917089550544,
+   "weight": 13.758000301786222,
    "reference_weight": 3.3979917089550544,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 206,
@@ -12051,20 +15306,32 @@
   },
   {
    "shot": 206,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     11
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      11,
      -1
     ]
    ],
-   "weight": 3.3979917089550535,
+   "weight": 13.75800030178622,
    "reference_weight": 3.3979917089550535,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 212,
@@ -12148,6 +15415,41 @@
    "weight": 3.3979917089550535,
    "reference_weight": 8.307240386990411,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 212,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    21,
+    22
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     21,
+     22
+    ]
+   ],
+   "weight": 18.66724897982158,
+   "reference_weight": 8.307240386990411,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -12241,7 +15543,7 @@
   },
   {
    "shot": 215,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     2,
     13
@@ -12252,14 +15554,26 @@
      -1
     ],
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      13,
      -1
     ]
    ],
-   "weight": 7.169184795700229,
+   "weight": 17.529193388531397,
    "reference_weight": 7.169184795700229,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 216,
@@ -12330,6 +15644,36 @@
    "weight": 7.169184795700229,
    "reference_weight": 5.5187936681332355,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 216,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    12
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 15.878802260964402,
+   "reference_weight": 5.5187936681332355,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -12444,6 +15788,42 @@
   },
   {
    "shot": 217,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    6,
+    9,
+    13
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   "weight": 20.39689446846843,
+   "reference_weight": 8.841488726052315,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 217,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -12543,6 +15923,36 @@
   },
   {
    "shot": 218,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    20,
+    21
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     20,
+     21
+    ]
+   ],
+   "weight": 14.928615222424167,
+   "reference_weight": 4.568606629593,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 218,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     20,
@@ -12611,20 +16021,32 @@
   },
   {
    "shot": 219,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     17
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      17,
      -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 13.301422698952031,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 221,
@@ -12697,33 +16119,6 @@
   },
   {
    "shot": 221,
-   "mutant": "M5_equal_weight_alternative",
-   "syndrome": [
-    4,
-    11,
-    18
-   ],
-   "correction": [
-    [
-     4,
-     -1
-    ],
-    [
-     11,
-     -1
-    ],
-    [
-     18,
-     -1
-    ]
-   ],
-   "weight": 10.220798401739117,
-   "reference_weight": 10.220798401739117,
-   "syndrome_consistent": true,
-   "defective": false
-  },
-  {
-   "shot": 221,
    "mutant": "M6_truncated_path",
    "syndrome": [
     4,
@@ -12743,6 +16138,45 @@
    "weight": 6.822806692784064,
    "reference_weight": 10.220798401739117,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 221,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    11,
+    18
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     -1
+    ],
+    [
+     18,
+     -1
+    ]
+   ],
+   "weight": 20.580806994570285,
+   "reference_weight": 10.220798401739117,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -12801,20 +16235,32 @@
   },
   {
    "shot": 222,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     21
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      21,
      -1
     ]
    ],
-   "weight": 3.8755670299744893,
+   "weight": 14.235575622805657,
    "reference_weight": 3.8755670299744893,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 223,
@@ -12876,7 +16322,7 @@
   },
   {
    "shot": 223,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     3,
     4
@@ -12889,12 +16335,24 @@
     [
      4,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 7.538987831292451,
+   "weight": 17.898996424123617,
    "reference_weight": 7.538987831292451,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 227,
@@ -12948,20 +16406,32 @@
   },
   {
    "shot": 227,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     14
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      14,
      -1
     ]
    ],
-   "weight": 2.9414141061208645,
+   "weight": 13.301422698952031,
    "reference_weight": 2.9414141061208645,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 231,
@@ -13090,6 +16560,47 @@
    "weight": 8.954360761178876,
    "reference_weight": 14.185476527197142,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 231,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    8,
+    10,
+    13,
+    14,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     8,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     10,
+     13
+    ],
+    [
+     14,
+     17
+    ]
+   ],
+   "weight": 24.54548512002831,
+   "reference_weight": 14.185476527197142,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -13264,6 +16775,47 @@
   },
   {
    "shot": 234,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    6,
+    9,
+    10,
+    17
+   ],
+   "correction": [
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     9,
+     17
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 23.05473785698235,
+   "reference_weight": 11.247653847326136,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 234,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -13389,6 +16941,41 @@
   },
   {
    "shot": 236,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    0,
+    8,
+    12
+   ],
+   "correction": [
+    [
+     0,
+     8
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     -1
+    ]
+   ],
+   "weight": 18.23330559748566,
+   "reference_weight": 7.873297004654495,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 236,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     0,
@@ -13466,7 +17053,7 @@
   },
   {
    "shot": 239,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     6
    ],
@@ -13474,12 +17061,24 @@
     [
      6,
      -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 14.748498115777076,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 240,
@@ -13546,6 +17145,36 @@
    "weight": 2.941414106120864,
    "reference_weight": 5.231115766018266,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 240,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    5
+   ],
+   "correction": [
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 15.591124358849433,
+   "reference_weight": 5.231115766018266,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -13635,6 +17264,36 @@
    "weight": 5.231115766018266,
    "reference_weight": 3.9419313957423956,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 241,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    9,
+    17
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     17
+    ]
+   ],
+   "weight": 14.301939988573562,
+   "reference_weight": 3.9419313957423956,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -13790,6 +17449,47 @@
   },
   {
    "shot": 242,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    13,
+    18,
+    20,
+    21
+   ],
+   "correction": [
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     18,
+     -1
+    ],
+    [
+     20,
+     21
+    ]
+   ],
+   "weight": 22.865904925686348,
+   "reference_weight": 12.50589633285518,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 242,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -13894,6 +17594,36 @@
    "weight": 12.50589633285518,
    "reference_weight": 4.013266615991697,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 243,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    12
+   ],
+   "correction": [
+    [
+     4,
+     12
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.373275208822864,
+   "reference_weight": 4.013266615991697,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -14049,6 +17779,47 @@
   },
   {
    "shot": 246,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3,
+    6,
+    7,
+    10
+   ],
+   "correction": [
+    [
+     2,
+     10
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 23.58811175693939,
+   "reference_weight": 11.78102774728318,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 246,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -14174,6 +17945,41 @@
   },
   {
    "shot": 250,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    5,
+    6
+   ],
+   "correction": [
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 19.97961388179534,
+   "reference_weight": 8.17252987213913,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 250,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -14263,12 +18069,24 @@
   },
   {
    "shot": 252,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     18,
     19
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      18,
      -1
@@ -14278,10 +18096,10 @@
      -1
     ]
    ],
-   "weight": 6.822806692784064,
+   "weight": 17.18281528561523,
    "reference_weight": 6.822806692784064,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 254,
@@ -14369,6 +18187,41 @@
    "weight": 6.822806692784064,
    "reference_weight": 7.960511783363802,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 254,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    2,
+    10
+   ],
+   "correction": [
+    [
+     1,
+     -1
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 18.32052037619497,
+   "reference_weight": 7.960511783363802,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -14471,6 +18324,36 @@
   },
   {
    "shot": 255,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    13
+   ],
+   "correction": [
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 255,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -14560,6 +18443,36 @@
   },
   {
    "shot": 256,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    5
+   ],
+   "correction": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 256,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     1,
@@ -14649,6 +18562,36 @@
   },
   {
    "shot": 258,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    6
+   ],
+   "correction": [
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 15.724174894141658,
+   "reference_weight": 5.364166301310491,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 258,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     4,
@@ -14717,20 +18660,32 @@
   },
   {
    "shot": 259,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     17
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      17,
      -1
     ]
    ],
-   "weight": 2.941414106120864,
+   "weight": 13.301422698952031,
    "reference_weight": 2.941414106120864,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 261,
@@ -14797,6 +18752,36 @@
    "weight": 2.941414106120864,
    "reference_weight": 4.364308345462876,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 261,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    5
+   ],
+   "correction": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -14881,12 +18866,24 @@
   },
   {
    "shot": 262,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     12,
     16
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      12,
      -1
@@ -14896,10 +18893,10 @@
      -1
     ]
    ],
-   "weight": 7.875172089544494,
+   "weight": 18.23518068237566,
    "reference_weight": 7.875172089544494,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 263,
@@ -14970,6 +18967,36 @@
    "weight": 7.875172089544494,
    "reference_weight": 4.013266615991697,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 263,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    12
+   ],
+   "correction": [
+    [
+     4,
+     12
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.373275208822864,
+   "reference_weight": 4.013266615991697,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -15162,6 +19189,56 @@
   },
   {
    "shot": 264,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    3,
+    5,
+    9,
+    12,
+    13,
+    23
+   ],
+   "correction": [
+    [
+     3,
+     -1
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     12,
+     -1
+    ],
+    [
+     23,
+     -1
+    ]
+   ],
+   "weight": 31.414970740761387,
+   "reference_weight": 19.85956499834527,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 264,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     3,
@@ -15344,6 +19421,46 @@
   },
   {
    "shot": 265,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    18,
+    20,
+    21
+   ],
+   "correction": [
+    [
+     1,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     18,
+     -1
+    ],
+    [
+     20,
+     21
+    ]
+   ],
+   "weight": 22.097800018124396,
+   "reference_weight": 11.737791425293228,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 265,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     1,
@@ -15464,6 +19581,41 @@
    "weight": 11.737791425293228,
    "reference_weight": 7.614133680447637,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 266,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    10,
+    19
+   ],
+   "correction": [
+    [
+     2,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     19,
+     -1
+    ]
+   ],
+   "weight": 17.974142273278805,
+   "reference_weight": 7.614133680447637,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -15623,6 +19775,46 @@
   },
   {
    "shot": 267,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    6,
+    12,
+    13,
+    19
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     -1
+    ],
+    [
+     19,
+     -1
+    ]
+   ],
+   "weight": 22.701608953748465,
+   "reference_weight": 12.3416003609173,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 267,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     6,
@@ -15721,12 +19913,24 @@
   },
   {
    "shot": 270,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     16,
     17
    ],
    "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
     [
      16,
      -1
@@ -15736,10 +19940,10 @@
      -1
     ]
    ],
-   "weight": 7.418594486710304,
+   "weight": 17.77860307954147,
    "reference_weight": 7.418594486710304,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 272,
@@ -15835,6 +20039,42 @@
   },
   {
    "shot": 272,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    6,
+    9,
+    10
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   "weight": 21.14554910659022,
+   "reference_weight": 9.590143364174104,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 272,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     5,
@@ -15913,20 +20153,32 @@
   },
   {
    "shot": 273,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     19
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      19,
      -1
     ]
    ],
-   "weight": 3.2498253349847603,
+   "weight": 13.609833927815927,
    "reference_weight": 3.2498253349847603,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 274,
@@ -15976,7 +20228,7 @@
   },
   {
    "shot": 274,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     2
    ],
@@ -15984,12 +20236,24 @@
     [
      2,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.596203437900926,
+   "weight": 13.956212030732093,
    "reference_weight": 3.596203437900926,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 275,
@@ -16139,6 +20403,52 @@
    "weight": 13.603409980165802,
    "reference_weight": 16.544824086286667,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 275,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    8,
+    9,
+    12,
+    13,
+    18
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     12
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     8,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     18
+    ]
+   ],
+   "weight": 28.10022982870278,
+   "reference_weight": 16.544824086286667,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -16322,6 +20632,47 @@
   },
   {
    "shot": 276,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    2,
+    3,
+    6,
+    9,
+    17
+   ],
+   "correction": [
+    [
+     2,
+     3
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     9,
+     17
+    ],
+    [
+     14,
+     -1
+    ]
+   ],
+   "weight": 22.97959200782716,
+   "reference_weight": 11.17250799817095,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 276,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     2,
@@ -16447,6 +20798,41 @@
   },
   {
    "shot": 277,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    11,
+    15,
+    23
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     11,
+     -1
+    ],
+    [
+     15,
+     23
+    ]
+   ],
+   "weight": 18.23330559748566,
+   "reference_weight": 7.873297004654493,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 277,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     11,
@@ -16545,6 +20931,36 @@
   },
   {
    "shot": 278,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    8,
+    16
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     8,
+     16
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.835313888530607,
+   "reference_weight": 4.47530529569944,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 278,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     8,
@@ -16625,7 +21041,7 @@
   },
   {
    "shot": 280,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     4,
     5
@@ -16638,12 +21054,24 @@
     [
      5,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 6.822806692784065,
+   "weight": 17.18281528561523,
    "reference_weight": 6.822806692784065,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 281,
@@ -16714,6 +21142,36 @@
    "weight": 6.822806692784065,
    "reference_weight": 4.364308345462876,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 281,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    1,
+    5
+   ],
+   "correction": [
+    [
+     1,
+     5
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -16820,6 +21278,41 @@
    "weight": 4.364308345462876,
    "reference_weight": 9.55881529679318,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 282,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    7,
+    9,
+    13
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     7,
+     13
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 21.114221039209294,
+   "reference_weight": 9.55881529679318,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -16943,6 +21436,42 @@
   },
   {
    "shot": 284,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    10,
+    14,
+    17,
+    18
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     10,
+     18
+    ],
+    [
+     14,
+     17
+    ]
+   ],
+   "weight": 19.201497318883483,
+   "reference_weight": 8.841488726052315,
+   "syndrome_consistent": true,
+   "defective": true
+  },
+  {
+   "shot": 284,
    "mutant": "M9_detour_STEALTH",
    "syndrome": [
     10,
@@ -17021,20 +21550,32 @@
   },
   {
    "shot": 285,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     8
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
      8,
+     -1
+    ],
+    [
+     9,
      -1
     ]
    ],
-   "weight": 4.477180380589439,
+   "weight": 14.837188973420606,
    "reference_weight": 4.477180380589439,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 288,
@@ -17084,20 +21625,32 @@
   },
   {
    "shot": 288,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     15
    ],
    "correction": [
     [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
      15,
      -1
     ]
    ],
-   "weight": 4.477180380589438,
+   "weight": 14.837188973420606,
    "reference_weight": 4.477180380589438,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 291,
@@ -17147,7 +21700,7 @@
   },
   {
    "shot": 291,
-   "mutant": "M5_equal_weight_alternative",
+   "mutant": "M7_disjoint_cycle_STEALTH",
    "syndrome": [
     2
    ],
@@ -17155,12 +21708,24 @@
     [
      2,
      -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
     ]
    ],
-   "weight": 3.596203437900926,
+   "weight": 13.956212030732093,
    "reference_weight": 3.596203437900926,
    "syndrome_consistent": true,
-   "defective": false
+   "defective": true
   },
   {
    "shot": 296,
@@ -17233,33 +21798,6 @@
   },
   {
    "shot": 296,
-   "mutant": "M5_equal_weight_alternative",
-   "syndrome": [
-    13,
-    19,
-    22
-   ],
-   "correction": [
-    [
-     13,
-     -1
-    ],
-    [
-     19,
-     -1
-    ],
-    [
-     22,
-     -1
-    ]
-   ],
-   "weight": 10.698373722758552,
-   "reference_weight": 10.698373722758552,
-   "syndrome_consistent": true,
-   "defective": false
-  },
-  {
-   "shot": 296,
    "mutant": "M6_truncated_path",
    "syndrome": [
     13,
@@ -17279,6 +21817,45 @@
    "weight": 7.4485483877737915,
    "reference_weight": 10.698373722758552,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 296,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    13,
+    19,
+    22
+   ],
+   "correction": [
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     13,
+     -1
+    ],
+    [
+     19,
+     -1
+    ],
+    [
+     22,
+     -1
+    ]
+   ],
+   "weight": 21.058382315589718,
+   "reference_weight": 10.698373722758552,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -17354,6 +21931,36 @@
    "weight": 10.698373722758552,
    "reference_weight": 4.364308345462876,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 297,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    5,
+    13
+   ],
+   "correction": [
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ]
+   ],
+   "weight": 14.724316938294043,
+   "reference_weight": 4.364308345462876,
+   "syndrome_consistent": true,
    "defective": true
   },
   {
@@ -17460,6 +22067,41 @@
    "weight": 4.364308345462876,
    "reference_weight": 7.614133680447637,
    "syndrome_consistent": false,
+   "defective": true
+  },
+  {
+   "shot": 298,
+   "mutant": "M7_disjoint_cycle_STEALTH",
+   "syndrome": [
+    4,
+    10,
+    18
+   ],
+   "correction": [
+    [
+     4,
+     -1
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     9,
+     -1
+    ],
+    [
+     10,
+     18
+    ]
+   ],
+   "weight": 17.974142273278805,
+   "reference_weight": 7.614133680447637,
+   "syndrome_consistent": true,
    "defective": true
   },
   {

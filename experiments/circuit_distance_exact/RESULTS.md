@@ -268,7 +268,8 @@ The paper searches two-round morphing circuits over weight-5 and weight-6 Abelia
 parameters only -- "we did not check the circuit-level distance" (its App. C.4) -- and names neither the groups nor
 the polynomials. `morph2026_codes.py` re-finds its [[42,6,6]] degree-4 example (Z_42: 4 standard-schedule circuits,
 two codes x two CNOT orders) and shows its [[30,8,5]] degree-5 example is NOT reachable by the standard schedule;
-`morph2026_trees.py` searches its Def. 10 tree circuits and finds 12 with end-cycle [[30,8,5]] (degree 5 or 6).
+`morph2026_trees.py` searches its homomorphism-based circuits (Def. 10), each fixed by one contraction tree (Sec. 2.4)
+-- this lane's "tree circuits"; the phrase is not the paper's -- and finds 12 with end-cycle [[30,8,5]] (degree 5 or 6).
 `morph2026.py` builds each as a memory experiment in this lane's exact conventions (the generalized builder
 reproduces `bb_circuits.morphing_cycle` byte for byte on the lane's codes); the standard schedules equal the authors'
 own builder gate by gate (`morph2026_vs_authors.py`; a swapped-layer control fails).
@@ -277,14 +278,16 @@ Per target and basis (`results.json` -> `morph2026`): the T = 1 search finds wei
 minimal witness (every single deletion fails); the same weight in every T = 2..w+2 (w = d - 1); certificates
 "no solution of weight <= w" VERIFIED at T = 1 and 2 on exactly the searched models; time-shift certificates and the
 space-time window preconditions on every T = 1..w+2. For every standard schedule, `fold_uniform.py` checks
-FOLD_PROOF.md's six hypotheses (all hold, all 18 controls fail; template agrees up to T = 16), so its Theorem 1 gives
-the distance for EVERY T.
+FOLD_PROOF.md's six hypotheses (all hold, all 18 controls fail; the template agrees at every T = 1..32, re-run
+2026-11-07 -- the first run, to T = 16, had six values of T), so its Theorem 1 gives the distance for EVERY T
+(Corollary 4). That this builder, `morph2026.morphing_cycle_from`, emits the template for every T is FOLD_PROOF.md's
+Appendix C, a proof by reading the code (external audit 4, finding 2.15: Appendix A read only `bb_circuits`).
 
 | end-cycle code (degree) | circuit | d_circ (Z / X) | every T |
 |---|---|---|---|
 | [[42,6,6]] (4) | Z_42, A = 1 + x + x^10, B = 1 + x^7, standard schedule (c42a) | **6 / 6 -- loses nothing** | PROVEN |
 | [[42,6,6]] (4) | the same code, other CNOT order (c42a2); A = 1 + x^3 + x^9 (c42b, c42b2) | 4 / 4; 5 / 5; 4 / 4 | PROVEN |
-| [[48,4,8]] (4) | the six standard-schedule circuits on Z_48 (the paper's Fig. 25 code family) | best **7 / 7** (two of six), the rest 6 | PROVEN |
+| [[48,4,8]] (4) | the six standard-schedule circuits on Z_48 (the parameters of a degree-4 morphing point in the paper's Fig. 25, read off its k = 4 panel; its text does not list them) | best **7 / 7** (two of six), the rest 6 | PROVEN |
 | [[30,8,5]] (5) | the four Def. 10 tree circuits on Z_30 (A = 1 + x + x^4, B = 1 + x^6 + x^13) | **5 / 5 -- loses nothing** | MACHINE-CHECKED for T <= 6, DERIVED beyond |
 
 So: the paper's degree-4 [[42,6,6]] example keeps its full distance in one of its four CNOT orders and loses up to 2

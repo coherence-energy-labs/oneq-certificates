@@ -31,7 +31,7 @@
  "provenance": {
   "code_git_blobs": {
    "experiments/superactivation/shield_family/p2_kraus_comparison.py": "a8678a10078618970824e488d709f8752b3174e5",
-   "experiments/superactivation/shield_family/ppt_family.py": "49f4dd41182928066bc941bd8afe8da3c2515116"
+   "experiments/superactivation/shield_family/ppt_family.py": "1f9508fa279d90eed28b064b86c7d3551c2e7f9a"
   },
   "python": "3.14.3",
   "numpy": "2.3.5"

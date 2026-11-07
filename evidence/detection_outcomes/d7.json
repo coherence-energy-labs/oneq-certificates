@@ -95,7 +95,7 @@
     "not_proven_on_defective": 0,
     "mean_excess_of_suboptimal": 0.0
    },
-   "M7_added_cycle_STEALTH": {
+   "M7_disjoint_cycle_STEALTH": {
     "n": 300,
     "defective": 300,
     "invalid": 0,
@@ -105,7 +105,7 @@
     "false_alarms": 0,
     "missed": 0,
     "not_proven_on_defective": 0,
-    "mean_excess_of_suboptimal": 9.269968738561966
+    "mean_excess_of_suboptimal": 10.468271776344055
    },
    "M8_boundary_pair_swap_STEALTH": {
     "n": 2,
@@ -149,7 +149,7 @@
     "n": 300,
     "truly_defective": 300
    },
-   "M7_added_cycle_STEALTH": {
+   "M7_disjoint_cycle_STEALTH": {
     "n": 300,
     "truly_defective": 300
    },
@@ -287,5 +287,5 @@
    }
   ]
  },
- "wall_seconds": 885.7
+ "wall_seconds": 697.0
 }

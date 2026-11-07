@@ -28,6 +28,8 @@
 \newcommand{\DarkD}{8}
 % certificate_nuse_d8_n3.json: certified lower bound (re-proved), truncated
 \newcommand{\DarkF}{0.74576}
+% certificate_nuse_d8_n3.json: pair_float_fidelity (float)
+\newcommand{\DarkFloat}{0.7457645}
 % certificate_nuse_d8_n3.json
 \newcommand{\DarkN}{3}
 % direct/certificate_direct_n1.json
@@ -56,12 +58,12 @@
 \newcommand{\FamAGain}{\ensuremath{6.1\times 10^{-4}}}
 % computed: (sqrt 97 - 1)/48, truncated
 \newcommand{\FamAPstar}{0.1843}
+% computed: eq. (10) at d = 64, outside its range
+\newcommand{\FamASixtyFour}{0.79638}
 % shield_family/certificate_two_use_famA_d32.json
 \newcommand{\FamAThirtyTwo}{0.7685874821}
 % shield_family/certificate_two_use_famA_d20.json
 \newcommand{\FamATwenty}{0.7507996270}
-% shield_family/phase_diagram.json d = 5, n = 4 (float)
-\newcommand{\FiveBest}{0.7424}
 % certificate_n17.json, _n20, _n24, certificate_twogroup_*.json: grid_bits
 \newcommand{\GridBits}{96}
 % hw_run_m5/frozen_20261015T195926Z.json
@@ -70,9 +72,7 @@
 \newcommand{\HwFe}{0.615}
 % hw_run_m5/result_db8jpre94fic73etigpg.json: analysis.measured.sd_F_e
 \newcommand{\HwFeSd}{0.009}
-% hw_run_m5/result_db8jpre94fic73etigpg.json: predicted minus measured F_e
-\newcommand{\HwOver}{0.042}
-% hw_run_m5/result_db8jpre94fic73etigpg.json: that difference over sd_F_e
+% hw_run_m5/result_db8jpre94fic73etigpg.json: predicted minus measured F_e, over sd_F_e
 \newcommand{\HwOverSigma}{4.6}
 % hw_run_m5/result_db8jpre94fic73etigpg.json
 \newcommand{\HwPred}{0.657}
@@ -84,8 +84,6 @@
 \newcommand{\IonMarginLo}{0.016}
 % ion_run_m6/design_n2000/design.json
 \newcommand{\IonOldD}{64}
-% ion_run_m6/design_n2000/design.json: units
-\newcommand{\IonOldUnits}{2{,}000}
 % ion_run_m8_r224/design.json: units
 \newcommand{\IonUnits}{8{,}000}
 % shield_family/p2_kraus_comparison_v2.json, rounded up
@@ -94,8 +92,8 @@
 \newcommand{\KrausEntries}{256}
 % shield_family/p2_kraus_comparison_v2.json: entries unequal with the formula's weights exchanged
 \newcommand{\KrausSwapUnequal}{28}
-% shield_family/p2_kraus_comparison_v2.json: controls
-\newcommand{\KrausTypoDiff}{0.073}
+% shield_family/p2_kraus_comparison_v2.json: controls, rounded up
+\newcommand{\KrausTypoDiff}{0.0733}
 % shield_family/p2_kraus_comparison_v2.json: entries the exact check leaves unequal under the typo
 \newcommand{\KrausTypoUnequal}{8}
 % tools/build_certificate_bundle.py: the oneq-superactivation bundle declares the whole lane (experiments/superactivation/, evidence/superactivation/), so it is in the release paper/release.tex names
@@ -144,7 +142,7 @@
 \newcommand{\PrecBits}{256}
 % docs/PAPER4_LITERATURE_SEARCH.md: the published n = 17 code's fidelity in arXiv 2604.27042's ancillary data (fidelity_verified.npy, 0.750131163826669), rounded half up
 \newcommand{\PubF}{0.750131}
-% arXiv 2604.27042v2 text, three places: the five-digit rounding of PubF
+% arXiv 2604.27042v2, the compiled text's one printing: the five-digit rounding of PubF
 \newcommand{\PubFPrinted}{0.75013}
 % docs/PAPER4_LITERATURE_SEARCH.md: arXiv 2604.27042's n* <= 17
 \newcommand{\PubN}{17}
@@ -169,7 +167,9 @@
 % general_codes/reduction_dense_check_v2.json: certifier_end_to_end
 \newcommand{\RedEtoEFour}{4}
 % general_codes/reduction_dense_check_v2.json: largest fidelity of the stored pair minus its re-certified bound, rounded up
-\newcommand{\RedEtoEMax}{\ensuremath{7.9\times 10^{-10}}}
+\newcommand{\RedEtoEMax}{\ensuremath{7.88\times 10^{-10}}}
+% general_codes/reduction_dense_check_v2.json: the n of that largest gap
+\newcommand{\RedEtoEMaxN}{24}
 % general_codes/reduction_dense_check_v2.json: largest fidelity difference, rounded up
 \newcommand{\RedFidMax}{\ensuremath{3.4\times 10^{-16}}}
 % general_codes/reduction_dense_check_v2.json: seconds_total
@@ -206,6 +206,8 @@
 \newcommand{\SymCertN}{24}
 % certificate_n20.json
 \newcommand{\SymMidN}{20}
+% shield_family/onset_search/symmetric_d5.json: carried-forward symmetric entries it re-ran, each to the last bit
+\newcommand{\SymReproCount}{28}
 % certificate_n17.json
 \newcommand{\SymSeventeenF}{0.7502033333}
 % certificate_n20.json

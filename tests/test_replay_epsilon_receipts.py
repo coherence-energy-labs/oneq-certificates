@@ -244,12 +244,20 @@ def test_the_real_simulation_configurations_share_a_graph_and_are_never_each_oth
         assert other is not None and R._instance(other)[1] != R._instance(n)[1], n
 
 
-def test_the_replay_battery_runs_the_parity_adversary_on_real_receipts():
-    """2026-11-03 (final referee, minor 5): the T'-oddness adversary ran only in a sampled unit test. It is now part
-    of the replay's forgery battery: each attacked receipt gets a heavier correction 'proven' by sets that are not
-    T'-odd, which a checker without the parity test would accept and both verifiers refuse as invalid input."""
-    # 1. the shipped strict-replay records: every configuration's parity forgeries were real (accepted by both
-    #    parity-blind copies) and refused by the real verifiers as invalid input
+def needs_release_assets(what: str) -> None:
+    """A test that needs the release's receipt archives unpacked (external audit 4, R5): it SKIPS, naming the asset,
+    where they are absent -- a clone of the public repository holds no release asset -- unless ONEQ_REQUIRE_ASSETS=1
+    says they must be present, and then it FAILS. tools/rehearse_public_release.py sets it, so a rehearsal can never
+    pass with the check unrun; the earlier rule (always fail) failed every reader who had not downloaded 824 MB."""
+    import os
+    if os.environ.get("ONEQ_REQUIRE_ASSETS") == "1":
+        pytest.fail(f"missing release asset (ONEQ_REQUIRE_ASSETS=1): {what}")
+    pytest.skip(f"RELEASE ASSET ABSENT, CHECK NOT RUN: {what}")
+
+
+def test_the_shipped_strict_replay_records_ran_the_parity_adversary():
+    """The shipped strict-replay records: every configuration's parity forgeries were real (accepted by both
+    parity-blind copies) and refused by the real verifiers as invalid input. Needs no release asset."""
     recs = sorted((ROOT / "evidence" / "epsilon_rerun" / "replay_2026-11-03").glob("replay_*.json"))
     assert len(recs) >= 18, "missing: evidence/epsilon_rerun/replay_2026-11-03/replay_*.json (18 records)"
     for p in recs:
@@ -257,7 +265,23 @@ def test_the_replay_battery_runs_the_parity_adversary_on_real_receipts():
         pa = fb["parity_adversary"]
         assert pa["attempted"] > 0 and pa["accepted_by_both_parity_blind_copies"] == pa["attempted"], p.name
         assert fb["refusals_by_class_and_verdict"].get("P_parity_not_T_prime_odd:INVALID_INPUT") == pa["attempted"]
-    # 2. the battery run live, on the released configuration with the fewest receipts among those whose receipts are
+
+
+def test_the_release_asset_rule_skips_or_fails_by_the_environment(monkeypatch):
+    """The rule above, both ways: absent assets skip by default and fail when they are required."""
+    monkeypatch.delenv("ONEQ_REQUIRE_ASSETS", raising=False)
+    with pytest.raises(pytest.skip.Exception, match="RELEASE ASSET ABSENT"):
+        needs_release_assets("data/epsilon_receipts_archive/x.tar")
+    monkeypatch.setenv("ONEQ_REQUIRE_ASSETS", "1")
+    with pytest.raises(pytest.fail.Exception, match="missing release asset"):
+        needs_release_assets("data/epsilon_receipts_archive/x.tar")
+
+
+def test_the_replay_battery_runs_the_parity_adversary_on_real_receipts():
+    """2026-11-03 (final referee, minor 5): the T'-oddness adversary ran only in a sampled unit test. It is now part
+    of the replay's forgery battery: each attacked receipt gets a heavier correction 'proven' by sets that are not
+    T'-odd, which a checker without the parity test would accept and both verifiers refuse as invalid input."""
+    # the battery run live, on the released configuration with the fewest receipts among those whose receipts are
     #    on disk. ANY released configuration serves: a reader unpacks one of their choosing from
     #    data/epsilon_receipts_archive/<config>.tar (REPRODUCE.md), and the release rehearsal unpacks one, so a fixed
     #    list of three (2026-11-05, first version) failed every reader who had unpacked a different one. The archive
@@ -271,8 +295,10 @@ def test_the_replay_battery_runs_the_parity_adversary_on_real_receipts():
         if rows and all((ROOT / r["receipts_file"]).is_file() for r in rows):
             present.append((sum(int(r.get("shots", 0)) for r in rows), len(rows), pin.parent.name,
                             bool(json.loads(pin.read_text(encoding="utf-8")).get("partial", False))))
-    assert present, ("missing: no released configuration's receipts are under data/epsilon_receipts/ (unpack one "
-                     "data/epsilon_receipts_archive/<config>.tar with tools/pack_epsilon_receipts.py)")
+    if not present:
+        needs_release_assets("no released configuration's receipts are under data/epsilon_receipts/ (download one "
+                             "data/epsilon_receipts_archive/<config>.tar from the release and unpack it; "
+                             "tools/pack_epsilon_receipts.py --verify checks it)")
     _shots, _chunks, name, partial = min(present)
     res = R.replay_config(name, sample=1, battery=0, forgeries=1, rng=random.Random(7), partial=partial,
                           eps_max="1/1000000" if partial else None)
