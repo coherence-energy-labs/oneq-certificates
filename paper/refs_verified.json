@@ -2574,11 +2574,80 @@
     ],
     "year": 2013
    }
+  },
+  "banfi2026certified": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Certified Non-Degenerate Maximum-Likelihood Benchmarking of Quantum LDPC Decoders",
+    "authors": [
+     "Banfi",
+     "Ferrari",
+     "Favano",
+     "Tarable",
+     "Barletta"
+    ],
+    "year": 2026
+   }
+  },
+  "hwang2026certified": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Certified Adaptive List Decoding for Error-Correcting Codes",
+    "authors": [
+     "Hwang",
+     "Won",
+     "Hwang"
+    ],
+    "year": 2026
+   }
+  },
+  "fregona2026dealing": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Dealing with low-weight errors that lead BP OSD to fail",
+    "authors": [
+     "Fregona",
+     "Löbl",
+     "Brown",
+     "Kastoryano",
+     "Paesani"
+    ],
+    "year": 2026
+   }
+  },
+  "cheng2026certifying": {
+   "arxiv": {
+    "source": "arxiv",
+    "title": "Certifying quantum code and circuit distances at scale",
+    "authors": [
+     "Cheng",
+     "Guo",
+     "Pan"
+    ],
+    "year": 2026
+   }
+  },
+  "pan2026e045": {
+   "github_commit": {
+    "source": "github-commit",
+    "commit": "488c18392ce80d036668c993be54887db4fc2cf4",
+    "date": "2026-11-04T06:50:21Z",
+    "year": 2026,
+    "path": "research/audits/2026-11-04-E-045.md",
+    "blob": "e22383e5e3d982b826167f1a4a85e437d98f5fde",
+    "heading": "# 审计 E-045：Tesseract CZ 编译 gross 电路的证书、IBM 12+2 模型的任意 R、d_circ 对 R 的单调性",
+    "readme_words": "0 05481 10 11 12 144 18 2026 2603 3 4 8 90 a accepted acted admits agent agents ai all along an analysis ancilla and answers anthropic any api appear archive are arxiv as at audit auditor audits author base based baselines bases bash before behind beliefmatching beverland bicycle bivariate both browne built bundle by cc certificates check checked chinese circuit circuits claim class claude cnot code codes colour com command compared complete constructions contained contains content corrections cs data decision decisions depth directions distance docs doi done draft drafts e e024a env error evaluated evaluators every evolve exactly example experiment experiments extraction fig figures file for full g galois gates gavinnull git github gross gross12 guancheng gymnasium h24 has he hook how https human hypotheses hypothesis i in includes independent independently interleaved interleaving is it iv journal journals json jupyter kernel key l0 l1 l2 lab ldpc ledger level licence license llm logical look made md memory minimum mistakes mit morphing mostly native new noise not notebook notebooks number of one open out p0 p1 p18 package pan paper pdf per period pi pointers progress project proofs proposed prove public py pymatching python qec question ran rate re record recorded recovers references refuted release releases repo reports repository reproduce reproduction research responsibility result results rl round rounds rules run schedules scripts sd6 search sec self separate set sh single sinter skill skip source state steps stim stimbposd strikis such superseded symmetric sync syndrome table tag takes tex text that the their theorem theorems there this time to torch under using uv v1 v2 venv verification was way we what where with within witnesses work worked workflow written wrote yaml zenodo"
+   }
   }
  },
  "fetched_later": {
   "roffe2022ldpc": "2026-11-03",
   "horodecki2008low": "2026-11-03",
-  "badziag2014bound": "2026-11-03"
+  "badziag2014bound": "2026-11-03",
+  "banfi2026certified": "2026-11-06",
+  "hwang2026certified": "2026-11-06",
+  "fregona2026dealing": "2026-11-06",
+  "cheng2026certifying": "2026-11-06",
+  "pan2026e045": "2026-11-07"
  }
 }

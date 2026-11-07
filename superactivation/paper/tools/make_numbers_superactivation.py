@@ -834,7 +834,7 @@ def build() -> dict[str, str]:
         rf"$n^*\le 4$ for $d={by_onset[4][0]},{by_onset[4][1]}$ and $n^*\le 3$ for "
         rf"$d={by_onset[3][0]},\dots,{by_onset[3][-1]}$ & certified upper bounds & Table~\ref{{tab:onset}} \\",
         rf"One use of the joint channel ($d=2$): a code with $F\ge {lo(dlow, 10)}$ beats every code on the "
-        rf"reduced channel ($\max={lo(nt1, 10)}$) & certified and proven & Thm.~\ref{{thm:direct}} \\",
+        rf"reduced channel ($\max=1-\sqrt2/4\approx{lo(nt1, 10)}$) & certified and proven & Thm.~\ref{{thm:direct}} \\",
         r"A PPT-assisted relaxation cannot certify a lower bound on $n^*$ above $2$: at $n$ uses its value is exactly "
         r"$1-2^{-(n+1)}$, for $\nt_p$, for $A$ and for every pair $P_d\otimes A_{2d}$ & proven; feasible point and dual "
         r"certificate also checked exactly on the full output space for $\nt_p$ and $A$ ($n\le\PptNmax$) and for "

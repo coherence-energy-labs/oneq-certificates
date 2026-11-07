@@ -369,6 +369,38 @@
   archivePrefix = {arXiv},
 }
 
+@misc{banfi2026certified,
+  author = {Michele Banfi and Marco Ferrari and Antonino Favano and Alberto Tarable and Luca Barletta},
+  title = {Certified Non-Degenerate Maximum-Likelihood Benchmarking of Quantum {LDPC} Decoders},
+  year = {2026},
+  eprint = {2610.28008},
+  archivePrefix = {arXiv},
+}
+
+@misc{hwang2026certified,
+  author = {Jaeho Hwang and Byung-Sun Won and Uiwon Hwang},
+  title = {Certified Adaptive List Decoding for Error-Correcting Codes},
+  year = {2026},
+  eprint = {2610.27805},
+  archivePrefix = {arXiv},
+}
+
+@misc{fregona2026dealing,
+  author = {Giacomo Fregona and Matthias C. L{\"o}bl and Benjamin J. Brown and Michael J. Kastoryano and Stefano Paesani},
+  title = {Dealing with low-weight errors that lead {BP} {OSD} to fail},
+  year = {2026},
+  eprint = {2610.30305},
+  archivePrefix = {arXiv},
+}
+
+@misc{cheng2026certifying,
+  author = {Bin Cheng and Naixu Guo and Feng Pan},
+  title = {Certifying quantum code and circuit distances at scale},
+  year = {2026},
+  eprint = {2611.08247},
+  archivePrefix = {arXiv},
+}
+
 @misc{leverrier2026approximating,
   author = {Anthony Leverrier and R{\"u}diger Urbanke},
   title = {Approximating optimal decoding of quantum {LDPC} codes with narrow frontiers},
@@ -710,6 +742,20 @@
   year = {2026},
   url = {https://github.com/GavinNull/gross-code-distance-12/blob/18e47dae3076138503fba99220c357db5087ffc5/research/audits/2026-10-31-E-043.md},
   note = {title translated from the Chinese heading, whose ``certification'' (renzheng) of the every-$R$ step produces no proof log},
+}
+
+% E-045 (2026-11-04, read at main HEAD 2d5131b1 on 2026-11-07): for his re-implementation of IBM's decoder_setup.py model
+% (R noisy cycles, then two noiseless), the gross code's circuit distance is 10 for every R >= 1, both bases, by a
+% written time-translation, periodicity and "connected compression" argument reducing every R to E-037's VeriPB-certified
+% range; its finite premises are checked by exact frame simulation, the every-R step has no certificate. It makes paper
+% 3's earlier "first every-round certified lower bound" for IBM's cycle false (literature search of 2026-11-07).
+@misc{pan2026e045,
+  author = {Guancheng Pan},
+  title = {Audit {E-045}: certificates for the {Tesseract} {CZ}-compiled gross circuit, every {$R$} for {IBM}'s 12+2 model, and the monotonicity of $d_{\mathrm{circ}}$ in {$R$}},
+  howpublished = {research record \texttt{research/audits/2026-11-04-E-045.md} on the main branch of \url{https://github.com/GavinNull/gross-code-distance-12}, commit 488c1839 (2026-11-04), after release v2.0},
+  year = {2026},
+  url = {https://github.com/GavinNull/gross-code-distance-12/blob/488c18392ce80d036668c993be54887db4fc2cf4/research/audits/2026-11-04-E-045.md},
+  note = {title translated from the Chinese heading; its every-$R$ step is a written argument with no certificate},
 }
 
 % App. C (v2): a Shaw--Terhal morphing idling circuit "is believed to have circuit distance 12"; the basis of the

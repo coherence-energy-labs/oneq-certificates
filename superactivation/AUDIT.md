@@ -7,7 +7,7 @@ beside the decoder bundle (`oneq-certifying-decoder`) under the same tag, and is
 ## 0. Is this the tree that was signed
 
 ```
-sha256sum -c SHA256SUMS                                    # 1055 files
+sha256sum -c SHA256SUMS                                    # 1057 files
 python tools/verify_release.py --bundle superactivation   # needs the three oneq-superactivation release assets in release/
 ```
 

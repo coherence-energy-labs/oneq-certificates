@@ -397,12 +397,22 @@
   "heldout_r50_vs_same_producer_dev_r30": {
    "p_one_sided": 1.0,
    "computed": true,
-   "note": "partial sample; bases pooled as the preregistration pools them"
+   "note": "partial sample; bases pooled as the preregistration pools them",
+   "fisher_exact_p_one_sided": 1.0,
+   "test_names": {
+    "p_one_sided": "preregistered: one-sided conditional binomial test, k_h ~ Binomial(k_h + k_d, n_h/(n_h + n_d)) given the pooled count; exact for two Poisson counts, not for two binomial samples of fixed size",
+    "fisher_exact_p_one_sided": "not preregistered (added 2026-11-06, external audit 3): Fisher's exact one-sided test, k_h ~ Hypergeometric(n_h + n_d, k_h + k_d, n_h) with both margins fixed, alternative: the held-out rate is larger; the exact conditional test for two binomial samples"
+   }
   },
   "heldout_r10_vs_same_producer_dev_r30": {
    "p_one_sided": 1.0,
    "computed": true,
-   "note": "partial sample; bases pooled as the preregistration pools them"
+   "note": "partial sample; bases pooled as the preregistration pools them",
+   "fisher_exact_p_one_sided": 1.0,
+   "test_names": {
+    "p_one_sided": "preregistered: one-sided conditional binomial test, k_h ~ Binomial(k_h + k_d, n_h/(n_h + n_d)) given the pooled count; exact for two Poisson counts, not for two binomial samples of fixed size",
+    "fisher_exact_p_one_sided": "not preregistered (added 2026-11-06, external audit 3): Fisher's exact one-sided test, k_h ~ Hypergeometric(n_h + n_d, k_h + k_d, n_h) with both margins fixed, alternative: the held-out rate is larger; the exact conditional test for two binomial samples"
+   }
   }
  },
  "forgeries_accepted_total": 0,
@@ -437,11 +447,11 @@
    }
   },
   "report": {
-   "commit": "0a4ba9d8508b8a0a054d9a1c03706a8aa1e9dd33",
+   "commit": "8c9d0ead6b8258799ff5c5705e88337e8dcc90ba",
    "repository": "present",
    "uncommitted_changes_in_judged_files": true,
    "sha256": {
-    "experiments/m0_prior_art/heldout_d7_partial.py": "b140804c442953fe76f684074a6d1d6774b0e2d38c9c810d58fa5d9174dedaec"
+    "experiments/m0_prior_art/heldout_d7_partial.py": "a244b2586313a51166f051f87b6871e48d3c5e9ed8849c6fc22b429b5e76e051"
    }
   },
   "records": {

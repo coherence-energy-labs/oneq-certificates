@@ -416,6 +416,10 @@ CONTENTS = [
     ("experiments/m0_prior_art/heldout_d7_babysitter.py", "paper 1: the held-out d = 7 run's babysitter (restarts a dead "
                                                           "driver; named by the deviations record)"),
     ("tests/test_heldout_d7_babysitter.py", "paper 1: the babysitter's tests"),
+    # named by paper 1's revision against external audit 3 (docs/reviews/EXTERNAL3_2026-11-06.md)
+    ("experiments/m0_prior_art/gap_distribution_2x2_posthoc.py",
+     "paper 1: the post hoc 2x2 of Sec. VIII's BP-OSD arms (representation x min-sum scaling)"),
+    ("tests/test_gap_distribution_2x2_posthoc.py", "paper 1: the 2x2's scoring, reproduction gate and artifact"),
     # ---- paper 2, revised against the same audits
     ("docs/PREREG_qldpc_scaling_2026-11-03.md", "paper 2: the scaling comparison's preregistration"),
     ("docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md", "paper 2: its deviations"),
@@ -432,6 +436,18 @@ CONTENTS = [
     ("experiments/m0_prior_art/qldpc_scale_probe_trees.py", "paper 2: quantization robustness of the trees"),
     ("experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py", "paper 2: the preregistered scaling campaign"),
     ("experiments/m0_prior_art/qldpc_receipt_reverification.py", "paper 2: every receipt re-verified"),
+    # the campaign's archived inputs (evidence/qldpc_scaling_prereg/inputs/) and its costs (.../costs/) travel with the
+    # campaign's directory in EVIDENCE below; these are what wrote, measure and replay them (external audit 3, 2026-11-06)
+    ("experiments/m0_prior_art/qldpc_scaling_prereg_export_inputs.py",
+     "paper 2: writes the campaign's archived inputs, the one place its model-building code is called"),
+    ("experiments/m0_prior_art/qldpc_scaling_prereg_timed_rerun.py",
+     "paper 2: the campaign re-run with per-stage timers; its production costs, and a byte-for-byte reproduction"),
+    ("tools/replay_qldpc_scaling_campaign.py",
+     "paper 2: replays the preregistered campaign from its archived inputs and records; no producer"),
+    ("tests/test_replay_qldpc_scaling_campaign.py",
+     "paper 2: that archive held to build(), and that replay held to its negative controls and to no producer"),
+    ("tests/test_qldpc_scaling_prereg_timed_rerun.py",
+     "paper 2: the cost records held to their own per-shot times and to the committed record files"),
     # ---- paper 3
     ("docs/PAPER3_LITERATURE_SEARCH.md",
      "paper 3's literature searches: databases, dates, verbatim queries, what was not searched"),
@@ -521,6 +537,9 @@ CONTENTS += [(rel, "paper 3: lane code, records, certificates or the Lean develo
 _REVIEWS = _tree_files("docs/reviews/*_2026-11-0[23].md")
 CONTENTS += [(rel, "the 2026-11-02/03 review round the revised manuscripts answer")
              for rel in _REVIEWS if rel not in {c[0] for c in CONTENTS} and "/PAPER4_" not in rel]
+# the third external audit (of v2026.11.05, all four manuscripts), which the next revision answers; it ships in both
+# bundles, since it reviews paper 4 too
+CONTENTS += [("docs/reviews/EXTERNAL3_2026-11-06.md", "the external audit of v2026.11.05 the revised manuscripts answer")]
 
 # =====================================================================================================================
 # THE SECOND BUNDLE: PAPER 4 (superactivation in two channel uses), a separate quantum-capacity line.
@@ -540,7 +559,8 @@ _P4_SOURCES = [rel for rel in _tree_files(*P4_LANE_ROOTS, "src/oneq/superactivat
                                           # the modules of the hardware engine the lane imports (the import-closure
                                           # guard names any it reaches and this list lacks), and two tools it imports
                                           *_P4_HW, "tools/analyze_r158_independent.py",
-                                          "tools/calibration_window.py", "docs/PAPER4_LITERATURE_SEARCH.md", "docs/reviews/PAPER4_REFEREE*_2026-11-03.md")
+                                          "tools/calibration_window.py", "docs/PAPER4_LITERATURE_SEARCH.md", "docs/reviews/PAPER4_REFEREE*_2026-11-03.md",
+                                          "docs/reviews/EXTERNAL3_2026-11-06.md")
                if not _P4_SKIP.search(rel)]
 SUPERACTIVATION_CONTENTS = [(rel, "paper 4: lane code, records, certificates or tests") for rel in _P4_SOURCES]
 SUPERACTIVATION_CONTENTS += [(rel, "paper 4's manuscript source, regenerable from the evidence")
@@ -709,6 +729,15 @@ EVIDENCE = [
     "evidence/producer_identity_willow_diff_2026-11-03.json",
     "evidence/pymatching_native_dual.json",
     "evidence/pymatching_native_dual_arms.json",     # written by pymatching_native_dual_arms.py (P1's final read)
+    # the same script's 2026-11-03 run, before the exact check was timed (external audit 3), kept byte for byte: the
+    # generator holds the rerun equal to it in every field that is not a time and typesets its ratio beside
+    "evidence/pymatching_native_dual_arms_run_2026-11-03.json",
+    # the post hoc 2x2 of Sec. VIII's BP-OSD arms (external audit 3), named here as well as by the gap_distribution_v4
+    # tree below, so the bundle carries it before and after the commit that adds it
+    "evidence/gap_distribution_v4/posthoc_2x2_2026-11-06/summary.json",
+    "evidence/gap_distribution_v4/posthoc_2x2_2026-11-06/per_shot_d3.jsonl.gz",
+    "evidence/gap_distribution_v4/posthoc_2x2_2026-11-06/per_shot_d5.jsonl.gz",
+    "evidence/gap_distribution_v4/posthoc_2x2_2026-11-06/per_shot_d7.jsonl.gz",
     "evidence/stale_false_alarm_shots.json",
     "evidence/google_corpus_manifest_heldout_d7.json",
     # ---- paper 2, revised against the same audits
@@ -860,9 +889,17 @@ is also needed):
 
 Paper 3's certificates re-check with its own checker (a C compiler is needed):
 `python -m pytest tests/test_r198_ibm_recert.py tests/test_r198_paper3_review.py`
-re-verifies shipped proofs and refuses a corrupted one. Every certificate of the
-three-colour and large morphing circuits regenerates bit for bit from the
-committed prover (`experiments/circuit_distance_exact/recert_campaign.py`) under
+re-verifies shipped proofs and refuses a corrupted one. The 30 certificates of the
+three-colour and large morphing circuits, too large for git, are release assets
+(`oneq-recert-proofs-3c.tar.gz`, `oneq-recert-proofs-morph144.tar.gz`, listed in
+`evidence/circuit_distance_exact/recert_20261102/release_assets.json`): download
+both into DIR, then
+`python experiments/circuit_distance_exact/recert_assets.py verify --archives DIR --extract`
+checks every archive and proof against that record and the manifest and puts the
+proofs in place, and `... recert_assets.py check --threads 8` runs the committed
+checker on them (minutes to over an hour per proof: the manifest's `checker_s`,
+per cell). Each also regenerates bit for
+bit from the committed prover (`experiments/circuit_distance_exact/recert_campaign.py`) under
 the hash in `evidence/circuit_distance_exact/recert_20261102/manifest.json`,
 which then pins the proof the checker decides. Where that proof differs from the
 original record, the prover of the record's day, compiled from git, reproduces

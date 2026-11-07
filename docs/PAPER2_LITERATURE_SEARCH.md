@@ -10,6 +10,109 @@ a scandal — send it.
 
 ## Rounds and dates
 
+- **2026-11-06, after external audit 3 (which named arXiv:2610.28008).** The
+  previous round was 2026-09-15, before that paper appeared (2026-10-20).
+  Run 2026-11-07 04:00-04:20 UTC (2026-11-06 evening EST).
+  - **arXiv itself, advanced search** (`arxiv.org/search/advanced`), field
+    = abstract, terms ANDed, cross-lists included, submission date
+    2026-09-01 to 2026-11-07, 200 results per page. Sixteen queries,
+    verbatim, with the hit counts arXiv returned:
+    `certified AND decoding AND quantum` 15;
+    `certificate AND decoder AND LDPC` 0;
+    `"bivariate bicycle" AND decoder` 31;
+    `"bivariate bicycle" AND decoding` 31;
+    `"maximum likelihood" AND "quantum LDPC"` 1;
+    `"linear programming" AND decoding AND quantum` 6;
+    `"branch and bound" AND decoding` 3;
+    `optimality AND "ordered statistics"` 37 (nearly all statistics, not
+    decoding); `"minimum weight" AND decoding AND certificate` 1;
+    `"gross code"` 11; `"lower bound" AND decoder AND "logical error"` 2;
+    `verifiable AND decoding AND quantum` 15;
+    `benchmark AND decoder AND "maximum likelihood" AND quantum` 1;
+    `"BP-OSD"` 13; `"optimal decoding" AND quantum AND LDPC` 1;
+    `rational AND certificate AND decoding` 5. 118 distinct papers; every
+    title was read, 11 of them were opened (listed below), and the other
+    107 were judged from their titles to be off-topic (most matched
+    "optimality" in statistics) or already recorded (2508.04769,
+    2609.07035, 2507.00254).
+    (The arXiv API, `export.arxiv.org`, answered HTTP 429 and then a
+    redirect loop throughout; the web search was used instead.)
+  - **Web index**, three queries, verbatim: `certified optimality decoding
+    quantum LDPC bivariate bicycle certificate arXiv October 2026`;
+    `exact rational certificate minimum weight decoding BP-OSD lower bound
+    dual arXiv 2026`; `maximum likelihood benchmark quantum LDPC decoder
+    branch and bound certified lower bound gross code 2026`. They found
+    2610.28008 again and two classical-code papers the arXiv queries
+    could not (no "quantum" in their abstracts), 2610.27805 and 2610.32171,
+    and one earlier paper, 2603.19062. Fourteen abstracts were read in
+    all; 2610.28008 in full, and of the other three now cited the
+    sections each citation rests on (named below).
+  - **Found, read, and now cited in paper 2:**
+    - **Banfi, Ferrari, Favano, Tarable, Barletta, "Certified
+      Non-Degenerate Maximum-Likelihood Benchmarking of Quantum LDPC
+      Decoders", arXiv:2610.28008 (2026-10-20).** Read in full. Per-shot
+      certified success / failure / undecided of NON-DEGENERATE ML on
+      [[144,12,12]] (3 rounds) and [[72,12,6]] (6 rounds), full
+      circuit-level noise; upper bounds from verified witnesses, lower
+      bounds from disjoint-detector and charging bounds, best-first
+      branch-and-bound, an adaptive Feldman/Taghavi-Siegel parity-cut LP,
+      HiGHS MIP dual bounds and infeasibility tests; App. C.7: "Costs,
+      charges, and solver bounds use floating-point arithmetic. The
+      current results therefore rely on the solver and its tolerances for
+      numerical lower bounds and for the infeasibility claims"; validation
+      by small-instance tests and by re-evaluating every certified failure
+      with Tesseract's exact IP decoder. No exported proof of the lower
+      bounds is described. THE CLOSEST WORK: same code, same per-shot
+      benchmarking purpose, an overlapping toolbox. It narrows paper 2's
+      novelty sentences (Secs. I and VIII now name it) to what it always
+      meant: EXACT, independently re-checkable proofs of a declared
+      integer objective's minimum, decided without a solver. Compared on
+      four axes in Sec. VIII.
+    - **Hwang, Won, Hwang, "Certified Adaptive List Decoding for
+      Error-Correcting Codes", arXiv:2610.27805 (2026-10-20).** Classical
+      block codes; an LP dual bound and a distance test certify per frame
+      that a neural decoder's candidate is a global ML solution, in
+      floating point with a margin 1e-4 under which a dual-certified frame
+      is "epsilon-optimal in likelihood cost rather than exactly optimal"
+      (their App. A.5). Same mechanism as FWK's ML certificate; not
+      quantum, not exact, not a separate checker. Cited beside Wu et al.
+    - **Fregona, Loebl, Brown, Kastoryano, Paesani, "Dealing with
+      low-weight errors that lead BP OSD to fail", arXiv:2610.30305
+      (2026-10-21).** Proves Tanner-graph "reflections" keep parallel
+      product-sum BP from converging on some weight-3 errors of BB72,
+      BB144, BB288 at code capacity; reports NaN from opposite infinite
+      messages in Roffe's BP-OSD; repairs by Noisy BP (bounded random
+      perturbation) and Detect-Hold BP. Concurrent with paper 2's Sec.
+      VI D (exact cancellation in unscaled min-sum); cited there. No
+      certificates.
+    - **Cheng, Guo, Pan, "Certifying quantum code and circuit distances at
+      scale", arXiv:2611.08247 (2026-11-05).** Certifies code and circuit
+      distances by proved lower bounds paired with logical errors of
+      matching weight; "With one noisy cycle, the certified circuit
+      distance is 10 in both bases for the gross code" (standard
+      schedule); two-gross certified at 16, not the assumed 18. Cited in
+      paper 2's distance paragraph. MATERIAL FOR PAPER 3 (circuit-distance
+      certificates): reported to the owner of that paper.
+  - **Read, not cited (adjacent, no displacement):** Aliasgari,
+    Khodaiemehr, Bagheri, arXiv:2610.32171 (exact Nullstellensatz
+    certificates of syndrome exclusion for classical LDPC matrices, two
+    verifiers; not decoding optimality); Liu, Zeng, Wu, Lao,
+    arXiv:2609.03928 (approximate ML via truncated free energies over a
+    BP-OSD candidate pool, incl. [[144,12,12]]; no certificate); Shang,
+    arXiv:2610.24503 (logical-space theory of OSD lists on the gross
+    code); Lin, arXiv:2611.01360 (logical-class diagnostic layer;
+    "certified faithful window" on the Steane code, a protocol for the
+    gross code; not optimality); Javed, Garcia-Herrero, Vasic, Flanagan,
+    arXiv:2611.03128 (BP-guided Tesseract); Wang, Coveney,
+    arXiv:2609.37629 (adaptive BP-OSD routed by decoder disagreement);
+    Bilgin et al., arXiv:2610.41398 (learned message passing with beam
+    search); Wayo et al., arXiv:2607.19447 (syndrome-to-decoder mapping
+    audit); Xie et al., arXiv:2601.17757 (post-selection by argument
+    reweighting); Pandey, arXiv:2603.19062 (BB baselines on the erasure
+    channel; no certificates).
+  - Not searched this round: Google Scholar, Semantic Scholar, IEEE
+    Xplore, ACM DL; non-English venues. Not-found is not absent.
+
 - **2026-09-15, pre-review refresh.** Web index, two queries, verbatim:
   `"certified decoding" OR "optimality certificate" quantum LDPC bivariate
   bicycle BP-OSD arXiv September 2026`; `linear programming decoding quantum
@@ -104,11 +207,18 @@ decoder-independent, stranger-checkable optimality witness to a
 third-party heuristic decoder's answers, (b) measures certified-repair
 coverage end-to-end on a named quantum code, or (c) reports per-shot
 optimality receipts for a bivariate-bicycle code under stated noise
-models. Nothing found to date does (a), (b), or (c); the four lines
-above are the nearest neighbors and are cited as such in §8.
+models. Nothing found to date does (a) or (b). Since 2026-11-06, (c)
+holds only as narrowed: Banfi et al. (arXiv:2610.28008) report per-shot
+CERTIFIED OUTCOMES of non-degenerate ML on [[144,12,12]] under
+circuit-level noise, with solver-dependent floating-point lower bounds and
+no exported proof; nothing found reports EXACT, independently re-checkable
+per-shot receipts of a declared objective's minimum for a
+bivariate-bicycle code. The lines above are the nearest neighbours and
+are cited as such in §8.
 
 ## Known limits of this search
 
-English-language, arXiv/IEEE/Nature-indexed, through 2026-08-02. No
+English-language, arXiv/IEEE/Nature-indexed, through 2026-11-07 (the
+arXiv rounds; the venue rounds stopped at 2026-08-02). No
 systematic sweep of conference workshops or of the Chinese-language
 literature; the "to our knowledge" qualifier carries this limit.

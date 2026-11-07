@@ -670,6 +670,7 @@ def build() -> dict[str, str]:
     _scale_trees(M)
     _datasets(files)
     _prereg(M, files)
+    _prereg_costs(M, files)
     _reverification(M)
 
     # ------------------------------------------------ operator mutation score of the checker's tests
@@ -1014,19 +1015,22 @@ def _prereg(M: dict, files: dict) -> None:
     M["PrNotCorrection"] = I(not_corr)
     # WHAT THE EIGHT TESTS SUPPORT (final referee, MAJOR 1). The preregistration reports them uncorrected; the text
     # adds, as a qualifier it labels as not preregistered, which of them survive a Bonferroni correction over all
-    # eight (p < 0.05/8), and calls the rest indistinguishable at this size, never a difference "the other way".
+    # eight (p < 0.05/8), and says of the rest only that no difference was detected at this sample size, never a
+    # difference "the other way". No equivalence analysis was done (external audit 3: "indistinguishable" claimed
+    # one), so neither the text nor a macro name may call them indistinguishable or equivalent.
     # The text names the datasets of each group, so the groups are pinned here.
     alpha = 0.05 / len(primary)
     sig = {k for k, (p, _, _) in primary.items() if p < alpha}
     sig_more = {k for k in sig if primary[k][2] > primary[k][1]}
-    indist = set(primary) - sig
+    nodiff = set(primary) - sig
     need(sig_more == sig == {"uniform_p02", "xsector_p02", "stress_p05", "bb_refsched"},
          f"prereg: the significant datasets are now {sorted(sig)} (scaled more: {sorted(sig_more)}); the text names four")
-    need(indist == {"uniform_p01", "hetero_p02", "phenom_p01", "phenom_p02"}, "prereg: the indistinguishable four moved")
-    diffs = [abs(primary[k][2] - primary[k][1]) for k in indist]
+    need(nodiff == {"uniform_p01", "hetero_p02", "phenom_p01", "phenom_p02"},
+         "prereg: the four with no difference detected moved")
+    diffs = [abs(primary[k][2] - primary[k][1]) for k in nodiff]
     need(primary["uniform_p01"][2] > primary["uniform_p01"][1]
          and all(primary[k][2] < primary[k][1] for k in ("hetero_p02", "phenom_p01", "phenom_p02")),
-         "prereg: the point estimates of the indistinguishable four changed direction; the text says which way")
+         "prereg: the point estimates of the four with no difference detected changed direction; the text says which")
     need(all(primary[k][1] - primary[k][2] == 2 for k in ("hetero_p02", "phenom_p01", "phenom_p02")),
          "prereg: the text says the scaled setting finds two fewer on hetero and on each phenomenological dataset")
     need(not_corr == 0, "prereg: the text says every miss is a heavier correction")
@@ -1034,11 +1038,11 @@ def _prereg(M: dict, files: dict) -> None:
              for k in primary if k not in ("stress_p05", "bb_refsched")),
          "prereg: the text says no hit outside stress and circuit is on a branching tree")
     M["PrSigMore"] = I(len(sig_more))
-    M["PrIndist"] = I(len(indist))
+    M["PrNoDiff"] = I(len(nodiff))
     M["PrSigMaxP"] = BOUND(max(primary[k][0] for k in sig), "ceil", 1)        # 'p <=' : an upper bound
-    M["PrIndistMinP"] = BOUND(min(primary[k][0] for k in indist), "floor", 2)  # 'p >=' : a lower bound
-    M["PrIndistDiffMin"] = I(min(diffs))
-    M["PrIndistDiffMax"] = I(max(diffs))
+    M["PrNoDiffMinP"] = BOUND(min(primary[k][0] for k in nodiff), "floor", 2)  # 'p >=' : a lower bound
+    M["PrNoDiffGapMin"] = I(min(diffs))
+    M["PrNoDiffGapMax"] = I(max(diffs))
     # the secondary logical-error tests: which differences are significant at the UNCORRECTED 0.05 the text and the
     # Table V caption state, and -- so that the choice of criterion cannot be what makes them so -- the same set under
     # Bonferroni over the five; and that the scaled setting's count is the lower one on every code-capacity dataset
@@ -1053,6 +1057,177 @@ def _prereg(M: dict, files: dict) -> None:
     M["PrLogDatasets"] = I(len(secondary))
     M["PrLogSig"] = I(len(lsig))
     M["PrLogSigMaxP"] = BOUND(max(secondary[k][0] for k in lsig), "ceil", 1)
+
+
+#: a dataset as the running text names it ("on the ... dataset")
+RUNG_PLAIN = {"uniform_p01": r"uniform $p=0.01$", "uniform_p02": r"uniform $p=0.02$",
+              "hetero_p02": "heterogeneous", "phenom_p01": r"phenomenological $p=0.01$",
+              "phenom_p02": r"phenomenological $p=0.02$", "xsector_p02": "X-sector", "stress_p05": "stress",
+              "bb_refsched": "circuit"}
+
+
+def _nearest_rank(values: list) -> dict:
+    """The quantile rule both cost artifacts state: the ceil(q N)-th smallest value."""
+    v = sorted(values)
+    out = {k: v[max(1, -(-int(q * 1000) * len(v) // 1000)) - 1] for k, q in (("median", 0.5), ("p90", 0.9),
+                                                                                 ("p99", 0.99))}
+    out["max"], out["n"] = v[-1], len(v)
+    return out
+
+
+def MS(seconds: float) -> str:
+    """A latency in milliseconds, rounded half-even like the provenance gate: three decimals below 1 ms, one below
+    10 ms, else the integer the gate derives from the artifact's seconds (int(round(1000 s))). Never two decimals,
+    the shape the gate reads as a rate that must trace to an artifact."""
+    ms = 1000 * seconds
+    if ms < 1:
+        return f"{ms:.3f}"
+    return f"{ms:.1f}" if ms < 10 else I(int(round(ms)))
+
+
+def _prereg_costs(M: dict, files: dict) -> None:
+    """Costs of the preregistered campaign (external audit 3, paper A): production latency per receipt from the
+    timed re-run (experiments/m0_prior_art/qldpc_scaling_prereg_timed_rerun.py), checking latency per receipt from
+    the producer-free replay (tools/replay_qldpc_scaling_campaign.py), and the archive the replay reads."""
+    import hashlib
+    import re
+    sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()  # noqa: E731
+    pre = EV / "qldpc_scaling_prereg"
+    summ = json.loads((pre / "summary.json").read_text(encoding="utf-8"))
+    harness = ROOT / "experiments" / "m0_prior_art" / "qldpc_scaling_prereg_timed_rerun.py"
+    replay_tool = ROOT / "tools" / "replay_qldpc_scaling_campaign.py"
+    names = list(summ["datasets"])
+    # ---- the archive the replay reads, and the replay's own verdict
+    man_p = pre / "inputs" / "MANIFEST.json"
+    man = json.loads(man_p.read_text(encoding="utf-8"))
+    pin = re.search(r'PINNED_MANIFEST_SHA256 = "([0-9a-f]{64})"', replay_tool.read_text(encoding="utf-8"))
+    need(pin is not None and pin.group(1) == sha(man_p), "costs: the replay tool does not pin the archive's manifest")
+    need(set(man["datasets"]) == set(names) and man["expected"]["nontrivial"] == sum(
+        summ["datasets"][k]["nontrivial"] for k in names), "costs: the archive does not cover the campaign")
+    for k in names:
+        d = man["datasets"][k]
+        need(d["records"]["sha256"] == summ["datasets"][k]["records_sha256"] == sha(ROOT / d["records"]["file"])
+             and d["input"]["sha256"] == sha(ROOT / d["input"]["file"]), f"costs: archive binding of {k} is stale")
+    chk = json.loads((pre / "costs" / "checking.json").read_text(encoding="utf-8"))
+    need(chk["verdict"] == "COMPLETE REPLAY PASSED" and chk["manifest_sha256"] == sha(man_p)
+         and chk["tool_sha256"] == sha(replay_tool), "costs: the replay report is not a complete pass of today's tool")
+    for rel, h in chk["checkers_sha256"].items():
+        need(sha(ROOT / rel) == h, f"costs: {rel} changed since the replay measured it")
+    for k in names:
+        s, got = summ["datasets"][k], chk["datasets"][k]
+        for key, v in s.items():
+            if key not in ("seconds", "records_sha256", "code_sha256", "deviation"):
+                need(got.get(key) == v, f"costs: the replay's {k}.{key} is not summary.json's")
+    need(chk["receipts_checked"] == man["expected"]["nontrivial"], "costs: the replay did not time every receipt")
+    # ---- production, per dataset, from the re-run that reproduced the records
+    prod, both, rows, docs = {}, {}, [], {}
+    env, runs, milp, milp_bad, bnb, bnb_bad, records = [], [], 0, 0, 0, 0, 0
+    for k in names:
+        p = docs[k] = json.loads((pre / "costs" / f"production_{k}.json").read_text(encoding="utf-8"))
+        s = summ["datasets"][k]
+        need(p["schema"] == "oneq-qldpc-scaling-prereg-production-cost/1" and p["dataset"] == k, f"costs {k}: schema")
+        need(p["timing_script_sha256"] == sha(harness), f"costs {k}: the timing harness changed since the run")
+        code = s.get("code_sha256", summ["code_sha256"])
+        need({r: v["sha256"] for r, v in p["code_of_record"].items()} == code,
+             f"costs {k}: the re-run did not use the bytes the dataset ran under")
+        rp = p["reproduction"]
+        need(rp["records_byte_identical"] and rp["analysis_identical"] and not rp["differing_records"]
+             and rp["records_sha256_rerun"] == s["records_sha256"] and rp["unresolved"] == 0
+             and rp["records"] == s["nontrivial"], f"costs {k}: the re-run did not reproduce the run of record")
+        records += rp["records"]
+        sh = p["shots"]
+        need(sh["shot_index"] == list(range(s["nontrivial"])), f"costs {k}: the timed shots are not the records")
+        for i in range(len(sh["shot_index"])):
+            need(abs(sh["production_wall_s"][i] - sum(sh["wall_s"][st][i] for st in p["production_stages"])) < 1e-9,
+                 f"costs {k}: production is not the sum of its stages")
+        need(p["production_stages"] == ["lp", "exactify", "prod_check", "milp", "bnb"], f"costs {k}: stages moved")
+        prod[k] = _nearest_rank(sh["production_wall_s"])
+        need(prod[k] == p["summary_s"]["production"], f"costs {k}: the stored production quantiles are not the rule's")
+        ser = chk["series"][k]
+        need(ser["shot_index"] == [i for i in range(s["nontrivial"])], f"costs {k}: the replay timed other shots")
+        both[k] = _nearest_rank(ser["both_s"])
+        need(both[k] == chk["summary_s"][k]["both"], f"costs {k}: the stored checking quantiles are not the rule's")
+        ss = p["summary_s"]
+        milp += ss["milp_calls"]
+        milp_bad += ss["milp_not_optimal"]
+        bnb += ss["bnb_calls"]
+        bnb_bad += ss["bnb_without_tree"]
+        need(ss["bnb_calls"] == s["receipt_kinds"]["tree"], f"costs {k}: a tree was attempted on a flat-receipt shot")
+        env.append(p["environment"])
+        runs.append(p["run"])
+        rows.append(rf"{RUNG_LABEL[k]} & {I(s['nontrivial'])} & "
+                    + " & ".join(MS(prod[k][q]) for q in ("median", "p90", "p99", "max")) + " & "
+                    + " & ".join(MS(both[k][q]) for q in ("median", "p90", "p99", "max")) + r" \\")
+    need(milp_bad == 0 and bnb_bad == 0, "costs: the text says every MILP returned an optimal status and every "
+                                         "tree closed inside its caps")
+    lim = {json.dumps(docs[k]["limits"], sort_keys=True) for k in names}
+    need(len(lim) == 1, "costs: the datasets ran under different limits")
+    lim = json.loads(lim.pop())
+    need(lim["memory_cap"] is None and lim["dataset_wall_cap"] is None, "costs: the text says no memory or wall cap")
+    need(len({e["cpu_name"] for e in env}) == 1 and len({e["logical_cpus"] for e in env}) == 1
+         and env[0]["cpu_name"], "costs: the datasets ran on different machines, or the processor is unnamed")
+    M["PcRecords"] = I(records)
+    M["PcRerunUnresolved"] = I(0)
+    M["PcMilpCalls"] = I(milp)
+    M["PcBnbCalls"] = I(bnb)
+    M["PcMilpLimit"] = I(int(lim["milp_time_limit_s"]))
+    M["PcBnbNodes"] = I(lim["bnb_max_nodes"])
+    M["PcBnbDepth"] = I(lim["bnb_max_depth"])
+    M["PcTreeBTimeout"] = I(lim["tree_checker_b_timeout_s"])
+    med = [prod[k]["median"] for k in names]
+    M["PcProdMedLo"], M["PcProdMedHi"] = MS(min(med)), MS(max(med))
+    cmed = [both[k]["median"] for k in names]
+    M["PcCheckMedLo"], M["PcCheckMedHi"] = MS(min(cmed)), MS(max(cmed))
+    # the split the text gives: the production checker alone, against the second checker (the reference flat checker
+    # reads the check matrix as a dense array), recomputed from the series
+    pc = [_nearest_rank(chk["series"][k]["production_checker_s"])["median"] for k in names]
+    sc = [_nearest_rank(chk["series"][k]["second_checker_s"])["median"] for k in names]
+    need(all(b > a for a, b in zip(pc, sc)), "costs: the text says the second checker is the larger share everywhere")
+    M["PcProdCheckerMedLo"], M["PcProdCheckerMedHi"] = MS(min(pc)), MS(max(pc))
+    worst = max(names, key=lambda k: prod[k]["max"])
+    M["PcProdMaxMs"] = MS(prod[worst]["max"])
+    M["PcProdMaxWhere"] = RUNG_PLAIN[worst]
+    sw = docs[worst]["shots"]
+    slowest = max(range(len(sw["production_wall_s"])), key=lambda i: sw["production_wall_s"][i])
+    need(sw["production_wall_s"][slowest] == prod[worst]["max"], "costs: the slowest shot is not the maximum")
+    M["PcProdMaxKind"] = {"flat": "flat receipt", "tree": "branch-dual tree"}[sw["receipt_kind"][slowest]]
+    # where that time went: the production stage holding the largest share of the slowest shot, and the share
+    stage = max(docs[worst]["production_stages"], key=lambda st: sw["wall_s"][st][slowest])
+    share = sw["wall_s"][stage][slowest] / sw["production_wall_s"][slowest]
+    need(share >= 0.5, "costs: the text names one stage as most of the slowest receipt's time")
+    M["PcProdMaxS"] = f"{prod[worst]['max']:.1f}"
+    M["PcProdMaxShare"] = str(math.floor(100 * share))
+    M["PcProdMaxStage"] = {"lp": "its linear program", "bnb": "the branch-dual search over its node relaxations",
+                           "milp": "the MILP", "exactify": "rationalising its dual",
+                           "prod_check": "the production checker's acceptance"}[stage]
+    need(sw["receipt_kind"][slowest] == "tree", "costs: the text gives the slowest receipt's tree size; it is flat")
+    nodes = [t["nodes"] for t in docs[worst]["tree_receipts"] if t["shot_index"] == sw["shot_index"][slowest]]
+    need(len(nodes) == 1, "costs: the slowest tree is not in the artifact's tree list")
+    M["PcProdMaxNodes"] = I(nodes[0])
+    cworst = max(names, key=lambda k: both[k]["max"])
+    M["PcCheckMaxMs"] = MS(both[cworst]["max"])
+    M["PcCheckMaxWhere"] = RUNG_PLAIN[cworst]
+    # decoding both settings, per shot: its largest per-dataset median (BP-OSD's cost, not the receipt's)
+    dec = [_nearest_rank([a + b for a, b in zip(docs[k]["shots"]["wall_s"]["decode_1.0"],
+                                                docs[k]["shots"]["wall_s"]["decode_0.625"])])["median"] for k in names]
+    M["PcDecodeMedMaxMs"] = MS(max(dec))
+    M["PcCpuName"] = re.sub(r"\((R|TM)\)", "", env[0]["cpu_name"]).replace("  ", " ").strip()
+    M["PcLogicalCpus"] = I(env[0]["logical_cpus"])
+    cw = [r["cpu_over_wall"] for r in runs]
+    need(all(0.5 < x <= 1.05 for x in cw), "costs: a run used more or less than about one core; the text says one")
+    M["PcCpuWallLo"], M["PcCpuWallHi"] = f"{min(cw):.2f}", f"{max(cw):.2f}"
+    box = [e["box_cpu_utilisation_during_run"] for e in env]
+    M["PcBoxLo"], M["PcBoxHi"] = str(math.floor(100 * min(box))), str(math.ceil(100 * max(box)))
+    peak = math.ceil(max(e["peak_working_set_bytes"] for e in env) / 2 ** 20)
+    need(0 < peak < 1000, "costs: the text prints the peak working set in MB as a plain integer below 1,000")
+    M["PcPeakMB"] = I(peak)
+    M["PcThreadsMax"] = I(max(e["process_threads_max"] for e in env))
+    lines = [r"\begin{tabular}{@{}lrrrrrrrrr@{}}", r"\toprule",
+             r" & & \multicolumn{4}{c}{production (ms)} & \multicolumn{4}{c}{checking, both checkers (ms)} \\",
+             r"\cmidrule(lr){3-6}\cmidrule(l){7-10}",
+             r"dataset & $N$ & median & p90 & p99 & max & median & p90 & p99 & max \\", r"\midrule",
+             *rows, r"\bottomrule", r"\end{tabular}"]
+    files["tab_prereg_costs.tex"] = "\n".join(lines) + "\n"
 
 
 def main() -> int:

@@ -27,12 +27,24 @@
     "released_status_of_those_shots": {}
    },
    "cost_per_call_us": {
-    "plain_decode_median": 22.500054910779,
-    "decode_with_duals_median": 94.89990770816803,
-    "region_to_cut_conversion_median": 86.90007962286472,
-    "with_duals_plus_conversion_median": 183.15005581825972,
-    "ratio_of_medians": 8.139982615354368,
-    "median_of_per_call_ratios": 8.114165289616214
+    "plain_decode_median": 16.799895092844963,
+    "decode_with_duals_median": 51.39992572367191,
+    "region_to_cut_conversion_median": 62.80001252889633,
+    "with_duals_plus_conversion_median": 114.54988270998001,
+    "ratio_of_medians": 6.818487977271152,
+    "median_of_per_call_ratios": 6.809877092353146,
+    "plain_decode_p99": 39.50495040044188,
+    "decode_with_duals_p99": 114.79994282126427,
+    "region_to_cut_conversion_p99": 124.70190180465578,
+    "with_duals_plus_conversion_p99": 230.01712048426268,
+    "exact_check_median": 5100.550013594329,
+    "exact_check_p99": 13554.35205856338,
+    "complete_median": 5214.450065977871,
+    "complete_p99": 13711.443094071,
+    "complete_ratio_of_medians": 310.38587069503154,
+    "exact_check_ratio_of_medians": 303.6060633358742,
+    "median_of_per_call_complete_ratios": 309.874081292053,
+    "calls": 2000
    },
    "grid_bits": 19
   },
@@ -62,12 +74,24 @@
     "released_status_of_those_shots": {}
    },
    "cost_per_call_us": {
-    "plain_decode_median": 31.299889087677002,
-    "decode_with_duals_median": 118.75003110617399,
-    "region_to_cut_conversion_median": 117.10007674992085,
-    "with_duals_plus_conversion_median": 237.30017710477114,
-    "ratio_of_medians": 7.581502172101881,
-    "median_of_per_call_ratios": 7.632551489539971
+    "plain_decode_median": 26.900088414549828,
+    "decode_with_duals_median": 77.1000050008297,
+    "region_to_cut_conversion_median": 94.50002107769251,
+    "with_duals_plus_conversion_median": 171.90014477819204,
+    "ratio_of_medians": 6.39031895096724,
+    "median_of_per_call_ratios": 6.374186829406559,
+    "plain_decode_p99": 58.703096583485596,
+    "decode_with_duals_p99": 156.70191496610641,
+    "region_to_cut_conversion_p99": 169.21489266678688,
+    "with_duals_plus_conversion_p99": 318.8050980679691,
+    "exact_check_median": 6705.899955704808,
+    "exact_check_p99": 16732.239045668393,
+    "complete_median": 6869.649863801897,
+    "complete_p99": 16907.48875727877,
+    "complete_ratio_of_medians": 255.37647898905092,
+    "exact_check_ratio_of_medians": 249.28914181849655,
+    "median_of_per_call_complete_ratios": 256.33392805048015,
+    "calls": 2000
    },
    "grid_bits": 18
   },
@@ -97,22 +121,58 @@
     "released_status_of_those_shots": {}
    },
    "cost_per_call_us": {
-    "plain_decode_median": 77.94995326548815,
-    "decode_with_duals_median": 264.65009432286024,
-    "region_to_cut_conversion_median": 248.849974013865,
-    "with_duals_plus_conversion_median": 518.1999877095222,
-    "ratio_of_medians": 6.647855014673268,
-    "median_of_per_call_ratios": 6.653604314638674
+    "plain_decode_median": 62.95007187873125,
+    "decode_with_duals_median": 182.6999941840768,
+    "region_to_cut_conversion_median": 190.29993563890457,
+    "with_duals_plus_conversion_median": 373.7498773261905,
+    "ratio_of_medians": 5.9372430590102026,
+    "median_of_per_call_ratios": 5.8614191537383,
+    "plain_decode_p99": 128.26204532757396,
+    "decode_with_duals_p99": 319.4038732908666,
+    "region_to_cut_conversion_p99": 326.0059212334454,
+    "with_duals_plus_conversion_p99": 626.8048845231533,
+    "exact_check_median": 14552.749926224351,
+    "exact_check_p99": 30446.452032774683,
+    "complete_median": 14903.699979186058,
+    "complete_p99": 30843.38614484295,
+    "complete_ratio_of_medians": 236.7542964509549,
+    "exact_check_ratio_of_medians": 231.17924240434814,
+    "median_of_per_call_complete_ratios": 238.50840305705458,
+    "calls": 2000
    },
    "grid_bits": 18
   }
  },
  "shots_per_config": 2000,
+ "timing": {
+  "plain_decode": "decode_to_edges_array: the decoder alone; the baseline of every ratio",
+  "decode_with_duals": "decode_to_edges_array_with_duals: decoding plus the dual export",
+  "region_to_cut_conversion": "region_duals_to_cut_packing: the exported regions turned into cut sets",
+  "with_duals_plus_conversion": "decoding, exporting and building the witness (production; no check)",
+  "exact_check": "the checker's input built from the exported edges and cut sets, then check_epsilon on PyMatching's integer weights with eps_max = 0, in exact rationals (checking, on its own)",
+  "complete": "decode with export + conversion + exact check, per call: the whole certified call",
+  "statistics": "median and 99th percentile (NumPy linear interpolation) over the same calls; every ratio is to the plain decode of the same calls; single-thread Python on a shared workstation"
+ },
+ "machine_cpu_percent": {
+  "sim_d5_r25": {
+   "cpu_percent_before": 24.2,
+   "cpu_percent_after": 59.0
+  },
+  "willow_d5_at_q8_7_X_r30": {
+   "cpu_percent_before": 61.5,
+   "cpu_percent_after": 57.5
+  },
+  "willow_d7_at_q6_7_X_r30": {
+   "cpu_percent_before": 56.3,
+   "cpu_percent_after": 53.0
+  }
+ },
+ "logical_cpus": 24,
  "companion": "evidence/pymatching_native_dual.json (the RAW and GRID arms' certification, left as recorded)",
  "pymatching_integer_weights": "W_int = 2*round(w*c), c = (2^24 - 1)/max|w|, C round (half away from zero)",
  "released_receipts": "data/epsilon_receipts/<config>/chunk_000001.. (250 shots each): the corrections the paper certifies for the same shots",
  "patch_sha256": "6d1843e968b25763e0387ed01b0f73d2ffd639709883c064e14d16d605a06401",
- "script_sha256": "547efbba14c9af8fc05cefff79024399c3e04af38f77f7240d0fc7f6c80c4973",
+ "script_sha256": "0f2f8da02a1e4ce2d2170aed71f32d8d601a41a23ec7f8fc5f549854d6dd43d6",
  "platform": "Windows-11-10.0.26200-SP0",
  "python": "3.14.3"
 }

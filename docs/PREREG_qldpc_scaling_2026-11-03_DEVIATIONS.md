@@ -64,3 +64,20 @@ are the operator wrapper's wall-clock for each invocation; the runner's own `sec
 | `experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py` | 842b465f085f735e805c9a9e1609b6ca625294d3021ba7ea87d83ce9e5a6d632 | 1da3e1c05777b3e7e12afe870cb0aeceb44979ec190676cb822db9456168ef74 |
 
 The checkers and the producer module are unchanged.
+
+## Note (2026-11-06): additions after the results, not deviations
+
+External audit 3 of release v2026.11.05 asked for the campaign's inputs to be archived and for its costs. Three
+things were added after the run. None changes a seed, a sample, a receipt, a score, the analysis or any file the run
+wrote: `summary.json` and the eight record files are byte-for-byte as the run left them.
+
+* **An archive of the normative inputs** (`evidence/qldpc_scaling_prereg/inputs/`, written by
+  `experiments/m0_prior_art/qldpc_scaling_prereg_export_inputs.py`): what the runner's `build()` fixed for each
+  dataset, plus every nontrivial shot's sampled fault (or, at circuit level, sampled observable bit), which the
+  records do not carry. The samples were re-drawn from the preregistered seeds and kept only because every re-drawn
+  syndrome equals the recorded one. A manifest binds each input to its record file.
+* **A producer-free replay** of all receipts from that archive (`tools/replay_qldpc_scaling_campaign.py`).
+* **A timed re-run** of the runner on the preregistered seeds, under the bytes each dataset ran under
+  (`experiments/m0_prior_art/qldpc_scaling_prereg_timed_rerun.py`), written to `evidence/qldpc_scaling_prereg/costs/`.
+  It is a measurement of cost and a reproduction check; its records are compared with the run of record and
+  discarded, never substituted for it. The run of record's per-shot production times were not recorded.

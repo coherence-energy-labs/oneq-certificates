@@ -122,9 +122,26 @@ def release_tree_misses(tex: str, tag: str, bundle: pathlib.Path = BUNDLE) -> li
             hit = any(f == p or f.endswith("/" + p) for f in files)
         else:
             hit = p in files or any(f.startswith(p + "/") for f in files)
+        if not hit and p in release_asset_names(bundle, files):
+            hit = True
         if not hit:
             missing.append(p)
     return missing
+
+
+#: Shipped records that list files attached to the release as ASSETS rather than carried in the tree (2026-11-06:
+#: paper 3 names the two archives of its large proofs; external audit 3). A name counts as carried only when the record
+#: itself ships in the bundle, so a manuscript cannot name an asset the release does not describe.
+RELEASE_ASSET_RECORDS = ("evidence/circuit_distance_exact/recert_20261102/release_assets.json",)
+
+
+def release_asset_names(bundle: pathlib.Path, files: set[str]) -> set[str]:
+    import json
+    out = set()
+    for rec in RELEASE_ASSET_RECORDS:
+        if rec in files and (bundle / rec).is_file():
+            out |= {a["name"] for a in json.loads((bundle / rec).read_text(encoding="utf-8")).get("archives", [])}
+    return out
 
 
 def cites_release(tex: str, numbers: str) -> bool:

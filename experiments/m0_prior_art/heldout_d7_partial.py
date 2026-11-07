@@ -24,6 +24,14 @@ Every view is per arm, with its own sample size, and pooled per round count as t
 
 Receipts are verified against their index's sha256 before a chunk is counted, as the runner's own resume does. The
 preregistered conditional test is computed only between arms that both have data, and labelled partial.
+
+THE TWO TESTS, NAMED FOR WHAT THEY ARE (external audit 3, 2026-11-06). The preregistration's test allocates the
+pooled not-proven count binomially, k_h ~ Binomial(k_h + k_d, n_h / (n_h + n_d)): that is the exact conditional test
+for two POISSON counts. For two binomial samples of fixed size, conditioning on the total leaves a HYPERGEOMETRIC
+k_h -- Fisher's exact test. The preregistered test stays the preregistered one (`p_one_sided`); Fisher's one-sided p,
+with the alternative that the held-out rate is larger, is reported beside it (`fisher_exact_p_one_sided`), each with
+its name in the record. Neither repairs the selection a completion-based stop makes (above): both are computed on the
+completed chunks.
 """
 from __future__ import annotations
 
@@ -56,12 +64,38 @@ def cp_upper_one_sided(k: int, n: int, level: float = 0.95) -> float | None:
 
 
 def conditional_test(k_h: int, n_h: int, k_d: int, n_d: int) -> float | None:
-    """The preregistration's one-sided exact conditional binomial p-value (heldout_willow_d7.conditional_test)."""
+    """The preregistration's one-sided conditional binomial p-value (heldout_willow_d7.conditional_test, whose bytes
+    the preregistration froze): given k = k_h + k_d, k_h ~ Binomial(k, n_h / (n_h + n_d)) under equal rates. Exact for
+    two Poisson counts; for two binomial samples of fixed size the exact conditional test is `fisher_test`."""
     from scipy.stats import binom
     if not n_h or not n_d:
         return None
     k = k_h + k_d
     return 1.0 if k == 0 else float(binom.sf(k_h - 1, k, n_h / (n_h + n_d)))
+
+
+def fisher_test(k_h: int, n_h: int, k_d: int, n_d: int) -> float | None:
+    """Fisher's exact one-sided p-value, the exact conditional test for two binomial samples of fixed size: with both
+    margins fixed, k_h ~ Hypergeometric(population n_h + n_d, successes k_h + k_d, draws n_h) under equal rates, and
+    p = P(K >= k_h), the alternative being that the held-out rate is LARGER (scipy.stats.fisher_exact on
+    [[k_h, n_h - k_h], [k_d, n_d - k_d]] with alternative="greater" gives the same number). Not preregistered: added
+    2026-11-06 (external audit 3) beside the preregistered `conditional_test`."""
+    from scipy.stats import hypergeom
+    if not n_h or not n_d:
+        return None
+    k = k_h + k_d
+    return 1.0 if k == 0 else float(min(1.0, hypergeom.sf(k_h - 1, n_h + n_d, k, n_h)))
+
+
+#: The names the record gives the two tests, so no reader takes one for the other (external audit 3, 2026-11-06).
+TEST_NAMES = {
+    "p_one_sided": "preregistered: one-sided conditional binomial test, k_h ~ Binomial(k_h + k_d, n_h/(n_h + n_d)) "
+                   "given the pooled count; exact for two Poisson counts, not for two binomial samples of fixed size",
+    "fisher_exact_p_one_sided": "not preregistered (added 2026-11-06, external audit 3): Fisher's exact one-sided "
+                                "test, k_h ~ Hypergeometric(n_h + n_d, k_h + k_d, n_h) with both margins fixed, "
+                                "alternative: the held-out rate is larger; the exact conditional test for two "
+                                "binomial samples",
+}
 
 
 def completed_chunks(run_root: pathlib.Path, arm: str) -> dict[int, dict]:
@@ -162,12 +196,14 @@ def analyse(run_root: pathlib.Path, stop: dict, nontrivial_of=corpus_nontrivial)
                      "worst_case_upper_95_one_sided": cp_upper_one_sided(wk, wn)}
     tests = {}
     for r in ("r50", "r10"):
-        p = conditional_test(pooled[r]["not_proven"], pooled[r]["nontrivial"],
-                             pooled["r30"]["not_proven"], pooled["r30"]["nontrivial"])
+        cells = (pooled[r]["not_proven"], pooled[r]["nontrivial"], pooled["r30"]["not_proven"],
+                 pooled["r30"]["nontrivial"])
+        p = conditional_test(*cells)
         tests[f"heldout_{r}_vs_same_producer_dev_r30"] = {
             "p_one_sided": p, "computed": p is not None,
             "note": "partial sample; bases pooled as the preregistration pools them" if p is not None
-                    else "not computable: one of the two arms has no completed chunk"}
+                    else "not computable: one of the two arms has no completed chunk",
+            "fisher_exact_p_one_sided": fisher_test(*cells), "test_names": TEST_NAMES}
     return {"schema": "oneq-heldout-willow-d7-partial/1", "preregistration": PREREG,
             "status": "STOPPED_BY_RULE", "stop_record": stop, "arms": arms, "pooled": pooled, "tests": tests,
             "forgeries_accepted_total": sum(a["completed"]["forgeries_accepted"] for a in arms.values()),

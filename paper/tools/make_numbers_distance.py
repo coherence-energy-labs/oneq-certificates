@@ -681,6 +681,48 @@ def build() -> dict[str, str]:
     # nearest, not ceiling: a ceiling overstated both (0.73 GB printed 0.8; 32.2 h printed 33; final referee)
     put("RecertRegenGB", f"{sum(c['proof_bytes'] for c in regen) / 1e9:.2f}", src)
     put("RecertTcHours", f"{sum(c['prover_s'] + c['checker_s'] for c in tc_cells) / 3600:.0f}", src)
+
+    # THE LARGE PROOFS AS RELEASE ASSETS (2026-11-06, external audit 3, Paper C): v2026.11.05 attached them as two
+    # archives while the text said they ship only as models and hashes. What the text says about them is read from the
+    # record recert_assets.py writes from the archives, held here to the manifest cell by cell.
+    asrc = "recert_20261102/release_assets.json"
+    ar = J(RR / "release_assets.json")
+    lf = lambda p: hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()  # noqa: E731
+    need(ar["manifest_sha256_lf"] == lf(RR / "manifest.json"), "the release-asset record was written against another manifest")
+    want = {f"recert_20261102/proofs/{c['family']}/{c['kind']}/proof_{c['circuit']}_{c['basis']}{c['rounds']}_w{c['w']}.bin": c
+            for c in regen}
+    got = {m["path"]: (m["bytes"], m["sha256"]) for a in ar["archives"] for m in a["members"]}
+    need(len(got) == sum(len(a["members"]) for a in ar["archives"]) and set(got) == set(want)
+         and all(got[p] == (c["proof_bytes"], c["proof_sha256"]) for p, c in want.items()),
+         "the release-asset archives are not exactly the manifest's unshipped proofs")
+    arch = {a["name"]: a for a in ar["archives"]}
+    need(sorted(arch) == ["oneq-recert-proofs-3c.tar.gz", "oneq-recert-proofs-morph144.tar.gz"]
+         and arch["oneq-recert-proofs-3c.tar.gz"]["families"] == ["3c", "3c_t2"]
+         and arch["oneq-recert-proofs-morph144.tar.gz"]["families"] == ["morph144"],
+         "the release-asset archives are not the two the text names")
+    named = set(re.findall(r"oneq-recert-proofs-[a-z0-9]+\.tar\.gz", TXT("paper/circuit-distance/main.tex")))
+    need(named == set(arch), f"paper 3 names the archives {sorted(named)}, the record {sorted(arch)}")
+    put("RecertAssetTcN", len(arch["oneq-recert-proofs-3c.tar.gz"]["members"]), asrc)
+    put("RecertAssetMorphN", len(arch["oneq-recert-proofs-morph144.tar.gz"]["members"]), asrc)
+    put("RecertAssetMB", f"{ar['totals']['archive_bytes'] / 1e6:.0f}", asrc)
+    # checking cost, from the campaign's own checker runs at its thread count: the large proofs take minutes to
+    # hours each, the shipped ones about a second at most
+    big = [c["checker_s"] for c in regen]
+    put("RecertBigCheckMinMin", f"{min(big) / 60:.1f}", src)
+    put("RecertBigCheckMaxH", f"{max(big) / 3600:.1f}", src)
+    put("RecertBigCheckHours", f"{sum(big) / 3600:.1f}", src)
+    put("RecertSmallCheckMaxS", f"{max(c['checker_s'] for c in cells if c['shipped']):.1f}", src)
+    # and a reader's route actually run: proofs downloaded from the release, verified, extracted and checked again
+    runs = [J(p) for p in sorted((RR / "asset_checks").glob("*.json"))]
+    rows = [r for run in runs for r in run["rows"]]
+    need(rows and all(r["verified"] for r in rows) and len({r["proof"] for r in rows}) == len(rows)
+         and all(r["proof"] in want for r in rows), "no release-asset proof was checked, or one was not VERIFIED")
+    need(all(run["checker_source_sha256_lf"] == lf(ROOT / "experiments" / "circuit_distance_exact" / "ccheck.c")
+             and run["manifest_sha256_lf"] == ar["manifest_sha256_lf"] for run in runs),
+         "a release-asset check ran another checker or against another manifest")
+    put("RecertAssetChecked", len(rows), "recert_20261102/asset_checks/")
+    put("RecertAssetUnchecked", len(regen) - len(rows), "recert_20261102/asset_checks/ against the manifest")
+    need(all(c["verified"] for c in regen), "a release-asset proof was not VERIFIED in the re-certification")
     differ = [c for c in cells if not c["proof_equal"]]
     magics = sorted({c["record_reproduced_by"]["magic"] for c in differ})
     commits = sorted({c["record_reproduced_by"]["commit"] for c in differ})

@@ -110,7 +110,8 @@ The record, the first watchdog's log, and the restarted run's log are kept with 
 | `experiments/m0_prior_art/heldout_willow_d7_interleaved.py` (deviation 1) | 84f076c437a8df865ede89ef1e97db5ead6295f76bf06b7cb77539b17c8cae86 |
 | `experiments/m0_prior_art/heldout_d7_watchdog.py` (deviation 1) | a34d19ab7c6d03663171c91bf09ea548bf0b460e927df550bb7a8b67c3c6dac4 |
 | `experiments/m0_prior_art/heldout_d7_partial.py` (the per-arm partial report, as committed with deviation 1 in 4030f88d) | 9dd066bec2f9f1cb55f79fe35d4719e6d60562f05e1156de18a6ae3d521c94ff |
-| `experiments/m0_prior_art/heldout_d7_partial.py` (as run on the stopped sample, 2026-11-05: adds a head that pins the producer's modules to 2008c81f and the driver to 4030f88d, hashes the run records, verifies the copy against the run's tree, and reports the recorded 2026-09-17 development rate beside; the analysis is unchanged) | b140804c442953fe76f684074a6d1d6774b0e2d38c9c810d58fa5d9174dedaec |
+| `experiments/m0_prior_art/heldout_d7_partial.py` (as run on the stopped sample, 2026-11-05: adds a head that pins the producer's modules to 2008c81f and the driver to 4030f88d, hashes the run records, verifies the copy against the run's tree, and reports the recorded 2026-09-17 development rate beside; the analysis is unchanged; as committed in 90863bb8) | b140804c442953fe76f684074a6d1d6774b0e2d38c9c810d58fa5d9174dedaec |
+| `experiments/m0_prior_art/heldout_d7_partial.py` (re-run on the same stopped sample, 2026-11-06, note 1 below: adds Fisher's exact one-sided p beside the preregistered test and names both in the record; every other field of the report is unchanged but the report's own commit and sha256) | a244b2586313a51166f051f87b6871e48d3c5e9ed8849c6fc22b429b5e76e051 |
 
 ## Record of the stop (2026-11-04)
 
@@ -133,3 +134,34 @@ byte for byte; every completed receipt was replayed by both verifiers with the f
 added to `tools/replay_epsilon_receipts.py` for the purpose (`evidence/epsilon_rerun/replay_heldout_d7_2026-11-05.json`);
 the per-arm report is `evidence/epsilon_rerun/heldout_d7_partial.json`. The preregistered interpretation rule is
 applied by the paper's number generator (`paper/tools/make_numbers.py`, `heldout_d7_macros`) and nowhere else.
+
+## Notes (2026-11-06, external audit 3): labels and reading, not deviations of execution
+
+Nothing below changes what was run, which chunks are in the sample, or any count. The audit is archived at
+`docs/reviews/EXTERNAL3_2026-11-06.md` (its "Paper B" is paper 1).
+
+**Note 1: the conditional test's label.** The preregistration's test ("the exact one-sided conditional binomial test
+... success probability n_h/(n_h+n_d)") allocates the pooled not-proven count binomially, k_h ~ Binomial(k_h + k_d,
+n_h/(n_h + n_d)). That distribution is the exact conditional distribution for two POISSON counts. For two binomial
+samples of fixed size, conditioning on the total gives a HYPERGEOMETRIC k_h: Fisher's exact test. So the word "exact"
+in the preregistration's name for its test is wrong for this design. The preregistered test stays the preregistered
+one: its p-value is reported as before (`p_one_sided`), named "conditional binomial". Fisher's one-sided exact p, with
+the alternative that the held-out rate is larger, is reported beside it (`fisher_exact_p_one_sided`), labelled as
+not preregistered. On this sample both are 1 for both comparisons (no not-proven shot in any arm), so no reading
+changes. `heldout_d7_partial.py` was re-run on 2026-11-06 on the same copied sample with the same arguments; diffed
+leaf by leaf against the 2026-11-05 record, it adds the two tests' Fisher p-values and their names, and changes only
+the report's own commit and sha256 (Bytes table above). The committed runner `heldout_willow_d7.py` keeps its bytes,
+and with them its docstring's old label: its bytes are the preregistration's.
+
+**Note 2: the permitted sentence is not made.** The preregistration says that if the held-out 50-round bound is below
+1%, paper 1 "may say the full ladder proved at least (100 - bound)% of held-out 50-round corrections". The bound is
+0.374% (800 of 800 completed shots proven), and it is still reported, as the preregistration requires, as the
+preregistered computation. Paper 1 does not make the permitted sentence. The bound's coverage guarantee holds for a
+sample whose inclusion does not depend on the outcome, and this sample's does: the stop kept the chunks that finished
+inside the budget, and a chunk finishes late when its shots need the ladder's expensive tiers, which is where refusals
+come from. The paper reports what was observed instead: all 800 completed primary shots proven, and 100 more primary
+shots (held-out X 50 rounds seed 9, held-out Z 50 rounds seed 7) unfinished at the stop, apart from the development
+chunk (development Z 30 rounds seed 7, 50 shots) also unfinished. The worst case and the prefix view are reported as
+descriptive sensitivity analyses, not as bounds with coverage. A coverage claim would need a cohort frozen
+independently of completion, a defined per-shot computational budget, and an outcome recorded for every shot,
+timeouts included (`docs/FUTURE_WORK.md`).

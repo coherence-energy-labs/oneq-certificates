@@ -402,7 +402,7 @@
           "references": []
         },
         {
-          "line_hint": 38,
+          "line_hint": 26,
           "text": "| Q3 (temporal) | the deviation grows in magnitude with the round | early, middle, late powered and monotone, with late − early ≤ −0.05 or ≥ +0.05 |",
           "line_sha256": "2f0824f496618b44d13dda6f13e6d3fdc946dee5c7e0f9746863fc3623a95be0",
           "class": "HYPOTHESIS",
@@ -432,7 +432,7 @@
           "references": []
         },
         {
-          "line_hint": 38,
+          "line_hint": 26,
           "text": "| F2 | the burst state explains the measured graph's gain | dem+burst <= 2 x measured + 3 on at least 4 of the 6 records | -- |",
           "line_sha256": "fd8928956c5ca9160735bd1cd3d0b72270374a8277d281f30afb98acf8f602f0",
           "class": "HYPOTHESIS",
@@ -1423,7 +1423,7 @@
           "references": []
         },
         {
-          "line_hint": 38,
+          "line_hint": 26,
           "text": "- **V2, the classical ceiling holds:** the six-state average success is ≤ 2/3 + radius.",
           "line_sha256": "e8255f122cd357d6a13910a3eab7557d50f2e31e59a660f4bab3ad28dffe4010",
           "class": "PROPOSED",
@@ -2499,7 +2499,7 @@
       "path": "docs/REVIEW_PACKET.md",
       "claims": [
         {
-          "line_hint": 38,
+          "line_hint": 40,
           "text": "1. **Build the PDFs yourself**, so you are reading what the artifacts say and not a stale copy:",
           "line_sha256": "e8b931b2ea955a2b6e4f12041a557dd7813154099a8b894c2c6de378db2af751",
           "class": "ESTATE-BUILT",

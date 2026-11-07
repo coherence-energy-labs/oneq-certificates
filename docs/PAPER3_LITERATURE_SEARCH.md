@@ -201,3 +201,203 @@ as before. `2604.09797` with 2BGA: Prop. 1 citations and the E-019 scope note on
 - **Search scope and its limit.** The live HEADs and commit histories of the four cited repositories, Crocker's record
   and all its versions, and the latest arXiv version of every cited preprint, on 2026-11-03. A result published after
   that, or outside these sources and the queries of the first pass, is not covered.
+
+## 2026-11-07: Cheng, Guo and Feng Pan (arXiv:2611.08247v1), Guancheng Pan's live branch, and arXiv from 2026-11-01
+
+Trigger: arXiv:2611.08247 appeared after the 2026-11-03 search. Every download below went into its own new, empty
+directory and was read as data with `python -I`; nothing downloaded was executed.
+
+### arXiv:2611.08247v1, read from its e-print source
+
+| Item | Value |
+|---|---|
+| Abstract page | `https://arxiv.org/abs/2611.08247v1`: "[v1] Thu, 5 Nov 2026 16:25:02 UTC (511 KB)"; 73 pages (18 main, 55 SI), 8 figures; quant-ph |
+| e-print | `https://arxiv.org/e-print/2611.08247v1`, gzip tar, sha256 `6ce317c3bc16e958...`; `ncs.tex` (3,727 lines, sha256 `b174740f...`) plus `tables/si/*.tex`, read wherever they touch a circuit or claim of paper 3 |
+| HTML | `https://arxiv.org/html/2611.08247v1` (sha256 `b68fb8e2...`), used only to confirm the numbering of Supplementary sections and tables cited below |
+| Authors | Bin Cheng (1), Naixu Guo (1), Feng Pan (1, 2, corresponding): (1) Centre for Quantum Technologies, National University of Singapore; (2) Singapore University of Technology and Design; `feng_pan@sutd.edu.sg` (`ncs.tex` lines 139-143) |
+| Code | `github.com/Fanerst/tropidist`, MIT, created 2026-10-07, default branch `main` at `b03ec2d4077f` (2026-11-06); no release, no tag |
+
+**Feng Pan is not Guancheng Pan.** Evidence, each read from its source: (i) affiliations and addresses: Feng Pan, CQT
+(NUS) and SUTD, `feng_pan@sutd.edu.sg`; Guancheng Pan, "Zhejiang University, Hangzhou, China", `3250101086@zju.edu.cn`
+(his manuscript `release/arxiv/main.tex` at tag v2.0, lines 21-23, and again at main HEAD `2d5131b1`). (ii) GitHub
+accounts (`gh api users/...`, 2026-11-07): `Fanerst`, name "Feng Pan", company "Singapore University of Technology and
+Design", bio "PhD in theoretical physics", created 2017-09-26, which hosts tropidist and is cited by 2611.08247 as
+"F. Pan, tropidist"; `GavinNull`, no name, created 2026-03-17, which hosts gross-code-distance-12. (iii) 2611.08247
+cites none of Guancheng Pan's work, Crocker, Shaw and Terhal, Wills et al. or paper 3 (`ncs.bbl`, `bu1.bbl` grepped);
+its own prior work is "Cheng, B. & Pan, F., Exact maximum likelihood decoding beyond treewidth via rank-decomposition
+dynamic programming", arXiv:2609.39556.
+
+**What "certified" means there.** SI preamble (`ncs.tex` 868-869): "a distance is certified when a lower bound proved by a
+complete evaluator meets the weight of an explicit error that has been checked against the matrices". SI 12.2
+(`ncs.tex` 3673-3674): "Lower bounds come only from completed thresholds of an evaluator whose completeness is proved in"
+SI 3-5. Completeness is proved on paper (SI 5.2 Theorem "Certified weight-bounded search", SI 5.5). The witness is
+checked against the matrices and replayed in the noiseless Stim circuit as deterministic Pauli errors (Methods,
+`ncs.tex` 642). There is no proof object for a lower bound. What a third party receives (SI 12.3, and
+`results/README.md` at `b03ec2d4`): "every result record (`results/`), each with its certified bounds, its threshold log
+and its error" -- a JSON record per run with the threshold-by-threshold log (`K`, status, node count, seconds) and the
+witness with its replay; re-checking a lower bound means re-running a search. Floating point: the search kernel's
+covering bound is computed in `double` with tolerance `lim = R + 1e-9` and the dual ascent with slack threshold
+`1e-12` (`cdist/gmitm.c`, `cover_prune`, at `b03ec2d4`); the paper proves the bound over the reals (SI 5.3, 5.5.1).
+Soundness defects fixed during the work (SI 12.2): until 2026-10-20 a labeled-mode table path "can report exhaustion
+wrongly" (SI 5.5.2); on 2026-10-30 "four further paths that could end a threshold early were fixed"; the paper states
+the affected values were recomputed or are unaffected.
+
+**Method, against paper 3's.** Sector reduction (detectors of one memory basis; exactness checked per circuit) = our
+same-type projection. Search branches on an unsatisfied row (firing detector), anchors on symmetry orbits (lattice
+translations), prunes with a covering (dual LP) bound, closes with completion tables (Methods, SI 5.1-5.3). Time
+collapse sums each check's detectors over the rounds; for "identical syndrome rounds that carry every Pauli error on the
+data qubits through unchanged ... and a final transversal measurement", "the collapsed problem is the same for every
+number of rounds, and [the relaxation inequality] bounds all of them" (SI 5.4, `ncs.tex` 2135-2142); "For single-ancilla
+CSS circuits it is the extended-code bound of Strikis, Browne and Beverland" (Methods, `ncs.tex` 743-745). Lifting the
+collapsed minimizers raises the bound by one per exhausted weight, and "Lifting is for a fixed number of rounds"
+(Methods, `ncs.tex` 752).
+
+**Per circuit of paper 3.**
+
+| Paper-3 circuit | What 2611.08247 states | Where |
+|---|---|---|
+| IBM depth-8 gross cycle, standard schedule | (a) Memory instruction of IBM's architecture study (noise-free preparation and syndrome round, `C` noisy cycles, noise-free final round; CNOT two-qubit depolarizing, idle depolarizing, preparation and measurement flips), `C = 1`: "the certified circuit distance is 10 in both bases for the gross code, as assumed"; "the time-collapsed bound gives 8 (X basis) and 9 (Z basis), the sector search and lifting raise it to 10". (b) Circuits of Bravyi et al.'s public code (`d` noisy cycles, then noise-free ones): "With 12 cycles the gross code's circuit has distance 10 in both bases, as stated." (c) Six-cycle memory circuits in their own noise model: the standard schedule's distance, "the smaller of the two" bases, is 10 (Supp. Table 9). (d) The tesseract-decoder Stim file of the schedule (CZ gates, SI1000), 12 rounds: the bound 10 of 2308.07915 "is exact" (Supp. Table 8, provenance P; repository instance `bb144_r12`, memory-Z, collapsed distance 9). (e) Gross-code chips at three noisy cycles: a perfect chip at 10 (Fig. 4c, SI 11). **No statement for every number of rounds at 10**: the every-round bound, the time collapse, is 8 / 9. | main text "The error-correction layer of IBM's planned Starling processor"; Methods; SI 7.2, 8.1, 9.1, 9.2; Supp. Tables 8, 9, 11 |
+| Three-colour cycle (SBB Fig. 12) | "We confirm two conjectured circuit distances: 11 for a three-color schedule of the gross code"; Supp. Table 8: "11 (conjecture)" -> **11**, "conjectured; 11 in both bases", provenance R (rebuilt from the paper's text). The paper gives no number of rounds and no every-round statement for it. Repository: `papers/lrgross.py` rebuilds "arXiv:2603.05481v2, Appendix H Fig. 12" (the version paper 3 uses); `docs/notes/PAPERS.md` gives "Six-cycle memory experiments, both bases" 11 / 11; `bench/instances/lrgross/meta.json` (memory-Z, 6 rounds) records the collapsed (extended-code) distance as 11, from `results/papers3/lrgross/server_lr11_Z.json`, which is not in the repository. Not compared with our circuit. | main text, audit paragraph; Supp. Table 8; repository files named |
+| Shaw-Terhal morphing circuits (2407.16336) and the 2026 follow-up (2604.09797) | Not treated: no "morph", "Shaw" or "Terhal" anywhere in `ncs.tex` or its bibliographies; the repository's `docs/AUDIT.md` sec. 5: "morphing circuits 2604.09797: not attempted". | -- |
+| IBM-style [[72,12,6]] (Table I, last row) | 6, the published bound "is exact" (Supp. Table 8; SI 7.2), consistent with Tesseract's 6. | SI 7.2 |
+
+**The audit of 26 papers** (SI 7, Supp. Table 8): mitten codes, IBM bivariate bicycle codes (2308.07915), the
+distance-finding benchmark (2603.22532), Cornucopia, routing, shift-automorphism, Walking Cat, left-right circuits
+(2603.05481), vine, amplified, tile, planar, multivariate multicycle, weight-8 BB, modular hyperbolic, balanced-product,
+and, in "Further values confirmed", STAR, self-dual BB, GALA, pair-partition, clustered lifted-product, LLM-guided BB,
+planar families. Cited by paper 3: `bravyi2024high`, `strikis2026high`, `webster2026distance`. Their values that paper 3
+states (the gross-code bound 10, the three-colour conjecture 11; Tesseract's 6 and 8) are confirmed. The corrected
+values that touch works paper 3 cites are for the two-gross [[288,12,18]] circuit (published <= 18 and best known 24,
+certified 16), which paper 3 does not treat.
+
+**Other close work found through it: dist-m4ri's benchmark.** `QEC-pages/dist-m4ri`, `benchmark/BENCHMARK.md`, Sec. 2.4
+(read at master `bed621ea46`, 2026-10-15): `gross_144_12_12_si1000_r12`, memory-X: **10**, "certified by CC"
+(connected-cluster enumeration, version 0.14.0, "179 s for gross"); memory-Z: not computed. The row first appears in
+commit `205658e8ae` (2026-10-13). A search result without a proof object, on the tesseract SI1000 file of IBM's
+schedule at 12 rounds. Not cited by paper 3 (no bib entry; outside this pass's permissions to add).
+
+### Guancheng Pan's repository, main HEAD `2d5131b197f0c71555fde00ebb9311cc8d54d6b8` (2026-11-06T09:04:34Z)
+
+`compare/41c8f978...2d5131b1`: 21 commits, 73 changed paths. Releases still only v1.0 and v2.0; the README calls main
+"revision P", with a release and a Zenodo version 3.0 "in preparation".
+
+- **E-045** (`research/audits/2026-11-04-E-045.md`, one commit `488c18392ce80d036668c993be54887db4fc2cf4`,
+  2026-11-04T06:50:21Z, blob `e22383e5`; journal `research/journal/2026-11-04-E-045-crocker.md`), audit verdicts
+  CONFIRMED: (A) the tesseract CZ / SI1000 gross file, r = 12, both bases: projected, a VeriPB 3.0.2 certificate of no
+  undetectable logical of weight <= 9, an unconstrained exhaustive search agreeing, weight-10 witnesses (his and
+  Crocker's) on the unprojected circuit; the projected DEM is column-isomorphic to his SD6 R = 12 model. (B) **his
+  re-implementation of IBM's decoder_setup.py model (R noisy cycles followed by two noiseless ones): gross 10 and
+  [[108,8,10]] 8 for every R >= 1, both bases**, by a written translation lemma, an exact periodicity check and a
+  "connected compression" argument that reduce every R to the certified range R' = 11 (resp. 9) of E-037. Kind of
+  certificate: the search results are E-037's VeriPB 3.0.2 proofs (R = 1..12 gross, 1..10 [[108,8,10]], both bases;
+  a formula strengthened by minimality and orbit symmetry-breaking constraints whose soundness rests on a written
+  argument the E-037 auditor proved); the every-R step itself is a written proof whose finite premises (a = w = 1,
+  N_min <= 3, the periodicity criterion E_2) are checked by exact frame simulation -- no certificate for the step, no
+  Lean or other formalization. The audit (B1-B4) re-proves the three steps and reproduces the premises with its own
+  frame simulator. Scope: Pan's decoder_setup.py model only; for SD6 his every-R statement is still E-043's. (C) a
+  monotonicity argument in R for a class of schedules. Revision P's manuscript (`release/arxiv/main.tex` at HEAD, lines
+  904-914): "In our re-implementation of the single-fault model of IBM's decoder (R noisy cycles followed by two
+  noiseless ones), the circuit distance is 10 for the gross code ... for every $R\ge1$ in both bases; a written
+  time-translation argument, whose premises we check by exact computation, reduces arbitrary $R$ to the certified range
+  $R\le11$".
+- Fig. 12 (the three-colour cycle): unchanged, "two independent exhaustive searches give $\dext=11$; hence $\dcirc=11$"
+  (HEAD `main.tex` 1055-1057): the lower bound 11 still has no certificate.
+- **`search/experiments/paperP_audit/item1_fig12_drat.py`** (added in commit
+  `ba0b75e557ee98638abc8bfb99010f493f1d0db2`, 2026-11-06T09:03:13Z, "Audit of revision P leftovers"; report
+  `research/audits/2026-11-06-paperP-leftovers.md` sec. 1, verdict CONFIRMED 50/50). Read in full at HEAD: it takes
+  every record whose name starts `fig12_retimings` from the release package's `certificates_proofs.jsonl` (25
+  full-logical-family CNFs and 25 `len2only` CNFs), checks each CNF's sha256 against its record, re-solves it with
+  CaDiCaL writing a DRAT proof, and checks the proof with drat-trim. What those CNFs encode (E-027, journal
+  `research/journal/2026-10-14-E-027-certificates.md`, audit `research/audits/2026-10-15-E-027.md`, commit `9af2f4d2de`,
+  2026-10-15; manuscript HEAD lines 1058-1059 "Its orders cannot reach 12 by retiming within several symmetric
+  families (bulk statements, each certified by DRAT)"; claims map C16): every legal deterministic RE-TIMING of the
+  circuit that keeps Fig. 12's CNOT orders, within the listed symmetric families and periods, has a bulk weight-11
+  undetected logical, i.e. an UPPER bound of 11 "for sufficiently many rounds" on those retimed circuits. For Fig. 12
+  itself the same lift encoding is the positive control: 4224/4224 instances SAT at R = 1 (weight-11 lifts exist,
+  the upper-bound side). No R-indexed lower bound for Fig. 12 is certified by these proofs. **So the script does not
+  touch paper 3's three-colour claim**, which concerns the lower bound 11 for the circuit of Fig. 12 at every number
+  of rounds.
+- Morphing: no changed path under E-017, E-019 or E-022.
+
+### arXiv API, `submittedDate:[202611010000 TO 202611072359]`, sorted by submission date, run 2026-11-07
+
+| Query (verbatim, AND-ed with the date range) | Hits | What matters |
+|---|---|---|
+| `all:"circuit distance"` | 1 | 2611.08247 |
+| `all:"circuit-level distance"` | 0 | -- |
+| `all:"circuit level distance"` | 0 | -- |
+| `all:"bivariate bicycle"` | 5 | 2611.07144 (dithered BP decoding), 2611.07062 (logically augmented QLDPC codes), 2611.04179 (RL decoder scheduling hardware), 2611.03128 (BP-informed Tesseract decoding), 2611.02972 (routing for qLDPC on spin qubits): decoding or hardware, no circuit distance |
+| `all:"gross code"` | 2 | 2611.08247; 2611.02972 (shuttling strategies for the gross code; logical error rates) |
+| `all:"morphing circuit" OR all:"morphing circuits"` | 0 | -- |
+| `all:"syndrome extraction" AND all:distance` | 0 | -- |
+| `all:certificate AND all:distance AND cat:quant-ph` | 0 | -- |
+| `all:certified AND all:distance AND cat:quant-ph` | 1 | 2611.08247 |
+| `(all:SAT OR all:MaxSAT OR all:VeriPB OR all:"pseudo-Boolean") AND all:distance AND cat:quant-ph` | 0 | -- |
+| `all:"detector error model"` | 1 | 2611.06605 (data-driven DEM augmentation for decoding) |
+| `all:"fault distance"` | 1 | 2611.05867 (tracking errors in universal circuits) |
+| `all:"two-block group algebra"` | 0 | -- |
+| `all:"qLDPC" AND all:distance` | 2 | 2611.07144, 2611.02972 |
+| `all:"Lean" AND all:"error correction"` | 2 | **2611.05047** (QECert: a Lean library for QEC theory: stabilizer and CSS codes, product constructions, BPT bounds; no circuit distance or certificate checker); 2611.03329 (agentic pipelines) |
+| `abs:circuit AND abs:distance AND cat:quant-ph` | 8 | 2611.08247; the others decoding, sampling, magic-state verification (2611.04909, Comb: fault-tolerance verification of CNOT+T circuits), complexity |
+| `all:"exact distance"` | 4 | none in quant-ph |
+| `all:"minimum distance" AND cat:quant-ph` | 1 | 2611.05489 (stabiliser codes over prime fields as graphs) |
+| `all:"hook error" OR all:"hook errors"` | 0 | -- |
+| `all:"syndrome extraction circuit" OR all:"syndrome extraction circuits"` | 1 | 2611.08488 (provable circuit-level thresholds, non-abelian phases) |
+| `all:"distance certificate" OR ... OR all:"certified distances"` | 1 | 2611.08247 |
+| `all:"Shaw" AND all:"Terhal"` | 0 | -- |
+| `all:"three-colour" OR all:"three-color" AND all:gross` | 0 | -- |
+| `all:"logical error" AND all:"lower bound" AND cat:quant-ph` | 1 | 2611.08247 |
+| `all:"tropical"` | 11 | 2611.08247; the rest other fields |
+| `all:"dead check" OR all:"dead checks" OR all:"defective chips"` | 1 | 2611.08247 |
+| `all:"branch-and-bound" AND cat:quant-ph` | 0 | -- |
+| `all:"Stim" AND all:distance` | 0 | -- |
+
+Raw Atom responses were kept in the session scratchpad, not in the repository.
+
+### What changes in paper 3 (sentences revised 2026-11-07)
+
+- **IBM every-T "first" withdrawn.** "the first lower bound for every number of rounds in which every search result is
+  certified, among the works we found" is FALSE since Guancheng Pan's E-045 (B) (main, 2026-11-04): for his model of
+  IBM's decoder_setup.py, an every-R lower bound of 10 whose search results are all VeriPB-certified (E-037), joined by
+  a written argument with exactly checked premises -- the same shape as ours. 2611.08247 does not affect it (its
+  every-round bound for this cycle is 8 / 9). The intro bullet now states what is specific (certificates re-derived by
+  a separately written checker, Theorem 1, script-checked hypotheses) and no "first". The descriptions of Pan's
+  every-R work now say "record E-043 ... under SD6", which is what that record covers; **E-045 itself is not yet cited:
+  adding it needs a refs.bib entry, outside this pass's permissions.**
+- **Three-colour "first" narrowed.** "a lower bound certified here for the first time among the works we found" is FALSE
+  as worded: 2611.08247 certifies 11 (solver output plus replayed witness). Now: the first lower bound of 11 for it at
+  every number of rounds that rests on certificates a separate checker re-derives. Survives: Guancheng Pan certifies
+  d_ext >= 9 only; 2611.08247's paper states no every-round value, and its lower bounds carry no proof object.
+  **Corrected the same day (caller's check of Fanerst/tropidist at b03ec2d4, 2026-11-07):** the record IS shipped:
+  `results/papers3/lrgross/lr11_{Z,X}.json` and `server_lr11_{Z,X}.json` (six rounds) all give `collapsed.distance =
+  11` and `certified_lower_bound = 11`, and their Methods (v1 text, lines 612-618 of the scratch copy) say the collapsed
+  distance "is a lower bound for any number of rounds, as proved in Supplementary Section 5.4". So Cheng, Guo and Pan
+  hold an every-round lower bound of 11 for the three-colour cycle in both bases, as solver output without a proof
+  object. Paper 3 now says so in the abstract ("the second also for every number of rounds"), the intro and Sec. VI.B,
+  and its "first" is only for a lower bound resting on certificates a separate checker re-derives, with Theorem 1.
+- **Incomplete, now completed:** the abstract (both values certified by Cheng, Guo and F. Pan at fixed numbers of
+  rounds; "G. Pan" and "F. Pan" disambiguated), the intro's account of gross-code-scale work, Table I's caption, Secs.
+  VI.A and VI.B (results), and the related-work comparison of Sec. VIII (method, meaning of "certified", the audit,
+  what remains specific).
+
+### What survives for paper 3, as far as these searches reach
+
+- The every-T lower bounds of 10 and 11 resting on certificates re-checked by a separately written checker under a
+  Lean-verified calculus, with the window theorem's finite hypotheses checked by script (a "first" only for the
+  three-colour cycle, see above).
+- The first machine-checkable certificates for the two morphing values (2611.08247 does not treat morphing circuits;
+  Guancheng Pan's E-017 / E-019 have none; nothing new on his branch).
+- Exact values for the 14 circuits with the 2604.09797 parameters (no source computes any; 2611.08247 did not attempt
+  2604.09797), and their 4 kernel-checked one-round distances.
+
+### Recommended follow-ups outside this pass's permissions
+
+- Cite Guancheng Pan's E-045 (commit `488c1839`, file `research/audits/2026-11-04-E-045.md`) in the intro and Sec.
+  VI.A: "his record E-045 extends the certified range to every number of rounds for his model of IBM's
+  decoder_setup.py (R noisy cycles followed by two noiseless ones), by a written time-translation and compression
+  argument whose premises are checked by exact computation".
+- Cite dist-m4ri's benchmark (memory-X, 10 at 12 rounds of the tesseract SI1000 file, connected-cluster enumeration,
+  since 2026-10-13) beside Crocker.
+- Consider QECert (arXiv:2611.05047) in the formal-verification sentence of the related work.
+- Search scope and its limit: the arXiv queries above for 2026-11-01 to 2026-11-07, 2611.08247 and its repository,
+  Guancheng Pan's main branch at `2d5131b1`, and dist-m4ri's benchmark page; nothing else was re-searched on this date.

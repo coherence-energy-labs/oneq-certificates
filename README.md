@@ -41,9 +41,17 @@ is also needed):
 
 Paper 3's certificates re-check with its own checker (a C compiler is needed):
 `python -m pytest tests/test_r198_ibm_recert.py tests/test_r198_paper3_review.py`
-re-verifies shipped proofs and refuses a corrupted one. Every certificate of the
-three-colour and large morphing circuits regenerates bit for bit from the
-committed prover (`experiments/circuit_distance_exact/recert_campaign.py`) under
+re-verifies shipped proofs and refuses a corrupted one. The 30 certificates of the
+three-colour and large morphing circuits, too large for git, are release assets
+(`oneq-recert-proofs-3c.tar.gz`, `oneq-recert-proofs-morph144.tar.gz`, listed in
+`evidence/circuit_distance_exact/recert_20261102/release_assets.json`): download
+both into DIR, then
+`python experiments/circuit_distance_exact/recert_assets.py verify --archives DIR --extract`
+checks every archive and proof against that record and the manifest and puts the
+proofs in place, and `... recert_assets.py check --threads 8` runs the committed
+checker on them (minutes to over an hour per proof: the manifest's `checker_s`,
+per cell). Each also regenerates bit for
+bit from the committed prover (`experiments/circuit_distance_exact/recert_campaign.py`) under
 the hash in `evidence/circuit_distance_exact/recert_20261102/manifest.json`,
 which then pins the proof the checker decides. Where that proof differs from the
 original record, the prover of the record's day, compiled from git, reproduces

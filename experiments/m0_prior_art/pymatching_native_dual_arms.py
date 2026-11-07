@@ -17,6 +17,22 @@ was optimal "for PyMatching's internal rounding" without checking it. This drive
   3. the cost per call: decode-with-duals plus the region-to-cut conversion against a plain decode of the same
      shot, as medians over the same calls (comparable with other per-call figures, not with a mean over a batch).
 
+WHAT EACH TIMED INTERVAL COVERS (external audit 3, 2026-11-06: until then the exact check ran AFTER the last clock
+read, so "decode with duals + conversion" was a witness-PRODUCTION time, and it was the only one recorded). Per call,
+on the same shots, each interval read with time.perf_counter around exactly the statements named:
+
+  plain_decode                 decode_to_edges_array: the decoder alone, the baseline of every ratio
+  decode_with_duals            decode_to_edges_array_with_duals: decoding plus the dual export
+  region_to_cut_conversion     region_duals_to_cut_packing: the exported regions turned into cut sets
+  with_duals_plus_conversion   the two above: decoding, exporting and building the witness (PRODUCTION)
+  exact_check                  the checker's input built from the exported edges and cut sets (the edge tuple and
+                               the certificate object) and check_epsilon on PyMatching's integer weights, eps_max = 0,
+                               in exact rationals: CHECKING the witness, its own interval
+  complete                     decode with export + conversion + exact check: the whole certified call
+
+Each is reported as a median and a 99th percentile (NumPy linear interpolation) over the same calls, every ratio to
+the plain decode of the same calls. psutil's machine-wide CPU load is sampled before and after each configuration.
+
 The patched build runs in a CHILD process and never shadows the installed pymatching.
 """
 from __future__ import annotations
@@ -104,7 +120,7 @@ eq = {"grid_eq_raw": 0, "raw_eq_released": 0, "grid_eq_released": 0, "released_c
 diff = {"n": 0, "heavier_on_published": 0, "lighter_on_published": 0, "equal_on_published": 0,
         "max_heavier_on_published": "0", "max_lighter_on_published": "0", "integer_weight_never_below_raw": True,
         "released_status_of_those_shots": {}}
-t_plain, t_dual, t_conv, ratio = [], [], [], []
+t_plain, t_dual, t_conv, ratio, t_check = [], [], [], [], []
 for s in range(det.shape[0]):
     fired = np.flatnonzero(det[s]).astype(np.uint64)
     if fired.size == 0:
@@ -117,10 +133,15 @@ for s in range(det.shape[0]):
     z = region_duals_to_cut_packing(regions); t3 = time.perf_counter()
     t_plain.append(t2 - t1); t_dual.append(t1 - t0); t_conv.append(t3 - t2); ratio.append((t1 - t0 + t3 - t2) / (t2 - t1))
     nc_ok += nc == 2 * c
+    # the EXACT CHECK of the exported witness, timed on its own (external audit 3): the checker's input built from the
+    # exported edges and cut sets, then check_epsilon on PyMatching's integers, eps_max = 0
+    t4 = time.perf_counter()
     corr = tuple(key(int(a), int(b)) for a, b in e_arr)
     v = check_epsilon(edges=int_edges, syndrome=F, eps_max=Fraction(0),
                       cert=MatchingCertificate(matched_edges=corr, node_potentials={},
                                                blossom_duals={S: float(val) for S, val in z.items()}))
+    t5 = time.perf_counter()
+    t_check.append(t5 - t4)
     st_int[v.status] = st_int.get(v.status, 0) + 1
     raw_set = frozenset(corr)
     grid_set = frozenset(key(int(a), int(b)) for a, b in m_grid._matching_graph.decode_to_edges_array(fired))
@@ -151,16 +172,41 @@ for s in range(det.shape[0]):
         stt = released[s][1] if s in released else "no receipt"
         diff["released_status_of_those_shots"][stt] = diff["released_status_of_those_shots"].get(stt, 0) + 1
 med = lambda xs: float(np.median(xs))
+p99 = lambda xs: float(np.percentile(xs, 99))
+produce = [a + b for a, b in zip(t_dual, t_conv)]
+complete = [a + b for a, b in zip(produce, t_check)]
 print(json.dumps({
     "nontrivial": n, "pymatching_c": c, "normalising_constant_equals_2c": nc_ok,
     "raw_dual_on_pymatching_integer_weights": st_int, "corrections": eq, "grid_differs_from_raw": diff,
     "cost_per_call_us": {"plain_decode_median": 1e6 * med(t_plain), "decode_with_duals_median": 1e6 * med(t_dual),
                          "region_to_cut_conversion_median": 1e6 * med(t_conv),
-                         "with_duals_plus_conversion_median": 1e6 * med([a + b for a, b in zip(t_dual, t_conv)]),
-                         "ratio_of_medians": med([a + b for a, b in zip(t_dual, t_conv)]) / med(t_plain),
-                         "median_of_per_call_ratios": med(ratio)},
+                         "with_duals_plus_conversion_median": 1e6 * med(produce),
+                         "ratio_of_medians": med(produce) / med(t_plain),
+                         "median_of_per_call_ratios": med(ratio),
+                         "plain_decode_p99": 1e6 * p99(t_plain), "decode_with_duals_p99": 1e6 * p99(t_dual),
+                         "region_to_cut_conversion_p99": 1e6 * p99(t_conv),
+                         "with_duals_plus_conversion_p99": 1e6 * p99(produce),
+                         "exact_check_median": 1e6 * med(t_check), "exact_check_p99": 1e6 * p99(t_check),
+                         "complete_median": 1e6 * med(complete), "complete_p99": 1e6 * p99(complete),
+                         "complete_ratio_of_medians": med(complete) / med(t_plain),
+                         "exact_check_ratio_of_medians": med(t_check) / med(t_plain),
+                         "median_of_per_call_complete_ratios": med([a / b for a, b in zip(complete, t_plain)]),
+                         "calls": len(t_plain)},
     "grid_bits": k}))
 '''
+
+#: What each timed interval covers, written into the record beside the numbers (external audit 3, 2026-11-06).
+TIMING = {
+    "plain_decode": "decode_to_edges_array: the decoder alone; the baseline of every ratio",
+    "decode_with_duals": "decode_to_edges_array_with_duals: decoding plus the dual export",
+    "region_to_cut_conversion": "region_duals_to_cut_packing: the exported regions turned into cut sets",
+    "with_duals_plus_conversion": "decoding, exporting and building the witness (production; no check)",
+    "exact_check": "the checker's input built from the exported edges and cut sets, then check_epsilon on "
+                   "PyMatching's integer weights with eps_max = 0, in exact rationals (checking, on its own)",
+    "complete": "decode with export + conversion + exact check, per call: the whole certified call",
+    "statistics": "median and 99th percentile (NumPy linear interpolation) over the same calls; every ratio is to "
+                  "the plain decode of the same calls; single-thread Python on a shared workstation",
+}
 
 CONFIGS = {
     "sim_d5_r25": {"kind": "sim", "instance": "evidence/instances/matching_sim_d5_r25.json", "receipts": "sim_d5_r25"},
@@ -177,19 +223,26 @@ def main() -> int:
     ap.add_argument("--shots", type=int, default=2000)
     ap.add_argument("--configs", nargs="*", default=list(CONFIGS))
     ap.add_argument("--dll-dir", default="")
+    ap.add_argument("--out", type=pathlib.Path, default=OUT,
+                    help="where to write the record (default: the evidence path); a rerun can be written aside and "
+                         "compared with the committed record before it replaces it")
     a = ap.parse_args()
-    rows = {}
+    import psutil
+    rows, load = {}, {}
     for name in a.configs:
+        before = psutil.cpu_percent(interval=2.0)
         p = subprocess.run([sys.executable, "-B", "-c", CHILD, a.patched, str(ROOT), str(a.shots),
                             json.dumps(CONFIGS[name]), a.dll_dir], capture_output=True, text=True,
                            stdin=subprocess.DEVNULL, timeout=7200)
         if p.returncode != 0:
             raise SystemExit(f"{name}: child failed\n{p.stderr[-3000:]}")
         rows[name] = json.loads(p.stdout.strip().splitlines()[-1])
+        load[name] = {"cpu_percent_before": before, "cpu_percent_after": psutil.cpu_percent(interval=2.0)}
         print(name, json.dumps(rows[name]), flush=True)
     patch = (ROOT / "third_party" / "pymatching_return_duals.patch").read_bytes()
     me = pathlib.Path(__file__).read_bytes()
     doc = {"schema": "oneq-pymatching-native-dual-arms/1", "configs": rows, "shots_per_config": a.shots,
+           "timing": TIMING, "machine_cpu_percent": load, "logical_cpus": psutil.cpu_count(),
            "companion": "evidence/pymatching_native_dual.json (the RAW and GRID arms' certification, left as recorded)",
            "pymatching_integer_weights": "W_int = 2*round(w*c), c = (2^24 - 1)/max|w|, C round (half away from zero)",
            "released_receipts": "data/epsilon_receipts/<config>/chunk_000001.. (250 shots each): the corrections the "
@@ -197,7 +250,7 @@ def main() -> int:
            "patch_sha256": hashlib.sha256(patch.replace(b"\r\n", b"\n")).hexdigest(),
            "script_sha256": hashlib.sha256(me.replace(b"\r\n", b"\n")).hexdigest(),
            "platform": platform.platform(), "python": sys.version.split()[0]}
-    OUT.write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8", newline="\n")
+    a.out.write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8", newline="\n")
     return 0
 
 

@@ -186,6 +186,7 @@
 \newcommand{\GapMergedExactSubsetHitPct}{99.48 / 98.95 / 96.41}
 \newcommand{\GapMergedMax}{4.0}
 \newcommand{\GapMergedPNinetyNine}{0.0 / 0.0 / 1.0}
+\newcommand{\GapMergedPNinetyNineDSeven}{1.0}
 \newcommand{\GapNontrivial}{1{,}159 / 1{,}979 / 2{,}000}
 \newcommand{\GapOrigMaxCopies}{15}
 \newcommand{\GapOrigNegExact}{11}
@@ -209,15 +210,22 @@
 \newcommand{\GapRunCommit}{70b3c4d8}
 \newcommand{\GapSeeds}{4108103, 4108105 and 4108107}
 \newcommand{\GapShotsPerDistance}{2{,}000}
+\newcommand{\GapTwoComponentScaledCancelled}{1 / 0 / 0}
+\newcommand{\GapTwoComponentScaledEpsOptPct}{98.27 / 91.55 / 80.91}
+\newcommand{\GapTwoMergedUnscaledEpsOptPct}{99.05 / 98.73 / 97.34}
+\newcommand{\GapTwoMergedUnscaledPNinetyNineDSeven}{13.5}
+\newcommand{\GapTwoRepMaxP}{0.0094}
+\newcommand{\GapTwoScaleCompMaxP}{0.012}
+\newcommand{\GapTwoScaleMergedP}{0.33 / 0.14 / 0.0018}
 \newcommand{\GrowthDSevenCertified}{31/120}
 \newcommand{\GrowthSpeedupHi}{64}
 \newcommand{\GrowthSpeedupLo}{17}
-\newcommand{\HoDSevenAbstract}{at least 99.62\% of 800 at distance 7 in the chunks a preregistered budget completed}
+\newcommand{\HoDSevenAbstract}{all 800 completed at distance 7, with 100 more unfinished at a preregistered budget's stop}
 \newcommand{\HoDSevenAccepted}{800}
 \newcommand{\HoDSevenArms}{2}
-\newcommand{\HoDSevenAtLeastPct}{99.62}
 \newcommand{\HoDSevenChunks}{43}
 \newcommand{\HoDSevenChunksPlanned}{240}
+\newcommand{\HoDSevenConfirmN}{150{,}000}
 \newcommand{\HoDSevenCoreHours}{40.0}
 \newcommand{\HoDSevenDevAccepted}{650}
 \newcommand{\HoDSevenDevArms}{2}
@@ -231,6 +239,7 @@
 \newcommand{\HoDSevenDevWorstUpper}{8.96}
 \newcommand{\HoDSevenDispatched}{46}
 \newcommand{\HoDSevenExact}{0}
+\newcommand{\HoDSevenFisherP}{1.00}
 \newcommand{\HoDSevenForgeries}{23{,}650}
 \newcommand{\HoDSevenLargestEps}{\ensuremath{3.2\times 10^{-12}}}
 \newcommand{\HoDSevenMarkers}{42}
@@ -241,7 +250,9 @@
 \newcommand{\HoDSevenPreDeviationChunks}{4}
 \newcommand{\HoDSevenPrefixN}{700}
 \newcommand{\HoDSevenPrefixNotProven}{0}
-\newcommand{\HoDSevenReading}{The preregistered one-sided test of the held-out 50-round not-proven rate against the same-producer development rate does not reject it (one-sided $p=1.00$; the 10-round bracket gives $p=1.00$); the preregistration prescribes no further reading for this case.}
+\newcommand{\HoDSevenReading}{The preregistered one-sided conditional binomial test of the held-out 50-round not-proven rate against the same-producer development rate, on the completed chunks of both, does not reject it (one-sided $p=1.00$; the 10-round bracket gives $p=1.00$; Fisher's exact test, the exact conditional test for two binomial samples, gives $p=1.00$ and $p=1.00$); the preregistration prescribes no further reading for this case.}
+\newcommand{\HoDSevenRecordedDevN}{100{,}000}
+\newcommand{\HoDSevenRecordedDevNotProven}{2}
 \newcommand{\HoDSevenRecordedDevUpper}{0.00630}
 \newcommand{\HoDSevenReplayForgeries}{516}
 \newcommand{\HoDSevenReplayReceipts}{2{,}150}
@@ -249,6 +260,7 @@
 \newcommand{\HoDSevenTenAccepted}{700}
 \newcommand{\HoDSevenTenArms}{2}
 \newcommand{\HoDSevenTenExact}{93}
+\newcommand{\HoDSevenTenFisherP}{1.00}
 \newcommand{\HoDSevenTenLargestEps}{\ensuremath{1.2\times 10^{-13}}}
 \newcommand{\HoDSevenTenN}{700}
 \newcommand{\HoDSevenTenNotProven}{0}
@@ -259,9 +271,16 @@
 \newcommand{\HoDSevenTenWorstUpper}{0.428}
 \newcommand{\HoDSevenTestP}{1.00}
 \newcommand{\HoDSevenUnfinishedChunks}{3}
+\newcommand{\HoDSevenUnfinishedOtherChunks}{1}
+\newcommand{\HoDSevenUnfinishedOtherList}{development Z 30 rounds seed 7}
+\newcommand{\HoDSevenUnfinishedOtherShots}{50}
+\newcommand{\HoDSevenUnfinishedPrimaryChunks}{2}
+\newcommand{\HoDSevenUnfinishedPrimaryList}{held-out X 50 rounds seed 9 and held-out Z 50 rounds seed 7}
+\newcommand{\HoDSevenUnfinishedPrimaryShots}{100}
 \newcommand{\HoDSevenUnfinishedShots}{150}
 \newcommand{\HoDSevenUpper}{0.374}
 \newcommand{\HoDSevenWorstN}{900}
+\newcommand{\HoDSevenWorstProven}{800}
 \newcommand{\HoDSevenWorstUpper}{13.0}
 \newcommand{\HoWAccepted}{19{,}909}
 \newcommand{\HoWCIHi}{99.64}
@@ -341,46 +360,70 @@
 \newcommand{\MutEpsEquivalent}{3}
 \newcommand{\MutEpsKilled}{106}
 \newcommand{\MutEpsRun}{109}
-\newcommand{\NdCallRatioHi}{8.2}
-\newcommand{\NdCallRatioLo}{6.6}
+\newcommand{\NdCallRatioEarlierHi}{8.2}
+\newcommand{\NdCallRatioEarlierLo}{6.6}
+\newcommand{\NdCallRatioHi}{6.9}
+\newcommand{\NdCallRatioLo}{5.9}
+\newcommand{\NdCompleteRatioHi}{311}
+\newcommand{\NdCompleteRatioLo}{236}
 \newcommand{\NdGridOnRawEpsMaxAll}{\ensuremath{1.9\times 10^{-4}}}
 \newcommand{\NdGridOnRawProvenTotal}{0}
+\newcommand{\NdIntCheckMsHi}{14.6}
+\newcommand{\NdIntCheckMsLo}{5.1}
 \newcommand{\NdIntShots}{6{,}000}
 \newcommand{\NdRawEpsMaxAll}{\ensuremath{3.6\times 10^{-5}}}
 \newcommand{\NdRawProvenTotal}{3}
 \newcommand{\NdRescaleRatioHi}{12.8}
 \newcommand{\NdRescaleRatioLo}{11.0}
 \newcommand{\NdSimCheckMs}{6.6}
+\newcommand{\NdSimCompleteMs}{5.2}
+\newcommand{\NdSimCompletePNinetyNineMs}{13.7}
 \newcommand{\NdSimConvertUs}{196}
 \newcommand{\NdSimDecodeUs}{24}
-\newcommand{\NdSimDualConvUs}{183}
+\newcommand{\NdSimDualConvPNinetyNineUs}{230}
+\newcommand{\NdSimDualConvUs}{115}
 \newcommand{\NdSimDualUs}{108}
 \newcommand{\NdSimGridBits}{19}
 \newcommand{\NdSimGridOnRawEpsMedian}{\ensuremath{2.6\times 10^{-5}}}
+\newcommand{\NdSimIntCheckMs}{5.1}
+\newcommand{\NdSimIntCheckPNinetyNineMs}{13.6}
 \newcommand{\NdSimN}{2{,}000}
-\newcommand{\NdSimPlainUs}{23}
+\newcommand{\NdSimPlainPNinetyNineUs}{40}
+\newcommand{\NdSimPlainUs}{17}
 \newcommand{\NdSimRawEpsMax}{\ensuremath{1.3\times 10^{-5}}}
 \newcommand{\NdSimRawEpsMedian}{\ensuremath{4.0\times 10^{-6}}}
 \newcommand{\NdSimRawProven}{3}
 \newcommand{\NdWFiveCheckMs}{8.7}
+\newcommand{\NdWFiveCompleteMs}{6.9}
+\newcommand{\NdWFiveCompletePNinetyNineMs}{16.9}
 \newcommand{\NdWFiveConvertUs}{286}
 \newcommand{\NdWFiveDecodeUs}{35}
+\newcommand{\NdWFiveDualConvPNinetyNineUs}{319}
 \newcommand{\NdWFiveDualUs}{143}
 \newcommand{\NdWFiveGridBits}{18}
 \newcommand{\NdWFiveGridOnRawEpsMedian}{\ensuremath{5.0\times 10^{-5}}}
+\newcommand{\NdWFiveIntCheckMs}{6.7}
+\newcommand{\NdWFiveIntCheckPNinetyNineMs}{16.7}
 \newcommand{\NdWFiveN}{2{,}000}
+\newcommand{\NdWFivePlainPNinetyNineUs}{59}
 \newcommand{\NdWFiveRawEpsMax}{\ensuremath{2.0\times 10^{-5}}}
 \newcommand{\NdWFiveRawEpsMedian}{\ensuremath{1.0\times 10^{-5}}}
 \newcommand{\NdWFiveRawProven}{0}
 \newcommand{\NdWSevenCheckMs}{20.0}
+\newcommand{\NdWSevenCompleteMs}{14.9}
+\newcommand{\NdWSevenCompletePNinetyNineMs}{30.8}
 \newcommand{\NdWSevenConvertUs}{558}
 \newcommand{\NdWSevenDecodeUs}{75}
-\newcommand{\NdWSevenDualConvUs}{518}
+\newcommand{\NdWSevenDualConvPNinetyNineUs}{627}
+\newcommand{\NdWSevenDualConvUs}{374}
 \newcommand{\NdWSevenDualUs}{270}
 \newcommand{\NdWSevenGridBits}{18}
 \newcommand{\NdWSevenGridOnRawEpsMedian}{\ensuremath{1.1\times 10^{-4}}}
+\newcommand{\NdWSevenIntCheckMs}{14.6}
+\newcommand{\NdWSevenIntCheckPNinetyNineMs}{30.4}
 \newcommand{\NdWSevenN}{2{,}000}
-\newcommand{\NdWSevenPlainUs}{78}
+\newcommand{\NdWSevenPlainPNinetyNineUs}{128}
+\newcommand{\NdWSevenPlainUs}{63}
 \newcommand{\NdWSevenRawEpsMax}{\ensuremath{3.6\times 10^{-5}}}
 \newcommand{\NdWSevenRawEpsMedian}{\ensuremath{2.0\times 10^{-5}}}
 \newcommand{\NdWSevenRawProven}{0}

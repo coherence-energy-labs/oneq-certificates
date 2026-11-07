@@ -1,0 +1,148 @@
+{
+ "built_from": {
+  "experiments/m0_prior_art/qldpc_bb_gate.py": "d1e3ae6ca78d4769b1a31a5aceca3b2a3ec6d9b33fec06d094a3c3976dde51ae",
+  "experiments/m0_prior_art/qldpc_bb_phenom.py": "303e51cca9425763bbb51ee9f3af1f1b530f81b9dd3b5ca7dc82a75387290f68",
+  "experiments/m0_prior_art/qldpc_bb_refsched_gate.py": "9b81fc95b1918db0c2935c781a36fef512da6cd08537606d569cfdbda27d29fa",
+  "experiments/m0_prior_art/qldpc_circuit_gate.py": "88fa8c81b0309fd40fb936c5e223b6f4b4523009b1a450473c3823777963fd44",
+  "experiments/m0_prior_art/qldpc_scaling_prereg_campaign.py": "1da3e1c05777b3e7e12afe870cb0aeceb44979ec190676cb822db9456168ef74",
+  "src/oneq/qldpc_cert.py": "6e95ffa13e8373a1a94d459823503286ebba6760796b444bbabcfda91f3e1e3c"
+ },
+ "datasets": {
+  "bb_refsched": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/bb_refsched.json",
+    "sha256": "e2bbe0eba5a5f7aac4ad103119cda721e963bd2747d6f016ee37c7b6fdf0f8a3"
+   },
+   "instances": {
+    "evidence/instances/bb144_refsched_r3_p002.json": "3f7379de381b5c10d851530919f57610b796af92f771551ce986f9af2e6bb9eb"
+   },
+   "nontrivial": 500,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/bb_refsched.jsonl.gz",
+    "sha256": "f02bcc72a819b36741bda1299062fe57dd81f571225541b9700a2428d3966b4e"
+   }
+  },
+  "hetero_p02": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/hetero_p02.json",
+    "sha256": "d5fa89bfae182172758be9027c3dedfbf24c10eb32db3f10a0aac55e58591e8e"
+   },
+   "instances": {
+    "evidence/instances/bb144_x_code_capacity.json": "ba61df4c6c3b2375ccbdd8bf1d94b960bd12aa79bf11f9fa1446d52f3cd81235",
+    "evidence/instances/bb144_z_code_capacity.json": "96d052a100562bc33bae3b5be1cd71dc8b06fab74e62b5373aea04fcb4f24b9a"
+   },
+   "nontrivial": 1000,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/hetero_p02.jsonl.gz",
+    "sha256": "2a944dc7ce4cc27f0cda71815e5e76c779c50280ed7d871cf057e250fe795300"
+   }
+  },
+  "phenom_p01": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/phenom_p01.json",
+    "sha256": "f3e810b6669b84a46437d0a4fd25923e27b7abef3f38bf655c32e92e4e3cbb95"
+   },
+   "instances": {
+    "evidence/instances/bb144_phenom_r4.json": "e9130581b81661b017d0c262a570c60b5c07d554e97e0293db3a564daf67e4a5"
+   },
+   "nontrivial": 500,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/phenom_p01.jsonl.gz",
+    "sha256": "1c43b9275c7c505f4cb34fb535d82f4bf762af337acf901ba7950639dbb42d44"
+   }
+  },
+  "phenom_p02": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/phenom_p02.json",
+    "sha256": "73914e105daa183701405374286717d91cc546f899b1231dc263a6215400104d"
+   },
+   "instances": {
+    "evidence/instances/bb144_phenom_r4.json": "e9130581b81661b017d0c262a570c60b5c07d554e97e0293db3a564daf67e4a5"
+   },
+   "nontrivial": 500,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/phenom_p02.jsonl.gz",
+    "sha256": "08a8faec4e6ae984f0b5fdcebf55c3a68e92e1dcd8e56b8c78a4dcfee2cf76f2"
+   }
+  },
+  "stress_p05": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/stress_p05.json",
+    "sha256": "58a05e56a3679a5fe6a89c6d942f8c3d369920c1df4a22a1c9ab756f246d859a"
+   },
+   "instances": {
+    "evidence/instances/bb144_x_code_capacity.json": "ba61df4c6c3b2375ccbdd8bf1d94b960bd12aa79bf11f9fa1446d52f3cd81235",
+    "evidence/instances/bb144_z_code_capacity.json": "96d052a100562bc33bae3b5be1cd71dc8b06fab74e62b5373aea04fcb4f24b9a"
+   },
+   "nontrivial": 1000,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/stress_p05.jsonl.gz",
+    "sha256": "d5ce447165e557c6319e159b4e0955609347fcdad7fb94d63a5bd90ffb6dfa43"
+   }
+  },
+  "uniform_p01": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/uniform_p01.json",
+    "sha256": "b7b95e503a1fc7e2e7522524b7404925331747d2fefa8eccd7e1df20530c7f74"
+   },
+   "instances": {
+    "evidence/instances/bb144_x_code_capacity.json": "ba61df4c6c3b2375ccbdd8bf1d94b960bd12aa79bf11f9fa1446d52f3cd81235",
+    "evidence/instances/bb144_z_code_capacity.json": "96d052a100562bc33bae3b5be1cd71dc8b06fab74e62b5373aea04fcb4f24b9a"
+   },
+   "nontrivial": 1000,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/uniform_p01.jsonl.gz",
+    "sha256": "64d0a127bc9a6213ab5c2e129b38f4c60f7df317109361c6a4cd1b877c7cbad6"
+   }
+  },
+  "uniform_p02": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/uniform_p02.json",
+    "sha256": "00066ebc1444b9382a3b0c4ed2fa2f283f0b7d115738cf12dec1cbe4aae8b2e8"
+   },
+   "instances": {
+    "evidence/instances/bb144_x_code_capacity.json": "ba61df4c6c3b2375ccbdd8bf1d94b960bd12aa79bf11f9fa1446d52f3cd81235",
+    "evidence/instances/bb144_z_code_capacity.json": "96d052a100562bc33bae3b5be1cd71dc8b06fab74e62b5373aea04fcb4f24b9a"
+   },
+   "nontrivial": 1000,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/uniform_p02.jsonl.gz",
+    "sha256": "fcc434c45d8084154ddc1230ed3c34854803a739054aadf0390801ff2231200b"
+   }
+  },
+  "xsector_p02": {
+   "input": {
+    "file": "evidence/qldpc_scaling_prereg/inputs/xsector_p02.json",
+    "sha256": "4f7bf56381d0c04cb6b2e1b455db2726be40c6e1d80cddda43091b318542039c"
+   },
+   "instances": {
+    "evidence/instances/bb144_x_code_capacity.json": "ba61df4c6c3b2375ccbdd8bf1d94b960bd12aa79bf11f9fa1446d52f3cd81235",
+    "evidence/instances/bb144_z_code_capacity.json": "96d052a100562bc33bae3b5be1cd71dc8b06fab74e62b5373aea04fcb4f24b9a"
+   },
+   "nontrivial": 1000,
+   "records": {
+    "file": "evidence/qldpc_scaling_prereg/xsector_p02.jsonl.gz",
+    "sha256": "2c53c40eabdcb6f8a61f7e51d25169def32aa190b57296650ed97ea00cf4beaa"
+   }
+  }
+ },
+ "expected": {
+  "datasets": 8,
+  "nontrivial": 6500
+ },
+ "libraries": {
+  "ldpc": "2.4.1",
+  "numpy": "2.3.5",
+  "stim": "1.16.0"
+ },
+ "schema": "oneq-qldpc-scaling-prereg-inputs-manifest/1",
+ "summary": {
+  "file": "evidence/qldpc_scaling_prereg/summary.json",
+  "sha256": "5f8ada0e65eff11563330ca190df72b0eeca76736f16b706347857998497e92b"
+ },
+ "what": "binds each dataset of the preregistered scaling campaign to its archived normative input and to its record file; the replay (tools/replay_qldpc_scaling_campaign.py) pins this file's sha256",
+ "written_by": {
+  "file": "experiments/m0_prior_art/qldpc_scaling_prereg_export_inputs.py",
+  "sha256": "cf4a3b0865177f0c4ea99d169773aff99b63bab74402da74b94e024c4c2677d3"
+ }
+}

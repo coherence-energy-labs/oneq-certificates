@@ -90,6 +90,49 @@ def test_partial_report_uses_the_preregistered_statistics(tmp_path):
     assert doc["pooled"]["r30"]["not_proven_upper_95_one_sided"] == hw.cp_upper_one_sided(1, 45)
 
 
+def test_fishers_test_is_the_hypergeometric_one_and_is_not_the_binomial_allocation():
+    """External audit 3 (2026-11-06): the preregistered test allocates the pooled count binomially, exact for two
+    Poisson counts; for two binomial samples of fixed size the exact conditional test is Fisher's (hypergeometric).
+    The report carries both; this fails if Fisher's were computed by the binomial allocation again."""
+    from scipy.stats import binom, fisher_exact
+    for kh, nh, kd, nd in ((3, 50, 1, 45), (0, 800, 0, 650), (5, 700, 0, 650), (2, 300, 7, 350), (10, 40, 1, 60)):
+        want = float(fisher_exact([[kh, nh - kh], [kd, nd - kd]], alternative="greater").pvalue)
+        assert hp.fisher_test(kh, nh, kd, nd) == pytest.approx(want, abs=1e-12), (kh, nh, kd, nd)
+        k = kh + kd
+        assert hp.conditional_test(kh, nh, kd, nd) == (1.0 if k == 0 else
+                                                       pytest.approx(float(binom.sf(kh - 1, k, nh / (nh + nd)))))
+    # where the two differ, they differ: 3 of 50 against 1 of 45
+    assert abs(hp.fisher_test(3, 50, 1, 45) - hp.conditional_test(3, 50, 1, 45)) > 1e-3
+    assert hp.fisher_test(0, 10, 0, 10) == 1.0 and hp.fisher_test(1, 0, 0, 10) is None
+
+
+def test_the_report_carries_both_tests_each_by_its_name(tmp_path):
+    _chunk(tmp_path, "heldout_d7_X_r50", 1, {"EPSILON_OPTIMAL": 47, "NOT_PROVEN": 3})
+    _chunk(tmp_path, "samedev_d7_X_r30", 1, {"TRIVIAL": 5, "EPSILON_OPTIMAL": 44, "NOT_PROVEN": 1})
+    doc = hp.analyse(tmp_path, _stop("heldout_d7_X_r10", []), nontrivial_of=lambda a, s: 0)
+    t = doc["tests"]["heldout_r50_vs_same_producer_dev_r30"]
+    assert t["p_one_sided"] == hp.conditional_test(3, 50, 1, 45)                 # the preregistered test, unchanged
+    assert t["fisher_exact_p_one_sided"] == hp.fisher_test(3, 50, 1, 45)
+    assert "preregistered" in t["test_names"]["p_one_sided"] and "Binomial" in t["test_names"]["p_one_sided"]
+    assert t["test_names"]["fisher_exact_p_one_sided"].startswith("not preregistered")
+    assert "Hypergeometric" in t["test_names"]["fisher_exact_p_one_sided"]
+    # a test that cannot be computed is not computed under either name
+    t10 = doc["tests"]["heldout_r10_vs_same_producer_dev_r30"]
+    assert t10["p_one_sided"] is None and t10["fisher_exact_p_one_sided"] is None
+
+
+def test_the_shipped_report_carries_fishers_test_beside_the_preregistered_one():
+    rep = ROOT / "evidence" / "epsilon_rerun" / "heldout_d7_partial.json"
+    doc = json.loads(rep.read_text(encoding="utf-8"))
+    pl = doc["pooled"]
+    for r in ("r50", "r10"):
+        t = doc["tests"][f"heldout_{r}_vs_same_producer_dev_r30"]
+        cells = (pl[r]["not_proven"], pl[r]["nontrivial"], pl["r30"]["not_proven"], pl["r30"]["nontrivial"])
+        assert t["p_one_sided"] == hp.conditional_test(*cells)
+        assert t["fisher_exact_p_one_sided"] == hp.fisher_test(*cells)
+        assert t["test_names"] == hp.TEST_NAMES
+
+
 def _records(root, stop):
     """A run-records directory as the watchdog and the amendment stop leave it (the report refuses without one)."""
     rec = root / "records"

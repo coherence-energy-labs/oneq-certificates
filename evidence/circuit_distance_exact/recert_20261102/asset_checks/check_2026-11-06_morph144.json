@@ -1,0 +1,42 @@
+{
+ "checker_source_sha256_lf": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+ "family": "morph144",
+ "limit": null,
+ "manifest_sha256_lf": "8108de5d5955224eeadba40b84366dbb5ba423a24314c765375d501d76fff7f0",
+ "of": 4,
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.14.3",
+ "rows": [
+  {
+   "proof": "recert_20261102/proofs/morph144/cert/proof_morph144_X1_w11.bin",
+   "recorded_seconds": 93.2,
+   "seconds": 101.6,
+   "verdict": "VERIFIED: no undetectable logical error of weight <= 11 in this DEM (symmetry group of 72 translations, 12 orbits; 86.3s)",
+   "verified": true
+  },
+  {
+   "proof": "recert_20261102/proofs/morph144/cert/proof_morph144_X2_w11.bin",
+   "recorded_seconds": 296.1,
+   "seconds": 292.4,
+   "verdict": "VERIFIED: no undetectable logical error of weight <= 11 in this DEM (symmetry group of 72 translations, 22 orbits; 292.3s)",
+   "verified": true
+  },
+  {
+   "proof": "recert_20261102/proofs/morph144/cert/proof_morph144_Z1_w11.bin",
+   "recorded_seconds": 97.0,
+   "seconds": 100.3,
+   "verdict": "VERIFIED: no undetectable logical error of weight <= 11 in this DEM (symmetry group of 72 translations, 12 orbits; 100.2s)",
+   "verified": true
+  },
+  {
+   "proof": "recert_20261102/proofs/morph144/cert/proof_morph144_Z2_w11.bin",
+   "recorded_seconds": 311.1,
+   "seconds": 317.9,
+   "verdict": "VERIFIED: no undetectable logical error of weight <= 11 in this DEM (symmetry group of 72 translations, 22 orbits; 317.8s)",
+   "verified": true
+  }
+ ],
+ "schema": "oneq-recert-asset-check/1",
+ "threads": 8,
+ "verified": 4
+}

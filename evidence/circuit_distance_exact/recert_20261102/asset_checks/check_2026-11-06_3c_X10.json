@@ -1,0 +1,21 @@
+{
+ "checker_source_sha256_lf": "263a54bfa2545cdfcf6ebff4973d6cb7c4ac10d6f001eb3794157ba98e877504",
+ "family": "3c",
+ "limit": 1,
+ "manifest_sha256_lf": "8108de5d5955224eeadba40b84366dbb5ba423a24314c765375d501d76fff7f0",
+ "of": 1,
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.14.3",
+ "rows": [
+  {
+   "proof": "recert_20261102/proofs/3c/shift_cert/proof_3c_X10_w10.bin",
+   "recorded_seconds": 3190.9,
+   "seconds": 1598.0,
+   "verdict": "VERIFIED: no irreducible undetectable logical error of weight <= 10 whose earliest round is <= 1 in this DEM (irreducible: no proper subset is undetectable, as every minimum-weight one is; symmetry group of 24 translations, 306 orbits, 60 anchors; 1582.6s)",
+   "verified": true
+  }
+ ],
+ "schema": "oneq-recert-asset-check/1",
+ "threads": 8,
+ "verified": 1
+}

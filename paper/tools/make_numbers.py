@@ -215,6 +215,27 @@ def heldout_d7_macros(hd: dict) -> dict[str, str]:
         for key, t in tests.items():
             if t["computed"]:
                 M[f"HoDSeven{key}"] = F(t["p_one_sided"], 2)
+        # FISHER'S EXACT TEST beside the preregistered one (external audit 3, 2026-11-06): the preregistered test
+        # allocates the pooled count binomially, the exact conditional test for two POISSON counts; for two binomial
+        # samples of fixed size the exact conditional test is hypergeometric. Both are typeset, each by its name, and
+        # both are recomputed here from the pooled counts, so a record that mislabels either is refused.
+        from scipy.stats import binom as _bn, fisher_exact as _fe
+        for key, (rr_, t) in (("FisherP", ("r50", tests["TestP"])), ("TenFisherP", ("r10", tests["TenTestP"]))):
+            if not t["computed"]:
+                continue
+            need("fisher_exact_p_one_sided" in t, "held-out d=7: the report carries no Fisher exact p beside the "
+                                                  "preregistered test; re-run heldout_d7_partial.py")
+            kh, nh = pl[rr_]["not_proven"], pl[rr_]["nontrivial"]
+            kd, nd = pl["r30"]["not_proven"], pl["r30"]["nontrivial"]
+            want_b = 1.0 if kh + kd == 0 else float(_bn.sf(kh - 1, kh + kd, nh / (nh + nd)))
+            want_f = float(_fe([[kh, nh - kh], [kd, nd - kd]], alternative="greater").pvalue)
+            need(abs(t["p_one_sided"] - want_b) < 1e-12, f"held-out d=7: the preregistered binomial p of {rr_} is not "
+                                                          f"the conditional binomial test of its counts")
+            need(abs(t["fisher_exact_p_one_sided"] - want_f) < 1e-12, f"held-out d=7: the Fisher p of {rr_} is not "
+                                                                        f"Fisher's one-sided exact test of its counts")
+            need("Binomial" in t["test_names"]["p_one_sided"] and "Hypergeometric" in
+                 t["test_names"]["fisher_exact_p_one_sided"], "held-out d=7: the record does not name its two tests")
+            M[f"HoDSeven{key}"] = F(t["fisher_exact_p_one_sided"], 2)
         arms = hd["arms"].values()
         M["HoDSevenChunks"] = I(sum(a["completed"]["chunks"] for a in arms))
         M["HoDSevenChunksPlanned"] = I(40 * len(hd["arms"]))
@@ -237,26 +258,81 @@ def heldout_d7_macros(hd: dict) -> dict[str, str]:
         M["HoDSevenUnfinishedChunks"] = I(sum(len(v) for v in unf.values()))
         M["HoDSevenUnfinishedShots"] = I(sum(v["dispatched_unfinished_nontrivial"] for v in hd["arms"].values()))
         M["HoDSevenDispatched"] = I(sum(a["completed"]["chunks"] for a in arms) + sum(len(v) for v in unf.values()))
+        # THE UNFINISHED CHUNKS, BY WHICH ARM THEY BELONG TO (external audit 3, 2026-11-06: "3 unfinished chunks (150
+        # shots)" sat beside a primary worst case over 800 + 100). The PRIMARY ones are 50-round held-out chunks; the
+        # rest belong to the same-producer development arm (or the bracket), and never enter a 50-round figure.
+        by_r = {r: [(a, s) for a, v in hd["arms"].items() if v["rounds"] == r for s in v["dispatched_unfinished_seeds"]]
+                for r in ("r50", "r10", "r30")}
+        u_shots = {r: sum(v["dispatched_unfinished_nontrivial"] for v in hd["arms"].values() if v["rounds"] == r)
+                   for r in by_r}
+        need(sum(len(x) for x in by_r.values()) == sum(len(v) for v in unf.values())
+             and sum(u_shots.values()) == sum(v["dispatched_unfinished_nontrivial"] for v in hd["arms"].values()),
+             "held-out d=7: the unfinished chunks by round count do not add up to the unfinished chunks")
+        for r in by_r:                           # each round count's worst case is its completed shots plus ITS OWN
+            need(pl[r]["worst_case_nontrivial"] == pl[r]["nontrivial"] + u_shots[r]
+                 and pl[r]["worst_case_not_proven"] == pl[r]["not_proven"] + u_shots[r],
+                 f"held-out d=7: the {r} worst case is not its completed shots plus its own unfinished shots")
+        # ... and they are the chunks the stop record names as being computed at the stop
+        stop_ = hd["stop_record"]
+        if stop_.get("schema") == "oneq-heldout-d7-stop/2":
+            named = {(a, s) for a, v in stop_["dispatched_unfinished"].items() for s in v}
+        else:
+            named = {(stop_["current_arm"], s) for s in stop_["dispatched_unfinished_seeds"]} \
+                if stop_.get("current_arm") else set()
+        done = {(a, s) for a, v in hd["arms"].items() for s in v["completed_seeds"]}
+        need({x for r in by_r for x in by_r[r]} == named - done,
+             "held-out d=7: the unfinished chunks are not the ones the stop record names")
+        M["HoDSevenUnfinishedPrimaryChunks"] = I(len(by_r["r50"]))
+        M["HoDSevenUnfinishedPrimaryShots"] = I(u_shots["r50"])
+        M["HoDSevenUnfinishedOtherChunks"] = I(len(by_r["r10"]) + len(by_r["r30"]))
+        M["HoDSevenUnfinishedOtherShots"] = I(u_shots["r10"] + u_shots["r30"])
+        need(not by_r["r10"], "held-out d=7: the text names the non-primary unfinished chunks as development ones")
+
+        def _name(a, s):
+            b = a.split("_")[2]
+            kind = "held-out" if a.startswith("heldout") else "development"
+            return f"{kind} {b} {a.split('_')[3][1:]} rounds seed {s}"
+        M["HoDSevenUnfinishedPrimaryList"] = " and ".join(_name(a, s) for a, s in sorted(by_r["r50"]))
+        M["HoDSevenUnfinishedOtherList"] = " and ".join(_name(a, s) for a, s in sorted(by_r["r30"]))
+        # THE WORST CASE, DESCRIPTIVE: proven of every primary shot dispatched (completed plus unfinished)
+        M["HoDSevenWorstProven"] = I(pl["r50"]["worst_case_nontrivial"] - pl["r50"]["worst_case_not_proven"])
+        need(pl["r50"]["worst_case_nontrivial"] - pl["r50"]["worst_case_not_proven"]
+             == pl["r50"]["nontrivial"] - pl["r50"]["not_proven"],
+             "held-out d=7: the worst case's proven shots are not the completed sample's")
         pre = [v["prefix"] for v in hd["arms"].values() if v["rounds"] == "r50"]
         M["HoDSevenPrefixN"] = I(sum(x["nontrivial"] for x in pre))
         M["HoDSevenPrefixNotProven"] = I(sum(x["not_proven"] for x in pre))
         rec = hd.get("recorded_development_2026_09_17")
         if rec:
             M["HoDSevenRecordedDevUpper"] = SIG3(rec["not_proven_upper_95_one_sided"], "ceil")
+            M["HoDSevenRecordedDevNotProven"] = I(rec["not_proven"])
+            M["HoDSevenRecordedDevN"] = I(rec["nontrivial"])
+            # how many held-out shots, with no refusal, the same computation would need to reach the recorded
+            # development rate (the sentence "could only confirm with about N shots")
+            rate = rec["not_proven"] / rec["nontrivial"]
+            n_conf = math.log(0.05) / math.log1p(-rate)
+            n_print = round(n_conf, -4)
+            need(abs(n_print - n_conf) / n_conf < 0.01 and 1 - 0.05 ** (1 / math.ceil(n_conf)) <= rate,
+                 "held-out d=7: 'about N shots' is not within 1% of the shots the bound would need")
+            M["HoDSevenConfirmN"] = I(n_print)
         # THE INTERPRETATION RULE, fixed in the preregistration before the run, applied here and nowhere else:
-        #  (i)  bound on the held-out 50-round not-proven rate below 1% -> "proved at least (100 - bound)%";
+        #  (i)  bound on the held-out 50-round not-proven rate below 1% -> paper 1 MAY say "proved at least
+        #       (100 - bound)%". NOT APPLIED (external audit 3, 2026-11-06; DEVIATIONS.md note 2): the bound's
+        #       coverage holds for a sample whose inclusion does not depend on the outcome, and a stop that keeps the
+        #       chunks that finished inside a budget selects by difficulty. The permission is permissive ("may"), so
+        #       declining it is not a deviation; the bound is still computed and typeset as the preregistered
+        #       computation, and the abstract reports the observed result, never a population rate.
         #  (ii) 50-round rate significantly higher than the same-producer development rate (p < 0.05) -> read with
         #       the 10-round bracket: bracket also significantly higher -> fitting; bracket at or below the
         #       development rate -> a configuration effect; anything else -> undecided. The preregistration defines
         #       NO reading for the non-significant case, so none is typeset: the test "does not reject".
         r50, r10, r30 = pl["r50"], pl["r10"], pl["r30"]
         t50, t10 = tests["TestP"], tests["TenTestP"]
-        if r50["nontrivial"] and r50["not_proven_upper_95_one_sided"] < 0.01:
-            M["HoDSevenAtLeastPct"] = PF(1 - r50["not_proven_upper_95_one_sided"], 2)
-            M["HoDSevenAbstract"] = (f"at least {M['HoDSevenAtLeastPct']}\\% of {M['HoDSevenN']} at distance 7 in the "
-                                     f"chunks a preregistered budget completed")
-        else:
-            M["HoDSevenAbstract"] = "a held-out distance-7 sample too small to bound its rate below 1\\%"
+        if r50["nontrivial"]:
+            k50 = r50["nontrivial"] - r50["not_proven"]
+            seen = f"all {M['HoDSevenN']}" if not r50["not_proven"] else f"{I(k50)} of {M['HoDSevenN']}"
+            M["HoDSevenAbstract"] = (f"{seen} completed at distance 7, with {M['HoDSevenUnfinishedPrimaryShots']} "
+                                     f"more unfinished at a preregistered budget's stop")
         if not (t50["computed"] and t10["computed"]):
             M["HoDSevenOutcome"] = "untestable"
         elif not t50["p_one_sided"] < 0.05:
@@ -268,17 +344,31 @@ def heldout_d7_macros(hd: dict) -> dict[str, str]:
         else:
             M["HoDSevenOutcome"] = "undecided"
         p50, p10 = M.get("HoDSevenTestP", ""), M.get("HoDSevenTenTestP", "")
-        head_ = ("The preregistered one-sided test of the held-out 50-round not-proven rate against the same-producer "
-                 "development rate")
+        f50, f10 = M.get("HoDSevenFisherP", ""), M.get("HoDSevenTenFisherP", "")
+        # the reading is the preregistered test's; Fisher's exact test must not read differently, or the text that
+        # reports the two side by side would need to say so (a check that can fail)
+        if t50["computed"] and t10["computed"]:
+            def _rej(t, key):
+                return t[key] < 0.05
+            need(_rej(t50, "p_one_sided") == _rej(t50, "fisher_exact_p_one_sided")
+                 and _rej(t10, "p_one_sided") == _rej(t10, "fisher_exact_p_one_sided"),
+                 "held-out d=7: Fisher's exact test and the preregistered binomial test disagree at 0.05; the text "
+                 "reports them as agreeing")
+        head_ = ("The preregistered one-sided conditional binomial test of the held-out 50-round not-proven rate against "
+                 "the same-producer development rate, on the completed chunks of both,")
+        fisher_ = (f"; Fisher's exact test, the exact conditional test for two binomial samples, gives $p={f50}$ and "
+                   f"$p={f10}$")
         M["HoDSevenReading"] = {
             "untestable": f"{head_} could not be computed: one of the two arms completed no chunk.",
-            "not_rejected": f"{head_} does not reject it (one-sided $p={p50}$; the 10-round bracket gives $p={p10}$); "
-                            "the preregistration prescribes no further reading for this case.",
+            "not_rejected": f"{head_} does not reject it (one-sided $p={p50}$; the 10-round bracket gives $p={p10}$"
+                            f"{fisher_}); the preregistration prescribes no further reading for this case.",
             "fitting": f"{head_} rejects it ($p={p50}$), and the 10-round bracket is significantly higher too "
-                       f"($p={p10}$), which the preregistration reads as pointing to fitting to the development shots.",
+                       f"($p={p10}${fisher_}), which the preregistration reads as pointing to fitting to the "
+                       f"development shots.",
             "configuration": f"{head_} rejects it ($p={p50}$) while the 10-round bracket is at or below the development "
-                             f"rate ($p={p10}$), which the preregistration reads as what a configuration effect predicts.",
-            "undecided": f"{head_} rejects it ($p={p50}$; the 10-round bracket gives $p={p10}$), a pattern the "
+                             f"rate ($p={p10}${fisher_}), which the preregistration reads as what a configuration effect "
+                             f"predicts.",
+            "undecided": f"{head_} rejects it ($p={p50}$; the 10-round bracket gives $p={p10}${fisher_}), a pattern the "
                          "preregistration reports as undecided between fitting and the configuration.",
         }[M["HoDSevenOutcome"]]
         M["HoDSevenOutcome"] = M["HoDSevenOutcome"].replace("_", " ")     # no underscore reaches TeX
@@ -1006,6 +1096,105 @@ def build() -> dict[str, str]:
         if not er(r, "bposd_component")["gap_hi"]["p99"] > er(r, "bposd_merged")["gap_hi"]["p99"]:
             raise SystemExit(f"gap distribution d={r['distance']}: the text says the component arm's 99th-percentile "
                              f"excess is larger at every distance")
+
+    # ---- THE POST HOC 2x2 (external audit 3, 2026-11-06). The preregistered BP-OSD arms differ in the input model
+    # AND the min-sum scaling (0.625 merged, 1.0 components), so their difference is a configuration comparison. The
+    # two missing cells ran post hoc on the same shots, scored the same way against the same reference, by a script
+    # that refuses to write unless it reproduces both preregistered arms shot for shot. Every attribution the text
+    # makes is held here to the 2x2, at every distance; the record is never merged into the preregistered one.
+    tt = J("gap_distribution_v4/posthoc_2x2_2026-11-06/summary.json")
+    judged_by_this_tree(tt, "post hoc 2x2 of the gap run's BP-OSD arms")
+    need(tt.get("post_hoc") is True and tt["limit"] is None and tt["preregistered_run"]["head"] == gv["head"]
+         and tt["preregistered_run"]["argv"] == gv["argv"],
+         "gap 2x2: not a complete post hoc run on the preregistered run's record")
+    need([t["distance"] for t in tt["rows"]] == [r["distance"] for r in gv["rows"]] == [3, 5, 7],
+         "gap 2x2: not the preregistered run's distances")
+    for t, g in zip(tt["rows"], gv["rows"]):
+        need(t["reproduced_preregistered_cells_on_every_shot"] is True and t["reproduced_preregistered_summaries"] is True
+             and t["nontrivial"] == g["nontrivial"]
+             and all(t["cells"][a] == g["decoders"][a] for a in ("bposd_merged", "bposd_component")),
+             f"gap 2x2 d={t['distance']}: the preregistered arms are not reproduced")
+        sb = t["settings_read_back"]
+        need(sb["bposd_merged_unscaled"]["ms_scaling_factor"] == "1.0"
+             and sb["bposd_component_scaled"]["ms_scaling_factor"] == "0.625"
+             and all({k: v for k, v in sb[a].items() if k not in ("ms_scaling_factor", "columns")}
+                     == {k: v for k, v in sb["bposd_merged"].items() if k not in ("ms_scaling_factor", "columns")}
+                     for a in sb)
+             and sb["bposd_merged_unscaled"]["columns"] == sb["bposd_merged"]["columns"]
+             and sb["bposd_component_scaled"]["columns"] == sb["bposd_component"]["columns"],
+             f"gap 2x2 d={t['distance']}: a new cell differs from its preregistered twin in more than the scaling")
+        for a in t["cells"]:
+            x = t["cells"][a]
+            need(not x["syndrome_inconsistent"] and not x["epsilon_reference"]["undecided_by_eps"],
+                 f"gap 2x2 d={t['distance']}: {a} inconsistent or undecided shots; the text says none")
+
+    def per_t(f):
+        return " / ".join(f(t) for t in tt["rows"])
+
+    def cnt(t, a):
+        return t["cells"][a]["epsilon_reference"]["proven_eps_optimal"]
+
+    def rate(t, a):
+        return t["cells"][a]["epsilon_reference"]["eps_optimal_rate"]
+
+    def p2(x, up=True):
+        """A p-value to two significant figures: rounded UP where the text states it as a bound ('p <='), to nearest
+        where it quotes the value."""
+        from decimal import ROUND_CEILING, ROUND_HALF_EVEN, Decimal
+        v = Decimal(repr(x))
+        q = v.quantize(Decimal(1).scaleb(v.adjusted() - 1), rounding=ROUND_CEILING if up else ROUND_HALF_EVEN)
+        return f"{q:f}"
+    M["GapTwoMergedUnscaledEpsOptPct"] = per_t(lambda t: PF(rate(t, "bposd_merged_unscaled")))
+    M["GapTwoComponentScaledEpsOptPct"] = per_t(lambda t: PF(rate(t, "bposd_component_scaled")))
+    M["GapTwoComponentScaledCancelled"] = per_t(lambda t: I(t["cells"]["bposd_component_scaled"]
+                                                            ["shots_with_cancelled_copies"]))
+    C = {k: [t["contrasts"][k] for t in tt["rows"]] for k in tt["rows"][0]["contrasts"]}
+    # (a) at EITHER scaling, merged edges are proven within eps_max more often than components, at every distance
+    for k, (a, b) in (("representation_at_0.625", ("bposd_merged", "bposd_component_scaled")),
+                      ("representation_at_1.0", ("bposd_merged_unscaled", "bposd_component"))):
+        need(all(rate(t, a) > rate(t, b) and c["only_a"] > c["only_b"] and (c["a"], c["b"]) == (a, b)
+                 for t, c in zip(tt["rows"], C[k])), f"gap 2x2: the text says {a} beats {b} at every distance")
+    rep_p = max(c["exact_mcnemar_p_two_sided"] for k in ("representation_at_0.625", "representation_at_1.0")
+                for c in C[k])
+    M["GapTwoRepMaxP"] = p2(rep_p)
+    need(rep_p < 0.05, "gap 2x2: the text calls every representation contrast significant")
+    # (b) the scaling helps the component model at every distance
+    need(all(rate(t, "bposd_component_scaled") > rate(t, "bposd_component") and c["only_a"] > c["only_b"]
+             for t, c in zip(tt["rows"], C["scaling_on_components"])),
+         "gap 2x2: the text says scaling 0.625 helps the component model at every distance")
+    sc_p = max(c["exact_mcnemar_p_two_sided"] for c in C["scaling_on_components"])
+    M["GapTwoScaleCompMaxP"] = p2(sc_p)
+    need(sc_p < 0.05, "gap 2x2: the text calls the scaling's effect on components significant at every distance")
+    # (c) on merged edges the scaling is not significant at d = 3 and 5, and at d = 7 UNSCALED is ahead, heavier-tailed
+    sm = C["scaling_on_merged"]
+    need(sm[0]["exact_mcnemar_p_two_sided"] > 0.05 and sm[1]["exact_mcnemar_p_two_sided"] > 0.05
+         and sm[2]["exact_mcnemar_p_two_sided"] < 0.05 and sm[2]["only_b"] > sm[2]["only_a"]
+         and rate(tt["rows"][2], "bposd_merged_unscaled") > rate(tt["rows"][2], "bposd_merged"),
+         "gap 2x2: the text says the scaling is not significant on merged edges at d=3 and 5 and that unscaled is "
+         "ahead at d=7")
+    M["GapTwoScaleMergedP"] = per_t(lambda t: p2(t["contrasts"]["scaling_on_merged"]["exact_mcnemar_p_two_sided"],
+                                                 up=False))
+    hi7 = {a: tt["rows"][2]["cells"][a]["epsilon_reference"]["gap_hi"]["p99"]
+           for a in ("bposd_merged", "bposd_merged_unscaled")}
+    need(hi7["bposd_merged_unscaled"] > hi7["bposd_merged"], "gap 2x2: the text says unscaled merged has the heavier tail")
+    M["GapTwoMergedUnscaledPNinetyNineDSeven"] = F(hi7["bposd_merged_unscaled"], 1)
+    M["GapMergedPNinetyNineDSeven"] = F(hi7["bposd_merged"], 1)
+    # (d) the difference between the PREREGISTERED arms, split two ways: at d = 5 and 7 the input model accounts for
+    # more than half of it whichever factor is changed first; at d = 3 either change alone recovers more than half
+    for t in tt["rows"]:
+        total = cnt(t, "bposd_merged") - cnt(t, "bposd_component")
+        rep_first = cnt(t, "bposd_merged_unscaled") - cnt(t, "bposd_component")
+        rep_second = cnt(t, "bposd_merged") - cnt(t, "bposd_component_scaled")
+        scale_first = cnt(t, "bposd_component_scaled") - cnt(t, "bposd_component")
+        need(total > 0 and 2 * rep_first > total and 2 * rep_second > total if t["distance"] in (5, 7)
+             else total > 0 and 2 * rep_first > total and 2 * scale_first > total,
+             f"gap 2x2 d={t['distance']}: the text's split of the preregistered arms' difference does not hold")
+    # (e) the mechanism the earlier text gave the representation is the scaling's: parallel-column selections on
+    # components vanish at 0.625, and merged edges (one column per edge) never have them
+    need(all(t["cells"]["bposd_merged_unscaled"]["shots_with_cancelled_copies"] == 0 and
+             10 * t["cells"]["bposd_component_scaled"]["shots_with_cancelled_copies"]
+             < t["cells"]["bposd_component"]["shots_with_cancelled_copies"] for t in tt["rows"]),
+         "gap 2x2: the text says scaling 0.625 removes the parallel-column selections and merged edges never make them")
     lf = J("gap_distribution_v4/prereg_2026-11-03/logical_failures.json")
     if lf["run"] != gv["head"] or [x["distance"] for x in lf["rows"]] != [r["distance"] for r in gv["rows"]] or \
             [x["nontrivial"] for x in lf["rows"]] != [r["nontrivial"] for r in gv["rows"]]:
@@ -1396,6 +1585,61 @@ def build() -> dict[str, str]:
               / nd[c]["raw"]["decode_us_median"] for c in nd]
     M["NdCallRatioLo"], M["NdCallRatioHi"] = enclose(min(now), max(now), 1)
     M["NdRescaleRatioLo"], M["NdRescaleRatioHi"] = enclose(min(before), max(before), 1)
+    # WHAT EACH NUMBER MEASURES (external audit 3, 2026-11-06): the ratio above is witness PRODUCTION -- decoding,
+    # exporting and building the cut sets; the exact check ran after the last clock read until the rerun of 2026-11-06,
+    # which times it on the same calls, and the complete call (production + exact check). Every interval is held to
+    # the arithmetic its name promises: a per-call sum's median and p99 are at least each part's, p99 is at least the
+    # median, and every ratio recomputes from the medians it divides.
+    tim = J("pymatching_native_dual_arms.json")
+    need(set(tim.get("timing", {})) >= {"plain_decode", "with_duals_plus_conversion", "exact_check", "complete"},
+         "native dual: the record does not say what each timed interval covers")
+    for cfg, r in na.items():
+        cu = r["cost_per_call_us"]
+        need(cu.get("calls") == r["nontrivial"], f"native dual {cfg}: the timings are not over every nontrivial shot")
+        for k in ("plain_decode", "decode_with_duals", "region_to_cut_conversion", "with_duals_plus_conversion",
+                  "exact_check", "complete"):
+            need(cu[f"{k}_p99"] >= cu[f"{k}_median"] > 0, f"native dual {cfg}: {k}'s p99 below its median")
+        for q in ("median", "p99"):
+            need(cu[f"complete_{q}"] >= max(cu[f"exact_check_{q}"], cu[f"with_duals_plus_conversion_{q}"]),
+                 f"native dual {cfg}: the complete call's {q} is below one of its parts")
+        for key, num in (("ratio_of_medians", "with_duals_plus_conversion_median"),
+                         ("complete_ratio_of_medians", "complete_median"),
+                         ("exact_check_ratio_of_medians", "exact_check_median")):
+            need(abs(cu[key] - cu[num] / cu["plain_decode_median"]) <= 1e-9 * cu[key],
+                 f"native dual {cfg}: {key} is not {num} over the plain decode's median")
+    for cfg, tag in (("sim_d5_r25", "Sim"), ("willow_d5_at_q8_7_X_r30", "WFive"), ("willow_d7_at_q6_7_X_r30", "WSeven")):
+        cu = na[cfg]["cost_per_call_us"]
+        # "IntCheck": the exact check of the INTEGER claim, timed on these calls (the first record's NdSimCheckMs
+        # is its own check on the published doubles, a different claim and a different run, never typeset beside it)
+        M[f"Nd{tag}IntCheckMs"] = F(cu["exact_check_median"] / 1000, 1)
+        M[f"Nd{tag}IntCheckPNinetyNineMs"] = F(cu["exact_check_p99"] / 1000, 1)
+        M[f"Nd{tag}CompleteMs"] = F(cu["complete_median"] / 1000, 1)
+        M[f"Nd{tag}CompletePNinetyNineMs"] = F(cu["complete_p99"] / 1000, 1)
+        M[f"Nd{tag}PlainPNinetyNineUs"] = F(cu["plain_decode_p99"], 0)
+        M[f"Nd{tag}DualConvPNinetyNineUs"] = F(cu["with_duals_plus_conversion_p99"], 0)
+    chk = [r["cost_per_call_us"]["exact_check_median"] / 1000 for r in na.values()]
+    M["NdIntCheckMsLo"], M["NdIntCheckMsHi"] = enclose(min(chk), max(chk), 1)
+    full = [r["cost_per_call_us"]["complete_ratio_of_medians"] for r in na.values()]
+    M["NdCompleteRatioLo"], M["NdCompleteRatioHi"] = enclose(min(full), max(full), 0)
+    need(min(full) > max(now), "native dual: the text says the complete call costs more than producing the witness")
+    need(all(r["cost_per_call_us"]["exact_check_median"] > r["cost_per_call_us"]["with_duals_plus_conversion_median"]
+             for r in na.values()), "native dual: the text says the exact check is most of the certified call's cost")
+    # THE RERUN CHANGED ONLY THE CLOCK: the 2026-11-03 run's record, kept byte for byte, must equal this one in every
+    # field that is not a time (the shots, the corrections, every verdict, the patch); its production ratio is typeset
+    # beside the rerun's as the run-to-run spread of a timing on a shared workstation
+    early = J("pymatching_native_dual_arms_run_2026-11-03.json")
+    timing_top = {"script_sha256", "timing", "machine_cpu_percent", "logical_cpus"}
+
+    def _untimed(doc):
+        return ({k: v for k, v in doc.items() if k not in timing_top | {"configs"}},
+                {c: {k: v for k, v in r.items() if k != "cost_per_call_us"} for c, r in doc["configs"].items()})
+    need(_untimed(early) == _untimed(tim), "native dual: the rerun differs from the 2026-11-03 run in a field that is "
+                                           "not a time")
+    need(early["script_sha256"] != tim["script_sha256"] and "exact_check_median" not in
+         next(iter(early["configs"].values()))["cost_per_call_us"],
+         "native dual: the earlier record is not the run before the check was timed")
+    was = [r["cost_per_call_us"]["ratio_of_medians"] for r in early["configs"].values()]
+    M["NdCallRatioEarlierLo"], M["NdCallRatioEarlierHi"] = enclose(min(was), max(was), 1)
 
     # ------------------------------- the held-out distance-7 sample (docs/PREREG_heldout_d7_2026-11-03.md)
     # Two artifacts can carry it: the complete run (heldout_willow_d7.py --merge) or, when the preregistered 40
@@ -1459,9 +1703,11 @@ def build() -> dict[str, str]:
                  "held-out d=7: the replay record carries no head")
             if isinstance(rp.get("head"), dict) and "sha256" in rp["head"]:
                 judged_by_this_tree({"head": rp["head"]}, "held-out d=7 replay")
-            # the per-arm table: each view with its own sample size
+            # the per-arm table: each view with its own sample size. The Clopper-Pearson column is the preregistered
+            # COMPUTATION, labelled so (its coverage does not hold for a completion-selected sample); the worst case is
+            # shown as what it is, a count of shots still being computed at the stop, not as a bound (audit 3)
             lines = [r"\begin{tabular}{@{}llrrrrrrr@{}}", r"\toprule",
-                     r"arm & rounds & chunks & $N$ & proven & not proven & bound (\%) & prefix & worst (\%) \\",
+                     r"arm & rounds & chunks & $N$ & proven & not proven & prereg.\ CP (\%) & prefix & unfinished \\",
                      r"\midrule"]
             # the six arms in the deviation's cycle order, then the pooled rows
             for arm in ("heldout_d7_X_r50", "heldout_d7_X_r10", "samedev_d7_X_r30", "heldout_d7_Z_r50",
@@ -1469,10 +1715,12 @@ def build() -> dict[str, str]:
                 v, c = hd["arms"][arm], hd["arms"][arm]["completed"]
                 label = ("held-out X" if arm.startswith("heldout_d7_X") else "held-out Z" if arm.startswith("heldout_d7_Z")
                          else "development X" if arm.endswith("X_r30") else "development Z")
+                need(v["dispatched_worst_case"]["nontrivial"] == c["nontrivial"] + v["dispatched_unfinished_nontrivial"],
+                     f"held-out d=7: {arm}'s unfinished shots are not its worst case less its completed shots")
                 lines.append(rf"{label} & {v['rounds'][1:]} & {c['chunks']}/40 & {I(c['nontrivial'])} & "
                              rf"{I(c['accepted'])} & {I(c['not_proven'])} & "
                              rf"{SIG3(c['not_proven_upper_95_one_sided'], 'ceil')} & {v['prefix']['chunks']} & "
-                             rf"{SIG3(v['dispatched_worst_case']['upper_95_one_sided'], 'ceil')} \\")
+                             rf"{I(v['dispatched_unfinished_nontrivial'])} \\")
             lines.append(r"\midrule")
             for rr_, label in (("r50", "held-out, pooled"), ("r10", "held-out bracket, pooled"),
                                ("r30", "development, pooled")):
@@ -1481,7 +1729,7 @@ def build() -> dict[str, str]:
                 lines.append(rf"{label} & {rr_[1:]} & {ch}/80 & {I(row['nontrivial'])} & "
                              rf"{I(row['nontrivial'] - row['not_proven'])} & {I(row['not_proven'])} & "
                              rf"{SIG3(row['not_proven_upper_95_one_sided'], 'ceil')} & -- & "
-                             rf"{SIG3(row['worst_case_upper_95_one_sided'], 'ceil')} \\")
+                             rf"{I(row['worst_case_nontrivial'] - row['nontrivial'])} \\")
             lines += [r"\bottomrule", r"\end{tabular}"]
             files["tab_heldout_d7.tex"] = "\n".join(lines) + "\n"
     else:
