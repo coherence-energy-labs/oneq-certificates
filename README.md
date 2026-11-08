@@ -76,8 +76,12 @@ arithmetic and attacks at the acceptance boundary; it needs the receipt archive
 extracted under `data/epsilon_receipts/`. Re-running the original experiments needs
 the code of the revisions that produced them: the release assets
 `oneq-source-<commit>.tar` carry it (the producing scripts and every module they
-import), each named with its sha256 in `evidence/revision_snapshots.json`; check a
-download with `python tools/revision_snapshots.py --verify --no-git --out <dir>`.
+import), each named with its sha256 in `evidence/revision_snapshots.json`. Every
+other development commit a paper names ships the same way, as the files its
+citation is about and, where it is cited for a change, that commit's diff of them
+(`CHANGE.patch`); the development history itself is private and is available to
+referees on request. Check a download with
+`python tools/revision_snapshots.py --verify --no-git --out <dir>`.
 What does NOT run from this tree: the full development test suite, the mutation
 gate and `tools/gate_all.py`, and the commands in `AUDIT.md` and `REPRODUCE.md`
 that read git history, which need the full development repository. `tools/verify_release.py`

@@ -1,1 +1,0 @@
-- [Superactivation witness attacks](superactivation_witness_attacks.md) - folded erasure order breaks "null = AD"; h(w) exact; Gaussian cost proxy overstates

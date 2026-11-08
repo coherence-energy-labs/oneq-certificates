@@ -766,7 +766,7 @@ def build() -> dict[str, str]:
         need(len(pins) == 1 and prover_src.is_file()
              and hashlib.sha256(prover_src.read_bytes().replace(b"\r\n", b"\n")).hexdigest() in pins,
              f"the shipped prover of commit {c} is missing or is not the source its reproduction rows pin")
-        olds.append(prover_src.relative_to(ROOT).as_posix())
+        olds.append(prover_src.relative_to(ROOT).as_posix() if prover_src.is_relative_to(ROOT) else str(prover_src))
     put("RecertOldSource", ", ".join(r"\texttt{" + p.replace("_", r"\_").replace("/", r"/\allowbreak ") + "}"
                                      for p in olds), "experiments/circuit_distance_exact/old_provers/ "
                                                      "(sha256 = records/recert_old_prover.jsonl)")

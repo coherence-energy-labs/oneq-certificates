@@ -129,6 +129,7 @@
   "eps_hw_exact_optimal": 44157,
   "eps_hw_not_proven": 397,
   "eps_hw_forgeries_attempted": 1629828,
+  "p1_willow_forgeries_refused_by_bound": 37218,
   "eps_forgeries_attempted_total": 9629829,
   "eps_replay_boundary_just_outside_refused": 4799,
   "eps_replay_boundary_just_inside_accepted": 4800,

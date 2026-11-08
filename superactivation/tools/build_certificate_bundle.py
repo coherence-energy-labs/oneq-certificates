@@ -433,6 +433,18 @@ CONTENTS = [
      "paper 1 Sec. XI: re-decides a sample of Sec. VI E's tracked receipts with both verifiers in the reader's tree"),
     ("tests/test_decoder_mutation_gate.py",
      "paper 1 Sec. VII A: every seeded fault is an edge set that differs from the decoder's correction (2026-11-07)"),
+    # ---- anchored preregistrations (2026-11-07), which paper 1's "Which repository" names for future runs
+    ("docs/PREREG_ANCHORING.md", "the protocol: an OpenTimestamps anchor before a beacon round, seeds from the round"),
+    ("tools/prereg_anchor.py", "declare, redeem and verify an anchored preregistration from public sources"),
+    ("src/oneq/beacon.py", "the pure beacon: declaring a future drand round, and the HMAC stream seeds are drawn from"),
+    ("src/oneq/prereg_seeds.py", "a drand round's publication time, and a preregistered run's seeds from the round"),
+    ("src/oneq/ots_proof.py", "an OpenTimestamps proof executed to each attested block's merkle root, no client"),
+    ("tests/test_prereg_anchor.py", "the executor on four real attested proofs, and every refusal of the tool"),
+    *[(f"tests/data/ots_v2026.11.05/{n}.v2026.11.05.ots", "a Bitcoin-attested proof the executor is tested on")
+      for n in ("oneq-certifying-decoder.statement.signed.json", "oneq-certifying-decoder.tar.gz",
+                "oneq-superactivation.statement.signed.json", "oneq-superactivation.tar.gz")],
+    ("tests/test_generated_sources_are_relative.py",
+     "every generated file of the manuscripts names its sources by repository-relative path"),
     # ---- paper 2, revised against the same audits
     ("docs/PREREG_qldpc_scaling_2026-11-03.md", "paper 2: the scaling comparison's preregistration"),
     ("docs/PREREG_qldpc_scaling_2026-11-03_DEVIATIONS.md", "paper 2: its deviations"),
@@ -570,7 +582,9 @@ CONTENTS += [("docs/reviews/EXTERNAL4_2026-11-07.md", "the external audit of v20
 # name, and the means to verify a release (verify_release, its signing core, the pinned issuers).
 P4_LANE_ROOTS = ("experiments/superactivation", "evidence/superactivation")
 _P4_HW = ("src/oneq/hw/__init__.py", "src/oneq/hw/campaign.py", "src/oneq/hw/contract_synth.py", "src/oneq/hw/cz_channel.py", "src/oneq/hw/device.py", "src/oneq/hw/dynamic_exact.py", "src/oneq/hw/dynamic_timing.py", "src/oneq/hw/engine.py", "src/oneq/hw/frame.py", "src/oneq/hw/freeze.py", "src/oneq/hw/iq.py", "src/oneq/hw/layout.py", "src/oneq/hw/noise.py", "src/oneq/hw/pauli_frame.py", "src/oneq/hw/premise.py", "src/oneq/hw/randomization.py", "src/oneq/hw/sensitivity.py", "src/oneq/hw/snapshot.py", "src/oneq/hw/stats.py", "src/oneq/hw/submit.py", "src/oneq/hw/timing.py", "src/oneq/hw/twirl_mode.py", "src/oneq/hw/value.py", "src/oneq/hw/window.py")
-_P4_SKIP = re.compile(r"(^|/)(__pycache__|build)(/|$)|\.(exe|o|pyc)$")
+# `.claude/`: an AI agent's working memory committed inside the lane (shield_family/.claude/agent-memory/), notes,
+# not evidence; enumerating the lane by directory shipped two such files in v2026.11.05 to v2026.11.07.1
+_P4_SKIP = re.compile(r"(^|/)(__pycache__|build|\.claude)(/|$)|\.(exe|o|pyc)$")
 _P4_SOURCES = [rel for rel in _tree_files(*P4_LANE_ROOTS, "src/oneq/superactivation*.py", "tests/test_superactivation*.py",
                                           "tests/test_r142_*.py", "tests/test_nuse_certificate.py",
                                           # the modules of the hardware engine the lane imports (the import-closure
@@ -956,8 +970,12 @@ arithmetic and attacks at the acceptance boundary; it needs the receipt archive
 extracted under `data/epsilon_receipts/`. Re-running the original experiments needs
 the code of the revisions that produced them: the release assets
 `oneq-source-<commit>.tar` carry it (the producing scripts and every module they
-import), each named with its sha256 in `evidence/revision_snapshots.json`; check a
-download with `python tools/revision_snapshots.py --verify --no-git --out <dir>`.
+import), each named with its sha256 in `evidence/revision_snapshots.json`. Every
+other development commit a paper names ships the same way, as the files its
+citation is about and, where it is cited for a change, that commit's diff of them
+(`CHANGE.patch`); the development history itself is private and is available to
+referees on request. Check a download with
+`python tools/revision_snapshots.py --verify --no-git --out <dir>`.
 What does NOT run from this tree: the full development test suite, the mutation
 gate and `tools/gate_all.py`, and the commands in `AUDIT.md` and `REPRODUCE.md`
 that read git history, which need the full development repository. `tools/verify_release.py`

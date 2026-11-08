@@ -4,7 +4,7 @@
     {
       "name": "AUDIT.md",
       "digest": {
-        "sha256": "05e3c64c97231b4bb0509fac82b7893ada5964f843bb7f671476abfeaea606ef"
+        "sha256": "5fc399e3066d25c3a4587b6cbaaf88928bc9692ba56381b7384b6b90185cc4dc"
       }
     },
     {
@@ -5408,18 +5408,6 @@
       }
     },
     {
-      "name": "experiments/superactivation/shield_family/.claude/agent-memory/adversary/MEMORY.md",
-      "digest": {
-        "sha256": "b35e39583ad706c6854eb1765c6319730f455f7de84103353817745dce1962b5"
-      }
-    },
-    {
-      "name": "experiments/superactivation/shield_family/.claude/agent-memory/adversary/superactivation_witness_attacks.md",
-      "digest": {
-        "sha256": "0c958947d3a60e68049ea9de27f821d29fdc6a233372c794b54cce90871f7ffb"
-      }
-    },
-    {
       "name": "experiments/superactivation/shield_family/ad_witness.py",
       "digest": {
         "sha256": "43481f12f6a741750fe3d07a1f71a3991d334a2438cc88530510c33cba17d1cc"
@@ -5938,7 +5926,7 @@
     {
       "name": "paper/release.tex",
       "digest": {
-        "sha256": "91fd800b68db3ea8aee3ccf248925e3530aca8d117ce07110d1c5b14144d59f3"
+        "sha256": "0fcdef28cc2cd765587ecb79f849677e1e9977160d11515ddbd1f4298cc433e4"
       }
     },
     {
@@ -5968,7 +5956,7 @@
     {
       "name": "paper/superactivation/main.tex",
       "digest": {
-        "sha256": "ea8caac7fa2bee24a2051bcf035cf868d77d98816384c32297941eddedb511dd"
+        "sha256": "2ebda8c276770bfc5056906f9b74d87f071903eb94610adef00bc334df1c007f"
       }
     },
     {
@@ -6304,7 +6292,7 @@
     {
       "name": "tools/build_certificate_bundle.py",
       "digest": {
-        "sha256": "5d50e1367501eb2e892b8a9e5786af52f3937df82a33a96f8c4286d6f132f94b"
+        "sha256": "1de72ffcf0549a992cba0f1feced6034ce61706584b1021db16ae5bf0d308231"
       }
     },
     {
@@ -6322,7 +6310,7 @@
     {
       "name": "tools/revision_snapshots.py",
       "digest": {
-        "sha256": "f0cb7ff39faa9da50aea1b0daa10222ca039d24275f3e0edecde4498fedada6a"
+        "sha256": "af89517a9f2f630b8e5f6fe57d5a3624a26db0501e575c518c8efe4fb308ad84"
       }
     },
     {
@@ -6367,7 +6355,7 @@
         {
           "uri": "git+https://one-q.org/ONE_Q",
           "digest": {
-            "gitCommit": "e00a83e763bde442f929f7406de45b02b28990e2"
+            "gitCommit": "05ca3dc9607fe74e5016277ef3bc596e2d485772"
           }
         }
       ],
@@ -6389,7 +6377,7 @@
         "id": "https://one-q.org/local"
       },
       "metadata": {
-        "invocationId": "e00a83e763bde442f929f7406de45b02b28990e2"
+        "invocationId": "05ca3dc9607fe74e5016277ef3bc596e2d485772"
       }
     },
     "claims": {

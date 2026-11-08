@@ -1,6 +1,6 @@
 {
  "schema": "oneq-revision-snapshots/1",
- "what": "source of the revisions that produced the papers' historical results: the producing scripts and every module they import, read from each revision's git objects",
+ "what": "source of the revisions that produced the papers' historical results: the producing scripts and every module they import, read from each revision's git objects; and of the revisions the papers cite, the files each citation is about, with the cited commit's diff of them where the citation is about a change",
  "revisions": {
   "aba2aec": {
    "commit": "aba2aecefdaba317817f80c2689b40f25a67c36d",
@@ -463,6 +463,421 @@
      "blob": "f9733ea62d2a88188c5d9adf8d510d18defcf71b",
      "sha256": "d47b504a95bae89a426e38e65f6150f5c8f2b98c9017ab1f93f2acad643eab3a",
      "bytes": 9813
+    }
+   ]
+  },
+  "7a5a3cf": {
+   "commit": "7a5a3cffa49aac535aa3854fecda5241e5c660e8",
+   "cited": "paper 1, appendix, 'What of the first JavaScript checker is independent': the first JavaScript checker, written from the specification",
+   "named": [
+    "verifier-js/verify-certificate.mjs"
+   ],
+   "archive": "oneq-source-7a5a3cf.tar",
+   "archive_sha256": "8b067b3c91b02ac46e90524d3d9c10e36f30a581de25a6b8508a33fe0ba90323",
+   "files": [
+    {
+     "path": "verifier-js/verify-certificate.mjs",
+     "commit": "7a5a3cffa49aac535aa3854fecda5241e5c660e8",
+     "blob": "89882a6d8321d79cfdede3ea4683fad0696f84f2",
+     "sha256": "556c71ceb55dfe5c9dfc28b28bad41202a73b91b696e961e4fecee3ac5948c0c",
+     "bytes": 12221
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "fe1ff33679faab36698cd89fe8a1d4b19f078ca1",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "8bcc351a947963e15227032625e9358da381b61ea698952c7f571ac8c9e53a40",
+    "bytes": 12765
+   }
+  },
+  "888b745": {
+   "commit": "888b7454767b543ebaabfb098c98880f66d10f7b",
+   "cited": "paper 1, appendix, 'What of the first JavaScript checker is independent': the exact lattice rule ported to the JavaScript checker from the Python checker (both shipped as they stood at this commit)",
+   "named": [
+    "src/oneq/matching_cert.py",
+    "verifier-js/verify-certificate.mjs"
+   ],
+   "archive": "oneq-source-888b745.tar",
+   "archive_sha256": "844834b4ed7ebf2d8d68534bc974e7a6df5b4ddef5730349f35bd4c9fbdcec08",
+   "files": [
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "888b7454767b543ebaabfb098c98880f66d10f7b",
+     "blob": "d9a5e3c77538887a581020a46c105faa3e4f782e",
+     "sha256": "93409ebd5df7ecf749fdadad43663622ea652319449e40b65cda9f2b7d5876a6",
+     "bytes": 27799
+    },
+    {
+     "path": "verifier-js/verify-certificate.mjs",
+     "commit": "888b7454767b543ebaabfb098c98880f66d10f7b",
+     "blob": "2cb4670a413639be69c263ed7ac7f3f8cab5a35d",
+     "sha256": "59b232d07df7c08a6e81076fa12ef82ec23c8a9079e5f7c795a917485025615d",
+     "bytes": 15723
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "37f8d00ade9c70e9310765fef5e375ec4b32ae41",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "f4c1352a1b321a0937c2ab8cd373b172341f8ca0ceda78a19ac44de7a9e5eb5b",
+    "bytes": 5960
+   }
+  },
+  "6b3a146": {
+   "commit": "6b3a146d2c8a7929291043085241423a13b7ee3c",
+   "cited": "paper 1, appendix, 'What of the first JavaScript checker is independent': the dual repair, written into both languages in one commit",
+   "named": [
+    "src/oneq/matching_cert.py",
+    "verifier-js/verify-certificate.mjs"
+   ],
+   "archive": "oneq-source-6b3a146.tar",
+   "archive_sha256": "deb0bda7056cab7c0c4d462318f796cc922649a3c72e3448f0039f6225ffbe27",
+   "files": [
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "6b3a146d2c8a7929291043085241423a13b7ee3c",
+     "blob": "df3206d9865ca9e82ec7d33134e7daf15002151b",
+     "sha256": "3260ff4b1604319ece82076f5ad653dd9f80e2dd569c86ec95b846b2cfb3456a",
+     "bytes": 32676
+    },
+    {
+     "path": "verifier-js/verify-certificate.mjs",
+     "commit": "6b3a146d2c8a7929291043085241423a13b7ee3c",
+     "blob": "6d75019d5625a17909d612d4499a9fa73dba7ff7",
+     "sha256": "28738f73694ca980ad86288d5fe9c587533cd0fee4f8a10a8312aa7868c8f6f3",
+     "bytes": 18348
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "41da98bbbc3fc84f2e94504f4bde02534f5f91b9",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "72c3a966c3aea81b826ef4a7e23927c687c80528d3b683fe089dc6ae6f9a2447",
+    "bytes": 18878
+   }
+  },
+  "e0767dc": {
+   "commit": "e0767dc7cbfe21ba43f10a307d116773a4fcd290",
+   "cited": "paper 1, appendix, 'What of the first JavaScript checker is independent': the spread-absorb variant, in both languages in one commit",
+   "named": [
+    "src/oneq/matching_cert.py",
+    "verifier-js/verify-certificate.mjs"
+   ],
+   "archive": "oneq-source-e0767dc.tar",
+   "archive_sha256": "c72a9ab3e2c621548446557e62f9f5ded8a69ffcb75eb0d9ed1ca19a49e6ca49",
+   "files": [
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "e0767dc7cbfe21ba43f10a307d116773a4fcd290",
+     "blob": "8179b2c74b5d3712c2b454f8b7580bf670c6450c",
+     "sha256": "c4f74c01d8e705573032b6fe5e415ae58fe11ebd5574a0206ecd4d4831366afd",
+     "bytes": 33355
+    },
+    {
+     "path": "verifier-js/verify-certificate.mjs",
+     "commit": "e0767dc7cbfe21ba43f10a307d116773a4fcd290",
+     "blob": "29739a90e022bb75a3df0cbd4efd28e5ff53a923",
+     "sha256": "e6e18740546f263f920b4a193ad037397435c6eeebabd35f578b580a175e8692",
+     "bytes": 18708
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "7203fb26d58134e2568709941d2c2d33c4cf8d55",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "b7fa909a9b814b24337702880659ee3a7333803166ce6caa39e16d4a19ddf717",
+    "bytes": 3265
+   }
+  },
+  "900d647": {
+   "commit": "900d64718877827aee75f42d0ca29262e0a427e3",
+   "cited": "paper 1, appendix, 'What of the first JavaScript checker is independent': the four-order variant, in both languages in one commit",
+   "named": [
+    "src/oneq/matching_cert.py",
+    "verifier-js/verify-certificate.mjs"
+   ],
+   "archive": "oneq-source-900d647.tar",
+   "archive_sha256": "5adfa792a2d7cd68b0a4f5f4765e9a7836337c33f31b9753cc61eea706dee871",
+   "files": [
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "900d64718877827aee75f42d0ca29262e0a427e3",
+     "blob": "37e5b009b966d7768754ba1f84acdbe3b8559a43",
+     "sha256": "b7c798f805dcac54c329a6d11a603f85ca063dcfbc336014329919223321ab28",
+     "bytes": 35457
+    },
+    {
+     "path": "verifier-js/verify-certificate.mjs",
+     "commit": "900d64718877827aee75f42d0ca29262e0a427e3",
+     "blob": "de0888d5729a031b52362179bc2180179ed1491b",
+     "sha256": "c932aa187bd4f3af67e65c7ae08a87e7925e6d438ed529fe70831e454d4641a6",
+     "bytes": 19788
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "40df29e43edd3b90e49c4a63203ccfc6ddeb027d",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "62feb2d87affb24d0dafb31ad0631f025b06194b1a4a2c877f6949123f5980ad",
+    "bytes": 7446
+   }
+  },
+  "56dce45": {
+   "commit": "56dce4508dee3722f06f573df72096d2ea07ee63",
+   "cited": "paper 1, appendix, 'What of the first JavaScript checker is independent': boundary-first edge keys canonicalised, in both languages",
+   "named": [
+    "src/oneq/matching_cert.py",
+    "src/oneq/matching_cert_strict.py",
+    "verifier-js/verify-certificate.mjs"
+   ],
+   "archive": "oneq-source-56dce45.tar",
+   "archive_sha256": "d273fc7f0e2c25ac385a44d35a0eba5fdd7b631391d8ba18bacc4f01f459b842",
+   "files": [
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "56dce4508dee3722f06f573df72096d2ea07ee63",
+     "blob": "a1e71a9098985b2a1402d90af21f60412e5c0f47",
+     "sha256": "e1b3476f70daefc5348da4c3ac28914f3946284e2b19b58ed38a7903a0e3c412",
+     "bytes": 36662
+    },
+    {
+     "path": "src/oneq/matching_cert_strict.py",
+     "commit": "56dce4508dee3722f06f573df72096d2ea07ee63",
+     "blob": "faab4d9e27a11765ed968d61db73d3f6b0108b7d",
+     "sha256": "10e6e32ba838587114e073fc03732cecefaf463e32614b06bfc5862bab6892ea",
+     "bytes": 6948
+    },
+    {
+     "path": "verifier-js/verify-certificate.mjs",
+     "commit": "56dce4508dee3722f06f573df72096d2ea07ee63",
+     "blob": "fba3edaac8d93797546411d5d7a6a39e08e3266d",
+     "sha256": "5818e3cf5ff6a468e6fc82cb25e9ee25a2a0355224ef3b44a617b43bfc78d9b0",
+     "bytes": 20120
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "3ae4a3ff711b538d10452bdb264c17f5f20616ca",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "e63d8312f0f666926ba1d95d22cccb64b6807871551a0277ea5fcac22350fd68",
+    "bytes": 2609
+   }
+  },
+  "617da3a": {
+   "commit": "617da3af025edd39e56de662634a06a9753025da",
+   "cited": "paper 1, appendix, 'A defect in the exact checkers, found and fixed': the exact and the stricter checker fixed against the three packing forgeries",
+   "named": [
+    "src/oneq/matching_cert.py",
+    "src/oneq/matching_cert_strict.py"
+   ],
+   "archive": "oneq-source-617da3a.tar",
+   "archive_sha256": "ba7d97338fa2a8c92268884d89ab03c64fb015f8223a1ef1c19b28654f367377",
+   "files": [
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "617da3af025edd39e56de662634a06a9753025da",
+     "blob": "872895b331d40b0f5d97b3d8a6b637cfcc4916b9",
+     "sha256": "1e3c0322c418937aedaa3541e271242d76ca1275edc9bb1b467bfe4715ebde0d",
+     "bytes": 57624
+    },
+    {
+     "path": "src/oneq/matching_cert_strict.py",
+     "commit": "617da3af025edd39e56de662634a06a9753025da",
+     "blob": "bddf4b33fbd773fe53581314ec05a92a86e28ad1",
+     "sha256": "46c252040fa3d8bd109a2879b8848205320591f9b91e0f94b9845699512e93f2",
+     "bytes": 7915
+    }
+   ],
+   "change": {
+    "member": "CHANGE.patch",
+    "parent": "eeb2c1aee540b1763150f71f0ca3dc1c80bcc45c",
+    "diff": "diff --no-color --no-ext-diff --no-renames --full-index --diff-algorithm=myers -U3",
+    "sha256": "4c7647fa88245f8597887e106cfc9c81d6455f0cc8e2c73d97554e884b5c63b9",
+    "bytes": 2968
+   }
+  },
+  "2008c81": {
+   "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+   "cited": "paper 1, appendix, 'The held-out distance-7 stop': the held-out distance-7 run's producer, the eleven files its record pins (evidence/epsilon_rerun/heldout_d7_partial.json, head.producer)",
+   "named": [
+    "experiments/m0_prior_art/epsilon_rerun.py",
+    "experiments/m0_prior_art/google_corpus_gate.py",
+    "experiments/m0_prior_art/heldout_willow_d7.py",
+    "src/oneq/certifying_decoder.py",
+    "src/oneq/exact_lp.py",
+    "src/oneq/forgeries.py",
+    "src/oneq/matching_cert.py",
+    "src/oneq/matching_cert_epsilon.py",
+    "src/oneq/moat_dual.py",
+    "src/oneq/moat_growth.py",
+    "src/oneq/repair_impossible.py"
+   ],
+   "archive": "oneq-source-2008c81.tar",
+   "archive_sha256": "830b27005c0b92e9f8d69dc616ecdf8c0932174418fe4ff4329999772904757a",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/epsilon_rerun.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "c2cc0b7df1d8d205922035fe5e3e1ab3caf6777c",
+     "sha256": "8161638949d135893c2c78423bd99befb64807aef7f921ac49987aacc6e12cb5",
+     "bytes": 14392
+    },
+    {
+     "path": "experiments/m0_prior_art/google_corpus_gate.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "67c16844c041d5d8a5984958c9bbdc56d59d6049",
+     "sha256": "df7006797ad88a8b591f3ec342a95ed0b3f8f6ed67426c1f257e3c2c4d199d61",
+     "bytes": 21019
+    },
+    {
+     "path": "experiments/m0_prior_art/heldout_willow_d7.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "7599a67df90c9f4d1a5dae3a98c7b1c3907aa9ea",
+     "sha256": "5887bca8b2268e4974006357bec481c664532f9ab763c0238707ee00ca59b20a",
+     "bytes": 6210
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "ef2ce17efe3119b5c1d49eb9c0b1d710222851c8",
+     "sha256": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+     "bytes": 42868
+    },
+    {
+     "path": "src/oneq/exact_lp.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "1b1a7cf1ef9a27c03983f7a3a44b392148770f91",
+     "sha256": "81654d2b63321e1ba793de3bb04610112e8f08bb086d6a7842278f62990b735b",
+     "bytes": 8450
+    },
+    {
+     "path": "src/oneq/forgeries.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "6f2214698086d421df3e34555bbfed516ad8c10f",
+     "sha256": "0283d4ca7c1298a0d4e2da05586cca412c304302c1229b68a454def38695bd1a",
+     "bytes": 16173
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "09c10d89be1c6940baad34c4ef201b2a7b2d3e94",
+     "sha256": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+     "bytes": 60698
+    },
+    {
+     "path": "src/oneq/matching_cert_epsilon.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "449c28804b22ca195a94795760d4a448c8ddfcf6",
+     "sha256": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+     "bytes": 7716
+    },
+    {
+     "path": "src/oneq/moat_dual.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "05c94b0cd3b8f9c51f499ccf89c9c299f6f83867",
+     "sha256": "cd83c5c8e7bb9c5ceb0afe25561df1dba6473ea9834c0224e985576926c0b124",
+     "bytes": 18153
+    },
+    {
+     "path": "src/oneq/moat_growth.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "a4035d85847f886dae6bd1cd7542eb922d52cbd1",
+     "sha256": "9c35fbfba9d29cdb2986f6af3fd3c33635546fceef6aa74b55b80cb0e77e070d",
+     "bytes": 37422
+    },
+    {
+     "path": "src/oneq/repair_impossible.py",
+     "commit": "2008c81f6de5775ebdd0278bef7e2dc3619906fb",
+     "blob": "4ad791d6c182de85e7d96812c2c135227a957604",
+     "sha256": "b37953e51a84324085f83a6271c9b7e2fd646836af6b9100b0f31def4e44aad7",
+     "bytes": 22246
+    }
+   ]
+  },
+  "4030f88": {
+   "commit": "4030f88dbe1a3d399b775f0fc9815a3a4322ccd4",
+   "cited": "paper 1, appendix, 'The held-out distance-7 stop': the deviation's driver and watchdog the held-out run restarted under (the record's head.deviation)",
+   "named": [
+    "experiments/m0_prior_art/heldout_d7_watchdog.py",
+    "experiments/m0_prior_art/heldout_willow_d7_interleaved.py"
+   ],
+   "archive": "oneq-source-4030f88.tar",
+   "archive_sha256": "f939e77989204003badb515128ad7e90f255cd1c55a643994c8428bb5f7bb201",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/heldout_d7_watchdog.py",
+     "commit": "4030f88dbe1a3d399b775f0fc9815a3a4322ccd4",
+     "blob": "8bc1e1ca08221cd32d3a135450e44f286012fd19",
+     "sha256": "a34d19ab7c6d03663171c91bf09ea548bf0b460e927df550bb7a8b67c3c6dac4",
+     "bytes": 7155
+    },
+    {
+     "path": "experiments/m0_prior_art/heldout_willow_d7_interleaved.py",
+     "commit": "4030f88dbe1a3d399b775f0fc9815a3a4322ccd4",
+     "blob": "610bf70d866ddc59f96eeea7484e71797190d9eb",
+     "sha256": "84f076c437a8df865ede89ef1e97db5ead6295f76bf06b7cb77539b17c8cae86",
+     "bytes": 5883
+    }
+   ]
+  },
+  "70b3c4d": {
+   "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+   "cited": "paper 1, appendix, 'The gap experiment's scorer': the preregistered gap run's judged files (evidence/gap_distribution_v4/prereg_2026-11-03/summary.json, head)",
+   "named": [
+    "experiments/m0_prior_art/gap_distribution.py",
+    "src/oneq/certifying_decoder.py",
+    "src/oneq/matching_cert.py",
+    "src/oneq/matching_cert_epsilon.py"
+   ],
+   "archive": "oneq-source-70b3c4d.tar",
+   "archive_sha256": "fa828f4f17fb4de50fdca9255732328fe5d613613160de80f9b52ab8738933aa",
+   "files": [
+    {
+     "path": "experiments/m0_prior_art/gap_distribution.py",
+     "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+     "blob": "842fe9e576859cb47a004e939ae269bc4d478753",
+     "sha256": "9338073a78c7163e770547d989f614fb1013cf0ac3e0246f30fe147164420d78",
+     "bytes": 25526
+    },
+    {
+     "path": "src/oneq/certifying_decoder.py",
+     "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+     "blob": "ef2ce17efe3119b5c1d49eb9c0b1d710222851c8",
+     "sha256": "7a3f265324c1c3a3c96e4b6e5b3ea59343066b75627dde15003141a889e8406f",
+     "bytes": 42868
+    },
+    {
+     "path": "src/oneq/matching_cert.py",
+     "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+     "blob": "09c10d89be1c6940baad34c4ef201b2a7b2d3e94",
+     "sha256": "5c1185b5d0274e530dbcdeaaef07bbe4045eba9183ce372a37002c8f73e7084b",
+     "bytes": 60698
+    },
+    {
+     "path": "src/oneq/matching_cert_epsilon.py",
+     "commit": "70b3c4d863401c3325a0a0a0359e604a51de8b5c",
+     "blob": "449c28804b22ca195a94795760d4a448c8ddfcf6",
+     "sha256": "00e1cf9d05165c354a9ff38406544a327dc9554632694d6cc0dc107b95a62e24",
+     "bytes": 7716
+    }
+   ]
+  },
+  "72d0387": {
+   "commit": "72d03874a64d7846c5a7dae05f3395cb87381a8a",
+   "cited": "paper 3: the earlier prover that reproduced the original records (also shipped as experiments/circuit_distance_exact/old_provers/)",
+   "named": [
+    "experiments/circuit_distance_exact/cdist_prove.c"
+   ],
+   "archive": "oneq-source-72d0387.tar",
+   "archive_sha256": "e0b9a3a6c16db36fa5f9ddea9e8b06f9f890fae64a619c7eab70fd924d091a9c",
+   "files": [
+    {
+     "path": "experiments/circuit_distance_exact/cdist_prove.c",
+     "commit": "72d03874a64d7846c5a7dae05f3395cb87381a8a",
+     "blob": "e77a6a12808d8dd9840285e508fa662b899e4826",
+     "sha256": "ce67471f77636d3f115e6f60f3f7c6a6ea6f1b48aecaf0628a379eb663c8af1e",
+     "bytes": 13404
     }
    ]
   }

@@ -1,10 +1,10 @@
-# Review packet — four manuscripts, release v2026.11.07.1
+# Review packet — four manuscripts, release v2026.11.07.2
 
 **Evidence class:** [PROJECT] a reader's guide to what each paper claims, where the evidence for each claim lives,
 and the commands that re-derive it. Nothing here is evidence itself; every line points at an artifact or a command.
 
 Four manuscripts, one repository, one public release
-(https://github.com/coherence-energy-labs/oneq-certificates, tag v2026.11.07.1, two bundles each signed by the issuer
+(https://github.com/coherence-energy-labs/oneq-certificates, tag v2026.11.07.2, two bundles each signed by the issuer
 key pinned in its own `ISSUERS.json`). The decoder bundle `oneq-certifying-decoder` (papers 1–3) is the root of the
 public tree; the superactivation bundle `oneq-superactivation` (paper 4) is its subdirectory `superactivation/`, a
 complete tree of its own with its own `SHA256SUMS`, in-toto statement, signed archive and tests, whose commands run
@@ -196,11 +196,14 @@ S6.2.3 was corrected to S5.2.3).
 - Every commit the papers name, and every date that puts a preregistration of papers 1 and 2 before its run, is in
   the project's development repository, which is private: the public repository holds the releases with a squashed
   history, and a commit's date is set by whoever makes it, so the order of each preregistration and its run rests on
-  the author's record. What ships instead is the code those commits ran: the four commits of paper 1's Table I and
-  paper 2's freeze commit as source snapshots (`oneq-source-aba2aec.tar` for the freeze), paper 2's freeze identifier
-  with the predeclaration's SHA-256 at the freeze (`evidence/freeze_identity.json`), and paper 3's old prover as the
-  bytes that ran. Paper 1 states that future preregistrations will be anchored outside the project, by an
-  OpenTimestamps proof of the file's hash made before the run.
+  the author's record; the full history is available to referees on request. What ships instead: every commit a paper
+  names, as a source snapshot pinned in `evidence/revision_snapshots.json` (the four commits of paper 1's Table I and
+  paper 2's freeze commit with their producing scripts and imports; each other cited commit as the files its
+  citation is about, with its diff of them where it is cited for a change), paper 2's freeze identifier with the
+  predeclaration's SHA-256 at the freeze (`evidence/freeze_identity.json`), and paper 3's old prover as the bytes
+  that ran. Future preregistrations follow `docs/PREREG_ANCHORING.md`: an anchor naming the preregistration's hash
+  and a future drand beacon round, stamped with OpenTimestamps into a Bitcoin block before the round is published,
+  and the run's seeds drawn from that round (`tools/prereg_anchor.py verify` checks every link).
 - Re-running paper 1's original runs and paper 2's frozen campaign needs the code at their commits. That code ships
   as source snapshots (release assets `oneq-source-<commit>.tar`, pinned by commit and sha256 in
   `evidence/revision_snapshots.json`; `python tools/revision_snapshots.py --verify --no-git --out <dir>` checks a
@@ -248,7 +251,7 @@ S6.2.3 was corrected to S5.2.3).
 
 - Papers 1–3 cite each other by title as companion manuscripts; once arXiv assigns identifiers, cite them in a v2.
   Paper 4 names none of the other three and is a separate arXiv submission, released in its own signed bundle.
-- `paper/owner.tex` holds the author block and `paper/release.tex` the release tag (`\ReleaseTag`, v2026.11.07.1;
+- `paper/owner.tex` holds the author block and `paper/release.tex` the release tag (`\ReleaseTag`, v2026.11.07.2;
   paper 4's `\LaneRelease` is derived from the bundle builder's contents, never typed); `build.py --release` writes
   `build/arxiv_metadata.txt` with the plain-text abstract, and `paper/tools/arxiv_package.py <name>` writes an upload
   that compiles on its own.

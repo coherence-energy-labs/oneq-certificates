@@ -24,6 +24,17 @@ def _j(name):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
 
+def _bound_rule():
+    """paper/tools/make_numbers.py's forgeries_reaching_the_bound: which of a run's forgery classes only weak duality
+    can refuse, by the battery version its class set shows. One definition, read by both scripts."""
+    import sys
+    tools = str(ROOT / "paper" / "tools")
+    if tools not in sys.path:
+        sys.path.insert(0, tools)
+    from make_numbers import forgeries_reaching_the_bound
+    return forgeries_reaching_the_bound
+
+
 def _ibm_live_unique() -> dict:
     r"""Live IBM totals deduplicated BY JOB ID, not by file.
 
@@ -411,6 +422,12 @@ def main() -> int:
         out["eps_hw_exact_optimal"] = sum(s["status"].get("EXACT_OPTIMAL", 0) for s in hw.values())
         out["eps_hw_not_proven"] = sum(s["status"].get("NOT_PROVEN", 0) for s in hw.values())
         out["eps_hw_forgeries_attempted"] = sum(s["forgeries_attempted"] for s in hw.values())
+        # the forgeries only weak duality could refuse (external audit 4, item 1.4; paper 1's EpsHwForgeriesBound),
+        # counted by the generator's own rule, which reads the battery's version off each run's class set: imported,
+        # not restated, so the two cannot drift. This sum was typeset before it was recorded, and the clean-checkout
+        # provenance gate refused the push of v2026.11.07.1 (2026-11-07): locally it traced only by coincidence
+        out["p1_willow_forgeries_refused_by_bound"] = sum(_bound_rule()(s["forgeries_by_class"], n)
+                                                          for n, s in hw.items())
         out["eps_forgeries_attempted_total"] = out["eps_hw_forgeries_attempted"] + sim_eps["forgeries_attempted"]
         bat = [json.loads(p.read_text(encoding="utf-8"))["results"][0]["battery"] for p in reps.values()]
         out["eps_replay_boundary_just_outside_refused"] = sum(b["boundary_just_outside_refused"] for b in bat)

@@ -714,8 +714,14 @@ def build() -> dict[str, str]:
         M["EpsHwForgeries"] = I(agg(wcfg, "forgeries_attempted"))
         need(all(sum(wsum[c]["forgeries_by_class"].values()) == wsum[c]["forgeries_attempted"] for c in wcfg),
              "Willow rerun: a configuration's forgery classes do not add up to its total")
-        M["EpsHwForgeriesBound"] = I(sum(forgeries_reaching_the_bound(wsum[c]["forgeries_by_class"], f"willow_{c}")
-                                         for c in wcfg))
+        hw_bound = sum(forgeries_reaching_the_bound(wsum[c]["forgeries_by_class"], f"willow_{c}") for c in wcfg)
+        # a sum no single artifact states, so it is typeset only when tools/derive_claims.py recorded the same value
+        # (it was typeset unrecorded at first, and the clean-checkout provenance gate refused the push; 2026-11-07)
+        if dc.get("p1_willow_forgeries_refused_by_bound") != hw_bound:
+            raise SystemExit(f"derived_claims.json has p1_willow_forgeries_refused_by_bound = "
+                             f"{dc.get('p1_willow_forgeries_refused_by_bound')}, the Willow summaries give {hw_bound}: "
+                             f"rerun tools/derive_claims.py")
+        M["EpsHwForgeriesBound"] = I(hw_bound)
         # WHY SO FEW REACH THE BOUND (external audit 4, 1.4): the cheapest-boundary forgery exists only on a shot whose
         # every fired detector has its own boundary edge; on the distance-3 graphs every detector has one
         def _bdet(nm):

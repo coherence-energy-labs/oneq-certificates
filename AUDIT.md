@@ -24,7 +24,7 @@ Everything else in this bundle is either evidence for that, a gate defending it,
 **From the signed tarball alone** — no repository, no network:
 
 ```
-sha256sum -c SHA256SUMS                                    # 2515 files
+sha256sum -c SHA256SUMS                                    # 2526 files
 python -m pip install -r requirements.txt
 node verifier-js/verify-certificate.mjs      --conformance conformance/cert_vectors.json           # 59/59, 51 refusals
 python tools/external/exact_lp_certificate_reference.py --self-test
