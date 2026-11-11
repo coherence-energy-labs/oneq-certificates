@@ -1,0 +1,5 @@
+# Every file here is pinned by sha256 (SHA256SUMS, in-toto-statement.json,
+# evidence/per_shot/MANIFEST.json). Git must store and check out exactly the
+# bytes that were hashed, on every platform, so no line-ending conversion of
+# any kind is applied.
+* -text
