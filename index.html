@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ONE-Q papers &middot; Coherence Energy Labs</title>
+<meta name="description" content="Four manuscripts on independently checkable certificates: decoder optimality receipts, exact BP-OSD receipts, circuit-distance certificates, and superactivation of quantum capacity.">
+<style>
+  :root { --bg:#fbfaf7; --fg:#1d1d1b; --muted:#5d5b55; --line:#e2ded4; --accent:#1f5f8b; --card:#ffffff; color-scheme: light; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141413; --fg:#ecebe6; --muted:#a8a59c; --line:#34332f; --accent:#7fb7e0; --card:#1c1c1a; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font: 17px/1.55 Georgia, "Times New Roman", serif; }
+  main { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  header h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 .6rem; }
+  header p { color: var(--muted); margin: .3rem 0; }
+  article { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.4rem; margin: 1.4rem 0; }
+  h2 { font-size: 1.18rem; line-height: 1.35; margin: 0 0 .35rem; }
+  .by { color: var(--muted); margin: 0 0 .8rem; font-size: .95rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin: 0 0 .7rem; font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .links a { color: var(--accent); }
+  .links a.primary { font-weight: 600; }
+  details summary { cursor: pointer; font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--muted); }
+  details p { margin: .6rem 0 0; }
+  .digest { margin: .8rem 0 0; font-size: .8rem; color: var(--muted); overflow-wrap: anywhere; }
+  code { font-family: ui-monospace, Consolas, monospace; }
+  footer { color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); margin-top: 2.2rem; padding-top: 1rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Independently checkable certificates for quantum error correction and quantum capacity</h1>
+    <p>Four manuscripts, release <a href="https://github.com/coherence-energy-labs/oneq-certificates/releases/tag/v2026.11.07.2">v2026.11.07.2</a>. Every number in them is generated from
+    evidence that ships with the code, and the release carries the means to check it.</p>
+  </header>
+
+  <article>
+    <h2>Certifying quantum error-correction decoders: independently checkable near-optimality receipts at scale</h2>
+    <p class="by">Josh Philbrick &middot; Coherence Energy Labs</p>
+    <p class="links">
+      <a class="primary" href="Philbrick_certifying-QEC-decoders.pdf">Read the PDF</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/tree/v2026.11.07.2/paper/certifying-decoders">LaTeX source</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/releases/tag/v2026.11.07.2">Signed release (oneq-certifying-decoder)</a>
+    </p>
+    <details>
+      <summary>Abstract</summary>
+      <p>A quantum error-correction decoder returns a correction and nothing else, and syndrome checking cannot detect a valid correction heavier than necessary. For minimum-weight decoding the correction is a minimum-weight T-join, whose linear-programming dual is a packing of T-odd cuts; any packing, scaled to feasibility, lower-bounds every correction by weak duality, whoever produced it. We build a producer of such packings and a checker that decides in exact rational arithmetic whether a packing proves its correction within 10<sup>&minus;6</sup> of optimal, and keep every receipt. On 1,000,000 simulated shots of a distance-5 surface code over 25 rounds, 99.81% of corrections were proven. On Google Willow shots decoded by PyMatching on the published error models, 99.60% of 99,384 were proven on ten configurations and 99.998% of 100,000 at distance 7 over 30 rounds, shots the producer was developed on; on held-out 50-round runs fixed in advance, all 10,000 at distance 3, 99.09% of 10,000 at distance 5 and all 800 completed at distance 7, with 100 more unfinished at a preregistered budget's stop. Every receipt replays under two Python verifiers, and a JavaScript checker written by a separate AI agent from this paper and a logged brief agrees with them on 48,969 replayed receipts and 89,984 fuzzed inputs. A sound checker refuses every correction heavier than the optimum by more than 10<sup>&minus;6</sup>; what the experiments measure is the false-alarm rate, 1 of 770 unmodified corrections. Our producer takes a mean of 53 ms per shot (median 30 ms), about 3,200 times the mean cost of a batched decode; PyMatching's own sparse-blossom dual, exported by a patch, proves each of its 6,000 corrections exactly optimal for the integers it decodes with, but only 3 within 10<sup>&minus;6</sup> on the published weights; decoding, exporting and building that witness takes 5.9–6.9 times a plain decode per call, and 236–311 times with our exact check.</p>
+    </details>
+    <p class="digest">sha256 <code>aab510052be1389ce867e8cf0da631e7202a5c2b8a37c812868c32dc9de835ce</code></p>
+  </article>
+  <article>
+    <h2>Exact, independently checkable optimality receipts for BP-OSD on the [[144,12,12]] bivariate-bicycle code</h2>
+    <p class="by">Josh Philbrick &middot; Coherence Energy Labs</p>
+    <p class="links">
+      <a class="primary" href="Philbrick_exact-receipts-BP-OSD-144-12-12.pdf">Read the PDF</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/tree/v2026.11.07.2/paper/qldpc-certificates">LaTeX source</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/releases/tag/v2026.11.07.2">Signed release (oneq-certifying-decoder)</a>
+    </p>
+    <details>
+      <summary>Abstract</summary>
+      <p>General quantum decoding is NP-hard, which does not rule out checkable optimality witnesses on the instances that arise. We attach to each syndrome decoded by BP-OSD a dual solution of the Feldman–Wainwright–Karger linear-programming relaxation adapted to syndromes, verified in exact rational arithmetic from the check matrix, the weights and the syndrome alone, with no solver; when the relaxation is not tight, a tree of such duals over a partition of the feasible set closes the proof. On the [[144,12,12]] bivariate-bicycle code, in a preregistered campaign over 8 datasets from code-capacity to circuit-level noise, all 2,019 nontrivial syndromes received an exact receipt, 2,010 of them a single dual and 9 a branching tree; all 2,042 stored receipts replay against a pinned manifest, each accepted by two separately written checkers. A receipt fixes the optimum, so it scores a decoder without the true error; an exact solver trusted to optimality would give the same scores, and the receipt makes them checkable. In a second preregistered campaign, 6,500 fresh syndromes of the same datasets were decoded by BP-OSD at the min-sum scaling factor 1 of the ldpc library's decoder class and at 0.625, the default of its own Sinter wrapper. Scaling found significantly more optima on 4 datasets, each surviving a Bonferroni correction (not preregistered) over all 8 exact McNemar tests, for example 989 against 381 of 1,000 stress syndromes and 486 against 415 of 500 at circuit level; on the other 4 no difference was detected at this sample size (hit counts 2 to 4 apart, McNemar p at least 0.21). Receipts certify objective optimality only; tied optima can carry different logical frames. All results are simulations.</p>
+    </details>
+    <p class="digest">sha256 <code>7f80ac9e0857a251f943044da296b870b76cacfdfe69c4026ad404e3c881f83c</code></p>
+  </article>
+  <article>
+    <h2>Machine-checkable lower-bound certificates for the circuit-level distances of bivariate-bicycle syndrome-extraction circuits</h2>
+    <p class="by">Josh Philbrick &middot; Coherence Energy Labs</p>
+    <p class="links">
+      <a class="primary" href="Philbrick_circuit-distance-certificates-BB.pdf">Read the PDF</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/tree/v2026.11.07.2/paper/circuit-distance">LaTeX source</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/releases/tag/v2026.11.07.2">Signed release (oneq-certifying-decoder)</a>
+    </p>
+    <details>
+      <summary>Abstract</summary>
+      <p>The circuit-level distance of a syndrome-extraction circuit is the smallest number of fault mechanisms that flip a logical observable without firing a detector. We give machine-checkable certificates for the circuit distances of four bivariate-bicycle circuits at the scale of the [[144,12,12]] gross code, written by a branch-and-bound search on the same-type projection of the detector error model and re-derived by a separately written checker whose proof calculus is proven sound in Lean 4. IBM's depth-8 cycle has distance 10 for every number of rounds from 2 up, as G. Pan's public research record also reports (certified to twelve rounds, argued beyond); our lower bound for every number of rounds rests on certificates, a hand proof and script-checked hypotheses. The three-colour cycle of Strikis, Browne and Beverland has 11, the value G. Pan derived from their reduction and exhaustive search. Cheng, Guo and F. Pan certify both with an exact solver, the second also for every number of rounds. For Shaw and Terhal's two morphing circuits, G. Pan's record already reports 6 and 12 for every number of rounds, by exhaustive search without certificates; we add certificates and a fold theorem whose hypotheses are machine-checked. New here are exact values for 14 morphing circuits we constructed with the code parameters of Shaw and Terhal's 2026 follow-up. Our projected mechanism sets equal those of G. Pan's own circuits under his noise model at 1 to 3 rounds. Every certificate the results rest on was re-checked by the committed checker. For 4 small models, none of them a gross-code model, the Lean kernel checks the exported model's distance. Every-round statements rest on two hand proofs and readings of the builders' code, reviewed only by AI agents and not formalized; their finite hypotheses are machine-checked. Distances are properties of the stated fault placement, not error rates.</p>
+    </details>
+    <p class="digest">sha256 <code>1e5973996bc8e4f2432ba46bfd0e06726a48136edf9761f082bc218f547a5990</code></p>
+  </article>
+  <article>
+    <h2>Superactivation in two channel uses for private Horodecki channels with large shields: exact certificates</h2>
+    <p class="by">Josh Philbrick &middot; Coherence Energy Labs</p>
+    <p class="links">
+      <a class="primary" href="Philbrick_superactivation-two-channel-uses.pdf">Read the PDF</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/tree/v2026.11.07.2/superactivation/paper/superactivation">LaTeX source</a>
+      <a href="https://github.com/coherence-energy-labs/oneq-certificates/releases/tag/v2026.11.07.2">Signed release (oneq-superactivation)</a>
+    </p>
+    <details>
+      <summary>Abstract</summary>
+      <p>Parentin, Bergh, Datta and Wilde made superactivation of quantum capacity a finite question. A PPT channel and a 50% erasure channel each transmit a qubit with channel fidelity at most 3/4 in any number of uses; the least number n<sup>*</sup> of joint uses whose fidelity exceeds 3/4 measures the onset, and for Smith and Yard's pair they established that n<sup>*</sup> is at most 17 with an explicit code whose fidelity they evaluated in floating point. We certify codes: a stored encoder and decoder whose fidelity is bounded below in exact or rigorous interval arithmetic, through a reduction we prove. For the Smith–Yard pair, a code supported on the symmetric subspaces of two groups of 7 and 8 uses, and not symmetric across them, has fidelity at least 0.7500784415, so n<sup>*</sup> is at most 15. Smith and Yard's PPT channel is the smallest member of a family P_d of private Horodecki channels with shield dimension d, constructed by K. Horodecki et al., which is PPT at one flip probability. We prove that P_d, for every complex Hadamard twist, is PPT for exactly that one value; that one joint use of P_d with a 50% erasure channel simulates a flagged qubit channel; that one use of any PPT channel with a 50% erasure channel never exceeds 3/4; and that two uses of P_d with a 50% erasure channel exceed 3/4 for every d from 20 on, by certificates at d=20 and 21 and by the closed form (7-6p+2p<sup>2</sup>)/8 from d=22 on. At threshold 3/4 the onset is therefore exactly two uses for every such d. For d=7 to 21 we certify upper bounds on n<sup>*</sup>: four uses at d=7 and 8, and three for d=9 to 19. At one use, a certified code on the joint channel beats every code on the reduced qubit channel through which all these codes are built, so that reduction is strictly lossy there. A PPT-assisted relaxation cannot certify n<sup>*</sup>&gt;2: we prove its value at two uses is 7/8. Every result of ours above is proven or certified; no hardware demonstration is claimed.</p>
+    </details>
+    <p class="digest">sha256 <code>1537c3af19453450049a229d28fa74fdf3c897773aa43e9865db7492a91303c6</code></p>
+  </article>
+  <footer>
+    <p>The PDFs here are byte-identical to the assets of the signed release (the digests above). The code, evidence,
+    receipts and the commands to re-check everything are in the
+    <a href="https://github.com/coherence-energy-labs/oneq-certificates">repository</a>; start with its <code>AUDIT.md</code> and <code>REPRODUCE.md</code>.</p>
+    <p>AI tools assisted with software development, proofs and manuscript preparation; each paper says how. Reviews
+    of the manuscripts by AI agents and four external audits are archived in the release; none of them is
+    third-party peer review.</p>
+    <p>Contact: Josh@coherenceenergylabs.com</p>
+  </footer>
+</main>
+</body>
+</html>
