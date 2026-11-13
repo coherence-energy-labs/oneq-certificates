@@ -1,0 +1,21 @@
+{
+ "schema": "oneq-prereg-anchor/1",
+ "prereg": "docs/PREREG_cgcm_hw_distance_scan_2026-11-13.md",
+ "prereg_sha256": "1617b8af62cd7d2793fa7e3cf06d522c7cf18b413971f52196ce35e38565a701",
+ "prereg_blob": "7af67ccc7d05da305a9d437fe1d1ab7eeacdddf4",
+ "prereg_commit": "2c3d1b1268521f34c2ffd8c2a678e6a88ef02d35",
+ "beacon": {
+  "name": "drand mainnet quicknet",
+  "chain_hash": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+  "genesis_time": 1692803367,
+  "period_seconds": 3,
+  "public_key": "83cf0f2896adee7eb8b5f01fcad3912212c437e0073e911fb90022d3e760183c8c4b450b6a0a6c3ac6a5776a2d1064510d1fec758c921cc22b0e17e63aaf4bcb5ed66304de9cf809bd274ca73bab4af5a6e9c76a4bc09e76eae8991ef5ece45a",
+  "round": 33926138,
+  "round_time_utc": "2026-11-13T14:56:18Z"
+ },
+ "declared_at_round": 33916538,
+ "lead_hours": 8.0,
+ "margin_hours": 3.0,
+ "seed_domain": "oneq-prereg-seed/1",
+ "rule": "Valid only if this file's OpenTimestamps proof is attested in a Bitcoin block whose timestamp is at least margin_hours before round_time_utc. The run's seeds are then oneq.prereg_seeds.derive_prereg_seeds(randomness of that round, prereg_sha256=..., n=...), and nothing else: data drawn with other seeds is not this preregistration's run."
+}
